@@ -142,8 +142,8 @@ def save_reviews_github(json_data, full_file_path):
             "Authorization": f"token {github_token}",
             "Accept": "application/vnd.github.v3+json"
         }
-        repo_name = "segunak/charlotte-third-places"
-        branch = "develop"
+        repo_name = "segunak/third-places-data"
+        branch = "master"
 
         # Check if the file exists to get the SHA
         # Reference https://docs.github.com/en/rest/repos/contents?apiVersion=2022-11-28#get-repository-content
