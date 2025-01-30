@@ -1,0 +1,42 @@
+# This .gitignore is appropriate for repositories deployed to GitHub Pages and using
+# a Gemfile as specified at https://github.com/github/pages-gem#conventional
+
+# Environment configuration files
+*.env
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+
+# dotenv environment variables file
+.env.local
+
+# dotenv environment variables file for tests
+.env.test.local
+
+# dotenv environment variables files
+.env.production
+.env.development
+
+# parcel-bundler cache
+.cache
+
+# Windows files
+Thumbs.db
+
+.python_packages
+__pycache__
+.venv
+.azurite
