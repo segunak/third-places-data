@@ -162,7 +162,7 @@ def get_outscraper_data_for_place(activityInput):
             airtable.update_place_record(airtable_record['id'], 'Has Reviews', 'Yes', overwrite=True)
             logging.info(f"Airtable column 'Has Reviews' updated for {place_name} updated successfully.")
 
-        return helpers.create_place_response('succeeded', place_name, f'https://github.com/segunak/third-places-data/blob/master/{full_file_path}', f"Data processed and saved successfully for {place_name}.")
+        return helpers.create_place_response('succeeded', place_name, f'https://github.com/segunak/charlotte-third-places/blob/master/{full_file_path}', f"Data processed and saved successfully for {place_name}.")
     else:
         return helpers.create_place_response('failed', place_name, None, f"Failed to save reviews to GitHub for {place_name} despite having got data back from Outscraper. Review the logs for more details.")
 
