@@ -37,10 +37,13 @@ Free
 Paid
 Paid (Garage)
 Paid (Street)
-Free (Time Limited)
-Free (Small Lot)
+Paid (Time Limited)
+Paid (Limited Spots)
+Free (Garage)
 Free (Street)
-Free (Validated)
+Free (Time Limited)
+Free (Limited Spots)
+Free (Validation With Purchase)
 
 ### AI Advice
 
