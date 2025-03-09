@@ -62,7 +62,7 @@ jobs:
         uses: Azure/functions-action@v1
         id: deploy-to-function
         with:
-          app-name: 'charlotte-third-places'
+          app-name: 'third-places-data'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           scm-do-build-during-deployment: true
@@ -76,7 +76,7 @@ jobs:
           #!/bin/bash
           set -euo pipefail
       
-          API_URL="https://charlotte-third-places.azurewebsites.net/api/smoke-test"
+          API_URL="https://third-places-data.azurewebsites.net/api/smoke-test"
           REQUEST_BODY='{"House":"Martell"}'
       
           response=$(curl -s -w "\n%{http_code}" -X POST \
