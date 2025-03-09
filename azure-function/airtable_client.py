@@ -141,94 +141,30 @@ class AirtableClient:
             place_details_response (dict): The dictionary containing details about the place, including parking options.
 
         Returns:
-            str: "Free" if any free parking options are available,
-                 "Paid" if only paid or valet parking options are available,
-                 "Unsure" if no parking information is available or if the options don't fit into the above categories.
+            list: A list where the first element is "Free", "Paid", or "Unsure",
+                followed by additional modifiers based on available parking options.
 
         Reference: https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#parkingoptions
         """
         parking_options = place_details_response.get('parkingOptions', {})
-
-        # Check for free parking availability
-        free_parking_keys = ["freeParkingLot",
-                             "freeStreetParking", "freeGarageParking"]
-        if any(parking_options.get(key, False) for key in free_parking_keys):
-            return "Free"
-
-        # Check for paid parking availability
-        paid_parking_keys = [
-            "paidParkingLot", "paidStreetParking", "paidGarageParking", "valetParking"]
-        if any(parking_options.get(key, False) for key in paid_parking_keys):
-            return "Paid"
-
-        return "Unsure"
-
-    def get_parking_status_array(self, place_details_response):
-        """
-        Determines a multi-select array of parking attributes based on Google's parking data.
-
-        The final array must be in the order:
-        [Cost, Location, ... Extra Flags (not derived from Google)]
-        where Cost is either "Free" or "Paid", and Location is one of
-        "Street", "Lot", or "Garage".
-
-        Google does not provide Time-Limited, Validated, Limited, or Plentiful info,
-        so we do NOT set them automatically here.
-
-        Args:
-            place_details_response (dict):
-                The dictionary containing details about the place, including parkingOptions from Google Maps.
-
-        Returns:
-            list of str:
-                A list of multi-select values in the correct order. Possible items from this function:
-                - "Free" or "Paid"   (first)
-                - "Street", "Lot", or "Garage"  (second)
-                If no relevant info is found, an empty list is returned.
-        """
-        parking_options = place_details_response.get('parkingOptions', {})
         parking_tags = []
 
-        # 1) Determine Cost
-        # If any "free..." is True then cost = "Free"; else if any "paid..." is True then cost = "Paid".
-        free_any = parking_options.get("freeStreetParking", False) \
-            or parking_options.get("freeParkingLot", False) \
-            or parking_options.get("freeGarageParking", False)
-        paid_any = parking_options.get("paidStreetParking", False) \
-            or parking_options.get("paidParkingLot", False) \
-            or parking_options.get("paidGarageParking", False) \
-            or parking_options.get("valetParking", False)
-
-        cost = None
-        if free_any:
-            cost = "Free"
-        elif paid_any:
-            cost = "Paid"
-
-        # 2) Determine Location
-        # For user clarity, we pick Street > Lot > Garage in that order if multiple are True.
-        location = None
-
-        # Street check
+        # 1) Determine if parking is Free, Paid, or Unsure
+        if any(parking_options.get(key, False) for key in ["freeParkingLot", "freeStreetParking", "freeGarageParking"]):
+            parking_tags.append("Free")
+        elif any(parking_options.get(key, False) for key in ["paidParkingLot", "paidStreetParking", "paidGarageParking", "valetParking"]):
+            parking_tags.append("Paid")
+        else:
+            parking_tags.append("Unsure")
+            
+        # 2) Add Location-Based Modifiers
+        if parking_options.get("freeGarageParking", False) or parking_options.get("paidGarageParking", False):
+            parking_tags.append("Garage")
         if parking_options.get("freeStreetParking", False) or parking_options.get("paidStreetParking", False):
-            location = "Street"
-        # If not street, check lot
-        elif parking_options.get("freeParkingLot", False) or parking_options.get("paidParkingLot", False):
-            location = "Lot"
-        # If not lot, check garage
-        elif parking_options.get("freeGarageParking", False) or parking_options.get("paidGarageParking", False):
-            location = "Garage"
-
-        # 3) Build the array in the required order:
-        #    [cost, location]
-        # (We won't add time-limited, validated, limited, or plentiful automatically from Google,
-        #  but you can add them later from your own data.)
-        if cost:
-            parking_tags.append(cost)
-        if location:
-            parking_tags.append(location)
-
-        # 4) Return the result. If neither cost nor location was found, it might be an empty list.
+            parking_tags.append("Street")
+        if parking_options.get("paidStreetParking", False):
+            parking_tags.extend(["Street", "Metered"])  # Paid street parking is usually metered
+            
         return parking_tags
 
     def determine_purchase_requirement(self, place_details_response):
@@ -319,7 +255,7 @@ class AirtableClient:
                         )
 
                         location = place_details_response.get('location')
-                        parking_situation = self.get_parking_status(place_details_response)
+                        parking = self.get_parking_status(place_details_response)
                         purchase_required = self.determine_purchase_requirement(place_details_response)
 
                         # "Field Name": (field_value, overwrite=True/False)
@@ -331,7 +267,7 @@ class AirtableClient:
                             'Address': (place_details_response.get('formattedAddress'), True),
                             'Description': (place_details_response.get('editorialSummary', {}).get('text', ''), False),
                             'Purchase Required': (purchase_required, False),
-                            'Parking Situation': (parking_situation, False),
+                            'Parking': (parking, False),
                             'Latitude': (str(location['latitude']), True),
                             'Longitude': (str(location['longitude']), True)
                         }

@@ -4,3 +4,7 @@ from airtable_client import AirtableClient
 # This file is not part of the main codebase and is not used in production.
 
 airtable = AirtableClient()
+
+airtable.enrich_base_data()
+
+print("Done")

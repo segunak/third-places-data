@@ -5,7 +5,7 @@ Stuff and thangs that don't fit into any specific category related to the projec
 
 ## Parking Notes
 
-Trying to make the Parking Situation field (which could be renamed to just "Parking" as I'm fairly certain most everyone will understand what that means).
+The details behind the `Parking` field.
 
 ### Google Options
 
@@ -19,51 +19,20 @@ Trying to make the Parking Situation field (which could be renamed to just "Park
   "paidGarageParking": boolean
 }
 
-### More Options
+### My Approach
 
-Free Lot
-Paid Lot
-Free Street
-Paid Street
-Free Garage
-Paid Garage
-Free Time-Limited
-Paid Time-Limited
-Validated
+The `Parking` field, by way of Airtable automation script validation, must begin with one of these three.
 
-### My Options
+* Free
+* Paid
+* Unsure
 
-Free
-Paid
-Paid (Garage)
-Paid (Street)
-Paid (Time Limited)
-Paid (Limited Spots)
-Free (Garage)
-Free (Street)
-Free (Time Limited)
-Free (Limited Spots)
-Free (Validation With Purchase)
+After that, any of these modifiers can be added.
 
-### AI Advice
-
-Free Lot
-Paid Lot
-Free Street
-Paid Street
-Time-Limited
-Validated
-
-### Idea for Multi Select Field
-
-Challenge then becomes mapping values from Google to a multi select field, but it can be done. Parking is a complicated field in the sense that it's hard to have discrete values. Multi select really provides that flexibility. You'd have to update the form users submit and the explanations on the website of the Parking Situation field, but if you want the site to really provide value, this is worth the effort.
-
-- Free
-- Paid
-- Street
-- Lot
-- Garage
-- Time-Limited
-- Validated
-- Limited
-- Plentiful
+* Garage
+* Street
+* Metered
+* Limited
+* Plentiful
+* Time Limited
+* Validation Available
