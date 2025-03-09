@@ -133,38 +133,43 @@ class AirtableClient:
         # Return the base URL with the path (optional)
         return f"{parsed_url.scheme}://{parsed_url.netloc}{parsed_url.path}".strip()
 
-    def get_parking_status(self, place_details_response):
+    def get_parking_status(self, place_details_response, include_modifiers=False):
         """
         Determines the parking status of a place based on available parking options.
 
         Args:
             place_details_response (dict): The dictionary containing details about the place, including parking options.
+            include_modifiers (bool): If True, includes additional modifiers beyond "Free" or "Paid".
 
         Returns:
-            list: A list where the first element is "Free", "Paid", or "Unsure",
-                followed by additional modifiers based on available parking options.
+            list: A list where the first element is "Free" or "Paid" (never "Unsure"),
+                followed by additional modifiers if include_modifiers is True.
 
         Reference: https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#parkingoptions
         """
         parking_options = place_details_response.get('parkingOptions', {})
         parking_tags = []
 
-        # 1) Determine if parking is Free, Paid, or Unsure
+        # 1) Determine if parking is Free or Paid (ignoring "Unsure" cases)
         if any(parking_options.get(key, False) for key in ["freeParkingLot", "freeStreetParking", "freeGarageParking"]):
             parking_tags.append("Free")
         elif any(parking_options.get(key, False) for key in ["paidParkingLot", "paidStreetParking", "paidGarageParking", "valetParking"]):
             parking_tags.append("Paid")
         else:
             parking_tags.append("Unsure")
-            
-        # 2) Add Location-Based Modifiers
-        if parking_options.get("freeGarageParking", False) or parking_options.get("paidGarageParking", False):
-            parking_tags.append("Garage")
-        if parking_options.get("freeStreetParking", False) or parking_options.get("paidStreetParking", False):
-            parking_tags.append("Street")
-        if parking_options.get("paidStreetParking", False):
-            parking_tags.extend(["Street", "Metered"])  # Paid street parking is usually metered
-            
+
+        # 2) If include_modifiers is True, add Location-Based Modifiers (ensuring no duplicates)
+        if include_modifiers:
+            modifiers = set()  # Use a set to avoid duplicate entries
+            if parking_options.get("freeGarageParking", False) or parking_options.get("paidGarageParking", False):
+                modifiers.add("Garage")
+            if parking_options.get("freeStreetParking", False) or parking_options.get("paidStreetParking", False):
+                modifiers.add("Street")
+            if parking_options.get("paidStreetParking", False):
+                modifiers.add("Metered")  # Paid street parking is usually metered
+
+            parking_tags.extend(sorted(modifiers))  # Ensure consistent order
+
         return parking_tags
 
     def determine_purchase_requirement(self, place_details_response):
