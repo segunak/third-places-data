@@ -332,23 +332,38 @@ class AirtableClient:
 
     def get_record(self, search_field: SearchField, search_value: str) -> dict:
         logging.info(
-            f"Getting record using search field {search_field.value} and search value {search_value}")
+            f"Starting record lookup: search_field='{search_field.value}', search_value='{search_value}'"
+        )
+        
         match_formula = match({search_field.value: search_value})
 
         try:
-            matched_record = self.charlotte_third_places.all(
-                formula=match_formula)
-            if matched_record and len(matched_record) == 1:
-                logging.info(
-                    f"Match found. Record Id is {matched_record[0]['id']}.")
-                return matched_record[0]
-            else:
+            matched_records = self.charlotte_third_places.all(formula=match_formula)
+            record_count = len(matched_records)
+
+            if record_count == 0:
                 logging.warning(
-                    f"No match found for {search_field.value} with value {search_value} or more than one result was found.")
+                    f"No records found for search_field='{search_field.value}' with value='{search_value}'."
+                )
                 return None
+
+            if record_count > 1:
+                logging.warning(
+                    f"Multiple records found ({record_count}) for search_field='{search_field.value}' with value='{search_value}'. "
+                    f"Record IDs: {[record['id'] for record in matched_records]}"
+                )
+                return None
+
+            logging.info(
+                f"Exactly one match found. Returning record with ID: {matched_records[0]['id']}"
+            )
+            return matched_records[0]
+
         except Exception as e:
             logging.error(
-                f"An error occurred while retrieving records: {str(e)}")
+                f"Exception occurred during record lookup for search_field='{search_field.value}', "
+                f"search_value='{search_value}': {str(e)}"
+            )
             return None
 
     def get_place_photos(self, place_details_photos: list) -> list:
