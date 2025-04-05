@@ -462,21 +462,21 @@ class AirtableClient:
                 self.print_report_section(
                     report_file, scan_result, f'Missing Records Report: {field_to_scan}')
 
-    def has_reviews(self, place_id: str) -> bool:
+    def has_data_file(self, place_id: str) -> bool:
         """Checks if the place with the given Google Maps Place ID has stored Google Maps reviews.
 
         Args:
             place_id (str): The Google Maps Place ID of the place to check.
 
         Returns:
-            bool: True if the place has reviews ('Has Reviews' field is 'Yes'), False otherwise.
+            bool: True if the place has reviews ('Has Data File' field is 'Yes'), False otherwise.
         """
         logging.info(f"Checking if place with Google Maps Place ID {place_id} has reviews.")
         record = self.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
         if record:
-            has_reviews = record['fields'].get('Has Reviews', 'No')
-            logging.info(f"Has Reviews for Place ID {place_id}: {has_reviews}")
-            return has_reviews == 'Yes'
+            has_data_file = record['fields'].get('Has Data File', 'No')
+            logging.info(f"Has Data File for Place ID {place_id}: {has_data_file}")
+            return has_data_file == 'Yes'
         else:
             logging.warning(f"Record with Place ID {place_id} not found.")
             return False
@@ -485,10 +485,10 @@ class AirtableClient:
         """Retrieves all places that have no stored Google Maps reviews.
 
         Returns:
-            List[Dict[str, Any]]: A list of records where 'Has Reviews' field is 'No'.
+            List[Dict[str, Any]]: A list of records where 'Has Data File' field is 'No'.
         """
         logging.info("Fetching places without reviews.")
-        formula = match({'Has Reviews': 'No'})
+        formula = match({'Has Data File': 'No'})
         records = self.charlotte_third_places.all(formula=formula)
         logging.info(f"Found {len(records)} places without reviews.")
         return records

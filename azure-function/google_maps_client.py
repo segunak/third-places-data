@@ -234,6 +234,7 @@ class GoogleMapsClient:
             missing 'businessStatus' in response), it returns True.
             
             Reference: https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#businessstatus
+            Reference: https://developers.google.com/maps/documentation/places/web-service/place-details
         """
         operational = True  # Default assumption: The place is operational
         place_details = self.place_details_new(place_id, ['businessStatus'])

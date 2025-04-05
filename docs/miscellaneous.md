@@ -3,6 +3,10 @@
 
 Stuff and thangs that don't fit into any specific category related to the project.
 
+## Random Notes
+
+* Go to <https://developers.google.com/maps/documentation/places/web-service/place-details> to understand Google Maps Billing in terms of which fields trigger which SKU's.
+
 ## Parking Notes
 
 The details behind the `Parking` field.

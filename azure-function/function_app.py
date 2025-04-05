@@ -74,9 +74,9 @@ async def purge_orchestrations(req: func.HttpRequest, client) -> func.HttpRespon
 
 
 @app.orchestration_trigger(context_name="context")
-def get_outscraper_reviews_orchestrator(context: df.DurableOrchestrationContext):
+def get_outscraper_data_orchestrator(context: df.DurableOrchestrationContext):
     try:
-        logging.info("get_outscraper_reviews_orchestrator started.")
+        logging.info("get_outscraper_data_orchestrator started.")
 
         tasks = []
         activity_input = {}
@@ -89,7 +89,7 @@ def get_outscraper_reviews_orchestrator(context: df.DurableOrchestrationContext)
 
         # Run all tasks in parallel
         results = yield context.task_all(tasks)
-        logging.info("get_outscraper_reviews_orchestrator completed.")
+        logging.info("get_outscraper_data_orchestrator completed.")
 
         # Determine overall success
         all_successful = all(result['status'] != 'failed' for result in results)
@@ -118,7 +118,7 @@ def get_outscraper_data_for_place(activityInput):
     outscraper = ApiClient(api_key=OUTSCRAPER_API_KEY)
 
     place_name = place['fields']['Place']
-    logging.info(f"Getting reviews for place: {place_name}")
+    logging.info(f"Getting Outscraper data for place: {place_name}")
 
     place_id = place['fields'].get('Google Maps Place Id', None)
     place_id = airtable.google_maps_client.place_id_handler(place_name, place_id)
@@ -128,19 +128,20 @@ def get_outscraper_data_for_place(activityInput):
 
     airtable_record = airtable.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
 
-    if airtable_record:
-        has_reviews = airtable_record['fields'].get('Has Reviews', 'No')
-        if has_reviews == 'Yes':
-            return helpers.create_place_response('skipped', place_name, None, f"The place {place_name} with place_id {place_id} has a value of Yes in the Has Reviews column of the Airtable Base. To retrieve reviews, change the Has Reviews value to No.")
+    if airtable_record: # Has Data File
+        has_data_file = airtable_record['fields'].get('Has Data File', 'No')
+
+        if has_data_file == 'Yes':
+            return helpers.create_place_response('skipped', place_name, None, f"The place {place_name} with place_id {place_id} has a value of Yes in the Has Data File column of the Airtable Base. To retrieve data, change the Has Data File value to No.")
         else:
             logging.info(
-                f"Airtable record found for place {place_name} with place_id {place_id} with a 'Has Reviews' column value of 'No' or empty.")
+                f"Airtable record found for place {place_name} with place_id {place_id} with a 'Has Data File' column value of 'No' or empty. Proceeding to get data.")
     else:
         logging.warning(
-            f"No Airtable record found for place {place_name} with place_id {place_id}. Proceeding to attempt retrieval and saving of Outscraper data, but there's no Airtable record associated with this place to update.")
+            f"No Airtable record found for place {place_name} with place_id {place_id}. Proceeding to attempt retrieval and saving of data, but there's no Airtable record associated with this place to update.")
 
     # Reference https://app.outscraper.com/api-docs
-    logging.info(f"Getting reviews for {place_name} with place_id {place_id}.")
+    logging.info(f"Getting data for {place_name} with place_id {place_id}.")
     outscraper_response = outscraper.google_maps_reviews(
         place_id, limit=1, reviews_limit=250, sort='newest', language='en', ignore_empty=True
     )
@@ -159,8 +160,8 @@ def get_outscraper_data_for_place(activityInput):
 
     if save_succeeded:
         if airtable_record:
-            airtable.update_place_record(airtable_record['id'], 'Has Reviews', 'Yes', overwrite=True)
-            logging.info(f"Airtable column 'Has Reviews' updated for {place_name} updated successfully.")
+            airtable.update_place_record(airtable_record['id'], 'Has Data File', 'Yes', overwrite=True)
+            logging.info(f"Airtable column 'Has Data File' updated for {place_name} updated successfully.")
 
         return helpers.create_place_response('succeeded', place_name, f'https://github.com/segunak/third-places-data/blob/master/{full_file_path}', f"Data processed and saved successfully for {place_name}.")
     else:

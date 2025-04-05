@@ -81,7 +81,7 @@ When the Durable Function call is fully complete the final response looks simila
 
 ```json
 {
-  "name": "get_outscraper_reviews_orchestrator",
+  "name": "get_outscraper_data_orchestrator",
   "instanceId": "fd1575779e994ba8a9110153f4173a3e",
   "runtimeStatus": "Completed",
   "input": null,
