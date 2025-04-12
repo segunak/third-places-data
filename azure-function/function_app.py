@@ -3,11 +3,11 @@ import json
 import logging
 import datetime
 import azure.functions as func
-from outscraper import ApiClient
 from constants import SearchField
 import helper_functions as helpers
 import azure.durable_functions as df
 from airtable_client import AirtableClient
+from place_data_providers import PlaceDataProviderFactory
 from azure.durable_functions.models.DurableOrchestrationStatus import OrchestrationRuntimeStatus
 
 app = df.DFApp(http_auth_level=func.AuthLevel.FUNCTION)
@@ -24,6 +24,12 @@ async def http_start(req: func.HttpRequest, client):
     # This creates and sends a response that includes a URL to query the orchestration status
     response = client.create_check_status_response(req, instance_id)
     return response
+
+
+@app.activity_trigger(input_name="activityInput")
+def get_all_third_places(activityInput):
+    airtable = AirtableClient()
+    return airtable.all_third_places
 
 
 @app.function_name(name="PurgeOrchestrations")
@@ -74,9 +80,9 @@ async def purge_orchestrations(req: func.HttpRequest, client) -> func.HttpRespon
 
 
 @app.orchestration_trigger(context_name="context")
-def get_outscraper_data_orchestrator(context: df.DurableOrchestrationContext):
+def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
     try:
-        logging.info("get_outscraper_data_orchestrator started.")
+        logging.info("get_place_data_orchestrator started.")
 
         tasks = []
         activity_input = {}
@@ -85,11 +91,11 @@ def get_outscraper_data_orchestrator(context: df.DurableOrchestrationContext):
         for place in all_third_places:
             # Schedule activity functions for each place
             activity_input["place"] = place
-            tasks.append(context.call_activity("get_outscraper_data_for_place", activity_input))
+            tasks.append(context.call_activity("get_place_data_for_place", activity_input))
 
         # Run all tasks in parallel
         results = yield context.task_all(tasks)
-        logging.info("get_outscraper_data_orchestrator completed.")
+        logging.info("get_place_data_orchestrator completed.")
 
         # Determine overall success
         all_successful = all(result['status'] != 'failed' for result in results)
@@ -98,63 +104,65 @@ def get_outscraper_data_orchestrator(context: df.DurableOrchestrationContext):
 
         return results
     except Exception as ex:
-        logging.error(f"Critical error in GetOutscraperReviews processing: {ex}", exc_info=True)
+        logging.error(f"Critical error in get_place_data_orchestrator processing: {ex}", exc_info=True)
         error_response = json.dumps({"error": str(ex)}, indent=4)
         context.set_custom_status('Failed')
         return error_response
 
 
 @app.activity_trigger(input_name="activityInput")
-def get_all_third_places(activityInput):
-    airtable = AirtableClient()
-    return airtable.all_third_places
-
-
-@app.activity_trigger(input_name="activityInput")
-def get_outscraper_data_for_place(activityInput):
+def get_place_data_for_place(activityInput):
+    """
+    Retrieves all data for a place using the configured place data provider.
+    This is a unified function that can use different data sources based on configuration.
+    """
     place = activityInput['place']
     airtable = AirtableClient()
-    OUTSCRAPER_API_KEY = os.environ['OUTSCRAPER_API_KEY']
-    outscraper = ApiClient(api_key=OUTSCRAPER_API_KEY)
-
+    
+    # Get the provider type from environment or use default
+    provider_type = os.environ.get('DEFAULT_PLACE_DATA_PROVIDER', 'outscraper')
+    data_provider = PlaceDataProviderFactory.get_provider(provider_type)
+    
     place_name = place['fields']['Place']
-    logging.info(f"Getting Outscraper data for place: {place_name}")
+    logging.info(f"Getting data for place: {place_name} using {provider_type} provider")
 
     place_id = place['fields'].get('Google Maps Place Id', None)
-    place_id = airtable.google_maps_client.place_id_handler(place_name, place_id)
+    place_id = data_provider.place_id_handler(place_name, place_id)
 
     if not place_id:
-        return helpers.create_place_response('skipped', place_name, None, f"Warning! No place_id found for {place_name}. Skipping getting reviews.")
+        return helpers.create_place_response('skipped', place_name, None, f"Warning! No place_id found for {place_name}. Skipping data retrieval.")
 
     airtable_record = airtable.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
 
-    if airtable_record: # Has Data File
+    # Check if we should skip based on existing data
+    if airtable_record:
         has_data_file = airtable_record['fields'].get('Has Data File', 'No')
 
         if has_data_file == 'Yes':
-            return helpers.create_place_response('skipped', place_name, None, f"The place {place_name} with place_id {place_id} has a value of Yes in the Has Data File column of the Airtable Base. To retrieve data, change the Has Data File value to No.")
+            return helpers.create_place_response('skipped', place_name, None, f"The place {place_name} with place_id {place_id} already has data. To retrieve fresh data, change the Has Data File value to No.")
         else:
-            logging.info(
-                f"Airtable record found for place {place_name} with place_id {place_id} with a 'Has Data File' column value of 'No' or empty. Proceeding to get data.")
+            logging.info(f"Airtable record found for place {place_name} with place_id {place_id} with a 'Has Data File' column value of 'No' or empty. Proceeding to get data.")
     else:
-        logging.warning(
-            f"No Airtable record found for place {place_name} with place_id {place_id}. Proceeding to attempt retrieval and saving of data, but there's no Airtable record associated with this place to update.")
+        logging.warning(f"No Airtable record found for place {place_name} with place_id {place_id}. Proceeding to attempt retrieval and saving of data, but there's no Airtable record associated with this place to update.")
 
-    # Reference https://app.outscraper.com/api-docs
-    logging.info(f"Getting data for {place_name} with place_id {place_id}.")
-    outscraper_response = outscraper.google_maps_reviews(
-        place_id, limit=1, reviews_limit=250, sort='newest', language='en', ignore_empty=True
-    )
+    # Get consolidated place data using the provider
+    logging.info(f"Retrieving all data for {place_name} with place_id {place_id}")
+    place_data = data_provider.get_all_place_data(place_id, place_name)
+    
+    if not place_data or 'error' in place_data:
+        error_message = place_data.get('error', 'Unknown error') if place_data else 'No data retrieved'
+        return helpers.create_place_response('failed', place_name, place_data, 
+                                            f"Error: Data retrieval failed for place {place_name} with place_id {place_id}. {error_message}")
 
-    if not outscraper_response:
-        return helpers.create_place_response('failed', place_name, outscraper_response, f"Error: Outscraper response was invalid for place {place_name} with place_id {place_id}. Please review the logs for more details. No reviews were saved for this place.")
-
-    logging.info(f"Reviews successfully retrieved from Outscraper for {place_name}. Proceeding to save them.")
-    structured_outscraper_data = helpers.structure_outscraper_data(outscraper_response[0], place_name, place_id)
-
-    full_file_path = f"data/outscraper/{place_id}.json"
-    final_json_data = json.dumps(structured_outscraper_data, indent=4)
-    logging.info(f"Attempting to save reviews to GitHub at path {full_file_path}")
+    # Save the complete place data
+    # Extract city name from Airtable base name (assume first word is the city)
+    base_name = airtable.charlotte_third_places.base_id  # Get the base ID first
+    base_info = airtable.api.base(base_name).get()  # Get base info including name
+    city_name = base_info['name'].split()[0].lower()  # Extract first word and convert to lowercase
+    
+    full_file_path = f"data/places/{city_name}/{place_id}.json"
+    final_json_data = json.dumps(place_data, indent=4)
+    logging.info(f"Attempting to save place data to GitHub at path {full_file_path}")
 
     save_succeeded = helpers.save_reviews_github(final_json_data, full_file_path)
 
@@ -165,7 +173,7 @@ def get_outscraper_data_for_place(activityInput):
 
         return helpers.create_place_response('succeeded', place_name, f'https://github.com/segunak/third-places-data/blob/master/{full_file_path}', f"Data processed and saved successfully for {place_name}.")
     else:
-        return helpers.create_place_response('failed', place_name, None, f"Failed to save reviews to GitHub for {place_name} despite having got data back from Outscraper. Review the logs for more details.")
+        return helpers.create_place_response('failed', place_name, None, f"Failed to save data to GitHub for {place_name}. Review the logs for more details.")
 
 
 @app.function_name(name="SmokeTest")

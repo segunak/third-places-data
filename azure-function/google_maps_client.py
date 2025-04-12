@@ -5,11 +5,14 @@ import logging
 import requests
 from datetime import datetime
 from unidecode import unidecode
+from place_data_providers import GoogleMapsProvider, PlaceDataProviderFactory
 
 class GoogleMapsClient:
     """Class for common methods for interacting with the Google Maps API, regardless of the target database for recovered data.
+    
+    This class now utilizes the PlaceDataProvider design pattern but maintains its original interface for backward compatibility.
     """
-    def __init__(self):
+    def __init__(self, provider_type=None):
         logging.basicConfig(level=logging.INFO)
         
         if 'FUNCTIONS_WORKER_RUNTIME' in os.environ:
@@ -19,6 +22,20 @@ class GoogleMapsClient:
             dotenv.load_dotenv()
         
         self.GOOGLE_MAPS_API_KEY = os.environ['GOOGLE_MAPS_API_KEY']
+        
+        # Create provider based on specified type or default
+        if provider_type:
+            self.provider = PlaceDataProviderFactory.get_provider(provider_type)
+        else:
+            # Use environment variable if set, otherwise default to direct Google Maps provider
+            default_provider = os.environ.get('DEFAULT_PLACE_DATA_PROVIDER', 'google')
+            self.provider = PlaceDataProviderFactory.get_provider(default_provider)
+        
+        # For backward compatibility, if using Google directly, also instantiate the direct provider
+        if isinstance(self.provider, GoogleMapsProvider):
+            self._direct_provider = self.provider
+        else:
+            self._direct_provider = GoogleMapsProvider()
 
     def strip_string(self, input_string):
         """Given a string, strip all special characters, punctuation, accents and the like from it. Return an alphanumeric characters only string in lowercase. Used for turning place name's into simple strings that can be used to name files and objects.
@@ -45,7 +62,7 @@ class GoogleMapsClient:
         Returns:
             dict: A JSON object containing the photo details or the actual photo, depending on `skipHttpRedirect`.
         """
-
+        # Use the direct provider method for backward compatibility
         params = {
             'maxHeightPx': maxHeightPx,
             'maxWidthPx': maxWidthPx,
@@ -81,6 +98,7 @@ class GoogleMapsClient:
             dict: The JSON response from the Google Maps API if the request is successful;
                 None if there is an error in the request or response.
         """
+        # For backward compatibility, maintain the original method implementation
         url = 'https://places.googleapis.com/v1/places:searchText'
         headers = {
             'Content-Type': 'application/json',
@@ -130,6 +148,7 @@ class GoogleMapsClient:
             dict: The JSON response from the Google Maps API if the request is successful and valid;
                 None if the request fails or if the response is not JSON.
         """
+        # Use the direct provider to maintain backward compatibility
         url = f'https://places.googleapis.com/v1/places/{place_id}?languageCode=en'
         headers = {
             'Content-Type': 'application/json',
@@ -165,18 +184,8 @@ class GoogleMapsClient:
         Returns:
             str: The Google Maps Place Id if exactly one match is found; an empty string otherwise.
         """
-        find_place_response = self.text_search_new(place_name, ['places.id'])
-        places = find_place_response.get('places', []) if find_place_response else []
-        
-        if len(places) == 1:
-            return places[0].get('id', '')
-        else:
-            # Log a warning with specific details if no place or multiple places are found
-            if len(places) == 0:
-                logging.warning(f"No Google Maps places found for the name {place_name}.")
-            else:
-                logging.warning(f"Found multiple matching Google Maps places for {place_name}. Be more specific or handle the ambiguity in your code. Results: {places}")
-            return ''
+        # Use the new provider interface
+        return self.provider.find_place_id(place_name)
 
     def validate_place_id(self, place_id: str) -> bool:
         """
@@ -192,8 +201,8 @@ class GoogleMapsClient:
         Returns:
             bool: True if the 'id' key exists in the retrieved place details, False otherwise.
         """
-        check_place_id = self.place_details_new(place_id, ['id'])
-        return 'id' in check_place_id if check_place_id else False
+        # Use the new provider interface
+        return self.provider.validate_place_id(place_id)
 
     def place_id_handler(self, place_name, place_id) -> str:
         """
@@ -206,11 +215,8 @@ class GoogleMapsClient:
         
         https://developers.google.com/maps/documentation/places/web-service/place-id
         """
-        # Validate the place_id if it exists; otherwise, find a new one
-        if place_id and self.validate_place_id(place_id):
-            return place_id
-        else:
-            return self.find_place_id(place_name)
+        # Use the new provider interface
+        return self.provider.place_id_handler(place_name, place_id)
 
     def is_place_operational(self, place_id: str) -> bool:
         """
@@ -236,15 +242,18 @@ class GoogleMapsClient:
             Reference: https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#businessstatus
             Reference: https://developers.google.com/maps/documentation/places/web-service/place-details
         """
-        operational = True  # Default assumption: The place is operational
-        place_details = self.place_details_new(place_id, ['businessStatus'])
-
-        if place_details:
-            business_status = place_details.get('businessStatus', 'BUSINESS_STATUS_UNSPECIFIED')
-            # Determine operational status based on businessStatus
-            operational = business_status != 'CLOSED_PERMANENTLY'
-
-        if not operational:
-            logging.warning(f"The place having place Id {place_id} is either permanently closed or has an indertiminate status.")
-
-        return operational
+        # Use the new provider interface
+        return self.provider.is_place_operational(place_id)
+        
+    def get_all_place_data(self, place_id: str, place_name: str) -> dict:
+        """
+        Retrieves all available data for a place using the configured data provider.
+        
+        Args:
+            place_id (str): The unique identifier for the place.
+            place_name (str): The name of the place.
+            
+        Returns:
+            dict: A comprehensive dictionary containing all available place data.
+        """
+        return self.provider.get_all_place_data(place_id, place_name)
