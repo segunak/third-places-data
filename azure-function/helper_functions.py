@@ -6,9 +6,9 @@ import base64
 import logging
 import requests
 import unicodedata
-from datetime import datetime
+from datetime import datetime, timedelta
 from unidecode import unidecode
-from typing import Iterable, Callable, Any, List
+from typing import Iterable, Callable, Any, List, Dict, Optional, Tuple
 from azure.storage.filedatalake import DataLakeServiceClient
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -116,6 +116,84 @@ def save_data_github(json_data, full_file_path):
 
     except Exception as e:
         logging.error(f"Failed to save to GitHub: {str(e)}")
+        return False
+
+def fetch_data_github(full_file_path) -> Tuple[bool, Optional[Dict], str]:
+    """
+    Fetches JSON data from the specified file path in the GitHub repository.
+
+    Args:
+        full_file_path (str): Path to the file in the GitHub repository.
+            Should include the folder and file name, no leading slash.
+            For example: "data/places/charlotte/SomePlaceId.json"
+
+    Returns:
+        tuple: A tuple containing (success, data, message)
+            - success (bool): Whether the operation was successful
+            - data (dict or None): The fetched data as a Python dictionary, or None if unsuccessful
+            - message (str): A message describing the result of the operation
+    """
+    try:
+        github_token = os.environ['GITHUB_PERSONAL_ACCESS_TOKEN']
+        headers = {
+            "Authorization": f"token {github_token}",
+            "Accept": "application/vnd.github.v3+json"
+        }
+        repo_name = "segunak/third-places-data"
+        branch = "master"
+
+        # Get the file content
+        # Reference https://docs.github.com/en/rest/repos/contents?apiVersion=2022-11-28#get-repository-content
+        url_get = f"https://api.github.com/repos/{repo_name}/contents/{full_file_path}?ref={branch}"
+        get_response = requests.get(url_get, headers=headers)
+        
+        if get_response.status_code == 200:
+            content = get_response.json()
+            if content["type"] == "file":
+                # Decode base64 content to JSON
+                file_content = base64.b64decode(content["content"]).decode('utf-8')
+                return True, json.loads(file_content), "File fetched successfully"
+            else:
+                return False, None, f"Path {full_file_path} does not point to a file"
+        elif get_response.status_code == 404:
+            return False, None, f"File {full_file_path} not found in repository"
+        else:
+            return False, None, f"Failed to fetch file: {get_response.status_code} - {get_response.text}"
+
+    except Exception as e:
+        logging.error(f"Failed to fetch from GitHub: {str(e)}")
+        return False, None, f"Error fetching file: {str(e)}"
+
+def is_cache_valid(cached_data: Dict, refresh_interval_days: int) -> bool:
+    """
+    Checks if the cached data is still valid based on the last updated timestamp.
+
+    Args:
+        cached_data (Dict): The cached data containing a 'last_updated' timestamp
+        refresh_interval_days (int): Number of days after which the cache should be refreshed
+
+    Returns:
+        bool: True if the cache is still valid, False if it's stale and needs to be refreshed
+    """
+    try:
+        # Get the last_updated timestamp from the cached data
+        last_updated_str = cached_data.get('last_updated')
+        if not last_updated_str:
+            logging.warning("No last_updated timestamp found in cached data")
+            return False
+        
+        # Parse the timestamp
+        last_updated = datetime.fromisoformat(last_updated_str)
+        
+        # Calculate the age of the cache
+        now = datetime.now()
+        cache_age = now - last_updated
+        
+        # Check if the cache is still valid
+        return cache_age.days < refresh_interval_days
+    
+    except Exception as e:
+        logging.error(f"Error checking cache validity: {str(e)}")
         return False
 
 def create_place_response(operation_status, target_place_name, http_response_data, operation_message):

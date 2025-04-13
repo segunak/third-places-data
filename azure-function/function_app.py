@@ -3,6 +3,7 @@ import json
 import logging
 import datetime
 import azure.functions as func
+import constants
 from constants import SearchField
 import helper_functions as helpers
 import azure.durable_functions as df
@@ -114,7 +115,10 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
 def get_place_data_for_place(activityInput):
     """
     Retrieves all data for a place using the configured place data provider.
-    This is a unified function that can use different data sources based on configuration.
+    This function implements a cache-first approach to reduce API costs:
+    1. Check if the place has cached data in GitHub repository
+    2. If cache exists and is fresh (within configured refresh interval), use the cached data
+    3. If cache doesn't exist or is stale, fetch fresh data from the API provider
     """
     place = activityInput['place']
     airtable = AirtableClient()
@@ -124,7 +128,7 @@ def get_place_data_for_place(activityInput):
     data_provider = PlaceDataProviderFactory.get_provider(provider_type)
     
     place_name = place['fields']['Place']
-    logging.info(f"Getting data for place: {place_name} using {provider_type} provider")
+    logging.info(f"Processing data for place: {place_name}")
 
     place_id = place['fields'].get('Google Maps Place Id', None)
     place_id = data_provider.place_id_handler(place_name, place_id)
@@ -132,46 +136,76 @@ def get_place_data_for_place(activityInput):
     if not place_id:
         return helpers.create_place_response('skipped', place_name, None, f"Warning! No place_id found for {place_name}. Skipping data retrieval.")
 
-    airtable_record = airtable.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
+    # Determine the city name for file path construction
+    base_name = airtable.charlotte_third_places.base_id
+    base_info = airtable.api.base(base_name).get()
+    city_name = base_info['name'].split()[0].lower()
 
-    # Check if we should skip based on existing data
-    if airtable_record:
-        has_data_file = airtable_record['fields'].get('Has Data File', 'No')
-
-        if has_data_file == 'Yes':
-            return helpers.create_place_response('skipped', place_name, None, f"The place {place_name} with place_id {place_id} already has data. To retrieve fresh data, change the Has Data File value to No.")
+    # Path to the cached data file
+    cache_file_path = f"data/places/{city_name}/{place_id}.json"
+    
+    # Get refresh intervals from environment or use defaults from constants
+    force_refresh = os.environ.get('FORCE_REFRESH_DATA', '').lower() == 'true'
+    refresh_interval = int(os.environ.get('DEFAULT_CACHE_REFRESH_INTERVAL', constants.DEFAULT_CACHE_REFRESH_INTERVAL))
+    
+    # Check if we have cached data for this place
+    use_cache = False
+    if not force_refresh:
+        success, cached_data, message = helpers.fetch_data_github(cache_file_path)
+        
+        if success and cached_data:
+            # Check if the cache is still valid
+            if helpers.is_cache_valid(cached_data, refresh_interval):
+                use_cache = True
+                logging.info(f"Using cached data for {place_name} (last updated: {cached_data.get('last_updated')})")
+                place_data = cached_data
+            else:
+                logging.info(f"Cached data for {place_name} is stale. Fetching fresh data.")
         else:
-            logging.info(f"Airtable record found for place {place_name} with place_id {place_id} with a 'Has Data File' column value of 'No' or empty. Proceeding to get data.")
+            logging.info(f"No cached data found for {place_name}: {message}")
     else:
-        logging.warning(f"No Airtable record found for place {place_name} with place_id {place_id}. Proceeding to attempt retrieval and saving of data, but there's no Airtable record associated with this place to update.")
-
-    # Get consolidated place data using the provider
-    logging.info(f"Retrieving all data for {place_name} with place_id {place_id}")
-    place_data = data_provider.get_all_place_data(place_id, place_name)
+        logging.info(f"Force refresh enabled. Skipping cache check for {place_name}")
     
-    if not place_data or 'error' in place_data:
-        error_message = place_data.get('error', 'Unknown error') if place_data else 'No data retrieved'
-        return helpers.create_place_response('failed', place_name, place_data, 
-                                            f"Error: Data retrieval failed for place {place_name} with place_id {place_id}. {error_message}")
-
-    # Save the complete place data
-    # Extract city name from Airtable base name (assume first word is the city)
-    base_name = airtable.charlotte_third_places.base_id  # Get the base ID first
-    base_info = airtable.api.base(base_name).get()  # Get base info including name
-    city_name = base_info['name'].split()[0].lower()  # Extract first word and convert to lowercase
+    if not use_cache:
+        # Get fresh data from the provider
+        logging.info(f"Retrieving fresh data for {place_name} with place_id {place_id}")
+        place_data = data_provider.get_all_place_data(place_id, place_name)
+        
+        if not place_data or 'error' in place_data:
+            error_message = place_data.get('error', 'Unknown error') if place_data else 'No data retrieved'
+            return helpers.create_place_response('failed', place_name, place_data, 
+                                                f"Error: Data retrieval failed for place {place_name} with place_id {place_id}. {error_message}")
     
-    full_file_path = f"data/places/{city_name}/{place_id}.json"
+    # Always save the data (whether fresh or from cache) to ensure Airtable status is updated
     final_json_data = json.dumps(place_data, indent=4)
-    logging.info(f"Attempting to save place data to GitHub at path {full_file_path}")
-
-    save_succeeded = helpers.save_reviews_github(final_json_data, full_file_path)
+    logging.info(f"Saving place data to GitHub at path {cache_file_path}")
+    save_succeeded = helpers.save_data_github(final_json_data, cache_file_path)
 
     if save_succeeded:
+        # Update Airtable record
+        airtable_record = airtable.get_record(constants.SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
         if airtable_record:
             airtable.update_place_record(airtable_record['id'], 'Has Data File', 'Yes', overwrite=True)
-            logging.info(f"Airtable column 'Has Data File' updated for {place_name} updated successfully.")
+            logging.info(f"Airtable column 'Has Data File' updated for {place_name} successfully.")
+            
+            # Also update the Last Updated column
+            last_updated = place_data.get('last_updated', '')
+            if last_updated:
+                try:
+                    # Format the timestamp in a way that Airtable can accept
+                    dt = datetime.fromisoformat(last_updated)
+                    formatted_date = dt.strftime('%Y-%m-%d')
+                    airtable.update_place_record(airtable_record['id'], 'Last Updated', formatted_date, overwrite=True)
+                    logging.info(f"Airtable column 'Last Updated' set to {formatted_date} for {place_name}")
+                except Exception as e:
+                    logging.warning(f"Failed to update 'Last Updated' field: {str(e)}")
 
-        return helpers.create_place_response('succeeded', place_name, f'https://github.com/segunak/third-places-data/blob/master/{full_file_path}', f"Data processed and saved successfully for {place_name}.")
+        return helpers.create_place_response(
+            'succeeded' if not use_cache else 'cached',
+            place_name,
+            f'https://github.com/segunak/third-places-data/blob/master/{cache_file_path}',
+            f"Data {'retrieved and' if not use_cache else ''} saved successfully for {place_name}."
+        )
     else:
         return helpers.create_place_response('failed', place_name, None, f"Failed to save data to GitHub for {place_name}. Review the logs for more details.")
 
