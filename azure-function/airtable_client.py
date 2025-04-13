@@ -229,7 +229,7 @@ class AirtableClient:
                         'Parking': (parking, False),
                         'Latitude': (str(latitude), True) if latitude else (None, False),
                         'Longitude': (str(longitude), True) if longitude else (None, False),
-                        'Photos': (str(photos_list), True) if photos_list else (None, False)
+                        'Photos': (str(photos_list), False) if photos_list else (None, False)
                     }
 
                     # Process updates
