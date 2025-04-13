@@ -1,10 +1,7 @@
-import os
 import json
 import logging
 import datetime
 import azure.functions as func
-import constants
-from constants import SearchField
 import helper_functions as helpers
 import azure.durable_functions as df
 from airtable_client import AirtableClient
@@ -26,12 +23,10 @@ async def http_start(req: func.HttpRequest, client):
     response = client.create_check_status_response(req, instance_id)
     return response
 
-
 @app.activity_trigger(input_name="activityInput")
 def get_all_third_places(activityInput):
     airtable = AirtableClient()
     return airtable.all_third_places
-
 
 @app.function_name(name="PurgeOrchestrations")
 @app.route(route="purge-orchestrations")
@@ -79,7 +74,6 @@ async def purge_orchestrations(req: func.HttpRequest, client) -> func.HttpRespon
             mimetype="application/json"
         )
 
-
 @app.orchestration_trigger(context_name="context")
 def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
     try:
@@ -115,100 +109,28 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
 def get_place_data_for_place(activityInput):
     """
     Retrieves all data for a place using the configured place data provider.
-    This function implements a cache-first approach to reduce API costs:
-    1. Check if the place has cached data in GitHub repository
-    2. If cache exists and is fresh (within configured refresh interval), use the cached data
-    3. If cache doesn't exist or is stale, fetch fresh data from the API provider
+    Uses the shared get_and_cache_place_data function to implement a cache-first approach.
     """
     place = activityInput['place']
-    airtable = AirtableClient()
-    
-    # Get the provider type from environment or use default
-    provider_type = os.environ.get('DEFAULT_PLACE_DATA_PROVIDER', 'outscraper')
-    data_provider = PlaceDataProviderFactory.get_provider(provider_type)
-    
     place_name = place['fields']['Place']
-    logging.info(f"Processing data for place: {place_name}")
-
     place_id = place['fields'].get('Google Maps Place Id', None)
-    place_id = data_provider.place_id_handler(place_name, place_id)
-
-    if not place_id:
-        return helpers.create_place_response('skipped', place_name, None, f"Warning! No place_id found for {place_name}. Skipping data retrieval.")
-
-    # Determine the city name for file path construction
-    base_name = airtable.charlotte_third_places.base_id
-    base_info = airtable.api.base(base_name).get()
-    city_name = base_info['name'].split()[0].lower()
-
-    # Path to the cached data file
-    cache_file_path = f"data/places/{city_name}/{place_id}.json"
     
-    # Get refresh intervals from environment or use defaults from constants
-    force_refresh = os.environ.get('FORCE_REFRESH_DATA', '').lower() == 'true'
-    refresh_interval = int(os.environ.get('DEFAULT_CACHE_REFRESH_INTERVAL', constants.DEFAULT_CACHE_REFRESH_INTERVAL))
+    # Call the centralized helper function
+    status, place_data, message = helpers.get_and_cache_place_data(place_name, place_id, 'charlotte')
     
-    # Check if we have cached data for this place
-    use_cache = False
-    if not force_refresh:
-        success, cached_data, message = helpers.fetch_data_github(cache_file_path)
-        
-        if success and cached_data:
-            # Check if the cache is still valid
-            if helpers.is_cache_valid(cached_data, refresh_interval):
-                use_cache = True
-                logging.info(f"Using cached data for {place_name} (last updated: {cached_data.get('last_updated')})")
-                place_data = cached_data
-            else:
-                logging.info(f"Cached data for {place_name} is stale. Fetching fresh data.")
-        else:
-            logging.info(f"No cached data found for {place_name}: {message}")
+    # If data was successfully retrieved, update Airtable record with "Has Data File" = "Yes"
+    if (status == 'succeeded' or status == 'cached') and place_data:
+        record_id = place['id']
+        airtable = AirtableClient()
+        airtable.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
+    
+    # Format the response for the orchestrator
+    if status == 'succeeded' or status == 'cached':
+        place_id = place_data.get('place_id', place_id)
+        github_url = f'https://github.com/segunak/third-places-data/blob/master/data/places/charlotte/{place_id}.json'
+        return helpers.create_place_response(status, place_name, github_url, message)
     else:
-        logging.info(f"Force refresh enabled. Skipping cache check for {place_name}")
-    
-    if not use_cache:
-        # Get fresh data from the provider
-        logging.info(f"Retrieving fresh data for {place_name} with place_id {place_id}")
-        place_data = data_provider.get_all_place_data(place_id, place_name)
-        
-        if not place_data or 'error' in place_data:
-            error_message = place_data.get('error', 'Unknown error') if place_data else 'No data retrieved'
-            return helpers.create_place_response('failed', place_name, place_data, 
-                                                f"Error: Data retrieval failed for place {place_name} with place_id {place_id}. {error_message}")
-    
-    # Always save the data (whether fresh or from cache) to ensure Airtable status is updated
-    final_json_data = json.dumps(place_data, indent=4)
-    logging.info(f"Saving place data to GitHub at path {cache_file_path}")
-    save_succeeded = helpers.save_data_github(final_json_data, cache_file_path)
-
-    if save_succeeded:
-        # Update Airtable record
-        airtable_record = airtable.get_record(constants.SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
-        if airtable_record:
-            airtable.update_place_record(airtable_record['id'], 'Has Data File', 'Yes', overwrite=True)
-            logging.info(f"Airtable column 'Has Data File' updated for {place_name} successfully.")
-            
-            # Also update the Last Updated column
-            last_updated = place_data.get('last_updated', '')
-            if last_updated:
-                try:
-                    # Format the timestamp in a way that Airtable can accept
-                    dt = datetime.fromisoformat(last_updated)
-                    formatted_date = dt.strftime('%Y-%m-%d')
-                    airtable.update_place_record(airtable_record['id'], 'Last Updated', formatted_date, overwrite=True)
-                    logging.info(f"Airtable column 'Last Updated' set to {formatted_date} for {place_name}")
-                except Exception as e:
-                    logging.warning(f"Failed to update 'Last Updated' field: {str(e)}")
-
-        return helpers.create_place_response(
-            'succeeded' if not use_cache else 'cached',
-            place_name,
-            f'https://github.com/segunak/third-places-data/blob/master/{cache_file_path}',
-            f"Data {'retrieved and' if not use_cache else ''} saved successfully for {place_name}."
-        )
-    else:
-        return helpers.create_place_response('failed', place_name, None, f"Failed to save data to GitHub for {place_name}. Review the logs for more details.")
-
+        return helpers.create_place_response(status, place_name, None, message)
 
 @app.function_name(name="SmokeTest")
 @app.route(route="smoke-test")
@@ -250,89 +172,66 @@ def smoke_test(req: func.HttpRequest) -> func.HttpResponse:
 @app.function_name(name="EnrichAirtableBase")
 @app.route(route="enrich-airtable-base")
 def enrich_airtable_base(req: func.HttpRequest) -> func.HttpResponse:
+    """
+    This function enriches the Airtable base data for all places.
+    Authorization is handled via the Azure Function key.
+    
+    Returns:
+        func.HttpResponse: A JSON response with the results of the operation
+    """
     logging.info("Received request for Airtable base enrichment.")
 
     try:
-        req_body = req.get_json()
-        logging.info("JSON payload successfully parsed from request.")
-    except ValueError:
-        logging.error("Failed to parse JSON payload from the request.", exc_info=True)
+        airtable = AirtableClient()
+        logging.info("AirtableClient instance created, starting the base data enrichment process.")
+
+        enriched_places = airtable.enrich_base_data()
+        
+        # Filter to only include places that had at least one field updated
+        actually_updated_places = [
+            {
+                "place_name": place["place_name"],
+                "place_id": place["place_id"],
+                "record_id": place["record_id"],
+                "field_updates": {
+                    field: {
+                        "old_value": updates["old_value"],
+                        "new_value": updates["new_value"]
+                    }
+                    for field, updates in place.get('field_updates', {}).items() if updates["updated"]
+                }
+            }
+            for place in enriched_places if any(updates["updated"] for updates in place.get('field_updates', {}).values())
+        ]
+
+        if actually_updated_places:
+            logging.info(f"Enrichment process completed successfully. The following places had at least one field updated: {actually_updated_places}")
+        else:
+            logging.info("Enrichment process completed successfully. No places required field updates.")
+
         return func.HttpResponse(
             json.dumps({
-                "success": False,
-                "message": "Invalid request, please send valid JSON.",
-                "data": None,
-                "error": "Failed to parse JSON payload."
+                "success": True,
+                "message": "Airtable base enrichment processed successfully.",
+                "data": {
+                    "total_places_enriched": len(actually_updated_places),
+                    "places_enriched": actually_updated_places
+                },
+                "error": None
             }),
-            status_code=400,
+            status_code=200,
             mimetype="application/json"
         )
-
-    if req_body.get("TheMotto") == "What is dead may never die, but rises again harder and stronger":
-        logging.info("Validation successful, the provided motto matches the expected value. Proceeding with the enrichment process.")
-
-        try:
-            airtable = AirtableClient()
-            logging.info("AirtableClient instance created, starting the base data enrichment process.")
-
-            enriched_places = airtable.enrich_base_data()
-            logging.info("Base data enrichment completed. Proceeding to parse and filter updated places.")
-            actually_updated_places = [
-                {
-                    "place_name": place["place_name"],
-                    "place_id": place["place_id"],
-                    "record_id": place["record_id"],
-                    "field_updates": {
-                        field: {
-                            "old_value": updates["old_value"],
-                            "new_value": updates["new_value"]
-                        }
-                        for field, updates in place.get('field_updates', {}).items() if updates["updated"]
-                    }
-                }
-                for place in enriched_places if any(updates["updated"] for updates in place.get('field_updates', {}).values())
-            ]
-
-            if actually_updated_places:
-                logging.info(f"Enrichment process completed successfully. The following places had at least one field updated: {actually_updated_places}")
-            else:
-                logging.info("Enrichment process completed successfully. No places required field updates.")
-
-            return func.HttpResponse(
-                json.dumps({
-                    "success": True,
-                    "message": "Airtable base enrichment processed successfully.",
-                    "data": {
-                        "total_places_enriched": len(actually_updated_places),
-                        "places_enriched": actually_updated_places
-                    },
-                    "error": None
-                }),
-                status_code=200,
-                mimetype="application/json"
-            )
-        except Exception as ex:
-            logging.error(f"Error encountered during the enrichment process: {ex}", exc_info=True)
-            return func.HttpResponse(
-                json.dumps({
-                    "success": False,
-                    "message": "Server error occurred during the enrichment process.",
-                    "data": None,
-                    "error": str(ex)
-                }),
-                status_code=500,
-                mimetype="application/json"
-            )
-    else:
-        logging.info("Invalid or unauthorized attempt to access the endpoint with incorrect motto.")
+    except Exception as ex:
+        logging.error(f"Error encountered during the enrichment process: {ex}", exc_info=True)
         return func.HttpResponse(
             json.dumps({
                 "success": False,
-                "message": "Unauthorized access. This endpoint requires a specific authorization motto to proceed.",
+                "message": "Server error occurred during the enrichment process.",
                 "data": None,
-                "error": "Incorrect authorization motto."
+                "error": str(ex)
             }),
-            status_code=403,
+            status_code=500,
             mimetype="application/json"
         )
 
@@ -398,6 +297,68 @@ def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpRes
             json.dumps({
                 "success": False,
                 "message": "Server error occurred during the refresh operation.",
+                "data": None,
+                "error": str(ex)
+            }),
+            status_code=500,
+            mimetype="application/json"
+        )
+
+
+@app.function_name(name="RefreshDataCache")
+@app.route(route="refresh-data-cache")
+def refresh_data_cache(req: func.HttpRequest) -> func.HttpResponse:
+    """
+    This function refreshes the cached data for all places without doing full Airtable field enrichment.
+    It only updates the 'Has Data File' field in Airtable to mark places that have data files.
+    
+    This endpoint is useful for:
+    1. Pre-warming the cache before running enrichment
+    2. Ensuring all place data is up-to-date
+    3. Filling in missing data files
+    
+    Authorization is handled via the Azure Function key.
+    
+    Returns:
+        func.HttpResponse: A JSON response with the results of the operation
+    """
+    logging.info("Received request to refresh all place data caches.")
+
+    try:
+        airtable = AirtableClient()
+        logging.info("AirtableClient instance created, starting the data cache refresh process.")
+
+        # Call the update_cache_data method to refresh the cache
+        updated_places = airtable.update_cache_data()
+        
+        # Summarize the results by status
+        summary = {}
+        for place in updated_places:
+            status = place.get('status', 'unknown')
+            if status not in summary:
+                summary[status] = 0
+            summary[status] += 1
+        
+        # Log the summary
+        for status, count in summary.items():
+            logging.info(f"Places with status '{status}': {count}")
+
+        return func.HttpResponse(
+            json.dumps({
+                "success": True,
+                "message": "Data cache refresh completed successfully.",
+                "data": updated_places,
+                "error": None
+            }),
+            status_code=200,
+            mimetype="application/json"
+        )
+    except Exception as ex:
+        logging.error(f"Error encountered during the data cache refresh process: {ex}", exc_info=True)
+        return func.HttpResponse(
+            json.dumps({
+                "success": False,
+                "message": "Server error occurred during the data cache refresh process.",
                 "data": None,
                 "error": str(ex)
             }),

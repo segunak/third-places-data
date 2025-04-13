@@ -295,7 +295,6 @@ class GoogleMapsProvider(PlaceDataProvider):
                 'place_name': raw_data.get('displayName', {}).get('text', ''),
                 'place_id': place_id,
                 'google_maps_url': raw_data.get('googleMapsUri', ''),
-                'neighborhood': self._extract_neighborhood(raw_data),
                 'website': raw_data.get('websiteUri', ''),
                 'address': raw_data.get('formattedAddress', ''),
                 'description': self._extract_description(raw_data),
@@ -310,14 +309,6 @@ class GoogleMapsProvider(PlaceDataProvider):
         except Exception as e:
             logging.error(f"Error retrieving details for place ID {place_id}: {e}")
             return {}
-    
-    def _extract_neighborhood(self, data: Dict[str, Any]) -> str:
-        """Extracts the neighborhood from address components."""
-        address_components = data.get('addressComponents', [])
-        for component in address_components:
-            if 'neighborhood' in component.get('types', []):
-                return component.get('longText', '')
-        return ''
     
     def _extract_description(self, data: Dict[str, Any]) -> str:
         """Extracts the editorial summary or description."""
@@ -622,7 +613,6 @@ class OutscraperProvider(PlaceDataProvider):
                     "place_name": raw_data.get('name', ''),
                     "place_id": raw_data.get('place_id', place_id),
                     "google_maps_url": f'https://maps.google.com/?cid={raw_data.get("cid", "")}',
-                    "neighborhood": self._extract_neighborhood(raw_data),
                     "website": raw_data.get('site', ''),
                     "address": raw_data.get('full_address', ''),
                     "description": raw_data.get('description', ''),
@@ -647,7 +637,6 @@ class OutscraperProvider(PlaceDataProvider):
             "place_name": "",
             "place_id": place_id,
             "google_maps_url": "",
-            "neighborhood": "",
             "website": "",
             "address": "",
             "description": "",
@@ -658,11 +647,6 @@ class OutscraperProvider(PlaceDataProvider):
             "raw_data": {},
             "error": error_message
         }
-    
-    def _extract_neighborhood(self, data: Dict[str, Any]) -> str:
-        """Extracts the neighborhood from Outscraper data."""
-        # Outscraper doesn't always provide neighborhood directly
-        return data.get('borough', '')
     
     def _determine_purchase_requirement(self, data: Dict[str, Any]) -> str:
         """Determines if a purchase is required based on price level or range."""

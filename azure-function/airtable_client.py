@@ -6,7 +6,7 @@ import pyairtable
 from pyairtable import Api
 from collections import Counter
 from urllib.parse import urlparse
-from constants import SearchField
+from constants import SearchField, MAX_THREAD_WORKERS
 import helper_functions as helpers
 from typing import Dict, Any, List
 from pyairtable.formulas import match
@@ -128,23 +128,27 @@ class AirtableClient:
         """
         Enriches the base data of places stored in Airtable with additional metadata fetched using the configured data provider.
         Uses threading to parallelize fetching details for all places.
+        
+        This method:
+        1. Gets data for each place (cached or fresh) using helper_functions.get_and_cache_place_data
+        2. Updates Airtable fields with this data
+        
+        Returns:
+            list: A list of dictionaries containing the results of each place enrichment operation.
         """
+        import helper_functions as helpers
+        
         places_updated = []
-
+        
         def process_place(third_place: dict) -> dict:
             """
-            Processes a single place to fetch metadata and update the place record in Airtable.
+            Processes a single place by getting data via helper_functions and updating Airtable fields.
 
             Args:
                 third_place (dict): The place data from Airtable.
 
             Returns:
-                dict: Contains:
-                    - "place_name": The name of the place.
-                    - "place_id": The Google Maps Place ID.
-                    - "record_id": The Airtable record ID.
-                    - "field_updates": Dictionary of field update statuses.
-                    - "message": Error message, if any.
+                dict: Contains enrichment results including field updates and status.
             """
             return_data = {
                 "place_name": "",
@@ -155,7 +159,6 @@ class AirtableClient:
             }
 
             try:
-                # Get basic information
                 if 'Place' not in third_place['fields']:
                     return_data["message"] = "Missing place name."
                     return return_data
@@ -167,93 +170,83 @@ class AirtableClient:
                 record_id = third_place['id']
                 return_data['record_id'] = record_id
                 
-                # Get place ID
                 place_id = third_place['fields'].get('Google Maps Place Id', None)
-                place_id = self.data_provider.place_id_handler(place_name, place_id)
-                return_data['place_id'] = place_id
-                
-                if not place_id:
-                    logging.warning(f'No place ID found for {place_name}.')
-                    return_data["message"] = "No valid place ID found."
-                    return return_data
 
-                place_data = self.data_provider.get_all_place_data(place_id, place_name)
+                # Use the helper_functions module to get place data with caching
+                status, place_data, message = helpers.get_and_cache_place_data(place_name, place_id, 'charlotte')
                 
-                if not place_data or 'details' not in place_data:
-                    logging.warning(f'No place details data found for {place_name}.')
-                    return_data["message"] = "No place details data found."
+                if status == 'failed' or status == 'skipped':
+                    logging.warning(f"Skipping enrichment for {place_name}: {message}")
+                    return_data["message"] = message
+                    return_data["place_id"] = place_id
                     return return_data
                 
-                # Get the standardized details
-                place_details = place_data['details']
+                # Update the place ID in case it was newly found
+                if place_data.get('place_id'):
+                    place_id = place_data.get('place_id')
+                    return_data["place_id"] = place_id
                 
-                if not place_details:
-                    logging.warning(f'Failed to fetch place details for {place_name}.')
-                    return_data["message"] = "Failed to fetch place details."
-                    return return_data
-                
-                # We can now directly access standardized fields without worrying about provider-specific formats
-                website = place_details.get('website', '')
-                if website:
-                    website = self.get_base_url(website)
-                
-                address = place_details.get('address', '')
-                neighborhood = place_details.get('neighborhood', '')
-                latitude = place_details.get('latitude')
-                longitude = place_details.get('longitude')
-                
-                # Parking is returned as a list of tags like ["Free", "Street"]
-                parking = place_details.get('parking', ['Unsure'])
-                if parking and len(parking) > 0:
-                    parking = parking[0]  # Use the first tag which indicates if it's free/paid/unsure
-                else:
-                    parking = 'Unsure'
+                # Update Airtable fields
+                if place_data and 'details' in place_data:
+                    # Mark this place as having data file
+                    self.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
+            
+                    details = place_data['details']
+
+                    website = details.get('website', '')
+                    if website:
+                        website = self.get_base_url(website)
                     
-                # Purchase required is standardized as "Yes", "No", or "Unsure"
-                purchase_required = place_details.get('purchase_required', 'Unsure')
-                
-                description = place_details.get('description', '')
-                google_maps_url = place_details.get('google_maps_url', '')
-                
-                # Get photos separately rather than from place details
-                photos_data = place_data.get('photos', {})
-                photos_list = photos_data.get('photos_data', []) if photos_data else []
-
-                # Build update fields dict
-                field_updates = {
-                    'Google Maps Place Id': (place_id, True),
-                    'Google Maps Profile URL': (google_maps_url, True),
-                    'Neighborhood': (neighborhood, False),
-                    'Website': (website, True),
-                    'Address': (address, True),
-                    'Description': (description, False),
-                    'Purchase Required': (purchase_required, False),
-                    'Parking': (parking, False)
-                }
-
-                if latitude and longitude:
-                    field_updates['Latitude'] = (str(latitude), True)
-                    field_updates['Longitude'] = (str(longitude), True)
-
-                if photos_list:
-                    field_updates['Photos'] = (str(photos_list), True)
-                else:
-                    logging.warning(f'No photos found for {place_name}.')
-
-                # Process updates
-                for field_name, (field_value, overwrite) in field_updates.items():
-                    update_result = self.update_place_record(
-                        record_id,
-                        field_name,
-                        field_value,
-                        overwrite
-                    )
-    
-                    return_data['field_updates'][field_name] = {
-                        "updated": update_result["updated"],
-                        "old_value": update_result["old_value"],
-                        "new_value": update_result["new_value"]
+                    address = details.get('address', '')
+                    latitude = details.get('latitude')
+                    longitude = details.get('longitude')
+                    
+                    # Parking is returned as a list of tags like ["Free", "Street"]
+                    parking = details.get('parking', ['Unsure'])
+                    if parking and len(parking) > 0:
+                        parking = parking[0]  # Use the first tag which indicates if it's free/paid/unsure
+                    else:
+                        parking = 'Unsure'
+                        
+                    # Purchase required is standardized as "Yes", "No", or "Unsure"
+                    purchase_required = details.get('purchase_required', 'Unsure')
+                    
+                    description = details.get('description', '')
+                    google_maps_url = details.get('google_maps_url', '')
+                    
+                    photos_data = place_data.get('photos', {})
+                    photos_list = photos_data.get('photos_data', []) if photos_data else []
+                    
+                    # Format is the place value and the boolean indicating if it should be overwritten
+                    # The boolean is used to determine if the field should be updated even if it already has a value
+                    fields_to_update = {
+                        'Google Maps Place Id': (place_id, True),
+                        'Google Maps Profile URL': (google_maps_url, True),
+                        'Website': (website, True),
+                        'Address': (address, True),
+                        'Description': (description, False),
+                        'Purchase Required': (purchase_required, False),
+                        'Parking': (parking, False),
+                        'Latitude': (str(latitude), True) if latitude else (None, False),
+                        'Longitude': (str(longitude), True) if longitude else (None, False),
+                        'Photos': (str(photos_list), True) if photos_list else (None, False)
                     }
+
+                    # Process updates
+                    for field_name, (field_value, overwrite) in fields_to_update.items():
+                        if field_value:  # Only update if we have a value
+                            update_result = self.update_place_record(
+                                record_id,
+                                field_name,
+                                field_value,
+                                overwrite
+                            )
+        
+                            return_data['field_updates'][field_name] = {
+                                "updated": update_result["updated"],
+                                "old_value": update_result["old_value"],
+                                "new_value": update_result["new_value"]
+                            }
                 
                 return return_data
                 
@@ -262,7 +255,7 @@ class AirtableClient:
                 return_data["message"] = f"Error: {str(e)}"
                 return return_data
 
-        with ThreadPoolExecutor(max_workers=10) as executor:
+        with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
             futures = {
                 executor.submit(process_place, third_place): third_place['fields']['Place']
                 for third_place in self.all_third_places
@@ -276,6 +269,98 @@ class AirtableClient:
                     logging.info(f"Finished processing {place_name}")
                 except Exception as e:
                     logging.error(f"Error processing {place_name}: {e}")
+
+        return places_updated
+        
+    def update_cache_data(self) -> list:
+        """
+        Updates the cached data for all places without doing full Airtable field enrichment.
+        Only updates the 'Has Data File' field in Airtable to mark places that have data files.
+        
+        This method:
+        1. Gets data for each place (cached or fresh) using helper_functions.get_and_cache_place_data
+        2. Updates only the 'Has Data File' field in Airtable
+        
+        Returns:
+            list: A list of dictionaries containing the results of each place cache update operation.
+        """
+        import helper_functions as helpers
+        
+        places_updated = []
+        
+        def process_place(third_place: dict) -> dict:
+            """
+            Processes a single place by getting/updating cached data.
+
+            Args:
+                third_place (dict): The place data from Airtable.
+
+            Returns:
+                dict: Contains results of the cache update operation.
+            """
+            return_data = {
+                "place_name": "",
+                "place_id": "",
+                "record_id": "",
+                "status": "",
+                "message": ""
+            }
+
+            try:
+                if 'Place' not in third_place['fields']:
+                    return_data["message"] = "Missing place name."
+                    return_data["status"] = "skipped"
+                    return return_data
+                
+                place_name = third_place['fields']['Place']
+                logging.info(f"Processing place: {place_name}")
+                return_data['place_name'] = place_name
+                
+                record_id = third_place['id']
+                return_data['record_id'] = record_id
+                
+                # Get place ID
+                place_id = third_place['fields'].get('Google Maps Place Id', None)
+                return_data['place_id'] = place_id
+                
+                # Use the helper_functions module to get place data with caching
+                status, place_data, message = helpers.get_and_cache_place_data(place_name, place_id, 'charlotte')
+                return_data["status"] = status
+                return_data["message"] = message
+                
+                if status == 'failed' or status == 'skipped':
+                    logging.warning(f"Cache update skipped for {place_name}: {message}")
+                    return return_data
+                
+                # Update the place ID in case it was newly found
+                if place_data and place_data.get('place_id'):
+                    return_data["place_id"] = place_data.get('place_id')
+                
+                # Only update the Has Data File field to indicate we have data
+                self.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
+                
+                return return_data
+                
+            except Exception as e:
+                logging.error(f"Error processing place {place_name if 'place_name' in locals() else 'unknown'}: {e}")
+                return_data["message"] = f"Error: {str(e)}"
+                return_data["status"] = "failed"
+                return return_data
+
+        with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
+            futures = {
+                executor.submit(process_place, third_place): third_place['fields']['Place']
+                for third_place in self.all_third_places
+            }
+
+            for future in as_completed(futures):
+                place_name = futures[future]
+                try:
+                    result = future.result()
+                    places_updated.append(result)
+                    logging.info(f"Finished cache update for {place_name}")
+                except Exception as e:
+                    logging.error(f"Error updating cache for {place_name}: {e}")
 
         return places_updated
 
@@ -372,7 +457,7 @@ class AirtableClient:
         """
         missing_places = []
         for third_place in third_place_records:
-            if field_to_check not in third_place['fields']:
+            if (field_to_check not in third_place['fields']):
                 place_name = third_place['fields']['Place']
                 missing_places.append(place_name)
 
@@ -500,7 +585,7 @@ class AirtableClient:
 
             return result
 
-        with ThreadPoolExecutor(max_workers=50) as executor:
+        with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
             futures = {
                 executor.submit(process_place, third_place): third_place['fields'].get('Place', 'Unknown Place')
                 for third_place in self.all_third_places

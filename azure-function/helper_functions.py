@@ -6,11 +6,10 @@ import base64
 import logging
 import requests
 import unicodedata
-from datetime import datetime, timedelta
 from unidecode import unidecode
-from typing import Iterable, Callable, Any, List, Dict, Optional, Tuple
+from datetime import datetime, timedelta
 from azure.storage.filedatalake import DataLakeServiceClient
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Iterable, Callable, Any, List, Dict, Optional, Tuple
 
 dotenv.load_dotenv()
 
@@ -195,6 +194,94 @@ def is_cache_valid(cached_data: Dict, refresh_interval_days: int) -> bool:
     except Exception as e:
         logging.error(f"Error checking cache validity: {str(e)}")
         return False
+
+def get_and_cache_place_data(place_name: str, place_id: str, city_name: str = "charlotte") -> Tuple[str, Dict, str]:
+    """
+    Centralized function for retrieving and caching place data with a cache-first approach.
+    
+    This function implements the cache-first logic:
+    1. Check if place has cached data in the GitHub repository
+    2. If cache exists and is fresh (within configured interval), use the cached data
+    3. If cache doesn't exist or is stale, fetch fresh data from the API provider
+    4. Store the data in GitHub
+    
+    Args:
+        place_name (str): Name of the place
+        place_id (str): Google Maps Place ID
+        city_name (str): City name for the file path (defaults to "charlotte")
+        
+    Returns:
+        tuple: (status, place_data, message)
+            - status: 'succeeded', 'cached', 'skipped', or 'failed'
+            - place_data: The retrieved place data or None if failed
+            - message: A descriptive message about the operation outcome
+    """
+    import constants
+    from place_data_providers import PlaceDataProviderFactory
+
+    try:
+        # Get the provider type from environment or use default
+        provider_type = os.environ.get('DEFAULT_PLACE_DATA_PROVIDER', 'outscraper')
+        data_provider = PlaceDataProviderFactory.get_provider(provider_type)
+        
+        logging.info(f"Processing data for place: {place_name}")
+
+        # Validate/process the place ID
+        if not place_id:
+            place_id = data_provider.find_place_id(place_name)
+            if not place_id:
+                return ('skipped', None, f"Warning! No place_id found for {place_name}. Skipping data retrieval.")
+
+        # Path to the cached data file
+        cache_file_path = f"data/places/{city_name}/{place_id}.json"
+        
+        # Get refresh intervals from environment or use defaults from constants
+        force_refresh = os.environ.get('FORCE_REFRESH_DATA', '').lower() == 'true'
+        refresh_interval = constants.DEFAULT_CACHE_REFRESH_INTERVAL
+        
+        # Check if we have cached data for this place
+        use_cache = False
+        place_data = None
+        
+        if not force_refresh:
+            success, cached_data, message = fetch_data_github(cache_file_path)
+            
+            if success and cached_data:
+                # Check if the cache is still valid
+                if is_cache_valid(cached_data, refresh_interval):
+                    use_cache = True
+                    logging.info(f"Using cached data for {place_name} (last updated: {cached_data.get('last_updated')})")
+                    place_data = cached_data
+                else:
+                    logging.info(f"Cached data for {place_name} is stale. Fetching fresh data.")
+            else:
+                logging.info(f"No cached data found for {place_name}: {message}")
+        else:
+            logging.info(f"Force refresh enabled. Skipping cache check for {place_name}")
+        
+        # If we don't have valid cached data, get fresh data
+        if not use_cache:
+            logging.info(f"Retrieving fresh data for {place_name} with place_id {place_id}")
+            place_data = data_provider.get_all_place_data(place_id, place_name)
+            
+            if not place_data or 'error' in place_data:
+                error_message = place_data.get('error', 'Unknown error') if place_data else 'No data retrieved'
+                return ('failed', None, f"Error: Data retrieval failed for place {place_name} with place_id {place_id}. {error_message}")
+        
+        # Always save the data (whether fresh or from cache) to ensure GitHub is updated
+        final_json_data = json.dumps(place_data, indent=4)
+        logging.info(f"Saving place data to GitHub at path {cache_file_path}")
+        save_succeeded = save_data_github(final_json_data, cache_file_path)
+
+        if save_succeeded:
+            status = 'succeeded' if not use_cache else 'cached'
+            message = f"Data {'retrieved and' if not use_cache else ''} saved successfully for {place_name}."
+            return (status, place_data, message)
+        else:
+            return ('failed', None, f"Failed to save data to GitHub for {place_name}. Review the logs for more details.")
+    except Exception as e:
+        logging.error(f"Error in get_and_cache_place_data for {place_name}: {e}", exc_info=True)
+        return ('failed', None, f"Error processing place data: {str(e)}")
 
 def create_place_response(operation_status, target_place_name, http_response_data, operation_message):
     """
