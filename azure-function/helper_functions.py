@@ -9,7 +9,81 @@ import unicodedata
 from unidecode import unidecode
 from datetime import datetime, timedelta
 from azure.storage.filedatalake import DataLakeServiceClient
-from typing import Iterable, Callable, Any, List, Dict, Optional, Tuple
+from typing import Iterable, Callable, Any, List, Dict, Optional, Tuple, Union
+from threading import Lock
+
+# Global client singleton instances and locks for thread safety
+_airtable_client_instance = None
+_airtable_client_lock = Lock()
+_place_data_provider_instances = {}
+_place_data_provider_lock = Lock()
+
+def get_airtable_client(debug_mode=False):
+    """
+    Returns a singleton instance of AirtableClient.
+    This ensures that only one instance is created and reused across all threads.
+    
+    Args:
+        debug_mode (bool): When True, forces sequential execution in the AirtableClient
+                           for easier debugging. Default is False.
+    
+    Returns:
+        AirtableClient: A singleton instance configured with the specified debug mode.
+    """
+    global _airtable_client_instance
+    
+    if _airtable_client_instance is None:
+        with _airtable_client_lock:
+            # Double-check that another thread didn't initialize the client
+            # while we were waiting for the lock
+            if _airtable_client_instance is None:
+                from airtable_client import AirtableClient
+                _airtable_client_instance = AirtableClient(debug_mode=debug_mode)
+                logging.info("Created singleton AirtableClient instance")
+                if debug_mode:
+                    logging.info("AirtableClient running in DEBUG MODE with SEQUENTIAL execution")
+    elif debug_mode and not _airtable_client_instance.debug_mode:
+        # If debug_mode is requested but the existing instance is not in debug mode,
+        # log a warning since we can't change the mode of an existing instance
+        logging.warning(
+            "Existing AirtableClient instance is not in debug mode. "
+            "To enable debug mode, restart your application."
+        )
+    
+    return _airtable_client_instance
+
+def get_place_data_provider(provider_type=None):
+    """
+    Returns a singleton instance of a PlaceDataProvider based on the requested type.
+    This ensures that only one instance of each provider type is created and reused across all threads.
+    
+    Args:
+        provider_type (str, optional): The type of provider to get ('google', 'outscraper', etc.).
+                                      If None, uses the default from environment.
+    
+    Returns:
+        PlaceDataProvider: A singleton instance of the requested provider.
+    """
+    global _place_data_provider_instances
+    
+    # If no provider type specified, get the default from environment
+    if provider_type is None:
+        dotenv.load_dotenv()
+        provider_type = os.environ.get('DEFAULT_PLACE_DATA_PROVIDER', 'outscraper')
+    
+    provider_type = provider_type.lower()
+    
+    # Check if we already have this provider type instantiated
+    if provider_type not in _place_data_provider_instances:
+        with _place_data_provider_lock:
+            # Double-check that another thread didn't initialize the provider
+            # while we were waiting for the lock
+            if provider_type not in _place_data_provider_instances:
+                from place_data_providers import PlaceDataProviderFactory
+                _place_data_provider_instances[provider_type] = PlaceDataProviderFactory.get_provider(provider_type)
+                logging.info(f"Created singleton PlaceDataProvider instance for {provider_type}")
+    
+    return _place_data_provider_instances[provider_type]
 
 dotenv.load_dotenv()
 
@@ -222,7 +296,7 @@ def get_and_cache_place_data(place_name: str, place_id: str, city_name: str = "c
     try:
         # Get the provider type from environment or use default
         provider_type = os.environ.get('DEFAULT_PLACE_DATA_PROVIDER', 'outscraper')
-        data_provider = PlaceDataProviderFactory.get_provider(provider_type)
+        data_provider = get_place_data_provider(provider_type)
         
         logging.info(f"Processing data for place: {place_name}")
 
@@ -260,9 +334,44 @@ def get_and_cache_place_data(place_name: str, place_id: str, city_name: str = "c
             logging.info(f"Force refresh enabled. Skipping cache check for {place_name}")
         
         # If we don't have valid cached data, get fresh data
+        airtable = None
+        airtable_record = None
+        airtable_photos = None
+        
         if not use_cache:
+            # Check if the place already has photos in Airtable
+            try:
+                airtable = get_airtable_client()
+                airtable_record = airtable.get_record(constants.SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
+                if airtable_record and 'Photos' in airtable_record['fields'] and airtable_record['fields']['Photos']:
+                    airtable_photos = airtable_record['fields']['Photos Outscraper Reference']
+                    logging.info(f"Place {place_name} already has photos in Airtable. Skipping photo retrieval to save API costs.")
+            except Exception as e:
+                logging.warning(f"Could not check for existing photos in Airtable: {e}")
+            
             logging.info(f"Retrieving fresh data for {place_name} with place_id {place_id}")
-            place_data = data_provider.get_all_place_data(place_id, place_name)
+            # Skip photos retrieval if we already have them in Airtable
+            place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=airtable_photos is not None)
+            
+            # If photos were skipped and airtable photos exist, fill in the photos section with data from Airtable
+            if airtable_photos and place_data and "photos" in place_data:
+                photos_section = place_data["photos"]
+                
+                # Check if the photos array is empty
+                photos_empty = not photos_section.get("photo_urls", []) or len(photos_section.get("photo_urls", [])) == 0
+                
+                if photos_empty:
+                    try:
+                        # Try to parse the Photos column value from Airtable
+                        import ast
+                        airtable_photo_list = ast.literal_eval(airtable_photos) if isinstance(airtable_photos, str) else airtable_photos
+                        
+                        # Update "photos" field
+                        photos_section["photo_urls"] = airtable_photo_list
+                        photos_section["message"] = f"Photos retrieved from Airtable ({len(airtable_photo_list)} photos)"
+                        logging.info(f"Filled photos with {len(airtable_photo_list)} photos from Airtable for {place_name}")
+                    except Exception as e:
+                        logging.warning(f"Failed to parse or use Airtable photos for {place_name}: {e}")
             
             if not place_data or 'error' in place_data:
                 error_message = place_data.get('error', 'Unknown error') if place_data else 'No data retrieved'
@@ -270,7 +379,7 @@ def get_and_cache_place_data(place_name: str, place_id: str, city_name: str = "c
         
         # Always save the data (whether fresh or from cache) to ensure GitHub is updated
         final_json_data = json.dumps(place_data, indent=4)
-        logging.info(f"Saving place data to GitHub at path {cache_file_path}")
+        logging.info(f"Saving place data (whether fresh or from the cache) to GitHub at path {cache_file_path}")
         save_succeeded = save_data_github(final_json_data, cache_file_path)
 
         if save_succeeded:

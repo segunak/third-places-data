@@ -25,7 +25,7 @@ async def http_start(req: func.HttpRequest, client):
 
 @app.activity_trigger(input_name="activityInput")
 def get_all_third_places(activityInput):
-    airtable = AirtableClient()
+    airtable = helpers.get_airtable_client()
     return airtable.all_third_places
 
 @app.function_name(name="PurgeOrchestrations")
@@ -121,7 +121,7 @@ def get_place_data_for_place(activityInput):
     # If data was successfully retrieved, update Airtable record with "Has Data File" = "Yes"
     if (status == 'succeeded' or status == 'cached') and place_data:
         record_id = place['id']
-        airtable = AirtableClient()
+        airtable = helpers.get_airtable_client()
         airtable.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
     
     # Format the response for the orchestrator
@@ -182,8 +182,8 @@ def enrich_airtable_base(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Received request for Airtable base enrichment.")
 
     try:
-        airtable = AirtableClient()
-        logging.info("AirtableClient instance created, starting the base data enrichment process.")
+        airtable = helpers.get_airtable_client()
+        logging.info("AirtableClient instance retrieved, starting the base data enrichment process.")
 
         enriched_places = airtable.enrich_base_data()
         
@@ -259,8 +259,8 @@ def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpRes
     logging.info("Received request to refresh Airtable operational statuses.")
 
     try:
-        airtable = AirtableClient()
-        logging.info("AirtableClient instance created, starting to refresh operational statuses.")
+        airtable = helpers.get_airtable_client()
+        logging.info("AirtableClient instance retrieved, starting to refresh operational statuses.")
 
         results = airtable.refresh_operational_statuses()
         logging.info("Operational statuses refreshed, processing results.")
@@ -325,8 +325,8 @@ def refresh_data_cache(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Received request to refresh all place data caches.")
 
     try:
-        airtable = AirtableClient()
-        logging.info("AirtableClient instance created, starting the data cache refresh process.")
+        airtable = helpers.get_airtable_client()
+        logging.info("AirtableClient instance retrieved, starting the data cache refresh process.")
 
         # Call the update_cache_data method to refresh the cache
         updated_places = airtable.update_cache_data()

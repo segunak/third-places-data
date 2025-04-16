@@ -17,7 +17,7 @@ class AirtableClient:
     """Defines methods for interaction with the Charlotte Third Places Airtable database.
     """
 
-    def __init__(self, data_provider_type=None):
+    def __init__(self, data_provider_type=None, debug_mode=False):
         logging.basicConfig(level=logging.INFO)
 
         if 'FUNCTIONS_WORKER_RUNTIME' in os.environ:
@@ -26,6 +26,11 @@ class AirtableClient:
             logging.info('Airtable Client instantiated for local use.')
             dotenv.load_dotenv()
 
+        # Store the debug mode flag
+        self.debug_mode = debug_mode
+        if self.debug_mode:
+            logging.info('Airtable Client running in DEBUG MODE with SEQUENTIAL execution')
+
         self.AIRTABLE_BASE_ID = os.environ['AIRTABLE_BASE_ID']
         self.AIRTABLE_PERSONAL_ACCESS_TOKEN = os.environ['AIRTABLE_PERSONAL_ACCESS_TOKEN']
         self.AIRTABLE_WORKSPACE_ID = os.environ['AIRTABLE_WORKSPACE_ID']
@@ -33,7 +38,10 @@ class AirtableClient:
             self.AIRTABLE_PERSONAL_ACCESS_TOKEN, self.AIRTABLE_BASE_ID, 'Charlotte Third Places'
         )
         
-        self.data_provider = PlaceDataProviderFactory.get_provider(data_provider_type or "outscraper")
+        # Use the singleton pattern to get a place data provider
+        import helper_functions as helpers
+        self.data_provider = helpers.get_place_data_provider(data_provider_type)
+        
         self.api = Api(self.AIRTABLE_PERSONAL_ACCESS_TOKEN)
         self.all_third_places = self.charlotte_third_places.all(sort=["-Created Time"])
 
@@ -127,7 +135,7 @@ class AirtableClient:
     def enrich_base_data(self) -> list:
         """
         Enriches the base data of places stored in Airtable with additional metadata fetched using the configured data provider.
-        Uses threading to parallelize fetching details for all places.
+        Uses threading to parallelize fetching details for all places, unless debug_mode is enabled.
         
         This method:
         1. Gets data for each place (cached or fresh) using helper_functions.get_and_cache_place_data
@@ -214,8 +222,11 @@ class AirtableClient:
                     description = details.get('description', '')
                     google_maps_url = details.get('google_maps_url', '')
                     
+                    # Check if we already have photos in Airtable before considering updating them
+                    has_existing_photos = 'Photos' in third_place['fields'] and third_place['fields']['Photos']
+                    
                     photos_data = place_data.get('photos', {})
-                    photos_list = photos_data.get('photos_data', []) if photos_data else []
+                    photos_list = photos_data.get('photo_urls', []) if photos_data else []
                     
                     # Format is the place value and the boolean indicating if it should be overwritten
                     # The boolean is used to determine if the field should be updated even if it already has a value
@@ -229,12 +240,20 @@ class AirtableClient:
                         'Parking': (parking, False),
                         'Latitude': (str(latitude), True) if latitude else (None, False),
                         'Longitude': (str(longitude), True) if longitude else (None, False),
-                        'Photos': (str(photos_list), False) if photos_list else (None, False)
                     }
+                    
+                    # Only add Photos to fields_to_update if:
+                    # 1. We have new photos from the API AND
+                    # 2. The place doesn't already have photos in Airtable
+                    # This ensures we never overwrite existing photos
+                    if photos_list and not has_existing_photos:
+                        fields_to_update['Photos'] = (str(photos_list), False)
+                    elif has_existing_photos:
+                        logging.info(f"Skipping photo update for {place_name} as photos already exist in Airtable")
 
                     # Process updates
                     for field_name, (field_value, overwrite) in fields_to_update.items():
-                        if field_value:  # Only update if we have a value
+                        if field_value:
                             update_result = self.update_place_record(
                                 record_id,
                                 field_name,
@@ -255,20 +274,34 @@ class AirtableClient:
                 return_data["message"] = f"Error: {str(e)}"
                 return return_data
 
-        with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
-            futures = {
-                executor.submit(process_place, third_place): third_place['fields']['Place']
-                for third_place in self.all_third_places
-            }
-
-            for future in as_completed(futures):
-                place_name = futures[future]
+        # Check if we're in debug mode to decide between sequential or parallel execution
+        if self.debug_mode:
+            logging.info("Running enrich_base_data in SEQUENTIAL mode for debugging")
+            for third_place in self.all_third_places:
+                place_name = third_place['fields'].get('Place', 'Unknown Place')
                 try:
-                    result = future.result()
+                    result = process_place(third_place)
                     places_updated.append(result)
                     logging.info(f"Finished processing {place_name}")
                 except Exception as e:
                     logging.error(f"Error processing {place_name}: {e}")
+        else:
+            # Standard parallel execution with ThreadPoolExecutor
+            logging.info(f"Running enrich_base_data in PARALLEL mode with {MAX_THREAD_WORKERS} workers")
+            with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
+                futures = {
+                    executor.submit(process_place, third_place): third_place['fields'].get('Place', 'Unknown Place')
+                    for third_place in self.all_third_places
+                }
+
+                for future in as_completed(futures):
+                    place_name = futures[future]
+                    try:
+                        result = future.result()
+                        places_updated.append(result)
+                        logging.info(f"Finished processing {place_name}")
+                    except Exception as e:
+                        logging.error(f"Error processing {place_name}: {e}")
 
         return places_updated
         
@@ -347,20 +380,34 @@ class AirtableClient:
                 return_data["status"] = "failed"
                 return return_data
 
-        with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
-            futures = {
-                executor.submit(process_place, third_place): third_place['fields']['Place']
-                for third_place in self.all_third_places
-            }
-
-            for future in as_completed(futures):
-                place_name = futures[future]
+        # Check if we're in debug mode to decide between sequential or parallel execution
+        if self.debug_mode:
+            logging.info("Running update_cache_data in SEQUENTIAL mode for debugging")
+            for third_place in self.all_third_places:
+                place_name = third_place['fields'].get('Place', 'Unknown Place')
                 try:
-                    result = future.result()
+                    result = process_place(third_place)
                     places_updated.append(result)
                     logging.info(f"Finished cache update for {place_name}")
                 except Exception as e:
                     logging.error(f"Error updating cache for {place_name}: {e}")
+        else:
+            # Standard parallel execution with ThreadPoolExecutor
+            logging.info(f"Running update_cache_data in PARALLEL mode with {MAX_THREAD_WORKERS} workers")
+            with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
+                futures = {
+                    executor.submit(process_place, third_place): third_place['fields'].get('Place', 'Unknown Place')
+                    for third_place in self.all_third_places
+                }
+
+                for future in as_completed(futures):
+                    place_name = futures[future]
+                    try:
+                        result = future.result()
+                        places_updated.append(result)
+                        logging.info(f"Finished cache update for {place_name}")
+                    except Exception as e:
+                        logging.error(f"Error updating cache for {place_name}: {e}")
 
         return places_updated
 
@@ -418,8 +465,8 @@ class AirtableClient:
         try:
             photos_response = self.data_provider.get_place_photos(place_id)
             
-            if photos_response and 'photos_data' in photos_response:
-                return photos_response['photos_data']
+            if photos_response and 'photos' in photos_response:
+                return photos_response['photos']
             else:
                 logging.warning(f"No photos found for place ID: {place_id}")
                 return []
@@ -585,18 +632,17 @@ class AirtableClient:
 
             return result
 
-        with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
-            futures = {
-                executor.submit(process_place, third_place): third_place['fields'].get('Place', 'Unknown Place')
-                for third_place in self.all_third_places
-            }
-            for future in as_completed(futures):
-                place_name = futures[future]
+        # Check if we're in debug mode to decide between sequential or parallel execution
+        if self.debug_mode:
+            logging.info("Running refresh_operational_statuses in SEQUENTIAL mode for debugging")
+            for third_place in self.all_third_places:
+                place_name = third_place['fields'].get('Place', 'Unknown Place')
                 try:
-                    result = future.result()
+                    result = process_place(third_place)
                     results.append(result)
+                    logging.info(f"Finished operational status check for {place_name}")
                 except Exception as e:
-                    logging.error(f"Error processing place '{place_name}': {e}")
+                    logging.error(f"Error checking operational status for {place_name}: {e}")
                     results.append({
                         'place_name': place_name,
                         'place_id': '',
@@ -606,5 +652,29 @@ class AirtableClient:
                         'update_status': 'failed',
                         'message': str(e)
                     })
+        else:
+            # Standard parallel execution with ThreadPoolExecutor
+            logging.info(f"Running refresh_operational_statuses in PARALLEL mode with {MAX_THREAD_WORKERS} workers")
+            with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
+                futures = {
+                    executor.submit(process_place, third_place): third_place['fields'].get('Place', 'Unknown Place')
+                    for third_place in self.all_third_places
+                }
+                for future in as_completed(futures):
+                    place_name = futures[future]
+                    try:
+                        result = future.result()
+                        results.append(result)
+                    except Exception as e:
+                        logging.error(f"Error processing place '{place_name}': {e}")
+                        results.append({
+                            'place_name': place_name,
+                            'place_id': '',
+                            'record_id': '',
+                            'old_value': '',
+                            'new_value': '',
+                            'update_status': 'failed',
+                            'message': str(e)
+                        })
 
         return results

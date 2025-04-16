@@ -3,6 +3,7 @@ import json
 import dotenv
 import logging
 import requests
+import datetime
 from unidecode import unidecode
 from outscraper import ApiClient
 from abc import ABC, abstractmethod
@@ -69,7 +70,7 @@ class PlaceDataProvider(ABC):
         The returned dictionary must include the following standardized fields:
         - place_id: The Google Maps Place ID
         - message: Result message (can be empty if successful)
-        - photos_data: List of photo URLs or data
+        - photos: List of photo URLs or data
 
         Args:
             place_id (str): The unique identifier for the place.
@@ -177,13 +178,14 @@ class PlaceDataProvider(ABC):
         else:
             return self.find_place_id(place_name)
 
-    def get_all_place_data(self, place_id: str, place_name: str) -> Dict[str, Any]:
+    def get_all_place_data(self, place_id: str, place_name: str, skip_photos: bool = True) -> Dict[str, Any]:
         """
         Retrieves and combines all available data for a place, including details, reviews, and photos.
 
         Args:
             place_id (str): The unique identifier for the place.
             place_name (str): The name of the place.
+            skip_photos (bool): If True, skip retrieving photos. Default is False.
 
         Returns:
             Dict[str, Any]: A comprehensive dictionary containing all available data about the place.
@@ -191,7 +193,17 @@ class PlaceDataProvider(ABC):
         try:
             details = self.get_place_details(place_id)
             reviews = self.get_place_reviews(place_id)
-            photos = self.get_place_photos(place_id)
+            
+            # Only fetch photos if not explicitly skipped
+            if skip_photos:
+                logging.info(f"get_all_place_data: Skipping photo retrieval for {place_name} as requested (photos already exist in Airtable)")
+                photos = {
+                    "place_id": place_id,
+                    "message": "Photos retrieval skipped - photos already exist in Airtable",
+                    "photos": []
+                }
+            else:
+                photos = self.get_place_photos(place_id)
 
             # Combine all data into a unified structure
             combined_data = {
@@ -416,7 +428,7 @@ class GoogleMapsProvider(PlaceDataProvider):
             return {
                 "place_id": place_id,
                 "message": f"Retrieved {len(photo_urls)} photos",
-                "photos_data": photo_urls,
+                "photo_urls": photo_urls,
                 "raw_data": raw_data
             }
         except Exception as e:
@@ -424,7 +436,7 @@ class GoogleMapsProvider(PlaceDataProvider):
             return {
                 "place_id": place_id,
                 "message": f"Error retrieving photos: {str(e)}",
-                "photos_data": [],
+                "photo_urls": [],
                 "raw_data": {}
             }
 
@@ -608,13 +620,17 @@ class OutscraperProvider(PlaceDataProvider):
 
             if results and len(results) > 0 and len(results[0]) > 0:
                 raw_data = results[0][0]
+                
+                # Process the address to remove country suffix
+                full_address = raw_data.get('full_address', '')
+                clean_address = self._clean_address(full_address)
 
                 standardized_data = {
                     "place_name": raw_data.get('name', ''),
                     "place_id": raw_data.get('place_id', place_id),
                     "google_maps_url": f'https://maps.google.com/?cid={raw_data.get("cid", "")}',
                     "website": raw_data.get('site', ''),
-                    "address": raw_data.get('full_address', ''),
+                    "address": clean_address,
                     "description": raw_data.get('description', ''),
                     "purchase_required": self._determine_purchase_requirement(raw_data),
                     "parking": self._extract_parking_info(raw_data),
@@ -630,6 +646,43 @@ class OutscraperProvider(PlaceDataProvider):
         except Exception as e:
             logging.error(f"Error retrieving place details from Outscraper for {place_id}: {e}")
             return self._create_empty_details_response(place_id, str(e))
+    
+    def _clean_address(self, address: str) -> str:
+        """
+        Cleans the address by removing country suffix.
+        
+        This method removes country suffixes like ", United States" or ", USA" from addresses
+        to ensure consistent address formatting without the country.
+        
+        Args:
+            address (str): The address to clean
+            
+        Returns:
+            str: The cleaned address without country suffix
+        """
+        if not address:
+            return ""
+            
+        # List of country suffixes to remove - add more patterns if needed
+        country_suffixes = [
+            ", United States",
+            ", USA",
+            ", U.S.A.",
+            ", US",
+            ", U.S.",
+            " United States",
+            " USA",
+            " US"
+        ]
+        
+        cleaned_address = address
+        for suffix in country_suffixes:
+            if cleaned_address.endswith(suffix):
+                cleaned_address = cleaned_address[:-len(suffix)]
+                logging.debug(f"Removed country suffix from address. Original: '{address}', Cleaned: '{cleaned_address}'")
+                break
+                
+        return cleaned_address
     
     def _create_empty_details_response(self, place_id: str, error_message: str = "") -> Dict[str, Any]:
         """Creates a standardized empty response for when details can't be retrieved."""
@@ -744,7 +797,16 @@ class OutscraperProvider(PlaceDataProvider):
     
     def get_place_photos(self, place_id: str) -> Dict[str, Any]:
         """
-        Retrieves photo URLs for a place using the Outscraper API.
+        Retrieves photo URLs for a place using the Outscraper API and applies an
+        intelligent selection algorithm to prioritize photos based on tags.
+        
+        Selection criteria:
+        1. Photos are sorted by date, newest to oldest
+        2. Photos are prioritized in this order:
+           - "vibe" tag: Include all vibe photos possible
+           - "front" tag: Up to 5 photos (take all available if less than 5)
+           - "all" and "other" tags: Fill remaining slots after vibe and front
+        3. Returns a maximum of 25 photo URLs
         
         Args:
             place_id (str): The unique identifier for the place.
@@ -761,12 +823,15 @@ class OutscraperProvider(PlaceDataProvider):
             
             if response and len(response) > 0 and len(response[0]) > 0:
                 raw_data = response[0][0]
-                photos_data = raw_data.get('photos_data', [])
-
+                all_photos_data = raw_data.get('photos_data', [])
+                
+                # Apply the photo selection algorithm
+                selected_photos = self._select_prioritized_photos(all_photos_data)
+                
                 standardized_data = {
                     "place_id": place_id,
-                    "message": f"Retrieved {len(photos_data)} photos",
-                    "photos_data": photos_data,
+                    "message": f"Retrieved {len(all_photos_data)} photos, selected {len(selected_photos)}",
+                    "photo_urls": selected_photos,
                     "raw_data": raw_data
                 }
                 
@@ -776,15 +841,128 @@ class OutscraperProvider(PlaceDataProvider):
                 return {
                     "place_id": place_id,
                     "message": "No photos found",
-                    "photos_data": []
+                    "photo_urls": []
                 }
         except Exception as e:
             logging.error(f"Error retrieving photos from Outscraper for {place_id}: {e}")
             return {
                 "place_id": place_id,
                 "message": f"Error retrieving photos: {str(e)}",
-                "photos_data": []
+                "photo_urls": []
             }
+    
+    def _select_prioritized_photos(self, photos_data, max_photos=25):
+        """
+        Selects photos based on specific criteria from the provided photos data.
+        
+        Selection criteria:
+        1. First sort all photos by date, newest to oldest
+        2. Select photos with the following priority:
+           - "vibe" tag: Include all vibe photos possible
+           - "front" tag: Up to 5 photos (take all available if less than 5)
+           - "all" and "other" tags: Fill remaining slots after vibe and front
+        3. Return a maximum of 'max_photos' photo URLs (default: 25)
+        
+        Args:
+            photos_data (list): List of photo dictionaries from Outscraper
+            max_photos (int): Maximum number of photos to select (default: 25)
+        
+        Returns:
+            list: A list of selected photo URLs (photo_url_big values)
+        """
+        # Handle case where photos_data is empty or None
+        if not photos_data:
+            return []
+        
+        # Helper function to parse date strings
+        def parse_date(date_str):
+            try:
+                # Try to parse the date format "MM/DD/YYYY HH:MM:SS"
+                return datetime.datetime.strptime(date_str, "%m/%d/%Y %H:%M:%S")
+            except (ValueError, AttributeError) as e:
+                # If parsing fails, return the earliest possible date
+                return datetime.datetime.min
+        
+        # Sort photos by date, newest first
+        photos_data.sort(key=lambda x: parse_date(x.get('photo_date', '')), reverse=True)
+        
+        # Initialize collections for different photo categories
+        front_photos = []
+        vibe_photos = []
+        all_photos = []
+        other_photos = []
+        remaining_photos = []
+        
+        # Categorize photos based on tags
+        for photo in photos_data:
+            # Skip photos without a photo_url_big
+            if 'photo_url_big' not in photo:
+                continue
+            
+            tags = photo.get('photo_tags', [])
+            
+            # Skip photos without any tags
+            if not isinstance(tags, list) or not tags:
+                continue
+                
+            # Categorize photos by priority tags
+            if 'front' in tags:
+                front_photos.append(photo)
+            elif 'vibe' in tags:
+                vibe_photos.append(photo)
+            elif 'all' in tags:
+                all_photos.append(photo)
+            elif 'other' in tags:
+                other_photos.append(photo)
+            else:
+                remaining_photos.append(photo)
+        
+        # Count the total preferred photos (front, vibe, all, other)
+        total_preferred = len(front_photos) + len(vibe_photos) + len(all_photos) + len(other_photos)
+        
+        # If total preferred photos is less than max_photos, take all of them
+        if total_preferred <= max_photos:
+            selected_photos = front_photos + vibe_photos + all_photos + other_photos
+        else:
+            # Otherwise apply the priority rules with limits
+            selected_photos = []
+            
+            # First priority: vibe photos (all of them, limited by max_photos)
+            vibe_limit = min(len(vibe_photos), max_photos)
+            selected_photos.extend(vibe_photos[:vibe_limit])
+            
+            # Second priority: front photos (up to 5)
+            remaining_slots = max_photos - len(selected_photos)
+            front_limit = min(5, len(front_photos), remaining_slots)
+            selected_photos.extend(front_photos[:front_limit])
+            
+            # Next priority: all photos 
+            remaining_slots = max_photos - len(selected_photos)
+            selected_photos.extend(all_photos[:remaining_slots])
+            
+            # Last priority: other photos
+            remaining_slots = max_photos - len(selected_photos)
+            selected_photos.extend(other_photos[:remaining_slots])
+        
+        # If we still have room, add remaining photos
+        remaining_slots = max_photos - len(selected_photos)
+        if remaining_slots > 0:
+            selected_photos.extend(remaining_photos[:remaining_slots])
+        
+        # Remove duplicates while preserving order (in case a photo has multiple tags)
+        unique_photos = []
+        seen_urls = set()
+        
+        for photo in selected_photos:
+            url = photo['photo_url_big']
+            if url not in seen_urls:
+                unique_photos.append(photo)
+                seen_urls.add(url)
+        
+        # Extract photo_url_big values from the selected photos
+        selected_urls = [photo['photo_url_big'] for photo in unique_photos[:max_photos]]
+        
+        return selected_urls
 
     def find_place_id(self, place_name: str) -> str:
         """
@@ -881,6 +1059,10 @@ class PlaceDataProviderFactory:
     def get_provider(provider_type: str) -> PlaceDataProvider:
         """
         Creates and returns a place data provider of the specified type.
+        
+        Note: This method instantiates a new provider every time it's called.
+        For singleton behavior, use helper_functions.get_place_data_provider() instead,
+        which ensures only one instance of each provider type is created.
 
         Args:
             provider_type (str): The type of provider to create ('google', 'outscraper', etc.).
@@ -902,6 +1084,9 @@ class PlaceDataProviderFactory:
     def get_default_provider() -> PlaceDataProvider:
         """
         Returns the default place data provider as specified in environment variables.
+        
+        Note: For a singleton instance that's reused across the application,
+        use helper_functions.get_place_data_provider() instead.
 
         Returns:
             PlaceDataProvider: An instance of the default provider.
