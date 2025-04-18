@@ -194,7 +194,9 @@
     "photos": {
         "place_id": "ChIJ6e1KBAAdVIgRBXdsuBE6sys",
         "message": "Photos retrieved from Airtable (1 photos)",
-        "photo_urls": ["https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=3BoGXB2iiCIr5td5In1W1A&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=312.52136&pitch=0&thumbfov=100"]
+        "photo_urls": [
+            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=3BoGXB2iiCIr5td5In1W1A&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=312.52136&pitch=0&thumbfov=100"
+        ]
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-04-16T16:28:56.709447"
