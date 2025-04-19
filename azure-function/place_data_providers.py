@@ -200,7 +200,7 @@ class PlaceDataProvider(ABC):
                 photos = {
                     "place_id": place_id,
                     "message": "Photos retrieval skipped - photos already exist in Airtable",
-                    "photos": []
+                    "photo_urls": []
                 }
             else:
                 photos = self.get_place_photos(place_id)

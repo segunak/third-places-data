@@ -35,9 +35,6 @@ The system implements a time-based cache invalidation strategy with the followin
 | Data Type | Default Refresh Interval | Environment Variable | Description |
 |-----------|---------------------------|----------------------|-------------|
 | All data types | 30 days | `DEFAULT_CACHE_REFRESH_INTERVAL` | General fallback for any data type |
-| Place details | 30 days | `PLACE_DETAILS_REFRESH_INTERVAL` | Basic information about places |
-| Reviews | 30 days | `PLACE_REVIEWS_REFRESH_INTERVAL` | More frequent refresh to capture new reviews |
-| Photos | 60 days | `PLACE_PHOTOS_REFRESH_INTERVAL` | Less frequent as photos rarely change |
 
 ## Configuration Options
 
@@ -46,9 +43,6 @@ The caching behavior can be customized through environment variables:
 | Environment Variable | Default | Description |
 |---------------------|---------|-------------|
 | `DEFAULT_CACHE_REFRESH_INTERVAL` | 30 | Default number of days before cache refresh |
-| `PLACE_DETAILS_REFRESH_INTERVAL` | 30 | Days before refreshing place details |
-| `PLACE_REVIEWS_REFRESH_INTERVAL` | 30 | Days before refreshing reviews |
-| `PLACE_PHOTOS_REFRESH_INTERVAL` | 60 | Days before refreshing photos |
 | `FORCE_REFRESH_DATA` | false | When set to "true", bypass cache and always fetch fresh data |
 | `DEFAULT_PLACE_DATA_PROVIDER` | outscraper | The data provider to use (outscraper or google_maps) |
 

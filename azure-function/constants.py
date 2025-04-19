@@ -6,9 +6,6 @@ DEFAULT_REVIEWS_LIMIT = 250
 
 # Cache refresh intervals (in days)
 DEFAULT_CACHE_REFRESH_INTERVAL = 30  # Default refresh interval for all data types
-PLACE_DETAILS_REFRESH_INTERVAL = 30  # Cache place details for 30 days
-PLACE_REVIEWS_REFRESH_INTERVAL = 30   # Cache reviews for 30 days
-PLACE_PHOTOS_REFRESH_INTERVAL = 60   # Cache photos for 60 days
 
 # Thread pool configuration
 MAX_THREAD_WORKERS = 50  # Maximum number of worker threads for ThreadPoolExecutor

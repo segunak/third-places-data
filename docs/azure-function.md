@@ -139,9 +139,7 @@ For posting to `SmokeTest`.
 
 For posting to `EnrichAirtableBase`.
 
-```json
-{"TheMotto": "What is dead may never die, but rises again harder and stronger"}
-```
+No body required.
 
 For posting to `OutscraperReviewsResponse`.
 

@@ -33,6 +33,157 @@ def read_third_places_csv():
     
     return places_data
 
+def update_json_files_with_photos():
+    """
+    Updates JSON files in the charlotte folder with photos data from the CSV file.
+    
+    For each place in the CSV:
+    1. Gets the Google Maps Place Id
+    2. Looks for the corresponding JSON file in the charlotte folder
+    3. Checks if the "photos" dictionary has a "raw_data" key
+    4. If not, adds the "raw_data" key with the value from "Photos Outscraper Reference"
+    
+    Returns:
+        dict: A summary of the updates performed
+    """
+    # Read data from CSV file
+    places_from_csv = read_third_places_csv()
+    
+    # Define the path to the charlotte folder
+    charlotte_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'places', 'charlotte')
+    
+    # Initialize results tracking
+    results = {
+        "total_places": len(places_from_csv),
+        "json_files_found": 0,
+        "json_files_updated": 0,
+        "json_files_not_found": 0,
+        "already_had_raw_data": 0,
+        "no_place_id": 0,
+        "errors": []
+    }
+    
+    # First pass: Identify all files that will be updated
+    files_to_update = []
+    
+    print("\nScanning for files to update...")
+    for place in places_from_csv:
+        place_name = place.get('Place', 'Unknown')
+        place_id = place.get('Google Maps Place Id')
+        
+        # Skip if no place ID
+        if not place_id:
+            results["no_place_id"] += 1
+            continue
+        
+        # Construct the JSON file path
+        json_file_path = os.path.join(charlotte_folder, f"{place_id}.json")
+        
+        # Check if the file exists
+        if not os.path.exists(json_file_path):
+            results["json_files_not_found"] += 1
+            continue
+        
+        results["json_files_found"] += 1
+        
+        try:
+            # Read the JSON file
+            with open(json_file_path, 'r', encoding='utf-8') as file:
+                place_data = json.load(file)
+            
+            # Check if raw_data key already exists
+            if "photos" in place_data and "raw_data" in place_data["photos"]:
+                results["already_had_raw_data"] += 1
+                continue
+            
+            # Add to the list of files to update
+            files_to_update.append({
+                "place_name": place_name,
+                "place_id": place_id,
+                "file_path": json_file_path
+            })
+            
+        except Exception as e:
+            results["errors"].append(f"Error checking '{place_name}' (Place ID: {place_id}): {str(e)}")
+    
+    # Print the list of files that will be updated
+    print(f"\nFound {len(files_to_update)} files that need to be updated:\n")
+    print("| # | Place Name | Place ID | File Name |")
+    print("|---|------------|----------|-----------|")
+    for i, file_info in enumerate(files_to_update, 1):
+        print(f"| {i} | {file_info['place_name']} | {file_info['place_id']} | {os.path.basename(file_info['file_path'])} |")
+    
+    # Ask for confirmation before proceeding
+    confirmation = input(f"\nReady to update {len(files_to_update)} files. Continue? (y/n): ")
+    if confirmation.lower() != 'y':
+        print("Update cancelled.")
+        return results
+    
+    # Second pass: Actually update the files
+    print("\nUpdating files...")
+    
+    for file_info in files_to_update:
+        place_name = file_info['place_name']
+        place_id = file_info['place_id']
+        json_file_path = file_info['file_path']
+        
+        try:
+            # Find the corresponding place data in the CSV
+            place = next((p for p in places_from_csv if p.get('Google Maps Place Id') == place_id), None)
+            if not place:
+                results["errors"].append(f"Could not find place data for '{place_name}' (Place ID: {place_id})")
+                continue
+                
+            # Read the JSON file again to ensure we have the latest data
+            with open(json_file_path, 'r', encoding='utf-8') as file:
+                place_data = json.load(file)
+            
+            # Check if the photos dictionary exists
+            if "photos" not in place_data:
+                place_data["photos"] = {}
+            
+            # Get the photos reference from the CSV
+            photos_reference = place.get('Photos Outscraper Reference')
+            
+            # Parse the photos_reference if it's a string to ensure it's stored as a list of dicts
+            if photos_reference and isinstance(photos_reference, str):
+                try:
+                    # Try to parse it as a Python structure (list of dicts)
+                    photos_reference = ast.literal_eval(photos_reference)
+                except (SyntaxError, ValueError) as e:
+                    # If parsing fails, log the error but continue with the string value
+                    error_msg = f"Error parsing photos reference for '{place_name}': {str(e)}"
+                    results["errors"].append(error_msg)
+                    print(error_msg)
+            
+            # Add the raw_data key with the photos reference data (now properly parsed)
+            place_data["photos"]["raw_data"] = photos_reference
+            
+            # Write the updated JSON back to the file
+            with open(json_file_path, 'w', encoding='utf-8') as file:
+                json.dump(place_data, file, indent=4)
+            
+            results["json_files_updated"] += 1
+            
+            # Show progress
+            if results["json_files_updated"] % 10 == 0:
+                print(f"Updated {results['json_files_updated']}/{len(files_to_update)} files so far...")
+                
+        except Exception as e:
+            results["errors"].append(f"Error processing '{place_name}' (Place ID: {place_id}): {str(e)}")
+    
+    # Print summary
+    print(f"\nUpdate Summary:")
+    print(f"  Total places in CSV: {results['total_places']}")
+    print(f"  JSON files found: {results['json_files_found']}")
+    print(f"  JSON files updated: {results['json_files_updated']}")
+    print(f"  JSON files already had raw_data: {results['already_had_raw_data']}")
+    print(f"  JSON files not found: {results['json_files_not_found']}")
+    print(f"  Places without Place ID: {results['no_place_id']}")
+    print(f"  Errors encountered: {len(results['errors'])}")
+    
+    return results
+
 def select_prioritized_photos(photos_data, max_photos=25):
     """
     Selects photos based on specific criteria from the provided photos data.
@@ -407,6 +558,11 @@ def save_results_to_file(results):
 # # Save the results to files
 # save_results_to_file(match_results)
 
-airtable = helpers.get_airtable_client(debug_mode=True)
-airtable.enrich_base_data()
-print("Base data enrichment complete.")
+# Update JSON files with photos data from the CSV
+print("\nUpdating JSON files with photos data from CSV...")
+update_results = update_json_files_with_photos()
+print("ayo")
+# airtable = helpers.get_airtable_client(sequential_mode=True)
+# airtable.enrich_base_data()
+# #airtable.update_cache_data()
+# print("Base data enrichment complete.")

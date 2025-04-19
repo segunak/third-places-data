@@ -18,13 +18,13 @@ _airtable_client_lock = Lock()
 _place_data_provider_instances = {}
 _place_data_provider_lock = Lock()
 
-def get_airtable_client(debug_mode=False):
+def get_airtable_client(sequential_mode=False):
     """
     Returns a singleton instance of AirtableClient.
     This ensures that only one instance is created and reused across all threads.
     
     Args:
-        debug_mode (bool): When True, forces sequential execution in the AirtableClient
+        sequential_mode (bool): When True, forces sequential execution in the AirtableClient
                            for easier debugging. Default is False.
     
     Returns:
@@ -38,12 +38,12 @@ def get_airtable_client(debug_mode=False):
             # while we were waiting for the lock
             if _airtable_client_instance is None:
                 from airtable_client import AirtableClient
-                _airtable_client_instance = AirtableClient(debug_mode=debug_mode)
+                _airtable_client_instance = AirtableClient(sequential_mode=sequential_mode)
                 logging.info("Created singleton AirtableClient instance")
-                if debug_mode:
+                if sequential_mode:
                     logging.info("AirtableClient running in DEBUG MODE with SEQUENTIAL execution")
-    elif debug_mode and not _airtable_client_instance.debug_mode:
-        # If debug_mode is requested but the existing instance is not in debug mode,
+    elif sequential_mode and not _airtable_client_instance.sequential_mode:
+        # If sequential_mode is requested but the existing instance is not in debug mode,
         # log a warning since we can't change the mode of an existing instance
         logging.warning(
             "Existing AirtableClient instance is not in debug mode. "
@@ -147,53 +147,89 @@ def save_reviews_azure(json_data, review_file_name):
         logging.exception(e)
 
 
-def save_data_github(json_data, full_file_path):
+def save_data_github(json_data, full_file_path, max_retries=3):
     """ Saves the given JSON data to the specified file path in the GitHub repository.
+    Implements retry logic for handling 409 Conflict errors.
 
-    full_file_path should include the folder and file name, no leading slash. For example
-    "data/places/charlotte/SomePlaceId.json"
+    Args:
+        json_data (str): The JSON data to save
+        full_file_path (str): Path to save the file, should include the folder and file name,
+                              no leading slash. For example "data/places/charlotte/SomePlaceId.json"
+        max_retries (int, optional): Maximum number of retry attempts for conflict errors. Defaults to 3.
+    
+    Returns:
+        tuple: (success, error_message)
+            - success (bool): True if the operation was successful, False otherwise
+            - error_message (str): Error message if operation failed, or success message if operation succeeded
     """
-    try:
-        github_token = os.environ['GITHUB_PERSONAL_ACCESS_TOKEN']
-        headers = {
-            "Authorization": f"token {github_token}",
-            "Accept": "application/vnd.github.v3+json"
-        }
-        repo_name = "segunak/third-places-data"
-        branch = "master"
+    import time
+    
+    retry_count = 0
+    
+    while retry_count <= max_retries:
+        try:
+            github_token = os.environ['GITHUB_PERSONAL_ACCESS_TOKEN']
+            headers = {
+                "Authorization": f"token {github_token}",
+                "Accept": "application/vnd.github.v3+json"
+            }
+            repo_name = "segunak/third-places-data"
+            branch = "master"
 
-        # Check if the file exists to get the SHA
-        # Reference https://docs.github.com/en/rest/repos/contents?apiVersion=2022-11-28#get-repository-content
-        url_get = f"https://api.github.com/repos/{repo_name}/contents/{full_file_path}?ref={branch}"
-        get_response = requests.get(url_get, headers=headers)
-        if get_response.status_code == 200:
-            sha = get_response.json()['sha']
-        else:
-            sha = None  # If the file does not exist, we'll create a new file
+            # Always get fresh SHA before attempting to update
+            url_get = f"https://api.github.com/repos/{repo_name}/contents/{full_file_path}?ref={branch}"
+            logging.info(f"Fetching current SHA for {full_file_path} (attempt {retry_count+1}/{max_retries+1})")
+            get_response = requests.get(url_get, headers=headers)
+            
+            sha = None
+            if get_response.status_code == 200:
+                sha = get_response.json()['sha']
+                logging.info(f"Current SHA for {full_file_path}: {sha}")
+            
+            # Construct the data for the PUT request to create/update the file
+            url_put = f"https://api.github.com/repos/{repo_name}/contents/{full_file_path}"
+            commit_message = "Saving JSON file via save_data_github utility function"
+            data = {
+                "message": commit_message,
+                "content": base64.b64encode(json_data.encode()).decode(),
+                "branch": branch
+            }
+            if sha:
+                data['sha'] = sha  # If updating an existing file with fresh SHA
 
-        # Construct the data for the PUT request to create/update the file
-        # Reference https://docs.github.com/en/rest/repos/contents?apiVersion=2022-11-28#create-or-update-file-contents
-        url_put = f"https://api.github.com/repos/{repo_name}/contents/{full_file_path}"
-        commit_message = "Saving JSON file via save_data_github utility function"
-        data = {
-            "message": commit_message,
-            "content": base64.b64encode(json_data.encode()).decode(),
-            "branch": branch
-        }
-        if sha:
-            data['sha'] = sha  # If updating an existing file, we need to provide the SHA
+            # Make the PUT request to create/update the file
+            put_response = requests.put(url_put, headers=headers, data=json.dumps(data))
+            
+            if put_response.status_code in {200, 201}:
+                return True, f"File saved successfully to GitHub at {full_file_path}"
+            elif put_response.status_code == 409 and retry_count < max_retries:
+                # Handle conflict by retrying
+                error_msg = f"GitHub API returned 409 Conflict. Retrying ({retry_count+1}/{max_retries})..."
+                logging.warning(error_msg)
+                retry_count += 1
+                # Small delay before retry to allow potential concurrent operations to complete
+                time.sleep(1 * retry_count)  # Increasing delay with each retry
+                continue
+            else:
+                error_msg = f"GitHub API returned status code {put_response.status_code}: {put_response.text}"
+                logging.error(error_msg)
+                return False, error_msg
 
-        # Make the PUT request to create/update the file
-        put_response = requests.put(url_put, headers=headers, data=json.dumps(data))
-        return put_response.status_code in {200, 201}
-
-    except Exception as e:
-        logging.error(f"Failed to save to GitHub: {str(e)}")
-        return False
+        except Exception as e:
+            error_msg = f"Failed to save to GitHub: {str(e)}"
+            logging.error(error_msg)
+            return False, error_msg
+    
+    # If we've exhausted retries
+    error_msg = "Maximum retries exceeded while attempting to save file to GitHub"
+    logging.error(error_msg)
+    return False, error_msg
 
 def fetch_data_github(full_file_path) -> Tuple[bool, Optional[Dict], str]:
     """
     Fetches JSON data from the specified file path in the GitHub repository.
+    Handles both standard-sized files and large files (>1MB) that don't include content directly.
+    Implements comprehensive retry logic for handling SSL, network, and API errors.
 
     Args:
         full_file_path (str): Path to the file in the GitHub repository.
@@ -206,36 +242,192 @@ def fetch_data_github(full_file_path) -> Tuple[bool, Optional[Dict], str]:
             - data (dict or None): The fetched data as a Python dictionary, or None if unsuccessful
             - message (str): A message describing the result of the operation
     """
-    try:
-        github_token = os.environ['GITHUB_PERSONAL_ACCESS_TOKEN']
-        headers = {
-            "Authorization": f"token {github_token}",
-            "Accept": "application/vnd.github.v3+json"
-        }
-        repo_name = "segunak/third-places-data"
-        branch = "master"
+    import time
+    from requests.adapters import HTTPAdapter
+    from urllib3.util import Retry
+    from ssl import SSLError
+    
+    max_retries = 3
+    retry_count = 0
+    
+    while retry_count <= max_retries:
+        try:
+            github_token = os.environ['GITHUB_PERSONAL_ACCESS_TOKEN']
+            headers = {
+                "Authorization": f"token {github_token}",
+                "Accept": "application/vnd.github.v3+json"
+            }
+            repo_name = "segunak/third-places-data"
+            branch = "master"
 
-        # Get the file content
-        # Reference https://docs.github.com/en/rest/repos/contents?apiVersion=2022-11-28#get-repository-content
-        url_get = f"https://api.github.com/repos/{repo_name}/contents/{full_file_path}?ref={branch}"
-        get_response = requests.get(url_get, headers=headers)
-        
-        if get_response.status_code == 200:
-            content = get_response.json()
-            if content["type"] == "file":
-                # Decode base64 content to JSON
-                file_content = base64.b64decode(content["content"]).decode('utf-8')
-                return True, json.loads(file_content), "File fetched successfully"
+            # Create a session with retry mechanism for transient errors
+            session = requests.Session()
+            retry_strategy = Retry(
+                total=3,  # Total number of retries
+                backoff_factor=1,  # Wait 1, 2, 4 seconds between retries
+                status_forcelist=[429, 500, 502, 503, 504],  # Retry on these status codes
+                allowed_methods=["GET"]  # Only retry on GET requests
+            )
+            adapter = HTTPAdapter(max_retries=retry_strategy)
+            session.mount("https://", adapter)
+
+            # Get the file metadata with retry-enabled session
+            url_get = f"https://api.github.com/repos/{repo_name}/contents/{full_file_path}?ref={branch}"
+            logging.info(f"Fetching file from GitHub: {full_file_path} (attempt {retry_count+1}/{max_retries+1})")
+            get_response = session.get(url_get, headers=headers, timeout=30)
+            
+            if get_response.status_code == 200:
+                # First verify we have a valid JSON response from GitHub API
+                try:
+                    content_info = get_response.json()
+                except json.JSONDecodeError as je:
+                    error_msg = f"Failed to parse GitHub API response as JSON: {str(je)}. Response status: {get_response.status_code}"
+                    logging.error(error_msg)
+                    response_text = get_response.text[:200] + "..." if len(get_response.text) > 200 else get_response.text
+                    logging.error(f"Response content preview: {response_text}")
+                    
+                    # Retry on JSON parse errors
+                    retry_count += 1
+                    if retry_count <= max_retries:
+                        logging.warning(f"Retrying due to JSON parsing error ({retry_count}/{max_retries})")
+                        time.sleep(1 * retry_count)  # Exponential backoff
+                        continue
+                    else:
+                        return False, None, error_msg
+                    
+                if content_info["type"] == "file":
+                    # Determine how to get the file content
+                    file_content = None
+                    
+                    # For large files, GitHub omits content and provides download_url instead
+                    if content_info.get("encoding") == "none" or not content_info.get("content"):
+                        if "download_url" in content_info:
+                            file_size = content_info.get('size', 'unknown')
+                            logging.info(f"Large file detected (size: {file_size}). Using download_url instead of content field.")
+                            # Use the download_url to fetch the raw file content
+                            try:
+                                download_response = session.get(content_info["download_url"], headers=headers, timeout=60)  # Longer timeout for large files
+                                if download_response.status_code == 200:
+                                    file_content = download_response.text
+                                else:
+                                    error_msg = f"Failed to download large file: Status {download_response.status_code}"
+                                    logging.error(error_msg)
+                                    
+                                    # Retry on download failures
+                                    retry_count += 1
+                                    if retry_count <= max_retries:
+                                        logging.warning(f"Retrying download ({retry_count}/{max_retries})")
+                                        time.sleep(2 * retry_count)  # Longer delay for download failures
+                                        continue
+                                    else:
+                                        return False, None, error_msg
+                            except (requests.RequestException, SSLError) as e:
+                                error_msg = f"Download error for large file: {str(e)}"
+                                logging.error(error_msg)
+                                
+                                # Retry on network errors
+                                retry_count += 1
+                                if retry_count <= max_retries:
+                                    logging.warning(f"Retrying download after network error ({retry_count}/{max_retries})")
+                                    time.sleep(3 * retry_count)  # Even longer delay for network errors
+                                    continue
+                                else:
+                                    return False, None, error_msg
+                        else:
+                            error_msg = "Large file detected but no download_url provided"
+                            logging.error(error_msg)
+                            return False, None, error_msg
+                    else:
+                        # Normal case: decode the base64 content
+                        try:
+                            file_content = base64.b64decode(content_info["content"]).decode('utf-8')
+                        except Exception as e:
+                            error_msg = f"Failed to decode base64 content: {str(e)}"
+                            logging.error(error_msg)
+                            
+                            # Retry on decoding errors
+                            retry_count += 1
+                            if retry_count <= max_retries:
+                                logging.warning(f"Retrying after decoding error ({retry_count}/{max_retries})")
+                                time.sleep(1 * retry_count)
+                                continue
+                            else:
+                                return False, None, error_msg
+                    
+                    # Check for empty content
+                    if not file_content or not file_content.strip():
+                        logging.error(f"Empty file content received from GitHub for {full_file_path}")
+                        return False, None, f"Empty file content received from GitHub for {full_file_path}"
+                        
+                    # Try to parse the JSON content
+                    try:
+                        parsed_json = json.loads(file_content)
+                        return True, parsed_json, "File fetched successfully"
+                    except json.JSONDecodeError as je:
+                        # Log more details about the parsing error
+                        error_msg = f"Failed to parse file content as JSON: {str(je)}"
+                        logging.error(error_msg)
+                        
+                        # Log a preview of the file content to help diagnose the issue
+                        preview = file_content[:200] + "..." if len(file_content) > 200 else file_content
+                        content_msg = f"Content preview for {full_file_path}: {preview}"
+                        logging.error(content_msg)
+                        
+                        # Return detailed error information
+                        return False, None, f"JSON parsing error: {str(je)}. Check logs for content preview."
+                else:
+                    error_msg = f"Path {full_file_path} does not point to a file"
+                    logging.error(error_msg)
+                    return False, None, error_msg
+            elif get_response.status_code == 404:
+                error_msg = f"File {full_file_path} not found in repository"
+                logging.error(error_msg)
+                return False, None, error_msg
             else:
-                return False, None, f"Path {full_file_path} does not point to a file"
-        elif get_response.status_code == 404:
-            return False, None, f"File {full_file_path} not found in repository"
-        else:
-            return False, None, f"Failed to fetch file: {get_response.status_code} - {get_response.text}"
+                # Log more details about HTTP errors
+                response_text = get_response.text[:200] + "..." if len(get_response.text) > 200 else get_response.text
+                error_msg = f"Failed to fetch file: {get_response.status_code} - Response content: {response_text}"
+                logging.error(error_msg)
+                
+                # Retry on non-404 errors
+                retry_count += 1
+                if retry_count <= max_retries:
+                    logging.warning(f"Retrying after HTTP error {get_response.status_code} ({retry_count}/{max_retries})")
+                    time.sleep(2 * retry_count)
+                    continue
+                else:
+                    return False, None, f"Failed to fetch file: {get_response.status_code}"
 
-    except Exception as e:
-        logging.error(f"Failed to fetch from GitHub: {str(e)}")
-        return False, None, f"Error fetching file: {str(e)}"
+        except (requests.RequestException, SSLError) as e:
+            error_msg = f"Network/SSL error while fetching from GitHub: {str(e)}"
+            logging.error(error_msg)
+            
+            # Retry on network/SSL errors
+            retry_count += 1
+            if retry_count <= max_retries:
+                logging.warning(f"Retrying after network/SSL error ({retry_count}/{max_retries})")
+                time.sleep(3 * retry_count)  # Longer delay for network errors
+                continue
+            else:
+                return False, None, error_msg
+                
+        except Exception as e:
+            error_msg = f"Failed to fetch from GitHub: {str(e)}"
+            logging.error(error_msg, exc_info=True)  # Include stack trace
+            
+            # Retry on any other unexpected errors
+            retry_count += 1
+            if retry_count <= max_retries:
+                logging.warning(f"Retrying after unexpected error ({retry_count}/{max_retries})")
+                time.sleep(2 * retry_count)
+                continue
+            else:
+                return False, None, error_msg
+                
+    # If we've reached here, we've exceeded our retry attempts
+    error_msg = f"Maximum retries exceeded ({max_retries}) while attempting to fetch file from GitHub"
+    logging.error(error_msg)
+    return False, None, error_msg
 
 def is_cache_valid(cached_data: Dict, refresh_interval_days: int) -> bool:
     """
@@ -277,7 +469,7 @@ def get_and_cache_place_data(place_name: str, place_id: str, city_name: str = "c
     1. Check if place has cached data in the GitHub repository
     2. If cache exists and is fresh (within configured interval), use the cached data
     3. If cache doesn't exist or is stale, fetch fresh data from the API provider
-    4. Store the data in GitHub
+    4. Store the data in GitHub only if fresh data was retrieved or modifications were made
     
     Args:
         place_name (str): Name of the place
@@ -316,6 +508,7 @@ def get_and_cache_place_data(place_name: str, place_id: str, city_name: str = "c
         # Check if we have cached data for this place
         use_cache = False
         place_data = None
+        modifications_made = False
         
         if not force_refresh:
             success, cached_data, message = fetch_data_github(cache_file_path)
@@ -344,7 +537,7 @@ def get_and_cache_place_data(place_name: str, place_id: str, city_name: str = "c
                 airtable = get_airtable_client()
                 airtable_record = airtable.get_record(constants.SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
                 if airtable_record and 'Photos' in airtable_record['fields'] and airtable_record['fields']['Photos']:
-                    airtable_photos = airtable_record['fields']['Photos Outscraper Reference']
+                    airtable_photos = airtable_record['fields']['Photos']
                     logging.info(f"Place {place_name} already has photos in Airtable. Skipping photo retrieval to save API costs.")
             except Exception as e:
                 logging.warning(f"Could not check for existing photos in Airtable: {e}")
@@ -370,6 +563,7 @@ def get_and_cache_place_data(place_name: str, place_id: str, city_name: str = "c
                         photos_section["photo_urls"] = airtable_photo_list
                         photos_section["message"] = f"Photos retrieved from Airtable ({len(airtable_photo_list)} photos)"
                         logging.info(f"Filled photos with {len(airtable_photo_list)} photos from Airtable for {place_name}")
+                        modifications_made = True
                     except Exception as e:
                         logging.warning(f"Failed to parse or use Airtable photos for {place_name}: {e}")
             
@@ -377,17 +571,24 @@ def get_and_cache_place_data(place_name: str, place_id: str, city_name: str = "c
                 error_message = place_data.get('error', 'Unknown error') if place_data else 'No data retrieved'
                 return ('failed', None, f"Error: Data retrieval failed for place {place_name} with place_id {place_id}. {error_message}")
         
-        # Always save the data (whether fresh or from cache) to ensure GitHub is updated
-        final_json_data = json.dumps(place_data, indent=4)
-        logging.info(f"Saving place data (whether fresh or from the cache) to GitHub at path {cache_file_path}")
-        save_succeeded = save_data_github(final_json_data, cache_file_path)
+        # Only save to GitHub if we got fresh data or made modifications to cached data
+        if not use_cache or force_refresh or modifications_made:
+            # Save the data to GitHub
+            final_json_data = json.dumps(place_data, indent=4)
+            logging.info(f"Saving place data to GitHub at path {cache_file_path}")
+            save_succeeded, save_message = save_data_github(final_json_data, cache_file_path)
+            logging.info(f"GitHub save operation result: {save_message}")
 
-        if save_succeeded:
-            status = 'succeeded' if not use_cache else 'cached'
-            message = f"Data {'retrieved and' if not use_cache else ''} saved successfully for {place_name}."
-            return (status, place_data, message)
+            if save_succeeded:
+                status = 'succeeded' if not use_cache else 'cached'
+                message = f"Data {'retrieved and' if not use_cache else ''} saved successfully for {place_name}."
+                return (status, place_data, message)
+            else:
+                return ('failed', None, f"Failed to save data to GitHub for {place_name}. {save_message}")
         else:
-            return ('failed', None, f"Failed to save data to GitHub for {place_name}. Review the logs for more details.")
+            logging.info(f"Using cached data without modifications for {place_name} - skipping GitHub write operation")
+            return ('cached', place_data, f"Using cached data for {place_name}. GitHub write skipped.")
+            
     except Exception as e:
         logging.error(f"Error in get_and_cache_place_data for {place_name}: {e}", exc_info=True)
         return ('failed', None, f"Error processing place data: {str(e)}")

@@ -196,6 +196,25 @@
         "message": "Photos retrieved from Airtable (1 photos)",
         "photo_urls": [
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=3BoGXB2iiCIr5td5In1W1A&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=312.52136&pitch=0&thumbfov=100"
+        ],
+        "raw_data": [
+            {
+                "photo_id": "3BoGXB2iiCIr5td5In1W1A",
+                "photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=3BoGXB2iiCIr5td5In1W1A&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=312.52136&pitch=0&thumbfov=100",
+                "photo_url_big": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=3BoGXB2iiCIr5td5In1W1A&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=312.52136&pitch=0&thumbfov=100",
+                "latitude": 35.310839353031,
+                "longitude": -80.74536936371659,
+                "photo_date": "1/26/2023 18:00:00",
+                "photo_upload_source": "launch",
+                "photo_source_video": null,
+                "photo_tags": [
+                    "front"
+                ],
+                "photo_tag_ids": [
+                    2
+                ],
+                "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=3BoGXB2iiCIr5td5In1W1A&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=312.52136&pitch=0&thumbfov=100"
+            }
         ]
     },
     "data_source": "OutscraperProvider",

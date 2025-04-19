@@ -86,7 +86,7 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
         for place in all_third_places:
             # Schedule activity functions for each place
             activity_input["place"] = place
-            tasks.append(context.call_activity("get_place_data_for_place", activity_input))
+            tasks.append(context.call_activity("get_place_data", activity_input))
 
         # Run all tasks in parallel
         results = yield context.task_all(tasks)
@@ -106,7 +106,7 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
 
 
 @app.activity_trigger(input_name="activityInput")
-def get_place_data_for_place(activityInput):
+def get_place_data(activityInput):
     """
     Retrieves all data for a place using the configured place data provider.
     Uses the shared get_and_cache_place_data function to implement a cache-first approach.
