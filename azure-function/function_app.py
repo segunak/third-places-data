@@ -4,34 +4,411 @@ import datetime
 import azure.functions as func
 import helper_functions as helpers
 import azure.durable_functions as df
-from airtable_client import AirtableClient
-from place_data_providers import PlaceDataProviderFactory
 from azure.durable_functions.models.DurableOrchestrationStatus import OrchestrationRuntimeStatus
 
 app = df.DFApp(http_auth_level=func.AuthLevel.FUNCTION)
 
-@app.function_name(name="StartOrchestrator")
-@app.route(route="orchestrators/{functionName}")
+# ======================================================
+# Place Data Refresh Functions
+# ======================================================
+
+@app.function_name(name="RefreshPlaceData")
+@app.route(route="refresh-place-data")
 @app.durable_client_input(client_name="client")
-async def http_start(req: func.HttpRequest, client):
+async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse:
     """
-    HTTP-triggered function that serves as the client and starts the orchestrator function. This is the entry point for the orchestration, and it's publicly accessible.
+    HTTP-triggered function that initiates the refresh of place data for all places.
+    
+    This function is exposed as a public endpoint at /api/refresh-place-data.
+    It starts a new orchestration to retrieve and cache place data for all places
+    in the Airtable base. Authorization is handled via the Azure Function key.
+
+    Optional query parameters:
+    - force_refresh: If "true", bypasses the cache and always fetches fresh data
+    - sequential_mode: If "true", processes places sequentially rather than in parallel
+    - city: City to use for caching (defaults to "charlotte")
+    
+    Returns:
+        func.HttpResponse: A JSON response with the orchestration instance ID and status URL
     """
-    function_name = req.route_params.get('functionName')
-    instance_id = await client.start_new(function_name)
-    # This creates and sends a response that includes a URL to query the orchestration status
-    response = client.create_check_status_response(req, instance_id)
-    return response
+    logging.info("Received request for place data refresh.")
+
+    try:
+        # Extract optional parameters with defaults
+        force_refresh = req.params.get('force_refresh', '').lower() == 'true' 
+        sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
+        city = req.params.get('city', 'charlotte').lower()
+        provider_type = req.params.get('provider_type', None)
+        
+        logging.info(f"Starting place data refresh with parameters: force_refresh={force_refresh}, sequential_mode={sequential_mode}, city={city}, provider_type={provider_type}")
+        
+        # Start the orchestrator with the parameters
+        orchestration_input = {
+            "force_refresh": force_refresh,
+            "sequential_mode": sequential_mode,
+            "city": city,
+            "provider_type": provider_type
+        }
+        
+        instance_id = await client.start_new("get_place_data_orchestrator", client_input=orchestration_input)
+        logging.info(f"Started orchestration with ID: {instance_id}")
+        
+        # Return a response with status check URL
+        response = client.create_check_status_response(req, instance_id)
+        return response
+        
+    except Exception as ex:
+        logging.error(f"Error encountered while starting the place data refresh orchestration: {ex}", exc_info=True)
+        return func.HttpResponse(
+            json.dumps({
+                "success": False,
+                "message": "Server error occurred while starting the place data refresh orchestration.",
+                "data": None,
+                "error": str(ex)
+            }),
+            status_code=500,
+            mimetype="application/json"
+        )
+
+@app.orchestration_trigger(context_name="context")
+def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
+    """
+    Orchestrator function that coordinates retrieving place data for all places in Airtable.
+    
+    This orchestrator manages the execution of the place data retrieval process with controlled concurrency.
+    It retrieves all third places from Airtable and then schedules activity functions
+    to fetch data for each place. It tracks the overall status of the operation.
+    
+    Args:
+        context (df.DurableOrchestrationContext): The durable orchestration context
+        
+    Returns:
+        dict: Results of all place data retrieval operations
+    """
+    try:
+        logging.info("get_place_data_orchestrator started.")
+        
+        # Get input parameters
+        orchestration_input = context.get_input() or {}
+        force_refresh = orchestration_input.get("force_refresh", False)
+        sequential_mode = orchestration_input.get("sequential_mode", False)
+        city = orchestration_input.get("city", "charlotte")
+        provider_type = orchestration_input.get("provider_type", None)
+
+        all_third_places = yield context.call_activity('get_all_third_places', {"sequential_mode": sequential_mode, "provider_type": provider_type})
+        
+        # Set up the processing tasks
+        tasks = []
+        results = []
+        
+        # If sequential_mode mode requested, process one place at a time
+        if sequential_mode:
+            logging.info(f"Running place data retrieval in sequential_mode mode for {len(all_third_places)} places")
+            for place in all_third_places:
+                activity_input = {
+                    "place": place,
+                    "force_refresh": force_refresh,
+                    "city": city,
+                    "provider_type": provider_type
+                }
+                # Process each place sequentially
+                result = yield context.call_activity("get_place_data", activity_input)
+                results.append(result)
+        else:
+            # Process places in parallel with controlled concurrency
+            from constants import MAX_THREAD_WORKERS
+            # Use a smaller concurrency limit than MAX_THREAD_WORKERS to avoid rate limits
+            concurrency_limit = min(MAX_THREAD_WORKERS, 10)
+            
+            logging.info(f"Running place data retrieval in parallel mode with concurrency={concurrency_limit} for {len(all_third_places)} places")
+            
+            # Process places in batches based on the concurrency limit
+            for i in range(0, len(all_third_places), concurrency_limit):
+                batch = all_third_places[i:i+concurrency_limit]
+                batch_tasks = []
+                
+                for place in batch:
+                    activity_input = {
+                        "place": place,
+                        "force_refresh": force_refresh,
+                        "city": city,
+                        "provider_type": provider_type
+                    }
+                    batch_tasks.append(context.call_activity("get_place_data", activity_input))
+                
+                # Wait for this batch to complete before processing the next batch
+                batch_results = yield context.task_all(batch_tasks)
+                results.extend(batch_results)
+
+        # Determine overall success
+        all_successful = all(result['status'] != 'failed' for result in results)
+
+        result = {
+            "success": all_successful,
+            "message": "Place data refresh processed successfully." if all_successful else "Some place data refreshes failed.",
+            "data": {
+                "total_places_processed": len(all_third_places),
+                "places_results": results
+            },
+            "error": None if all_successful else "One or more place data refreshes failed."
+        }
+        
+        logging.info(f"get_place_data_orchestrator completed. Processed {len(all_third_places)} places.")
+
+        custom_status = 'Succeeded' if all_successful else 'Failed'
+        context.set_custom_status(custom_status)
+
+        return result
+    except Exception as ex:
+        logging.error(f"Critical error in get_place_data_orchestrator: {ex}", exc_info=True)
+        error_response = {
+            "success": False,
+            "message": "Error occurred during the place data refresh orchestration.",
+            "data": None,
+            "error": str(ex)
+        }
+        context.set_custom_status('Failed')
+        return error_response
+
+@app.activity_trigger(input_name="activityInput")
+def get_place_data(activityInput):
+    """
+    Activity function that retrieves all data for a specific place.
+    
+    This is an internal Azure Function activity triggered by orchestrator functions.
+    It fetches detailed place data using the configured place data provider and 
+    implements a cache-first approach via the get_and_cache_place_data helper function.
+    If successful, it also updates the Airtable record to indicate that data is available.
+    
+    Args:
+        activityInput (dict): Input parameters containing the place record from Airtable,
+                              force_refresh flag, city, and sequential_mode flag
+        
+    Returns:
+        dict: A response object indicating success/failure status, place name, and a link to the data file
+    """
+    place = activityInput['place']
+    force_refresh = activityInput.get('force_refresh', False)
+    city = activityInput.get('city', 'charlotte')
+    sequential_mode = activityInput.get('sequential_mode', False)
+    provider_type = activityInput.get('provider_type', None)
+    
+    place_name = place['fields']['Place']
+    place_id = place['fields'].get('Google Maps Place Id', None)
+    
+    logging.info(f"Getting place data for: {place_name} (force_refresh={force_refresh}, city={city}, provider_type={provider_type})")
+    
+    try:
+        # Call the centralized helper function with force_refresh parameter
+        status, place_data, message = helpers.get_and_cache_place_data(
+            place_name, 
+            place_id, 
+            city, 
+            force_refresh=force_refresh,
+            provider_type=provider_type
+        )
+        
+        # If data was successfully retrieved, update Airtable record with "Has Data File" = "Yes"
+        if (status == 'succeeded' or status == 'cached') and place_data:
+            record_id = place['id']
+            airtable = helpers.get_airtable_client(sequential_mode=sequential_mode)
+            airtable.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
+
+        # Format the response for the orchestrator
+        if (status == 'succeeded' or status == 'cached'):
+            place_id = place_data.get('place_id', place_id)
+            github_url = f'https://github.com/segunak/third-places-data/blob/master/data/places/{city}/{place_id}.json'
+            return helpers.create_place_response(status, place_name, github_url, message)
+        else:
+            return helpers.create_place_response(status, place_name, None, message)
+    except Exception as ex:
+        logging.error(f"Error getting data for place {place_name}: {ex}", exc_info=True)
+        return helpers.create_place_response('failed', place_name, None, str(ex))
+
+# ======================================================
+# Airtable Enrichment Functions
+# ======================================================
+
+@app.function_name(name="EnrichAirtableBase")
+@app.route(route="enrich-airtable-base")
+@app.durable_client_input(client_name="client")
+async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpResponse:
+    """
+    This function initiates the Airtable base enrichment orchestration.
+    Authorization is handled via the Azure Function key.
+    
+    Optional query parameters:
+    - force_refresh: If "true", bypasses the cache and always fetches fresh data
+    - sequential_mode: If "true", processes places sequentially rather than in parallel
+    
+    Returns:
+        func.HttpResponse: A JSON response with the orchestration instance ID and status URL
+    """
+    logging.info("Received request for Airtable base enrichment.")
+
+    try:
+        # Extract optional parameters with defaults
+        force_refresh = req.params.get('force_refresh', '').lower() == 'true' 
+        sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
+        
+        logging.info(f"Starting enrichment with parameters: force_refresh={force_refresh}, sequential_mode={sequential_mode}")
+        
+        # Start the orchestrator with the parameters
+        orchestration_input = {
+            "force_refresh": force_refresh,
+            "sequential_mode": sequential_mode
+        }
+        
+        instance_id = await client.start_new("enrich_airtable_base_orchestrator", client_input=orchestration_input)
+        logging.info(f"Started orchestration with ID: {instance_id}")
+        
+        # Return a response with status check URL
+        response = client.create_check_status_response(req, instance_id)
+        return response
+        
+    except Exception as ex:
+        logging.error(f"Error encountered while starting the enrichment orchestration: {ex}", exc_info=True)
+        return func.HttpResponse(
+            json.dumps({
+                "success": False,
+                "message": "Server error occurred while starting the enrichment orchestration.",
+                "data": None,
+                "error": str(ex)
+            }),
+            status_code=500,
+            mimetype="application/json"
+        )
+
+@app.orchestration_trigger(context_name="context")
+def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
+    """
+    Orchestrator function for enriching Airtable base data.
+    This orchestrator initiates the batch enrichment of all Airtable data.
+    
+    Args:
+        context: The orchestration context
+        
+    Returns:
+        A dictionary with the results of the enrichment operation
+    """
+    try:
+        logging.info("enrich_airtable_base_orchestrator started.")  # Note: We use PascalCase in logs for consistency
+        
+        # Get input parameters
+        orchestration_input = context.get_input() or {}
+        sequential_mode = orchestration_input.get("sequential_mode", False)
+        
+        # Call the batch enrichment activity, which invokes enrich_base_data properly
+        enrichment_results = yield context.call_activity("enrich_airtable_batch", {"sequential_mode": sequential_mode})
+        
+        # Filter to only include places that had at least one field updated
+        actually_updated_places = [
+            place for place in enrichment_results 
+            if place and place.get('field_updates') and any(updates["updated"] for updates in place.get('field_updates', {}).values())
+        ]
+        
+        result = {
+            "success": True,
+            "message": "Airtable base enrichment processed successfully.",
+            "data": {
+                "total_places_processed": len(enrichment_results),
+                "total_places_enriched": len(actually_updated_places),
+                "places_enriched": actually_updated_places
+            },
+            "error": None
+        }
+        
+        logging.info(f"enrich_airtable_base_orchestrator completed. Updated {len(actually_updated_places)} of {len(enrichment_results)} places.")
+        context.set_custom_status('Succeeded')
+        return result
+        
+    except Exception as ex:
+        logging.error(f"Critical error in enrich_airtable_base_orchestrator: {ex}", exc_info=True)
+        error_response = {
+            "success": False,
+            "message": "Error occurred during the enrichment orchestration.",
+            "data": None,
+            "error": str(ex)
+        }
+        context.set_custom_status('Failed')
+        return error_response
+
+@app.activity_trigger(input_name="activityInput")
+def enrich_airtable_batch(activityInput):
+    """
+    Activity function to enrich all places in Airtable using enrich_base_data.
+    
+    This function is called by the enrich_airtable_base_orchestrator to process all places
+    in a single batch operation using the AirtableClient.enrich_base_data method.
+    
+    Args:
+        activityInput: A dictionary containing:
+            - sequential_mode: Boolean indicating whether to use sequential processing mode
+    
+    Returns:
+        The result of the enrichment operation for all places
+    """
+    sequential_mode = activityInput.get('sequential_mode', False)
+    
+    logging.info(f"Enriching all places in batch mode (sequential_mode={sequential_mode})")
+    
+    try:
+        # Get AirtableClient with appropriate sequential_mode setting
+        airtable = helpers.get_airtable_client(sequential_mode=sequential_mode)
+        
+        # Call the shared enrich_base_data method designed for batch processing
+        return airtable.enrich_base_data()
+    except Exception as ex:
+        logging.error(f"Error in batch enrichment: {ex}", exc_info=True)
+        return {
+            "status": "failed",
+            "error": str(ex)
+        }
+
+# ======================================================
+# Utility Functions
+# ======================================================
 
 @app.activity_trigger(input_name="activityInput")
 def get_all_third_places(activityInput):
-    airtable = helpers.get_airtable_client()
+    """
+    Activity function that retrieves all third places from Airtable.
+    
+    This is an internal Azure Function activity triggered by orchestrator functions.
+    It fetches all third places from the Airtable base using the AirtableClient.
+    
+    Args:
+        activityInput (dict): Input parameters for the activity, including:
+            - sequential_mode: Boolean indicating whether to use sequential processing mode
+            - provider_type: The data provider type ('google' or 'outscraper')
+        
+    Returns:
+        list: All third places records from Airtable
+    """
+    sequential_mode = activityInput.get('sequential_mode', False)
+    provider_type = activityInput.get('provider_type', None)
+    airtable = helpers.get_airtable_client(sequential_mode=sequential_mode, provider_type=provider_type)
     return airtable.all_third_places
 
 @app.function_name(name="PurgeOrchestrations")
 @app.route(route="purge-orchestrations")
 @app.durable_client_input(client_name="client")
 async def purge_orchestrations(req: func.HttpRequest, client) -> func.HttpResponse:
+    """
+    HTTP-triggered function that purges the history of all completed orchestration instances.
+    
+    This function is exposed as a public endpoint at /api/purge-orchestrations.
+    It deletes the history of all orchestration instances that have completed, failed,
+    or terminated, from the beginning of time until now. This is useful for cleaning up
+    the storage associated with durable functions.
+    
+    Args:
+        req (func.HttpRequest): The HTTP request object
+        client: The durable functions client provided by the runtime
+        
+    Returns:
+        func.HttpResponse: A JSON response indicating success or failure with the count of deleted instances
+    """
     logging.info("Received request to purge orchestration instances.")
 
     try:
@@ -74,67 +451,25 @@ async def purge_orchestrations(req: func.HttpRequest, client) -> func.HttpRespon
             mimetype="application/json"
         )
 
-@app.orchestration_trigger(context_name="context")
-def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
-    try:
-        logging.info("get_place_data_orchestrator started.")
-
-        tasks = []
-        activity_input = {}
-        all_third_places = yield context.call_activity('get_all_third_places', {})
-
-        for place in all_third_places:
-            # Schedule activity functions for each place
-            activity_input["place"] = place
-            tasks.append(context.call_activity("get_place_data", activity_input))
-
-        # Run all tasks in parallel
-        results = yield context.task_all(tasks)
-        logging.info("get_place_data_orchestrator completed.")
-
-        # Determine overall success
-        all_successful = all(result['status'] != 'failed' for result in results)
-        custom_status = 'Succeeded' if all_successful else 'Failed'
-        context.set_custom_status(custom_status)
-
-        return results
-    except Exception as ex:
-        logging.error(f"Critical error in get_place_data_orchestrator processing: {ex}", exc_info=True)
-        error_response = json.dumps({"error": str(ex)}, indent=4)
-        context.set_custom_status('Failed')
-        return error_response
-
-
-@app.activity_trigger(input_name="activityInput")
-def get_place_data(activityInput):
-    """
-    Retrieves all data for a place using the configured place data provider.
-    Uses the shared get_and_cache_place_data function to implement a cache-first approach.
-    """
-    place = activityInput['place']
-    place_name = place['fields']['Place']
-    place_id = place['fields'].get('Google Maps Place Id', None)
-    
-    # Call the centralized helper function
-    status, place_data, message = helpers.get_and_cache_place_data(place_name, place_id, 'charlotte')
-    
-    # If data was successfully retrieved, update Airtable record with "Has Data File" = "Yes"
-    if (status == 'succeeded' or status == 'cached') and place_data:
-        record_id = place['id']
-        airtable = helpers.get_airtable_client()
-        airtable.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
-    
-    # Format the response for the orchestrator
-    if status == 'succeeded' or status == 'cached':
-        place_id = place_data.get('place_id', place_id)
-        github_url = f'https://github.com/segunak/third-places-data/blob/master/data/places/charlotte/{place_id}.json'
-        return helpers.create_place_response(status, place_name, github_url, message)
-    else:
-        return helpers.create_place_response(status, place_name, None, message)
-
 @app.function_name(name="SmokeTest")
 @app.route(route="smoke-test")
 def smoke_test(req: func.HttpRequest) -> func.HttpResponse:
+    """
+    HTTP-triggered function that provides a simple health check endpoint.
+    
+    This function is exposed as a public endpoint at /api/smoke-test.
+    It verifies that the Azure Function is operational by validating a specific 
+    test payload in the request body. The function expects a JSON body with 
+    the key "House" and value "Martell". This serves as both a health check
+    and a simple authentication mechanism to ensure accidental calls don't 
+    trigger the endpoint.
+    
+    Args:
+        req (func.HttpRequest): The HTTP request object with JSON body
+        
+    Returns:
+        func.HttpResponse: A JSON response indicating whether the function is operational
+    """
     logging.info("Received request at SmokeTest endpoint.")
 
     try:
@@ -164,83 +499,18 @@ def smoke_test(req: func.HttpRequest) -> func.HttpResponse:
         logging.error(f"Failed to parse request body as JSON. {ex}", exc_info=True)
         return func.HttpResponse(
             json.dumps({"message": "Invalid or missing JSON body. Are you sure you should be hitting this endpoint?"}),
-            status_code=400,
-            mimetype="application/json"
+                status_code=400,
+                mimetype="application/json"
         )
-
-
-@app.function_name(name="EnrichAirtableBase")
-@app.route(route="enrich-airtable-base")
-def enrich_airtable_base(req: func.HttpRequest) -> func.HttpResponse:
-    """
-    This function enriches the Airtable base data for all places.
-    Authorization is handled via the Azure Function key.
-    
-    Returns:
-        func.HttpResponse: A JSON response with the results of the operation
-    """
-    logging.info("Received request for Airtable base enrichment.")
-
-    try:
-        airtable = helpers.get_airtable_client()
-        logging.info("AirtableClient instance retrieved, starting the base data enrichment process.")
-
-        enriched_places = airtable.enrich_base_data()
-        
-        # Filter to only include places that had at least one field updated
-        actually_updated_places = [
-            {
-                "place_name": place["place_name"],
-                "place_id": place["place_id"],
-                "record_id": place["record_id"],
-                "field_updates": {
-                    field: {
-                        "old_value": updates["old_value"],
-                        "new_value": updates["new_value"]
-                    }
-                    for field, updates in place.get('field_updates', {}).items() if updates["updated"]
-                }
-            }
-            for place in enriched_places if any(updates["updated"] for updates in place.get('field_updates', {}).values())
-        ]
-
-        if actually_updated_places:
-            logging.info(f"Enrichment process completed successfully. The following places had at least one field updated: {actually_updated_places}")
-        else:
-            logging.info("Enrichment process completed successfully. No places required field updates.")
-
-        return func.HttpResponse(
-            json.dumps({
-                "success": True,
-                "message": "Airtable base enrichment processed successfully.",
-                "data": {
-                    "total_places_enriched": len(actually_updated_places),
-                    "places_enriched": actually_updated_places
-                },
-                "error": None
-            }),
-            status_code=200,
-            mimetype="application/json"
-        )
-    except Exception as ex:
-        logging.error(f"Error encountered during the enrichment process: {ex}", exc_info=True)
-        return func.HttpResponse(
-            json.dumps({
-                "success": False,
-                "message": "Server error occurred during the enrichment process.",
-                "data": None,
-                "error": str(ex)
-            }),
-            status_code=500,
-            mimetype="application/json"
-        )
-
 
 @app.function_name(name="RefreshAirtableOperationalStatuses")
 @app.route(route="refresh-airtable-operational-statuses")
 def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpResponse:
     """
     This function calls `airtable.refresh_operational_statuses()`, which returns a detailed list of dictionaries with the status of each update.
+
+    Optional query parameters:
+    - sequential_mode: If "true", processes places sequentially rather than in parallel
 
     The function returns:
     - 200 OK if the function call completes and there are no return values in the list of dicts where `update_status` is 'failed'.
@@ -259,7 +529,16 @@ def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpRes
     logging.info("Received request to refresh Airtable operational statuses.")
 
     try:
-        airtable = helpers.get_airtable_client()
+        # Extract optional parameters with defaults
+        sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
+        provider_type = req.params.get('provider_type', None)
+        
+        if sequential_mode:
+            logging.info("Using sequential mode for operational status refresh")
+        else:
+            logging.info("Using parallel mode for operational status refresh")
+            
+        airtable = helpers.get_airtable_client(sequential_mode=sequential_mode, provider_type=provider_type)
         logging.info("AirtableClient instance retrieved, starting to refresh operational statuses.")
 
         results = airtable.refresh_operational_statuses()
@@ -297,68 +576,6 @@ def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpRes
             json.dumps({
                 "success": False,
                 "message": "Server error occurred during the refresh operation.",
-                "data": None,
-                "error": str(ex)
-            }),
-            status_code=500,
-            mimetype="application/json"
-        )
-
-
-@app.function_name(name="RefreshDataCache")
-@app.route(route="refresh-data-cache")
-def refresh_data_cache(req: func.HttpRequest) -> func.HttpResponse:
-    """
-    This function refreshes the cached data for all places without doing full Airtable field enrichment.
-    It only updates the 'Has Data File' field in Airtable to mark places that have data files.
-    
-    This endpoint is useful for:
-    1. Pre-warming the cache before running enrichment
-    2. Ensuring all place data is up-to-date
-    3. Filling in missing data files
-    
-    Authorization is handled via the Azure Function key.
-    
-    Returns:
-        func.HttpResponse: A JSON response with the results of the operation
-    """
-    logging.info("Received request to refresh all place data caches.")
-
-    try:
-        airtable = helpers.get_airtable_client()
-        logging.info("AirtableClient instance retrieved, starting the data cache refresh process.")
-
-        # Call the update_cache_data method to refresh the cache
-        updated_places = airtable.update_cache_data()
-        
-        # Summarize the results by status
-        summary = {}
-        for place in updated_places:
-            status = place.get('status', 'unknown')
-            if status not in summary:
-                summary[status] = 0
-            summary[status] += 1
-        
-        # Log the summary
-        for status, count in summary.items():
-            logging.info(f"Places with status '{status}': {count}")
-
-        return func.HttpResponse(
-            json.dumps({
-                "success": True,
-                "message": "Data cache refresh completed successfully.",
-                "data": updated_places,
-                "error": None
-            }),
-            status_code=200,
-            mimetype="application/json"
-        )
-    except Exception as ex:
-        logging.error(f"Error encountered during the data cache refresh process: {ex}", exc_info=True)
-        return func.HttpResponse(
-            json.dumps({
-                "success": False,
-                "message": "Server error occurred during the data cache refresh process.",
                 "data": None,
                 "error": str(ex)
             }),

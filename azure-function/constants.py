@@ -5,10 +5,10 @@ from enum import Enum
 DEFAULT_REVIEWS_LIMIT = 250
 
 # Cache refresh intervals (in days)
-DEFAULT_CACHE_REFRESH_INTERVAL = 30  # Default refresh interval for all data types
+DEFAULT_CACHE_REFRESH_INTERVAL = 90  # Default refresh interval for all data types
 
 # Thread pool configuration
-MAX_THREAD_WORKERS = 50  # Maximum number of worker threads for ThreadPoolExecutor
+MAX_THREAD_WORKERS = 100 # Maximum number of threads for concurrent tasks
 
 class SearchField(Enum):
     """Enumeration of unique fields for searching records in the Airtable database.

@@ -21,7 +21,7 @@ class TestAirtableClient(unittest.TestCase):
         dotenv.load_dotenv()
         
         # Initialize the AirtableClient with OutscraperProvider
-        self.client = AirtableClient(data_provider_type="outscraper")
+        self.client = AirtableClient(provider_type="outscraper")
         
         self.place_id = TEST_PLACE_ID
         self.place_name = TEST_PLACE_NAME
@@ -371,8 +371,8 @@ class TestAirtableClient(unittest.TestCase):
         # Test place information
         place_name = TEST_PLACE_NAME
         place_id = TEST_PLACE_ID
-        city_name = "charlotte"
-        cache_file_path = f"data/places/{city_name}/{place_id}.json"
+        city = "charlotte"
+        cache_file_path = f"data/places/{city}/{place_id}.json"
         
         # SCENARIO 1: No cached data exists
         # =================================
@@ -403,7 +403,7 @@ class TestAirtableClient(unittest.TestCase):
             }
             
             # Call the function that uses caching
-            status, data, message = helpers.get_and_cache_place_data(place_name, place_id, city_name)
+            status, data, message = helpers.get_and_cache_place_data(place_name, place_id, city)
             
             # Verify the results
             self.assertEqual(status, 'succeeded')
@@ -456,7 +456,7 @@ class TestAirtableClient(unittest.TestCase):
             }
             
             # Call the function that uses caching
-            status, data, message = helpers.get_and_cache_place_data(place_name, place_id, city_name)
+            status, data, message = helpers.get_and_cache_place_data(place_name, place_id, city)
             
             # Verify the results
             self.assertEqual(status, 'succeeded')  # Should succeed with fresh data
@@ -509,7 +509,7 @@ class TestAirtableClient(unittest.TestCase):
             }
             
             # Call the function that uses caching
-            status, data, message = helpers.get_and_cache_place_data(place_name, place_id, city_name)
+            status, data, message = helpers.get_and_cache_place_data(place_name, place_id, city)
             
             # Verify the results
             self.assertEqual(status, 'cached')  # Should use cached data

@@ -1,4 +1,3 @@
-
 # Azure Function
 
 Stuff and thangs related to the Azure Function for this project.
@@ -81,7 +80,7 @@ When the Durable Function call is fully complete the final response looks simila
 
 ```json
 {
-  "name": "get_outscraper_data_orchestrator",
+  "name": "get_place_data_orchestrator",
   "instanceId": "fd1575779e994ba8a9110153f4173a3e",
   "runtimeStatus": "Completed",
   "input": null,
@@ -117,6 +116,150 @@ For your `local.settings.json` this is the setup I had for valuable logging loca
 }
 ```
 
+## Available Functions and Endpoints
+
+The Azure Function App exposes several endpoints for interacting with the Third Places data:
+
+### 1. Data Enrichment
+
+**Endpoint**: `/enrich-airtable-base`  
+**Method**: GET/POST  
+**Purpose**: Initiates the Airtable data enrichment process  
+
+This function triggers the `EnrichAirtableBaseOrchestrator` to update all place data in Airtable with the latest information from data providers (Google Maps, Outscraper).
+
+**Query Parameters**:
+- `force_refresh=true`: Bypasses the cache and always fetches fresh data
+- `sequential=true`: Processes places sequentially rather than in parallel
+
+**Authentication**: Requires the Azure Function key in the `x-functions-key` header.
+
+**Response**: Returns orchestration status URLs that can be used to monitor progress.
+
+### 2. Place Data Retrieval 
+
+**Endpoint**: `/orchestrators/get_place_data_orchestrator`  
+**Method**: GET/POST  
+**Purpose**: Retrieves data for all places in parallel
+
+This function starts the `get_place_data_orchestrator`, which processes all places in parallel to fetch and cache their data.
+
+**Authentication**: Requires the Azure Function key in the `x-functions-key` header.
+
+**Response**: Returns orchestration status URLs that can be used to monitor progress.
+
+### 3. Operational Status Refresh
+
+**Endpoint**: `/refresh-airtable-operational-statuses`  
+**Method**: GET/POST  
+**Purpose**: Updates the "Operational Status" field in Airtable based on the latest data
+
+This function checks if places are still operational (not permanently closed) and updates the Airtable base accordingly.
+
+**Authentication**: Requires the Azure Function key in the `x-functions-key` header.
+
+**Response**:
+```json
+{
+  "success": true,
+  "message": "Operational statuses refreshed successfully.",
+  "data": [
+    {
+      "place_name": "Example Place",
+      "place_id": "ChIJxxxxxxxxxxxxx",
+      "record_id": "recXXXXXXXXXXXXXX",
+      "update_status": "updated",
+      "old_value": "Yes",
+      "new_value": "No"
+    }
+  ],
+  "error": null
+}
+```
+
+### 4. Purge Orchestrations
+
+**Endpoint**: `/purge-orchestrations`  
+**Method**: GET/POST  
+**Purpose**: Cleans up completed or failed orchestration instances
+
+This function is used for maintenance to purge the history of completed, failed, or terminated orchestration instances.
+
+**Authentication**: Requires the Azure Function key in the `x-functions-key` header.
+
+**Response**:
+```json
+{
+  "message": "Purged orchestration instances.",
+  "instancesDeleted": 25
+}
+```
+
+### 5. Smoke Test
+
+**Endpoint**: `/smoke-test`  
+**Method**: POST  
+**Purpose**: Verifies the Azure Function is operational
+
+Simple diagnostic endpoint to check if the Azure Function is running correctly.
+
+**Request Body**:
+```json
+{"House": "Martell"}
+```
+
+**Authentication**: Requires the Azure Function key in the `x-functions-key` header.
+
+**Response**:
+```json
+{
+  "message": "The Azure Function is operational and recognizes Dorne. Unbowed. Unbent. Unbroken."
+}
+```
+
+## Orchestration Functions
+
+The application uses several orchestration functions to manage complex workflows:
+
+### 1. EnrichAirtableBaseOrchestrator
+
+Coordinates the entire Airtable enrichment process:
+
+```python
+@app.orchestration_trigger(context_name="context")
+def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
+    """
+    Orchestrator function for enriching Airtable base data.
+    This orchestrator manages the execution of the enrichment process with controlled concurrency.
+    """
+    # Implementation details...
+```
+
+This orchestrator:
+- Retrieves all third places from Airtable
+- Processes places either sequentially or in parallel with controlled concurrency
+- Handles batch processing to avoid API rate limits
+- Returns detailed results of the enrichment process
+
+### 2. get_place_data_orchestrator
+
+Manages the retrieval of place data:
+
+```python
+@app.orchestration_trigger(context_name="context")
+def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
+    """
+    Orchestrator function for retrieving place data.
+    """
+    # Implementation details...
+```
+
+This orchestrator:
+- Retrieves all third places to process
+- Calls the `get_place_data` activity function for each place in parallel
+- Tracks success/failure for each place
+- Returns the combined results
+
 ## Troubleshooting
 
 Tips on troubleshooting weird stuff with the Azure Function.
@@ -139,22 +282,15 @@ For posting to `SmokeTest`.
 
 For posting to `EnrichAirtableBase`.
 
+No body required. You can use optional query parameters:
+```
+?force_refresh=true&sequential=true
+```
+
+For posting to `RefreshAirtableOperationalStatuses`.
+
 No body required.
 
-For posting to `OutscraperReviewsResponse`.
+For posting to `PurgeOrchestrations`.
 
-```json
-{
-    "id": "your-request-id",
-    "user_id": "your-user-id",
-    "status": "SUCCESS",
-    "api_task": true,
-    "results_location": "https://api.app.outscraper.com/requests/YXV0aDB8NjNhMzRkZGRjNmRmNDM5MGJmM2ZkMzZjLDIwMjQwODE3MjA1OTM1eHM0YQ",
-    "quota_usage": [
-        {
-            "product_name": "Google Maps Data",
-            "quantity": 1
-        }
-    ]
-}
-```
+No body required.

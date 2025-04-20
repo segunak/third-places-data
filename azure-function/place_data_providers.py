@@ -178,7 +178,7 @@ class PlaceDataProvider(ABC):
         else:
             return self.find_place_id(place_name)
 
-    def get_all_place_data(self, place_id: str, place_name: str, skip_photos: bool = True) -> Dict[str, Any]:
+    def get_all_place_data(self, place_id: str, place_name: str, skip_photos: bool = True, force_refresh: bool = False) -> Dict[str, Any]:
         """
         Retrieves and combines all available data for a place, including details, reviews, and photos.
 
@@ -186,6 +186,7 @@ class PlaceDataProvider(ABC):
             place_id (str): The unique identifier for the place.
             place_name (str): The name of the place.
             skip_photos (bool): If True, skip retrieving photos. Default is False.
+            force_refresh (bool): If True, bypass any caching mechanism and retrieve fresh data.
 
         Returns:
             Dict[str, Any]: A comprehensive dictionary containing all available data about the place.
@@ -196,10 +197,10 @@ class PlaceDataProvider(ABC):
             
             # Only fetch photos if not explicitly skipped
             if skip_photos:
-                logging.info(f"get_all_place_data: Skipping photo retrieval for {place_name} as requested (photos already exist in Airtable)")
+                logging.info(f"get_all_place_data: Skipping photo retrieval for {place_name} as requested.")
                 photos = {
                     "place_id": place_id,
-                    "message": "Photos retrieval skipped - photos already exist in Airtable",
+                    "message": "Photos retrieval skipped.",
                     "photo_urls": []
                 }
             else:
@@ -1073,26 +1074,13 @@ class PlaceDataProviderFactory:
         Raises:
             ValueError: If the specified provider type is not supported.
         """
-        if provider_type.lower() == 'google':
+        if not isinstance(provider_type, str):
+            raise ValueError("provider_type must be a string and be either 'google' or 'outscraper'.")
+        normalized = provider_type.strip().lower()
+        if normalized == 'google':
             return GoogleMapsProvider()
-        elif provider_type.lower() == 'outscraper':
+        elif normalized == 'outscraper':
             return OutscraperProvider()
         else:
-            raise ValueError(f"Unsupported provider type: {provider_type}")
+            raise ValueError(f"Unsupported provider type: {provider_type}. Must be 'google' or 'outscraper'.")
 
-    @staticmethod
-    def get_default_provider() -> PlaceDataProvider:
-        """
-        Returns the default place data provider as specified in environment variables.
-        
-        Note: For a singleton instance that's reused across the application,
-        use helper_functions.get_place_data_provider() instead.
-
-        Returns:
-            PlaceDataProvider: An instance of the default provider.
-        """
-        # VS Code automatically loads local.settings.json into your environment when running/debugging Azure Functions locally, 
-        # even outside the full runtime. This behavior mimics Azure Functions and populates os.environ with everything under Values.
-        dotenv.load_dotenv()
-        provider_type = os.environ.get('DEFAULT_PLACE_DATA_PROVIDER', 'outscraper')
-        return PlaceDataProviderFactory.get_provider(provider_type)

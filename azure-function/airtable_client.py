@@ -17,7 +17,7 @@ class AirtableClient:
     """Defines methods for interaction with the Charlotte Third Places Airtable database.
     """
 
-    def __init__(self, data_provider_type=None, sequential_mode=False):
+    def __init__(self, provider_type=None, sequential_mode=False):
         logging.basicConfig(level=logging.INFO)
 
         if 'FUNCTIONS_WORKER_RUNTIME' in os.environ:
@@ -39,8 +39,10 @@ class AirtableClient:
         )
         
         # Use the singleton pattern to get a place data provider
+        if not provider_type:
+            raise ValueError("AirtableClient requires provider_type to be specified ('google' or 'outscraper').")
         import helper_functions as helpers
-        self.data_provider = helpers.get_place_data_provider(data_provider_type)
+        self.data_provider = helpers.get_place_data_provider(provider_type)
         
         self.api = Api(self.AIRTABLE_PERSONAL_ACCESS_TOKEN)
         self.all_third_places = self.charlotte_third_places.all(sort=["-Created Time"])
@@ -160,7 +162,6 @@ class AirtableClient:
             result = {"field_updates": {}}
             
             if place_data and 'details' in place_data:
-                # Mark this place as having data file
                 self.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
             
                 details = place_data['details']
@@ -186,13 +187,6 @@ class AirtableClient:
                 description = details.get('description', '')
                 google_maps_url = details.get('google_maps_url', '')
                 
-                # Check if we already have photos in Airtable before considering updating them
-                record = self.charlotte_third_places.get(record_id)
-                has_existing_photos = 'Photos' in record['fields'] and record['fields']['Photos']
-                
-                photos_data = place_data.get('photos', {})
-                photos_list = photos_data.get('photo_urls', []) if photos_data else []
-                
                 # Format is the place value and the boolean indicating if it should be overwritten
                 # The boolean is used to determine if the field should be updated even if it already has a value
                 fields_to_update = {
@@ -206,7 +200,14 @@ class AirtableClient:
                     'Latitude': (str(latitude), True) if latitude else (None, False),
                     'Longitude': (str(longitude), True) if longitude else (None, False),
                 }
-                
+        
+                record = self.charlotte_third_places.get(record_id)
+
+                # Check if we already have photos in Airtable before considering updating them
+                has_existing_photos = 'Photos' in record['fields'] and record['fields']['Photos']        
+                photos_data = place_data.get('photos', {})
+                photos_list = photos_data.get('photo_urls', []) if photos_data else []
+        
                 # Only add Photos to fields_to_update if:
                 # 1. We have new photos from the API AND
                 # 2. The place doesn't already have photos in Airtable
@@ -234,7 +235,7 @@ class AirtableClient:
             
             return result
 
-        # Check if we're in debug mode to decide between sequential or parallel execution
+        # Sequential execution
         if self.sequential_mode:
             logging.info("Running enrich_base_data in SEQUENTIAL mode for debugging")
             for third_place in self.all_third_places:
@@ -265,67 +266,6 @@ class AirtableClient:
                         logging.info(f"Finished processing {place_name}")
                     except Exception as e:
                         logging.error(f"Error processing {place_name}: {e}")
-
-        return places_updated
-        
-    def update_cache_data(self) -> list:
-        """
-        Updates the cached data for all places without doing full Airtable field enrichment.
-        Only updates the 'Has Data File' field in Airtable to mark places that have data files.
-        
-        This method:
-        1. Gets data for each place (cached or fresh) using helper_functions.get_and_cache_place_data
-        2. Updates only the 'Has Data File' field in Airtable
-        
-        Returns:
-            list: A list of dictionaries containing the results of each place cache update operation.
-        """
-        places_updated = []
-        
-        def cache_update_callback(record_id, place_data):
-            """
-            Callback function to update just the 'Has Data File' field in Airtable.
-            
-            Args:
-                record_id (str): The Airtable record ID
-                place_data (dict): The place data from helper_functions.get_and_cache_place_data
-                
-            Returns:
-                dict: Empty dict as no additional data needs to be included in the result
-            """
-            # Only update the Has Data File field to indicate we have data
-            self.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
-            return {}
-            
-        # Check if we're in debug mode to decide between sequential or parallel execution
-        if self.sequential_mode:
-            logging.info("Running update_cache_data in SEQUENTIAL mode for debugging")
-            for third_place in self.all_third_places:
-                place_name = third_place['fields'].get('Place', 'Unknown Place')
-                try:
-                    result = self._process_place(third_place, cache_update_callback)
-                    places_updated.append(result)
-                    logging.info(f"Finished cache update for {place_name}")
-                except Exception as e:
-                    logging.error(f"Error updating cache for {place_name}: {e}")
-        else:
-            # Standard parallel execution with ThreadPoolExecutor
-            logging.info(f"Running update_cache_data in PARALLEL mode with {MAX_THREAD_WORKERS} workers")
-            with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
-                futures = {
-                    executor.submit(self._process_place, third_place, cache_update_callback): 
-                    third_place['fields'].get('Place', 'Unknown Place')
-                    for third_place in self.all_third_places
-                }
-
-                for future in as_completed(futures):
-                    place_name = futures[future]
-                    try:
-                        result = future.result()
-                        places_updated.append(result)
-                        logging.info(f"Finished cache update for {place_name}")
-                    except Exception as e:
-                        logging.error(f"Error updating cache for {place_name}: {e}")
 
         return places_updated
 
