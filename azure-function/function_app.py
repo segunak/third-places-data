@@ -240,6 +240,7 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
     Optional query parameters:
     - force_refresh: If "true", bypasses the cache and always fetches fresh data
     - sequential_mode: If "true", processes places sequentially rather than in parallel
+    - provider_type: The type of data provider to use (e.g., "google", "outscraper")
     
     Returns:
         func.HttpResponse: A JSON response with the orchestration instance ID and status URL
@@ -250,13 +251,26 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
         # Extract optional parameters with defaults
         force_refresh = req.params.get('force_refresh', '').lower() == 'true' 
         sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
+        provider_type = req.params.get('provider_type', None)
         
-        logging.info(f"Starting enrichment with parameters: force_refresh={force_refresh}, sequential_mode={sequential_mode}")
+        if not provider_type:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Missing required parameter: provider_type",
+                    "data": None,
+                    "error": "The provider_type parameter is required"
+                }),
+                status_code=400
+            )
+        
+        logging.info(f"Starting enrichment with parameters: force_refresh={force_refresh}, sequential_mode={sequential_mode}, provider_type={provider_type}")
         
         # Start the orchestrator with the parameters
         orchestration_input = {
             "force_refresh": force_refresh,
-            "sequential_mode": sequential_mode
+            "sequential_mode": sequential_mode,
+            "provider_type": provider_type
         }
         
         instance_id = await client.start_new("enrich_airtable_base_orchestrator", client_input=orchestration_input)
@@ -275,8 +289,7 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
                 "data": None,
                 "error": str(ex)
             }),
-            status_code=500,
-            mimetype="application/json"
+            status_code=500
         )
 
 @app.orchestration_trigger(context_name="context")
@@ -297,9 +310,15 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
         # Get input parameters
         orchestration_input = context.get_input() or {}
         sequential_mode = orchestration_input.get("sequential_mode", False)
+        provider_type = orchestration_input.get("provider_type", None)
+        force_refresh = orchestration_input.get("force_refresh", False)
         
         # Call the batch enrichment activity, which invokes enrich_base_data properly
-        enrichment_results = yield context.call_activity("enrich_airtable_batch", {"sequential_mode": sequential_mode})
+        enrichment_results = yield context.call_activity("enrich_airtable_batch", {
+            "sequential_mode": sequential_mode,
+            "provider_type": provider_type,
+            "force_refresh": force_refresh
+        })
         
         # Filter to only include places that had at least one field updated
         actually_updated_places = [
@@ -344,20 +363,24 @@ def enrich_airtable_batch(activityInput):
     Args:
         activityInput: A dictionary containing:
             - sequential_mode: Boolean indicating whether to use sequential processing mode
+            - provider_type: The data provider type to use ('google' or 'outscraper')
+            - force_refresh: Boolean indicating whether to force refresh cached data
     
     Returns:
         The result of the enrichment operation for all places
     """
     sequential_mode = activityInput.get('sequential_mode', False)
+    provider_type = activityInput.get('provider_type', None)
+    force_refresh = activityInput.get('force_refresh', False)
     
-    logging.info(f"Enriching all places in batch mode (sequential_mode={sequential_mode})")
+    logging.info(f"Enriching all places in batch mode (sequential_mode={sequential_mode}, provider_type={provider_type}, force_refresh={force_refresh})")
     
     try:
-        # Get AirtableClient with appropriate sequential_mode setting
-        airtable = helpers.get_airtable_client(sequential_mode=sequential_mode)
+        # Get AirtableClient with appropriate sequential_mode and provider_type setting
+        airtable = helpers.get_airtable_client(sequential_mode=sequential_mode, provider_type=provider_type)
         
         # Call the shared enrich_base_data method designed for batch processing
-        return airtable.enrich_base_data()
+        return airtable.enrich_base_data(force_refresh=force_refresh)
     except Exception as ex:
         logging.error(f"Error in batch enrichment: {ex}", exc_info=True)
         return {

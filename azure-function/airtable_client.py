@@ -134,63 +134,122 @@ class AirtableClient:
 
         return f"{parsed_url.scheme}://{parsed_url.netloc}{parsed_url.path}".strip()
 
-    def enrich_base_data(self) -> list:
+    def enrich_base_data(self, force_refresh=False) -> list:
         """
-        Enriches the base data of places stored in Airtable with additional metadata fetched using the configured data provider.
-        Uses threading to parallelize fetching details for all places, unless sequential_mode is enabled.
+        Enriches the base data of places stored in Airtable with additional metadata.
         
-        This method:
-        1. Gets data for each place (cached or fresh) using helper_functions.get_and_cache_place_data
-        2. Updates Airtable fields with this data
+        This method retrieves place data (either from cache or fresh) and updates
+        Airtable fields with the retrieved information. It can run either in sequential mode 
+        or parallel mode for better performance.
+        
+        Args:
+            force_refresh (bool): If True, bypass the cache and always fetch fresh data
         
         Returns:
-            list: A list of dictionaries containing the results of each place enrichment operation.
+            list: A list of dictionaries containing the results of each place enrichment
         """
-        places_updated = []
+        places_results = []
         
-        def enrich_callback(record_id, place_data):
+        def process_single_place(third_place):
             """
-            Callback function to enrich Airtable fields with place data.
+            Process a single place by fetching its data and updating Airtable.
             
             Args:
-                record_id (str): The Airtable record ID
-                place_data (dict): The place data from helper_functions.get_and_cache_place_data
+                third_place: A dictionary containing place data from Airtable
                 
             Returns:
-                dict: Additional data to include in the result
+                dict: Result of the place processing including update status
             """
-            result = {"field_updates": {}}
+            result = {
+                "place_name": "",
+                "place_id": "",
+                "record_id": "",
+                "status": "",
+                "message": "",
+                "field_updates": {}
+            }
             
-            if place_data and 'details' in place_data:
-                self.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
-            
+            try:
+                # Skip places without a name
+                if 'Place' not in third_place['fields']:
+                    result["message"] = "Missing place name"
+                    result["status"] = "skipped"
+                    return result
+                
+                # Extract basic place information
+                place_name = third_place['fields']['Place']
+                record_id = third_place['id']
+                place_id = third_place['fields'].get('Google Maps Place Id', None)
+                
+                logging.info(f"Processing place: {place_name}")
+                result['place_name'] = place_name
+                result['record_id'] = record_id
+                result['place_id'] = place_id
+                
+                # Get place data using the helper function (with caching)
+                status, place_data, message = helpers.get_and_cache_place_data(
+                    place_name,
+                    place_id,
+                    'charlotte',
+                    force_refresh=force_refresh,
+                    provider_type=self.data_provider.provider_type
+                )
+                result["status"] = status
+                result["message"] = message
+                
+                # Stop processing if no data was retrieved
+                if status == 'failed' or status == 'skipped':
+                    logging.info(f"Processing skipped for {place_name}: {message}")
+                    return result
+                
+                # Update the place ID in case it was newly found
+                if place_data and place_data.get('place_id'):
+                    result["place_id"] = place_data.get('place_id')
+                    place_id = place_data.get('place_id')
+                
+                # Stop if no place data or no details available
+                if not place_data or 'details' not in place_data:
+                    logging.info(f"No place data found for {place_name}.")
+                    return result
+                
+                # Update 'Has Data File' status
+                update_result = self.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
+                result['field_updates']['Has Data File'] = {
+                    "updated": update_result["updated"],
+                    "old_value": update_result["old_value"],
+                    "new_value": update_result["new_value"]
+                }
+                
+                # Extract details from place data
                 details = place_data['details']
                 
+                # Process website URL
                 website = details.get('website', '')
                 if website:
                     website = self.get_base_url(website)
                 
+                # Extract other place details
                 address = details.get('address', '')
                 latitude = details.get('latitude')
                 longitude = details.get('longitude')
                 
-                # Parking is returned as a list of tags like ["Free", "Street"]
+                # Process parking information (first tag represents if it's free/paid/unsure)
                 parking = details.get('parking', ['Unsure'])
                 if parking and len(parking) > 0:
-                    parking = parking[0]  # Use the first tag which indicates if it's free/paid/unsure
+                    parking = parking[0]
                 else:
                     parking = 'Unsure'
-                    
-                # Purchase required is standardized as "Yes", "No", or "Unsure"
+                
+                # Get purchase required status
                 purchase_required = details.get('purchase_required', 'Unsure')
                 
+                # Other details
                 description = details.get('description', '')
                 google_maps_url = details.get('google_maps_url', '')
                 
-                # Format is the place value and the boolean indicating if it should be overwritten
-                # The boolean is used to determine if the field should be updated even if it already has a value
+                # Prepare field updates (field value, should_overwrite)
                 fields_to_update = {
-                    'Google Maps Place Id': (place_data.get('place_id'), True),
+                    'Google Maps Place Id': (place_id, True),
                     'Google Maps Profile URL': (google_maps_url, True),
                     'Website': (website, True),
                     'Address': (address, True),
@@ -200,24 +259,20 @@ class AirtableClient:
                     'Latitude': (str(latitude), True) if latitude else (None, False),
                     'Longitude': (str(longitude), True) if longitude else (None, False),
                 }
-        
+                
+                # Handle photos - check if we already have photos in Airtable
                 record = self.charlotte_third_places.get(record_id)
-
-                # Check if we already have photos in Airtable before considering updating them
-                has_existing_photos = 'Photos' in record['fields'] and record['fields']['Photos']        
+                has_existing_photos = 'Photos' in record['fields'] and record['fields']['Photos']
                 photos_data = place_data.get('photos', {})
                 photos_list = photos_data.get('photo_urls', []) if photos_data else []
-        
-                # Only add Photos to fields_to_update if:
-                # 1. We have new photos from the API AND
-                # 2. The place doesn't already have photos in Airtable
-                # This ensures we never overwrite existing photos
+                
+                # Only add Photos if we have new photos AND the place doesn't already have photos
                 if photos_list and not has_existing_photos:
                     fields_to_update['Photos'] = (str(photos_list), False)
                 elif has_existing_photos:
                     logging.info(f"Skipping photo update as photos already exist in Airtable")
-
-                # Process updates
+                
+                # Process each field update
                 for field_name, (field_value, overwrite) in fields_to_update.items():
                     if field_value:
                         update_result = self.update_place_record(
@@ -226,48 +281,53 @@ class AirtableClient:
                             field_value,
                             overwrite
                         )
-    
+                        
                         result['field_updates'][field_name] = {
                             "updated": update_result["updated"],
                             "old_value": update_result["old_value"],
                             "new_value": update_result["new_value"]
                         }
-            
-            return result
-
-        # Sequential execution
+                
+                return result
+                
+            except Exception as e:
+                logging.error(f"Error processing place {place_name if 'place_name' in locals() else 'unknown'}: {e}")
+                result["message"] = f"Error: {str(e)}"
+                result["status"] = "failed"
+                return result
+        
+        # Decide between sequential and parallel execution
         if self.sequential_mode:
-            logging.info("Running enrich_base_data in SEQUENTIAL mode for debugging")
+            # Sequential execution (for debugging)
+            logging.info("Running enrich_base_data in SEQUENTIAL mode")
             for third_place in self.all_third_places:
                 place_name = third_place['fields'].get('Place', 'Unknown Place')
                 try:
-                    # Call process_place_common directly with the enrich_callback
-                    result = self._process_place(third_place, enrich_callback)
-                    places_updated.append(result)
+                    result = process_single_place(third_place)
+                    places_results.append(result)
                     logging.info(f"Finished processing {place_name}")
                 except Exception as e:
                     logging.error(f"Error processing {place_name}: {e}")
         else:
-            # Standard parallel execution with ThreadPoolExecutor
+            # Parallel execution using ThreadPoolExecutor
             logging.info(f"Running enrich_base_data in PARALLEL mode with {MAX_THREAD_WORKERS} workers")
             with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
                 futures = {
-                    # Call process_place_common directly with the enrich_callback
-                    executor.submit(self._process_place, third_place, enrich_callback): 
+                    executor.submit(process_single_place, third_place): 
                     third_place['fields'].get('Place', 'Unknown Place')
                     for third_place in self.all_third_places
                 }
-
+                
                 for future in as_completed(futures):
                     place_name = futures[future]
                     try:
                         result = future.result()
-                        places_updated.append(result)
+                        places_results.append(result)
                         logging.info(f"Finished processing {place_name}")
                     except Exception as e:
                         logging.error(f"Error processing {place_name}: {e}")
-
-        return places_updated
+        
+        return places_results
 
     def get_record(self, search_field: SearchField, search_value: str) -> dict:
         """
@@ -289,13 +349,13 @@ class AirtableClient:
             
             # Handle no matches
             if not matched_records:
-                logging.warning(f"No records found for {search_field.value}='{search_value}'")
+                logging.info(f"No records found for {search_field.value}='{search_value}'")
                 return None
                 
             # Handle multiple matches
             if len(matched_records) > 1:
                 record_ids = [record['id'] for record in matched_records]
-                logging.warning(
+                logging.info(
                     f"Found {len(matched_records)} records for {search_field.value}='{search_value}'. "
                     f"IDs: {record_ids}"
                 )
@@ -326,7 +386,7 @@ class AirtableClient:
             if photos_response and 'photos' in photos_response:
                 return photos_response['photos']
             else:
-                logging.warning(f"No photos found for place ID: {place_id}")
+                logging.info(f"No photos found for place ID: {place_id}")
                 return []
         except Exception as e:
             logging.error(f"Error retrieving photos for place ID {place_id}: {e}")
@@ -384,7 +444,7 @@ class AirtableClient:
             logging.info(f"Has Data File for Place ID {place_id}: {has_data_file}")
             return has_data_file == 'Yes'
         else:
-            logging.warning(f"Record with Place ID {place_id} not found.")
+            logging.info(f"Record with Place ID {place_id} not found.")
             return False
 
     def get_place_types(self) -> List[str]:
@@ -409,30 +469,31 @@ class AirtableClient:
 
     def refresh_operational_statuses(self) -> List[Dict[str, Any]]:
         """
-        Refreshes the 'Operational' status of each place in the Airtable base by checking their current status via the configured data provider.
-
-        For each record in the 'Charlotte Third Places' Airtable base, this method performs the following:
-        - Retrieves the Google Maps Place ID.
-        - Uses the configured data provider to determine if the place is operational.
-        - Updates the 'Operational' field in Airtable with 'Yes' if the place is operational, 'No' otherwise.
-        - Compares the new operational status with the current value in the 'Operational' field.
-            - If they are the same, the update is skipped to conserve API calls.
-            - If they are different, the record is updated accordingly.
-        - Collects detailed information about each operation, including whether it was updated, skipped, or failed.
-
+        Refreshes the 'Operational' status of each place in the Airtable base.
+        
+        For each place, this method:
+        1. Retrieves the Google Maps Place ID
+        2. Uses the configured data provider to check if the place is operational
+        3. Updates the 'Operational' field in Airtable accordingly
+        4. Only updates records where the status has changed to minimize API calls
+        
+        Can run in either sequential mode (for debugging) or parallel mode for performance.
+        
         Returns:
-            List[Dict[str, Any]]: A list of dictionaries, each containing:
-                - 'place_name': The name of the place.
-                - 'place_id': The Google Maps Place ID.
-                - 'record_id': The Airtable record ID.
-                - 'old_value': The old value of the 'Operational' field.
-                - 'new_value': The new value of the 'Operational' field.
-                - 'update_status': A string indicating the operation status ('updated', 'skipped', 'failed').
-                - 'message': Any additional messages or error descriptions.
+            List[Dict[str, Any]]: Results for each place with update status and details
         """
         results = []
-
-        def process_place(third_place: dict) -> Dict[str, Any]:
+        
+        def process_single_place(third_place: dict) -> Dict[str, Any]:
+            """
+            Process a single place by checking its operational status and updating Airtable.
+            
+            Args:
+                third_place: A dictionary containing place data from Airtable
+                
+            Returns:
+                dict: Result of the operation including update status
+            """
             result = {
                 'place_name': '',
                 'place_id': '',
@@ -442,61 +503,72 @@ class AirtableClient:
                 'update_status': '',
                 'message': ''
             }
+            
             try:
+                # Get basic place information
                 place_name = third_place['fields'].get('Place', '')
-                result['place_name'] = place_name
-
                 record_id = third_place.get('id', '')
-                result['record_id'] = record_id
-
                 place_id = third_place['fields'].get('Google Maps Place Id')
+                
+                result['place_name'] = place_name
+                result['record_id'] = record_id
                 result['place_id'] = place_id
-
+                
+                # Check for valid place ID
                 if not place_id:
-                    logging.warning(f"No Google Maps Place ID for {place_name}.")
+                    logging.info(f"No Google Maps Place ID for {place_name}.")
                     result['update_status'] = 'failed'
                     result['message'] = 'No Google Maps Place ID.'
                     return result
-
+                
+                # Get current status from Airtable
                 current_operational_value = third_place['fields'].get('Operational', '')
                 result['old_value'] = current_operational_value
-
+                
+                # Check if place is operational via data provider
                 is_operational = self.data_provider.is_place_operational(place_id)
                 new_operational_value = 'Yes' if is_operational else 'No'
                 result['new_value'] = new_operational_value
-
+                
+                # Skip update if status hasn't changed
                 if current_operational_value == new_operational_value:
                     logging.info(f"Operational status for '{place_name}' is unchanged ({current_operational_value}). Skipping update.")
                     result['update_status'] = 'skipped'
+                    return result
+                
+                # Update Airtable with new status
+                update_result = self.update_place_record(
+                    record_id,
+                    'Operational',
+                    new_operational_value,
+                    overwrite=True
+                )
+                
+                # Record result of update operation
+                if update_result['updated']:
+                    logging.info(f"Updated Operational status for '{place_name}' from '{current_operational_value}' to '{new_operational_value}'.")
+                    result['update_status'] = 'updated'
                 else:
-                    update_result = self.update_place_record(
-                        record_id,
-                        'Operational',
-                        new_operational_value,
-                        overwrite=True
-                    )
-                    if update_result['updated']:
-                        logging.info(f"Updated Operational status for '{place_name}' from '{current_operational_value}' to '{new_operational_value}'.")
-                        result['update_status'] = 'updated'
-                    else:
-                        logging.warning(f"Failed to update Operational status for '{place_name}'.")
-                        result['update_status'] = 'failed'
-                        result['message'] = 'Update failed.'
-
+                    logging.info(f"Failed to update Operational status for '{place_name}'.")
+                    result['update_status'] = 'failed'
+                    result['message'] = 'Update failed.'
+                
+                return result
+                
             except Exception as e:
-                logging.error(f"Error processing place '{place_name}': {e}")
+                logging.error(f"Error processing place '{place_name if 'place_name' in locals() else 'unknown'}': {e}")
                 result['update_status'] = 'failed'
                 result['message'] = str(e)
-
-            return result
-
-        # Check if we're in debug mode to decide between sequential or parallel execution
+                return result
+        
+        # Choose between sequential and parallel execution based on mode
         if self.sequential_mode:
-            logging.info("Running refresh_operational_statuses in SEQUENTIAL mode for debugging")
+            # Sequential execution for debugging
+            logging.info("Running refresh_operational_statuses in SEQUENTIAL mode")
             for third_place in self.all_third_places:
                 place_name = third_place['fields'].get('Place', 'Unknown Place')
                 try:
-                    result = process_place(third_place)
+                    result = process_single_place(third_place)
                     results.append(result)
                     logging.info(f"Finished operational status check for {place_name}")
                 except Exception as e:
@@ -511,20 +583,22 @@ class AirtableClient:
                         'message': str(e)
                     })
         else:
-            # Standard parallel execution with ThreadPoolExecutor
+            # Parallel execution for performance
             logging.info(f"Running refresh_operational_statuses in PARALLEL mode with {MAX_THREAD_WORKERS} workers")
             with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
                 futures = {
-                    executor.submit(process_place, third_place): third_place['fields'].get('Place', 'Unknown Place')
+                    executor.submit(process_single_place, third_place): third_place['fields'].get('Place', 'Unknown Place')
                     for third_place in self.all_third_places
                 }
+                
                 for future in as_completed(futures):
                     place_name = futures[future]
                     try:
                         result = future.result()
                         results.append(result)
+                        logging.info(f"Finished operational status check for {place_name}")
                     except Exception as e:
-                        logging.error(f"Error processing place '{place_name}': {e}")
+                        logging.error(f"Error checking operational status for {place_name}: {e}")
                         results.append({
                             'place_name': place_name,
                             'place_id': '',
@@ -534,70 +608,5 @@ class AirtableClient:
                             'update_status': 'failed',
                             'message': str(e)
                         })
-
+        
         return results
-
-    def _process_place(self, third_place: dict, callback) -> dict:
-        """
-        Common processing logic for place data that both enrich_base_data and update_cache_data share.
-        
-        Args:
-            third_place (dict): The place data from Airtable.
-            callback (callable): A function to call with place data that handles the specific processing logic.
-                                The callback should accept (record_id, place_data) and return any additional data for the result.
-        
-        Returns:
-            dict: Contains results of the place processing operation.
-        """
-        import helper_functions as helpers
-        
-        return_data = {
-            "place_name": "",
-            "place_id": "",
-            "record_id": "",
-            "status": "",
-            "message": ""
-        }
-
-        try:
-            if 'Place' not in third_place['fields']:
-                return_data["message"] = "Missing place name."
-                return_data["status"] = "skipped"
-                return return_data
-            
-            place_name = third_place['fields']['Place']
-            logging.info(f"Processing place: {place_name}")
-            return_data['place_name'] = place_name
-            
-            record_id = third_place['id']
-            return_data['record_id'] = record_id
-            
-            # Get place ID
-            place_id = third_place['fields'].get('Google Maps Place Id', None)
-            return_data['place_id'] = place_id
-            
-            # Use the helper_functions module to get place data with caching
-            status, place_data, message = helpers.get_and_cache_place_data(place_name, place_id, 'charlotte')
-            return_data["status"] = status
-            return_data["message"] = message
-            
-            if status == 'failed' or status == 'skipped':
-                logging.warning(f"Processing skipped for {place_name}: {message}")
-                return return_data
-            
-            # Update the place ID in case it was newly found
-            if place_data and place_data.get('place_id'):
-                return_data["place_id"] = place_data.get('place_id')
-            
-            # Run the callback to handle specific processing
-            callback_result = callback(record_id, place_data)
-            if callback_result:
-                return_data.update(callback_result)
-            
-            return return_data
-                
-        except Exception as e:
-            logging.error(f"Error processing place {place_name if 'place_name' in locals() else 'unknown'}: {e}")
-            return_data["message"] = f"Error: {str(e)}"
-            return_data["status"] = "failed"
-            return return_data

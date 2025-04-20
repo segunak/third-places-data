@@ -10,3 +10,8 @@ from constants import SearchField
 from airtable_client import AirtableClient
 
 
+airtable = helpers.get_airtable_client(sequential_mode=True, provider_type='outscraper')
+
+airtable.enrich_base_data(force_refresh=False)
+
+print("Enrichment complete.")

@@ -29,6 +29,19 @@ class PlaceDataProvider(ABC):
 
         # Ensure we have the Google Maps API key for place ID validation
         self.GOOGLE_MAPS_API_KEY = os.environ['GOOGLE_MAPS_API_KEY']
+        
+        # The provider_type will be set by the child classes
+        self._provider_type = None
+
+    @property
+    def provider_type(self) -> str:
+        """
+        Returns the type of provider this instance represents.
+        
+        Returns:
+            str: The provider type string ('google' or 'outscraper')
+        """
+        return self._provider_type
 
     @abstractmethod
     def get_place_details(self, place_id: str) -> Dict[str, Any]:
@@ -260,6 +273,8 @@ class GoogleMapsProvider(PlaceDataProvider):
             dotenv.load_dotenv()
 
         self.API_KEY = os.environ['GOOGLE_MAPS_API_KEY']
+        # Set the provider type for this class
+        self._provider_type = 'google'
 
     def get_place_details(self, place_id: str) -> Dict[str, Any]:
         """
@@ -580,6 +595,9 @@ class OutscraperProvider(PlaceDataProvider):
 
         self.API_KEY = os.environ['OUTSCRAPER_API_KEY']
         self.client = ApiClient(api_key=self.API_KEY)
+        
+        # Set the provider type for this class
+        self._provider_type = 'outscraper'
 
         # Charlotte, NC coordinates for location bias
         # Format: "@latitude,longitude,zoom" as required by Outscraper API
