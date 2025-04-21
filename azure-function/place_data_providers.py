@@ -668,16 +668,17 @@ class OutscraperProvider(PlaceDataProvider):
     
     def _clean_address(self, address: str) -> str:
         """
-        Cleans the address by removing country suffix.
+        Cleans the address by removing country suffix and applying Title Case.
         
-        This method removes country suffixes like ", United States" or ", USA" from addresses
-        to ensure consistent address formatting without the country.
+        This method:
+        1. Removes country suffixes like ", United States" or ", USA" from addresses
+        2. Converts the address to Title Case, capitalizing the first letter of each word
         
         Args:
             address (str): The address to clean
             
         Returns:
-            str: The cleaned address without country suffix
+            str: The cleaned address without country suffix and in Title Case
         """
         if not address:
             return ""
@@ -700,8 +701,12 @@ class OutscraperProvider(PlaceDataProvider):
                 cleaned_address = cleaned_address[:-len(suffix)]
                 logging.debug(f"Removed country suffix from address. Original: '{address}', Cleaned: '{cleaned_address}'")
                 break
+        
+        # Convert to Title Case (capitalize first letter of each word)
+        title_case_address = ' '.join(word.capitalize() for word in cleaned_address.split())
+        logging.debug(f"Converted address to Title Case: '{cleaned_address}' → '{title_case_address}'")
                 
-        return cleaned_address
+        return title_case_address
     
     def _create_empty_details_response(self, place_id: str, error_message: str = "") -> Dict[str, Any]:
         """Creates a standardized empty response for when details can't be retrieved."""
@@ -1090,15 +1095,35 @@ class PlaceDataProviderFactory:
             PlaceDataProvider: An instance of the requested provider.
 
         Raises:
-            ValueError: If the specified provider type is not supported.
+            ValueError: If the specified provider type is not supported or if there's an error creating the provider.
         """
+        if provider_type is None:
+            error_msg = "provider_type cannot be None - must be 'google' or 'outscraper'"
+            logging.error(error_msg)
+            raise ValueError(error_msg)
+            
         if not isinstance(provider_type, str):
-            raise ValueError("provider_type must be a string and be either 'google' or 'outscraper'.")
-        normalized = provider_type.strip().lower()
-        if normalized == 'google':
-            return GoogleMapsProvider()
-        elif normalized == 'outscraper':
-            return OutscraperProvider()
-        else:
-            raise ValueError(f"Unsupported provider type: {provider_type}. Must be 'google' or 'outscraper'.")
+            error_msg = f"provider_type must be a string, got {type(provider_type).__name__}"
+            logging.error(error_msg)
+            raise ValueError(error_msg)
+            
+        try:
+            normalized = provider_type.strip().lower()
+            
+            if normalized == 'google':
+                logging.info(f"Creating new GoogleMapsProvider instance")
+                return GoogleMapsProvider()
+            elif normalized == 'outscraper':
+                logging.info(f"Creating new OutscraperProvider instance")
+                return OutscraperProvider()
+            else:
+                error_msg = f"Unsupported provider type: '{provider_type}'. Must be 'google' or 'outscraper'."
+                logging.error(error_msg)
+                raise ValueError(error_msg)
+                
+        except Exception as ex:
+            error_msg = f"Error creating provider of type '{provider_type}': {str(ex)}"
+            logging.error(error_msg, exc_info=True)
+            # Re-raise with a clear message that includes the original exception
+            raise ValueError(f"Failed to create provider: {error_msg}") from ex
 

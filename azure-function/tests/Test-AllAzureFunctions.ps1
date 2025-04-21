@@ -116,15 +116,15 @@ Test-HttpFunction -Endpoint 'purge-orchestrations' -Description 'Purge completed
 
 # 3. Refresh Place Data (Durable)
 $refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&city=$script:City"
-Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential=$script:SequentialMode)"
+Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
 # 4. Enrich Airtable Base (Durable)
 $enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())"
-Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential=$script:SequentialMode)"
+Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
 # 5. Refresh Operational Statuses (HTTP)
 $opsEndpoint = "refresh-airtable-operational-statuses?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())"
-Test-HttpFunction -Endpoint $opsEndpoint -Description "Refresh operational statuses ($script:ProviderType, sequential=$script:SequentialMode)"
+Test-HttpFunction -Endpoint $opsEndpoint -Description "Refresh operational statuses ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
 # Display test completion
 Write-Log "All Azure Function endpoint tests completed."

@@ -118,9 +118,9 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
             # Process places in parallel with controlled concurrency
             from constants import MAX_THREAD_WORKERS
             # Use a smaller concurrency limit than MAX_THREAD_WORKERS to avoid rate limits
-            concurrency_limit = min(MAX_THREAD_WORKERS, 10)
+            concurrency_limit = MAX_THREAD_WORKERS
             
-            logging.info(f"Running place data retrieval in parallel mode with concurrency={concurrency_limit} for {len(all_third_places)} places")
+            logging.info(f"Running place data retrieval in parallel mode with concurrency={MAX_THREAD_WORKERS} for {len(all_third_places)} places")
             
             # Process places in batches based on the concurrency limit
             for i in range(0, len(all_third_places), concurrency_limit):
@@ -171,6 +171,7 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
         return error_response
 
 @app.activity_trigger(input_name="activityInput")
+@app.function_name("get_place_data")  # Add explicit function name registration
 def get_place_data(activityInput):
     """
     Activity function that retrieves all data for a specific place.
@@ -353,6 +354,7 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
         return error_response
 
 @app.activity_trigger(input_name="activityInput")
+@app.function_name("enrich_airtable_batch")  # Add explicit function name registration
 def enrich_airtable_batch(activityInput):
     """
     Activity function to enrich all places in Airtable using enrich_base_data.
@@ -393,6 +395,7 @@ def enrich_airtable_batch(activityInput):
 # ======================================================
 
 @app.activity_trigger(input_name="activityInput")
+@app.function_name("get_all_third_places")  # Add explicit function name registration
 def get_all_third_places(activityInput):
     """
     Activity function that retrieves all third places from Airtable.

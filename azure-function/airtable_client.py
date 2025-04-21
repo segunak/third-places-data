@@ -206,7 +206,7 @@ class AirtableClient:
                 if place_data and place_data.get('place_id'):
                     result["place_id"] = place_data.get('place_id')
                     place_id = place_data.get('place_id')
-                
+        
                 # Stop if no place data or no details available
                 if not place_data or 'details' not in place_data:
                     logging.info(f"No place data found for {place_name}.")

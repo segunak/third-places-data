@@ -8,7 +8,7 @@ DEFAULT_REVIEWS_LIMIT = 250
 DEFAULT_CACHE_REFRESH_INTERVAL = 90  # Default refresh interval for all data types
 
 # Thread pool configuration
-MAX_THREAD_WORKERS = 100 # Maximum number of threads for concurrent tasks
+MAX_THREAD_WORKERS = 50 # Maximum number of threads for concurrent tasks
 
 class SearchField(Enum):
     """Enumeration of unique fields for searching records in the Airtable database.
