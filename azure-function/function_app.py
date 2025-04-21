@@ -535,8 +535,9 @@ def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpRes
     """
     This function calls `airtable.refresh_operational_statuses()`, which returns a detailed list of dictionaries with the status of each update.
 
-    Optional query parameters:
+    Query parameters:
     - sequential_mode: If "true", processes places sequentially rather than in parallel
+    - provider_type: The type of data provider to use (e.g., "google", "outscraper")
 
     The function returns:
     - 200 OK if the function call completes and there are no return values in the list of dicts where `update_status` is 'failed'.
@@ -555,7 +556,6 @@ def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpRes
     logging.info("Received request to refresh Airtable operational statuses.")
 
     try:
-        # Extract optional parameters with defaults
         sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
         provider_type = req.params.get('provider_type', None)
         
