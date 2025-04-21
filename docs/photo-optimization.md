@@ -30,14 +30,14 @@ This strategy is implemented in several layers of the application:
 The `get_all_place_data()` method now accepts a `skip_photos` parameter:
 
 ```python
-def get_all_place_data(self, place_id: str, place_name: str, skip_photos: bool = False):
+def get_all_place_data(self, place_id: str, place_name: str, skip_photos: bool = True, force_refresh: bool = False):
     # ...
     if skip_photos:
-        logging.info(f"Skipping photo retrieval for {place_name} as requested (photos already exist in Airtable)")
+        logging.info(f"get_all_place_data: Skipping photo retrieval for {place_name} as requested.")
         photos = {
             "place_id": place_id,
-            "message": "Photos retrieval skipped - photos already exist in Airtable",
-            "photos_data": []
+            "message": "Photos retrieval skipped.",
+            "photo_urls": []
         }
     else:
         photos = self.get_place_photos(place_id)
@@ -52,20 +52,38 @@ The `get_and_cache_place_data()` function in `helper_functions.py` now:
 2. Sets the `skip_photos` parameter accordingly when calling the data provider
 
 ```python
-# Check if the place already has photos in Airtable
-has_existing_photos = False
-try:
-    # Create a temporary AirtableClient
-    airtable = AirtableClient()
-    record = airtable.get_record(constants.SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
-    if record and 'Photos' in record['fields'] and record['fields']['Photos']:
-        has_existing_photos = True
-        logging.info(f"Place {place_name} already has photos in Airtable. Skipping photo retrieval to save API costs.")
-except Exception as e:
-    logging.warning(f"Could not check for existing photos in Airtable: {e}")
+# First check if the place already has photos in Airtable to avoid API costs
+skip_photos, airtable_photos = _should_skip_photos_retrieval(place_id, place_name)
+    
+# Retrieve fresh data
+logging.info(f"Retrieving fresh data for {place_name} with place_id {place_id}")
+place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=skip_photos)
+```
 
-# Pass skip_photos=True if photos already exist
-place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=has_existing_photos)
+The `_should_skip_photos_retrieval()` helper function determines whether photos should be skipped:
+
+```python
+def _should_skip_photos_retrieval(place_id: str, place_name: str) -> Tuple[bool, Optional[str]]:
+    """
+    Determine if photo retrieval should be skipped based on existing Airtable data.
+    
+    Returns:
+        Tuple of (skip_photos, airtable_photos), where:
+        - skip_photos is True if photos should be skipped
+        - airtable_photos is the photos data from Airtable if available
+    """
+    try:
+        airtable = get_airtable_client()
+        airtable_record = airtable.get_record(constants.SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
+        
+        if airtable_record and 'Photos' in airtable_record['fields'] and airtable_record['fields']['Photos']:
+            airtable_photos = airtable_record['fields']['Photos']
+            logging.info(f"Place {place_name} already has photos in Airtable. Skipping photo retrieval to save API costs.")
+            return True, airtable_photos
+    except Exception as e:
+        logging.warning(f"Could not check for existing photos in Airtable: {e}")
+    
+    return False, None
 ```
 
 ### 3. Airtable Client
@@ -77,19 +95,17 @@ The `enrich_base_data()` method in `AirtableClient` has been modified to:
 3. Skip updating the Photos field when photos already exist
 
 ```python
-# Check if we already have photos in Airtable before considering updating them
-has_existing_photos = 'Photos' in third_place['fields'] and third_place['fields']['Photos']
-
+# Handle photos - check if we already have photos in Airtable
+record = self.charlotte_third_places.get(record_id)
+has_existing_photos = 'Photos' in record['fields'] and record['fields']['Photos']
 photos_data = place_data.get('photos', {})
-photos_list = photos_data.get('photos_data', []) if photos_data else []
+photos_list = photos_data.get('photo_urls', []) if photos_data else []
 
-# Only add Photos to fields_to_update if:
-# 1. We have new photos from the API AND
-# 2. The place doesn't already have photos in Airtable
+# Only add Photos if we have new photos AND the place doesn't already have photos
 if photos_list and not has_existing_photos:
     fields_to_update['Photos'] = (str(photos_list), False)
 elif has_existing_photos:
-    logging.info(f"Skipping photo update for {place_name} as photos already exist in Airtable")
+    logging.info(f"Skipping photo update as photos already exist in Airtable")
 ```
 
 ## Cost Savings
