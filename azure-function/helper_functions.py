@@ -74,7 +74,7 @@ def save_reviews_azure(json_data, review_file_name):
         logging.exception(e)
 
 
-def save_data_github(json_data, full_file_path, max_retries=3):
+def save_data_github(json_data: str, full_file_path: str, max_retries=3):
     """ Saves the given JSON data to the specified file path in the GitHub repository.
     Implements retry logic for handling 409 Conflict errors.
 
@@ -105,7 +105,6 @@ def save_data_github(json_data, full_file_path, max_retries=3):
     url_get = f"https://api.github.com/repos/{repo_name}/contents/{full_file_path}?ref={branch}"
     url_put = f"https://api.github.com/repos/{repo_name}/contents/{full_file_path}"
     
-    # Prepare the encoded content once outside the retry loop
     encoded_content = base64.b64encode(json_data.encode()).decode()
     
     for attempt in range(max_retries + 1):
@@ -355,35 +354,34 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
         skip_photos = False
         existing_photos_json = None
         
-        # Check for cached data and optimize photo retrieval if not forcing refresh
-        if not force_refresh:
-            try:
-                # Get the AirtableClient from resource manager
-                airtable_client = rm.get_airtable_client(provider_type)
-                
-                # Check if the place exists in Airtable
-                record = airtable_client.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
-                
-                # If the record exists and has photos, skip photo retrieval
-                if record and 'Photos' in record['fields'] and record['fields']['Photos']:
-                    logging.info(f"Place {place_id} already has photos in Airtable, skipping photo retrieval")
-                    skip_photos = True
-                    existing_photos_json = record['fields']['Photos']
-            except Exception as e:
-                logging.error(f"Error checking if photos should be skipped: {e}")
-                # In case of error, don't skip photo retrieval
-                skip_photos = False
-                existing_photos_json = None
+        try:
+            # Get the AirtableClient from resource manager
+            airtable_client = rm.get_airtable_client(provider_type)
+            
+            # Check if the place exists in Airtable
+            record = airtable_client.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
+            
+            # If the record exists and has photos, skip photo retrieval
+            if record and 'Photos' in record['fields'] and record['fields']['Photos']:
+                logging.info(f"Place {place_id} already has photos in Airtable, skipping photo retrieval")
+                skip_photos = True
+                existing_photos_json = record['fields']['Photos']
+        except Exception as e:
+            logging.error(f"Error checking if photos should be skipped: {e}")
+            # In case of error, don't skip photo retrieval
+            skip_photos = False
+            existing_photos_json = None
         
-            # Now check if there's a valid cached version
+        # Check if we have cached data and if it's still valid
+        if not force_refresh:
             success, cached_data, message = fetch_data_github(cached_file_path)
             if success and is_cache_valid(cached_data, DEFAULT_CACHE_REFRESH_INTERVAL):
                 logging.info(f"Using cached data for {place_name} from {cached_file_path}")
                 return 'cached', cached_data, f"Using cached data from {cached_file_path}"
         
         # If we reach here, we need to fetch fresh data, there is no valid cache or we are forcing a refresh
-        logging.info(f"Getting fresh data for {place_name} with place_id {place_id}. The value of skip_photos is {skip_photos} and the value of force_refresh is {force_refresh}.")
-        
+        logging.info(f"Getting fresh data from API provider {provider_type} for {place_name} with place_id {place_id}. The value of skip_photos is {skip_photos} and the value of force_refresh is {force_refresh}.")
+
         # Get place data from provider, skipping photos if we already have them
         place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=skip_photos)
         
@@ -395,7 +393,7 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
         place_data['last_updated'] = datetime.now().isoformat()
         
         # Save to GitHub
-        success, message = save_data_github(place_data, cached_file_path)
+        success, message = save_data_github(json.dumps(place_data), cached_file_path)
         if not success:
             logging.warning(f"Failed to cache data for {place_name}: {message}")
         

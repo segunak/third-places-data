@@ -169,6 +169,7 @@ class AirtableClient:
         Returns:
             list: A list of dictionaries containing the results of each place enrichment
         """
+        logging.info("Started enriching base data in enrich_base_data.")
         places_results = []
         force_refresh = resource_manager.get_config('force_refresh', False)
         
@@ -192,7 +193,6 @@ class AirtableClient:
             }
             
             try:
-                # Skip places without a name
                 if 'Place' not in third_place['fields']:
                     result["message"] = "Missing place name"
                     result["status"] = "skipped"
@@ -236,11 +236,7 @@ class AirtableClient:
                 
                 # Update 'Has Data File' status
                 update_result = self.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
-                result['field_updates']['Has Data File'] = {
-                    "updated": update_result["updated"],
-                    "old_value": update_result["old_value"],
-                    "new_value": update_result["new_value"]
-                }
+                result['field_updates']['Has Data File'] = update_result
                 
                 # Extract details from place data
                 details = place_data['details']
@@ -304,12 +300,7 @@ class AirtableClient:
                             overwrite
                         )
                         
-                        result['field_updates'][field_name] = {
-                            "updated": update_result["updated"],
-                            "old_value": update_result["old_value"],
-                            "new_value": update_result["new_value"]
-                        }
-                
+                        result['field_updates'][field_name] = update_result
                 return result
                 
             except Exception as e:
@@ -323,7 +314,7 @@ class AirtableClient:
             # Sequential execution (for debugging)
             logging.info("Running enrich_base_data in SEQUENTIAL mode")
             for third_place in self.all_third_places:
-                place_name = third_place['fields'].get('Place', 'Unknown Place')
+                place_name = third_place['fields'].get('Place')
                 try:
                     result = process_single_place(third_place)
                     places_results.append(result)
@@ -336,7 +327,7 @@ class AirtableClient:
             with ThreadPoolExecutor(max_workers=MAX_THREAD_WORKERS) as executor:
                 futures = {
                     executor.submit(process_single_place, third_place): 
-                    third_place['fields'].get('Place', 'Unknown Place')
+                    third_place['fields'].get('Place')
                     for third_place in self.all_third_places
                 }
                 
