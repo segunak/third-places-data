@@ -127,7 +127,7 @@ def save_data_github(json_data: str, full_file_path: str, max_retries=3):
                 data['sha'] = sha  # Include SHA only if updating an existing file
             
             # Step 3: Make the request to create/update file
-            put_response = requests.put(url_put, headers=headers, data=json.dumps(data))
+            put_response = requests.put(url_put, headers=headers, data=json.dumps(data, indent=4))
             
             # Step 4: Handle the response
             if put_response.status_code in {200, 201}:
@@ -393,7 +393,7 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
         place_data['last_updated'] = datetime.now().isoformat()
         
         # Save to GitHub
-        success, message = save_data_github(json.dumps(place_data), cached_file_path)
+        success, message = save_data_github(json.dumps(place_data, indent=4), cached_file_path)
         if not success:
             logging.warning(f"Failed to cache data for {place_name}: {message}")
         
