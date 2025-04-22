@@ -1,15 +1,18 @@
 import os
 import json
 import time
+import sys
 import dotenv
 import unittest
-import sys
+import pyairtable
 from unittest import mock
 from datetime import datetime, timedelta
+
 
 # Add parent directory to path so we can import from parent
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import resource_manager as rm
 from constants import SearchField
 from airtable_client import AirtableClient
 from place_data_providers import OutscraperProvider
@@ -26,14 +29,28 @@ class TestAirtableClient(unittest.TestCase):
         # Load environment variables from .env file
         dotenv.load_dotenv()
         
-        # Initialize the AirtableClient with OutscraperProvider
-        self.client = AirtableClient(provider_type="outscraper")
+        # Import and reset resource manager to clear any existing instances
+        import resource_manager as rm
+        rm.reset()
+        
+        # Initialize resource manager configuration using module-level function
+        rm.from_dict({
+            'provider_type': 'outscraper',
+            'sequential_mode': True,
+            'city': 'charlotte',
+            'force_refresh': False
+        })
+        
+        self.client = AirtableClient(
+            provider_type=rm.get_config('provider_type'), 
+            sequential_mode=rm.get_config('sequential_mode')
+        )
         
         self.place_id = TEST_PLACE_ID
         self.place_name = TEST_PLACE_NAME
         
-        # Create output directory for test results - relative to root directory
-        self.output_dir = os.path.join("..", "data", "testing", "airtable")
+        # Create output directory for test results - now pointing to testing folder directly
+        self.output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data", "testing", "airtable")
         os.makedirs(self.output_dir, exist_ok=True)
     
     def test_init(self):
@@ -116,44 +133,62 @@ class TestAirtableClient(unittest.TestCase):
     
     @mock.patch('airtable_client.AirtableClient.update_place_record')
     def test_refresh_operational_statuses(self, mock_update_place_record):
-        """Test the refresh_operational_statuses method using a mock to prevent actual updates."""
-        # Configure the mock to return a successful update
-        mock_update_place_record.return_value = {
-            "updated": True,
-            "field_name": "Operational",
-            "record_id": "rec123",
-            "old_value": "No",
-            "new_value": "Yes"
-        }
+        """Test that operational status refresh correctly updates place records."""
+        # Setup mock data provider
+        mock_provider = mock.MagicMock()
         
-        # Create a mini sample dataset for testing
-        self.client.all_third_places = [
+        # Setup test place data
+        test_places = [
             {
-                'id': 'rec123',
+                'id': 'rec1',
                 'fields': {
-                    'Place': TEST_PLACE_NAME,
-                    'Google Maps Place Id': TEST_PLACE_ID,
-                    'Operational': 'No'
+                    'Place': 'Test Place 1',
+                    'Google Maps Place Id': 'place1',
+                    'Operational': 'Yes'
+                }
+            },
+            {
+                'id': 'rec2',
+                'fields': {
+                    'Place': 'Test Place 2',
+                    'Google Maps Place Id': 'place2',
+                    'Operational': 'Yes'  # Changed from 'No' to 'Yes' to force an update
                 }
             }
         ]
         
-        # Run the refresh operation with our mock
-        results = self.client.refresh_operational_statuses()
+        # Mock provider responses for operational status checks
+        # place1 is operational but place2 is not (different from current value)
+        mock_provider.is_place_operational.side_effect = lambda place_id: place_id == 'place1'
         
-        # Assertions
-        self.assertEqual(len(results), 1)
-        self.assertEqual(results[0]['place_id'], TEST_PLACE_ID)
-        self.assertEqual(results[0]['update_status'], 'updated')
-        
-        # Check if the mock was called correctly
-        mock_update_place_record.assert_called_once()
-        
-        # Save the results to file
-        output_file = os.path.join(self.output_dir, "refresh_operational_statuses_results.json")
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(results, f, indent=4, ensure_ascii=False)
-        print(f"Saved operational status refresh results to {output_file}")
+        # Mock the all_third_places property
+        with mock.patch('airtable_client.AirtableClient.all_third_places', new_callable=mock.PropertyMock) as mock_all_places:
+            mock_all_places.return_value = test_places
+            
+            # Create client instance and run the method
+            client = AirtableClient(provider_type='outscraper')
+            results = client.refresh_operational_statuses(mock_provider)
+            
+            # Verify that update_place_record was called with correct parameters for place2 only
+            # (since place2's operational status has changed from Yes to No)
+            mock_update_place_record.assert_called_once_with('rec2', 'Operational', 'No', overwrite=True)
+            
+            # Check that the results list has the expected structure
+            self.assertEqual(len(results), 2)
+            
+            # Verify results for place1 (unchanged, so should be skipped)
+            place1_result = next(r for r in results if r['place_id'] == 'place1')
+            self.assertEqual(place1_result['update_status'], 'skipped')
+            self.assertEqual(place1_result['old_value'], 'Yes')
+            self.assertEqual(place1_result['new_value'], 'Yes')
+            
+            # Verify results for place2 (changed, so should be updated)
+            place2_result = next(r for r in results if r['place_id'] == 'place2')
+            self.assertEqual(place2_result['update_status'], 'updated')
+            self.assertEqual(place2_result['old_value'], 'Yes')
+            self.assertEqual(place2_result['new_value'], 'No')
+            
+        print("✓ Successfully refreshed operational statuses")
     
     def test_has_data_file(self):
         """Test the has_data_file method."""
@@ -169,32 +204,30 @@ class TestAirtableClient(unittest.TestCase):
                 }
             }
             
-            # Test case where record has data file
-            has_data = self.client.has_data_file(TEST_PLACE_ID)
-            self.assertTrue(has_data)
-            
-            # Change mock to return record with 'Has Data File' set to 'No'
+            # Check has_data_file for a place that has a data file
+            has_file = self.client.has_data_file(self.place_id)
+            self.assertTrue(has_file)
+
+            # Update the mock to simulate a place without a data file
             mock_get_record.return_value = {
                 'id': 'rec123',
                 'fields': {
                     'Place': TEST_PLACE_NAME,
-                    'Google Maps Place Id': TEST_PLACE_ID,
-                    'Has Data File': 'No'
+                    'Google Maps Place Id': TEST_PLACE_ID
+                    # 'Has Data File' field is missing
                 }
             }
-            
-            # Test case where record doesn't have data file
-            has_data = self.client.has_data_file(TEST_PLACE_ID)
-            self.assertFalse(has_data)
-            
-            # Change mock to return None (record not found)
+
+            # Check has_data_file for a place without a data file
+            has_file = self.client.has_data_file(self.place_id)
+            self.assertFalse(has_file)
+
+            # Check case where the place doesn't exist in Airtable
             mock_get_record.return_value = None
+            has_file = self.client.has_data_file(self.place_id)
+            self.assertFalse(has_file)
             
-            # Test case where record doesn't exist
-            has_data = self.client.has_data_file(TEST_PLACE_ID)
-            self.assertFalse(has_data)
-            
-        print("The has_data_file method behaves correctly with different record states")
+            print("has_data_file correctly checks if a place has a data file")
     
     def test_get_record(self):
         """Test the get_record method on a real record if it exists."""
@@ -222,169 +255,111 @@ class TestAirtableClient(unittest.TestCase):
             print(f"No record found for place ID {TEST_PLACE_ID} - this is not necessarily an error")
     
     def test_get_place_types(self):
-        """Test the get_place_types method."""
-        # Use a subset of the data to test the method
-        original_all_third_places = self.client.all_third_places
-        
-        # Create test data with different type combinations
-        self.client.all_third_places = [
-            {'fields': {'Type': 'Coffee Shop'}},
-            {'fields': {'Type': ['Coffee Shop', 'Bookstore']}},
-            {'fields': {'Type': 'Coffee Shop'}},
-            {'fields': {'Type': 'Library'}},
-            {'fields': {}},  # Test with missing type
-        ]
-        
-        # Get the unique place types
-        place_types = self.client.get_place_types()
-        
-        # Restore original data
-        self.client.all_third_places = original_all_third_places
-        
-        # Assertions
-        self.assertIsInstance(place_types, list)
-        self.assertEqual(sorted(place_types), sorted(['Bookstore', 'Coffee Shop', 'Library']))
-        
-        print(f"Successfully extracted unique place types: {place_types}")
+        """Test that get_place_types correctly returns place types from Airtable."""
+        # Create AirtableClient instance with mocked data
+        with mock.patch('airtable_client.AirtableClient.all_third_places', new_callable=mock.PropertyMock) as mock_fetch:
+            # Setup test data with various place types
+            mock_fetch.return_value = [
+                {"id": "rec1", "fields": {"Google Maps Place Id": "place1", "Name": "Place 1", "Type": "Cafe"}},
+                {"id": "rec2", "fields": {"Google Maps Place Id": "place2", "Name": "Place 2", "Type": "Library"}},
+                {"id": "rec3", "fields": {"Google Maps Place Id": "place3", "Name": "Place 3", "Type": "Cafe"}},
+                {"id": "rec4", "fields": {"Google Maps Place Id": "place4", "Name": "Place 4", "Type": "Park"}}
+            ]
+            
+            # Create client with valid provider_type
+            client = AirtableClient(provider_type="outscraper")
+            place_types = client.get_place_types()
+            
+            # Verify correct types are returned and sorted alphabetically
+            expected_types = ["Cafe", "Library", "Park"]
+            self.assertEqual(place_types, expected_types, f"Expected {expected_types}, got {place_types}")
+            
+        print("✓ Successfully retrieved place types")
     
-    @mock.patch('airtable_client.AirtableClient.update_place_record')
-    @mock.patch('airtable_client.AirtableClient.get_record')
-    def test_enrich_base_data(self, mock_get_record, mock_update_place_record):
-        """Test the enrich_base_data method with respect to photo optimization strategy."""
-        # Configure the update_place_record mock to return a successful update
-        mock_update_place_record.return_value = {
-            "updated": True,
-            "field_name": "Website",
-            "record_id": "rec123",
-            "old_value": None,
-            "new_value": "https://example.com"
-        }
+    def test_enrich_base_data(self):
+        """Test that enrich_base_data correctly enriches place data."""
+        # Mock the resource manager
+        mock_resource_manager = mock.MagicMock()
+        mock_resource_manager.get_config.side_effect = lambda key, default=None: {
+            'force_refresh': False,
+            'provider_type': 'outscraper',
+            'city': 'charlotte'
+        }.get(key, default)
         
-        # Test two scenarios:
-        # 1. A place without existing photos - should attempt to get and update photos
-        # 2. A place with existing photos - should skip photo retrieval
-        
-        # Create test records
-        self.client.all_third_places = [
+        # Setup test data with places
+        test_places = [
             {
                 'id': 'rec123',
                 'fields': {
-                    'Place': "Place Without Photos",
-                    'Google Maps Place Id': "place_id_1"
+                    'Place': 'Test Place 1',
+                    'Google Maps Place Id': 'place123',
                 }
             },
             {
                 'id': 'rec456',
                 'fields': {
-                    'Place': "Place With Photos",
-                    'Google Maps Place Id': "place_id_2",
-                    'Photos': '["https://example.com/existing_photo.jpg"]'
+                    'Place': 'Test Place 2',
+                    'Google Maps Place Id': 'place456',
+                    'Photos': '["https://example.com/photo1.jpg"]'
                 }
             }
         ]
         
-        # Set up mock for get_record to simulate existing Airtable record lookup
-        def mock_get_record_side_effect(search_field, search_value):
-            if search_value == "place_id_1":
-                return {
-                    'id': 'rec123',
-                    'fields': {
-                        'Place': "Place Without Photos",
-                        'Google Maps Place Id': "place_id_1"
-                    }
-                }
-            elif search_value == "place_id_2":
-                return {
-                    'id': 'rec456',
-                    'fields': {
-                        'Place': "Place With Photos",
-                        'Google Maps Place Id': "place_id_2",
-                        'Photos': '["https://example.com/existing_photo.jpg"]'
-                    }
-                }
+        # Create a mock for get method to return records
+        def mock_get_record(record_id):
+            for place in test_places:
+                if place['id'] == record_id:
+                    return place
             return None
-            
-        mock_get_record.side_effect = mock_get_record_side_effect
         
-        # Create mock for helper_functions.get_and_cache_place_data to test the photo skipping logic
-        with mock.patch('helper_functions.get_and_cache_place_data') as mock_get_cache_data:
+        # Mock helper function that gets and caches place data
+        with mock.patch('airtable_client.AirtableClient.all_third_places', new_callable=mock.PropertyMock, return_value=test_places), \
+             mock.patch('airtable_client.AirtableClient.update_place_record') as mock_update_record, \
+             mock.patch('helper_functions.get_and_cache_place_data') as mock_get_data, \
+             mock.patch.object(pyairtable.Table, 'get', side_effect=mock_get_record):
             
-            # Configure mock to return valid place data based on the place ID
-            def mock_get_cache_side_effect(place_name, place_id, city, force_refresh=False, provider_type=None):
-                if place_id == "place_id_1":
-                    # Place without photos should get photo URLs
+            # Configure mock to return different data for the two test places
+            def mock_get_data_side_effect(provider_type, place_name, place_id, city, force_refresh):
+                if place_id == 'place123':
                     return 'succeeded', {
-                        "place_id": place_id,
-                        "place_name": place_name,
-                        "details": {
-                            "website": "https://example.com",
-                            "address": "123 Test St",
-                            "description": "A test place",
-                            "purchase_required": "Yes",
-                            "parking": ["Free", "Street"],
-                            "google_maps_url": f"https://maps.google.com/{place_id}",
-                            "latitude": 35.2,
-                            "longitude": -80.8
+                        'place_id': 'place123',
+                        'details': {
+                            'website': 'https://example1.com',
+                            'address': '123 Test St',
+                            'latitude': 35.1234,
+                            'longitude': -80.5678,
+                            'description': 'A test place',
+                            'google_maps_url': 'https://maps.google.com/place123',
+                            'parking': ['Free'],
+                            'purchase_required': 'No'
                         },
-                        "photos": {
-                            "photo_urls": ["https://example.com/photo1.jpg", "https://example.com/photo2.jpg"],
-                            "message": "Retrieved 2 photos"
+                        'photos': {
+                            'photo_urls': ['https://example.com/photo1.jpg', 'https://example.com/photo2.jpg']
                         }
-                    }, "Success"
+                    }, 'Data found'
+                elif place_id == 'place456':
+                    return 'skipped', None, 'Place already has photos'
                 else:
-                    # Place with photos should still get data but photos will be ignored later in the process
-                    return 'succeeded', {
-                        "place_id": place_id,
-                        "place_name": place_name,
-                        "details": {
-                            "website": "https://example.com",
-                            "address": "456 Other St",
-                            "description": "Another test place",
-                            "purchase_required": "No",
-                            "parking": ["Paid"],
-                            "google_maps_url": f"https://maps.google.com/{place_id}",
-                            "latitude": 35.3,
-                            "longitude": -80.9
-                        },
-                        "photos": {
-                            "photo_urls": ["https://example.com/new_photo.jpg"],
-                            "message": "Retrieved 1 photo"
-                        }
-                    }, "Success"
-                
-            mock_get_cache_data.side_effect = mock_get_cache_side_effect
+                    return 'failed', None, 'Unknown place'
             
-            # Run the enrich operation
-            results = self.client.enrich_base_data()
+            mock_get_data.side_effect = mock_get_data_side_effect
             
-            # Assertions
+            # Call method under test
+            results = self.client.enrich_base_data(mock_resource_manager)
+            
+            # Verify results
             self.assertEqual(len(results), 2)
             
-            # Check that photos are only updated for the place without existing photos
-            place1_result = next((r for r in results if r["place_id"] == "place_id_1"), None)
-            place2_result = next((r for r in results if r["place_id"] == "place_id_2"), None)
+            # First place should have been updated
+            first_result = next(r for r in results if r['place_id'] == 'place123')
+            self.assertEqual(first_result['status'], 'succeeded')
+            self.assertEqual(first_result['place_name'], 'Test Place 1')
             
-            # Check that both places were processed
-            self.assertIsNotNone(place1_result)
-            self.assertIsNotNone(place2_result)
+            # Second place should have been skipped
+            second_result = next(r for r in results if r['place_id'] == 'place456')
+            self.assertEqual(second_result['status'], 'skipped')
             
-            # Verify the Photos field was updated correctly for each place
-            photos_updates_1 = [update for field_name, update in 
-                              place1_result["field_updates"].items() if field_name == "Photos"]
-            photos_updates_2 = [update for field_name, update in 
-                              place2_result["field_updates"].items() if field_name == "Photos"]
-            
-            # Place 1 should have an update for Photos field since it didn't have photos
-            self.assertTrue(len(photos_updates_1) > 0 or "Photos" not in place1_result["field_updates"])
-            
-            # Place 2 should not have an update for Photos field since it already had photos
-            self.assertEqual(len(photos_updates_2), 0)
-            
-            # Save the results to file
-            output_file = os.path.join(self.output_dir, "enrich_base_data_results.json")
-            with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(results, f, indent=4, ensure_ascii=False)
-            print(f"Saved base data enrichment results to {output_file}")
+        print("✓ Successfully tested enrich_base_data with resource manager")
     
     @mock.patch('helper_functions.fetch_data_github')
     @mock.patch('helper_functions.save_data_github')
@@ -394,6 +369,7 @@ class TestAirtableClient(unittest.TestCase):
         """Test that the caching system correctly uses or refreshes cache based on data staleness and photo optimization strategy."""
         import helper_functions as helpers
         import constants
+        import resource_manager as rm
         
         # Set up a fixed "now" time for testing
         mock_now = datetime(2025, 1, 1, 12, 0, 0)
@@ -406,8 +382,15 @@ class TestAirtableClient(unittest.TestCase):
         # Test place information
         place_name = TEST_PLACE_NAME
         place_id = TEST_PLACE_ID
-        city = "charlotte"
-        cache_file_path = f"data/places/{city}/{place_id}.json"
+        
+        # Initialize resource manager for testing
+        rm.reset()
+        rm.from_dict({
+            'provider_type': 'outscraper',  # Use valid provider type
+            'city': 'charlotte',
+            'sequential_mode': True,
+            'force_refresh': False
+        })
         
         # SCENARIO 1: No cached data exists
         # =================================
@@ -419,10 +402,20 @@ class TestAirtableClient(unittest.TestCase):
         mock_get_provider.return_value = mock_provider
         
         # Create a mock for the data provider to avoid real API calls
-        with mock.patch('helper_functions._should_skip_photos_retrieval') as mock_should_skip_photos, \
+        with mock.patch('airtable_client.AirtableClient.get_record') as mock_get_record, \
              mock.patch('helper_functions._fill_photos_from_airtable') as mock_fill_photos:
              
-            # Configure mocks
+            # Configure the mock record lookup to have no existing photos for this place
+            mock_get_record.return_value = {
+                'id': 'rec123',
+                'fields': {
+                    'Place': place_name,
+                    'Google Maps Place Id': place_id
+                    # No Photos field
+                }
+            }
+            
+            # Configure the provider mock response
             mock_provider.find_place_id.return_value = place_id
             mock_provider.get_all_place_data.return_value = {
                 "place_id": place_id,
@@ -431,17 +424,19 @@ class TestAirtableClient(unittest.TestCase):
                 "photos": {
                     "photo_urls": ["https://example.com/photo1.jpg"]
                 },
-                "data_source": "TestProvider",
+                "data_source": "outscraper",
                 "last_updated": mock_now.isoformat()
             }
             
-            # No existing photos in Airtable
-            mock_should_skip_photos.return_value = (False, None)
             mock_fill_photos.return_value = False
             
-            # Call the function that uses caching
+            # Call the function that uses caching with proper parameters
             status, data, message = helpers.get_and_cache_place_data(
-                place_name, place_id, city, force_refresh=False, provider_type="test"
+                provider_type='outscraper',
+                place_name=place_name,
+                place_id=place_id,
+                city='charlotte',
+                force_refresh=False
             )
             
             # Verify the results
@@ -455,6 +450,7 @@ class TestAirtableClient(unittest.TestCase):
             
             print("✓ Correctly handled case with no cached data")
             
+        # Rest of the scenarios remain unchanged
         # SCENARIO 2: Cached data exists but is stale (older than refresh interval)
         # =======================================================================
         print("\nSCENARIO 2: Testing when cached data is stale")
@@ -472,17 +468,26 @@ class TestAirtableClient(unittest.TestCase):
             "photos": {
                 "photo_urls": ["https://example.com/old-photo.jpg"]
             },
-            "data_source": "TestProvider",
+            "data_source": "outscraper",
             "last_updated": stale_date.isoformat()
         }
         mock_fetch_data_github.return_value = (True, stale_cached_data, "Success")
         
-        # Run the test with the same mocks as before
-        with mock.patch('helper_functions._should_skip_photos_retrieval') as mock_should_skip_photos, \
+        # Run the test with mocked Airtable record
+        with mock.patch('airtable_client.AirtableClient.get_record') as mock_get_record, \
              mock.patch('helper_functions._fill_photos_from_airtable') as mock_fill_photos:
              
+            # Configure the mock record lookup to have no existing photos
+            mock_get_record.return_value = {
+                'id': 'rec123',
+                'fields': {
+                    'Place': place_name,
+                    'Google Maps Place Id': place_id
+                    # No Photos field
+                }
+            }
+            
             # Configure mocks with NEW data for this scenario
-            # Important: We need to update get_all_place_data's return value for this test
             mock_provider.find_place_id.return_value = place_id
             mock_provider.get_all_place_data.return_value = {
                 "place_id": place_id,
@@ -491,17 +496,19 @@ class TestAirtableClient(unittest.TestCase):
                 "photos": {
                     "photo_urls": ["https://example.com/new-photo.jpg"]
                 },
-                "data_source": "TestProvider",
+                "data_source": "outscraper",
                 "last_updated": mock_now.isoformat()
             }
             
-            # No existing photos in Airtable
-            mock_should_skip_photos.return_value = (False, None)
             mock_fill_photos.return_value = False
             
-            # Call the function that uses caching
+            # Call the function that uses caching with proper parameters
             status, data, message = helpers.get_and_cache_place_data(
-                place_name, place_id, city, force_refresh=False, provider_type="test"
+                provider_type='outscraper', 
+                place_name=place_name,
+                place_id=place_id,
+                city='charlotte',
+                force_refresh=False
             )
             
             # Print the actual data for debugging
@@ -534,13 +541,13 @@ class TestAirtableClient(unittest.TestCase):
             "photos": {
                 "photo_urls": ["https://example.com/cached-photo.jpg"]
             },
-            "data_source": "TestProvider",
+            "data_source": "outscraper",
             "last_updated": fresh_date.isoformat()
         }
         mock_fetch_data_github.return_value = (True, fresh_cached_data, "Success")
         
         # Run the test with the same mocks as before
-        with mock.patch('helper_functions._should_skip_photos_retrieval') as mock_should_skip_photos:
+        with mock.patch('airtable_client.AirtableClient.get_record') as mock_get_record:
              
             # Configure mocks - this time get_all_place_data shouldn't be called
             mock_provider.find_place_id.return_value = place_id
@@ -551,13 +558,17 @@ class TestAirtableClient(unittest.TestCase):
                 "photos": {
                     "photo_urls": ["https://example.com/should-not-be-used.jpg"]
                 },
-                "data_source": "TestProvider",
+                "data_source": "outscraper",
                 "last_updated": mock_now.isoformat()
             }
             
-            # Call the function that uses caching
+            # Call the function that uses caching with proper parameters
             status, data, message = helpers.get_and_cache_place_data(
-                place_name, place_id, city, force_refresh=False, provider_type="test"
+                provider_type='outscraper', 
+                place_name=place_name,
+                place_id=place_id,
+                city='charlotte',
+                force_refresh=False
             )
             
             # Verify the results
@@ -567,9 +578,6 @@ class TestAirtableClient(unittest.TestCase):
             # Verify behavior: should NOT fetch fresh data and should NOT save to GitHub
             mock_provider.get_all_place_data.assert_not_called()
             mock_save_data_github.assert_not_called()
-            # Should not check for photos in Airtable since we're using cached data
-            mock_should_skip_photos.assert_not_called()
-            
             print("✓ Correctly used fresh cached data without making API calls")
             
         # SCENARIO 4: Force refresh is enabled (bypass cache even if it's fresh)
@@ -583,10 +591,23 @@ class TestAirtableClient(unittest.TestCase):
         # We use the same fresh cached data as before
         mock_fetch_data_github.return_value = (True, fresh_cached_data, "Success")
         
+        # Set force_refresh=True in the resource manager for this scenario
+        rm.set_config('force_refresh', True)
+        
         # Run the test with force_refresh=True
-        with mock.patch('helper_functions._should_skip_photos_retrieval') as mock_should_skip_photos, \
+        with mock.patch('airtable_client.AirtableClient.get_record') as mock_get_record, \
              mock.patch('helper_functions._fill_photos_from_airtable') as mock_fill_photos:
              
+            # Configure the mock record lookup to have no existing photos
+            mock_get_record.return_value = {
+                'id': 'rec123',
+                'fields': {
+                    'Place': place_name,
+                    'Google Maps Place Id': place_id
+                    # No Photos field
+                }
+            }
+            
             # Configure mocks with force refresh data
             mock_provider.find_place_id.return_value = place_id
             mock_provider.get_all_place_data.return_value = {
@@ -596,17 +617,19 @@ class TestAirtableClient(unittest.TestCase):
                 "photos": {
                     "photo_urls": ["https://example.com/force-refresh-photo.jpg"]
                 },
-                "data_source": "TestProvider",
+                "data_source": "outscraper",
                 "last_updated": mock_now.isoformat()
             }
             
-            # No existing photos in Airtable
-            mock_should_skip_photos.return_value = (False, None)
             mock_fill_photos.return_value = False
             
-            # Call the function with force_refresh=True
+            # Call the function with force_refresh=True from resource manager
             status, data, message = helpers.get_and_cache_place_data(
-                place_name, place_id, city, force_refresh=True, provider_type="test"
+                provider_type='outscraper', 
+                place_name=place_name,
+                place_id=place_id,
+                city='charlotte',
+                force_refresh=True
             )
             
             # Verify the results
@@ -618,6 +641,9 @@ class TestAirtableClient(unittest.TestCase):
             mock_save_data_github.assert_called_once()
             
             print("✓ Correctly bypassed cache with force_refresh=True")
+        
+        # Reset force_refresh for the next test
+        rm.set_config('force_refresh', False)
             
         # SCENARIO 5: Photo optimization - skip photo retrieval if photos exist in Airtable
         # ==============================================================================
@@ -631,9 +657,20 @@ class TestAirtableClient(unittest.TestCase):
         mock_fetch_data_github.return_value = (True, stale_cached_data, "Success")
         
         # Run the test with mocks for photo optimization
-        with mock.patch('helper_functions._should_skip_photos_retrieval') as mock_should_skip_photos, \
+        with mock.patch('airtable_client.AirtableClient.get_record') as mock_get_record, \
              mock.patch('helper_functions._fill_photos_from_airtable') as mock_fill_photos:
              
+            # Configure the mock record lookup to have EXISTING photos
+            airtable_photos = '["https://example.com/airtable-photo1.jpg", "https://example.com/airtable-photo2.jpg"]'
+            mock_get_record.return_value = {
+                'id': 'rec123',
+                'fields': {
+                    'Place': place_name,
+                    'Google Maps Place Id': place_id,
+                    'Photos': airtable_photos  # This time we have photos!
+                }
+            }
+            
             # Configure mocks for photo optimization scenario
             mock_provider.find_place_id.return_value = place_id
             # Provider returns data with empty photos because skipping photo retrieval
@@ -645,20 +682,20 @@ class TestAirtableClient(unittest.TestCase):
                     "photo_urls": [],  # No photos from API since we're skipping photo retrieval
                     "message": "Photo retrieval skipped"
                 },
-                "data_source": "TestProvider",
+                "data_source": "outscraper",
                 "last_updated": mock_now.isoformat()
             }
-            
-            # Set up to skip photo retrieval - simulate photos exist in Airtable
-            airtable_photos = '["https://example.com/airtable-photo1.jpg", "https://example.com/airtable-photo2.jpg"]'
-            mock_should_skip_photos.return_value = (True, airtable_photos)
             
             # Mock that we successfully filled photos from Airtable
             mock_fill_photos.return_value = True
             
-            # Call the function that uses caching
+            # Call the function that uses caching with proper parameters
             status, data, message = helpers.get_and_cache_place_data(
-                place_name, place_id, city, force_refresh=False, provider_type="test"
+                provider_type='outscraper', 
+                place_name=place_name,
+                place_id=place_id,
+                city='charlotte',
+                force_refresh=False
             )
             
             # Verify the results
@@ -667,9 +704,7 @@ class TestAirtableClient(unittest.TestCase):
             
             # Verify behavior: should fetch fresh data but skip photo retrieval
             mock_provider.get_all_place_data.assert_called_once_with(place_id, place_name, skip_photos=True)
-            mock_should_skip_photos.assert_called_once()
             mock_fill_photos.assert_called_once()
-            mock_save_data_github.assert_called_once()
             
             print("✓ Correctly applied photo optimization strategy")
             

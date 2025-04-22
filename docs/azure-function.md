@@ -302,6 +302,24 @@ Uses Outscraper's API as an alternative data source. Features:
 * Provides operational status information
 * Smart handling of addresses and other formatting
 
+## Usage Example
+
+To create an Airtable client, instantiate it directly:
+
+```python
+from airtable_client import AirtableClient
+client = AirtableClient(provider_type="outscraper", sequential_mode=False)
+```
+
+To get a place data provider, use the factory directly:
+
+```python
+from place_data_providers import PlaceDataProviderFactory
+provider = PlaceDataProviderFactory.get_provider("outscraper")
+```
+
+There are no longer any `get_airtable_client` or `get_place_data_provider` helpers. All instantiation is explicit and stateless.
+
 ## Troubleshooting
 
 Tips on troubleshooting weird stuff with the Azure Function.

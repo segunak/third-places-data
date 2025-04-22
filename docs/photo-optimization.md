@@ -63,26 +63,30 @@ place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=
 The `_should_skip_photos_retrieval()` helper function determines whether photos should be skipped:
 
 ```python
-def _should_skip_photos_retrieval(place_id: str, place_name: str) -> Tuple[bool, Optional[str]]:
+def _should_skip_photos_retrieval(place_id: str, place_name: str, provider_type: str = None, sequential_mode: bool = False) -> Tuple[bool, Optional[str]]:
     """
     Determine if photo retrieval should be skipped based on existing Airtable data.
-    
+    Args:
+        place_id: Google Maps Place ID
+        place_name: Name of the place for logging
+        provider_type: The provider type to use for AirtableClient
+        sequential_mode: Whether to use sequential mode for AirtableClient
     Returns:
         Tuple of (skip_photos, airtable_photos), where:
         - skip_photos is True if photos should be skipped
         - airtable_photos is the photos data from Airtable if available
     """
+    from airtable_client import AirtableClient
+    import constants
     try:
-        airtable = get_airtable_client()
+        airtable = AirtableClient(provider_type=provider_type, sequential_mode=sequential_mode)
         airtable_record = airtable.get_record(constants.SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
-        
         if airtable_record and 'Photos' in airtable_record['fields'] and airtable_record['fields']['Photos']:
             airtable_photos = airtable_record['fields']['Photos']
             logging.info(f"Place {place_name} already has photos in Airtable. Skipping photo retrieval to save API costs.")
             return True, airtable_photos
     except Exception as e:
         logging.warning(f"Could not check for existing photos in Airtable: {e}")
-    
     return False, None
 ```
 

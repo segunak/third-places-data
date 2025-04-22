@@ -10,7 +10,6 @@ from constants import SearchField, MAX_THREAD_WORKERS
 import helper_functions as helpers
 from typing import Dict, Any, List
 from pyairtable.formulas import match
-from place_data_providers import PlaceDataProviderFactory
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 class AirtableClient:
@@ -34,19 +33,45 @@ class AirtableClient:
         self.AIRTABLE_BASE_ID = os.environ['AIRTABLE_BASE_ID']
         self.AIRTABLE_PERSONAL_ACCESS_TOKEN = os.environ['AIRTABLE_PERSONAL_ACCESS_TOKEN']
         self.AIRTABLE_WORKSPACE_ID = os.environ['AIRTABLE_WORKSPACE_ID']
+
         self.charlotte_third_places = pyairtable.Table(
             self.AIRTABLE_PERSONAL_ACCESS_TOKEN, self.AIRTABLE_BASE_ID, 'Charlotte Third Places'
         )
+
+        self._all_third_places = None
         
-        # Use the singleton pattern to get a place data provider
         if not provider_type:
             raise ValueError("AirtableClient requires provider_type to be specified ('google' or 'outscraper').")
-        import helper_functions as helpers
-        self.data_provider = helpers.get_place_data_provider(provider_type)
+
+        self.provider_type = provider_type
+
+        from place_data_providers import PlaceDataProviderFactory
+        self.data_provider = PlaceDataProviderFactory.get_provider(self.provider_type)
+        logging.info(f"Initialized data provider of type '{self.provider_type}'")
         
         self.api = Api(self.AIRTABLE_PERSONAL_ACCESS_TOKEN)
-        self.all_third_places = self.charlotte_third_places.all(sort=["-Created Time"])
-
+    
+    @property
+    def all_third_places(self):
+        """
+        Gets all third places from Airtable, but only when needed.
+        Caches the result to avoid repeated API calls.
+        
+        Returns:
+            list: All third places records from the Airtable database
+        """
+        if self._all_third_places is None:
+            logging.info("Retrieving all third places from Airtable from all_third_places property.")
+            self._all_third_places = self.charlotte_third_places.all(sort=["-Created Time"])
+        return self._all_third_places
+    
+    def clear_cached_places(self):
+        """
+        Clears the cached third places data to force a refresh on next access.
+        """
+        logging.info("Clearing cached third places data")
+        self._all_third_places = None
+    
     def update_place_record(self, record_id: str, field_to_update: str, update_value, overwrite: bool) -> Dict[str, Any]:
         """
         Attempts to update a record in the Airtable database based on given parameters.
@@ -134,21 +159,18 @@ class AirtableClient:
 
         return f"{parsed_url.scheme}://{parsed_url.netloc}{parsed_url.path}".strip()
 
-    def enrich_base_data(self, force_refresh=False) -> list:
+    def enrich_base_data(self, resource_manager) -> list:
         """
         Enriches the base data of places stored in Airtable with additional metadata.
         
-        This method retrieves place data (either from cache or fresh) and updates
-        Airtable fields with the retrieved information. It can run either in sequential mode 
-        or parallel mode for better performance.
-        
         Args:
-            force_refresh (bool): If True, bypass the cache and always fetch fresh data
+            resource_manager: The resource_manager module for configuration access
         
         Returns:
             list: A list of dictionaries containing the results of each place enrichment
         """
         places_results = []
+        force_refresh = resource_manager.get_config('force_refresh', False)
         
         def process_single_place(third_place):
             """
@@ -188,11 +210,11 @@ class AirtableClient:
                 
                 # Get place data using the helper function (with caching)
                 status, place_data, message = helpers.get_and_cache_place_data(
-                    place_name,
-                    place_id,
-                    'charlotte',
-                    force_refresh=force_refresh,
-                    provider_type=self.data_provider.provider_type
+                    provider_type=resource_manager.get_config('provider_type'),
+                    place_name=place_name,
+                    place_id=place_id,
+                    city=resource_manager.get_config('city', 'charlotte'),
+                    force_refresh=force_refresh
                 )
                 result["status"] = status
                 result["message"] = message
@@ -370,7 +392,7 @@ class AirtableClient:
             logging.error(f"Error looking up {search_field.value}='{search_value}': {e}")
             return None
 
-    def get_place_photos(self, place_id: str) -> list:
+    def get_place_photos(self, place_id: str) -> List[str]:
         """
         Retrieves photos for a place using the configured data provider.
 
@@ -383,8 +405,8 @@ class AirtableClient:
         try:
             photos_response = self.data_provider.get_place_photos(place_id)
             
-            if photos_response and 'photos' in photos_response:
-                return photos_response['photos']
+            if photos_response and 'photo_urls' in photos_response:
+                return photos_response['photo_urls']
             else:
                 logging.info(f"No photos found for place ID: {place_id}")
                 return []
@@ -467,17 +489,12 @@ class AirtableClient:
         logging.info(f"Found {len(place_types)} distinct place types.")
         return sorted(place_types)
 
-    def refresh_operational_statuses(self) -> List[Dict[str, Any]]:
+    def refresh_operational_statuses(self, data_provider) -> List[Dict[str, Any]]:
         """
         Refreshes the 'Operational' status of each place in the Airtable base.
-        
-        For each place, this method:
-        1. Retrieves the Google Maps Place ID
-        2. Uses the configured data provider to check if the place is operational
-        3. Updates the 'Operational' field in Airtable accordingly
-        4. Only updates records where the status has changed to minimize API calls
-        
-        Can run in either sequential mode (for debugging) or parallel mode for performance.
+
+        Args:
+            data_provider: The data provider to use for checking operational status
         
         Returns:
             List[Dict[str, Any]]: Results for each place with update status and details
@@ -526,7 +543,7 @@ class AirtableClient:
                 result['old_value'] = current_operational_value
                 
                 # Check if place is operational via data provider
-                is_operational = self.data_provider.is_place_operational(place_id)
+                is_operational = data_provider.is_place_operational(place_id)
                 new_operational_value = 'Yes' if is_operational else 'No'
                 result['new_value'] = new_operational_value
                 

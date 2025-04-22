@@ -191,7 +191,7 @@ class PlaceDataProvider(ABC):
         else:
             return self.find_place_id(place_name)
 
-    def get_all_place_data(self, place_id: str, place_name: str, skip_photos: bool = True, force_refresh: bool = False) -> Dict[str, Any]:
+    def get_all_place_data(self, place_id: str, place_name: str, skip_photos: bool = True) -> Dict[str, Any]:
         """
         Retrieves and combines all available data for a place, including details, reviews, and photos.
 
@@ -247,7 +247,7 @@ class PlaceDataProvider(ABC):
         Returns the current timestamp in ISO format.
 
         Returns:
-            str: The current timestamp.
+            str: The current timestamp in ISO format.
         """
         from datetime import datetime
         return datetime.now().isoformat()
@@ -673,12 +673,13 @@ class OutscraperProvider(PlaceDataProvider):
         This method:
         1. Removes country suffixes like ", United States" or ", USA" from addresses
         2. Converts the address to Title Case, capitalizing the first letter of each word
+        3. Maintains state abbreviations in uppercase (e.g., "NC", "SC", "GA")
         
         Args:
             address (str): The address to clean
             
         Returns:
-            str: The cleaned address without country suffix and in Title Case
+            str: The cleaned address without country suffix and in Title Case with proper state formatting
         """
         if not address:
             return ""
@@ -704,9 +705,22 @@ class OutscraperProvider(PlaceDataProvider):
         
         # Convert to Title Case (capitalize first letter of each word)
         title_case_address = ' '.join(word.capitalize() for word in cleaned_address.split())
-        logging.debug(f"Converted address to Title Case: '{cleaned_address}' → '{title_case_address}'")
+        
+        # Handle state abbreviations: Look for pattern "City, XX" or "City, XX XXXXX" where XX is state code
+        # This regex looks for a comma followed by optional space, then exactly 2 letters, 
+        # followed either by end of string or space and numbers (zip code)
+        import re
+        state_pattern = re.compile(r',\s*([A-Za-z]{2})(\s+\d|$)')
+        
+        # Find all matches and convert state codes to uppercase
+        def uppercase_state_match(match):
+            return match.group(0).replace(match.group(1), match.group(1).upper())
+            
+        final_address = state_pattern.sub(uppercase_state_match, title_case_address)
+        
+        logging.debug(f"Formatted address: Original '{cleaned_address}' → Title Case '{title_case_address}' → Final '{final_address}'")
                 
-        return title_case_address
+        return final_address
     
     def _create_empty_details_response(self, place_id: str, error_message: str = "") -> Dict[str, Any]:
         """Creates a standardized empty response for when details can't be retrieved."""
@@ -1077,23 +1091,18 @@ class OutscraperProvider(PlaceDataProvider):
 class PlaceDataProviderFactory:
     """
     Factory class for creating and managing place data providers.
+    This factory is stateless and always returns a new instance.
     """
 
     @staticmethod
     def get_provider(provider_type: str) -> PlaceDataProvider:
         """
         Creates and returns a place data provider of the specified type.
-        
-        Note: This method instantiates a new provider every time it's called.
-        For singleton behavior, use helper_functions.get_place_data_provider() instead,
-        which ensures only one instance of each provider type is created.
-
+        Always returns a new instance. No singleton logic.
         Args:
             provider_type (str): The type of provider to create ('google', 'outscraper', etc.).
-
         Returns:
             PlaceDataProvider: An instance of the requested provider.
-
         Raises:
             ValueError: If the specified provider type is not supported or if there's an error creating the provider.
         """
@@ -1101,15 +1110,12 @@ class PlaceDataProviderFactory:
             error_msg = "provider_type cannot be None - must be 'google' or 'outscraper'"
             logging.error(error_msg)
             raise ValueError(error_msg)
-            
         if not isinstance(provider_type, str):
             error_msg = f"provider_type must be a string, got {type(provider_type).__name__}"
             logging.error(error_msg)
             raise ValueError(error_msg)
-            
         try:
             normalized = provider_type.strip().lower()
-            
             if normalized == 'google':
                 logging.info(f"Creating new GoogleMapsProvider instance")
                 return GoogleMapsProvider()
@@ -1120,10 +1126,8 @@ class PlaceDataProviderFactory:
                 error_msg = f"Unsupported provider type: '{provider_type}'. Must be 'google' or 'outscraper'."
                 logging.error(error_msg)
                 raise ValueError(error_msg)
-                
         except Exception as ex:
             error_msg = f"Error creating provider of type '{provider_type}': {str(ex)}"
             logging.error(error_msg, exc_info=True)
-            # Re-raise with a clear message that includes the original exception
             raise ValueError(f"Failed to create provider: {error_msg}") from ex
 

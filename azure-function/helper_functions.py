@@ -12,60 +12,8 @@ from azure.storage.filedatalake import DataLakeServiceClient
 from typing import Iterable, Callable, Any, List, Dict, Optional, Tuple, Union
 from threading import Lock
 
-# Global client singleton instances and locks for thread safety
-_airtable_client_instance = None
-_airtable_client_lock = Lock()
-_place_data_provider_instances = {}
-_place_data_provider_lock = Lock()
-
-def get_airtable_client(sequential_mode=False, provider_type=None):
-    """
-    Returns a singleton instance of AirtableClient.
-    This ensures that only one instance is created and reused across all threads.
-    
-    Args:
-        sequential_mode (bool): When True, forces sequential execution in the AirtableClient. Default is False.
-        provider_type (str): REQUIRED. Must be 'google' or 'outscraper'.
-    Returns:
-        AirtableClient: A singleton instance configured with the specified sequential mode and provider type.
-    """
-    global _airtable_client_instance
-    if _airtable_client_instance is None:
-        with _airtable_client_lock:
-            if _airtable_client_instance is None:
-                from airtable_client import AirtableClient
-                if not provider_type:
-                    raise ValueError("AirtableClient requires provider_type to be specified ('google' or 'outscraper').")
-                _airtable_client_instance = AirtableClient(provider_type=provider_type, sequential_mode=sequential_mode)
-                logging.info("Created singleton AirtableClient instance")
-                if sequential_mode:
-                    logging.info("AirtableClient running in with SEQUENTIAL execution")
-    elif sequential_mode and not _airtable_client_instance.sequential_mode:
-        logging.warning("Existing AirtableClient instance is not in sequential mode.")
-    return _airtable_client_instance
-
-def get_place_data_provider(provider_type=None):
-    """
-    Returns a singleton instance of a PlaceDataProvider based on the requested type.
-    This ensures that only one instance of each provider type is created and reused across all threads.
-    
-    Args:
-        provider_type (str): The type of provider to get ('google', 'outscraper').
-                             This is now REQUIRED and must not be None.
-    Returns:
-        PlaceDataProvider: A singleton instance of the requested provider.
-    """
-    global _place_data_provider_instances
-
-
-    if provider_type not in _place_data_provider_instances:
-        with _place_data_provider_lock:
-            if provider_type not in _place_data_provider_instances:
-                from place_data_providers import PlaceDataProviderFactory
-                _place_data_provider_instances[provider_type] = PlaceDataProviderFactory.get_provider(provider_type)
-                logging.info(f"Created singleton PlaceDataProvider instance for {provider_type}")
-
-    return _place_data_provider_instances[provider_type]
+import resource_manager as rm
+from constants import DEFAULT_CACHE_REFRESH_INTERVAL, SearchField
 
 def normalize_text(text: str) -> str:
     """
@@ -91,7 +39,6 @@ def normalize_text(text: str) -> str:
         text = re.sub(r'\s+', ' ', text.strip().lower())
 
     return text
-
 
 def save_reviews_azure(json_data, review_file_name):
     """
@@ -332,205 +279,142 @@ def is_cache_valid(cached_data: Dict, refresh_interval_days: int) -> bool:
         logging.error(f"Error checking cache validity: {str(e)}")
         return False
 
-def get_and_cache_place_data(place_name: str, place_id: str, city: str = "charlotte", force_refresh: bool = False, provider_type: str = None) -> Tuple[str, Dict, str]:
+def _fill_photos_from_airtable(place_data: Dict, photos_json: str) -> bool:
     """
-    Centralized function for retrieving and caching place data with a cache-first approach.
-    
-    This function implements the cache-first logic:
-    1. Check if place has cached data in the GitHub repository
-    2. If cache exists and is fresh (within configured interval), use the cached data
-    3. If cache doesn't exist or is stale, fetch fresh data from the API provider
-    4. Store the data in GitHub only if fresh data was retrieved or modifications were made
+    Fill the photos field in place_data with photos from Airtable.
     
     Args:
-        place_name (str): Name of the place
-        place_id (str): Google Maps Place ID
-        city (str): City name for the file path (defaults to "charlotte") 
-        force_refresh (bool): If True, bypass the cache and always fetch fresh data
-        provider_type (str): REQUIRED. Must be 'google' or 'outscraper'.
+        place_data: The place data to update
+        photos_json: JSON string containing photo URLs
         
     Returns:
-        tuple: (status, place_data, message)
-            - status: 'succeeded', 'cached', 'skipped', or 'failed'
-            - place_data: The retrieved place data or None if failed
-            - message: A descriptive message about the operation outcome
+        bool: True if photos were successfully filled, False otherwise
     """
-    import constants
-    from place_data_providers import PlaceDataProviderFactory
-
     try:
-        # No need to check/normalize provider_type here; let the factory handle it
-        data_provider = get_place_data_provider(provider_type)
-        logging.info(f"Processing data for place: {place_name}")
+        # Parse the JSON string
+        photos = json.loads(photos_json)
+        
+        # Update the place_data with the photos
+        if 'photos' not in place_data:
+            place_data['photos'] = {}
+            
+        place_data['photos']['photo_urls'] = photos
+        place_data['photos']['message'] = "Retrieved from Airtable"
+        
+        return True
+    except json.JSONDecodeError as e:
+        logging.error(f"Error parsing photos JSON from Airtable: {e}")
+        return False
+    except Exception as e:
+        logging.error(f"Error filling photos from Airtable: {e}")
+        return False
 
-        # Step 1: Validate place ID
+def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str = None,
+                              city: str = 'charlotte', force_refresh: bool = False) -> Tuple[str, Dict, str]:
+    """
+    Get place data, either from cache or by calling data provider, then cache the result.
+    
+    This function implements the photo optimization strategy where we skip retrieving photos
+    if they already exist in Airtable. This helps conserve API calls and bandwidth.
+    
+    Args:
+        provider_type: Type of data provider to use ('google' or 'outscraper')
+        place_name: Name of the place to get data for
+        place_id: Google Maps Place ID (optional, will be looked up if not provided)
+        city: The city to use for caching (default: 'charlotte')
+        force_refresh: Whether to force refresh cached data (bypass cache)
+        
+    Returns:
+        tuple: (status, data, message) where status is one of:
+            - 'succeeded': Fresh data was retrieved and cached
+            - 'cached': Cached data was used
+            - 'failed': Data retrieval failed
+    """
+    try:
+        # Validate provider_type
+        if not provider_type:
+            error_msg = f"Cannot get place data for {place_name} - provider_type not specified"
+            logging.error(error_msg)
+            return 'failed', None, error_msg
+            
+        # Get the provider from resource manager
+        data_provider = rm.get_data_provider(provider_type)
+        
+        # If place_id wasn't provided, find it using the data provider
         if not place_id:
+            logging.info(f"No place_id provided for {place_name}, looking up...")
             place_id = data_provider.find_place_id(place_name)
             if not place_id:
-                return ('skipped', None, f"Warning! No place_id found for {place_name}. Skipping data retrieval.")
-
-        # Step 2: Define cache path and settings
-        cache_file_path = f"data/places/{city}/{place_id}.json"
-        refresh_interval = constants.DEFAULT_CACHE_REFRESH_INTERVAL
+                return 'failed', None, f"Could not find place ID for {place_name}"
+            logging.info(f"Found place_id {place_id} for {place_name}")
         
-        # Step 3: Try to use cached data if not forcing a refresh
-        place_data = None
+        # Define the path for the cached file
+        cached_file_path = f"data/places/{city}/{place_id}.json"
+        
+        # Set up the data retrieval parameters
+        skip_photos = False
+        existing_photos_json = None
+        
+        # Check for cached data and optimize photo retrieval if not forcing refresh
         if not force_refresh:
-            logging.info(f"Checking for cached data for {place_name} at {cache_file_path}. Force refresh disabled.")
-            place_data = _try_get_cached_data(place_name, cache_file_path, refresh_interval)
-            
-            # If we got valid cached data, return it
-            if place_data:
-                logging.info(f"get_and_cache_place_data: Returning cached data for {place_name} (last updated: {place_data.get('last_updated')}). Data provider API calls and GitHub write skipped.")
-                return ('cached', place_data, f"get_and_cache_place_data: Using cached data for {place_name}. Data provider API calls and GitHub write skipped. Returning cached data.")
-        else:
-            logging.info(f"Force refresh enabled. Skipping cache check for {place_name}")
+            try:
+                # Get the AirtableClient from resource manager
+                airtable_client = rm.get_airtable_client(provider_type)
+                
+                # Check if the place exists in Airtable
+                record = airtable_client.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
+                
+                # If the record exists and has photos, skip photo retrieval
+                if record and 'Photos' in record['fields'] and record['fields']['Photos']:
+                    logging.info(f"Place {place_id} already has photos in Airtable, skipping photo retrieval")
+                    skip_photos = True
+                    existing_photos_json = record['fields']['Photos']
+            except Exception as e:
+                logging.error(f"Error checking if photos should be skipped: {e}")
+                # In case of error, don't skip photo retrieval
+                skip_photos = False
+                existing_photos_json = None
         
-        # Step 4: Get fresh data if no valid cache exists
-        # First check if the place already has photos in Airtable to avoid API costs
-        skip_photos, airtable_photos = _should_skip_photos_retrieval(place_id, place_name)
-            
-        # Retrieve fresh data
-        logging.info(f"Retrieving fresh data for {place_name} with place_id {place_id}")
+            # Now check if there's a valid cached version
+            success, cached_data, message = fetch_data_github(cached_file_path)
+            if success and is_cache_valid(cached_data, DEFAULT_CACHE_REFRESH_INTERVAL):
+                logging.info(f"Using cached data for {place_name} from {cached_file_path}")
+                return 'cached', cached_data, f"Using cached data from {cached_file_path}"
+        
+        # If we reach here, we need to fetch fresh data, there is no valid cache or we are forcing a refresh
+        logging.info(f"Getting fresh data for {place_name} with place_id {place_id}. The value of skip_photos is {skip_photos} and the value of force_refresh is {force_refresh}.")
+        
+        # Get place data from provider, skipping photos if we already have them
         place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=skip_photos)
-            
-        # Check for API errors
-        if not place_data or 'error' in place_data:
-            error_message = place_data.get('error', 'Unknown error') if place_data else 'No data retrieved'
-            logging.error(f"Data retrieval failed for {place_name} with place_id {place_id}: {error_message}")
-            return ('failed', None, f"Error: Data retrieval failed for place {place_name} with place_id {place_id}. {error_message}")
         
-        # Step 5: Fill in photos from Airtable if we skipped photo retrieval
-        modifications_made = False
-        if skip_photos and airtable_photos and "photos" in place_data:
-            modifications_made = _fill_photos_from_airtable(place_data, airtable_photos, place_name)
+        # If we're skipping photos but have existing photos in Airtable, use those
+        if skip_photos and existing_photos_json:
+            _fill_photos_from_airtable(place_data, existing_photos_json)
         
-        # Log photo status before saving to GitHub
-        if "photos" in place_data and place_data["photos"].get("photo_urls"):
-            photo_count = len(place_data["photos"]["photo_urls"])
-            photo_source = "Airtable" if modifications_made else "API provider"
-            logging.info(f"Saving place data with {photo_count} photos from {photo_source} to GitHub for {place_name}")
-        else:
-            logging.info(f"Saving place data with no photos to GitHub for {place_name}")
+        # Add timestamp for future cache validity check
+        place_data['last_updated'] = datetime.now().isoformat()
         
-        # Step 6: Save the data to GitHub
-        final_json_data = json.dumps(place_data, indent=4)
-        logging.info(f"Saving place data to GitHub at path {cache_file_path}")
-        save_succeeded, save_message = save_data_github(final_json_data, cache_file_path)
-        logging.info(f"GitHub save operation result: {save_message}")
-
-        if save_succeeded:
-            return ('succeeded', place_data, f"Data retrieved from provider and saved successfully for {place_name}.")
-        else:
-            return ('failed', None, f"Failed to save data to GitHub for {place_name}. {save_message}")
-            
+        # Save to GitHub
+        success, message = save_data_github(place_data, cached_file_path)
+        if not success:
+            logging.warning(f"Failed to cache data for {place_name}: {message}")
+        
+        return 'succeeded', place_data, f"Successfully retrieved fresh data for {place_name}"
+        
     except Exception as e:
-        logging.error(f"Error in get_and_cache_place_data for {place_name}: {e}", exc_info=True)
-        return ('failed', None, f"Error processing place data: {str(e)}")
-
-def _try_get_cached_data(place_name: str, cache_file_path: str, refresh_interval: int) -> Optional[Dict]:
-    """
-    Try to retrieve and validate cached data from GitHub.
-    
-    Args:
-        place_name: Name of the place for logging
-        cache_file_path: Path to the cached file
-        refresh_interval: Number of days before cache is considered stale
-        
-    Returns:
-        Dict if valid cached data exists, None otherwise
-    """
-    success, cached_data, message = fetch_data_github(cache_file_path)
-    
-    if not success or not cached_data:
-        logging.info(f"No cached data found for {place_name}: {message}")
-        return None
-        
-    # Check if the cache is still valid
-    if is_cache_valid(cached_data, refresh_interval):
-        logging.info(f"Using cached data for {place_name} (last updated: {cached_data.get('last_updated')})")
-        return cached_data
-    else:
-        logging.info(f"Cached data for {place_name} is stale. Fetching fresh data.")
-        return None
-
-def _should_skip_photos_retrieval(place_id: str, place_name: str) -> Tuple[bool, Optional[str]]:
-    """
-    Determine if photo retrieval should be skipped based on existing Airtable data.
-    
-    Args:
-        place_id: Google Maps Place ID
-        place_name: Name of the place for logging
-        
-    Returns:
-        Tuple of (skip_photos, airtable_photos), where:
-        - skip_photos is True if photos should be skipped
-        - airtable_photos is the photos data from Airtable if available
-    """
-    import constants
-    try:
-        airtable = get_airtable_client()
-        airtable_record = airtable.get_record(constants.SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
-        
-        if airtable_record and 'Photos' in airtable_record['fields'] and airtable_record['fields']['Photos']:
-            airtable_photos = airtable_record['fields']['Photos']
-            logging.info(f"Place {place_name} already has photos in Airtable. Skipping photo retrieval to save API costs.")
-            return True, airtable_photos
-    except Exception as e:
-        logging.warning(f"Could not check for existing photos in Airtable: {e}")
-    
-    return False, None
-
-def _fill_photos_from_airtable(place_data: Dict, airtable_photos: str, place_name: str) -> bool:
-    """
-    Fill missing photos data from Airtable.
-    
-    Args:
-        place_data: Place data dictionary to update
-        airtable_photos: Photos data from Airtable
-        place_name: Name of the place for logging
-        
-    Returns:
-        True if modifications were made, False otherwise
-    """
-    photos_section = place_data["photos"]
-    
-    # Check if the photos array is empty
-    photos_empty = not photos_section.get("photo_urls", []) or len(photos_section.get("photo_urls", [])) == 0
-    
-    if photos_empty:
-        try:
-            # Try to parse the Photos column value from Airtable
-            import ast
-            airtable_photo_list = ast.literal_eval(airtable_photos) if isinstance(airtable_photos, str) else airtable_photos
-            
-            # Update "photos" field
-            photos_section["photo_urls"] = airtable_photo_list
-            photos_section["message"] = f"Photos retrieved from Airtable ({len(airtable_photo_list)} photos)"
-            logging.info(f"Filled photos with {len(airtable_photo_list)} photos from Airtable for {place_name}")
-            return True
-        except Exception as e:
-            logging.warning(f"Failed to parse or use Airtable photos for {place_name}: {e}")
-    
-    return False
+        logging.error(f"Error getting place data for {place_name}: {e}", exc_info=True)
+        return 'failed', None, f"Error: {str(e)}"
 
 def create_place_response(operation_status, target_place_name, http_response_data, operation_message):
     """
-    Constructs a structured response dictionary with details about an operation performed on a place.
-
-    This function logs the operation message and returns a dictionary that encapsulates the status of
-    the operation, the name of the place involved, the response data obtained (if any), and a descriptive
-    message about the outcome.
-
+    Create a standard response for place operations.
+    
     Args:
-        operation_status (str): A custom status string indicating the outcome of the operation,
-                                used by callers to determine further actions.
-        target_place_name (str): The name of the place that was the focus during the data retrieval operation.
-        http_response_data (dict or None): The actual data received from the HTTP call to retrieve information
-                                           about the place. This can be None if no data was retrieved.
-        operation_message (str): A custom message providing additional details about the operation's outcome,
-                                 intended for logging and informing the caller.
-
+        operation_status: Status of the operation ('succeeded', 'cached', 'failed')
+        target_place_name: Name of the place
+        http_response_data: Any HTTP response data to include
+        operation_message: A detailed message about the operation
+        
     Returns:
         dict: A dictionary that includes the operation status, place name, any response data, and a detailed message.
     """

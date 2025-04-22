@@ -4,6 +4,7 @@ import datetime
 import azure.functions as func
 import helper_functions as helpers
 import azure.durable_functions as df
+import resource_manager as rm
 from azure.durable_functions.models.DurableOrchestrationStatus import OrchestrationRuntimeStatus
 
 app = df.DFApp(http_auth_level=func.AuthLevel.FUNCTION)
@@ -27,6 +28,7 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
     - force_refresh: If "true", bypasses the cache and always fetches fresh data
     - sequential_mode: If "true", processes places sequentially rather than in parallel
     - city: City to use for caching (defaults to "charlotte")
+    - provider_type: Type of data provider to use (REQUIRED: 'google' or 'outscraper')
     
     Returns:
         func.HttpResponse: A JSON response with the orchestration instance ID and status URL
@@ -34,20 +36,32 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
     logging.info("Received request for place data refresh.")
 
     try:
-        # Extract optional parameters with defaults
-        force_refresh = req.params.get('force_refresh', '').lower() == 'true' 
-        sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
-        city = req.params.get('city', 'charlotte').lower()
-        provider_type = req.params.get('provider_type', None)
+        # Initialize configuration from request
+        rm.from_request(req)
         
-        logging.info(f"Starting place data refresh with parameters: force_refresh={force_refresh}, sequential_mode={sequential_mode}, city={city}, provider_type={provider_type}")
+        # Validate required parameter
+        if not rm.get_config('provider_type'):
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Missing required parameter: provider_type",
+                    "data": None,
+                    "error": "The provider_type parameter is required"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+        
+        logging.info(f"Starting place data refresh with parameters: force_refresh={rm.get_config('force_refresh', False)}, "
+                    f"sequential_mode={rm.get_config('sequential_mode', False)}, city={rm.get_config('city', 'charlotte')}, "
+                    f"provider_type={rm.get_config('provider_type')}")
         
         # Start the orchestrator with the parameters
         orchestration_input = {
-            "force_refresh": force_refresh,
-            "sequential_mode": sequential_mode,
-            "city": city,
-            "provider_type": provider_type
+            "force_refresh": rm.get_config('force_refresh', False),
+            "sequential_mode": rm.get_config('sequential_mode', False),
+            "city": rm.get_config('city', 'charlotte'),
+            "provider_type": rm.get_config('provider_type')
         }
         
         instance_id = await client.start_new("get_place_data_orchestrator", client_input=orchestration_input)
@@ -95,8 +109,20 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
         city = orchestration_input.get("city", "charlotte")
         provider_type = orchestration_input.get("provider_type", None)
 
-        all_third_places = yield context.call_activity('get_all_third_places', {"sequential_mode": sequential_mode, "provider_type": provider_type})
+        # Initialize the global config dictionary
+        config_dict = {
+            "provider_type": provider_type,
+            "sequential_mode": sequential_mode,
+            "city": city,
+            "force_refresh": force_refresh
+        }
         
+        # Get all third places using the config dictionary
+        all_third_places = yield context.call_activity(
+            'get_all_third_places', 
+            {"config": config_dict}
+        )
+
         # Set up the processing tasks
         tasks = []
         results = []
@@ -107,9 +133,8 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
             for place in all_third_places:
                 activity_input = {
                     "place": place,
-                    "force_refresh": force_refresh,
-                    "city": city,
-                    "provider_type": provider_type
+                    "config": config_dict,
+                    "orchestration_input": orchestration_input  # Include original input for fallback
                 }
                 # Process each place sequentially
                 result = yield context.call_activity("get_place_data", activity_input)
@@ -130,9 +155,8 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
                 for place in batch:
                     activity_input = {
                         "place": place,
-                        "force_refresh": force_refresh,
-                        "city": city,
-                        "provider_type": provider_type
+                        "config": config_dict,
+                        "orchestration_input": orchestration_input  # Include original input for fallback
                     }
                     batch_tasks.append(context.call_activity("get_place_data", activity_input))
                 
@@ -174,57 +198,87 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
 @app.function_name("get_place_data")  # Add explicit function name registration
 def get_place_data(activityInput):
     """
-    Activity function that retrieves all data for a specific place.
+    Activity function that retrieves data for a single place.
     
-    This is an internal Azure Function activity triggered by orchestrator functions.
-    It fetches detailed place data using the configured place data provider and 
-    implements a cache-first approach via the get_and_cache_place_data helper function.
-    If successful, it also updates the Airtable record to indicate that data is available.
+    This function uses the resource_manager module to efficiently share resources
+    across multiple invocations, ensuring we reuse clients and providers rather than
+    creating new ones for each place.
     
     Args:
-        activityInput (dict): Input parameters containing the place record from Airtable,
-                              force_refresh flag, city, and sequential_mode flag
-        
+        activityInput: A dictionary containing place information and configuration
+    
     Returns:
-        dict: A response object indicating success/failure status, place name, and a link to the data file
+        dict: The result of the place data retrieval operation
     """
-    place = activityInput['place']
-    force_refresh = activityInput.get('force_refresh', False)
-    city = activityInput.get('city', 'charlotte')
-    sequential_mode = activityInput.get('sequential_mode', False)
-    provider_type = activityInput.get('provider_type', None)
-    
-    place_name = place['fields']['Place']
-    place_id = place['fields'].get('Google Maps Place Id', None)
-    
-    logging.info(f"Getting place data for: {place_name} (force_refresh={force_refresh}, city={city}, provider_type={provider_type})")
-    
     try:
-        # Call the centralized helper function with force_refresh parameter
+        # Extract inputs
+        place = activityInput.get("place")
+        config_dict = activityInput.get("config", {})
+        
+        # Extract place details early to help with error reporting
+        place_name = place['fields']['Place'] if place and 'fields' in place and 'Place' in place['fields'] else "Unknown Place"
+        
+        # Log the config data we're receiving to help diagnose issues
+        provider_type = config_dict.get('provider_type')
+        logging.info(f"get_place_data: Received config for {place_name} with provider_type={provider_type}")
+        
+        # Initialize the resource manager with the config
+        rm.from_dict(config_dict)
+        
+        # Validate that required provider_type is present
+        if not rm.get_config('provider_type'):
+            error_msg = f"Missing provider_type for place '{place_name}'. Attempting to use orchestrator's provider_type."
+            logging.warning(error_msg)
+            
+            # Try to get the provider_type from the original orchestration input if possible
+            orchestration_input = activityInput.get("orchestration_input", {})
+            provider_type = orchestration_input.get("provider_type")
+            
+            if provider_type:
+                logging.info(f"Recovered provider_type={provider_type} from orchestration input for {place_name}")
+                rm.set_config('provider_type', provider_type)
+            else:
+                # If we still don't have a provider_type, we need to fail
+                error_msg = f"Error processing place data: provider_type cannot be None - must be 'google' or 'outscraper'"
+                logging.error(error_msg)
+                return helpers.create_place_response('failed', place_name, None, error_msg)
+        
+        # Now extract place details
+        record_id = place['id']
+        place_id = place['fields'].get('Google Maps Place Id', None)
+        
+        provider_type = rm.get_config('provider_type')
+        city = rm.get_config('city', 'charlotte')
+        force_refresh = rm.get_config('force_refresh', False)
+        
+        logging.info(f"get_place_data: Processing {place_name} with place_id {place_id} using provider_type={provider_type}")
+        
+        # Call helper function to get and cache place data - using module-level functions from resource manager
         status, place_data, message = helpers.get_and_cache_place_data(
-            place_name, 
-            place_id, 
-            city, 
-            force_refresh=force_refresh,
-            provider_type=provider_type
+            provider_type=provider_type,
+            place_name=place_name,
+            place_id=place_id,
+            city=city,
+            force_refresh=force_refresh
         )
         
-        # If data was successfully retrieved, update Airtable record with "Has Data File" = "Yes"
-        if (status == 'succeeded' or status == 'cached') and place_data:
+        # Update Airtable record to indicate data file exists if succeeded/cached
+        if status == 'succeeded' or status == 'cached':
             record_id = place['id']
-            airtable = helpers.get_airtable_client(sequential_mode=sequential_mode)
-            airtable.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
+            # Get AirtableClient from resource manager 
+            airtable_client = rm.get_airtable_client(provider_type)
+            airtable_client.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
 
         # Format the response for the orchestrator
-        if (status == 'succeeded' or status == 'cached'):
+        if status == 'succeeded' or status == 'cached':
             place_id = place_data.get('place_id', place_id)
             github_url = f'https://github.com/segunak/third-places-data/blob/master/data/places/{city}/{place_id}.json'
             return helpers.create_place_response(status, place_name, github_url, message)
         else:
             return helpers.create_place_response(status, place_name, None, message)
     except Exception as ex:
-        logging.error(f"Error getting data for place {place_name}: {ex}", exc_info=True)
-        return helpers.create_place_response('failed', place_name, None, str(ex))
+        logging.error(f"Error getting data for place {place_name if 'place_name' in locals() else 'unknown'}: {ex}", exc_info=True)
+        return helpers.create_place_response('failed', place_name if 'place_name' in locals() else 'unknown', None, f"Error processing place data: {str(ex)}")
 
 # ======================================================
 # Airtable Enrichment Functions
@@ -249,12 +303,11 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
     logging.info("Received request for Airtable base enrichment.")
 
     try:
-        # Extract optional parameters with defaults
-        force_refresh = req.params.get('force_refresh', '').lower() == 'true' 
-        sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
-        provider_type = req.params.get('provider_type', None)
+        # Initialize configuration from request
+        rm.from_request(req)
         
-        if not provider_type:
+        # Validate required parameter
+        if not rm.get_config('provider_type'):
             return func.HttpResponse(
                 json.dumps({
                     "success": False,
@@ -265,13 +318,15 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
                 status_code=400
             )
         
-        logging.info(f"Starting enrichment with parameters: force_refresh={force_refresh}, sequential_mode={sequential_mode}, provider_type={provider_type}")
+        logging.info(f"Starting enrichment with parameters: city={rm.get_config('city')}, force_refresh={rm.get_config('force_refresh', False)}, "
+                     f"sequential_mode={rm.get_config('sequential_mode', False)}, provider_type={rm.get_config('provider_type')}")
         
         # Start the orchestrator with the parameters
         orchestration_input = {
-            "force_refresh": force_refresh,
-            "sequential_mode": sequential_mode,
-            "provider_type": provider_type
+            "force_refresh": rm.get_config('force_refresh', False),
+            "sequential_mode": rm.get_config('sequential_mode', False),
+            "provider_type": rm.get_config('provider_type'),
+            "city": rm.get_config('city', 'charlotte')
         }
         
         instance_id = await client.start_new("enrich_airtable_base_orchestrator", client_input=orchestration_input)
@@ -297,28 +352,38 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
 def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
     """
     Orchestrator function for enriching Airtable base data.
-    This orchestrator initiates the batch enrichment of all Airtable data.
+    
+    This orchestrator manages the enrichment of Airtable data by retrieving fresh data
+    from the configured provider and updating Airtable fields. It can run in either
+    sequential or parallel mode.
     
     Args:
-        context: The orchestration context
+        context: The durable orchestration context
         
     Returns:
-        A dictionary with the results of the enrichment operation
+        dict: Results of the enrichment operation
     """
     try:
-        logging.info("enrich_airtable_base_orchestrator started.")  # Note: We use PascalCase in logs for consistency
+        logging.info("enrich_airtable_base_orchestrator started.")
         
         # Get input parameters
         orchestration_input = context.get_input() or {}
+        force_refresh = orchestration_input.get("force_refresh", False)
         sequential_mode = orchestration_input.get("sequential_mode", False)
         provider_type = orchestration_input.get("provider_type", None)
-        force_refresh = orchestration_input.get("force_refresh", False)
-        
-        # Call the batch enrichment activity, which invokes enrich_base_data properly
-        enrichment_results = yield context.call_activity("enrich_airtable_batch", {
-            "sequential_mode": sequential_mode,
+        city = orchestration_input.get("city", "charlotte")
+
+        # Create config dictionary
+        config_dict = {
             "provider_type": provider_type,
-            "force_refresh": force_refresh
+            "force_refresh": force_refresh,
+            "sequential_mode": sequential_mode,
+            "city": city
+        }
+        
+        # Call the activity function to handle the enrichment using config dictionary
+        enrichment_results = yield context.call_activity("enrich_airtable_batch", {
+            "config": config_dict
         })
         
         # Filter to only include places that had at least one field updated
@@ -339,6 +404,7 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
         }
         
         logging.info(f"enrich_airtable_base_orchestrator completed. Updated {len(actually_updated_places)} of {len(enrichment_results)} places.")
+        
         context.set_custom_status('Succeeded')
         return result
         
@@ -357,38 +423,43 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
 @app.function_name("enrich_airtable_batch")  # Add explicit function name registration
 def enrich_airtable_batch(activityInput):
     """
-    Activity function to enrich all places in Airtable using enrich_base_data.
+    Activity function that handles enriching Airtable data.
     
-    This function is called by the enrich_airtable_base_orchestrator to process all places
-    in a single batch operation using the AirtableClient.enrich_base_data method.
+    This function uses the resource_manager singleton pattern
+    to efficiently share resources across multiple invocations.
     
     Args:
-        activityInput: A dictionary containing:
-            - sequential_mode: Boolean indicating whether to use sequential processing mode
-            - provider_type: The data provider type to use ('google' or 'outscraper')
-            - force_refresh: Boolean indicating whether to force refresh cached data
-    
-    Returns:
-        The result of the enrichment operation for all places
-    """
-    sequential_mode = activityInput.get('sequential_mode', False)
-    provider_type = activityInput.get('provider_type', None)
-    force_refresh = activityInput.get('force_refresh', False)
-    
-    logging.info(f"Enriching all places in batch mode (sequential_mode={sequential_mode}, provider_type={provider_type}, force_refresh={force_refresh})")
-    
-    try:
-        # Get AirtableClient with appropriate sequential_mode and provider_type setting
-        airtable = helpers.get_airtable_client(sequential_mode=sequential_mode, provider_type=provider_type)
+        activityInput: Dictionary with configuration
         
-        # Call the shared enrich_base_data method designed for batch processing
-        return airtable.enrich_base_data(force_refresh=force_refresh)
+    Returns:
+        list: Results of the enrichment operation for each place
+    """
+    try:
+        # Extract inputs from the config dictionary
+        config_dict = activityInput.get("config", {})
+        
+        # Initialize the resource manager with the config
+        rm.from_dict(config_dict)
+        
+        # Extract the provider_type directly
+        provider_type = rm.get_config('provider_type')
+        sequential_mode = rm.get_config('sequential_mode', False)
+        
+        if not provider_type:
+            logging.error("Cannot get AirtableClient - provider_type is not set")
+            return []
+        
+        # Get the AirtableClient from the resource manager
+        airtable_client = rm.get_airtable_client(provider_type, sequential_mode)
+        
+        # Call the enrichment method with the resource manager for accessing config values
+        enrichment_results = airtable_client.enrich_base_data(rm)
+        
+        return enrichment_results
+        
     except Exception as ex:
-        logging.error(f"Error in batch enrichment: {ex}", exc_info=True)
-        return {
-            "status": "failed",
-            "error": str(ex)
-        }
+        logging.error(f"Error in enrich_airtable_batch: {ex}", exc_info=True)
+        return []
 
 # ======================================================
 # Utility Functions
@@ -400,21 +471,37 @@ def get_all_third_places(activityInput):
     """
     Activity function that retrieves all third places from Airtable.
     
-    This is an internal Azure Function activity triggered by orchestrator functions.
-    It fetches all third places from the Airtable base using the AirtableClient.
+    This function uses the resource_manager singleton pattern.
     
     Args:
-        activityInput (dict): Input parameters for the activity, including:
-            - sequential_mode: Boolean indicating whether to use sequential processing mode
-            - provider_type: The data provider type ('google' or 'outscraper')
+        activityInput: Dictionary with configuration
         
     Returns:
-        list: All third places records from Airtable
+        list: All third places from Airtable
     """
-    sequential_mode = activityInput.get('sequential_mode', False)
-    provider_type = activityInput.get('provider_type', None)
-    airtable = helpers.get_airtable_client(sequential_mode=sequential_mode, provider_type=provider_type)
-    return airtable.all_third_places
+    try:
+        # Extract inputs from the config dictionary
+        config_dict = activityInput.get("config", {})
+        
+        # Initialize the resource manager with the config
+        rm.from_dict(config_dict)
+        
+        # Extract the provider_type directly
+        provider_type = rm.get_config('provider_type')
+        sequential_mode = rm.get_config('sequential_mode', False)
+        
+        if not provider_type:
+            logging.error("Cannot get AirtableClient - provider_type is not set")
+            return []
+        
+        # Get the AirtableClient from the resource manager
+        airtable_client = rm.get_airtable_client(provider_type, sequential_mode)
+        
+        return airtable_client.all_third_places
+        
+    except Exception as ex:
+        logging.error(f"Error in get_all_third_places: {ex}", exc_info=True)
+        return []
 
 @app.function_name(name="PurgeOrchestrations")
 @app.route(route="purge-orchestrations")
@@ -462,6 +549,7 @@ async def purge_orchestrations(req: func.HttpRequest, client) -> func.HttpRespon
             status_code=200,
             mimetype="application/json"
         )
+        
     except Exception as ex:
         logging.error(f"Error occurred while purging orchestrations: {str(ex)}", exc_info=True)
         # If the exception contains a response, log additional details
@@ -481,26 +569,24 @@ async def purge_orchestrations(req: func.HttpRequest, client) -> func.HttpRespon
 @app.route(route="smoke-test")
 def smoke_test(req: func.HttpRequest) -> func.HttpResponse:
     """
-    HTTP-triggered function that provides a simple health check endpoint.
+    HTTP-triggered function to verify the Azure Function is operational.
     
     This function is exposed as a public endpoint at /api/smoke-test.
-    It verifies that the Azure Function is operational by validating a specific 
-    test payload in the request body. The function expects a JSON body with 
-    the key "House" and value "Martell". This serves as both a health check
-    and a simple authentication mechanism to ensure accidental calls don't 
-    trigger the endpoint.
+    It expects a JSON body with the property "House" set to "Martell" and returns a
+    success message if the body is valid. This is a diagnostic endpoint to check
+    if the Azure Function is running correctly.
     
     Args:
-        req (func.HttpRequest): The HTTP request object with JSON body
+        req (func.HttpRequest): The HTTP request object
         
     Returns:
-        func.HttpResponse: A JSON response indicating whether the function is operational
+        func.HttpResponse: A JSON response indicating success or failure
     """
-    logging.info("Received request at SmokeTest endpoint.")
+    logging.info("Received smoke test request.")
 
     try:
         req_body = req.get_json()
-        logging.info(f"Request body parsed successfully: {req_body}")
+        logging.info(f"Request body: {req_body}")
 
         expected_key = "House"
         expected_value = "Martell"
@@ -533,20 +619,10 @@ def smoke_test(req: func.HttpRequest) -> func.HttpResponse:
 @app.route(route="refresh-airtable-operational-statuses")
 def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpResponse:
     """
-    This function calls `airtable.refresh_operational_statuses()`, which returns a detailed list of dictionaries with the status of each update.
-
-    Query parameters:
-    - sequential_mode: If "true", processes places sequentially rather than in parallel
-    - provider_type: The type of data provider to use (e.g., "google", "outscraper")
-
-    The function returns:
-    - 200 OK if the function call completes and there are no return values in the list of dicts where `update_status` is 'failed'.
-    - If there's a return value in the list of dicts with `update_status` 'failed', then it returns 500 Internal Server Error and includes every single record that had a 'failed' status in the return value.
-    - Else, if all return values are 'updated' or 'skipped', it returns 200 OK and returns the entire return value for the caller to parse if they want to.
-    - If there's an exception or big error, it returns an HTTP status that clearly indicates failure to the caller.
-
-    Note: Callers of this Azure Function don't need to provide any input; security is handled via the `x-functions-key` header.
-
+    HTTP-triggered function to refresh the operational statuses of all places in Airtable.
+    
+    This function uses the resource_manager singleton pattern.
+    
     Args:
         req (func.HttpRequest): The HTTP request object.
 
@@ -556,18 +632,40 @@ def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpRes
     logging.info("Received request to refresh Airtable operational statuses.")
 
     try:
-        sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
-        provider_type = req.params.get('provider_type', None)
+        # Initialize configuration from request
+        rm.from_request(req)
         
+        # Validate required parameter
+        provider_type = rm.get_config('provider_type')
+        sequential_mode = rm.get_config('sequential_mode', False)
+        
+        if not provider_type:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Missing required parameter: provider_type",
+                    "data": None,
+                    "error": "The provider_type parameter is required"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+            
+        logging.info(f"Provider type: {provider_type}")
         if sequential_mode:
             logging.info("Using sequential mode for operational status refresh")
         else:
             logging.info("Using parallel mode for operational status refresh")
             
-        airtable = helpers.get_airtable_client(sequential_mode=sequential_mode, provider_type=provider_type)
-        logging.info("AirtableClient instance retrieved, starting to refresh operational statuses.")
+        # Use resource manager to get AirtableClient
+        airtable_client = rm.get_airtable_client(provider_type, sequential_mode)
+        logging.info("AirtableClient instance retrieved from resource manager, starting to refresh operational statuses.")
 
-        results = airtable.refresh_operational_statuses()
+        # Get the data provider from resource manager to pass to refresh_operational_statuses
+        data_provider = rm.get_data_provider(provider_type)
+        
+        # Use the new method that takes a data provider directly
+        results = airtable_client.refresh_operational_statuses(data_provider)
         logging.info("Operational statuses refreshed, processing results.")
 
         failed_updates = [res for res in results if res.get('update_status') == 'failed']
@@ -607,4 +705,61 @@ def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpRes
             }),
             status_code=500,
             mimetype="application/json"
+        )
+
+@app.route(route="place_lookup")
+def place_lookup(req: func.HttpRequest) -> func.HttpResponse:
+    """HTTP Trigger that looks up place details from either Google Maps or Outscraper
+    
+    This endpoint accepts a query parameter called place_id which contains the Google Maps Place ID for the location.
+    It will return cached data if available, unless force_refresh=true is specified in the query string.
+    
+    Example: place_lookup?place_id=ChIJO4rApCM0VIgR5e-aCNr_zps&force_refresh=true
+    """
+
+    place_id = req.params.get('place_id', '')
+    if not place_id:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            req_body = {}
+        place_id = req_body.get('place_id', '')
+
+    if not place_id:
+        return func.HttpResponse(
+             "Please provide a place_id parameter.",
+             status_code=400
+        )
+
+    # Get request parameters
+    provider_type = req.params.get('provider_type', 'outscraper')
+    force_refresh = req.params.get('force_refresh', 'false').lower() == 'true'
+
+    # Configure the resource manager directly
+    rm.set_config('provider_type', provider_type)
+    rm.set_config('force_refresh', force_refresh)
+    rm.set_config('city', 'charlotte')
+    
+    # Create a place data provider
+    from place_data_providers import PlaceDataProviderFactory
+    provider = PlaceDataProviderFactory.get_provider(provider_type)
+
+    # Attempt to get place data (first check cache unless force_refresh=true)
+    status, place_data, message = helpers.get_and_cache_place_data(
+        provider_type=provider_type,
+        place_id=place_id,
+        force_refresh=force_refresh,
+        city='charlotte'
+    )
+
+    if status == 'success':
+        return func.HttpResponse(
+            json.dumps(place_data),
+            mimetype="application/json",
+            status_code=200
+        )
+    else:
+        return func.HttpResponse(
+            message,
+            status_code=404
         )

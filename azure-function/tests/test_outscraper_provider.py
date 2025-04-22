@@ -12,6 +12,7 @@ from datetime import datetime
 # Add parent directory to path so we can import from parent
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import resource_manager as rm
 from constants import DEFAULT_REVIEWS_LIMIT
 from place_data_providers import OutscraperProvider
 
@@ -27,14 +28,26 @@ class TestOutscraperProvider(unittest.TestCase):
         # Load environment variables from .env file
         dotenv.load_dotenv()
         
+        # Import and reset resource manager to clear any existing instances
+        import resource_manager as rm
+        rm.reset()
+        
         # Initialize the real OutscraperProvider
         self.provider = OutscraperProvider()
+        
+        # Initialize resource manager configuration using module-level function
+        rm.from_dict({
+            'provider_type': 'outscraper',
+            'sequential_mode': False,
+            'city': 'charlotte',
+            'force_refresh': False
+        })
         
         self.place_id = TEST_PLACE_ID
         self.place_name = TEST_PLACE_NAME
         
-        # Create output directory for test results - relative to parent directory
-        self.output_dir = os.path.join("..", "data", "testing", "outscraper")
+        # Create output directory for test results - now pointing to testing folder directly
+        self.output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data", "testing", "outscraper")
         os.makedirs(self.output_dir, exist_ok=True)
     
     def test_init(self):
@@ -146,6 +159,31 @@ class TestOutscraperProvider(unittest.TestCase):
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(all_data, f, indent=4, ensure_ascii=False)
         print(f"Saved all place data to {output_file}")
+    
+    def test_integration_with_resource_manager(self):
+        """Test the integration with resource manager module."""
+        # Reset and configure resource manager with outscraper provider type
+        rm.reset()
+        rm.from_dict({
+            'provider_type': 'outscraper',
+            'sequential_mode': False,
+            'city': 'charlotte',
+            'force_refresh': False
+        })
+        
+        # Get the data provider from the resource manager
+        data_provider = rm.get_data_provider()
+        
+        # Verify the provider is correct
+        self.assertIsInstance(data_provider, OutscraperProvider)
+        self.assertEqual(data_provider.provider_type, 'outscraper')
+        
+        # Try to use the provider to validate the integration
+        place_id = data_provider.find_place_id(TEST_PLACE_NAME)
+        self.assertIsNotNone(place_id)
+        self.assertEqual(place_id, TEST_PLACE_ID)
+        
+        print(f"Successfully integrated OutscraperProvider with resource manager")
 
 # This if condition ensures that the tests are only run when this script is executed directly.
 # It prevents the tests from running when this module is imported elsewhere.
@@ -178,6 +216,7 @@ if __name__ == "__main__":
     run_test('test_find_place_id', test_instance.test_find_place_id)
     run_test('test_is_place_operational', test_instance.test_is_place_operational)
     run_test('test_all_place_data', test_instance.test_all_place_data)
+    run_test('test_integration_with_resource_manager', test_instance.test_integration_with_resource_manager)
     
     # Print summary
     print("\n==== TEST SUMMARY ====")
