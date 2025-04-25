@@ -540,7 +540,6 @@ async def purge_orchestrations(req: func.HttpRequest, client) -> func.HttpRespon
 
         logging.info(f"Successfully purged orchestration instances. Instances deleted: {purge_result.instances_deleted}")
 
-        # Return a JSON response with the number of instances deleted
         return func.HttpResponse(
             json.dumps({
                 "message": "Purged orchestration instances.",
