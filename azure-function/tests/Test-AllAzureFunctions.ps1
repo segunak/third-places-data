@@ -10,6 +10,9 @@ $script:City = "charlotte"            # Set to the city you want to use for cach
 $script:ProviderType = "outscraper"   # Set to 'google' or 'outscraper'
 $script:InsufficientOnly = $true      # Set to $true to only process records from the "Insufficient" view
 
+# Array to store test results
+$script:TestResults = @()
+
 # Set up paths
 $script:Root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $script:AzureFunctionDir = Split-Path -Parent $script:Root
@@ -65,7 +68,26 @@ function Test-HttpFunction {
         Write-Log "Available files in directory: $(Get-ChildItem (Split-Path $script:InvokeAzureFunction -Parent))"
     }
     
-    & $script:InvokeAzureFunction -FunctionUrl $url -FunctionKey $functionKey -RequestBody $Body -TimeoutSeconds $TimeoutSeconds
+    $testStartTime = Get-Date
+    $testSuccess = $false
+    
+    try {
+        & $script:InvokeAzureFunction -FunctionUrl $url -FunctionKey $functionKey -RequestBody $Body -TimeoutSeconds $TimeoutSeconds
+        $testSuccess = $true
+    } catch {
+        Write-Log "ERROR: Test failed: $_"
+    }
+    
+    $testDuration = (Get-Date) - $testStartTime
+    
+    # Add result to test results array
+    $script:TestResults += [PSCustomObject]@{
+        TestName = "HTTP: $Endpoint"
+        Description = $Description
+        Success = $testSuccess
+        Duration = $testDuration
+        ExecutedAt = $testStartTime
+    }
     
     Write-Log "Finished: $Endpoint"
     Write-Host "-----------------------------"
@@ -96,7 +118,26 @@ function Test-DurableFunction {
         Write-Log "Available files in directory: $(Get-ChildItem (Split-Path $script:InvokeDurableFunction -Parent))"
     }
     
-    & $script:InvokeDurableFunction -OrchestratorUrl $url -FunctionKey $functionKey -TimeoutSeconds $TimeoutSeconds
+    $testStartTime = Get-Date
+    $testSuccess = $false
+    
+    try {
+        & $script:InvokeDurableFunction -OrchestratorUrl $url -FunctionKey $functionKey -TimeoutSeconds $TimeoutSeconds
+        $testSuccess = $true
+    } catch {
+        Write-Log "ERROR: Test failed: $_"
+    }
+    
+    $testDuration = (Get-Date) - $testStartTime
+    
+    # Add result to test results array
+    $script:TestResults += [PSCustomObject]@{
+        TestName = "Durable: $Endpoint"
+        Description = $Description
+        Success = $testSuccess
+        Duration = $testDuration
+        ExecutedAt = $testStartTime
+    }
     
     Write-Log "Finished: $Endpoint"
     Write-Host "-----------------------------"
@@ -129,3 +170,42 @@ Test-HttpFunction -Endpoint $opsEndpoint -Description "Refresh operational statu
 
 # Display test completion
 Write-Log "All Azure Function endpoint tests completed."
+
+# Generate and display test report
+Write-Host ""
+Write-Host "======================================================="
+Write-Host "            AZURE FUNCTIONS TEST REPORT                "
+Write-Host "======================================================="
+Write-Host ""
+
+$totalTests = $script:TestResults.Count
+$passedTests = ($script:TestResults | Where-Object { $_.Success -eq $true }).Count
+$failedTests = $totalTests - $passedTests
+$passRate = if ($totalTests -gt 0) { [math]::Round(($passedTests / $totalTests) * 100, 2) } else { 0 }
+
+Write-Host "SUMMARY:"
+Write-Host "--------------------------"
+Write-Host "Total Tests  : $totalTests"
+Write-Host "Passed Tests : $passedTests"
+Write-Host "Failed Tests : $failedTests"
+Write-Host "Pass Rate    : $passRate%"
+Write-Host ""
+Write-Host "DETAILED RESULTS:"
+Write-Host "--------------------------"
+
+foreach ($result in $script:TestResults) {
+    $status = if ($result.Success) { "[PASSED]" } else { "[FAILED]" }
+    $durationStr = "{0:mm\:ss\.fff}" -f $result.Duration
+    Write-Host "$status $($result.TestName) - $($result.Description)"
+    Write-Host "         Duration: $durationStr"
+}
+
+Write-Host ""
+Write-Host "======================================================="
+
+# Return test results - for pipeline usage
+if ($failedTests -gt 0) {
+    exit 1
+} else {
+    exit 0
+}
