@@ -8,6 +8,7 @@ $script:SequentialMode = $false        # Set to $true for sequential processing,
 $script:ForceRefresh = $false         # Set to $true to bypass caching, $false to use cache when available
 $script:City = "charlotte"            # Set to the city you want to use for caching
 $script:ProviderType = "outscraper"   # Set to 'google' or 'outscraper'
+$script:InsufficientOnly = $true      # Set to $true to only process records from the "Insufficient" view
 
 # Set up paths
 $script:Root = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -115,8 +116,8 @@ Test-HttpFunction -Endpoint 'smoke-test' -Body '{"House": "Martell"}' -Descripti
 Test-HttpFunction -Endpoint 'purge-orchestrations' -Description 'Purge completed orchestrations'
 
 # 3. Enrich Airtable Base (Durable)
-$enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())"
-Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+$enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())"
+Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode, insufficient_only=$script:InsufficientOnly)"
 
 # 4. Refresh Place Data (Durable)
 $refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&city=$script:City"

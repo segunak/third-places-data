@@ -16,8 +16,14 @@ from typing import Dict, Any, Optional
 from place_data_providers import PlaceDataProviderFactory
 import airtable_client as ac
 
-# Global configuration dictionary accessible module-wide
-_config = {}
+# Initialize module-level variables for storing configuration and resources
+_config = {
+    'city': 'charlotte',
+    'force_refresh': False,
+    'sequential_mode': False,
+    'insufficient_only': False,
+    'provider_type': None
+}
 
 # Thread-local storage for resource instances
 _thread_local = threading.local()
@@ -148,7 +154,7 @@ def get_data_provider(provider_type: Optional[str] = None):
         
     return _thread_local.providers[provider_type]
 
-def get_airtable_client(provider_type: Optional[str] = None, sequential_mode: Optional[bool] = None):
+def get_airtable_client(provider_type: Optional[str] = None, sequential_mode: Optional[bool] = None, insufficient_only: Optional[bool] = None):
     """
     Get or create an AirtableClient.
     
@@ -160,6 +166,8 @@ def get_airtable_client(provider_type: Optional[str] = None, sequential_mode: Op
                                       If None, uses provider_type from config.
         sequential_mode (Optional[bool]): Whether to use sequential mode.
                                         If None, uses sequential_mode from config.
+        insufficient_only (Optional[bool]): Whether to filter records to "Insufficient" view.
+                                          If None, uses insufficient_only from config.
     
     Returns:
         AirtableClient: An AirtableClient instance
@@ -176,16 +184,19 @@ def get_airtable_client(provider_type: Optional[str] = None, sequential_mode: Op
     if sequential_mode is None:
         sequential_mode = get_config('sequential_mode', False)
     
+    if insufficient_only is None:
+        insufficient_only = get_config('insufficient_only', False)
+    
     # Check if we already have a client in thread-local storage
     if not hasattr(_thread_local, 'airtable_clients'):
         _thread_local.airtable_clients = {}
     
-    # Create a unique key for each combination of provider_type and sequential_mode
-    client_key = f"{provider_type}_{sequential_mode}"
+    # Create a unique key for each combination of provider_type, sequential_mode, and insufficient_only
+    client_key = f"{provider_type}_{sequential_mode}_{insufficient_only}"
     
     if client_key not in _thread_local.airtable_clients:
         # Create a new client and store it in thread-local storage
-        _thread_local.airtable_clients[client_key] = ac.AirtableClient(provider_type, sequential_mode)
+        _thread_local.airtable_clients[client_key] = ac.AirtableClient(provider_type, sequential_mode, insufficient_only)
         
     return _thread_local.airtable_clients[client_key]
 

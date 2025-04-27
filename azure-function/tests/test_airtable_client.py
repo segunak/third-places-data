@@ -709,6 +709,49 @@ class TestAirtableClient(unittest.TestCase):
             print("✓ Correctly applied photo optimization strategy")
             
         print("\nAll caching scenarios tested successfully")
+    
+    def test_insufficient_only_filter(self):
+        """Test that the insufficient_only parameter correctly filters records from the 'Insufficient' view."""
+        # Create AirtableClient instances with and without insufficient_only
+        with mock.patch('pyairtable.Table.all') as mock_all:
+            # Configure the mock to track different calls
+            mock_all.side_effect = lambda **kwargs: {
+                # When view="Insufficient" is passed, return a filtered dataset
+                'view=Insufficient': [
+                    {'id': 'rec1', 'fields': {'Place': 'Insufficient Place 1'}},
+                    {'id': 'rec2', 'fields': {'Place': 'Insufficient Place 2'}}
+                ],
+                # When no view is passed, return all records
+                'no_view': [
+                    {'id': 'rec1', 'fields': {'Place': 'Insufficient Place 1'}},
+                    {'id': 'rec2', 'fields': {'Place': 'Insufficient Place 2'}},
+                    {'id': 'rec3', 'fields': {'Place': 'Complete Place 3'}},
+                    {'id': 'rec4', 'fields': {'Place': 'Complete Place 4'}},
+                    {'id': 'rec5', 'fields': {'Place': 'Complete Place 5'}}
+                ]
+            }.get('view=Insufficient' if 'view' in kwargs and kwargs['view'] == 'Insufficient' else 'no_view', [])
+            
+            # Test with insufficient_only=True
+            client_filtered = AirtableClient(provider_type='outscraper', insufficient_only=True)
+            filtered_places = client_filtered.all_third_places
+            
+            # Verify that the "Insufficient" view was requested
+            mock_all.assert_called_with(view="Insufficient", sort=["-Created Time"])
+            # Reset the mock counter between calls
+            mock_all.reset_mock()
+            
+            # Test with insufficient_only=False (default)
+            client_all = AirtableClient(provider_type='outscraper', insufficient_only=False)
+            all_places = client_all.all_third_places
+            
+            # Verify that no view filter was applied
+            mock_all.assert_called_with(sort=["-Created Time"])
+            
+            # Verify correct number of places in each case
+            self.assertEqual(len(filtered_places), 2, "Should have 2 places when filtered to Insufficient view")
+            self.assertEqual(len(all_places), 5, "Should have all 5 places when not filtered")
+            
+            print("✓ Successfully tested insufficient_only filter parameter")
 
 # This if condition ensures that the tests are only run when this script is executed directly.
 # It prevents the tests from running when this module is imported elsewhere.
@@ -743,6 +786,7 @@ if __name__ == "__main__":
     run_test('test_get_place_types', test_instance.test_get_place_types)
     run_test('test_enrich_base_data', test_instance.test_enrich_base_data)
     run_test('test_caching_system', test_instance.test_caching_system)
+    run_test('test_insufficient_only_filter', test_instance.test_insufficient_only_filter)
     
     # Print summary
     print("\n==== TEST SUMMARY ====")

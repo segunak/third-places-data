@@ -296,6 +296,7 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
     - force_refresh: If "true", bypasses the cache and always fetches fresh data
     - sequential_mode: If "true", processes places sequentially rather than in parallel
     - provider_type: The type of data provider to use (e.g., "google", "outscraper")
+    - insufficient_only: If "true", only processes records from the "Insufficient" view
     
     Returns:
         func.HttpResponse: A JSON response with the orchestration instance ID and status URL
@@ -318,15 +319,21 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
                 status_code=400
             )
         
+        # Get the insufficient_only parameter from query string
+        insufficient_only = req.params.get('insufficient_only', '').lower() == 'true'
+        rm.set_config('insufficient_only', insufficient_only)
+        
         logging.info(f"Starting enrichment with parameters: city={rm.get_config('city')}, force_refresh={rm.get_config('force_refresh', False)}, "
-                     f"sequential_mode={rm.get_config('sequential_mode', False)}, provider_type={rm.get_config('provider_type')}")
+                     f"sequential_mode={rm.get_config('sequential_mode', False)}, provider_type={rm.get_config('provider_type')}, "
+                     f"insufficient_only={rm.get_config('insufficient_only', False)}")
         
         # Start the orchestrator with the parameters
         orchestration_input = {
             "force_refresh": rm.get_config('force_refresh', False),
             "sequential_mode": rm.get_config('sequential_mode', False),
             "provider_type": rm.get_config('provider_type'),
-            "city": rm.get_config('city', 'charlotte')
+            "city": rm.get_config('city', 'charlotte'),
+            "insufficient_only": rm.get_config('insufficient_only', False)
         }
         
         instance_id = await client.start_new("enrich_airtable_base_orchestrator", client_input=orchestration_input)
@@ -372,13 +379,15 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
         sequential_mode = orchestration_input.get("sequential_mode", False)
         provider_type = orchestration_input.get("provider_type", None)
         city = orchestration_input.get("city", "charlotte")
+        insufficient_only = orchestration_input.get("insufficient_only", False)
 
         # Create config dictionary
         config_dict = {
             "provider_type": provider_type,
             "force_refresh": force_refresh,
             "sequential_mode": sequential_mode,
-            "city": city
+            "city": city,
+            "insufficient_only": insufficient_only
         }
         
         # Call the activity function to handle the enrichment using config dictionary
@@ -386,15 +395,36 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
             "config": config_dict
         })
         
+        # Handle case when there are no records to process due to insufficient_only filter
+        if insufficient_only and not enrichment_results:
+            logging.info("No records were found in the 'Insufficient' view to enrich.")
+            result = {
+                "success": True,
+                "message": "No records were found in the 'Insufficient' view to enrich.",
+                "data": {
+                    "total_places_processed": 0,
+                    "total_places_enriched": 0,
+                    "places_enriched": []
+                },
+                "error": None
+            }
+            context.set_custom_status('Succeeded')
+            return result
+        
         # Filter to only include places that had at least one field updated
         actually_updated_places = [
             place for place in enrichment_results 
             if place and place.get('field_updates') and any(updates["updated"] for updates in place.get('field_updates', {}).values())
         ]
         
+        # Create appropriate message based on the insufficient_only filter
+        message = "Airtable base enrichment processed successfully."
+        if insufficient_only:
+            message = f"Airtable base enrichment processed {len(enrichment_results)} records from 'Insufficient' view."
+        
         result = {
             "success": True,
-            "message": "Airtable base enrichment processed successfully.",
+            "message": message,
             "data": {
                 "total_places_processed": len(enrichment_results),
                 "total_places_enriched": len(actually_updated_places),
@@ -403,7 +433,10 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
             "error": None
         }
         
-        logging.info(f"enrich_airtable_base_orchestrator completed. Updated {len(actually_updated_places)} of {len(enrichment_results)} places.")
+        if insufficient_only:
+            logging.info(f"enrich_airtable_base_orchestrator completed. Found {len(enrichment_results)} places in 'Insufficient' view and updated {len(actually_updated_places)} of them.")
+        else:
+            logging.info(f"enrich_airtable_base_orchestrator completed. Updated {len(actually_updated_places)} of {len(enrichment_results)} places.")
         
         context.set_custom_status('Succeeded')
         return result
@@ -444,13 +477,23 @@ def enrich_airtable_batch(activityInput):
         # Extract the provider_type directly
         provider_type = rm.get_config('provider_type')
         sequential_mode = rm.get_config('sequential_mode', False)
+        insufficient_only = rm.get_config('insufficient_only', False)
         
         if not provider_type:
             logging.error("Cannot get AirtableClient - provider_type is not set")
             return []
         
         # Get the AirtableClient from the resource manager
-        airtable_client = rm.get_airtable_client(provider_type, sequential_mode)
+        airtable_client = rm.get_airtable_client(provider_type, sequential_mode, insufficient_only)
+        
+        # Check if there are any records to process when using insufficient_only filter
+        if insufficient_only:
+            places_to_process = airtable_client.all_third_places
+            if not places_to_process:
+                logging.info("No records found in the 'Insufficient' view with insufficient_only=True. Nothing to enrich.")
+                return []
+            else:
+                logging.info(f"Found {len(places_to_process)} records in 'Insufficient' view to process.")
         
         # Call the enrichment method with the resource manager for accessing config values
         enrichment_results = airtable_client.enrich_base_data(rm)
