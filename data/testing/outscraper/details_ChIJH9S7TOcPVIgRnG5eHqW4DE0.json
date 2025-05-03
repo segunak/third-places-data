@@ -7,7 +7,8 @@
     "description": null,
     "purchase_required": "Yes",
     "parking": [
-        "Free"
+        "Free",
+        "Street"
     ],
     "latitude": 35.4165135,
     "longitude": -80.6031644,
@@ -18,7 +19,7 @@
         "place_id": "ChIJH9S7TOcPVIgRnG5eHqW4DE0",
         "google_id": "0x88540fe74cbbd41f:0x4d0cb8a51e5e6e9c",
         "kgmid": "/g/11y7xfqb06",
-        "full_address": "300 McGill Ave NW, Concord, NC 28027, United States",
+        "full_address": "300 McGill Ave NW, Concord, NC 28027",
         "borough": null,
         "street": "300 McGill Ave NW",
         "postal_code": "28027",
@@ -33,13 +34,812 @@
         "longitude": -80.6031644,
         "h3": "8944daae29bffff",
         "time_zone": "America/New_York",
-        "popular_times": null,
+        "popular_times": [
+            {
+                "day": 7,
+                "day_text": "Sunday",
+                "popular_times": [
+                    {
+                        "hour": 6,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 7,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 8,
+                        "percentage": 59,
+                        "title": "Usually a little busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 9,
+                        "percentage": 70,
+                        "title": "Usually a little busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 10,
+                        "percentage": 92,
+                        "title": "Usually as busy as it gets",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 11,
+                        "percentage": 100,
+                        "title": "Usually as busy as it gets",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 12,
+                        "percentage": 100,
+                        "title": "Usually as busy as it gets",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 13,
+                        "percentage": 81,
+                        "title": "Usually as busy as it gets",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 14,
+                        "percentage": 59,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 15,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 16,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 17,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 18,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 19,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 20,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 21,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 22,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 23,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    }
+                ]
+            },
+            {
+                "day": 1,
+                "day_text": "Monday",
+                "popular_times": [
+                    {
+                        "hour": 6,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 7,
+                        "percentage": 18,
+                        "title": "Usually not busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 8,
+                        "percentage": 37,
+                        "title": "Usually not too busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 9,
+                        "percentage": 51,
+                        "title": "Usually a little busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 10,
+                        "percentage": 51,
+                        "title": "Usually a little busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 11,
+                        "percentage": 44,
+                        "title": "Usually not too busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 12,
+                        "percentage": 48,
+                        "title": "Usually not too busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 13,
+                        "percentage": 59,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 14,
+                        "percentage": 74,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 15,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 16,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 17,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 18,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 19,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 20,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 21,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 22,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 23,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    }
+                ]
+            },
+            {
+                "day": 2,
+                "day_text": "Tuesday",
+                "popular_times": [
+                    {
+                        "hour": 6,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 7,
+                        "percentage": 22,
+                        "title": "Usually not too busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 8,
+                        "percentage": 25,
+                        "title": "Usually not too busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 9,
+                        "percentage": 25,
+                        "title": "Usually not too busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 10,
+                        "percentage": 33,
+                        "title": "Usually not too busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 11,
+                        "percentage": 25,
+                        "title": "Usually not too busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 12,
+                        "percentage": 37,
+                        "title": "Usually not too busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 13,
+                        "percentage": 51,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 14,
+                        "percentage": 66,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 15,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 16,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 17,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 18,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 19,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 20,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 21,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 22,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 23,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    }
+                ]
+            },
+            {
+                "day": 3,
+                "day_text": "Wednesday",
+                "popular_times": [
+                    {
+                        "hour": 6,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 7,
+                        "percentage": 29,
+                        "title": "Usually not too busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 8,
+                        "percentage": 44,
+                        "title": "Usually not too busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 9,
+                        "percentage": 37,
+                        "title": "Usually not too busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 10,
+                        "percentage": 40,
+                        "title": "Usually not too busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 11,
+                        "percentage": 40,
+                        "title": "Usually not too busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 12,
+                        "percentage": 40,
+                        "title": "Usually not too busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 13,
+                        "percentage": 33,
+                        "title": "Usually not too busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 14,
+                        "percentage": 25,
+                        "title": "Usually not too busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 15,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 16,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 17,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 18,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 19,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 20,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 21,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 22,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 23,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    }
+                ]
+            },
+            {
+                "day": 4,
+                "day_text": "Thursday",
+                "popular_times": [
+                    {
+                        "hour": 6,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 7,
+                        "percentage": 33,
+                        "title": "Usually not too busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 8,
+                        "percentage": 51,
+                        "title": "Usually a little busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 9,
+                        "percentage": 66,
+                        "title": "Usually a little busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 10,
+                        "percentage": 74,
+                        "title": "Usually a little busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 11,
+                        "percentage": 77,
+                        "title": "Usually a little busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 12,
+                        "percentage": 77,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 13,
+                        "percentage": 66,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 14,
+                        "percentage": 55,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 15,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 16,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 17,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 18,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 19,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 20,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 21,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 22,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 23,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    }
+                ]
+            },
+            {
+                "day": 5,
+                "day_text": "Friday",
+                "popular_times": [
+                    {
+                        "hour": 6,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 7,
+                        "percentage": 29,
+                        "title": "Usually not too busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 8,
+                        "percentage": 48,
+                        "title": "Usually not too busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 9,
+                        "percentage": 81,
+                        "title": "Usually as busy as it gets",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 10,
+                        "percentage": 96,
+                        "title": "Usually as busy as it gets",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 11,
+                        "percentage": 81,
+                        "title": "Usually as busy as it gets",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 12,
+                        "percentage": 66,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 13,
+                        "percentage": 48,
+                        "title": "Usually not too busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 14,
+                        "percentage": 40,
+                        "title": "Usually not too busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 15,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 16,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 17,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 18,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 19,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 20,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 21,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 22,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 23,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    }
+                ]
+            },
+            {
+                "day": 6,
+                "day_text": "Saturday",
+                "popular_times": [
+                    {
+                        "hour": 6,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 7,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 8,
+                        "percentage": 59,
+                        "title": "Usually a little busy",
+                        "time": "6a"
+                    },
+                    {
+                        "hour": 9,
+                        "percentage": 66,
+                        "title": "Usually a little busy",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 10,
+                        "percentage": 92,
+                        "title": "Usually as busy as it gets",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 11,
+                        "percentage": 81,
+                        "title": "Usually as busy as it gets",
+                        "time": "9a"
+                    },
+                    {
+                        "hour": 12,
+                        "percentage": 74,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 13,
+                        "percentage": 59,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 14,
+                        "percentage": 51,
+                        "title": "Usually a little busy",
+                        "time": "12p"
+                    },
+                    {
+                        "hour": 15,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 16,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 17,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "3p"
+                    },
+                    {
+                        "hour": 18,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 19,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 20,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "6p"
+                    },
+                    {
+                        "hour": 21,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 22,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    },
+                    {
+                        "hour": 23,
+                        "percentage": 0,
+                        "title": "",
+                        "time": "9p"
+                    }
+                ]
+            }
+        ],
         "site": "https://www.mattieruths.com/",
         "phone": null,
         "type": "Coffee shop",
         "logo": "https://lh4.googleusercontent.com/-jVMeeBD0AmQ/AAAAAAAAAAI/AAAAAAAAAAA/cBtvSxWBOfY/s44-p-k-no-ns-nd/photo.jpg",
         "description": null,
-        "typical_time_spent": "People typically spend up to 1.5 hours here",
+        "typical_time_spent": "People typically spend up to 2 hours here",
         "located_in": null,
         "located_google_id": null,
         "category": "coffee shops",
@@ -56,12 +856,12 @@
             "chicken salad"
         ],
         "rating": 5,
-        "reviews": 44,
+        "reviews": 45,
         "photos_count": 33,
         "cid": "5552015459959598748",
-        "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJH9S7TOcPVIgRnG5eHqW4DE0&authuser=0&hl=en&gl=UA",
+        "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJH9S7TOcPVIgRnG5eHqW4DE0&authuser=0&hl=en&gl=US",
         "reviews_id": "5552015459959598748",
-        "photo": "https://lh3.googleusercontent.com/gps-cs-s/AB5caB-TBsTT9ozF-z4uxYCEQVM7jMhBZS1HKJFIZQ4c2wsbLAerLqEgQ-nUvrN4032OCk-IBBad8t8vmEG4NJcOw8wMbx1AVWQuBde2NDIl2TCM6V_jvM4d_2Nh8-CUUBOSfU3gSHLuMQ=w800-h500-k-no",
+        "photo": "https://lh3.googleusercontent.com/p/AF1QipP50WNSlmG2xwePbGynsMnOVlagT_60azjhSKmP=w800-h500-k-no",
         "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=EdO9bsSckVYPhW7L6afXqA&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=347.63477&pitch=0&thumbfov=100",
         "working_hours_old_format": "Monday:7AM-3PM|Tuesday:7AM-3PM|Wednesday:7AM-3PM|Thursday:7AM-3PM|Friday:7AM-3PM|Saturday:8AM-3PM|Sunday:8AM-3PM",
         "working_hours": {
@@ -77,7 +877,7 @@
         "business_status": "OPERATIONAL",
         "about": {
             "Service options": {
-                "Takeaway": true,
+                "Takeout": true,
                 "Dine-in": true,
                 "Delivery": false
             },
@@ -89,8 +889,9 @@
                 "Solo dining": true
             },
             "Accessibility": {
-                "Wheelchair-accessible car park": true,
-                "Wheelchair-accessible entrance": true
+                "Wheelchair accessible entrance": true,
+                "Wheelchair accessible parking lot": true,
+                "Wheelchair accessible seating": true
             },
             "Offerings": {
                 "Coffee": true,
@@ -100,23 +901,29 @@
                 "Dessert": true
             },
             "Amenities": {
-                "Toilet": true
+                "Restroom": true,
+                "Wi-Fi": true
             },
             "Atmosphere": {
                 "Casual": true,
-                "Cosy": true,
+                "Cozy": true,
                 "Trendy": true
+            },
+            "Crowd": {
+                "Groups": true,
+                "Tourists": true
             },
             "Payments": {
                 "Credit cards": true
             },
             "Parking": {
-                "Free of charge street parking": true,
                 "Free parking lot": true,
+                "Free street parking": true,
                 "Parking": true
             }
         },
         "range": "$1–10",
+        "prices": null,
         "reviews_per_score": null,
         "reviews_per_score_1": null,
         "reviews_per_score_2": null,

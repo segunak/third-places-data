@@ -122,7 +122,7 @@ function Test-DurableFunction {
     $testSuccess = $false
     
     try {
-        & $script:InvokeDurableFunction -OrchestratorUrl $url -FunctionKey $functionKey -TimeoutSeconds $TimeoutSeconds
+        & $script:InvokeDurableFunction -FunctionUrl $url -FunctionKey $functionKey -TimeoutSeconds $TimeoutSeconds
         $testSuccess = $true
     } catch {
         Write-Log "ERROR: Test failed: $_"
@@ -157,7 +157,7 @@ Test-HttpFunction -Endpoint 'smoke-test' -Body '{"House": "Martell"}' -Descripti
 Test-HttpFunction -Endpoint 'purge-orchestrations' -Description 'Purge completed orchestrations'
 
 # 3. Enrich Airtable Base (Durable)
-$enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())"
+$enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())&city=$script:City"
 Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode, insufficient_only=$script:InsufficientOnly)"
 
 # 4. Refresh Place Data (Durable)
@@ -165,8 +165,8 @@ $refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequen
 Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
 # 5. Refresh Operational Statuses (HTTP)
-$opsEndpoint = "refresh-airtable-operational-statuses?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())"
-Test-HttpFunction -Endpoint $opsEndpoint -Description "Refresh operational statuses ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+$opsEndpoint = "refresh-airtable-operational-statuses?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&city=$script:City"
+Test-DurableFunction -Endpoint $opsEndpoint -Description "Refresh operational statuses ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
 # Display test completion
 Write-Log "All Azure Function endpoint tests completed."

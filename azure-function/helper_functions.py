@@ -7,13 +7,12 @@ import logging
 import requests
 import unicodedata
 from unidecode import unidecode
-from datetime import datetime, timedelta
+from datetime import datetime
 from azure.storage.filedatalake import DataLakeServiceClient
-from typing import Iterable, Callable, Any, List, Dict, Optional, Tuple, Union
+from typing import Dict, Optional, Tuple
 from threading import Lock
-
-import resource_manager as rm
 from constants import DEFAULT_CACHE_REFRESH_INTERVAL, SearchField
+from place_data_providers import PlaceDataProviderFactory
 
 def normalize_text(text: str) -> str:
     """
@@ -309,7 +308,7 @@ def _fill_photos_from_airtable(place_data: Dict, photos_json: str) -> bool:
         return False
 
 def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str = None,
-                              city: str = 'charlotte', force_refresh: bool = False) -> Tuple[str, Dict, str]:
+                              city: str = None, force_refresh: bool = False) -> Tuple[str, Dict, str]:
     """
     Get place data, either from cache or by calling data provider, then cache the result.
     
@@ -329,6 +328,8 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
             - 'cached': Cached data was used
             - 'failed': Data retrieval failed
     """
+    if not city:
+        return 'failed', None, 'Missing required parameter: city'
     try:
         # Validate provider_type
         if not provider_type:
@@ -336,8 +337,8 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
             logging.error(error_msg)
             return 'failed', None, error_msg
             
-        # Get the provider from resource manager
-        data_provider = rm.get_data_provider(provider_type)
+        # Create the provider explicitly
+        data_provider = PlaceDataProviderFactory.get_provider(provider_type)
         
         # If place_id wasn't provided, find it using the data provider
         if not place_id:
@@ -355,8 +356,9 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
         existing_photos_json = None
         
         try:
-            # Get the AirtableClient from resource manager
-            airtable_client = rm.get_airtable_client(provider_type)
+            from airtable_client import AirtableClient
+            # Get the AirtableClient
+            airtable_client = AirtableClient(provider_type)
             
             # Check if the place exists in Airtable
             record = airtable_client.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)

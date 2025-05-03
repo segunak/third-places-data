@@ -12,7 +12,6 @@ from datetime import datetime
 # Add parent directory to path so we can import from parent
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import resource_manager as rm
 from place_data_providers import GoogleMapsProvider
 
 # Sample real place to test with
@@ -27,20 +26,8 @@ class TestGoogleMapsProvider(unittest.TestCase):
         # Load environment variables from .env file
         dotenv.load_dotenv()
         
-        # Import and reset resource manager to clear any existing instances
-        import resource_manager as rm
-        rm.reset()
-        
         # Initialize the real GoogleMapsProvider
         self.provider = GoogleMapsProvider()
-        
-        # Initialize resource manager configuration using module-level function
-        rm.from_dict({
-            'provider_type': 'google',
-            'sequential_mode': False,
-            'city': 'charlotte',
-            'force_refresh': False
-        })
         
         self.place_id = TEST_PLACE_ID
         self.place_name = TEST_PLACE_NAME
@@ -149,28 +136,6 @@ class TestGoogleMapsProvider(unittest.TestCase):
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(all_data, f, indent=4, ensure_ascii=False)
         print(f"Saved all place data to {output_file}")
-    
-    def test_integration_with_resource_manager(self):
-        """Test the integration with resource manager module."""
-        # Configure resource manager to use Google provider
-        rm.from_dict({
-            'provider_type': 'google',
-            'sequential_mode': False
-        })
-        
-        # Get the data provider from the resource manager
-        data_provider = rm.get_data_provider()
-        
-        # Verify the provider is correct
-        self.assertIsInstance(data_provider, GoogleMapsProvider)
-        self.assertEqual(data_provider.provider_type, 'google')
-        
-        # Try to use the provider to validate the integration
-        place_id = data_provider.find_place_id(TEST_PLACE_NAME)
-        self.assertIsNotNone(place_id)
-        self.assertEqual(place_id, TEST_PLACE_ID)
-        
-        print(f"Successfully integrated GoogleMapsProvider with resource manager module")
 
 # This if condition ensures that the tests are only run when this script is executed directly.
 # It prevents the tests from running when this module is imported elsewhere.
@@ -203,7 +168,6 @@ if __name__ == "__main__":
     run_test('test_find_place_id', test_instance.test_find_place_id)
     run_test('test_is_place_operational', test_instance.test_is_place_operational)
     run_test('test_all_place_data', test_instance.test_all_place_data)
-    run_test('test_integration_with_resource_manager', test_instance.test_integration_with_resource_manager)
     
     # Print summary
     print("\n==== TEST SUMMARY ====")

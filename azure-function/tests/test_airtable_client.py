@@ -7,15 +7,12 @@ import unittest
 import pyairtable
 from unittest import mock
 from datetime import datetime, timedelta
-
-
 # Add parent directory to path so we can import from parent
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import resource_manager as rm
 from constants import SearchField
 from airtable_client import AirtableClient
-from place_data_providers import OutscraperProvider
+from place_data_providers import OutscraperProvider, PlaceDataProviderFactory
 
 # Sample real place to test with - same as in other tests for consistency
 TEST_PLACE_NAME = "Mattie Ruth's Coffee House"
@@ -29,21 +26,9 @@ class TestAirtableClient(unittest.TestCase):
         # Load environment variables from .env file
         dotenv.load_dotenv()
         
-        # Import and reset resource manager to clear any existing instances
-        import resource_manager as rm
-        rm.reset()
-        
-        # Initialize resource manager configuration using module-level function
-        rm.from_dict({
-            'provider_type': 'outscraper',
-            'sequential_mode': True,
-            'city': 'charlotte',
-            'force_refresh': False
-        })
-        
         self.client = AirtableClient(
-            provider_type=rm.get_config('provider_type'), 
-            sequential_mode=rm.get_config('sequential_mode')
+            provider_type='outscraper', 
+            sequential_mode=True
         )
         
         self.place_id = TEST_PLACE_ID
@@ -278,14 +263,6 @@ class TestAirtableClient(unittest.TestCase):
     
     def test_enrich_base_data(self):
         """Test that enrich_base_data correctly enriches place data."""
-        # Mock the resource manager
-        mock_resource_manager = mock.MagicMock()
-        mock_resource_manager.get_config.side_effect = lambda key, default=None: {
-            'force_refresh': False,
-            'provider_type': 'outscraper',
-            'city': 'charlotte'
-        }.get(key, default)
-        
         # Setup test data with places
         test_places = [
             {
@@ -345,7 +322,7 @@ class TestAirtableClient(unittest.TestCase):
             mock_get_data.side_effect = mock_get_data_side_effect
             
             # Call method under test
-            results = self.client.enrich_base_data(mock_resource_manager)
+            results = self.client.enrich_base_data(city='charlotte')
             
             # Verify results
             self.assertEqual(len(results), 2)
@@ -359,7 +336,7 @@ class TestAirtableClient(unittest.TestCase):
             second_result = next(r for r in results if r['place_id'] == 'place456')
             self.assertEqual(second_result['status'], 'skipped')
             
-        print("✓ Successfully tested enrich_base_data with resource manager")
+        print("✓ Successfully tested enrich_base_data")
     
     @mock.patch('helper_functions.fetch_data_github')
     @mock.patch('helper_functions.save_data_github')
@@ -369,7 +346,6 @@ class TestAirtableClient(unittest.TestCase):
         """Test that the caching system correctly uses or refreshes cache based on data staleness and photo optimization strategy."""
         import helper_functions as helpers
         import constants
-        import resource_manager as rm
         
         # Set up a fixed "now" time for testing
         mock_now = datetime(2025, 1, 1, 12, 0, 0)
@@ -382,15 +358,6 @@ class TestAirtableClient(unittest.TestCase):
         # Test place information
         place_name = TEST_PLACE_NAME
         place_id = TEST_PLACE_ID
-        
-        # Initialize resource manager for testing
-        rm.reset()
-        rm.from_dict({
-            'provider_type': 'outscraper',  # Use valid provider type
-            'city': 'charlotte',
-            'sequential_mode': True,
-            'force_refresh': False
-        })
         
         # SCENARIO 1: No cached data exists
         # =================================
@@ -591,9 +558,6 @@ class TestAirtableClient(unittest.TestCase):
         # We use the same fresh cached data as before
         mock_fetch_data_github.return_value = (True, fresh_cached_data, "Success")
         
-        # Set force_refresh=True in the resource manager for this scenario
-        rm.set_config('force_refresh', True)
-        
         # Run the test with force_refresh=True
         with mock.patch('airtable_client.AirtableClient.get_record') as mock_get_record, \
              mock.patch('helper_functions._fill_photos_from_airtable') as mock_fill_photos:
@@ -623,7 +587,7 @@ class TestAirtableClient(unittest.TestCase):
             
             mock_fill_photos.return_value = False
             
-            # Call the function with force_refresh=True from resource manager
+            # Call the function with force_refresh=True
             status, data, message = helpers.get_and_cache_place_data(
                 provider_type='outscraper', 
                 place_name=place_name,
@@ -641,9 +605,6 @@ class TestAirtableClient(unittest.TestCase):
             mock_save_data_github.assert_called_once()
             
             print("✓ Correctly bypassed cache with force_refresh=True")
-        
-        # Reset force_refresh for the next test
-        rm.set_config('force_refresh', False)
             
         # SCENARIO 5: Photo optimization - skip photo retrieval if photos exist in Airtable
         # ==============================================================================
@@ -752,6 +713,54 @@ class TestAirtableClient(unittest.TestCase):
             self.assertEqual(len(all_places), 5, "Should have all 5 places when not filtered")
             
             print("✓ Successfully tested insufficient_only filter parameter")
+    
+    def test_enrich_single_place(self):
+        """Test enrich_single_place with explicit parameters and proper mocking."""
+        test_place = {
+            'id': 'rec789',
+            'fields': {
+                'Place': 'Test Place 3',
+                'Google Maps Place Id': 'place789'
+            }
+        }
+        provider_type = 'outscraper'
+        city = 'charlotte'
+        force_refresh = False
+
+        with mock.patch('airtable_client.AirtableClient.update_place_record') as mock_update_record, \
+             mock.patch('helper_functions.get_and_cache_place_data') as mock_get_data, \
+             mock.patch.object(pyairtable.Table, 'get', return_value=test_place):
+
+            # Mock the helper to return a successful enrichment
+            mock_get_data.return_value = (
+                'succeeded',
+                {
+                    'place_id': 'place789',
+                    'details': {
+                        'website': 'https://example3.com',
+                        'address': '789 Test Ave',
+                        'latitude': 35.0000,
+                        'longitude': -80.0000,
+                        'description': 'A third test place',
+                        'google_maps_url': 'https://maps.google.com/place789',
+                        'parking': ['Free'],
+                        'purchase_required': 'No'
+                    },
+                    'photos': {
+                        'photo_urls': ['https://example.com/photo3.jpg']
+                    }
+                },
+                'Data found'
+            )
+
+            client = AirtableClient(provider_type=provider_type)
+            result = client.enrich_single_place(test_place, provider_type, city, force_refresh)
+
+            self.assertEqual(result['status'], 'succeeded')
+            self.assertEqual(result['place_name'], 'Test Place 3')
+            self.assertEqual(result['place_id'], 'place789')
+            self.assertIn('field_updates', result)
+            print("\u2713 enrich_single_place works with explicit parameters and mocks")
 
 # This if condition ensures that the tests are only run when this script is executed directly.
 # It prevents the tests from running when this module is imported elsewhere.
@@ -787,6 +796,7 @@ if __name__ == "__main__":
     run_test('test_enrich_base_data', test_instance.test_enrich_base_data)
     run_test('test_caching_system', test_instance.test_caching_system)
     run_test('test_insufficient_only_filter', test_instance.test_insufficient_only_filter)
+    run_test('test_enrich_single_place', test_instance.test_enrich_single_place)
     
     # Print summary
     print("\n==== TEST SUMMARY ====")

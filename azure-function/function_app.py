@@ -4,7 +4,8 @@ import datetime
 import azure.functions as func
 import helper_functions as helpers
 import azure.durable_functions as df
-import resource_manager as rm
+from place_data_providers import PlaceDataProviderFactory
+from airtable_client import AirtableClient
 from azure.durable_functions.models.DurableOrchestrationStatus import OrchestrationRuntimeStatus
 
 app = df.DFApp(http_auth_level=func.AuthLevel.FUNCTION)
@@ -36,11 +37,13 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
     logging.info("Received request for place data refresh.")
 
     try:
-        # Initialize configuration from request
-        rm.from_request(req)
+        # Parse parameters directly from request
+        provider_type = req.params.get('provider_type')
+        force_refresh = req.params.get('force_refresh', '').lower() == 'true'
+        sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
+        city = req.params.get('city')
         
-        # Validate required parameter
-        if not rm.get_config('provider_type'):
+        if not provider_type:
             return func.HttpResponse(
                 json.dumps({
                     "success": False,
@@ -52,16 +55,27 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
                 mimetype="application/json"
             )
         
-        logging.info(f"Starting place data refresh with parameters: force_refresh={rm.get_config('force_refresh', False)}, "
-                    f"sequential_mode={rm.get_config('sequential_mode', False)}, city={rm.get_config('city', 'charlotte')}, "
-                    f"provider_type={rm.get_config('provider_type')}")
+        if not city:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Missing required parameter: city",
+                    "data": None,
+                    "error": "The city parameter is required"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+        
+        logging.info(f"Starting place data refresh with parameters: force_refresh={force_refresh}, "
+                    f"sequential_mode={sequential_mode}, city={city}, provider_type={provider_type}")
         
         # Start the orchestrator with the parameters
         orchestration_input = {
-            "force_refresh": rm.get_config('force_refresh', False),
-            "sequential_mode": rm.get_config('sequential_mode', False),
-            "city": rm.get_config('city', 'charlotte'),
-            "provider_type": rm.get_config('provider_type')
+            "force_refresh": force_refresh,
+            "sequential_mode": sequential_mode,
+            "city": city,
+            "provider_type": provider_type
         }
         
         instance_id = await client.start_new("get_place_data_orchestrator", client_input=orchestration_input)
@@ -106,18 +120,22 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
         orchestration_input = context.get_input() or {}
         force_refresh = orchestration_input.get("force_refresh", False)
         sequential_mode = orchestration_input.get("sequential_mode", False)
-        city = orchestration_input.get("city", "charlotte")
+        city = orchestration_input.get("city")
         provider_type = orchestration_input.get("provider_type", None)
 
-        # Initialize the global config dictionary
+        if not city:
+            raise ValueError("Missing required parameter: city")
+
+        if not provider_type:
+            raise ValueError("Missing required parameter: provider_type")
+
         config_dict = {
             "provider_type": provider_type,
             "sequential_mode": sequential_mode,
             "city": city,
             "force_refresh": force_refresh
         }
-        
-        # Get all third places using the config dictionary
+
         all_third_places = yield context.call_activity(
             'get_all_third_places', 
             {"config": config_dict}
@@ -155,8 +173,7 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
                 for place in batch:
                     activity_input = {
                         "place": place,
-                        "config": config_dict,
-                        "orchestration_input": orchestration_input  # Include original input for fallback
+                        "config": config_dict
                     }
                     batch_tasks.append(context.call_activity("get_place_data", activity_input))
                 
@@ -195,14 +212,12 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
         return error_response
 
 @app.activity_trigger(input_name="activityInput")
-@app.function_name("get_place_data")  # Add explicit function name registration
+@app.function_name("get_place_data")
 def get_place_data(activityInput):
     """
     Activity function that retrieves data for a single place.
     
-    This function uses the resource_manager module to efficiently share resources
-    across multiple invocations, ensuring we reuse clients and providers rather than
-    creating new ones for each place.
+    This function uses a stateless, explicit resource creation system.
     
     Args:
         activityInput: A dictionary containing place information and configuration
@@ -218,42 +233,30 @@ def get_place_data(activityInput):
         # Extract place details early to help with error reporting
         place_name = place['fields']['Place'] if place and 'fields' in place and 'Place' in place['fields'] else "Unknown Place"
         
-        # Log the config data we're receiving to help diagnose issues
         provider_type = config_dict.get('provider_type')
-        logging.info(f"get_place_data: Received config for {place_name} with provider_type={provider_type}")
+
+        if not provider_type:
+            error_msg = f"Error processing place data: provider_type cannot be None - must be 'google' or 'outscraper'"
+            logging.error(error_msg)
+            return helpers.create_place_response('failed', place_name, None, error_msg)
         
-        # Initialize the resource manager with the config
-        rm.from_dict(config_dict)
-        
-        # Validate that required provider_type is present
-        if not rm.get_config('provider_type'):
-            error_msg = f"Missing provider_type for place '{place_name}'. Attempting to use orchestrator's provider_type."
-            logging.warning(error_msg)
-            
-            # Try to get the provider_type from the original orchestration input if possible
-            orchestration_input = activityInput.get("orchestration_input", {})
-            provider_type = orchestration_input.get("provider_type")
-            
-            if provider_type:
-                logging.info(f"Recovered provider_type={provider_type} from orchestration input for {place_name}")
-                rm.set_config('provider_type', provider_type)
-            else:
-                # If we still don't have a provider_type, we need to fail
-                error_msg = f"Error processing place data: provider_type cannot be None - must be 'google' or 'outscraper'"
-                logging.error(error_msg)
-                return helpers.create_place_response('failed', place_name, None, error_msg)
-        
+
+
         # Now extract place details
         record_id = place['id']
         place_id = place['fields'].get('Google Maps Place Id', None)
         
-        provider_type = rm.get_config('provider_type')
-        city = rm.get_config('city', 'charlotte')
-        force_refresh = rm.get_config('force_refresh', False)
+        city = config_dict.get('city')
+
+        if not city:
+            error_msg = f"Error processing place data: city cannot be None. It is a required parameter."
+            logging.error(error_msg)
+            return helpers.create_place_response('failed', place_name, None, error_msg)
         
+        force_refresh = config_dict.get('force_refresh', False)
         logging.info(f"get_place_data: Processing {place_name} with place_id {place_id} using provider_type={provider_type}")
         
-        # Call helper function to get and cache place data - using module-level functions from resource manager
+        # Call helper function to get and cache place data
         status, place_data, message = helpers.get_and_cache_place_data(
             provider_type=provider_type,
             place_name=place_name,
@@ -265,8 +268,7 @@ def get_place_data(activityInput):
         # Update Airtable record to indicate data file exists if succeeded/cached
         if status == 'succeeded' or status == 'cached':
             record_id = place['id']
-            # Get AirtableClient from resource manager 
-            airtable_client = rm.get_airtable_client(provider_type)
+            airtable_client = AirtableClient(provider_type)
             airtable_client.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
 
         # Format the response for the orchestrator
@@ -304,39 +306,26 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
     logging.info("Received request for Airtable base enrichment.")
 
     try:
-        # Initialize configuration from request
-        rm.from_request(req)
-        
-        # Validate required parameter
-        if not rm.get_config('provider_type'):
-            return func.HttpResponse(
-                json.dumps({
-                    "success": False,
-                    "message": "Missing required parameter: provider_type",
-                    "data": None,
-                    "error": "The provider_type parameter is required"
-                }),
-                status_code=400
-            )
-        
-        # Get the insufficient_only parameter from query string
+        # Parse parameters directly from request
+        provider_type = req.params.get('provider_type')
+        force_refresh = req.params.get('force_refresh', '').lower() == 'true'
+        sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
+        city = req.params.get('city')
         insufficient_only = req.params.get('insufficient_only', '').lower() == 'true'
-        rm.set_config('insufficient_only', insufficient_only)
         
-        logging.info(f"Starting enrichment with parameters: city={rm.get_config('city')}, force_refresh={rm.get_config('force_refresh', False)}, "
-                     f"sequential_mode={rm.get_config('sequential_mode', False)}, provider_type={rm.get_config('provider_type')}, "
-                     f"insufficient_only={rm.get_config('insufficient_only', False)}")
+        logging.info(f"Starting enrichment with parameters: city={city}, force_refresh={force_refresh}, "
+                     f"sequential_mode={sequential_mode}, provider_type={provider_type}, "
+                     f"insufficient_only={insufficient_only}")
         
-        # Start the orchestrator with the parameters
-        orchestration_input = {
-            "force_refresh": rm.get_config('force_refresh', False),
-            "sequential_mode": rm.get_config('sequential_mode', False),
-            "provider_type": rm.get_config('provider_type'),
-            "city": rm.get_config('city', 'charlotte'),
-            "insufficient_only": rm.get_config('insufficient_only', False)
+        config_dict = {
+            "force_refresh": force_refresh,
+            "sequential_mode": sequential_mode,
+            "provider_type": provider_type,
+            "city": city,
+            "insufficient_only": insufficient_only
         }
         
-        instance_id = await client.start_new("enrich_airtable_base_orchestrator", client_input=orchestration_input)
+        instance_id = await client.start_new("enrich_airtable_base_orchestrator", client_input=config_dict)
         logging.info(f"Started orchestration with ID: {instance_id}")
         
         # Return a response with status check URL
@@ -358,45 +347,27 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
 @app.orchestration_trigger(context_name="context")
 def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
     """
-    Orchestrator function for enriching Airtable base data.
-    
-    This orchestrator manages the enrichment of Airtable data by retrieving fresh data
-    from the configured provider and updating Airtable fields. It can run in either
-    sequential or parallel mode.
-    
-    Args:
-        context: The durable orchestration context
-        
-    Returns:
-        dict: Results of the enrichment operation
+    Orchestrator function for enriching Airtable base data. Schedules one activity function per place.
     """
     try:
         logging.info("enrich_airtable_base_orchestrator started.")
-        
-        # Get input parameters
-        orchestration_input = context.get_input() or {}
-        force_refresh = orchestration_input.get("force_refresh", False)
-        sequential_mode = orchestration_input.get("sequential_mode", False)
-        provider_type = orchestration_input.get("provider_type", None)
-        city = orchestration_input.get("city", "charlotte")
-        insufficient_only = orchestration_input.get("insufficient_only", False)
+        config_dict = context.get_input() or {}
+        force_refresh = config_dict.get("force_refresh", False)
+        sequential_mode = config_dict.get("sequential_mode", False)
+        provider_type = config_dict.get("provider_type", None)
+        city = config_dict.get("city")
+        insufficient_only = config_dict.get("insufficient_only", False)
 
-        # Create config dictionary
-        config_dict = {
-            "provider_type": provider_type,
-            "force_refresh": force_refresh,
-            "sequential_mode": sequential_mode,
-            "city": city,
-            "insufficient_only": insufficient_only
-        }
-        
-        # Call the activity function to handle the enrichment using config dictionary
-        enrichment_results = yield context.call_activity("enrich_airtable_batch", {
-            "config": config_dict
-        })
-        
-        # Handle case when there are no records to process due to insufficient_only filter
-        if insufficient_only and not enrichment_results:
+        if not city:
+            raise ValueError("Missing required parameter: city")
+
+        # Get all third places to enrich
+        all_third_places = yield context.call_activity(
+            'get_all_third_places',
+            {"config": config_dict}
+        )
+
+        if insufficient_only and not all_third_places:
             logging.info("No records were found in the 'Insufficient' view to enrich.")
             result = {
                 "success": True,
@@ -410,37 +381,61 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
             }
             context.set_custom_status('Succeeded')
             return result
-        
+        # Schedule enrichment activities per place
+        results = []
+        from constants import MAX_THREAD_WORKERS
+        concurrency_limit = MAX_THREAD_WORKERS
+
+        if sequential_mode:
+            logging.info(f"Running enrichment in SEQUENTIAL mode for {len(all_third_places)} places")
+            for place in all_third_places:
+                activity_input = {
+                    "place": place,
+                    "provider_type": provider_type,
+                    "city": city,
+                    "force_refresh": force_refresh,
+                    "sequential_mode": sequential_mode,
+                    "insufficient_only": insufficient_only
+                }
+                result = yield context.call_activity("enrich_single_place", activity_input)
+                results.append(result)
+        else:
+            logging.info(f"Running enrichment in PARALLEL mode with concurrency={concurrency_limit} for {len(all_third_places)} places")
+            for i in range(0, len(all_third_places), concurrency_limit):
+                batch = all_third_places[i:i+concurrency_limit]
+                batch_tasks = []
+                for place in batch:
+                    activity_input = {
+                        "place": place,
+                        "provider_type": provider_type,
+                        "city": city,
+                        "force_refresh": force_refresh,
+                        "sequential_mode": sequential_mode,
+                        "insufficient_only": insufficient_only
+                    }
+                    batch_tasks.append(context.call_activity("enrich_single_place", activity_input))
+                batch_results = yield context.task_all(batch_tasks)
+                results.extend(batch_results)
         # Filter to only include places that had at least one field updated
         actually_updated_places = [
-            place for place in enrichment_results 
+            place for place in results
             if place and place.get('field_updates') and any(updates["updated"] for updates in place.get('field_updates', {}).values())
         ]
-        
-        # Create appropriate message based on the insufficient_only filter
         message = "Airtable base enrichment processed successfully."
         if insufficient_only:
-            message = f"Airtable base enrichment processed {len(enrichment_results)} records from 'Insufficient' view."
-        
+            message = f"Airtable base enrichment processed {len(results)} records from 'Insufficient' view."
         result = {
             "success": True,
             "message": message,
             "data": {
-                "total_places_processed": len(enrichment_results),
+                "total_places_processed": len(results),
                 "total_places_enriched": len(actually_updated_places),
                 "places_enriched": actually_updated_places
             },
             "error": None
         }
-        
-        if insufficient_only:
-            logging.info(f"enrich_airtable_base_orchestrator completed. Found {len(enrichment_results)} places in 'Insufficient' view and updated {len(actually_updated_places)} of them.")
-        else:
-            logging.info(f"enrich_airtable_base_orchestrator completed. Updated {len(actually_updated_places)} of {len(enrichment_results)} places.")
-        
         context.set_custom_status('Succeeded')
         return result
-        
     except Exception as ex:
         logging.error(f"Critical error in enrich_airtable_base_orchestrator: {ex}", exc_info=True)
         error_response = {
@@ -453,68 +448,54 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
         return error_response
 
 @app.activity_trigger(input_name="activityInput")
-@app.function_name("enrich_airtable_batch")  # Add explicit function name registration
-def enrich_airtable_batch(activityInput):
+@app.function_name("enrich_single_place")
+def enrich_single_place(activityInput):
     """
-    Activity function that handles enriching Airtable data.
-    
-    This function uses the resource_manager singleton pattern
-    to efficiently share resources across multiple invocations.
-    
-    Args:
-        activityInput: Dictionary with configuration
-        
-    Returns:
-        list: Results of the enrichment operation for each place
+    Activity function that enriches a single Airtable place record.
     """
     try:
-        # Extract inputs from the config dictionary
-        config_dict = activityInput.get("config", {})
-        
-        # Initialize the resource manager with the config
-        rm.from_dict(config_dict)
-        
-        # Extract the provider_type directly
-        provider_type = rm.get_config('provider_type')
-        sequential_mode = rm.get_config('sequential_mode', False)
-        insufficient_only = rm.get_config('insufficient_only', False)
-        
-        if not provider_type:
-            logging.error("Cannot get AirtableClient - provider_type is not set")
-            return []
-        
-        # Get the AirtableClient from the resource manager
-        airtable_client = rm.get_airtable_client(provider_type, sequential_mode, insufficient_only)
-        
-        # Check if there are any records to process when using insufficient_only filter
-        if insufficient_only:
-            places_to_process = airtable_client.all_third_places
-            if not places_to_process:
-                logging.info("No records found in the 'Insufficient' view with insufficient_only=True. Nothing to enrich.")
-                return []
-            else:
-                logging.info(f"Found {len(places_to_process)} records in 'Insufficient' view to process.")
-        
-        # Call the enrichment method with the resource manager for accessing config values
-        enrichment_results = airtable_client.enrich_base_data(rm)
-        
-        return enrichment_results
-        
+        place = activityInput.get("place")
+        provider_type = activityInput.get("provider_type")
+        city = activityInput.get("city")
+        force_refresh = activityInput.get("force_refresh", False)
+        sequential_mode = activityInput.get("sequential_mode", False)
+        insufficient_only = activityInput.get("insufficient_only", False)
+        place_name = place['fields']['Place'] if place and 'fields' in place and 'Place' in place['fields'] else "Unknown Place"
+
+        if not provider_type or not city:
+            return {
+                "place_name": place_name,
+                "status": "failed",
+                "message": "Missing required parameter: provider_type or city",
+                "field_updates": {}
+            }
+
+        airtable_client = AirtableClient(provider_type, sequential_mode, insufficient_only)
+        result = airtable_client.enrich_single_place(place, provider_type, city, force_refresh)
+        return result
     except Exception as ex:
-        logging.error(f"Error in enrich_airtable_batch: {ex}", exc_info=True)
-        return []
+        logging.error(f"Error enriching place {place_name}: {ex}", exc_info=True)
+        return {
+            "place_name": place_name,
+            "status": "failed",
+            "message": f"Error processing enrichment: {str(ex)}",
+            "field_updates": {}
+        }
 
 # ======================================================
 # Utility Functions
 # ======================================================
 
+# NOTE: To avoid excessive Airtable API calls and rate limiting, only call all_third_places
+# in this get_all_third_places activity. Do NOT call all_third_places in per-place activities
+# such as enrich_single_place or get_place_data. Always pass the required place data from the orchestrator.
 @app.activity_trigger(input_name="activityInput")
-@app.function_name("get_all_third_places")  # Add explicit function name registration
+@app.function_name("get_all_third_places")
 def get_all_third_places(activityInput):
     """
     Activity function that retrieves all third places from Airtable.
     
-    This function uses the resource_manager singleton pattern.
+    This function uses a stateless, explicit resource creation system.
     
     Args:
         activityInput: Dictionary with configuration
@@ -526,19 +507,21 @@ def get_all_third_places(activityInput):
         # Extract inputs from the config dictionary
         config_dict = activityInput.get("config", {})
         
-        # Initialize the resource manager with the config
-        rm.from_dict(config_dict)
-        
         # Extract the provider_type directly
-        provider_type = rm.get_config('provider_type')
-        sequential_mode = rm.get_config('sequential_mode', False)
-        
+        provider_type = config_dict.get('provider_type')
+        sequential_mode = config_dict.get('sequential_mode', False)
+        city = config_dict.get('city')
+        insufficient_only = config_dict.get('insufficient_only', False)
+
+        if not city:
+            logging.error("Cannot get AirtableClient - city is not set")
+            return []
+
         if not provider_type:
             logging.error("Cannot get AirtableClient - provider_type is not set")
             return []
-        
-        # Get the AirtableClient from the resource manager
-        airtable_client = rm.get_airtable_client(provider_type, sequential_mode)
+
+        airtable_client = AirtableClient(provider_type, sequential_mode, insufficient_only)
         
         return airtable_client.all_third_places
         
@@ -659,28 +642,18 @@ def smoke_test(req: func.HttpRequest) -> func.HttpResponse:
 
 @app.function_name(name="RefreshAirtableOperationalStatuses")
 @app.route(route="refresh-airtable-operational-statuses")
-def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpResponse:
+@app.durable_client_input(client_name="client")
+async def refresh_airtable_operational_statuses(req: func.HttpRequest, client) -> func.HttpResponse:
     """
     HTTP-triggered function to refresh the operational statuses of all places in Airtable.
-    
-    This function uses the resource_manager singleton pattern.
-    
-    Args:
-        req (func.HttpRequest): The HTTP request object.
-
-    Returns:
-        func.HttpResponse: The HTTP response containing the operation results.
     """
     logging.info("Received request to refresh Airtable operational statuses.")
 
     try:
-        # Initialize configuration from request
-        rm.from_request(req)
-        
-        # Validate required parameter
-        provider_type = rm.get_config('provider_type')
-        sequential_mode = rm.get_config('sequential_mode', False)
-        
+        provider_type = req.params.get('provider_type')
+        sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
+        city = req.params.get('city')
+
         if not provider_type:
             return func.HttpResponse(
                 json.dumps({
@@ -692,62 +665,134 @@ def refresh_airtable_operational_statuses(req: func.HttpRequest) -> func.HttpRes
                 status_code=400,
                 mimetype="application/json"
             )
-            
-        logging.info(f"Provider type: {provider_type}")
-        if sequential_mode:
-            logging.info("Using sequential mode for operational status refresh")
-        else:
-            logging.info("Using parallel mode for operational status refresh")
-            
-        # Use resource manager to get AirtableClient
-        airtable_client = rm.get_airtable_client(provider_type, sequential_mode)
-        logging.info("AirtableClient instance retrieved from resource manager, starting to refresh operational statuses.")
-
-        # Get the data provider from resource manager to pass to refresh_operational_statuses
-        data_provider = rm.get_data_provider(provider_type)
-        
-        # Use the new method that takes a data provider directly
-        results = airtable_client.refresh_operational_statuses(data_provider)
-        logging.info("Operational statuses refreshed, processing results.")
-
-        failed_updates = [res for res in results if res.get('update_status') == 'failed']
-
-        if failed_updates:
-            logging.error(f"Operational status updates failed for {len(failed_updates)} places.")
+        if not city:
             return func.HttpResponse(
                 json.dumps({
                     "success": False,
-                    "message": "One or more operational status updates failed.",
-                    "data": failed_updates,
-                    "error": None
+                    "message": "Missing required parameter: city",
+                    "data": None,
+                    "error": "The city parameter is required"
                 }),
-                status_code=500,
+                status_code=400,
                 mimetype="application/json"
             )
-        else:
-            logging.info("Operational statuses refreshed successfully for all places.")
-            return func.HttpResponse(
-                json.dumps({
-                    "success": True,
-                    "message": "Operational statuses refreshed successfully.",
-                    "data": results,
-                    "error": None
-                }),
-                status_code=200,
-                mimetype="application/json"
-            )
+
+        config_dict = {
+            "provider_type": provider_type,
+            "sequential_mode": sequential_mode,
+            "city": city
+        }
+        instance_id = await client.start_new("refresh_airtable_operational_statuses_orchestrator", client_input=config_dict)
+        logging.info(f"Started orchestration with ID: {instance_id}")
+        response = client.create_check_status_response(req, instance_id)
+        return response
     except Exception as ex:
-        logging.error(f"Error encountered during the refresh operation: {ex}", exc_info=True)
+        logging.error(f"Error encountered while starting the operational status refresh orchestration: {ex}", exc_info=True)
         return func.HttpResponse(
             json.dumps({
                 "success": False,
-                "message": "Server error occurred during the refresh operation.",
+                "message": "Server error occurred while starting the operational status refresh orchestration.",
                 "data": None,
                 "error": str(ex)
             }),
             status_code=500,
             mimetype="application/json"
         )
+
+@app.orchestration_trigger(context_name="context")
+def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrchestrationContext):
+    """
+    Orchestrator function for refreshing operational statuses. Schedules one activity per place.
+    """
+    try:
+        logging.info("refresh_airtable_operational_statuses_orchestrator started.")
+        config_dict = context.get_input() or {}
+        sequential_mode = config_dict.get("sequential_mode", False)
+        provider_type = config_dict.get("provider_type", None)
+        city = config_dict.get("city")
+        if not city:
+            raise ValueError("Missing required parameter: city")
+        if not provider_type:
+            raise ValueError("Missing required parameter: provider_type")
+        all_third_places = yield context.call_activity(
+            'get_all_third_places',
+            {"config": config_dict}
+        )
+        results = []
+        from constants import MAX_THREAD_WORKERS
+        concurrency_limit = MAX_THREAD_WORKERS
+        if sequential_mode:
+            logging.info(f"Running operational status refresh in SEQUENTIAL mode for {len(all_third_places)} places")
+            for place in all_third_places:
+                activity_input = {
+                    "place": place,
+                    "provider_type": provider_type,
+                    "city": city
+                }
+                result = yield context.call_activity("refresh_single_operational_status", activity_input)
+                results.append(result)
+        else:
+            logging.info(f"Running operational status refresh in PARALLEL mode with concurrency={concurrency_limit} for {len(all_third_places)} places")
+            for i in range(0, len(all_third_places), concurrency_limit):
+                batch = all_third_places[i:i+concurrency_limit]
+                batch_tasks = []
+                for place in batch:
+                    activity_input = {
+                        "place": place,
+                        "provider_type": provider_type,
+                        "city": city
+                    }
+                    batch_tasks.append(context.call_activity("refresh_single_operational_status", activity_input))
+                batch_results = yield context.task_all(batch_tasks)
+                results.extend(batch_results)
+        failed_updates = [res for res in results if res.get('update_status') == 'failed']
+        result = {
+            "success": len(failed_updates) == 0,
+            "message": "Operational statuses refreshed successfully." if not failed_updates else "One or more operational status updates failed.",
+            "data": results,
+            "error": None if not failed_updates else f"{len(failed_updates)} failed updates"
+        }
+        context.set_custom_status('Succeeded' if not failed_updates else 'Failed')
+        return result
+    except Exception as ex:
+        logging.error(f"Critical error in refresh_airtable_operational_statuses_orchestrator: {ex}", exc_info=True)
+        error_response = {
+            "success": False,
+            "message": "Error occurred during the operational status refresh orchestration.",
+            "data": None,
+            "error": str(ex)
+        }
+        context.set_custom_status('Failed')
+        return error_response
+
+@app.activity_trigger(input_name="activityInput")
+@app.function_name("refresh_single_operational_status")
+def refresh_single_operational_status(activityInput):
+    """
+    Activity function that refreshes the operational status for a single place.
+    """
+    try:
+        place = activityInput.get("place")
+        provider_type = activityInput.get("provider_type")
+        city = activityInput.get("city")
+        place_name = place['fields']['Place'] if place and 'fields' in place and 'Place' in place['fields'] else "Unknown Place"
+        if not provider_type or not city:
+            return {
+                "place_name": place_name,
+                "update_status": "failed",
+                "message": "Missing required parameter: provider_type or city"
+            }
+        airtable_client = AirtableClient(provider_type)
+        data_provider = PlaceDataProviderFactory.get_provider(provider_type)
+        result = airtable_client.refresh_single_operational_status(place, data_provider)
+        return result
+    except Exception as ex:
+        logging.error(f"Error refreshing operational status for {place_name}: {ex}", exc_info=True)
+        return {
+            "place_name": place_name,
+            "update_status": "failed",
+            "message": f"Error processing operational status refresh: {str(ex)}"
+        }
 
 @app.route(route="place_lookup")
 def place_lookup(req: func.HttpRequest) -> func.HttpResponse:
@@ -776,22 +821,24 @@ def place_lookup(req: func.HttpRequest) -> func.HttpResponse:
     # Get request parameters
     provider_type = req.params.get('provider_type', 'outscraper')
     force_refresh = req.params.get('force_refresh', 'false').lower() == 'true'
-
-    # Configure the resource manager directly
-    rm.set_config('provider_type', provider_type)
-    rm.set_config('force_refresh', force_refresh)
-    rm.set_config('city', 'charlotte')
-    
-    # Create a place data provider
-    from place_data_providers import PlaceDataProviderFactory
-    provider = PlaceDataProviderFactory.get_provider(provider_type)
+    city = req.params.get('city')
+    if not city:
+        return func.HttpResponse(
+            json.dumps({
+                "success": False,
+                "message": "Missing required parameter: city",
+                "data": None,
+                "error": "The city parameter is required"
+            }),
+            status_code=400
+        )
 
     # Attempt to get place data (first check cache unless force_refresh=true)
     status, place_data, message = helpers.get_and_cache_place_data(
         provider_type=provider_type,
         place_id=place_id,
         force_refresh=force_refresh,
-        city='charlotte'
+        city=city
     )
 
     if status == 'success':
