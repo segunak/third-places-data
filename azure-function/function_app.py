@@ -991,13 +991,12 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
                 
                 # Wait for this batch to complete before processing the next batch
                 batch_results = yield context.task_all(batch_tasks)
-                results.extend(batch_results)
-
-        # Aggregate results
+                results.extend(batch_results)        # Aggregate results
         total_places = len(all_third_places)
         processed = len([r for r in results if r.get('status') not in ['failed', 'error']])
         updated = len([r for r in results if r.get('status') in ['updated', 'would_update']])
         skipped = len([r for r in results if r.get('status') == 'skipped'])
+        no_change = len([r for r in results if r.get('status') == 'no_change'])
         errors = len([r for r in results if r.get('status') in ['failed', 'error']])
 
         # Determine overall success
@@ -1013,6 +1012,7 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
                 "processed": processed,
                 "updated": updated,
                 "skipped": skipped,
+                "no_change": no_change,
                 "errors": errors,
                 "error_details": [r.get('message', '') for r in results if r.get('status') in ['failed', 'error']],
                 "place_results": results
@@ -1020,7 +1020,7 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
             "error": None if all_successful else f"{errors} places failed to process"
         }
         
-        logging.info(f"refresh_all_photos_orchestrator completed. Processed {total_places} places, {updated} updated, {skipped} skipped, {errors} errors.")
+        logging.info(f"refresh_all_photos_orchestrator completed. Processed {total_places} places, {updated} updated, {skipped} skipped, {no_change} no change needed, {errors} errors.")
 
         custom_status = 'Succeeded' if all_successful else 'Failed'
         context.set_custom_status(custom_status)
@@ -1196,7 +1196,6 @@ def refresh_single_place_photos(activityInput):
             place_result["status"] = "error"
             place_result["message"] = f"Photo selection failed: {str(e)}"
             return place_result
-        
         # Update data if not dry run
         if not dry_run:
             try:
@@ -1208,28 +1207,40 @@ def refresh_single_place_photos(activityInput):
                     update_value=photos_json,
                     overwrite=True
                 )
-                
+                # Check if the update failed (error) vs was skipped (normal behavior)
                 if not update_result.get('updated', False):
-                    place_result["status"] = "error"
-                    place_result["message"] = "Failed to update Airtable"
-                    return place_result
-                
-                # Update photos section in data file (preserve other data)
-                place_data['photos']['photo_urls'] = selected_photo_urls
-                place_data['photos']['message'] = f"Photos refreshed by admin function using {provider_type} selection algorithm"
-                place_data['photos']['last_refreshed'] = datetime.now().isoformat()
-                
-                # Save updated data file to GitHub
-                updated_json = json.dumps(place_data, indent=4)
-                save_success, save_message = save_data_github(updated_json, data_file_path)
-                
-                if not save_success:
-                    place_result["status"] = "error"
-                    place_result["message"] = f"Airtable updated but GitHub save failed: {save_message}"
-                    return place_result
-                
-                place_result["status"] = "updated"
-                place_result["message"] = f"Successfully updated with {len(selected_photo_urls)} photos"
+                    # If old_value and new_value are both None, it indicates an error occurred
+                    if update_result.get('old_value') is None and update_result.get('new_value') is None:
+                        place_result["status"] = "error"
+                        place_result["message"] = "Failed to update Airtable due to error"
+                        return place_result
+                    else:
+                        # Update was skipped, which means the photos are already up to date
+                        # No need to update the data file since it already contains the same data
+                        logging.info(f"Photos for {place_name} are already up to date - no changes needed to Airtable or data file")
+                        place_result["status"] = "no_change"
+                        place_result["message"] = f"Photos already up to date - no changes needed"
+                        return place_result
+                else:
+                    # Airtable was updated, so also update the data file
+                    logging.info(f"Airtable was updated for {place_name}, updating data file cache")
+                    
+                    # Update photos section in data file (preserve other data)
+                    place_data['photos']['photo_urls'] = selected_photo_urls
+                    place_data['photos']['message'] = f"Photos refreshed by admin function using {provider_type} selection algorithm"
+                    place_data['photos']['last_refreshed'] = datetime.now().isoformat()
+                    
+                    # Save updated data file to GitHub
+                    updated_json = json.dumps(place_data, indent=4)
+                    save_success, save_message = save_data_github(updated_json, data_file_path)
+                    
+                    if not save_success:
+                        place_result["status"] = "error"
+                        place_result["message"] = f"Airtable updated but GitHub save failed: {save_message}"
+                        return place_result
+                    
+                    place_result["status"] = "updated"
+                    place_result["message"] = f"Successfully updated with {len(selected_photo_urls)} photos"
                 
             except Exception as e:
                 place_result["status"] = "error"
