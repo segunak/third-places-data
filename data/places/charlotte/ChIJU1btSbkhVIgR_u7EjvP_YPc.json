@@ -1485,16 +1485,13 @@
     },
     "photos": {
         "place_id": "ChIJU1btSbkhVIgR_u7EjvP_YPc",
-        "message": "Photos retrieved from Airtable (8 photos)",
+        "message": "Photos refreshed by admin function using outscraper selection algorithm",
         "photo_urls": [
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB-gbRyyRhdSq0tpFF2LTN7ql6kbgVXwuN1WU9YM9UAWroH56LqnGsZeExDgwznoNv1R2MpGfZNjXFbq9Ywxm1RNe6WVU1haO-5BQbqPdkozqkCmn4CFtIJ5FXdK9YPrtnzZpBp4=w2048-h2048-k-no",
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=TOO7hYX__kJAoDw1lm6QaQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=89.57948&pitch=0&thumbfov=100",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB-zoy00CJuiWkLLJyj8Lp2ZmZLserp3L8t2kOVjSMjxVh_jYEjPbj6l6RjdtawQH8YGW-DXmDAy2MuMtUT3NO2z_SgP587txtvwdgz998vN24dtB9_aPSs-cI7HtJnuIdC8j1XB=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB-1mgIVBQsY7nuJqReuIgE1vrbn-8ErUtPDQZZH-p8kqBbTJuPDaK6nf312bkW2zBCvrMTc_L-lAaXt99fumcRl5vN2-WeP61frixevZI5she1hsrZHcJi_2Dbvux7edG4-_uAD=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB_qcrhh1N_UHzFKnNmiCL6T1ShvhDC-ek5deoiF4dzWECdwAuvmWXfl3f2CdoruVBQbrDk8i09EPzDk4yFKbGjTSrPJianL2wAlRtzLYMZmhkufMm6-4jC8Qt0Co_YOIvyEnL0=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipPTq63PzxlWFRGap9Aw5jN-CDgrRSkYMP9NHI87=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNhnyW-nqevaUIfhWj4-FH9w5WBH8CA_kP6MEY6=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipPJD9wBYiCwqF3u0FSHJYSJu7_875O-zWg_1SxU=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB_Ou7YwDGJaK-2HwoEvDr5AjqFxNsumlOSMlh4_OjJYFK79Yqb6ofZRAVw3voValBz3Dy4PbxShpr1StWjCJ4eO6HnxS8OLa1K9dXOtQTEWFokmMgLAzPwR5N7tcS4yb3RIemi4OQ=w2048-h2048-k-no"
+            "https://lh3.googleusercontent.com/p/AF1QipOL23wBPDXeYCdJPcxb3JGtaYW7YJV7INwS6GQY=w2048-h2048-k-no"
         ],
         "raw_data": [
             {
@@ -1715,7 +1712,8 @@
                 "photo_tag_ids": null,
                 "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipOL23wBPDXeYCdJPcxb3JGtaYW7YJV7INwS6GQY=w203-h152-k-no"
             }
-        ]
+        ],
+        "last_refreshed": "2025-05-26T15:48:56.589455"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-04-18T17:38:12.358103"
