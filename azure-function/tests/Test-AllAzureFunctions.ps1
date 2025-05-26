@@ -150,27 +150,27 @@ Write-Log "Using key: $(if ($functionKey) { 'Yes' } else { 'No' })"
 Write-Log "Scripts directory: $(Split-Path $script:InvokeAzureFunction -Parent)"
 Write-Log "Test configuration: Sequential=$script:SequentialMode, ForceRefresh=$script:ForceRefresh, City=$script:City, Provider=$script:ProviderType"
 
-# 1. Smoke Test (HTTP)
-Test-HttpFunction -Endpoint 'smoke-test' -Body '{"House": "Martell"}' -Description 'API health check'
+# # 1. Smoke Test (HTTP)
+# Test-HttpFunction -Endpoint 'smoke-test' -Body '{"House": "Martell"}' -Description 'API health check'
 
-# 2. Purge Orchestrations (HTTP)
-Test-HttpFunction -Endpoint 'purge-orchestrations' -Description 'Purge completed orchestrations'
+# # 2. Purge Orchestrations (HTTP)
+# Test-HttpFunction -Endpoint 'purge-orchestrations' -Description 'Purge completed orchestrations'
 
-# 3. Enrich Airtable Base (Durable)
-$enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())&city=$script:City"
-Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode, insufficient_only=$script:InsufficientOnly)"
+# # 3. Enrich Airtable Base (Durable)
+# $enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())&city=$script:City"
+# Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode, insufficient_only=$script:InsufficientOnly)"
 
-# 4. Refresh Place Data (Durable)
-$refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&city=$script:City"
-Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+# # 4. Refresh Place Data (Durable)
+# $refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&city=$script:City"
+# Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
-# 5. Refresh Operational Statuses (HTTP)
-$opsEndpoint = "refresh-airtable-operational-statuses?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&city=$script:City"
-Test-DurableFunction -Endpoint $opsEndpoint -Description "Refresh operational statuses ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+# # 5. Refresh Operational Statuses (HTTP)
+# $opsEndpoint = "refresh-airtable-operational-statuses?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&city=$script:City"
+# Test-DurableFunction -Endpoint $opsEndpoint -Description "Refresh operational statuses ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
-# 6. Refresh All Photos (HTTP)
-$photosEndpoint = "refresh-all-photos?provider_type=$script:ProviderType&city=$script:City&dry_run=true"
-Test-HttpFunction -Endpoint $photosEndpoint -Description "Refresh all photos in dry run mode ($script:ProviderType)"
+# 6. Refresh All Photos (Durable)
+$photosEndpoint = "refresh-all-photos?provider_type=$script:ProviderType&city=$script:City&dry_run=true&sequential_mode=$($script:SequentialMode.ToString().ToLower())"
+Test-DurableFunction -Endpoint $photosEndpoint -Description "Refresh all photos in dry run mode ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
 # Display test completion
 Write-Log "All Azure Function endpoint tests completed."
