@@ -537,15 +537,16 @@
     },
     "photos": {
         "place_id": "ChIJT07oL8afVogRSG1Yu4d4PWY",
-        "message": "Photos retrieved from Airtable (8 photos)",
+        "message": "Photos refreshed by admin function using outscraper selection algorithm",
         "photo_urls": [
+            "https://lh3.googleusercontent.com/p/AF1QipOhworK_WgvrRBlOYevTO78kwHsSUxsGm0LRcux=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipMKda-z39MXN2qM4o_RZUqDyVFKQ4nOQOmdaBM_=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipMpYrINbiP6ntdF06KnGCrUpMMlyB2tUFWpmtFk=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipORyTN-7vynJBEB70-DaYyw-WxLDA4AahP2yCbC=w2048-h2048-k-no",
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Iw3fVTQzRLQp4nTWSQFE6g&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=332.92307&pitch=0&thumbfov=100",
-            "https://lh3.googleusercontent.com/p/AF1QipOhworK_WgvrRBlOYevTO78kwHsSUxsGm0LRcux=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipMKda-z39MXN2qM4o_RZUqDyVFKQ4nOQOmdaBM_=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOy5s5-TnbmbEh5qna--TsgD5SgidRcg5VADvva=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipPnrWIAgMNfj9czJw1TPIu5H0AeOjft3ZXgGZEL=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipNPDtYJgxd2sWY6Oiho_U2mstu7Z8FJfEFThaPC=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipMoT_lIgD99BYEWtsrzLz-1vK-hQFtSKjoxjVeQ=w2048-h2048-k-no"
         ],
         "raw_data": [
@@ -702,7 +703,8 @@
                 ],
                 "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Iw3fVTQzRLQp4nTWSQFE6g&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=332.92307&pitch=0&thumbfov=100"
             }
-        ]
+        ],
+        "last_refreshed": "2025-05-26T15:46:17.882762"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-04-18T18:40:28.806271"
