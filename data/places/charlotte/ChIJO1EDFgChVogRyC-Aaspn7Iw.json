@@ -1219,18 +1219,18 @@
     },
     "photos": {
         "place_id": "ChIJO1EDFgChVogRyC-Aaspn7Iw",
-        "message": "Photos retrieved from Airtable (25 photos)",
+        "message": "Photos refreshed by admin function using outscraper selection algorithm",
         "photo_urls": [
-            "https://lh3.googleusercontent.com/p/AF1QipNRlXHYNw04zXV82pIR0H0trEh7Oq3i9XDJNPi5=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipN6AwPSdiwl6_EMW7wiQ1F62DbrrijHM-WoRMzQ=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipOv7Osx09qQjjV6qjkV2XxD6BrlLLzJk6cGbKY2=w2048-h2048-k-no",
-            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=5fBpK1x71AxjNJPZJ-c35A&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=36.126&pitch=0&thumbfov=100",
             "https://lh3.googleusercontent.com/p/AF1QipNxf00RLQ2rKxC4NkdSud2yiPCidgYMKVDKK97-=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipP_3HDKckK3GHHVgC_G1KduZZzTdyzYG-G-RuSz=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOhdL2m5oRyICu29B1M4ok51HtJtMb6P2OWe-Co=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipPbag5HTfrW86pRigE5hDo0dcTN13N9WgE8lXWL=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipPB-gyHYeC4FeZw-Pz04NKUSzwdAqf9sQfaHRuv=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipMxFzu2pTfp9ftxhGdspzdPSlGMCejdHALcSahN=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipNRlXHYNw04zXV82pIR0H0trEh7Oq3i9XDJNPi5=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipN6AwPSdiwl6_EMW7wiQ1F62DbrrijHM-WoRMzQ=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipOv7Osx09qQjjV6qjkV2XxD6BrlLLzJk6cGbKY2=w2048-h2048-k-no",
+            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=5fBpK1x71AxjNJPZJ-c35A&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=36.126&pitch=0&thumbfov=100",
             "https://lh3.googleusercontent.com/p/AF1QipMxMyHt1M1QHZkZhTisnmTImwk_JHUEFdDRDUPW=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNqdu-8Vu8RJaH4bie_Mo3RaLdmow5C5gGFaR2T=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipM8eTUCxILTCVlA9zqX_RoQ9yeSyjfY6R-oTcf2=w2048-h2048-k-no",
@@ -1245,7 +1245,12 @@
             "https://lh3.googleusercontent.com/p/AF1QipNSNxYUOSfGAVO62zBU-IKxhyMUZEudy1K-SA-7=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipMcLQ_nm8DTzqE-laNR2rBjMHInlP40jQ8NUJkq=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipM1KvF9RoLw4GAoW_DcpXwIUOgOc98PFfbtxIpF=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipPdDRZx7EHhCH-sgE4DrdhHq31ZEMz0wo5z2u34=w2048-h2048-k-no"
+            "https://lh3.googleusercontent.com/p/AF1QipPdDRZx7EHhCH-sgE4DrdhHq31ZEMz0wo5z2u34=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipMPcDfr3p0HrwW3WgF3x0ckzeB5NK7YRxmvqT9_=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipP1vTyvgmNxBRGc9fcS4tBLjaT-u9VTHH8h17e9=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipNKorCdL1w4C0fYC6tKJFn8DaTNs4-bOvYCEUFn=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipMJ84LnpD07QHpcgqLGnWVk_IKwJFIgkTSqGrk6=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipPQeYP8-92rkAwdSdQhZTNIJxTM0WkDbI411OaB=w2048-h2048-k-no"
         ],
         "raw_data": [
             {
@@ -2756,7 +2761,8 @@
                 "photo_tag_ids": null,
                 "original_photo_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFF3X1JkB_fFlIULL7u-RTJp-6nAEF4BZdPy2gLqTXn5QbkywXwycFC6rLnZHYkTB518tMDuSZkQVfrhwe4d08b_EoVnanuqFSpAv9EqNigoluiD3L578pYTV0ER_7W8M9OhhQpG_FhSQou7ga771lZiqM2RJ00rlgbjI9dYUuFHya6P14TMwUm2Q=w203-h253-k-no"
             }
-        ]
+        ],
+        "last_refreshed": "2025-05-26T15:44:10.281196"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-04-18T17:37:02.456026"
