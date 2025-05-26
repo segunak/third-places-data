@@ -62,7 +62,7 @@ class PlaceDataProvider(ABC):
         Retrieves reviews for a specific place.
         
         The returned dictionary must include the following standardized fields:
-        - place_id: The Google Maps Place ID
+        - place_id: The Google Maps Place Id
         - message: Result message (can be empty if successful)
         - reviews_data: List of review data
 
@@ -81,7 +81,7 @@ class PlaceDataProvider(ABC):
         Retrieves photo URLs for a specific place.
         
         The returned dictionary must include the following standardized fields:
-        - place_id: The Google Maps Place ID
+        - place_id: The Google Maps Place Id
         - message: Result message (can be empty if successful)
         - photos: List of photo URLs or data
 
@@ -397,15 +397,61 @@ class GoogleMapsProvider(PlaceDataProvider):
         logging.warning("Direct Google Maps API doesn't provide reviews. Consider using OutscraperProvider for reviews.")
             
         # Return a standardized response with empty reviews data
-        return {
-            "place_id": place_id,
+        return {            "place_id": place_id,
             "message": "Reviews are not available directly from the Google Maps API",
             "reviews_data": []
         }
-
+        
+    def _is_valid_photo_url(self, url: str) -> bool:
+        """
+        Central validation method that determines if a photo URL is valid and won't encounter access restrictions.
+        
+        This method is the single source of truth for URL validation and checks:
+        1. If the URL is a non-empty string
+        2. If the URL has a proper HTTP/HTTPS scheme
+        3. If the URL contains patterns known to cause access restrictions (like proxy URLs)
+        
+        All validation logic related to photo URLs should be included here rather than 
+        scattered throughout the code.
+        
+        Args:
+            url (str): The URL to check
+            
+        Returns:
+            bool: True if the URL is valid and likely to be accessible, False otherwise
+        """
+        # Check if URL is a non-empty string
+        if not url or not isinstance(url, str):
+            logging.debug(f"Invalid photo URL: empty or not a string")
+            return False
+            
+        # Check for proper URL scheme
+        if not url.startswith('http'):
+            logging.debug(f"Invalid photo URL: does not start with http - {url}")
+            return False
+            
+        # Check for problematic patterns that indicate restricted access
+        problematic_patterns = [
+            '/gps-cs-s/',  # Content safety proxy
+            '/gps-proxy/',  # Other proxy type
+        ]
+        
+        for pattern in problematic_patterns:
+            if pattern in url:
+                logging.debug(f"Filtered out restricted photo URL containing '{pattern}': {url}")
+                return False
+                
+        return True
+        
     def get_place_photos(self, place_id: str) -> Dict[str, Any]:
         """
         Retrieves photo URLs for a place using the Google Maps Places API.
+        
+        Process:
+        1. Retrieve photo references from Google Maps API
+        2. Process each reference to get the actual URLs
+        3. Filter out invalid/restricted URLs using _is_valid_photo_url (central validation point)
+        4. Return up to 30 validated photos
 
         Args:
             place_id (str): The unique identifier for the place.
@@ -434,16 +480,37 @@ class GoogleMapsProvider(PlaceDataProvider):
                 photo_references = [photo.get('name', '') for photo in raw_data['photos'] if 'name' in photo]
             
             # Process each photo reference to get the actual URLs
-            photo_urls = []
+            all_photo_urls = []
             for photo_name in photo_references:
                 if photo_name:
                     photo_details = self._get_photo_details(photo_name)
                     if photo_details and 'photoUri' in photo_details:
-                        photo_urls.append(photo_details['photoUri'])
+                        all_photo_urls.append(photo_details['photoUri'])
+            
+            # Apply URL validation - filter out any problematic URLs
+            valid_photo_urls = []
+            filtered_count = 0
+            
+            for url in all_photo_urls:
+                if self._is_valid_photo_url(url):
+                    valid_photo_urls.append(url)
+                else:
+                    filtered_count += 1
+            
+            # Limit to maximum of 30 photos
+            photo_urls = valid_photo_urls[:30]
+            
+            # Add detailed logging
+            logging.info(
+                f"Photo selection for {place_id}: Total={len(all_photo_urls)}, "
+                f"Filtered out={filtered_count}, "
+                f"Valid={len(valid_photo_urls)}, "
+                f"Selected={len(photo_urls)}"
+            )
             
             return {
                 "place_id": place_id,
-                "message": f"Retrieved {len(photo_urls)} photos",
+                "message": f"Retrieved {len(all_photo_urls)} photos, filtered out {filtered_count}, selected {len(photo_urls)}",
                 "photo_urls": photo_urls,
                 "raw_data": raw_data
             }
@@ -832,19 +899,58 @@ class OutscraperProvider(PlaceDataProvider):
                 "message": f"Error retrieving reviews: {str(e)}",
                 "reviews_data": []
             }
-    
+            
+    def _is_valid_photo_url(self, url: str) -> bool:
+        """
+        Central validation method that determines if a photo URL is valid and won't encounter access restrictions.
+        
+        This method is the single source of truth for URL validation and checks:
+        1. If the URL is a non-empty string
+        2. If the URL has a proper HTTP/HTTPS scheme
+        3. If the URL contains patterns known to cause access restrictions (like proxy URLs)
+        
+        All validation logic related to photo URLs should be included here rather than 
+        scattered throughout the code.
+        
+        Args:
+            url (str): The URL to check
+            
+        Returns:
+            bool: True if the URL is valid and likely to be accessible, False otherwise
+        """
+        # Check if URL is a non-empty string
+        if not url or not isinstance(url, str):
+            logging.debug(f"Invalid photo URL: empty or not a string")
+            return False
+            
+        # Check for proper URL scheme
+        if not url.startswith('http'):
+            logging.debug(f"Invalid photo URL: does not start with http - {url}")
+            return False
+            
+        # Check for problematic patterns that indicate restricted access
+        problematic_patterns = [
+            '/gps-cs-s/',  # Content safety proxy
+            '/gps-proxy/',  # Other proxy type
+        ]
+        
+        for pattern in problematic_patterns:
+            if pattern in url:
+                logging.debug(f"Filtered out restricted photo URL containing '{pattern}': {url}")
+                return False
+                
+        return True
+        
     def get_place_photos(self, place_id: str) -> Dict[str, Any]:
         """
         Retrieves photo URLs for a place using the Outscraper API and applies an
         intelligent selection algorithm to prioritize photos based on tags.
         
-        Selection criteria:
-        1. Photos are sorted by date, newest to oldest
-        2. Photos are prioritized in this order:
-           - "vibe" tag: Include all vibe photos possible
-           - "front" tag: Up to 5 photos (take all available if less than 5)
-           - "all" and "other" tags: Fill remaining slots after vibe and front
-        3. Returns a maximum of 25 photo URLs
+        Process:
+        1. Retrieve all photos from Outscraper API
+        2. Filter out invalid/restricted URLs using _is_valid_photo_url
+        3. Apply tag-based prioritization algorithm to the filtered valid photos
+        4. Return optimally selected photos
         
         Args:
             place_id (str): The unique identifier for the place.
@@ -863,12 +969,31 @@ class OutscraperProvider(PlaceDataProvider):
                 raw_data = response[0][0]
                 all_photos_data = raw_data.get('photos_data', [])
                 
-                # Apply the photo selection algorithm
-                selected_photos = self._select_prioritized_photos(all_photos_data)
+                # First, filter out photos with invalid URLs - the single validation checkpoint
+                valid_photos_data = []
+                filtered_out_count = 0
+                
+                for photo in all_photos_data:
+                    url = photo.get('photo_url_big', '')
+                    if self._is_valid_photo_url(url):
+                        valid_photos_data.append(photo)
+                    else:
+                        filtered_out_count += 1
+                
+                # Apply the tag-based selection algorithm to the already validated photos
+                selected_photos = self._select_prioritized_photos(valid_photos_data, max_photos=30)
+                
+                # Add detailed logging for transparency
+                logging.info(
+                    f"Photo selection for {place_id}: Total={len(all_photos_data)}, "
+                    f"Filtered out={filtered_out_count}, "
+                    f"Valid={len(valid_photos_data)}, "
+                    f"Selected={len(selected_photos)}"
+                )
                 
                 standardized_data = {
                     "place_id": place_id,
-                    "message": f"Retrieved {len(all_photos_data)} photos, selected {len(selected_photos)}",
+                    "message": f"Retrieved {len(all_photos_data)} photos, filtered out {filtered_out_count}, selected {len(selected_photos)}",
                     "photo_urls": selected_photos,
                     "raw_data": raw_data
                 }
@@ -885,13 +1010,15 @@ class OutscraperProvider(PlaceDataProvider):
             logging.error(f"Error retrieving photos from Outscraper for {place_id}: {e}")
             return {
                 "place_id": place_id,
-                "message": f"Error retrieving photos: {str(e)}",
-                "photo_urls": []
+                "message": f"Error retrieving photos: {str(e)}",                "photo_urls": []
             }
-    
-    def _select_prioritized_photos(self, photos_data, max_photos=25):
+            
+    def _select_prioritized_photos(self, photos_data, max_photos=30):
         """
         Selects photos based on specific criteria from the provided photos data.
+        
+        IMPORTANT: This method assumes all photos passed to it have already been validated
+        by _is_valid_photo_url. It does not perform URL validation itself.
         
         Selection criteria:
         1. First sort all photos by date, newest to oldest
@@ -899,11 +1026,13 @@ class OutscraperProvider(PlaceDataProvider):
            - "vibe" tag: Include all vibe photos possible
            - "front" tag: Up to 5 photos (take all available if less than 5)
            - "all" and "other" tags: Fill remaining slots after vibe and front
-        3. Return a maximum of 'max_photos' photo URLs (default: 25)
+        3. If priority tags don't yield enough photos, add ANY remaining valid photos 
+           regardless of tags (including those with food, drink, or other non-priority tags)
+        4. Return a maximum of 'max_photos' photo URLs (default: 30)
         
         Args:
-            photos_data (list): List of photo dictionaries from Outscraper
-            max_photos (int): Maximum number of photos to select (default: 25)
+            photos_data (list): List of pre-validated photo dictionaries from Outscraper
+            max_photos (int): Maximum number of photos to select (default: 30)
         
         Returns:
             list: A list of selected photo URLs (photo_url_big values)
@@ -920,27 +1049,30 @@ class OutscraperProvider(PlaceDataProvider):
             except (ValueError, AttributeError) as e:
                 # If parsing fails, return the earliest possible date
                 return datetime.datetime.min
-        
         # Sort photos by date, newest first
         photos_data.sort(key=lambda x: parse_date(x.get('photo_date', '')), reverse=True)
         
+        # Every photo passed to this method should already be validated
+        # Just make sure they have the required photo_url_big field
+        all_valid_photos = []
+        for photo in photos_data:
+            if 'photo_url_big' in photo:
+                all_valid_photos.append(photo)
+                
         # Initialize collections for different photo categories
         front_photos = []
         vibe_photos = []
-        all_photos = []
+        all_tag_photos = []
         other_photos = []
-        remaining_photos = []
+        tagless_photos = []
         
         # Categorize photos based on tags
-        for photo in photos_data:
-            # Skip photos without a photo_url_big
-            if 'photo_url_big' not in photo:
-                continue
-            
+        for photo in all_valid_photos:
             tags = photo.get('photo_tags', [])
             
-            # Skip photos without any tags
+            # Handle photos without any tags
             if not isinstance(tags, list) or not tags:
+                tagless_photos.append(photo)
                 continue
                 
             # Categorize photos by priority tags
@@ -949,43 +1081,42 @@ class OutscraperProvider(PlaceDataProvider):
             elif 'vibe' in tags:
                 vibe_photos.append(photo)
             elif 'all' in tags:
-                all_photos.append(photo)
+                all_tag_photos.append(photo)
             elif 'other' in tags:
                 other_photos.append(photo)
             else:
-                remaining_photos.append(photo)
+                # Photos with any other tags (food, drink, etc.) are stored in tagless_photos
+                # but they are still valid photos to use if we need to fill up to 30
+                tagless_photos.append(photo)
         
-        # Count the total preferred photos (front, vibe, all, other)
-        total_preferred = len(front_photos) + len(vibe_photos) + len(all_photos) + len(other_photos)
+        # Count the total tagged photos with our priority tags
+        total_priority_tagged = len(front_photos) + len(vibe_photos) + len(all_tag_photos) + len(other_photos)
         
-        # If total preferred photos is less than max_photos, take all of them
-        if total_preferred <= max_photos:
-            selected_photos = front_photos + vibe_photos + all_photos + other_photos
-        else:
-            # Otherwise apply the priority rules with limits
-            selected_photos = []
-            
-            # First priority: vibe photos (all of them, limited by max_photos)
-            vibe_limit = min(len(vibe_photos), max_photos)
-            selected_photos.extend(vibe_photos[:vibe_limit])
-            
-            # Second priority: front photos (up to 5)
-            remaining_slots = max_photos - len(selected_photos)
-            front_limit = min(5, len(front_photos), remaining_slots)
-            selected_photos.extend(front_photos[:front_limit])
-            
-            # Next priority: all photos 
-            remaining_slots = max_photos - len(selected_photos)
-            selected_photos.extend(all_photos[:remaining_slots])
-            
-            # Last priority: other photos
-            remaining_slots = max_photos - len(selected_photos)
-            selected_photos.extend(other_photos[:remaining_slots])
+        # Start with an empty selection
+        selected_photos = []
         
-        # If we still have room, add remaining photos
+        # First priority: vibe photos (all of them, limited by max_photos)
+        vibe_limit = min(len(vibe_photos), max_photos)
+        selected_photos.extend(vibe_photos[:vibe_limit])
+        
+        # Second priority: front photos (up to 5)
+        remaining_slots = max_photos - len(selected_photos)
+        front_limit = min(5, len(front_photos), remaining_slots)
+        selected_photos.extend(front_photos[:front_limit])
+        
+        # Next priority: all_tag photos 
+        remaining_slots = max_photos - len(selected_photos)
+        selected_photos.extend(all_tag_photos[:remaining_slots])
+        
+        # Last priority: other photos
+        remaining_slots = max_photos - len(selected_photos)
+        selected_photos.extend(other_photos[:remaining_slots])
+        
+        # If we still have room after all tagged photos, add remaining tagless photos
+        # (these include photos with non-priority tags like 'food', 'drink', etc.)
         remaining_slots = max_photos - len(selected_photos)
         if remaining_slots > 0:
-            selected_photos.extend(remaining_photos[:remaining_slots])
+            selected_photos.extend(tagless_photos[:remaining_slots])
         
         # Remove duplicates while preserving order (in case a photo has multiple tags)
         unique_photos = []
@@ -996,6 +1127,14 @@ class OutscraperProvider(PlaceDataProvider):
             if url not in seen_urls:
                 unique_photos.append(photo)
                 seen_urls.add(url)
+        
+        # Log information about photo selection
+        logging.debug(
+            f"Photo selection: Total={len(all_valid_photos)}, Priority Tagged={total_priority_tagged}, "
+            f"Vibe={len(vibe_photos)}, Front={len(front_photos)}, "
+            f"All={len(all_tag_photos)}, Other={len(other_photos)}, "
+            f"Tagless={len(tagless_photos)}, Selected={len(unique_photos)}"
+        )
         
         # Extract photo_url_big values from the selected photos
         selected_urls = [photo['photo_url_big'] for photo in unique_photos[:max_photos]]

@@ -47,7 +47,7 @@ To debug the Azure Function locally, follow the guidance in the [quickstart](htt
 ## Using Emulated Storage
 
 1. Start the Azurite Blob Service. This can be done from the command panel `CTRL + Shift + P`.
-2. Debug `function_app.py` with a `launch.json` file that looks like the [below JSON](#launch-file). Right now this configuration should be setup already in the `.vscode` folder.
+2. Debug `function_app.py` with a `launch.json` file that looks like [this one](/.vscode/launch.json). Right now this configuration should be setup already in the `.vscode` folder.
 3. Navigate to the Azure tab in the left bar and under Workspace expand Local Project. The function should be under there where you can right-click and execute it, providing your own body.
 
 ## Using Real Storage
@@ -130,6 +130,7 @@ The Azure Function App exposes several endpoints for interacting with the Third 
 This function triggers the `get_place_data_orchestrator` to fetch and cache place details, reviews, and photos for all places in the Airtable base.
 
 **Query Parameters**:
+
 * `force_refresh=true`: Bypasses the cache and always fetches fresh data
 * `sequential_mode=true`: Processes places sequentially rather than in parallel
 * `city=charlotte`: City to use for caching (defaults to "charlotte")
@@ -211,7 +212,64 @@ This function is used for maintenance to purge the history of completed, failed,
 }
 ```
 
-### 5. Smoke Test
+### 5. Administrative Photo Refresh
+
+**Endpoint**: `/refresh-all-photos`  
+**Method**: GET/POST  
+**Purpose**: Administrative function to refresh photo selections across all places
+
+This function performs a comprehensive photo refresh operation that:
+
+1. Gets all places from Airtable
+2. Reads data files from GitHub for each place
+3. Extracts photos from `photos.raw_data`
+4. Applies the new photo selection algorithm with 30-photo limit and centralized URL validation
+5. Updates Airtable "Photos" field with `overwrite=True`
+6. Updates only the photos section in data files (preserves other data)
+
+**Query Parameters**:
+
+* `provider_type`: Provider to use for photo selection algorithm (REQUIRED: 'google' or 'outscraper')
+* `city=charlotte`: City to process (default: 'charlotte')
+* `dry_run=true`: If 'true', only logs what would be done without making changes (default: 'true')
+* `max_places`: Maximum number of places to process (optional, processes all if not specified)
+
+**Authentication**: Requires the Azure Function key in the `x-functions-key` header.
+
+**Response**:
+
+```json
+{
+  "success": true,
+  "message": "Photo refresh dry run completed",
+  "data": {
+    "status": "completed",
+    "dry_run": true,
+    "total_places": 150,
+    "processed": 150,
+    "updated": 45,
+    "skipped": 100,
+    "errors": 5,
+    "error_details": [
+      "Place Name: No raw photos data found"
+    ],
+    "place_results": [
+      {
+        "place_name": "Example Place",
+        "place_id": "ChIJxxxxxxxxxxxxx",
+        "record_id": "recXXXXXXXXXXXXXX",
+        "status": "updated",
+        "message": "Successfully updated with 25 photos",
+        "photos_before": 15,
+        "photos_after": 25
+      }
+    ]
+  },
+  "error": null
+}
+```
+
+### 6. Smoke Test
 
 **Endpoint**: `/smoke-test`  
 **Method**: POST  
@@ -287,6 +345,7 @@ The application uses a provider pattern with two implementations:
 ### 1. GoogleMapsProvider
 
 Uses the Google Maps Places API directly. Features:
+
 * Retrieves place details using the Places API
 * Cannot retrieve reviews directly (limitation of Google's API)
 * Retrieves photos using the Places Photos API
@@ -296,6 +355,7 @@ Uses the Google Maps Places API directly. Features:
 ### 2. OutscraperProvider
 
 Uses Outscraper's API as an alternative data source. Features:
+
 * Provides more comprehensive data including reviews
 * Has advanced photo tagging and selection algorithm
 * Optimized for Charlotte area with location bias

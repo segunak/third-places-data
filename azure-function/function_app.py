@@ -141,8 +141,6 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
             {"config": config_dict}
         )
 
-        # Set up the processing tasks
-        tasks = []
         results = []
         
         # If sequential_mode mode requested, process one place at a time
@@ -482,10 +480,6 @@ def enrich_single_place(activityInput):
             "field_updates": {}
         }
 
-# ======================================================
-# Utility Functions
-# ======================================================
-
 # NOTE: To avoid excessive Airtable API calls and rate limiting, only call all_third_places
 # in this get_all_third_places activity. Do NOT call all_third_places in per-place activities
 # such as enrich_single_place or get_place_data. Always pass the required place data from the orchestrator.
@@ -588,7 +582,7 @@ async def purge_orchestrations(req: func.HttpRequest, client) -> func.HttpRespon
             }),
             status_code=500,
             mimetype="application/json"
-        )
+    )
 
 @app.function_name(name="SmokeTest")
 @app.route(route="smoke-test")
@@ -794,61 +788,135 @@ def refresh_single_operational_status(activityInput):
             "message": f"Error processing operational status refresh: {str(ex)}"
         }
 
-@app.route(route="place_lookup")
-def place_lookup(req: func.HttpRequest) -> func.HttpResponse:
-    """HTTP Trigger that looks up place details from either Google Maps or Outscraper
-    
-    This endpoint accepts a query parameter called place_id which contains the Google Maps Place ID for the location.
-    It will return cached data if available, unless force_refresh=true is specified in the query string.
-    
-    Example: place_lookup?place_id=ChIJO4rApCM0VIgR5e-aCNr_zps&force_refresh=true
+@app.function_name(name="RefreshAllPhotos")
+@app.route(route="refresh-all-photos")
+def refresh_all_photos(req: func.HttpRequest) -> func.HttpResponse:
     """
-
-    place_id = req.params.get('place_id', '')
-    if not place_id:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            req_body = {}
-        place_id = req_body.get('place_id', '')
-
-    if not place_id:
-        return func.HttpResponse(
-             "Please provide a place_id parameter.",
-             status_code=400
+    HTTP-triggered function for photo refresh across all places from cached data.
+    
+    This function refreshes photos using cached data files (not live APIs) that:
+    1. Gets all places from Airtable
+    2. Reads cached data files from GitHub for each place
+    3. Extracts photos from existing photos.raw_data in cache
+    4. Applies the photo selection algorithm with 30-photo limit
+    5. Updates Airtable "Photos" field with overwrite=True
+    6. Updates only the photos section in data files (preserves other data)
+    
+    Query Parameters:
+    - provider_type: Provider to use for photo selection algorithm (REQUIRED: 'google' or 'outscraper')
+    - city: City to process (default: 'charlotte')
+    - dry_run: If 'true', only logs what would be done without making changes (default: 'true')
+    - max_places: Maximum number of places to process (optional)
+    
+    Authentication: Requires the Azure Function key in the x-functions-key header.
+    
+    Returns:
+        func.HttpResponse: JSON response with processing results
+    """
+    logging.info("Received request for administrative photo refresh.")
+    
+    try:
+        # Parse parameters
+        provider_type = req.params.get('provider_type')
+        city = req.params.get('city', 'charlotte')
+        dry_run = req.params.get('dry_run', 'true').lower() == 'true'
+        max_places_param = req.params.get('max_places')
+        
+        # Validate required parameters
+        if not provider_type:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Missing required parameter: provider_type",
+                    "data": None,
+                    "error": "The provider_type parameter is required ('google' or 'outscraper')"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+        
+        if provider_type not in ['google', 'outscraper']:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Invalid provider_type",
+                    "data": None,
+                    "error": "provider_type must be 'google' or 'outscraper'"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+        
+        # Parse max_places if provided
+        max_places = None
+        if max_places_param:
+            try:
+                max_places = int(max_places_param)
+                if max_places <= 0:
+                    return func.HttpResponse(
+                        json.dumps({
+                            "success": False,
+                            "message": "Invalid max_places value",
+                            "data": None,
+                            "error": "max_places must be a positive integer"
+                        }),
+                        status_code=400,
+                        mimetype="application/json"
+                    )
+            except ValueError:
+                return func.HttpResponse(
+                    json.dumps({
+                        "success": False,
+                        "message": "Invalid max_places value",
+                        "data": None,
+                        "error": "max_places must be a valid integer"
+                    }),
+                    status_code=400,
+                    mimetype="application/json"
+                )
+        
+        logging.info(f"Starting administrative photo refresh with parameters: "
+                    f"provider_type={provider_type}, city={city}, dry_run={dry_run}, max_places={max_places}")
+        
+        # Call the administrative function
+        results = helpers.refresh_all_photos(
+            provider_type=provider_type,
+            city=city,
+            dry_run=dry_run,
+            max_places=max_places
         )
-
-    # Get request parameters
-    provider_type = req.params.get('provider_type', 'outscraper')
-    force_refresh = req.params.get('force_refresh', 'false').lower() == 'true'
-    city = req.params.get('city')
-    if not city:
+        
+        # Determine HTTP status based on results
+        http_status = 200
+        if results.get("status") == "failed":
+            http_status = 500
+        elif results.get("errors", 0) > 0:
+            http_status = 207  # Multi-status for partial success
+        
+        # Format response
+        response_data = {
+            "success": results.get("status") != "failed",
+            "message": f"Photo refresh {'dry run ' if dry_run else ''}completed",
+            "data": results,
+            "error": None if results.get("status") != "failed" else results.get("message")
+        }
+        
+        return func.HttpResponse(
+            json.dumps(response_data, indent=2),
+            status_code=http_status,
+            mimetype="application/json"
+        )
+        
+    except Exception as ex:
+        logging.error(f"Error in administrative photo refresh: {ex}", exc_info=True)
         return func.HttpResponse(
             json.dumps({
                 "success": False,
-                "message": "Missing required parameter: city",
+                "message": "Server error occurred during administrative photo refresh",
                 "data": None,
-                "error": "The city parameter is required"
+                "error": str(ex)
             }),
-            status_code=400
+            status_code=500,
+            mimetype="application/json"
         )
 
-    # Attempt to get place data (first check cache unless force_refresh=true)
-    status, place_data, message = helpers.get_and_cache_place_data(
-        provider_type=provider_type,
-        place_id=place_id,
-        force_refresh=force_refresh,
-        city=city
-    )
-
-    if status == 'success':
-        return func.HttpResponse(
-            json.dumps(place_data),
-            mimetype="application/json",
-            status_code=200
-        )
-    else:
-        return func.HttpResponse(
-            message,
-            status_code=404
-        )

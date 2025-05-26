@@ -168,6 +168,10 @@ Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place 
 $opsEndpoint = "refresh-airtable-operational-statuses?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&city=$script:City"
 Test-DurableFunction -Endpoint $opsEndpoint -Description "Refresh operational statuses ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
+# 6. Refresh All Photos (HTTP)
+$photosEndpoint = "refresh-all-photos?provider_type=$script:ProviderType&city=$script:City&dry_run=true"
+Test-HttpFunction -Endpoint $photosEndpoint -Description "Refresh all photos in dry run mode ($script:ProviderType)"
+
 # Display test completion
 Write-Log "All Azure Function endpoint tests completed."
 

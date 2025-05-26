@@ -67,7 +67,7 @@ def _should_skip_photos_retrieval(place_id: str, place_name: str, provider_type:
     """
     Determine if photo retrieval should be skipped based on existing Airtable data.
     Args:
-        place_id: Google Maps Place ID
+        place_id: Google Maps Place Id
         place_name: Name of the place for logging
         provider_type: The provider type to use for AirtableClient
         sequential_mode: Whether to use sequential mode for AirtableClient

@@ -343,7 +343,7 @@ class AirtableClient:
         Retrieves photos for a place using the configured data provider.
 
         Args:
-            place_id (str): The Google Maps Place ID of the place.
+            place_id (str): The Google Maps Place Id of the place.
 
         Returns:
             list: A list of photo URLs.
@@ -397,15 +397,15 @@ class AirtableClient:
         return missing_places
 
     def has_data_file(self, place_id: str) -> bool:
-        """Checks if the place with the given Google Maps Place ID has stored Google Maps reviews.
+        """Checks if the place with the given Google Maps Place Id has stored Google Maps reviews.
 
         Args:
-            place_id (str): The Google Maps Place ID of the place to check.
+            place_id (str): The Google Maps Place Id of the place to check.
 
         Returns:
             bool: True if the place has reviews ('Has Data File' field is 'Yes'), False otherwise.
         """
-        logging.info(f"Checking if place with Google Maps Place ID {place_id} has reviews.")
+        logging.info(f"Checking if place with Google Maps Place Id {place_id} has reviews.")
         record = self.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
         if record:
             has_data_file = record['fields'].get('Has Data File', 'No')
@@ -478,7 +478,7 @@ class AirtableClient:
 
             if not place_id:
                 result['update_status'] = 'failed'
-                result['message'] = 'No Google Maps Place ID.'
+                result['message'] = 'No Google Maps Place Id.'
                 return result
 
             current_operational_value = third_place['fields'].get('Operational', '')
