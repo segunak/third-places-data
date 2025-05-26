@@ -1309,19 +1309,9 @@
     },
     "photos": {
         "place_id": "ChIJi8gj-VyhVogRsMFvosm9vCE",
-        "message": "Photos retrieved from Airtable (11 photos)",
+        "message": "Photos refreshed by admin function using outscraper selection algorithm",
         "photo_urls": [
-            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=WMoM_mBHR3i7OFe07ECHyg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=214.5083&pitch=0&thumbfov=100",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB-F-94eSoK-uHeYv16P4itwquELdtnUGPTwGr_01vpVBC2kBeVO8J3gXV4MGGUdgvR5ouAXB5H4U-4DndfRw6IrTQaHABptYvuhBWioqROn4kp7RFFhqGhi85TnyHQXPwcBSVJc=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB-KmSQZHw2gygML3VAv8gCtTWnA9MhE6s7nUgOvZ6biLVP7mNlOVGVrV5wkX7_F_3YuqZM2m5RPyicD7fXfEkWukEp01fHHcIfaG-YKJRJEt1t32w2iJUh5Y5pyFeaa_2a1175vSw=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB-K-3WhMTbA1FgqmT7yGqsGB1L9FL4aouosntsQbV652t6MIq0f9KSI_HNuYxC0_81fiMcmElLTPdNl9cevoNH4jL_bsKqMfovnFGO_qpUtlr1qqFSyuZByBv_muzmnMPPuaE4hoQ=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB960N1SZjYRhR1C1gPih9Ke7x5zudgdudNCVZjB5-DwZ6On6zkrxNPHgJJI947QZKrKoE86CE7Q6Y2pq7ISjDIR_IVpM4xX0QKpkdLbcHxYNXS3c_HQxHAvmjbW1GndDa7ld-g=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB-4V10Vsm5d4F_U6ZlShFfFGLILqrJeHSgbql8XwCwpywIxpuYKQTZee1JBpc-1qiMd1nNl4a9aY9mSrZGcURCCiCAkzFGvlc2uexPH7V4VEDzR6mVnyH0Bi2cHklfIrys9RO_L=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB88nG7MC_Xb0rPXmld9l-WJH5CEfp0qlEb8IpwNS5VGjATNJgCQsbGXCM6JglF8b3B0RnK3ugnvYJ8XevawbHq3eerZE38_mzEPKDaRL-KserYec1-nYFI-Lm32ZAj8U0P7GExSwQ=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB_IgH_2C9JtvDTglOmRbWGxeRNg8fX0Y9w7TW0f1w032BWOz-Ez3E7fCVZuYlo48sTpzI1xsfCyXxHh0IUJGzff8nyyLMLDx5SiwTQVwhmc4JAa85xwOyqxs8tA63SknjN9Z4X2hA=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB9j87SRbocpZRA32p9fd4HOcFby5BpjQNoXoYvM540TqTDk_Ujy8rvNhvg4wrxkMajgaP2sGyxesmDrp6jfXkQ7R3Gxq5pdRXZQzqeEHQ0bNW6O1Wc86_q1dWnwM4gjzFwIUuJG=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB-UMrarB7_fLfom3FtkMBeKJ4CJOIIWzoEdpDJtyUMY1ktau5EA9CeQBKXCdaC7WMQD3x-U-TQHxfMCJSwWZkVdtkH2W8b9B4IspbsFVXJSVfxCqj3ecwbU5kFMAOO2KhQwcEs-=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/gps-cs-s/AB5caB9m_7PsORSVGqERw89lPHoNob-SjT8-0jjXYSv-wz5fVlPkxkHm1Wp1By5R3_-JTCkZl2u_X7hj37wyPNTgLLCSsmIkalvdU9oA4v-C7IOvtZRxRfty4K-CsJnhMmGFVXo-qJtl=w2048-h2048-k-no"
+            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=WMoM_mBHR3i7OFe07ECHyg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=214.5083&pitch=0&thumbfov=100"
         ],
         "raw_data": [
             {
@@ -1532,7 +1522,8 @@
                 ],
                 "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=WMoM_mBHR3i7OFe07ECHyg&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=214.5083&pitch=0&thumbfov=100"
             }
-        ]
+        ],
+        "last_refreshed": "2025-05-26T15:44:13.440234"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-04-18T17:37:10.858266"
