@@ -778,10 +778,10 @@
     },
     "photos": {
         "place_id": "ChIJaWWErjIlVIgR4sIIccjflj0",
-        "message": "Photos retrieved from Airtable (21 photos)",
+        "message": "Photos refreshed by admin function using outscraper selection algorithm",
         "photo_urls": [
-            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Plt6yFcWQr2V0ny44b2tJg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=312.97037&pitch=0&thumbfov=100",
             "https://lh3.googleusercontent.com/p/AF1QipPQGzsk40gw6fU6IcAPC89hEUW9I8shsUbs2Fhq=w2048-h2048-k-no",
+            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Plt6yFcWQr2V0ny44b2tJg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=312.97037&pitch=0&thumbfov=100",
             "https://lh3.googleusercontent.com/p/AF1QipOVrLa1X3yEM7T_b3WR4EzIsiaVlRO8a6T1WbgQ=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOc8aO9V8hkOQwkMbHMtZHnmeGQM9I6pN8dyMVE=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipPb__A33dmSPflSXHjMQEL2BmA9xX9JwSR_IitF=w2048-h2048-k-no",
@@ -795,11 +795,15 @@
             "https://lh3.googleusercontent.com/p/AF1QipNWcWVc4Ivj4SRmyyhcCcH8iI3EYg5BAubLHFfA=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNgHdxue58u3_FzzMUhlIoTGcUWsMxoIQCSwNa1=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipPhQsmbwxOPVZfVfZXpmPlsW_5iDaTVJJ2pN0i_=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipPftBIAPJHnL8ilSaX6ADX3X25xdc4p26K_PEuE=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipNPFvbz6AUGyIZiaRqEbIwx8oJ0X5Nlj8vYwDGp=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNnGENLc0lvNtbLA3a_nTivrcrwlTccJ3z0Qps3=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipP8nHbYdKYXdkUMMh5vZHl-yo076h5h7i5XEwbr=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipMQQ50UOqCjZVGGUB3_WSQ87IBU682GPn4iis03=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipONE6NnSMwd3G6PvgXQxysJLpxTEeFuBgJpIa5_=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNTZs5scF7FuS7Knnu2Cz3VHR94BjbMmxWVyijI=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipPpXZGurrSMEyPDVxnqUq7dT-wGWYVAwW9vDrn2=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipNUQYKy_5v9EId_uzpL7bTqa0IYKVaIZLfccx-y=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNIptHxMi1mucmLPo77tyFPSh8RsI3KGFL5al87=w2048-h2048-k-no"
         ],
         "raw_data": [
@@ -1218,7 +1222,8 @@
                 ],
                 "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Plt6yFcWQr2V0ny44b2tJg&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=312.97037&pitch=0&thumbfov=100"
             }
-        ]
+        ],
+        "last_refreshed": "2025-05-26T15:45:54.718156"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-04-18T17:37:05.593792"
