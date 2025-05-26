@@ -3329,19 +3329,17 @@
     },
     "photos": {
         "place_id": "ChIJhXfYP80fVIgROx9ABiYtTfU",
-        "message": "Photos retrieved from Airtable (12 photos)",
+        "message": "Photos refreshed by admin function using outscraper selection algorithm",
         "photo_urls": [
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=tXU0je4ue69ZwdAUzVUpoA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=192.24962&pitch=0&thumbfov=100",
             "https://lh3.googleusercontent.com/p/AF1QipPhtRomU6ExBQ_nHrH6QO8yydyP_N0a3FLHARdN=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNsQ8aKSHJ8GxiCZ1AHMFOy7YRUGCeJIGanVKYW=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipMeJvHY9FmRHehO1IeYRh7rtzpstSjSF0keS_dU=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOGAUl-2nFE39qxpK27gMcZ886NPo7m536T0L0X=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipN2W7n78wRsg28E8cErL-iX6mHU3amlrz9aUPVG=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipNIj-nmI1S7C8jmtvR_08Pm1fVeCHW4xuOu6UdI=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipOaNLT-i4cShHpHsY-IWj6D8cRRtnVLF5c4NwuU=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipP9Y9j1I-slj6UTkpA_HvXX41gsyEUjYFsW-tjk=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOKlG4Ha19Buhl_El8QrtIdMxz8aBRezHYCoPmm=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipO1-k0EPUvrJI-KzcPOO4RpevcUbJNb30Qug3hK=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipO9q13lNkrVHTPy5YHwb3qshCaskS5vmzKWlHlc=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/p/AF1QipMyFSzpU98LX5GI0cGs2eusiJOoNYaNNH6JZiZ3=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOTQg4-7SnbMbAkJjgUg07lB2t1q7Ji1tEJ-voK=w2048-h2048-k-no"
         ],
         "raw_data": [
@@ -3575,7 +3573,8 @@
                 ],
                 "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=tXU0je4ue69ZwdAUzVUpoA&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=192.24962&pitch=0&thumbfov=100"
             }
-        ]
+        ],
+        "last_refreshed": "2025-05-26T15:53:06.894924"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-04-18T17:39:38.449443"
