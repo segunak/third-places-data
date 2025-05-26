@@ -67,7 +67,7 @@ jobs:
           scm-do-build-during-deployment: true
           enable-oryx-build: true
           respect-funcignore: true
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_12D1E23730A04CE3A3733A7752CDC096 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
 
       - name: Smoke Test
         shell: bash
