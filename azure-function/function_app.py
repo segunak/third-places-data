@@ -723,7 +723,7 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
                     "provider_type": provider_type,
                     "city": city
                 }
-                result = yield context.call_activity("refresh_single_operational_status", activity_input)
+                result = yield context.call_activity("refresh_single_place_operational_status", activity_input)
                 results.append(result)
         else:
             logging.info(f"Running operational status refresh in PARALLEL mode with concurrency={concurrency_limit} for {len(all_third_places)} places")
@@ -736,7 +736,7 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
                         "provider_type": provider_type,
                         "city": city
                     }
-                    batch_tasks.append(context.call_activity("refresh_single_operational_status", activity_input))
+                    batch_tasks.append(context.call_activity("refresh_single_place_operational_status", activity_input))
                 batch_results = yield context.task_all(batch_tasks)
                 results.extend(batch_results)
         failed_updates = [res for res in results if res.get('update_status') == 'failed']
@@ -760,8 +760,8 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
         return error_response
 
 @app.activity_trigger(input_name="activityInput")
-@app.function_name("refresh_single_operational_status")
-def refresh_single_operational_status(activityInput):
+@app.function_name("refresh_single_place_operational_status")
+def refresh_single_place_operational_status(activityInput):
     """
     Activity function that refreshes the operational status for a single place.
     """
@@ -778,7 +778,7 @@ def refresh_single_operational_status(activityInput):
             }
         airtable_client = AirtableClient(provider_type)
         data_provider = PlaceDataProviderFactory.get_provider(provider_type)
-        result = airtable_client.refresh_single_operational_status(place, data_provider)
+        result = airtable_client.refresh_single_place_operational_status(place, data_provider)
         return result
     except Exception as ex:
         logging.error(f"Error refreshing operational status for {place_name}: {ex}", exc_info=True)
