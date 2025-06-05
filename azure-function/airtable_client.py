@@ -257,6 +257,7 @@ class AirtableClient:
             purchase_required = details.get('purchase_required', 'Unsure')
             description = details.get('description', '')
             google_maps_url = details.get('google_maps_url', '')
+            photos_list = place_data.get('photos', {}).get('photo_urls', [])
 
             # Tuple format is (field_value, overwrite)
             # Overwrite is True for fields that should be updated even if they already have a value
@@ -268,19 +269,11 @@ class AirtableClient:
                 'Description': (description, False),
                 'Purchase Required': (purchase_required, False),
                 'Parking': (parking, False),
+                'Photos': (str(photos_list), False),
                 'Latitude': (str(latitude), True) if latitude else (None, False),
                 'Longitude': (str(longitude), True) if longitude else (None, False),
             }
 
-            record = self.charlotte_third_places.get(record_id)
-            has_existing_photos = 'Photos' in record['fields'] and record['fields']['Photos']
-            photos_data = place_data.get('photos', {})
-            photos_list = photos_data.get('photo_urls', []) if photos_data else []
-
-            if photos_list and not has_existing_photos:
-                fields_to_update['Photos'] = (str(photos_list), False)
-            elif has_existing_photos:
-                logging.info(f"Skipping photo update as photos already exist in Airtable")
             for field_name, (field_value, overwrite) in fields_to_update.items():
                 if field_value:
                     update_result = self.update_place_record(

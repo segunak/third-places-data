@@ -363,8 +363,8 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
             # Check if the place exists in Airtable
             record = airtable_client.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
             
-            # If the record exists and has photos, skip photo retrieval
-            if record and 'Photos' in record['fields'] and record['fields']['Photos']:
+            # If the record exists and has photos, we can skip photo retrieval except if force_refresh is True
+            if record and 'Photos' in record['fields'] and record['fields']['Photos'] and not force_refresh:
                 logging.info(f"Place {place_id} already has photos in Airtable, skipping photo retrieval")
                 skip_photos = True
                 existing_photos_json = record['fields']['Photos']

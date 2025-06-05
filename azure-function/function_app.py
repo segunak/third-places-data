@@ -5,7 +5,7 @@ import azure.functions as func
 import helper_functions as helpers
 import azure.durable_functions as df
 from place_data_providers import PlaceDataProviderFactory
-from airtable_client import AirtableClient
+from airtable_client import AirtableClient, SearchField
 from azure.durable_functions.models.DurableOrchestrationStatus import OrchestrationRuntimeStatus
 
 app = df.DFApp(http_auth_level=func.AuthLevel.FUNCTION)
@@ -237,8 +237,6 @@ def get_place_data(activityInput):
             error_msg = f"Error processing place data: provider_type cannot be None - must be 'google' or 'outscraper'"
             logging.error(error_msg)
             return helpers.create_place_response('failed', place_name, None, error_msg)
-        
-
 
         # Now extract place details
         record_id = place['id']
@@ -787,6 +785,299 @@ def refresh_single_place_operational_status(activityInput):
             "update_status": "failed",
             "message": f"Error processing operational status refresh: {str(ex)}"
         }
+
+# ======================================================
+# Single Place Refresh Functions
+# ======================================================
+
+@app.function_name(name="RefreshSinglePlace")
+@app.route(route="refresh-single-place")
+@app.durable_client_input(client_name="client")
+async def refresh_single_place(req: func.HttpRequest, client) -> func.HttpResponse:
+    """
+    HTTP-triggered function that refreshes all data for a single place by Google Maps Place Id.
+    
+    This function is exposed as a public endpoint at /api/refresh-single-place.
+    It always forces a fresh data retrieval (bypasses cache) and updates both
+    Airtable and GitHub with the latest information including details, photos, and reviews.
+    
+    This endpoint provides a way to refresh data for a specific place without having to
+    process all places in the system. It's particularly useful for testing, debugging,
+    or updating a single place that may have changed.
+    
+    Required query parameters:
+    - place_id: The Google Maps Place Id of the place to refresh
+    - provider_type: Type of data provider to use ('google' or 'outscraper')
+    - city: City for caching (e.g., 'charlotte')
+    
+    Returns:
+        func.HttpResponse: A JSON response with the orchestration instance ID and status URL
+    """
+    logging.info("Received request to refresh single place.")
+    
+    try:
+        # Parse required parameters from query string
+        place_id = req.params.get('place_id')
+        provider_type = req.params.get('provider_type')
+        city = req.params.get('city')
+        
+        # Validate required parameters with detailed error messages
+        if not place_id:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Missing required parameter: place_id",
+                    "data": None,
+                    "error": "The place_id parameter is required (Google Maps Place Id)"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+            
+        if not provider_type:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Missing required parameter: provider_type",
+                    "data": None,
+                    "error": "The provider_type parameter is required ('google' or 'outscraper')"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+            
+        if not city:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Missing required parameter: city",
+                    "data": None,
+                    "error": "The city parameter is required for caching"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+            
+        # Validate provider_type value
+        if provider_type not in ['google', 'outscraper']:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Invalid provider_type",
+                    "data": None,
+                    "error": "provider_type must be 'google' or 'outscraper'"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+        
+        logging.info(f"Starting single place refresh for place_id={place_id}, "
+                    f"provider_type={provider_type}, city={city}")
+        
+        # Prepare orchestration input with parameters
+        orchestration_input = {
+            "place_id": place_id,
+            "provider_type": provider_type,
+            "city": city,
+            "force_refresh": True  # Always force refresh for this endpoint
+        }
+        
+        # Start the orchestrator for single place refresh
+        instance_id = await client.start_new("refresh_single_place_orchestrator", client_input=orchestration_input)
+        logging.info(f"Started single place refresh orchestration with ID: {instance_id}")
+        
+        # Return a response with status check URL for monitoring progress
+        response = client.create_check_status_response(req, instance_id)
+        return response
+        
+    except Exception as ex:
+        logging.error(f"Error encountered while starting single place refresh: {ex}", exc_info=True)
+        return func.HttpResponse(
+            json.dumps({
+                "success": False,
+                "message": "Server error occurred while starting single place refresh.",
+                "data": None,
+                "error": str(ex)
+            }),
+            status_code=500,
+            mimetype="application/json"
+        )
+
+@app.orchestration_trigger(context_name="context")
+def refresh_single_place_orchestrator(context: df.DurableOrchestrationContext):
+    """
+    Orchestrator function that coordinates refreshing all data for a single place.
+    
+    This orchestrator manages the execution of the single place refresh process by:
+    1. Finding the place record in Airtable by Google Maps Place Id
+    2. Calling the existing get_place_data activity to refresh all data
+    3. Ensuring fresh data is retrieved (force_refresh=True)
+    4. Updating Airtable and GitHub cache with the latest information
+    
+    The orchestrator reuses the existing get_place_data activity function which already
+    handles the complete data refresh process including API calls, caching, and updates.
+    
+    Args:
+        context (df.DurableOrchestrationContext): The durable orchestration context
+        
+    Returns:
+        dict: Results of the single place refresh operation
+    """
+    try:
+        logging.info("refresh_single_place_orchestrator started.")
+        
+        # Extract input parameters from orchestration context
+        orchestration_input = context.get_input() or {}
+        place_id = orchestration_input.get("place_id")
+        provider_type = orchestration_input.get("provider_type")
+        city = orchestration_input.get("city")
+        
+        # Validate that all required parameters are present
+        if not place_id or not provider_type or not city:
+            raise ValueError("Missing required parameters: place_id, provider_type, or city")
+        
+        logging.info(f"Processing single place refresh for place_id: {place_id}")
+        
+        # Step 1: Find the place record in Airtable by Google Maps Place Id
+        # This is necessary because the get_place_data activity expects a place record
+        place_record = yield context.call_activity(
+            "find_place_by_id",
+            {
+                "place_id": place_id,
+                "provider_type": provider_type
+            }
+        )
+        
+        # Check if place was found in Airtable
+        if not place_record:
+            logging.warning(f"Place with Google Maps Place Id '{place_id}' not found in Airtable")
+            return {
+                "success": False,
+                "message": f"Place with Google Maps Place Id '{place_id}' not found in Airtable",
+                "data": None,
+                "error": "Place not found in Airtable database"
+            }
+        
+        place_name = place_record.get('fields', {}).get('Place', 'Unknown')
+        logging.info(f"Found place in Airtable: {place_name}")
+
+        # Step 2: Refresh the place data using the existing get_place_data activity
+        # This will fetch fresh data from the API, update Airtable "Has Data File", and save to GitHub
+        refresh_result = yield context.call_activity(
+            "get_place_data",
+            {
+                "place": place_record,
+                "config": {
+                    "provider_type": provider_type,
+                    "city": city,
+                    "force_refresh": True  # Always force fresh data retrieval
+                }
+            }
+        )
+        
+        # Step 3: Enrich Airtable with the fresh data to update all fields
+        # This complements the data refresh by updating all Airtable fields with the new data
+        enrich_result = yield context.call_activity(
+            "enrich_single_place",
+            {
+                "place": place_record,
+                "provider_type": provider_type,
+                "city": city,
+                "force_refresh": False  # Use cached data since we JUST refreshed it
+            }
+        )
+        
+        # Determine overall success based on both operations
+        refresh_success = refresh_result.get('status') not in ['failed', 'error']
+        enrich_success = enrich_result.get('status') not in ['failed', 'error']
+        overall_success = refresh_success and enrich_success
+        
+        # Prepare final result with comprehensive information from both operations
+        result = {
+            "success": overall_success,
+            "message": f"Single place refresh completed for '{refresh_result.get('place_name', place_name)}'",
+            "data": {
+                "place_id": place_id,
+                "place_name": refresh_result.get('place_name', place_name),
+                "refresh_status": refresh_result.get('status'),
+                "refresh_message": refresh_result.get('message'),
+                "enrich_status": enrich_result.get('status'),
+                "enrich_message": enrich_result.get('message'),
+                "field_updates": enrich_result.get('field_updates', {}),
+                "provider_type": provider_type,
+                "city": city
+            },
+            "error": None if overall_success else f"Refresh: {refresh_result.get('message', 'Unknown error')}; Enrich: {enrich_result.get('message', 'Unknown error')}"
+        }        
+        # Set orchestration status for monitoring
+        context.set_custom_status('Succeeded' if overall_success else 'Failed')
+        
+        logging.info(f"Single place refresh orchestrator completed with status: {refresh_result.get('status')}")
+        return result
+        
+    except Exception as ex:
+        logging.error(f"Critical error in refresh_single_place_orchestrator: {ex}", exc_info=True)
+        error_response = {
+            "success": False,
+            "message": "Error occurred during single place refresh.",
+            "data": None,
+            "error": str(ex)
+        }
+        context.set_custom_status('Failed')
+        return error_response
+
+@app.activity_trigger(input_name="activityInput")
+@app.function_name("find_place_by_id")
+def find_place_by_id(activityInput):
+    """
+    Activity function that finds a place record in Airtable by Google Maps Place Id.
+    
+    This function searches the Airtable database for a record that matches the provided
+    Google Maps Place Id. It uses the existing AirtableClient infrastructure to perform
+    the search using the SearchField.GOOGLE_MAPS_PLACE_ID field.
+    
+    This is necessary because the existing get_place_data activity function expects
+    a complete place record from Airtable, not just a place ID.
+    
+    Args:
+        activityInput: Dictionary containing:
+            - place_id: The Google Maps Place Id to search for
+            - provider_type: The data provider type for AirtableClient initialization
+    
+    Returns:
+        dict or None: The place record from Airtable if found, None otherwise
+    """
+    try:
+        # Extract parameters from activity input
+        place_id = activityInput.get("place_id")
+        provider_type = activityInput.get("provider_type")
+        
+        # Validate required parameters
+        if not place_id or not provider_type:
+            logging.error("Missing required parameters for find_place_by_id: place_id or provider_type")
+            return None
+        
+        logging.info(f"Searching for place with Google Maps Place Id: {place_id}")
+        
+        # Create AirtableClient using the same pattern as other activity functions
+        # This ensures we use the same configuration and authentication
+        airtable_client = AirtableClient(provider_type)
+        
+        # Search for the record using the Google Maps Place Id field
+        # This uses the existing get_record method which handles the Airtable API call
+        record = airtable_client.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
+        
+        if record:
+            place_name = record.get('fields', {}).get('Place', 'Unknown')
+            logging.info(f"Successfully found place record: {place_name} (ID: {place_id})")
+        else:
+            logging.warning(f"No place record found with Google Maps Place Id: {place_id}")
+        
+        return record
+        
+    except Exception as ex:
+        logging.error(f"Error finding place by ID {place_id}: {ex}", exc_info=True)
+        return None
 
 @app.function_name(name="RefreshAllPhotos")
 @app.route(route="refresh-all-photos")
