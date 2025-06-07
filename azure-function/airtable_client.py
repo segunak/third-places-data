@@ -430,7 +430,7 @@ class AirtableClient:
 
     def refresh_operational_statuses(self, data_provider) -> List[Dict[str, Any]]:
         """
-        Wrapper that calls refresh_single_operational_status for each place in all_third_places.
+        Wrapper that calls refresh_single_place_operational_status for each place in all_third_places.
         Args:
             data_provider: The data provider to use for checking operational status
         Returns:
@@ -438,11 +438,11 @@ class AirtableClient:
         """
         results = []
         for third_place in self.all_third_places:
-            result = self.refresh_single_operational_status(third_place, data_provider)
+            result = self.refresh_single_place_operational_status(third_place, data_provider)
             results.append(result)
         return results
 
-    def refresh_single_operational_status(self, third_place: dict, data_provider) -> dict:
+    def refresh_single_place_operational_status(self, third_place: dict, data_provider) -> dict:
         """
         Checks and updates the operational status for a single place record.
         Args:
