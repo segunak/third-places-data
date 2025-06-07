@@ -703,6 +703,7 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
         sequential_mode = config_dict.get("sequential_mode", False)
         provider_type = config_dict.get("provider_type", None)
         city = config_dict.get("city")
+
         if not city:
             raise ValueError("Missing required parameter: city")
         if not provider_type:
@@ -711,9 +712,12 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
             'get_all_third_places',
             {"config": config_dict}
         )
+
         results = []
+
         from constants import MAX_THREAD_WORKERS
         concurrency_limit = MAX_THREAD_WORKERS
+
         if sequential_mode:
             logging.info(f"Running operational status refresh in SEQUENTIAL mode for {len(all_third_places)} places")
             for place in all_third_places:
@@ -726,6 +730,7 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
                 results.append(result)
         else:
             logging.info(f"Running operational status refresh in PARALLEL mode with concurrency={concurrency_limit} for {len(all_third_places)} places")
+
             for i in range(0, len(all_third_places), concurrency_limit):
                 batch = all_third_places[i:i+concurrency_limit]
                 batch_tasks = []
@@ -736,8 +741,14 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
                         "city": city
                     }
                     batch_tasks.append(context.call_activity("refresh_single_place_operational_status", activity_input))
+
                 batch_results = yield context.task_all(batch_tasks)
+                total_batches = (len(all_third_places) + concurrency_limit - 1) // concurrency_limit
+                current_batch = i // concurrency_limit + 1
+                logging.info(f"Processed batch {current_batch} of {total_batches} with {len(batch)} places")
+
                 results.extend(batch_results)
+
         failed_updates = [res for res in results if res.get('update_status') == 'failed']
         result = {
             "success": len(failed_updates) == 0,
