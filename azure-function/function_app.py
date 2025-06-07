@@ -7,6 +7,7 @@ import azure.durable_functions as df
 from place_data_providers import PlaceDataProviderFactory
 from airtable_client import AirtableClient, SearchField
 from azure.durable_functions.models.DurableOrchestrationStatus import OrchestrationRuntimeStatus
+from constants import MAX_THREAD_WORKERS
 
 app = df.DFApp(http_auth_level=func.AuthLevel.FUNCTION)
 
