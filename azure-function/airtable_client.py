@@ -258,7 +258,7 @@ class AirtableClient:
             description = details.get('description', '')
             google_maps_url = details.get('google_maps_url', '')
             photos_list = place_data.get('photos', {}).get('photo_urls', [])
-
+            
             # Tuple format is (field_value, overwrite)
             # Overwrite is True for fields that should be updated even if they already have a value
             fields_to_update = {
@@ -269,7 +269,7 @@ class AirtableClient:
                 'Description': (description, False),
                 'Purchase Required': (purchase_required, False),
                 'Parking': (parking, False),
-                'Photos': (str(photos_list), False),
+                'Photos': (str(photos_list), True) if photos_list else (None, False),
                 'Latitude': (str(latitude), True) if latitude else (None, False),
                 'Longitude': (str(longitude), True) if longitude else (None, False),
             }
