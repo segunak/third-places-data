@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Third Places Photo Viewer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Third Places Photo Viewer</h1>
+            <div class="controls">
+                <div class="place-selector">
+                    <label for="placeSelect">Select Place:</label>
+                    <select id="placeSelect">
+                        <option value="">Loading places...</option>
+                    </select>
+                </div>
+                <div class="view-controls">
+                    <button id="selectModeBtn" class="btn btn-secondary">Multi-Select Mode</button>
+                    <button id="downloadSelectedBtn" class="btn btn-primary" disabled>Download Selected</button>
+                    <span id="selectedCount">0 selected</span>
+                </div>
+            </div>
+        </header>
+
+        <main id="mainContent">
+            <div id="welcomeMessage" class="welcome-message">
+                <h2>Welcome to the Photo Viewer</h2>
+                <p>Select a place from the dropdown above to view its photos.</p>
+            </div>
+
+            <div id="loadingMessage" class="loading-message" style="display: none;">
+                <h2>Loading photos...</h2>
+                <div class="spinner"></div>
+            </div>
+
+            <div id="photoSections" style="display: none;">
+                <!-- Photo URLs Section -->
+                <section id="photoUrlsSection" class="photo-section">
+                    <h2>Photos</h2>
+                    <div id="photoUrlsGrid" class="photo-grid"></div>
+                </section>
+
+                <!-- Raw Data Photos Section -->
+                <section id="rawDataSection" class="photo-section">
+                    <h2>Raw Data Photos</h2>
+                    <div id="rawDataGrid" class="photo-grid"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Photo Modal -->
+    <div id="photoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-info">
+                <div id="modalMetadata"></div>
+                <div class="modal-actions">
+                    <button id="modalDownloadBtn" class="btn btn-primary">Download Full Size</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Toast -->
+    <div id="errorToast" class="toast"></div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
