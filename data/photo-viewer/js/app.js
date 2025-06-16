@@ -7,9 +7,7 @@ class PhotoViewer {
         this.initializeElements();
         this.bindEvents();
         this.loadPlaces(); // Call loadPlaces, which will use the API
-    }
-
-    initializeElements() {
+    }    initializeElements() {
         this.placeSelect = document.getElementById('placeSelect');
         this.selectModeBtn = document.getElementById('selectModeBtn');
         this.downloadSelectedBtn = document.getElementById('downloadSelectedBtn');
@@ -21,25 +19,29 @@ class PhotoViewer {
         this.rawDataGrid = document.getElementById('rawDataGrid');
         this.photoUrlsSection = document.getElementById('photoUrlsSection');
         this.rawDataSection = document.getElementById('rawDataSection');
+        this.placeInfoHeader = document.getElementById('placeInfoHeader');
+        this.placeTitle = document.getElementById('placeTitle');
+        this.googleMapsBtn = document.getElementById('googleMapsBtn');
         this.modal = document.getElementById('photoModal');
         this.modalImage = document.getElementById('modalImage');
         this.modalMetadata = document.getElementById('modalMetadata');
         this.modalDownloadBtn = document.getElementById('modalDownloadBtn');
         this.errorToast = document.getElementById('errorToast');
-    }
-
-    bindEvents() {
+    }    bindEvents() {
         this.placeSelect.addEventListener('change', (e) => this.onPlaceChange(e.target.value));
         this.selectModeBtn.addEventListener('click', () => this.toggleSelectMode());
         this.downloadSelectedBtn.addEventListener('click', () => this.downloadSelected());
-
+        
+        // Google Maps button
+        this.googleMapsBtn.addEventListener('click', () => this.openGoogleMaps());
+        
         // Modal events
         this.modal.querySelector('.close').addEventListener('click', () => this.closeModal());
         this.modal.addEventListener('click', (e) => {
             if (e.target === this.modal) this.closeModal();
         });
         this.modalDownloadBtn.addEventListener('click', () => this.downloadModalImage());
-
+        
         // Keyboard events
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') this.closeModal();
@@ -54,9 +56,19 @@ class PhotoViewer {
             console.error('Error loading places from API:', error);
             this.showError('Could not load place list from server. Please ensure serve.py is running and check console for errors.');
         }
-    }
+    }    async loadPlacesFromAPI() {
+        // First, load the place names mapping
+        let placeNamesMapping = {};
+        try {
+            const mappingResponse = await fetch('/place-names.json');
+            if (mappingResponse.ok) {
+                placeNamesMapping = await mappingResponse.json();
+            }
+        } catch (error) {
+            console.warn('Could not load place names mapping, will use filenames:', error);
+        }
 
-    async loadPlacesFromAPI() {
+        // Then load the list of files
         const response = await fetch('/api/list-places');
         if (!response.ok) {
             throw new Error(`API request failed: ${response.status} ${response.statusText}`);
@@ -67,31 +79,16 @@ class PhotoViewer {
             return;
         }
 
-        const places = [];
-        for (const filename of files) {
-            const fileUrl = `/places/charlotte/${filename}`;
-            try {
-                const fileResponse = await fetch(fileUrl);
-                if (fileResponse.ok) {
-                    const data = await fileResponse.json();
-                    const placeName = this.extractPlaceName(data, filename);
-                    places.push({
-                        filename: filename,
-                        name: placeName,
-                        data: data
-                    });
-                } else {
-                    this.showError(`Could not load place data: ${filename} (${fileResponse.status})`);
-                }
-            } catch (error) {
-                this.showError(`Error loading data for: ${filename} - ${error.message}`);
-            }
-        }
-
-        if (places.length === 0) {
-            this.showError('No valid place files could be loaded. Check server logs and file contents.');
-            return;
-        }
+        // Create place objects with names from mapping or fallback to filename
+        const places = files.map(filename => {
+            const mappingEntry = placeNamesMapping[filename];
+            return {
+                filename: filename,
+                name: mappingEntry ? mappingEntry.name : this.extractPlaceNameFromFilename(filename),
+                hasPhotos: mappingEntry ? mappingEntry.hasPhotos : true, // Assume true if unknown
+                data: null // Data will be loaded when selected
+            };
+        });
 
         this.places = places.sort((a, b) => a.name.localeCompare(b.name));
         this.populatePlaceSelect();
@@ -109,15 +106,59 @@ class PhotoViewer {
         return fileName.replace('.json', '');
     }
 
-    populatePlaceSelect() {
+    extractPlaceNameFromFilename(filename) {
+        // Extract a readable name from the filename
+        // Remove .json extension and any special characters
+        return filename.replace('.json', '').replace(/[_-]/g, ' ');
+    }    async loadPlaceData(place) {
+        if (place.data) {
+            // Data already loaded
+            return place;
+        }
+
+        const fileUrl = `/places/charlotte/${place.filename}`;
+        try {
+            const fileResponse = await fetch(fileUrl);
+            if (!fileResponse.ok) {
+                throw new Error(`Could not load place data: ${place.filename} (${fileResponse.status})`);
+            }
+            
+            const data = await fileResponse.json();
+            // Update the place name with the actual name from the data
+            const oldName = place.name;
+            place.name = this.extractPlaceName(data, place.filename);
+            place.data = data;
+            
+            // Update the dropdown option if the name changed
+            if (oldName !== place.name) {
+                const placeIndex = this.places.indexOf(place);
+                this.updatePlaceSelectOption(placeIndex, place.name);
+            }
+            
+            return place;
+        } catch (error) {
+            this.showError(`Error loading data for: ${place.filename} - ${error.message}`);
+            throw error;
+        }
+    }    populatePlaceSelect() {
         this.placeSelect.innerHTML = '<option value="">Select a place...</option>';
 
         this.places.forEach((place, index) => {
             const option = document.createElement('option');
             option.value = index;
-            option.textContent = place.name;
+            // Add indicator for places with photos
+            const photoIndicator = place.hasPhotos ? '📷 ' : '📄 ';
+            option.textContent = photoIndicator + place.name;
             this.placeSelect.appendChild(option);
         });
+    }    updatePlaceSelectOption(index, newName) {
+        // Update the dropdown option text with the actual place name
+        const option = this.placeSelect.children[index + 1]; // +1 because first option is "Select a place..."
+        if (option) {
+            const place = this.places[index];
+            const photoIndicator = place.hasPhotos ? '📷 ' : '📄 ';
+            option.textContent = photoIndicator + newName;
+        }
     }
 
     async onPlaceChange(selectedIndex) {
@@ -128,13 +169,31 @@ class PhotoViewer {
 
         const place = this.places[selectedIndex];
         this.currentPlace = place;
-        await this.loadPlacePhotos(place);
-    }
-
-    async loadPlacePhotos(place) {
+        
+        try {
+            // Load the place data if not already loaded
+            await this.loadPlaceData(place);
+            await this.loadPlacePhotos(place);
+        } catch (error) {
+            console.error('Error loading place:', error);
+            this.showError('Failed to load place data. Please try again.');
+        }
+    }async loadPlacePhotos(place) {
         this.showLoadingMessage();
 
         try {
+            // Update place title
+            this.placeTitle.textContent = place.name || 'Unknown Place';
+            
+            // Show/hide Google Maps button based on availability of URL
+            const googleMapsUrl = place.data.details?.google_maps_url;
+            if (googleMapsUrl) {
+                this.googleMapsBtn.style.display = 'inline-block';
+                this.googleMapsBtn.onclick = () => window.open(googleMapsUrl, '_blank');
+            } else {
+                this.googleMapsBtn.style.display = 'none';
+            }
+
             const photos = this.extractPhotos(place.data);
             this.displayPhotos(photos);
             this.showPhotoSections();
@@ -142,7 +201,7 @@ class PhotoViewer {
             console.error('Error loading photos:', error);
             this.showError('Error loading photos for this place.');
         }
-    } extractPhotos(data) {
+    }extractPhotos(data) {
         const photos = {
             photoUrls: [],
             rawData: []
@@ -519,6 +578,12 @@ class PhotoViewer {
 
     downloadModalImage() {
         // This will be handled by the onclick event set in openModal
+    }
+
+    openGoogleMaps() {
+        if (this.currentPlace && this.currentPlace.data.details?.google_maps_url) {
+            window.open(this.currentPlace.data.details.google_maps_url, '_blank');
+        }
     }
 
     showWelcomeMessage() {

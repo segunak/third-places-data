@@ -36,18 +36,24 @@
             <div id="loadingMessage" class="loading-message" style="display: none;">
                 <h2>Loading photos...</h2>
                 <div class="spinner"></div>
-            </div>
+            </div>            <div id="photoSections" style="display: none;">
+                <!-- Place Info Header -->
+                <div id="placeInfoHeader" class="place-info-header">
+                    <h2 id="placeTitle">Place Photos</h2>
+                    <button id="googleMapsBtn" class="btn btn-secondary" style="display: none;">
+                        🗺️ View on Google Maps
+                    </button>
+                </div>
 
-            <div id="photoSections" style="display: none;">
                 <!-- Photo URLs Section -->
                 <section id="photoUrlsSection" class="photo-section">
-                    <h2>Photos</h2>
+                    <h3>Photos</h3>
                     <div id="photoUrlsGrid" class="photo-grid"></div>
                 </section>
 
                 <!-- Raw Data Photos Section -->
                 <section id="rawDataSection" class="photo-section">
-                    <h2>Raw Data Photos</h2>
+                    <h3>Raw Data Photos</h3>
                     <div id="rawDataGrid" class="photo-grid"></div>
                 </section>
             </div>

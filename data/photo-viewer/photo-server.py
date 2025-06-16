@@ -10,8 +10,10 @@ import os
 import json
 import mimetypes
 import shutil
+import sys
 
-PORT = 8000
+# Default port, can be overridden by command line argument
+PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 # Go up one level to the 'data' directory, where 'places' folder is located
 DATA_ROOT = os.path.abspath(os.path.join(DIRECTORY, '..'))

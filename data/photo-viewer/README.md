@@ -32,7 +32,7 @@ const PLACE_JSON_FILES = [
 ## Troubleshooting
 
 - If images or data do not load, double-check the file URLs and file permissions.
-- If you want to use a server, you can still use `serve.py` or similar, but it is not required for local viewing.
+- If you want to use a server, you can still use `photo-server.py` or similar, but it is not required for local viewing.
 
 ---
 

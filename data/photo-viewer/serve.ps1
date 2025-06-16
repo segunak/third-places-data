@@ -4,6 +4,25 @@
 $photoViewerDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $photoViewerDir
 
+Write-Host "Third Places Photo Viewer" -ForegroundColor Green
+Write-Host "=========================" -ForegroundColor Green
+
+# Generate place names mapping
+Write-Host "Generating place names mapping..." -ForegroundColor Yellow
+
+& ".\generate-place-names.ps1"
+Write-Host "✓ Place names mapping generated" -ForegroundColor Green
+
+# try {
+#     & ".\generate-place-names.ps1"
+#     Write-Host "✓ Place names mapping generated" -ForegroundColor Green
+# }
+# catch {
+#     Write-Host "⚠ Warning: Could not generate place names mapping: $($_.Exception.Message)" -ForegroundColor Yellow
+#     Write-Host "  The server will still start, but place names may not display correctly." -ForegroundColor Yellow
+# }
+
+Write-Host ""
 $port = 8000
 
 # Try to find an available port
@@ -12,8 +31,9 @@ for ($testPort = $port; $testPort -lt ($port + 10); $testPort++) {
     try {
         Write-Host "Third Places Photo Viewer" -ForegroundColor Green
         Write-Host "Attempting to start server on port $testPort..." -ForegroundColor Yellow
+        
         # Start our custom Python server
-        $process = Start-Process -FilePath "python" -ArgumentList "serve.py", $testPort -PassThru -NoNewWindow
+        $process = Start-Process -FilePath "python" -ArgumentList "photo-server.py", "$testPort" -PassThru -NoNewWindow
         
         # Wait a moment for the server to start
         Start-Sleep -Seconds 3
@@ -40,6 +60,6 @@ for ($testPort = $port; $testPort -lt ($port + 10); $testPort++) {
 }
 
 if (-not $serverStarted) {
-    Write-Host "Could not start server. Make sure Python is installed and serve.py exists." -ForegroundColor Red
-    Write-Host "Try running manually: python serve.py" -ForegroundColor White
+    Write-Host "Could not start server. Make sure Python is installed and photo-server.py exists." -ForegroundColor Red
+    Write-Host "Try running manually: python photo-server.py" -ForegroundColor White
 }
