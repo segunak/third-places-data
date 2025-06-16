@@ -13,15 +13,6 @@ Write-Host "Generating place names mapping..." -ForegroundColor Yellow
 & ".\generate-place-names.ps1"
 Write-Host "✓ Place names mapping generated" -ForegroundColor Green
 
-# try {
-#     & ".\generate-place-names.ps1"
-#     Write-Host "✓ Place names mapping generated" -ForegroundColor Green
-# }
-# catch {
-#     Write-Host "⚠ Warning: Could not generate place names mapping: $($_.Exception.Message)" -ForegroundColor Yellow
-#     Write-Host "  The server will still start, but place names may not display correctly." -ForegroundColor Yellow
-# }
-
 Write-Host ""
 $port = 8000
 

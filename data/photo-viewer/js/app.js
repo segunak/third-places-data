@@ -201,7 +201,7 @@ class PhotoViewer {
             console.error('Error loading photos:', error);
             this.showError('Error loading photos for this place.');
         }
-    }extractPhotos(data) {
+    }    extractPhotos(data) {
         const photos = {
             photoUrls: [],
             rawData: []
@@ -214,7 +214,8 @@ class PhotoViewer {
                 url: url,
                 bigUrl: url,
                 type: 'photo_url',
-                index: index
+                index: index,
+                isVideo: url && url.includes('=m18')
             }));
         }
 
@@ -222,10 +223,12 @@ class PhotoViewer {
         if (data.photos && data.photos.raw_data && Array.isArray(data.photos.raw_data)) {
             photos.rawData = data.photos.raw_data.map((item, index) => ({
                 id: `raw_${index}`,
-                url: item.photo_url || item.photo_url_big,
-                bigUrl: item.photo_url_big || item.photo_url,
+                url: item.photo_source_url || item.photo_url || item.photo_url_big,
+                bigUrl: item.photo_url_big || item.photo_source_url || item.photo_url,
+                videoUrl: item.photo_source_video,
                 type: 'raw_data',
                 index: index,
+                isVideo: item.photo_source_video || (item.photo_source_url && item.photo_source_url.includes('=m18')),
                 metadata: {
                     photo_id: item.photo_id,
                     date: item.photo_date,
@@ -281,14 +284,15 @@ class PhotoViewer {
             checkbox.addEventListener('change', (e) => this.onPhotoSelect(photo.id, e.target.checked));
             photoContainer.appendChild(checkbox);
             photoItem.classList.add('select-mode');
-        }
-
-        // Check if this is a GPS URL that might be blocked
+        }        // Check if this is a GPS URL that might be blocked
         const isGpsUrl = photo.url && photo.url.includes('/gps');
 
         if (isGpsUrl) {
             // For GPS URLs, show a warning and try alternative methods
             this.createGpsWarningElement(photoContainer, photo);
+        } else if (photo.isVideo) {
+            // Handle video content
+            this.createVideoElement(photoContainer, photo);
         } else {
             // Normal image loading for non-GPS URLs
             const img = document.createElement('img');
@@ -378,6 +382,148 @@ class PhotoViewer {
         photoItem.appendChild(photoInfo);
 
         return photoItem;
+    }    createVideoElement(container, photo) {
+        const videoUrl = photo.videoUrl || photo.url;
+        const video = document.createElement('video');
+        video.className = 'photo-video';
+        video.controls = true;
+        video.preload = 'metadata';
+        video.muted = true; // Most browsers require muted for autoplay
+        video.loop = false;
+        video.crossOrigin = 'anonymous'; // Try to handle CORS
+        video.referrerPolicy = 'no-referrer';
+        
+        // Add poster image if we have a photo URL
+        if (photo.url && photo.url !== videoUrl) {
+            video.poster = photo.url;
+        }
+        
+        // Create source element
+        const source = document.createElement('source');
+        source.src = videoUrl;
+        source.type = 'video/mp4';
+        video.appendChild(source);
+          // Add video icon overlay
+        const videoOverlay = document.createElement('div');
+        videoOverlay.className = 'video-overlay';
+        const playIcon = document.createElement('div');
+        playIcon.className = 'play-icon';
+        playIcon.textContent = '▶️';
+        videoOverlay.appendChild(playIcon);
+        
+        // Add debug info (can be removed in production)
+        const debugInfo = document.createElement('div');
+        debugInfo.className = 'video-debug';
+        debugInfo.textContent = `${videoUrl.includes('=m18') ? 'M18' : 'VID'} | ${video.readyState}`;
+        
+        // Update debug info when ready state changes
+        video.addEventListener('loadstart', () => debugInfo.textContent = `${videoUrl.includes('=m18') ? 'M18' : 'VID'} | Loading...`);
+        video.addEventListener('loadedmetadata', () => debugInfo.textContent = `${videoUrl.includes('=m18') ? 'M18' : 'VID'} | Ready`);
+        video.addEventListener('error', () => debugInfo.textContent = `${videoUrl.includes('=m18') ? 'M18' : 'VID'} | Error`);
+        
+        // Add comprehensive error handling
+        video.addEventListener('error', (e) => {
+            console.error('Video loading failed:', videoUrl, e);
+            this.createVideoErrorElement(container, videoUrl, photo);
+        });
+        
+        video.addEventListener('loadstart', () => {
+            console.log('Video load started:', videoUrl);
+        });
+        
+        video.addEventListener('loadedmetadata', () => {
+            console.log('Video metadata loaded:', videoUrl);
+        });
+        
+        video.addEventListener('canplay', () => {
+            console.log('Video can play:', videoUrl);
+            videoOverlay.style.opacity = '0.6'; // Reduce overlay opacity when ready
+        });
+        
+        video.addEventListener('play', () => {
+            videoOverlay.style.display = 'none'; // Hide overlay when playing
+        });
+        
+        video.addEventListener('pause', () => {
+            videoOverlay.style.display = 'flex'; // Show overlay when paused
+        });
+        
+        // Add click handler for modal
+        video.addEventListener('click', () => {
+            if (!this.isSelectMode) {
+                this.openVideoModal(photo);
+            }
+        });
+        
+        // Fallback: if video fails to load after a timeout, show error
+        setTimeout(() => {
+            if (video.readyState === 0) { // HAVE_NOTHING
+                console.warn('Video failed to load within timeout:', videoUrl);
+                this.createVideoErrorElement(container, videoUrl, photo);
+            }
+        }, 5000);
+          container.appendChild(video);
+        container.appendChild(videoOverlay);
+        container.appendChild(debugInfo);
+        container.classList.add('video-container');
+    }    createVideoErrorElement(container, url, photo) {
+        // Remove any existing content
+        container.innerHTML = '';
+        
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'photo-error video-error';
+        
+        const icon = document.createElement('div');
+        icon.className = 'error-icon';
+        icon.textContent = '🎥';
+        
+        const text = document.createElement('div');
+        text.className = 'error-text';
+        text.textContent = 'Video cannot be played (likely protected)';
+        
+        const explanation = document.createElement('div');
+        explanation.className = 'error-explanation';
+        explanation.textContent = 'Google Photos videos may require authentication';
+        
+        const urlDiv = document.createElement('div');
+        urlDiv.className = 'error-url';
+        urlDiv.textContent = url.length > 50 ? url.substring(0, 50) + '...' : url;
+        urlDiv.title = url;
+        
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'error-buttons';
+        
+        const openBtn = document.createElement('button');
+        openBtn.className = 'btn btn-secondary btn-small';
+        openBtn.textContent = 'Open in New Tab';
+        openBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            window.open(url, '_blank');
+        });
+        
+        const tryImageBtn = document.createElement('button');
+        tryImageBtn.className = 'btn btn-primary btn-small';
+        tryImageBtn.textContent = 'Try as Image';
+        tryImageBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (photo && photo.url) {
+                window.open(photo.url, '_blank');
+            }
+        });
+        
+        buttonContainer.appendChild(openBtn);
+        if (photo && photo.url && photo.url !== url) {
+            buttonContainer.appendChild(tryImageBtn);
+        }
+        
+        errorDiv.appendChild(icon);
+        errorDiv.appendChild(text);
+        errorDiv.appendChild(explanation);
+        errorDiv.appendChild(urlDiv);
+        errorDiv.appendChild(buttonContainer);
+        
+        container.appendChild(errorDiv);
+        container.classList.add('video-error-container');
     }
 
     createGpsWarningElement(container, photo) {
@@ -499,11 +645,16 @@ class PhotoViewer {
 
         const photos = this.extractPhotos(this.currentPlace.data);
         return [...photos.photoUrls, ...photos.rawData];
-    }
-
-    async downloadPhoto(photo) {
+    }    async downloadPhoto(photo) {
         try {
-            const url = photo.bigUrl || photo.url;
+            // Use video URL for videos, otherwise use the big/regular URL for images
+            let url;
+            if (photo.isVideo && photo.videoUrl) {
+                url = photo.videoUrl;
+            } else {
+                url = photo.bigUrl || photo.url;
+            }
+            
             const response = await fetch(url);
 
             if (!response.ok) {
@@ -524,23 +675,100 @@ class PhotoViewer {
 
         } catch (error) {
             console.error('Download failed:', error);
-            this.showError(`Failed to download photo: ${error.message}`);
+            this.showError(`Failed to download ${photo.isVideo ? 'video' : 'photo'}: ${error.message}`);
         }
-    }
-
-    generateFilename(photo) {
+    }generateFilename(photo) {
         const place = this.currentPlace ? this.currentPlace.name.replace(/[^a-zA-Z0-9]/g, '_') : 'unknown';
         const type = photo.type;
         const index = photo.index + 1;
-        const extension = 'jpg';
+        const extension = photo.isVideo ? 'mp4' : 'jpg';
 
         return `${place}_${type}_${index}.${extension}`;
+    }openModal(photo) {
+        if (photo.isVideo) {
+            this.openVideoModal(photo);
+        } else {
+            this.openImageModal(photo);
+        }
     }
 
-    openModal(photo) {
+    openImageModal(photo) {
         this.modalImage.src = photo.bigUrl || photo.url;
         this.modalImage.alt = `Photo ${photo.index + 1}`;
+        this.modalImage.style.display = 'block';
+        
+        // Hide video if it exists
+        const modalVideo = document.getElementById('modalVideo');
+        if (modalVideo) {
+            modalVideo.style.display = 'none';
+            modalVideo.pause();
+        }
 
+        this.populateModalMetadata(photo);
+        this.modalDownloadBtn.onclick = () => this.downloadPhoto(photo);
+
+        this.modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }    openVideoModal(photo) {
+        this.modalImage.style.display = 'none';
+        
+        // Create or update modal video element
+        let modalVideo = document.getElementById('modalVideo');
+        if (!modalVideo) {
+            modalVideo = document.createElement('video');
+            modalVideo.id = 'modalVideo';
+            modalVideo.className = 'modal-video';
+            modalVideo.controls = true;
+            modalVideo.autoplay = false;
+            modalVideo.crossOrigin = 'anonymous';
+            modalVideo.referrerPolicy = 'no-referrer';
+            this.modal.querySelector('.modal-content').appendChild(modalVideo);
+        }
+        
+        const videoUrl = photo.videoUrl || photo.url;
+        modalVideo.src = videoUrl;
+        modalVideo.style.display = 'block';
+        
+        // Add poster if available
+        if (photo.url && photo.url !== videoUrl) {
+            modalVideo.poster = photo.url;
+        }
+        
+        // Add better error handling for modal video
+        modalVideo.addEventListener('error', (e) => {
+            console.error('Modal video error:', videoUrl, e);
+            
+            // Create error message in modal
+            const errorMsg = document.createElement('div');
+            errorMsg.className = 'modal-video-error';
+            errorMsg.innerHTML = `
+                <div class="modal-error-content">
+                    <h3>🎥 Video Cannot Be Played</h3>
+                    <p>This Google Photos video is protected and cannot be played directly in the browser.</p>
+                    <div class="modal-error-buttons">
+                        <button onclick="window.open('${videoUrl}', '_blank')" class="btn btn-primary">Open Video in New Tab</button>
+                        ${photo.url && photo.url !== videoUrl ? 
+                            `<button onclick="window.open('${photo.url}', '_blank')" class="btn btn-secondary">Try Image Version</button>` : 
+                            ''}
+                    </div>
+                </div>
+            `;
+            
+            modalVideo.style.display = 'none';
+            modalVideo.parentNode.appendChild(errorMsg);
+        });
+        
+        // Log for debugging
+        console.log('Opening video modal with URL:', videoUrl);
+
+        this.populateModalMetadata(photo);
+        this.modalDownloadBtn.onclick = () => this.downloadPhoto(photo);
+
+        this.modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    populateModalMetadata(photo) {
         this.modalMetadata.innerHTML = '';
 
         if (photo.metadata) {
@@ -562,18 +790,26 @@ class PhotoViewer {
                 metadataHtml.push(`<div><strong>Tags:</strong> ${photo.metadata.tags.join(', ')}</div>`);
             }
 
+            // Add media type indicator
+            metadataHtml.push(`<div><strong>Type:</strong> ${photo.isVideo ? 'Video' : 'Image'}</div>`);
+
             this.modalMetadata.innerHTML = metadataHtml.join('');
         }
-
-        this.modalDownloadBtn.onclick = () => this.downloadPhoto(photo);
-
-        this.modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-
-    closeModal() {
+    }    closeModal() {
         this.modal.style.display = 'none';
         document.body.style.overflow = 'auto';
+        
+        // Pause any playing video
+        const modalVideo = document.getElementById('modalVideo');
+        if (modalVideo) {
+            modalVideo.pause();
+        }
+        
+        // Remove any video error messages
+        const errorMsg = this.modal.querySelector('.modal-video-error');
+        if (errorMsg) {
+            errorMsg.remove();
+        }
     }
 
     downloadModalImage() {
