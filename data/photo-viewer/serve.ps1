@@ -10,8 +10,14 @@ Write-Host "=========================" -ForegroundColor Green
 # Generate place names mapping
 Write-Host "Generating place names mapping..." -ForegroundColor Yellow
 
-& ".\generate-place-names.ps1"
-Write-Host "✓ Place names mapping generated" -ForegroundColor Green
+try { 
+    & ".\generate-place-names.ps1"
+    Write-Host "Place names mapping generated" -ForegroundColor Green
+}
+catch { 
+    Write-Host "Failed to generate place names mapping. Make sure generate-place-names.ps1 exists." -ForegroundColor Red
+    exit 1
+}
 
 Write-Host ""
 $port = 8000
