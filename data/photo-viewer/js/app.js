@@ -54,7 +54,7 @@ class PhotoViewer {
             await this.loadPlacesFromAPI();
         } catch (error) {
             console.error('Error loading places from API:', error);
-            this.showError('Could not load place list from server. Please ensure serve.py is running and check console for errors.');
+            this.showError('Could not load place list from server. Check console for errors.');
         }
     }    async loadPlacesFromAPI() {
         // First, load the place names mapping
@@ -217,27 +217,27 @@ class PhotoViewer {
                 index: index,
                 isVideo: url && url.includes('=m18')
             }));
-        }
-
-        // Extract from photos.raw_data if it exists and is an array
+        }        // Extract from photos.raw_data if it exists and is an array
         if (data.photos && data.photos.raw_data && Array.isArray(data.photos.raw_data)) {
-            photos.rawData = data.photos.raw_data.map((item, index) => ({
-                id: `raw_${index}`,
-                url: item.photo_source_url || item.photo_url || item.photo_url_big,
-                bigUrl: item.photo_url_big || item.photo_source_url || item.photo_url,
-                videoUrl: item.photo_source_video,
-                type: 'raw_data',
-                index: index,
-                isVideo: item.photo_source_video || (item.photo_source_url && item.photo_source_url.includes('=m18')),
-                metadata: {
-                    photo_id: item.photo_id,
-                    date: item.photo_date,
-                    source: item.photo_upload_source,
-                    tags: item.photo_tags,
-                    latitude: item.latitude,
-                    longitude: item.longitude
-                }
-            }));
+            photos.rawData = data.photos.raw_data
+                .filter(item => item.photo_url_big) // Only include items with photo_url_big
+                .map((item, index) => ({
+                    id: `raw_${index}`,
+                    url: item.photo_url_big,
+                    bigUrl: item.photo_url_big,
+                    videoUrl: item.photo__source_video,
+                    type: 'raw_data',
+                    index: index,
+                    isVideo: item.photo_source_video || (item.photo_url_big && item.photo_url_big.includes('=m18')),
+                    metadata: {
+                        photo_id: item.photo_id,
+                        date: item.photo_date,
+                        source: item.photo_upload_source,
+                        tags: item.photo_tags,
+                        latitude: item.latitude,
+                        longitude: item.longitude
+                    }
+                }));
         }
 
         return photos;
@@ -650,9 +650,8 @@ class PhotoViewer {
             // Use video URL for videos, otherwise use the big/regular URL for images
             let url;
             if (photo.isVideo && photo.videoUrl) {
-                url = photo.videoUrl;
-            } else {
-                url = photo.bigUrl || photo.url;
+                url = photo.videoUrl;            } else {
+                url = photo.url; // Now always photo_url_big for raw_data
             }
             
             const response = await fetch(url);
@@ -690,10 +689,8 @@ class PhotoViewer {
         } else {
             this.openImageModal(photo);
         }
-    }
-
-    openImageModal(photo) {
-        this.modalImage.src = photo.bigUrl || photo.url;
+    }    openImageModal(photo) {
+        this.modalImage.src = photo.url; // Now always photo_url_big for raw_data
         this.modalImage.alt = `Photo ${photo.index + 1}`;
         this.modalImage.style.display = 'block';
         

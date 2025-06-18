@@ -68,7 +68,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    # Ensure the current working directory is where serve.py is, for SimpleHTTPRequestHandler
     os.chdir(DIRECTORY)
     print(f"Serving HTTP on http://localhost:{PORT} from {DIRECTORY}")
     print(f"Serving place data from {os.path.join(DATA_ROOT, 'places', 'charlotte')}")
