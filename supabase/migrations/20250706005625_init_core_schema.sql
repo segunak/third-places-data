@@ -386,7 +386,7 @@ JOIN   places        pl USING (google_maps_place_id);
 
 CREATE INDEX mv_idx_chunk_tsv ON mv_place_review_chunks USING gin(chunk_tsv);
 
-/* Example helper function for time-based queries */
+/* Helper function for time-based queries */
 CREATE OR REPLACE FUNCTION places_open_on(day TEXT, time TEXT DEFAULT 'now')
 RETURNS TABLE(place_id TEXT, place_name TEXT) AS $$
 BEGIN
