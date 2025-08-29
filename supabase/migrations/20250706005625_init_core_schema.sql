@@ -1,34 +1,21 @@
-/* ====================================================================/* =======================================================================
-   PLACES TABLE – Main venue data
-   ----------------------------------------------------------------- */
-   CHARLOTTE THIRD PLACES DATABASE SCHEMA
-   =======================================================================
+/* =======================================================================
+   AI-optimized PostgreSQL schema for Charlotte area "third places"
+   (coffee shops, libraries, co-working spaces, etc.)
    
-   This migration creates a robust, AI-optimized PostgreSQL schema for 
-   storing and searching Charlotte area "third places" (coffee shops, 
-   libraries, coworking spaces, etc.).
+   FEATURES:
+   • Vector similarity search for "find places with similar vibes"
+   • Full-text search with typo tolerance
+   • Chunked reviews for precise AI citations (RAG)
+   • Comprehensive indexing for sub-second performance
+   • Auto-maintained search indexes via triggers
    
-   DESIGNED FOR:
-   • Fast semantic search using AI embeddings (vector search)
-   • Traditional full-text search with typo tolerance  
-   • Efficient storage of both Airtable and Google Places data
-   • AI chatbot queries with precise review quoting (RAG)
-   • Future-friendly extensibility
+   DATA SOURCES:
+   • Airtable (curated core data)
+   • Google Places API (reviews, hours, photos)
    
-   KEY FEATURES:
-   • Vector embeddings for "find similar places" queries
-   • JSONB storage for flexible Google Places API responses  
-   • Chunked reviews for precise AI citations
-   • Comprehensive indexes for sub-second search performance
-   • Automatic maintenance via triggers
-   • Ready-made views and helper functions
+   See /supabase/README.md for detailed technical documentation.
    
-   FOR DETAILED EXPLANATIONS:
-   See /supabase/README.md for plain-English explanations of all
-   concepts, including what embeddings, RAG, IVFFLAT, GIN indexes,
-   and materialized views actually mean and why we use them.
-   
-   ================================================================= */
+   ======================================================================= */
 
 /* =======================================================================
    REQUIRED EXTENSIONS
@@ -85,7 +72,7 @@ CREATE TABLE places (
     /* ---------- basic profile info ---------------------------------- */
     address                 TEXT,
     neighborhood            TEXT,
-    -- TYPE: Array of place categories (coffee_shop, library, coworking, etc.)
+    -- TYPE: Array of place categories (coffee_shop, library, etc.)
     -- Can have multiple values since a place might be more than one type
     -- No ENUM constraint - values vary too much to restrict
     type                    TEXT[]      CHECK (array_ndims(type)=1),
@@ -174,7 +161,7 @@ CREATE TABLE review_chunks (
 );
 
 /* A composite index so you can “get me top-K similar vectors,
-   but only from this place” if you want that later.                       */
+   but only from this place”.                    */
 CREATE INDEX idx_review_chunks_embedding
 ON review_chunks
 USING ivfflat (chunk_embedding vector_l2_ops) WITH (lists = 100);
@@ -184,11 +171,11 @@ USING ivfflat (chunk_embedding vector_l2_ops) WITH (lists = 100);
    ----------------------------------------------------------------- */
 
 /* VECTOR SIMILARITY INDEX
-   IVFFLAT = Inverted File with Flat quantizer
-   Groups similar embeddings into clusters for fast approximate search
-   Lists=100 creates 100 clusters - tunable based on data size        */
+   HNSW = Hierarchical Navigable Small World
+   Graph-based index with better performance and robustness for changing data
+   Recommended by Supabase over IVFFlat for most use cases              */
 CREATE INDEX idx_places_embedding
-    ON places USING ivfflat (embedding vector_l2_ops) WITH (lists = 100);
+    ON places USING hnsw (embedding vector_l2_ops);
 
 /* FULL-TEXT SEARCH INDEXES
    GIN = Generalized Inverted Index - optimized for array/text search  */
