@@ -9,6 +9,29 @@ Quick map for this repo:
 - The schema is created by a single migration file: `supabase/migrations/20250829231528_create_core_schema.sql`
 - You can read it top‑to‑bottom and match it to the sections below (extensions → tables → generated columns → indexes → triggers → views).
 
+## Developer Quick Start (Read This First)
+
+Before you think about promoting changes, read these two short Supabase guides:
+
+- Managing environments: [supabase.com/docs/guides/deployment/managing-environments](https://supabase.com/docs/guides/deployment/managing-environments)
+- Database migrations: [supabase.com/docs/guides/deployment/database-migrations](https://supabase.com/docs/guides/deployment/database-migrations)
+
+They explain how to structure dev/staging/prod and how migrations should flow. Please read those guides.
+
+Local workflow on Windows (PowerShell):
+
+- Reset, seed, and validate local DB:
+  - `./Test-LocalSupabase.ps1`
+- Re-run validation only (no reset):
+  - `./Invoke-Validate.sql.ps1 -Database 'postgres' -User 'postgres'`
+
+What’s being run:
+
+- `seed.sql` adds a small, realistic dataset for testing.
+- `tests/validate.sql` prints pass/fail checks for extensions, indexes, FTS, geo, trigram, JSONB filters, helper functions, and MV search.
+
+Details and troubleshooting: see the section “Local Supabase Developer Workflow (Windows)” later in this doc.
+
 What makes this project special:
 
 - Charlotte‑specific "third places" (not home/not work). The content is curated and enriched, so results feel local and opinionated.
@@ -47,16 +70,16 @@ Airtable (curated data) + Google Places API (enriched data) → PostgreSQL + pgv
 
 How to read the migration file (guided tour)
 
-### Required extensions
+### Required Extensions
 
 - `vector` (for embeddings), `pg_trgm` (fuzzy text), `btree_gin` (mixed‑type indexes), `unaccent` (remove accents), and `postgis` (geospatial types + functions).
 - Translation: these flip on Postgres features we rely on for AI‑ish and location‑ish queries.
 
-### ENUM types
+### ENUM Types
 
 - We model "Yes/No/Unsure" patterns and a special "Yes/No/Sometimes/Unsure" for seasonal items (like cinnamon rolls) so queries are simple and consistent.
 
-### `places` table (one row per venue)
+### `places` Table (One Row per Venue)
 
 - Core identity: `google_maps_place_id`, `place_name`, coordinates, neighborhood, tags, size, amenities.
 - AI/search fields:
@@ -67,13 +90,13 @@ How to read the migration file (guided tour)
   - `geog` (geography point) built from lon/lat for fast radius queries.
   - `search_tsv` (TSVECTOR) combines name + tags + type + neighborhood + description into one weighted, searchable document.
 
-### `review_chunks` table (quote‑friendly review slices)
+### `review_chunks` Table (Quote‑Friendly Review Slices)
 
 - Stores small passages of review text, the place ID, a chunk index, the review timestamp, a text index (`chunk_tsv`), and an embedding (`chunk_embedding`).
 - Why chunks? They’re perfect for "useful, quotable receipts" instead of dumping a whole review.
 - Privacy: no reviewer names, profile links, or providers. Just text + when it was written.
 
-### Indexes (performance backbone)
+### Indexes (Performance Backbone)
 
 - Vector: HNSW on `places.embedding` and `review_chunks.chunk_embedding` (great recall/speed for changing data).
 - Full‑text (GIN): `places.reviews_tsv`, `places.search_tsv`, and `review_chunks.chunk_tsv` for fast keyword search.
@@ -82,17 +105,17 @@ How to read the migration file (guided tour)
 - Time‑oriented: BRIN on created/updated times, and per‑place "most recent chunks" BTREE.
 - Cheap pre‑filters: a few composite and partial indexes match how users typically ask (e.g., operational + featured, size + neighborhood).
 
-### Triggers (auto‑maintenance)
+### Triggers (Auto‑Maintenance)
 
 - Touch `updated_at` automatically on updates.
 - Keep `places.reviews_tsv` fresh from the latest review chunks—so place‑level text search always reflects current reviews without manual rebuilds.
 
-### Database views
+### Database Views
 
 - `places_enriched`: flattens handy fields out of the big JSON, so you can SELECT them easily.
 - `mv_place_review_chunks`: a materialized view that joins chunks with place context for faster RAG answers.
 
-### Row‑level security
+### Row‑Level Security
 
 - Public read‑only policies so the site/app can read data safely by default.
 
@@ -283,7 +306,7 @@ WHERE p.operational = 'Yes'
 ORDER BY p.embedding <-> get_embedding('cozy coffee shop')::vector;
 ```
 
-### 4. Quote Mining (review chunks)
+### 4. Quote Mining (Review Chunks)
 
 Return quotable review passages for a place, favoring recent ones:
 
@@ -368,7 +391,7 @@ This folder contains everything you need to spin up the local PostgreSQL (via Su
 - Docker Desktop running
 - Node.js (for `npx supabase`)
 
-### Run Everything (reset + seed + validate)
+### Run Everything (Reset + Seed + Validate)
 
 ```powershell
 cd C:\GitHub\third-places-data\supabase
