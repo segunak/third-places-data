@@ -37,7 +37,31 @@ CREATE EXTENSION IF NOT EXISTS unaccent;
 
 -- PostGIS (PostgreSQL Geographic Information System): adds geospatial types
 -- and functions for fast "near me" queries and distance calculations
-CREATE EXTENSION IF NOT EXISTS postgis;
+-- Install into the dedicated 'extensions' schema to satisfy security linting.
+-- Note: PostGIS does not support ALTER EXTENSION ... SET SCHEMA, so we ensure
+-- a clean install into the desired schema. On fresh environments this simply
+-- creates it; on environments where PostGIS is preinstalled in public, we
+-- drop it first, then recreate it in the extensions schema.
+CREATE SCHEMA IF NOT EXISTS extensions;
+DO $$
+BEGIN
+    IF EXISTS (
+        SELECT 1
+        FROM pg_extension e
+        JOIN pg_namespace n ON n.oid = e.extnamespace
+        WHERE e.extname = 'postgis' AND n.nspname = 'public'
+    ) THEN
+        EXECUTE 'DROP EXTENSION postgis';
+    END IF;
+END $$;
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA extensions;
+
+-- Isolate extension objects in a dedicated schema (reduces attack surface)
+ALTER EXTENSION vector     SET SCHEMA extensions;
+ALTER EXTENSION pg_trgm    SET SCHEMA extensions;
+ALTER EXTENSION btree_gin  SET SCHEMA extensions;
+ALTER EXTENSION unaccent   SET SCHEMA extensions;
+-- PostGIS is installed directly into the extensions schema above.
 
 /* =======================================================================
     ENUM TYPES
@@ -132,7 +156,7 @@ CREATE TABLE places (
     -- 1536-dimensional embedding vector for semantic similarity search
     -- Generated from place description, reviews, and amenities
     -- Enables "find similar vibes" queries beyond keyword matching
-    embedding               VECTOR(1536),
+    embedding               extensions.vector(1536),
 
     /* ---------- sync/admin ------------------------------------------ */
     place_enhancements_link TEXT,
@@ -163,11 +187,11 @@ CREATE TABLE places (
 -- geography(Point, 4326) uses World Geodetic System 1984 (WGS 84) coordinates
 -- (standard Global Positioning System, GPS, longitude/latitude).
 ALTER TABLE places
-ADD COLUMN IF NOT EXISTS geog geography(Point, 4326)
+ADD COLUMN IF NOT EXISTS geog extensions.geography(Point, 4326)
 GENERATED ALWAYS AS (
     CASE
         WHEN longitude IS NULL OR latitude IS NULL THEN NULL
-        ELSE ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)::geography
+    ELSE extensions.ST_SetSRID(extensions.ST_MakePoint(longitude, latitude), 4326)::extensions.geography
     END
 ) STORED;
 
@@ -213,7 +237,7 @@ CREATE TABLE review_chunks (
      */
     review_datetime_utc     TIMESTAMPTZ,  -- timestamp with time zone (UTC)
     chunk_tsv               TSVECTOR,     -- full‑text search vector (TSVECTOR)
-    chunk_embedding         VECTOR(1536)    -- same dimension as above
+    chunk_embedding         extensions.vector(1536)    -- same dimension as above
 );
 
 /* A composite index so you can “get me top-K similar vectors,
@@ -230,7 +254,7 @@ CREATE TABLE review_chunks (
     - "vector_cosine_ops" uses cosine similarity (use if vectors are normalized) */
 CREATE INDEX idx_review_chunks_embedding
 ON review_chunks
-USING hnsw (chunk_embedding vector_l2_ops) WITH (m = 16, ef_construction = 200);
+USING hnsw (chunk_embedding extensions.vector_l2_ops) WITH (m = 16, ef_construction = 200);
 
 /* =======================================================================
    INDEXES – Performance optimization for AI and traditional queries
@@ -241,7 +265,7 @@ USING hnsw (chunk_embedding vector_l2_ops) WITH (m = 16, ef_construction = 200);
    Graph-based index with better performance and robustness for changing data
     Recommended by Supabase over IVFFlat (Inverted File Flat) for most use cases */
 CREATE INDEX idx_places_embedding
-    ON places USING hnsw (embedding vector_l2_ops);
+    ON places USING hnsw (embedding extensions.vector_l2_ops);
 
 /* FULL-TEXT SEARCH (FTS) INDEXES
     GIN (Generalized Inverted Index) is optimized for array/text search. */
@@ -263,7 +287,7 @@ CREATE INDEX idx_places_lat_long             ON places (latitude, longitude);
     search (useful for misspellings like "cinnmon rol"). */
 -- gin_trgm_ops = trigram operator class for the GIN index
 CREATE INDEX idx_places_name_trgm
-    ON places USING gin (lower(place_name) gin_trgm_ops);
+    ON places USING gin (lower(place_name) extensions.gin_trgm_ops);
 
 -- Fast exact name lookups (complements trigram for equality)
 CREATE INDEX idx_places_name_lower           ON places (lower(place_name));
@@ -309,7 +333,7 @@ CREATE INDEX idx_places_popular_times
 
 -- Place description/summary text for semantic understanding
 CREATE INDEX idx_places_description
-    ON places USING gin (to_tsvector('english', enriched_data->'details'->'raw_data'->>'description'));
+    ON places USING gin (pg_catalog.to_tsvector('english', enriched_data->'details'->'raw_data'->>'description'));
 
 -- Review tags - highly valuable user-generated descriptors
 -- Examples: "taro milk tea", "atmosphere", "games", "strawberry", "thai tea"
@@ -340,7 +364,7 @@ CREATE INDEX idx_places_google_website
 
 -- Location details
 CREATE INDEX idx_places_google_address
-    ON places USING gin (to_tsvector('english', enriched_data->'details'->'raw_data'->>'full_address'));
+    ON places USING gin (pg_catalog.to_tsvector('english', enriched_data->'details'->'raw_data'->>'full_address'));
 CREATE INDEX idx_places_city
     ON places USING btree ((enriched_data->'details'->'raw_data'->>'city'));
 CREATE INDEX idx_places_state
@@ -352,13 +376,13 @@ CREATE INDEX idx_places_review_count
 
 -- Category and subcategories
 CREATE INDEX idx_places_category
-    ON places USING gin (to_tsvector('english', enriched_data->'details'->'raw_data'->>'category'));
+    ON places USING gin (pg_catalog.to_tsvector('english', enriched_data->'details'->'raw_data'->>'category'));
 CREATE INDEX idx_places_subtypes
-    ON places USING gin (to_tsvector('english', enriched_data->'details'->'raw_data'->>'subtypes'));
+    ON places USING gin (pg_catalog.to_tsvector('english', enriched_data->'details'->'raw_data'->>'subtypes'));
 
 -- Time spent - useful for planning visits
 CREATE INDEX idx_places_typical_time
-    ON places USING gin (to_tsvector('english', enriched_data->'details'->'raw_data'->>'typical_time_spent'));
+    ON places USING gin (pg_catalog.to_tsvector('english', enriched_data->'details'->'raw_data'->>'typical_time_spent'));
 
 -- Booking and reservation links
 CREATE INDEX idx_places_booking_links
@@ -399,7 +423,7 @@ CREATE INDEX idx_places_updated_brin         ON places USING brin (updated_at);
 /* Review chunk helpers for fast joins/ordering and fuzzy quote matches */
 CREATE INDEX idx_review_chunks_place         ON review_chunks (google_maps_place_id);
 CREATE INDEX idx_review_chunks_place_idx     ON review_chunks (google_maps_place_id, chunk_index);
-CREATE INDEX idx_review_chunks_text_trgm     ON review_chunks USING gin (chunk_text gin_trgm_ops);
+CREATE INDEX idx_review_chunks_text_trgm     ON review_chunks USING gin (chunk_text extensions.gin_trgm_ops);
 
 /*
     Recency‑aware retrieval on review chunks
@@ -421,6 +445,7 @@ BEGIN  NEW.updated_at = NOW();  RETURN NEW;  END; $$ LANGUAGE plpgsql;
 CREATE TRIGGER trg_set_updated_at
     BEFORE UPDATE ON places
     FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+ALTER FUNCTION set_updated_at() SET search_path = '';
 
 /*
    Maintain places.search_tsv (weighted A/B/C document)
@@ -437,17 +462,18 @@ DECLARE
     desc_txt    TEXT := coalesce(NEW.enriched_data->'details'->'raw_data'->>'description', '');
 BEGIN
     NEW.search_tsv :=
-        setweight(to_tsvector('english', unaccent(name_txt)), 'A') ||
-        setweight(to_tsvector('english', unaccent(tags_txt)), 'B') ||
-        setweight(to_tsvector('english', unaccent(type_txt)), 'B') ||
-        setweight(to_tsvector('english', unaccent(hood_txt)), 'B') ||
-        setweight(to_tsvector('english', unaccent(desc_txt)), 'C');
+    pg_catalog.setweight(pg_catalog.to_tsvector('english', extensions.unaccent(name_txt)), 'A') ||
+    pg_catalog.setweight(pg_catalog.to_tsvector('english', extensions.unaccent(tags_txt)), 'B') ||
+    pg_catalog.setweight(pg_catalog.to_tsvector('english', extensions.unaccent(type_txt)), 'B') ||
+    pg_catalog.setweight(pg_catalog.to_tsvector('english', extensions.unaccent(hood_txt)), 'B') ||
+    pg_catalog.setweight(pg_catalog.to_tsvector('english', extensions.unaccent(desc_txt)), 'C');
     RETURN NEW;
 END; $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trg_compute_search_tsv
     BEFORE INSERT OR UPDATE OF place_name, tags, type, neighborhood, enriched_data ON places
     FOR EACH ROW EXECUTE FUNCTION compute_places_search_tsv();
+ALTER FUNCTION compute_places_search_tsv() SET search_path = '';
 
 /*
    Auto-rebuild place-level full‑text search (reviews_tsv)
@@ -469,19 +495,20 @@ BEGIN
       INTO extracted
       FROM (
             SELECT chunk_text
-            FROM review_chunks
+            FROM public.review_chunks
             WHERE google_maps_place_id = NEW.google_maps_place_id
             ORDER BY review_datetime_utc DESC NULLS LAST, chunk_index
             LIMIT 80  -- cap to keep the full‑text vector (TSVECTOR) small and up-to-date
            ) c;
 
-    NEW.reviews_tsv := to_tsvector('english', coalesce(extracted, ''));
+    NEW.reviews_tsv := pg_catalog.to_tsvector('english', coalesce(extracted, ''));
     RETURN NEW;
 END; $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trg_refresh_reviews_tsv
     BEFORE INSERT OR UPDATE OF enriched_data ON places
     FOR EACH ROW EXECUTE FUNCTION refresh_reviews_tsv();
+ALTER FUNCTION refresh_reviews_tsv() SET search_path = '';
 
 /*
    Keep places.reviews_tsv in sync when review_chunks change
@@ -506,14 +533,14 @@ BEGIN
       INTO extracted
       FROM (
             SELECT chunk_text
-            FROM review_chunks
+        FROM public.review_chunks
             WHERE google_maps_place_id = pid
             ORDER BY review_datetime_utc DESC NULLS LAST, chunk_index
             LIMIT 80
            ) c;
 
-    UPDATE places
-       SET reviews_tsv = to_tsvector('english', coalesce(extracted, '')),
+    UPDATE public.places
+       SET reviews_tsv = pg_catalog.to_tsvector('english', coalesce(extracted, '')),
            updated_at  = NOW()
      WHERE google_maps_place_id = pid;
 
@@ -523,13 +550,14 @@ END; $$ LANGUAGE plpgsql;
 CREATE TRIGGER trg_chunks_after_write
     AFTER INSERT OR UPDATE OR DELETE ON review_chunks
     FOR EACH ROW EXECUTE FUNCTION review_chunks_sync_place_reviews_tsv();
+ALTER FUNCTION review_chunks_sync_place_reviews_tsv() SET search_path = '';
 
 /* =======================================================================
    VIEWS & HELPER FUNCTIONS – Query convenience layer
    ----------------------------------------------------------------- */
 
 /* Flattened view extracting Google Places JSON into columns for easy access */
-CREATE OR REPLACE VIEW places_enriched AS
+CREATE OR REPLACE VIEW public.places_enriched AS
 SELECT
     p.*,
     -- Core Google Places metrics
@@ -568,32 +596,34 @@ SELECT
     -- Visual content indicators
     (p.enriched_data->'details'->'raw_data'->>'photos_count')::INT      AS photos_count,
     p.enriched_data->'details'->'raw_data'->>'photo'                    AS primary_photo_url
-FROM   places p;
+FROM   public.places p;
 
 /* Materialized view for RAG queries – joins review chunks with place context
-   Materialized = pre-computed and stored for faster chatbot response times */
+    Materialized = pre-computed and stored for faster chatbot response times */
 -- "mv_" prefix = materialized view (precomputed and stored)
-CREATE MATERIALIZED VIEW mv_place_review_chunks AS
+CREATE MATERIALIZED VIEW public.mv_place_review_chunks AS
 SELECT
     rc.*,
     pl.place_name,
     pl.neighborhood
-FROM   review_chunks rc
-JOIN   places        pl USING (google_maps_place_id);
+FROM   public.review_chunks rc
+JOIN   public.places        pl USING (google_maps_place_id);
 
-CREATE INDEX mv_idx_chunk_tsv ON mv_place_review_chunks USING gin(chunk_tsv);
+CREATE INDEX mv_idx_chunk_tsv ON public.mv_place_review_chunks USING gin(chunk_tsv);
 
-/* Helper function for time-based queries (uses ILIKE = case-insensitive LIKE) */
+/* Helper function for time-based queries (uses ILIKE = case-insensitive LIKE)
+    Note: Qualify table columns to avoid ambiguity with OUT parameters in plpgsql. */
 CREATE OR REPLACE FUNCTION places_open_on(day TEXT)
 RETURNS TABLE(place_id TEXT, place_name TEXT) AS $$
 BEGIN
-    RETURN QUERY
-    SELECT google_maps_place_id,
-           place_name::TEXT
-    FROM   places_enriched
-    WHERE  working_hours ->> day ILIKE '%'
-       AND working_hours ->> day NOT ILIKE '%Closed%';
+     RETURN QUERY
+     SELECT pl.google_maps_place_id,
+              pl.place_name::TEXT
+     FROM   public.places_enriched AS pl
+     WHERE  (pl.working_hours ->> day) ILIKE '%'
+         AND (pl.working_hours ->> day) NOT ILIKE '%Closed%';
 END; $$ LANGUAGE plpgsql STABLE;
+ALTER FUNCTION places_open_on(text) SET search_path = '';
 
 /* =======================================================================
     ROW‑LEVEL SECURITY (RLS) – Public read‑only access

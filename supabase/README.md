@@ -350,3 +350,70 @@ Privacy choices in this project
 ## Query Examples
 
 See `/tests/` directory for more examples. If you’re skimming, the examples above are enough to understand how this database supports AI‑powered search for Charlotte Third Places.
+
+## Local Supabase Developer Workflow (Windows)
+
+This folder contains everything you need to spin up the local PostgreSQL (via Supabase), seed it with representative data, and validate the schema/performance signals before touching prod.
+
+### What’s Here
+
+- `Test-LocalSupabase.ps1` — End-to-end local orchestration. Stops any running stack, cleans stray containers, starts Supabase, resets the DB (runs migrations + `seed.sql`), restarts services, then runs validation.
+- `Invoke-Validate.sql.ps1` — Small helper that executes `tests/validate.sql` inside the local Postgres container. Used by the test script; you can also run it directly.
+- `tests/validate.sql` — Structured checks (pass/fail rows) for extensions placement, seed counts, FTS matches, trigram fuzzy match, geospatial proximity, JSONB filters, helper function, materialized view, RLS flags, and key indexes. Includes a couple of `EXPLAIN ANALYZE` probes.
+- `seed.sql` — Minimal, realistic dataset to exercise key features: arrays/enums, generated geospatial column, triggers, FTS, and review chunks for citations.
+
+### Prerequisites
+
+- Windows + PowerShell
+- Docker Desktop running
+- Node.js (for `npx supabase`)
+
+### Run Everything (reset + seed + validate)
+
+```powershell
+cd C:\GitHub\third-places-data\supabase
+./Test-LocalSupabase.ps1
+```
+
+What it does, in order:
+
+1) Stop Supabase and clean leftover containers that could block a restart.
+2) Start Supabase services locally.
+3) `supabase db reset` to apply migrations and run `seed.sql` automatically.
+4) Start services again (the reset can stop non-DB containers).
+5) Call `Invoke-Validate.sql.ps1` to run `tests/validate.sql` inside the DB container and print results.
+
+If something fails, the script throws with the exit code and stops.
+
+### Just Run Validation Again
+
+When you’ve made SQL changes and want to re-check the assertions quickly:
+
+```powershell
+cd C:\GitHub\third-places-data\supabase
+./Invoke-Validate.sql.ps1 -Database 'postgres' -User 'postgres'
+```
+
+### What `tests/validate.sql` Checks
+
+- Extensions in the `extensions` schema: `postgis`, `vector`, `pg_trgm`, `unaccent`, `btree_gin`.
+- Seed sanity: expected row counts for `places` and `review_chunks` and non-empty TSVectors.
+- FTS: place metadata queries (e.g., “black owned”, “book cafe”) and review text terms (e.g., “cinnamon rolls”, “booth”).
+- Trigram fuzzy name search tolerant of accents (Amélie’s) using `unaccent` + `similarity`.
+- Geospatial radius checks using `ST_DWithin` on generated `geog`.
+- JSONB filters (e.g., rating >= 4.8 from enriched data).
+- Helper function `places_open_on(text)` returns rows without ambiguity.
+- Materialized view `mv_place_review_chunks` refresh + search.
+- RLS enabled on primary tables and presence of key indexes (HNSW/GIN/GiST/BRIN, etc.).
+
+The script prints tabular pass/fail rows. The final `EXPLAIN ANALYZE` statements help spot index usage on common probes.
+
+### What `seed.sql` Provides
+
+- A handful of places covering different neighborhoods, amenities, and tags.
+- Review chunks with phrases that drive the validation (e.g., “booth”, “cinnamon rolls”).
+- Data is idempotent: the seed deletes and re-inserts the subset it owns so repeated runs are fine.
+
+### Why This Matters
+
+Running the end-to-end script locally validates that schema, indexes, triggers, and views are aligned with the chatbot’s retrieval patterns. That reduces surprises when promoting changes, and keeps prod-only issues (like missing extensions or slow scans) from slipping in.
