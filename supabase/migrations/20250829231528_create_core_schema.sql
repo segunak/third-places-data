@@ -1,17 +1,17 @@
 /* =======================================================================
-   AI-optimized PostgreSQL schema for Charlotte area "third places"
+    AI‑optimized PostgreSQL schema for Charlotte area "third places"
    (coffee shops, libraries, co-working spaces, etc.)
    
    FEATURES:
    • Vector similarity search for "find places with similar vibes"
-   • Full-text search with typo tolerance
-   • Chunked reviews for precise AI citations (RAG)
+    • Full-text search with typo tolerance
+        • Chunked reviews for precise AI citations (RAG)
    • Comprehensive indexing for sub-second performance
    • Auto-maintained search indexes via triggers
    
    DATA SOURCES:
-   • Airtable (curated core data)
-   • Google Places API (reviews, hours, photos)
+    • Airtable (curated core data)
+    • Google Places API for reviews, hours, photos
    
    See /supabase/README.md for detailed technical documentation.
    
@@ -28,11 +28,19 @@ CREATE EXTENSION IF NOT EXISTS vector;
 -- Trigram extension: Enables fuzzy text matching and typo tolerance
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
--- BTree-GIN extension: Allows composite indexes mixing different types
+-- B-tree and GIN (Generalized Inverted Index) compatibility extension:
+-- allows composite indexes mixing different data types
 CREATE EXTENSION IF NOT EXISTS btree_gin;
 
+-- Unaccent: improves text search by ignoring accents (e.g., "cafe" == "café")
+CREATE EXTENSION IF NOT EXISTS unaccent;
+
+-- PostGIS (PostgreSQL Geographic Information System): adds geospatial types
+-- and functions for fast "near me" queries and distance calculations
+CREATE EXTENSION IF NOT EXISTS postgis;
+
 /* =======================================================================
-   ENUM TYPES
+    ENUM TYPES
    ----------------------------------------------------------------- 
    ALIGNED WITH AIRTABLE SCHEMA:
    • Most amenity fields use Yes/No/Unsure pattern consistently
@@ -64,7 +72,7 @@ END$$;
 CREATE TABLE places (
     /* ---------- identity & geo -------------------------------------- */
     google_maps_place_id    TEXT        PRIMARY KEY,
-    record_id               TEXT,       NOT NULL     -- Airtable record ID
+    record_id               TEXT        NOT NULL,    -- Airtable record ID
     place_name              TEXT        NOT NULL,
     latitude                DOUBLE PRECISION,
     longitude               DOUBLE PRECISION,
@@ -74,7 +82,7 @@ CREATE TABLE places (
     neighborhood            TEXT,
     -- TYPE: Array of place categories (coffee_shop, library, etc.)
     -- Can have multiple values since a place might be more than one type
-    -- No ENUM constraint - values vary too much to restrict
+    -- No ENUM constraint – values vary too much to restrict
     type                    TEXT[]      CHECK (array_ndims(type)=1),
     tags                    TEXT[]      CHECK (array_ndims(tags)=1),
     size                    size_enum,
@@ -82,7 +90,7 @@ CREATE TABLE places (
     featured                BOOLEAN     DEFAULT FALSE,
 
     /* ---------- amenities (Yes/No/Unsure pattern) ------------------- */
-    -- FREE_WI_FI: Does this place offer free WiFi?
+    -- FREE_WI_FI: Does this place offer free Wi‑Fi?
     -- Values: Yes, No, Unsure (matches Airtable schema)
     free_wi_fi              yes_no_unsure,
     
@@ -91,7 +99,7 @@ CREATE TABLE places (
     purchase_required       yes_no_unsure,
     
     -- PARKING: Array of parking options (Free, Paid, Street, Garage, etc.)
-    -- No ENUM constraint - parking situations vary too much to restrict
+    -- No ENUM constraint – parking situations vary too much to restrict
     parking                 TEXT[]      CHECK (array_ndims(parking)=1),
     
     -- HAS_CINNAMON_ROLLS: Do they sell cinnamon rolls?
@@ -111,13 +119,13 @@ CREATE TABLE places (
 
     /* ---------- media ----------------------------------------------- */
     photos                  JSONB,      -- photo metadata from Google API
-    curator_photos          JSONB,      -- manual uploads
+    curator_photos          JSONB,      -- JSONB: manual uploads and metadata
 
     /* ---------- AI & search fields ---------------------------------- */
     -- Complete Google Places API response stored as searchable JSON
     enriched_data           JSONB,
 
-    -- Auto-maintained full-text search vector from extracted Google reviews
+    -- Auto-maintained full-text search (FTS) vector (TSVECTOR) from extracted Google reviews
     -- Built from individual review_text fields in enriched_data JSON
     reviews_tsv             TSVECTOR,
 
@@ -129,18 +137,49 @@ CREATE TABLE places (
     /* ---------- sync/admin ------------------------------------------ */
     place_enhancements_link TEXT,
     has_data_file           yes_no_unsure,
-    last_synced_airtable    TIMESTAMPTZ,
-    last_synced_json        TIMESTAMPTZ,
+    last_synced_airtable    TIMESTAMPTZ, -- timestamp with time zone (Coordinated Universal Time, UTC)
+    last_synced_json        TIMESTAMPTZ, -- timestamp with time zone (UTC)
 
     /* ---------- bookkeeping ----------------------------------------- */
-    airtable_created_time       TIMESTAMPTZ,
-    airtable_last_modified_time TIMESTAMPTZ,
-    created_at              TIMESTAMPTZ DEFAULT NOW(),
-    updated_at              TIMESTAMPTZ DEFAULT NOW()
+    airtable_created_time       TIMESTAMPTZ, -- timestamp with time zone (UTC)
+    airtable_last_modified_time TIMESTAMPTZ, -- timestamp with time zone (UTC)
+    created_at              TIMESTAMPTZ DEFAULT NOW(), -- timestamp with time zone (UTC)
+    updated_at              TIMESTAMPTZ DEFAULT NOW()  -- timestamp with time zone (UTC)
 );
 
 /* =======================================================================
-   REVIEW CHUNKS TABLE – For RAG (Retrieval Augmented Generation)
+   GENERATED COLUMNS – Always up-to-date derived data
+   -----------------------------------------------------------------
+   We add two stored (materialized) computed columns:
+   1) geog: a PostGIS geography point built from (longitude, latitude)
+      - enables fast "within X meters" queries with a GiST index
+    2) search_tsv: a single weighted full‑text search (FTS) document (TSVECTOR)
+        that blends
+      name, tags, types, neighborhood, and description
+      - lets us rank results by text relevance without JOINs
+   ----------------------------------------------------------------- */
+
+-- Geospatial point; stays NULL when latitude/longitude are missing.
+-- geography(Point, 4326) uses World Geodetic System 1984 (WGS 84) coordinates
+-- (standard Global Positioning System, GPS, longitude/latitude).
+ALTER TABLE places
+ADD COLUMN IF NOT EXISTS geog geography(Point, 4326)
+GENERATED ALWAYS AS (
+    CASE
+        WHEN longitude IS NULL OR latitude IS NULL THEN NULL
+        ELSE ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)::geography
+    END
+) STORED;
+
+-- Weighted full‑text search (FTS) document (A > B > C).
+-- Implemented as a regular column maintained by a trigger (not a generated column)
+-- to avoid immutability constraints from functions like unaccent/to_tsvector.
+-- A: place_name; B: tags, type, neighborhood; C: Google description
+ALTER TABLE places
+ADD COLUMN IF NOT EXISTS search_tsv tsvector;
+
+/* =======================================================================
+    REVIEW CHUNKS TABLE – For RAG
    -----------------------------------------------------------------
    Breaks long reviews into smaller chunks for precise AI citation.
    Instead of returning entire reviews, the chatbot can quote specific
@@ -153,18 +192,45 @@ CREATE TABLE places (
 CREATE TABLE review_chunks (
     review_chunk_id         BIGSERIAL PRIMARY KEY,
     google_maps_place_id    TEXT            REFERENCES places,
-    review_id               TEXT,           -- original Google review_id
+    review_id               TEXT,           -- original Google review ID
     chunk_index             INT,            -- 0,1,2 … within that review
-    chunk_text              TEXT,
-    chunk_tsv               TSVECTOR,
+     /*
+         chunk_text: A short slice of a larger review (about 2–3 sentences).
+         We store this specific text so we can quote it directly later.
+         This is NOT personally identifiable information (PII).
+     */
+     chunk_text              TEXT,
+     /*
+         review_text: The full text of the review from which chunks are created.
+         We keep the ground‑truth review content so we can re‑chunk or re‑embed
+         later if needed. This also contains no PII.
+     */
+     review_text             TEXT,
+     /*
+         review_datetime_utc: When the review was written (UTC). We prioritize
+         newer reviews because places change over time. This allows the chatbot
+         to surface fresher quotes first or apply a time‑decay during ranking.
+     */
+    review_datetime_utc     TIMESTAMPTZ,  -- timestamp with time zone (UTC)
+    chunk_tsv               TSVECTOR,     -- full‑text search vector (TSVECTOR)
     chunk_embedding         VECTOR(1536)    -- same dimension as above
 );
 
 /* A composite index so you can “get me top-K similar vectors,
    but only from this place”.                    */
+/* VECTOR INDEX FOR QUOTES – APPROXIMATE NEAREST NEIGHBOR (ANN)
+    Hierarchical Navigable Small World (HNSW) is an ANN index structure
+    that finds vectors with similar meaning very quickly. It is robust for
+    frequently changing data and offers excellent recall/speed.
+    Parameters:
+    - m: graph connectivity (higher means more links per node; more memory, faster search)
+    - ef_construction: accuracy during index build (higher improves recall; slower build)
+    Distance operators:
+    - "vector_l2_ops" uses L2 (Euclidean) distance
+    - "vector_cosine_ops" uses cosine similarity (use if vectors are normalized) */
 CREATE INDEX idx_review_chunks_embedding
 ON review_chunks
-USING ivfflat (chunk_embedding vector_l2_ops) WITH (lists = 100);
+USING hnsw (chunk_embedding vector_l2_ops) WITH (m = 16, ef_construction = 200);
 
 /* =======================================================================
    INDEXES – Performance optimization for AI and traditional queries
@@ -173,30 +239,61 @@ USING ivfflat (chunk_embedding vector_l2_ops) WITH (lists = 100);
 /* VECTOR SIMILARITY INDEX
    HNSW = Hierarchical Navigable Small World
    Graph-based index with better performance and robustness for changing data
-   Recommended by Supabase over IVFFlat for most use cases              */
+    Recommended by Supabase over IVFFlat (Inverted File Flat) for most use cases */
 CREATE INDEX idx_places_embedding
     ON places USING hnsw (embedding vector_l2_ops);
 
-/* FULL-TEXT SEARCH INDEXES
-   GIN = Generalized Inverted Index - optimized for array/text search  */
+/* FULL-TEXT SEARCH (FTS) INDEXES
+    GIN (Generalized Inverted Index) is optimized for array/text search. */
 CREATE INDEX idx_places_reviews_tsv          ON places USING gin (reviews_tsv);
+-- Single, weighted FTS document (often better for ranking than reviews-only)
+CREATE INDEX idx_places_search_tsv           ON places USING gin (search_tsv);
 CREATE INDEX idx_places_type                 ON places USING gin (type);
 CREATE INDEX idx_places_tags                 ON places USING gin (tags);
 CREATE INDEX idx_places_parking              ON places USING gin (parking);
 
-/* STANDARD BTREE INDEXES for exact matching and sorting */
+/* STANDARD B-TREE (BTREE) INDEXES for exact matching and sorting */
 CREATE INDEX idx_places_neighborhood         ON places (neighborhood);
 CREATE INDEX idx_places_operational          ON places (operational);
 CREATE INDEX idx_places_featured             ON places (featured);
 CREATE INDEX idx_places_lat_long             ON places (latitude, longitude);
 
-/* TRIGRAM INDEX for fuzzy text matching - handles typos and partial matches */
+/* TRIGRAM INDEX for fuzzy text matching – handles typos and partial matches
+    Trigram breaks text into overlapping 3-character sequences for similarity
+    search (useful for misspellings like "cinnmon rol"). */
+-- gin_trgm_ops = trigram operator class for the GIN index
 CREATE INDEX idx_places_name_trgm
     ON places USING gin (lower(place_name) gin_trgm_ops);
 
-/* COMPOSITE INDEXES for common chatbot query patterns */
+-- Fast exact name lookups (complements trigram for equality)
+CREATE INDEX idx_places_name_lower           ON places (lower(place_name));
+
+/*
+        COMPOSITE INDEXES for common chatbot query patterns
+    ---------------------------------------------------
+    Why: Before we run expensive vector search (Approximate Nearest Neighbor, ANN), we cheaply narrow the
+    candidate set using regular indexes that match how users describe places.
+*/
 CREATE INDEX idx_places_operational_featured  ON places (operational, featured);
-CREATE INDEX idx_places_neighborhood_type     ON places USING gin (neighborhood, type);
+
+/*
+    We avoid a mixed GIN (Generalized Inverted Index) composite on (neighborhood, type) because:
+        - neighborhood is plain TEXT (B‑tree, BTREE, is best for equality)
+        - type is an array (GIN is best)
+        The PostgreSQL planner can efficiently combine BTREE(neighborhood) + GIN(type)
+        using bitmap index ANDs, so we rely on the separate indexes we already have.
+*/
+
+/* Additional composites to cheaply pre-filter before ANN:
+    - Many vague prompts implicitly include these constraints. */
+CREATE INDEX idx_places_size_neighborhood            ON places (size, neighborhood);
+CREATE INDEX idx_places_purchase_wifi                ON places (purchase_required, free_wi_fi);
+CREATE INDEX idx_places_cinnamon_wifi                ON places (has_cinnamon_rolls, free_wi_fi);
+CREATE INDEX idx_places_featured_neighborhood        ON places (featured, neighborhood);
+
+/* Targeted partial indexes (smaller/faster) – useful defaults */
+CREATE INDEX IF NOT EXISTS idx_places_featured_true  ON places (featured) WHERE featured = true;
+CREATE INDEX IF NOT EXISTS idx_places_operational_yes ON places (operational) WHERE operational = 'Yes';
 
 /* JSONB PATH INDEXES for fast queries into Google Places data */
 CREATE INDEX idx_places_google_rating 
@@ -281,8 +378,41 @@ CREATE INDEX idx_places_verified
 CREATE INDEX idx_places_photos_count
     ON places USING btree ((enriched_data->'details'->'raw_data'->>'photos_count'));
 
+/* Amenity/flag single-column indexes to speed up implicit filters */
+CREATE INDEX idx_places_size                 ON places (size);
+CREATE INDEX idx_places_purchase_required    ON places (purchase_required);
+CREATE INDEX idx_places_free_wifi            ON places (free_wi_fi);
+CREATE INDEX idx_places_has_cinnamon_rolls   ON places (has_cinnamon_rolls);
+
+/* Geospatial – enable fast radius/"near me" queries */
+/* GiST (Generalized Search Tree) index supports geospatial operators.
+    With geography(Point, 4326) and ST_DWithin (Spatial Within Distance),
+    we get fast "within X meters" queries. */
+CREATE INDEX idx_places_geog_gist            ON places USING gist (geog);
+
+/* Time-oriented admin queries and freshness boosts */
+/* BRIN (Block Range Index) is lightweight and great for values that correlate
+    with physical row order, like timestamps. Ideal for large time-series scans. */
+CREATE INDEX idx_places_created_brin         ON places USING brin (created_at);
+CREATE INDEX idx_places_updated_brin         ON places USING brin (updated_at);
+
+/* Review chunk helpers for fast joins/ordering and fuzzy quote matches */
+CREATE INDEX idx_review_chunks_place         ON review_chunks (google_maps_place_id);
+CREATE INDEX idx_review_chunks_place_idx     ON review_chunks (google_maps_place_id, chunk_index);
+CREATE INDEX idx_review_chunks_text_trgm     ON review_chunks USING gin (chunk_text gin_trgm_ops);
+
+/*
+    Recency‑aware retrieval on review chunks
+    ---------------------------------------
+    Why: Newer reviews are more relevant. These indexes make it cheap to
+    fetch "most recent chunks for a place" and to scan by time windows.
+*/
+CREATE INDEX idx_review_chunks_place_recent   ON review_chunks (google_maps_place_id, review_datetime_utc DESC);
+CREATE INDEX idx_review_chunks_review_time_brin ON review_chunks USING brin (review_datetime_utc);
+
 /* =======================================================================
-   TRIGGERS – Auto-maintenance functions
+    TRIGGERS – Auto-maintenance functions (implemented in PL/pgSQL, the
+    Procedural Language/PostgreSQL extension used to write trigger functions)
    ----------------------------------------------------------------- */
 
 /* Auto-update timestamp on record changes */
@@ -292,28 +422,107 @@ CREATE TRIGGER trg_set_updated_at
     BEFORE UPDATE ON places
     FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
-/* Auto-rebuild full-text search index when review content changes */
+/*
+   Maintain places.search_tsv (weighted A/B/C document)
+   ----------------------------------------------------
+   We compute search_tsv from name/tags/type/neighborhood/description using
+   unaccent + to_tsvector. Done in a trigger to sidestep immutability rules.
+*/
+CREATE OR REPLACE FUNCTION compute_places_search_tsv() RETURNS TRIGGER AS $$
+DECLARE
+    name_txt    TEXT := coalesce(NEW.place_name, '');
+    tags_txt    TEXT := coalesce(array_to_string(NEW.tags, ' '), '');
+    type_txt    TEXT := coalesce(array_to_string(NEW.type, ' '), '');
+    hood_txt    TEXT := coalesce(NEW.neighborhood, '');
+    desc_txt    TEXT := coalesce(NEW.enriched_data->'details'->'raw_data'->>'description', '');
+BEGIN
+    NEW.search_tsv :=
+        setweight(to_tsvector('english', unaccent(name_txt)), 'A') ||
+        setweight(to_tsvector('english', unaccent(tags_txt)), 'B') ||
+        setweight(to_tsvector('english', unaccent(type_txt)), 'B') ||
+        setweight(to_tsvector('english', unaccent(hood_txt)), 'B') ||
+        setweight(to_tsvector('english', unaccent(desc_txt)), 'C');
+    RETURN NEW;
+END; $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_compute_search_tsv
+    BEFORE INSERT OR UPDATE OF place_name, tags, type, neighborhood, enriched_data ON places
+    FOR EACH ROW EXECUTE FUNCTION compute_places_search_tsv();
+
+/*
+   Auto-rebuild place-level full‑text search (reviews_tsv)
+   ------------------------------------------------------
+   Plain-English: Instead of scraping reviews from a JSON blob, we build
+   the searchable text for a place directly from the review_chunks table.
+   That table holds the real review text we quote from, along with when
+   each review was written (UTC). We prioritize fresher reviews.
+
+   How ranking benefits: places.reviews_tsv is a compact summary of the
+   latest review content for a place. The chatbot can combine this signal
+   with vector search for better results on vague prompts.
+*/
 CREATE OR REPLACE FUNCTION refresh_reviews_tsv() RETURNS TRIGGER AS $$
 DECLARE
     extracted TEXT;
 BEGIN
-    -- Extract all review texts from Google Places JSON
-    IF NEW.enriched_data ? 'reviews' THEN
-        SELECT string_agg(r->>'review_text', ' ')
-          INTO extracted
-          FROM jsonb_array_elements(NEW.enriched_data->'reviews'->'reviews_data') r
-          WHERE r->>'review_text' IS NOT NULL;
-    END IF;
+    SELECT string_agg(c.chunk_text, ' ')
+      INTO extracted
+      FROM (
+            SELECT chunk_text
+            FROM review_chunks
+            WHERE google_maps_place_id = NEW.google_maps_place_id
+            ORDER BY review_datetime_utc DESC NULLS LAST, chunk_index
+            LIMIT 80  -- cap to keep the full‑text vector (TSVECTOR) small and up-to-date
+           ) c;
 
-    -- Build full-text search index from extracted reviews only
     NEW.reviews_tsv := to_tsvector('english', coalesce(extracted, ''));
-
     RETURN NEW;
 END; $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trg_refresh_reviews_tsv
     BEFORE INSERT OR UPDATE OF enriched_data ON places
     FOR EACH ROW EXECUTE FUNCTION refresh_reviews_tsv();
+
+/*
+   Keep places.reviews_tsv in sync when review_chunks change
+   ---------------------------------------------------------
+   Plain-English: Whenever reviews are added/edited/removed, we refresh
+   the place’s searchable review text so queries stay current and fast.
+*/
+CREATE OR REPLACE FUNCTION review_chunks_sync_place_reviews_tsv() RETURNS TRIGGER AS $$
+DECLARE
+    pid TEXT;
+    extracted TEXT;
+BEGIN
+    -- Identify which place changed based on the row-level operation
+    IF TG_OP = 'DELETE' THEN
+        pid := OLD.google_maps_place_id;
+    ELSE
+        pid := NEW.google_maps_place_id;
+    END IF;
+
+    -- Recompute a compact, recent summary of review text for that place
+    SELECT string_agg(c.chunk_text, ' ')
+      INTO extracted
+      FROM (
+            SELECT chunk_text
+            FROM review_chunks
+            WHERE google_maps_place_id = pid
+            ORDER BY review_datetime_utc DESC NULLS LAST, chunk_index
+            LIMIT 80
+           ) c;
+
+    UPDATE places
+       SET reviews_tsv = to_tsvector('english', coalesce(extracted, '')),
+           updated_at  = NOW()
+     WHERE google_maps_place_id = pid;
+
+    RETURN NULL; -- AFTER trigger does not modify the review_chunks row
+END; $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_chunks_after_write
+    AFTER INSERT OR UPDATE OR DELETE ON review_chunks
+    FOR EACH ROW EXECUTE FUNCTION review_chunks_sync_place_reviews_tsv();
 
 /* =======================================================================
    VIEWS & HELPER FUNCTIONS – Query convenience layer
@@ -361,8 +570,9 @@ SELECT
     p.enriched_data->'details'->'raw_data'->>'photo'                    AS primary_photo_url
 FROM   places p;
 
-/* Materialized view for RAG queries - joins review chunks with place context
+/* Materialized view for RAG queries – joins review chunks with place context
    Materialized = pre-computed and stored for faster chatbot response times */
+-- "mv_" prefix = materialized view (precomputed and stored)
 CREATE MATERIALIZED VIEW mv_place_review_chunks AS
 SELECT
     rc.*,
@@ -373,8 +583,8 @@ JOIN   places        pl USING (google_maps_place_id);
 
 CREATE INDEX mv_idx_chunk_tsv ON mv_place_review_chunks USING gin(chunk_tsv);
 
-/* Helper function for time-based queries */
-CREATE OR REPLACE FUNCTION places_open_on(day TEXT, time TEXT DEFAULT 'now')
+/* Helper function for time-based queries (uses ILIKE = case-insensitive LIKE) */
+CREATE OR REPLACE FUNCTION places_open_on(day TEXT)
 RETURNS TABLE(place_id TEXT, place_name TEXT) AS $$
 BEGIN
     RETURN QUERY
@@ -386,7 +596,7 @@ BEGIN
 END; $$ LANGUAGE plpgsql STABLE;
 
 /* =======================================================================
-   ROW-LEVEL SECURITY – Public read-only access
+    ROW‑LEVEL SECURITY (RLS) – Public read‑only access
    ----------------------------------------------------------------- */
 ALTER TABLE places         ENABLE ROW LEVEL SECURITY;
 CREATE POLICY places_rls   ON places
