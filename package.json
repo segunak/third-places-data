@@ -1,5 +1,10 @@
 {
+  "scripts": {
+    "db:status": "supabase status",
+    "db:reset": "supabase db reset --debug",
+    "db:validate": "supabase db connect -- -f ./supabase/tests/validate.sql"
+  },
   "devDependencies": {
-    "supabase": "^2.30.4"
+    "supabase": "^2.39.2"
   }
 }

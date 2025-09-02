@@ -21,7 +21,7 @@ $script:InvokeAzureFunction = Join-Path $script:RootDir "scripts\Invoke-AzureFun
 $script:InvokeDurableFunction = Join-Path $script:RootDir "scripts\Invoke-AzureDurableFunction.ps1"
 
 # Config
-$baseUrl = 'http://localhost:7071/api'
+$baseUrl = 'http://localhost:7071'
 $functionKey = $env:AZURE_FUNCTION_KEY
 
 # If no key in environment, try to load from local.settings.json
@@ -43,6 +43,52 @@ function Write-Log {
     Write-Host "[$(Get-Date -Format 'u')] $Message"
 }
 
+# First test: ensure the local Azure Functions host is running on the expected port
+function Assert-FunctionHostRunning {
+    param(
+        [Parameter(Mandatory=$false)][string]$PingUrl = 'http://localhost:7071'
+    )
+
+    Write-Log "Preflight: checking Azure Functions host at $PingUrl"
+    try {
+        # Quick connectivity probe; any HTTP status code means the host responded
+        $resp = Invoke-WebRequest -Uri $PingUrl -Method GET -TimeoutSec 3 -UseBasicParsing
+        Write-Log "Azure Functions host responded (HTTP $($resp.StatusCode))."
+    } catch {
+        Write-Log "Azure Functions host is not reachable at $PingUrl. Aborting tests."
+        Write-Host "Ensure the local host is running before tests."
+        Write-Host "Tip: Start the function host in the 'third-places-data/azure-function' folder (VS Code task: 'func: host start')."
+        exit 1
+    }
+}
+
+# Helper to print a compact request metadata block
+function Write-RequestMetadata {
+    param(
+        [Parameter(Mandatory=$true)][string]$Name,
+        [Parameter(Mandatory=$true)][string]$Method,
+        [Parameter(Mandatory=$true)][string]$Url,
+        [Parameter(Mandatory=$true)][bool]$HasKey,
+        [Parameter(Mandatory=$false)][string]$Body = '',
+        [Parameter(Mandatory=$false)][int]$TimeoutSeconds = 0
+    )
+
+    Write-Host "==== REQUEST ====================================="
+    Write-Host "Name     : $Name"
+    Write-Host "Method   : $Method"
+    Write-Host "URL      : $Url"
+    Write-Host "Has Key  : $(if ($HasKey) { 'Yes' } else { 'No' })"
+    if ($TimeoutSeconds -gt 0) {
+        Write-Host "Timeout  : ${TimeoutSeconds}s"
+    }
+    if (-not [string]::IsNullOrWhiteSpace($Body)) {
+        # Truncate very long bodies for readability
+        $bodyToShow = if ($Body.Length -gt 2000) { $Body.Substring(0, 2000) + ' ... [truncated]' } else { $Body }
+        Write-Host "Body     : $bodyToShow"
+    }
+    Write-Host "=================================================="
+}
+
 # Function to test regular HTTP functions
 function Test-HttpFunction {
     param (
@@ -60,7 +106,8 @@ function Test-HttpFunction {
     )
     
     Write-Log "Testing HTTP Function: $Endpoint $Description"
-    $url = "$baseUrl/$Endpoint"
+    $url = "$baseUrl/api/$Endpoint"
+    Write-RequestMetadata -Name $Endpoint -Method 'POST' -Url $url -HasKey ([bool]$functionKey) -Body $Body -TimeoutSeconds $TimeoutSeconds
     
     Write-Log "Using script: $script:InvokeAzureFunction"
     if (-not (Test-Path $script:InvokeAzureFunction)) {
@@ -72,8 +119,16 @@ function Test-HttpFunction {
     $testSuccess = $false
     
     try {
-        & $script:InvokeAzureFunction -FunctionUrl $url -FunctionKey $functionKey -RequestBody $Body -TimeoutSeconds $TimeoutSeconds
-        $testSuccess = $true
+        $invokeOutput = & $script:InvokeAzureFunction -FunctionUrl $url -FunctionKey $functionKey -RequestBody $Body -TimeoutSeconds $TimeoutSeconds
+        if ($null -ne $invokeOutput) { $invokeOutput | Write-Host }
+        $exitCode = $LASTEXITCODE
+        if ($exitCode -eq 0) {
+            $testSuccess = $true
+            Write-Log "Child script exit code: $exitCode (success)"
+        } else {
+            $testSuccess = $false
+            Write-Log "Child script exit code: $exitCode (failure)"
+        }
     } catch {
         Write-Log "ERROR: Test failed: $_"
     }
@@ -87,6 +142,8 @@ function Test-HttpFunction {
         Success = $testSuccess
         Duration = $testDuration
         ExecutedAt = $testStartTime
+    Method = 'POST'
+    Url = $url
     }
     
     Write-Log "Finished: $Endpoint"
@@ -110,7 +167,9 @@ function Test-DurableFunction {
     )
     
     Write-Log "Testing Durable Function: $Endpoint $Description"
-    $url = "$baseUrl/$Endpoint"
+    $url = "$baseUrl/api/$Endpoint"
+    # Durable starter uses GET by default unless your route expects POST; still useful to show
+    Write-RequestMetadata -Name $Endpoint -Method 'HTTP (starter)' -Url $url -HasKey ([bool]$functionKey) -TimeoutSeconds $TimeoutSeconds
     
     Write-Log "Using script: $script:InvokeDurableFunction"
     if (-not (Test-Path $script:InvokeDurableFunction)) {
@@ -122,8 +181,16 @@ function Test-DurableFunction {
     $testSuccess = $false
     
     try {
-        & $script:InvokeDurableFunction -FunctionUrl $url -FunctionKey $functionKey -TimeoutSeconds $TimeoutSeconds
-        $testSuccess = $true
+        $invokeOutput = & $script:InvokeDurableFunction -FunctionUrl $url -FunctionKey $functionKey -TimeoutSeconds $TimeoutSeconds
+        if ($null -ne $invokeOutput) { $invokeOutput | Write-Host }
+        $exitCode = $LASTEXITCODE
+        if ($exitCode -eq 0) {
+            $testSuccess = $true
+            Write-Log "Child script exit code: $exitCode (success)"
+        } else {
+            $testSuccess = $false
+            Write-Log "Child script exit code: $exitCode (failure)"
+        }
     } catch {
         Write-Log "ERROR: Test failed: $_"
     }
@@ -137,6 +204,8 @@ function Test-DurableFunction {
         Success = $testSuccess
         Duration = $testDuration
         ExecutedAt = $testStartTime
+    Method = 'Durable (starter)'
+    Url = $url
     }
     
     Write-Log "Finished: $Endpoint"
@@ -150,32 +219,35 @@ Write-Log "Using key: $(if ($functionKey) { 'Yes' } else { 'No' })"
 Write-Log "Scripts directory: $(Split-Path $script:InvokeAzureFunction -Parent)"
 Write-Log "Test configuration: Sequential=$script:SequentialMode, ForceRefresh=$script:ForceRefresh, City=$script:City, Provider=$script:ProviderType"
 
-# 1. Smoke Test (HTTP)
+# Preflight check: ensure function host is running locally
+Assert-FunctionHostRunning -PingUrl $baseUrl
+
+# Smoke Test (HTTP)
 Test-HttpFunction -Endpoint 'smoke-test' -Body '{"House": "Martell"}' -Description 'API health check'
 
-# 2. Purge Orchestrations (HTTP)
-Test-HttpFunction -Endpoint 'purge-orchestrations' -Description 'Purge completed orchestrations'
-
-# 3. Enrich Airtable Base (Durable)
+# Enrich Airtable Base (Durable)
 $enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())&city=$script:City"
 Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode, insufficient_only=$script:InsufficientOnly)"
 
-# 4. Refresh Place Data (Durable)
+# Refresh Place Data (Durable)
 $refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&city=$script:City"
 Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
-# 5. Refresh Operational Statuses (HTTP)
+# Refresh Operational Statuses (HTTP)
 $opsEndpoint = "refresh-airtable-operational-statuses?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&city=$script:City"
 Test-DurableFunction -Endpoint $opsEndpoint -Description "Refresh operational statuses ($script:ProviderType, sequential_mode=$script:SequentialMode)"
 
-# 6. Refresh Single Place (Durable) - Test with a known place ID
+# Refresh Single Place (Durable) - Test with a known place ID
 $singlePlaceId = "ChIJjcmjAUqJVogRgDI5HoEqy0w"  # Mado Bakery and Cafe
 $singlePlaceEndpoint = "refresh-single-place?place_id=$singlePlaceId&provider_type=$script:ProviderType&city=$script:City"
 Test-DurableFunction -Endpoint $singlePlaceEndpoint -Description "Refresh single place data (place_id=$singlePlaceId, provider=$script:ProviderType)"
 
-# 7. Refresh All Photos (Durable)
+# Refresh All Photos (Durable)
 $photosEndpoint = "refresh-all-photos?provider_type=$script:ProviderType&city=$script:City&dry_run=true&sequential_mode=$($script:SequentialMode.ToString().ToLower())"
 Test-DurableFunction -Endpoint $photosEndpoint -Description "Refresh all photos in dry run mode ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+
+# Purge Orchestrations (HTTP)
+Test-HttpFunction -Endpoint 'purge-orchestrations' -Description 'Purge completed orchestrations'
 
 # Display test completion
 Write-Log "All Azure Function endpoint tests completed."
@@ -206,6 +278,8 @@ foreach ($result in $script:TestResults) {
     $status = if ($result.Success) { "[PASSED]" } else { "[FAILED]" }
     $durationStr = "{0:mm\:ss\.fff}" -f $result.Duration
     Write-Host "$status $($result.TestName) - $($result.Description)"
+    if ($result.Url) { Write-Host "         URL     : $($result.Url)" }
+    if ($result.Method) { Write-Host "         Method  : $($result.Method)" }
     Write-Host "         Duration: $durationStr"
 }
 
