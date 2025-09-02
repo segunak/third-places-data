@@ -2,6 +2,10 @@ import json
 import logging
 import azure.functions as func
 import azure.durable_functions as df
+from datetime import datetime
+from services.airtable_service import AirtableService
+from services.place_data_service import PlaceDataProviderFactory
+from services.utils import fetch_data_github, save_data_github
 
 bp = df.Blueprint()
 
@@ -248,13 +252,8 @@ def refresh_single_place_photos(activityInput):
             place_result["message"] = "No Google Maps Place Id"
             return place_result
 
-        from airtable_client import AirtableClient
-        from place_data_providers import PlaceDataProviderFactory
-        import json
-        from datetime import datetime
-
         try:
-            airtable_client = AirtableClient(provider_type)
+            airtable_client = AirtableService(provider_type)
             data_provider = PlaceDataProviderFactory.get_provider(provider_type)
 
             if hasattr(data_provider, '_select_prioritized_photos'):
@@ -268,8 +267,6 @@ def refresh_single_place_photos(activityInput):
             place_result["status"] = "error"
             place_result["message"] = f"Failed to initialize components: {str(e)}"
             return place_result
-
-        from helper_functions import fetch_data_github, save_data_github
 
         data_file_path = f"data/places/{city}/{place_id}.json"
         success, place_data, message = fetch_data_github(data_file_path)

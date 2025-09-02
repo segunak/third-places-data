@@ -2,7 +2,8 @@ import json
 import logging
 import azure.functions as func
 import azure.durable_functions as df
-from airtable_client import AirtableClient
+from services.airtable_service import AirtableService
+from services.place_data_service import PlaceDataProviderFactory
 
 bp = df.Blueprint()
 
@@ -176,7 +177,7 @@ def enrich_single_place(activityInput):
                 "field_updates": {}
             }
 
-        airtable_client = AirtableClient(provider_type, sequential_mode, insufficient_only)
+        airtable_client = AirtableService(provider_type, sequential_mode, insufficient_only)
         result = airtable_client.enrich_single_place(place, provider_type, city, force_refresh)
         return result
     except Exception as ex:
@@ -200,14 +201,14 @@ def get_all_third_places(activityInput):
         insufficient_only = config_dict.get('insufficient_only', False)
 
         if not city:
-            logging.error("Cannot get AirtableClient - city is not set")
+            logging.error("Cannot get Airtable Service - city is not set")
             return []
 
         if not provider_type:
-            logging.error("Cannot get AirtableClient - provider_type is not set")
+            logging.error("Cannot get Airtable Service - provider_type is not set")
             return []
 
-        airtable_client = AirtableClient(provider_type, sequential_mode, insufficient_only)
+        airtable_client = AirtableService(provider_type, sequential_mode, insufficient_only)
         return airtable_client.all_third_places
 
     except Exception as ex:
@@ -219,7 +220,6 @@ def get_all_third_places(activityInput):
 @bp.function_name("refresh_single_place_operational_status")
 def refresh_single_place_operational_status(activityInput):
     try:
-        from place_data_providers import PlaceDataProviderFactory
         place = activityInput.get("place")
         provider_type = activityInput.get("provider_type")
         city = activityInput.get("city")
@@ -230,7 +230,8 @@ def refresh_single_place_operational_status(activityInput):
                 "update_status": "failed",
                 "message": "Missing required parameter: provider_type or city"
             }
-        airtable_client = AirtableClient(provider_type)
+
+        airtable_client = AirtableService(provider_type)
         data_provider = PlaceDataProviderFactory.get_provider(provider_type)
         result = airtable_client.refresh_single_place_operational_status(place, data_provider)
         return result

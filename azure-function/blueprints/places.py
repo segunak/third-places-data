@@ -2,8 +2,9 @@ import json
 import logging
 import azure.functions as func
 import azure.durable_functions as df
-import helper_functions as helpers
-from airtable_client import AirtableClient, SearchField
+from services import utils as helpers
+from services.airtable_service import AirtableService
+from constants import SearchField
 
 bp = df.Blueprint()
 
@@ -207,8 +208,8 @@ def get_place_data(activityInput):
 
         if status == 'succeeded' or status == 'cached':
             record_id = place['id']
-            airtable_client = AirtableClient(provider_type)
-            airtable_client.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
+            airtable_service = AirtableService(provider_type)
+            airtable_service.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
 
         if status == 'succeeded' or status == 'cached':
             place_id = place_data.get('place_id', place_id)
@@ -421,9 +422,8 @@ def find_place_by_id(activityInput):
             return None
 
         logging.info(f"Searching for place with Google Maps Place Id: {place_id}")
-
-        airtable_client = AirtableClient(provider_type)
-        record = airtable_client.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
+        airtable_service = AirtableService(provider_type)
+        record = airtable_service.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
 
         if record:
             place_name = record.get('fields', {}).get('Place', 'Unknown')

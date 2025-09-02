@@ -7,12 +7,13 @@ from pyairtable import Api
 from collections import Counter
 from urllib.parse import urlparse
 from constants import SearchField, MAX_THREAD_WORKERS
-import helper_functions as helpers
+from services import utils as helpers
+from services.place_data_service import PlaceDataProviderFactory
 from typing import Dict, Any, List
 from pyairtable.formulas import match
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-class AirtableClient:
+class AirtableService:
     """Defines methods for interaction with the Charlotte Third Places Airtable database.
     """
 
@@ -20,18 +21,18 @@ class AirtableClient:
         logging.basicConfig(level=logging.INFO)
 
         if 'FUNCTIONS_WORKER_RUNTIME' in os.environ:
-            logging.info('Airtable Client instantiated for Azure Function use.')
+            logging.info('Airtable Service instantiated for Azure Function use.')
         else:
-            logging.info('Airtable Client instantiated for local use.')
+            logging.info('Airtable Service instantiated for local use.')
             dotenv.load_dotenv()
 
         self.sequential_mode = sequential_mode
         if self.sequential_mode:
-            logging.info('Airtable Client running in DEBUG MODE with SEQUENTIAL execution')
+            logging.info('Airtable Service running in DEBUG MODE with SEQUENTIAL execution')
 
         self.insufficient_only = insufficient_only
         if self.insufficient_only:
-            logging.info('Airtable Client running in FILTER MODE for "Insufficient" view only')
+            logging.info('Airtable Service running in FILTER MODE for "Insufficient" view only')
 
         self.AIRTABLE_BASE_ID = os.environ['AIRTABLE_BASE_ID']
         self.AIRTABLE_PERSONAL_ACCESS_TOKEN = os.environ['AIRTABLE_PERSONAL_ACCESS_TOKEN']
@@ -42,16 +43,13 @@ class AirtableClient:
         )
 
         self._all_third_places = None
-        
+
         if not provider_type:
-            raise ValueError("AirtableClient requires provider_type to be specified ('google' or 'outscraper').")
+            raise ValueError("AirtableService requires provider_type to be specified ('google' or 'outscraper').")
 
         self.provider_type = provider_type
-
-        from place_data_providers import PlaceDataProviderFactory
         self.data_provider = PlaceDataProviderFactory.get_provider(self.provider_type)
-        logging.info(f"Initialized data provider of type '{self.provider_type}'")
-        
+        logging.info(f"Initialized data service of type '{self.provider_type}'")
         self.api = Api(self.AIRTABLE_PERSONAL_ACCESS_TOKEN)
     
     @property
@@ -333,7 +331,7 @@ class AirtableClient:
 
     def get_place_photos(self, place_id: str) -> List[str]:
         """
-        Retrieves photos for a place using the configured data provider.
+        Retrieves photos for a place using the configured place data service.
 
         Args:
             place_id (str): The Google Maps Place Id of the place.
@@ -432,7 +430,7 @@ class AirtableClient:
         """
         Wrapper that calls refresh_single_place_operational_status for each place in all_third_places.
         Args:
-            data_provider: The data provider to use for checking operational status
+            data_provider: The place data service instance to use for checking operational status
         Returns:
             List[Dict[str, Any]]: Results for each place with update status and details
         """
@@ -447,7 +445,7 @@ class AirtableClient:
         Checks and updates the operational status for a single place record.
         Args:
             third_place: A dictionary containing place data from Airtable
-            data_provider: The data provider to use for checking operational status
+            data_provider: The place data service instance to use for checking operational status
         Returns:
             dict: Result of the operation including update status
         """
@@ -506,7 +504,7 @@ class AirtableClient:
         """
         Enriches all places in the Airtable base by calling enrich_single_place for each.
         Args:
-            provider_type: The data provider type (if None, uses self.provider_type)
+            provider_type: The place data service type (if None, uses self.provider_type)
             city: The city name (must be provided)
             force_refresh: Whether to force refresh cached data
         Returns:
