@@ -53,24 +53,25 @@
                 "the academy",
                 "barista"
             ],
-            "rating": 4.5,
-            "reviews": 12,
-            "photos_count": 25,
+            "rating": 4.8,
+            "reviews": 11,
+            "photos_count": 19,
             "cid": "4437980534803055330",
             "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJaWWErjIlVIgR4sIIccjflj0&authuser=0&hl=en&gl=US",
             "reviews_id": "4437980534803055330",
             "photo": "https://lh3.googleusercontent.com/p/AF1QipPQGzsk40gw6fU6IcAPC89hEUW9I8shsUbs2Fhq=w800-h500-k-no",
             "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Plt6yFcWQr2V0ny44b2tJg&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=312.97037&pitch=0&thumbfov=100",
-            "working_hours_old_format": "Monday:7AM-5PM|Tuesday:7AM-5PM|Wednesday:7AM-5PM|Thursday:7AM-5PM|Friday:7AM-5PM|Saturday:7AM-8PM|Sunday:9AM-4PM",
             "working_hours": {
-                "Monday": "7AM-5PM",
-                "Tuesday": "7AM-5PM",
-                "Wednesday": "7AM-5PM",
-                "Thursday": "7AM-5PM",
-                "Friday": "7AM-5PM",
-                "Saturday": "7AM-8PM",
-                "Sunday": "9AM-4PM"
+                "Sunday": "8AM-1PM",
+                "Monday": "8AM-1PM",
+                "Tuesday": "8AM-1PM",
+                "Wednesday": "8AM-1PM",
+                "Thursday": "8AM-1PM",
+                "Friday": "8AM-1PM",
+                "Saturday": "7AM-4PM"
             },
+            "working_hours_csv_compatible": "Sunday,8AM,1PM|Monday,8AM,1PM|Tuesday,8AM,1PM|Wednesday,8AM,1PM|Thursday,8AM,1PM|Friday,8AM,1PM|Saturday,7AM,4PM",
+            "working_hours_old_format": "Sunday:8AM-1PM|Monday:8AM-1PM|Tuesday:8AM-1PM|Wednesday:8AM-1PM|Thursday:8AM-1PM|Friday:8AM-1PM|Saturday:7AM-4PM",
             "other_hours": null,
             "business_status": "OPERATIONAL",
             "about": {
@@ -89,8 +90,7 @@
                     "Sports": true
                 },
                 "Popular for": {
-                    "Breakfast": true,
-                    "Solo dining": true
+                    "Breakfast": true
                 },
                 "Accessibility": {
                     "Wheelchair accessible entrance": true,
@@ -100,14 +100,14 @@
                     "Assistive hearing loop": false
                 },
                 "Offerings": {
-                    "Coffee": true,
-                    "Quick bite": true
+                    "Coffee": true
                 },
                 "Dining options": {
                     "Breakfast": true,
                     "Brunch": true,
                     "Dessert": true,
-                    "Seating": true
+                    "Seating": true,
+                    "Table service": false
                 },
                 "Amenities": {
                     "Restroom": true,
@@ -144,6 +144,7 @@
                 }
             },
             "range": "$1\u201310",
+            "prices": null,
             "reviews_per_score": null,
             "reviews_per_score_1": null,
             "reviews_per_score_2": null,
@@ -151,7 +152,7 @@
             "reviews_per_score_4": null,
             "reviews_per_score_5": null,
             "reservation_links": null,
-            "booking_appointment_link": "https://www.google.com/viewer/chooseprovider?mid=/g/11s8std4m1&g2lbs=AAEPWCs0RifYFpRydx8mQozyK2DtjCRksxZw58f1FWbWa4o8aJO9MU19Y_v9yvnrKqF30D2_7Luow6jPkdmMqb6kLVvOjaPpVg%3D%3D&hl=en-US&gl=us&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=tactile&gei=-8UCaPKGEI2ikPIP5tz_4Ak&ei=-8UCaPKGEI2ikPIP5tz_4Ak&fo_s=OA,SOE&opi=79508299&ebb=1&cs=0&foub=mcpp",
+            "booking_appointment_link": "https://www.google.com/viewer/chooseprovider?mid=/g/11s8std4m1&g2lbs=AO8LyOIEMyKTXgqQmyBem1RAu_xsm06gtBd1k7uKuqlrIMGplmKbbxZTY7EHAP3rVcxTE7UWQ96v12VGuuWAF90LVnB32rtLYQ%3D%3D&hl=en-US&gl=us&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=tactile&gei=Wzq2aPnOBfu_0PEP-c34sAI&ei=Wzq2aPnOBfu_0PEP-c34sAI&fo_s=OA,SOE&opi=79508299&ebb=1&cs=0&foub=mcpp",
             "menu_link": null,
             "order_links": null,
             "owner_id": "102066033345954035605",
@@ -169,7 +170,7 @@
             {
                 "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                 "review_id": "ChdDSUhNMG9nS0VJQ0FnTURJZ0pYM3R3RRAB",
-                "review_pagination_id": "CAESY0NBRVFBUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMjR6VEVNd2NsOWZSV2hEU0hkUE4xcFFibVU0TVdwRVQyZHlXVUZCUVVGQlIyZHVPVEpTT0VOaFptTnpURk56V1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFBUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMjR6VEVNd2NsOWZSV2hEU0hkUE4xcFFibVU0TVdwRVQyZHlXVUZCUVVGQlIyZHVPVEpYV1VOaFptTnpURk56V1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/111553833307427451099?hl=en",
                 "author_title": "Kyra McDonald",
                 "author_id": "111553833307427451099",
@@ -185,7 +186,7 @@
                     "Price per person": "$1\u201310",
                     "Food": "5",
                     "Atmosphere": "5",
-                    "Recommended dishes": "Cookies",
+                    "Recommended dishes": "Chocolate Chip Cookie",
                     "Recommendation for vegetarians": "Highly recommend",
                     "Parking space": "Plenty of parking",
                     "null": "Vegetarian options, Parking"
@@ -204,12 +205,12 @@
             {
                 "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                 "review_id": "ChZDSUhNMG9nS0VJQ0FnSURfMDVHdWNBEAE",
-                "review_pagination_id": "CAESY0NBRVFBeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pxWmpka0xWOWZSV2hDV2psYU0yMUZVeTEzYlhKWVpWbFljMEZCUVVGQlIyZHVPVEpXZDBOaGRVNWZkRE0wV1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFBeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pxWmpka0xWOWZSV2hDV2psYU0yMUZVeTEzYlhKWVpWbFljMEZCUVVGQlIyZHVPVEpsWTBOaGRVNWZkRE0wV1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/116156497042222933120?hl=en",
                 "author_title": "Kim K",
                 "author_id": "116156497042222933120",
                 "author_image": "https://lh3.googleusercontent.com/a-/ALV-UjUG8kkWvpHH1Ed3YgPn8XZm5g2zbgWyST2pOk0N_OPFU2WO-pX0=s120-c-rp-mo-ba4-br100",
-                "author_reviews_count": 155,
+                "author_reviews_count": 170,
                 "author_ratings_count": 0,
                 "review_text": "We stopped by in the afternoon for a girls hockey game and got a raspberry white chocolate mocha, and it was amazing!! Highly recommened! We got chocolate chip cookies to share and they were great too. Shoutout to Emmi for being a great barista!",
                 "review_img_urls": null,
@@ -218,7 +219,7 @@
                     "Service": "5",
                     "Food": "5",
                     "Atmosphere": "5",
-                    "Recommended dishes": "Cookies"
+                    "Recommended dishes": "Chocolate Chip Cookie"
                 },
                 "review_photo_ids": null,
                 "owner_answer": null,
@@ -234,7 +235,7 @@
             {
                 "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                 "review_id": "ChZDSUhNMG9nS0VJQ0FnSUNuc3J2ZFN3EAE",
-                "review_pagination_id": "CAESY0NBRVFCQnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSek5pU21NeVVWOWZSV2hFYUZOMlIxVjJTblkyVDFoMFptVjJRVUZCUVVGQlIyZHVPVE5LZDBOaVpITnNlbHBCV1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFCQnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSek5pU21NeVVWOWZSV2hFYUZOMlIxVjJTblkyVDFoMFptVjJRVUZCUVVGQlIyZHVPVE0yTkVOaVpITnNlbHBCV1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/108210961694820667907?hl=en",
                 "author_title": "Seth Houle",
                 "author_id": "108210961694820667907",
@@ -263,13 +264,13 @@
             {
                 "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                 "review_id": "ChdDSUhNMG9nS0VJQ0FnSUNuckktcTBBRRAB",
-                "review_pagination_id": "CAESY0NBRVFCUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSek5pVEdKRFZGOWZSV2hEYmxwUU1FZEhaaTFqWDBaemFtTnNaMEZCUVVGQlIyZHVPVEpmYzBOaVpITjBjMHBOV1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFCUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSek5pVEdKRFZGOWZSV2hEYmxwUU1FZEhaaTFqWDBaemFtTnNaMEZCUVVGQlIyZHVPVE4zTkVOaVpITjBjMHBOV1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/112971839719515149428?hl=en",
                 "author_title": "son seth",
                 "author_id": "112971839719515149428",
                 "author_image": "https://lh3.googleusercontent.com/a-/ALV-UjX3OHjvG5d4U4KVs8VruK79pERzctw-wC_4Txtf_A8Kf5hRntQ=s120-c-rp-mo-br100",
                 "author_reviews_count": 6,
-                "author_ratings_count": 0,
+                "author_ratings_count": 1,
                 "review_text": "This place is awsome the staff made a special menu for the academy. I will recommend everyone to this place",
                 "review_img_urls": null,
                 "review_img_url": null,
@@ -294,7 +295,7 @@
             {
                 "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                 "review_id": "ChZDSUhNMG9nS0VJQ0FnSURWaHQzc1RREAE",
-                "review_pagination_id": "CAESY0NBRVFDQnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTRTlvV1hJNGIxOWZSV2hFVG5BM1FqSjNkMWg0TVhKalJuaHBRVUZCUVVGQlIyZHVPVE42UVVOak5rWnBkbmxuV1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFCeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTRTlvV1hJNGIxOWZSV2hFVG5BM1FqSjNkMWg0TVhKalJuaHBRVUZCUVVGQlIyZHVPVFJPUVVOak5rWnBkbmxuV1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/117845876295879146273?hl=en",
                 "author_title": "Stephanie Clark",
                 "author_id": "117845876295879146273",
@@ -324,13 +325,13 @@
             {
                 "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                 "review_id": "ChZDSUhNMG9nS0VJQ0FnSUR4dUpuelJBEAE",
-                "review_pagination_id": "CAESY0NBRVFDaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTR1ZLU1hwaVpWOWZSV2hEY2pkc09DMW1kamhQV21VelFsOUVPRUZCUVVGQlIyZHVPVGhaWTBOa05HdHFUblEwV1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFDUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTR1ZLU1hwaVpWOWZSV2hEY2pkc09DMW1kamhQV21VelFsOUVPRUZCUVVGQlIyZHVPVGcyWTBOa05HdHFUblEwV1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/113120255361243238675?hl=en",
                 "author_title": "Terri Denman",
                 "author_id": "113120255361243238675",
                 "author_image": "https://lh3.googleusercontent.com/a-/ALV-UjWulnNZnX2X-P53HKEXvWVJj1H-B43JXTuOAp5LXxVM_naqdknMxg=s120-c-rp-mo-ba3-br100",
-                "author_reviews_count": 35,
-                "author_ratings_count": 27,
+                "author_reviews_count": 38,
+                "author_ratings_count": 28,
                 "review_text": "They weren't open like it was advertised.",
                 "review_img_urls": null,
                 "review_img_url": null,
@@ -349,7 +350,7 @@
             {
                 "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                 "review_id": "ChZDSUhNMG9nS0VJQ0FnSURCMG9MRFdBEAE",
-                "review_pagination_id": "CAESY0NBRVFDeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTSEJLYUUxNFlWOWZSV2hETFRZdFdqaDNValpxU1VkeVkwcFFPRUZCUVVGQlIyZHVPVGQ0YzBObGEyMUZla1p2V1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFDaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTSEJLYUUxNFlWOWZSV2hETFRZdFdqaDNValpxU1VkeVkwcFFPRUZCUVVGQlIyZHVPVGN6WjBObGEyMUZla1p2V1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/115563663610223042552?hl=en",
                 "author_title": "Matt Langford",
                 "author_id": "115563663610223042552",
@@ -379,7 +380,7 @@
                 "author_title": "Brian Zelaya",
                 "author_id": "109585238228050868405",
                 "author_image": "https://lh3.googleusercontent.com/a/ACg8ocIF8fzZK4TGo5WgoBezVqFfBNIuvlvuqO1p5SuKA_Fj4x48UQ=s120-c-rp-mo-ba2-br100",
-                "author_reviews_count": 15,
+                "author_reviews_count": 16,
                 "author_ratings_count": 4,
                 "review_text": "This place was an amazing little surprise to find in a roller rink. Got a latte and a breakfast sandwich and they were both beyond what I imagined they would be. Definitely worth checking out!",
                 "review_img_urls": null,
@@ -435,13 +436,13 @@
                 "the academy",
                 "barista"
             ],
-            "rating": 4.5,
-            "reviews": 12,
+            "rating": 4.8,
+            "reviews": 11,
             "reviews_data": [
                 {
                     "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                     "review_id": "ChdDSUhNMG9nS0VJQ0FnTURJZ0pYM3R3RRAB",
-                    "review_pagination_id": "CAESY0NBRVFBUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMjR6VEVNd2NsOWZSV2hEU0hkUE4xcFFibVU0TVdwRVQyZHlXVUZCUVVGQlIyZHVPVEpTT0VOaFptTnpURk56V1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFBUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMjR6VEVNd2NsOWZSV2hEU0hkUE4xcFFibVU0TVdwRVQyZHlXVUZCUVVGQlIyZHVPVEpYV1VOaFptTnpURk56V1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/111553833307427451099?hl=en",
                     "author_title": "Kyra McDonald",
                     "author_id": "111553833307427451099",
@@ -457,7 +458,7 @@
                         "Price per person": "$1\u201310",
                         "Food": "5",
                         "Atmosphere": "5",
-                        "Recommended dishes": "Cookies",
+                        "Recommended dishes": "Chocolate Chip Cookie",
                         "Recommendation for vegetarians": "Highly recommend",
                         "Parking space": "Plenty of parking",
                         "null": "Vegetarian options, Parking"
@@ -476,12 +477,12 @@
                 {
                     "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                     "review_id": "ChZDSUhNMG9nS0VJQ0FnSURfMDVHdWNBEAE",
-                    "review_pagination_id": "CAESY0NBRVFBeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pxWmpka0xWOWZSV2hDV2psYU0yMUZVeTEzYlhKWVpWbFljMEZCUVVGQlIyZHVPVEpXZDBOaGRVNWZkRE0wV1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFBeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pxWmpka0xWOWZSV2hDV2psYU0yMUZVeTEzYlhKWVpWbFljMEZCUVVGQlIyZHVPVEpsWTBOaGRVNWZkRE0wV1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/116156497042222933120?hl=en",
                     "author_title": "Kim K",
                     "author_id": "116156497042222933120",
                     "author_image": "https://lh3.googleusercontent.com/a-/ALV-UjUG8kkWvpHH1Ed3YgPn8XZm5g2zbgWyST2pOk0N_OPFU2WO-pX0=s120-c-rp-mo-ba4-br100",
-                    "author_reviews_count": 155,
+                    "author_reviews_count": 170,
                     "author_ratings_count": 0,
                     "review_text": "We stopped by in the afternoon for a girls hockey game and got a raspberry white chocolate mocha, and it was amazing!! Highly recommened! We got chocolate chip cookies to share and they were great too. Shoutout to Emmi for being a great barista!",
                     "review_img_urls": null,
@@ -490,7 +491,7 @@
                         "Service": "5",
                         "Food": "5",
                         "Atmosphere": "5",
-                        "Recommended dishes": "Cookies"
+                        "Recommended dishes": "Chocolate Chip Cookie"
                     },
                     "review_photo_ids": null,
                     "owner_answer": null,
@@ -506,7 +507,7 @@
                 {
                     "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                     "review_id": "ChZDSUhNMG9nS0VJQ0FnSUNuc3J2ZFN3EAE",
-                    "review_pagination_id": "CAESY0NBRVFCQnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSek5pU21NeVVWOWZSV2hFYUZOMlIxVjJTblkyVDFoMFptVjJRVUZCUVVGQlIyZHVPVE5LZDBOaVpITnNlbHBCV1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFCQnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSek5pU21NeVVWOWZSV2hFYUZOMlIxVjJTblkyVDFoMFptVjJRVUZCUVVGQlIyZHVPVE0yTkVOaVpITnNlbHBCV1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/108210961694820667907?hl=en",
                     "author_title": "Seth Houle",
                     "author_id": "108210961694820667907",
@@ -535,13 +536,13 @@
                 {
                     "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                     "review_id": "ChdDSUhNMG9nS0VJQ0FnSUNuckktcTBBRRAB",
-                    "review_pagination_id": "CAESY0NBRVFCUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSek5pVEdKRFZGOWZSV2hEYmxwUU1FZEhaaTFqWDBaemFtTnNaMEZCUVVGQlIyZHVPVEpmYzBOaVpITjBjMHBOV1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFCUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSek5pVEdKRFZGOWZSV2hEYmxwUU1FZEhaaTFqWDBaemFtTnNaMEZCUVVGQlIyZHVPVE4zTkVOaVpITjBjMHBOV1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/112971839719515149428?hl=en",
                     "author_title": "son seth",
                     "author_id": "112971839719515149428",
                     "author_image": "https://lh3.googleusercontent.com/a-/ALV-UjX3OHjvG5d4U4KVs8VruK79pERzctw-wC_4Txtf_A8Kf5hRntQ=s120-c-rp-mo-br100",
                     "author_reviews_count": 6,
-                    "author_ratings_count": 0,
+                    "author_ratings_count": 1,
                     "review_text": "This place is awsome the staff made a special menu for the academy. I will recommend everyone to this place",
                     "review_img_urls": null,
                     "review_img_url": null,
@@ -566,7 +567,7 @@
                 {
                     "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                     "review_id": "ChZDSUhNMG9nS0VJQ0FnSURWaHQzc1RREAE",
-                    "review_pagination_id": "CAESY0NBRVFDQnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTRTlvV1hJNGIxOWZSV2hFVG5BM1FqSjNkMWg0TVhKalJuaHBRVUZCUVVGQlIyZHVPVE42UVVOak5rWnBkbmxuV1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFCeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTRTlvV1hJNGIxOWZSV2hFVG5BM1FqSjNkMWg0TVhKalJuaHBRVUZCUVVGQlIyZHVPVFJPUVVOak5rWnBkbmxuV1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/117845876295879146273?hl=en",
                     "author_title": "Stephanie Clark",
                     "author_id": "117845876295879146273",
@@ -596,13 +597,13 @@
                 {
                     "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                     "review_id": "ChZDSUhNMG9nS0VJQ0FnSUR4dUpuelJBEAE",
-                    "review_pagination_id": "CAESY0NBRVFDaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTR1ZLU1hwaVpWOWZSV2hEY2pkc09DMW1kamhQV21VelFsOUVPRUZCUVVGQlIyZHVPVGhaWTBOa05HdHFUblEwV1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFDUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTR1ZLU1hwaVpWOWZSV2hEY2pkc09DMW1kamhQV21VelFsOUVPRUZCUVVGQlIyZHVPVGcyWTBOa05HdHFUblEwV1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/113120255361243238675?hl=en",
                     "author_title": "Terri Denman",
                     "author_id": "113120255361243238675",
                     "author_image": "https://lh3.googleusercontent.com/a-/ALV-UjWulnNZnX2X-P53HKEXvWVJj1H-B43JXTuOAp5LXxVM_naqdknMxg=s120-c-rp-mo-ba3-br100",
-                    "author_reviews_count": 35,
-                    "author_ratings_count": 27,
+                    "author_reviews_count": 38,
+                    "author_ratings_count": 28,
                     "review_text": "They weren't open like it was advertised.",
                     "review_img_urls": null,
                     "review_img_url": null,
@@ -621,7 +622,7 @@
                 {
                     "google_id": "0x88542532ae846569:0x3d96dfc87108c2e2",
                     "review_id": "ChZDSUhNMG9nS0VJQ0FnSURCMG9MRFdBEAE",
-                    "review_pagination_id": "CAESY0NBRVFDeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTSEJLYUUxNFlWOWZSV2hETFRZdFdqaDNValpxU1VkeVkwcFFPRUZCUVVGQlIyZHVPVGQ0YzBObGEyMUZla1p2V1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFDaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTSEJLYUUxNFlWOWZSV2hETFRZdFdqaDNValpxU1VkeVkwcFFPRUZCUVVGQlIyZHVPVGN6WjBObGEyMUZla1p2V1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/115563663610223042552?hl=en",
                     "author_title": "Matt Langford",
                     "author_id": "115563663610223042552",
@@ -651,7 +652,7 @@
                     "author_title": "Brian Zelaya",
                     "author_id": "109585238228050868405",
                     "author_image": "https://lh3.googleusercontent.com/a/ACg8ocIF8fzZK4TGo5WgoBezVqFfBNIuvlvuqO1p5SuKA_Fj4x48UQ=s120-c-rp-mo-ba2-br100",
-                    "author_reviews_count": 15,
+                    "author_reviews_count": 16,
                     "author_ratings_count": 4,
                     "review_text": "This place was an amazing little surprise to find in a roller rink. Got a latte and a breakfast sandwich and they were both beyond what I imagined they would be. Definitely worth checking out!",
                     "review_img_urls": null,
@@ -669,22 +670,23 @@
                     "reviews_id": "4437980534803055330"
                 }
             ],
-            "photos_count": 25,
+            "photos_count": 19,
             "cid": "4437980534803055330",
             "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJaWWErjIlVIgR4sIIccjflj0&authuser=0&hl=en&gl=US",
             "reviews_id": "4437980534803055330",
             "photo": "https://lh3.googleusercontent.com/p/AF1QipPQGzsk40gw6fU6IcAPC89hEUW9I8shsUbs2Fhq=w800-h500-k-no",
             "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Plt6yFcWQr2V0ny44b2tJg&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=312.97037&pitch=0&thumbfov=100",
-            "working_hours_old_format": "Monday:7AM-5PM|Tuesday:7AM-5PM|Wednesday:7AM-5PM|Thursday:7AM-5PM|Friday:7AM-5PM|Saturday:7AM-8PM|Sunday:9AM-4PM",
             "working_hours": {
-                "Monday": "7AM-5PM",
-                "Tuesday": "7AM-5PM",
-                "Wednesday": "7AM-5PM",
-                "Thursday": "7AM-5PM",
-                "Friday": "7AM-5PM",
-                "Saturday": "7AM-8PM",
-                "Sunday": "9AM-4PM"
+                "Sunday": "8AM-1PM",
+                "Monday": "8AM-1PM",
+                "Tuesday": "8AM-1PM",
+                "Wednesday": "8AM-1PM",
+                "Thursday": "8AM-1PM",
+                "Friday": "8AM-1PM",
+                "Saturday": "7AM-4PM"
             },
+            "working_hours_csv_compatible": "Sunday,8AM,1PM|Monday,8AM,1PM|Tuesday,8AM,1PM|Wednesday,8AM,1PM|Thursday,8AM,1PM|Friday,8AM,1PM|Saturday,7AM,4PM",
+            "working_hours_old_format": "Sunday:8AM-1PM|Monday:8AM-1PM|Tuesday:8AM-1PM|Wednesday:8AM-1PM|Thursday:8AM-1PM|Friday:8AM-1PM|Saturday:7AM-4PM",
             "other_hours": null,
             "business_status": "OPERATIONAL",
             "about": {
@@ -703,8 +705,7 @@
                     "Sports": true
                 },
                 "Popular for": {
-                    "Breakfast": true,
-                    "Solo dining": true
+                    "Breakfast": true
                 },
                 "Accessibility": {
                     "Wheelchair accessible entrance": true,
@@ -714,14 +715,14 @@
                     "Assistive hearing loop": false
                 },
                 "Offerings": {
-                    "Coffee": true,
-                    "Quick bite": true
+                    "Coffee": true
                 },
                 "Dining options": {
                     "Breakfast": true,
                     "Brunch": true,
                     "Dessert": true,
-                    "Seating": true
+                    "Seating": true,
+                    "Table service": false
                 },
                 "Amenities": {
                     "Restroom": true,
@@ -758,6 +759,7 @@
                 }
             },
             "range": "$1\u201310",
+            "prices": null,
             "reviews_per_score": null,
             "reviews_per_score_1": null,
             "reviews_per_score_2": null,
@@ -765,7 +767,7 @@
             "reviews_per_score_4": null,
             "reviews_per_score_5": null,
             "reservation_links": null,
-            "booking_appointment_link": "https://www.google.com/viewer/chooseprovider?mid=/g/11s8std4m1&g2lbs=AAEPWCtTG4G0WPYVzmG0BuBXf5Fh8PGOna6xJ6mqXxMUkgeFihhVT_ZM4vYeuzfIvsizq4dxx4iJKwQKTVlbwJaDPj-WZYNw8g%3D%3D&hl=en-US&gl=us&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=tactile&gei=_8UCaJOnCs245OUPv9TbuAc&ei=_8UCaJOnCs245OUPv9TbuAc&fo_s=OA,SOE&opi=79508299&ebb=1&cs=0&foub=mcpp",
+            "booking_appointment_link": "https://www.google.com/viewer/chooseprovider?mid=/g/11s8std4m1&g2lbs=AO8LyOJEoyIlq459V-z0Ys2HHbzBxLtydQF8dOvAaXYecT2Ft29dnBH_nEyYY0ei7ukVt18SjVz1U5HQwY9xByaG05bZeIcpEA%3D%3D&hl=en-US&gl=us&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=tactile&gei=YDq2aOSyA4bg7_UP28LN8A0&ei=YDq2aOSyA4bg7_UP28LN8A0&fo_s=OA,SOE&opi=79508299&ebb=1&cs=0&foub=mcpp",
             "menu_link": null,
             "order_links": null,
             "owner_id": "102066033345954035605",
@@ -778,7 +780,7 @@
     },
     "photos": {
         "place_id": "ChIJaWWErjIlVIgR4sIIccjflj0",
-        "message": "Photos refreshed by admin function using outscraper selection algorithm",
+        "message": "Retrieved from Airtable",
         "photo_urls": [
             "https://lh3.googleusercontent.com/p/AF1QipPQGzsk40gw6fU6IcAPC89hEUW9I8shsUbs2Fhq=w2048-h2048-k-no",
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Plt6yFcWQr2V0ny44b2tJg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=312.97037&pitch=0&thumbfov=100",
@@ -805,426 +807,8 @@
             "https://lh3.googleusercontent.com/p/AF1QipPpXZGurrSMEyPDVxnqUq7dT-wGWYVAwW9vDrn2=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNUQYKy_5v9EId_uzpL7bTqa0IYKVaIZLfccx-y=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNIptHxMi1mucmLPo77tyFPSh8RsI3KGFL5al87=w2048-h2048-k-no"
-        ],
-        "raw_data": [
-            {
-                "photo_id": "AF1QipPQGzsk40gw6fU6IcAPC89hEUW9I8shsUbs2Fhq",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipPQGzsk40gw6fU6IcAPC89hEUW9I8shsUbs2Fhq",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipPQGzsk40gw6fU6IcAPC89hEUW9I8shsUbs2Fhq=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "vibe",
-                    "all"
-                ],
-                "photo_tag_ids": [
-                    9,
-                    1
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipPQGzsk40gw6fU6IcAPC89hEUW9I8shsUbs2Fhq=w203-h111-k-no"
-            },
-            {
-                "photo_id": "AF1QipNWcWVc4Ivj4SRmyyhcCcH8iI3EYg5BAubLHFfA",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNWcWVc4Ivj4SRmyyhcCcH8iI3EYg5BAubLHFfA",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNWcWVc4Ivj4SRmyyhcCcH8iI3EYg5BAubLHFfA=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": "https://lh3.googleusercontent.com/ggs/AF1QipNWcWVc4Ivj4SRmyyhcCcH8iI3EYg5BAubLHFfA=m18",
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNWcWVc4Ivj4SRmyyhcCcH8iI3EYg5BAubLHFfA=w203-h114-k-no"
-            },
-            {
-                "photo_id": "AF1QipNgHdxue58u3_FzzMUhlIoTGcUWsMxoIQCSwNa1",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNgHdxue58u3_FzzMUhlIoTGcUWsMxoIQCSwNa1",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNgHdxue58u3_FzzMUhlIoTGcUWsMxoIQCSwNa1=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNgHdxue58u3_FzzMUhlIoTGcUWsMxoIQCSwNa1=w203-h152-k-no"
-            },
-            {
-                "photo_id": "AF1QipOVrLa1X3yEM7T_b3WR4EzIsiaVlRO8a6T1WbgQ",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipOVrLa1X3yEM7T_b3WR4EzIsiaVlRO8a6T1WbgQ",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipOVrLa1X3yEM7T_b3WR4EzIsiaVlRO8a6T1WbgQ=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/22/2022 15:00:00",
-                "photo_upload_source": "gmb_ios",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipOVrLa1X3yEM7T_b3WR4EzIsiaVlRO8a6T1WbgQ=w203-h135-k-no"
-            },
-            {
-                "photo_id": "AF1QipPhQsmbwxOPVZfVfZXpmPlsW_5iDaTVJJ2pN0i_",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipPhQsmbwxOPVZfVfZXpmPlsW_5iDaTVJJ2pN0i_",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipPhQsmbwxOPVZfVfZXpmPlsW_5iDaTVJJ2pN0i_=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipPhQsmbwxOPVZfVfZXpmPlsW_5iDaTVJJ2pN0i_=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipOc8aO9V8hkOQwkMbHMtZHnmeGQM9I6pN8dyMVE",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipOc8aO9V8hkOQwkMbHMtZHnmeGQM9I6pN8dyMVE",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipOc8aO9V8hkOQwkMbHMtZHnmeGQM9I6pN8dyMVE=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/22/2022 15:00:00",
-                "photo_upload_source": "gmb_ios",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipOc8aO9V8hkOQwkMbHMtZHnmeGQM9I6pN8dyMVE=w203-h135-k-no"
-            },
-            {
-                "photo_id": "AF1QipPb__A33dmSPflSXHjMQEL2BmA9xX9JwSR_IitF",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipPb__A33dmSPflSXHjMQEL2BmA9xX9JwSR_IitF",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipPb__A33dmSPflSXHjMQEL2BmA9xX9JwSR_IitF=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/22/2022 15:00:00",
-                "photo_upload_source": "gmb_ios",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipPb__A33dmSPflSXHjMQEL2BmA9xX9JwSR_IitF=w203-h135-k-no"
-            },
-            {
-                "photo_id": "AF1QipPftBIAPJHnL8ilSaX6ADX3X25xdc4p26K_PEuE",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipPftBIAPJHnL8ilSaX6ADX3X25xdc4p26K_PEuE",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipPftBIAPJHnL8ilSaX6ADX3X25xdc4p26K_PEuE=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": null,
-                "photo_tag_ids": null,
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipPftBIAPJHnL8ilSaX6ADX3X25xdc4p26K_PEuE=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipO09VJpwdavEE3xflMr2DuOzq8g1oJxKYI5YGQs",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipO09VJpwdavEE3xflMr2DuOzq8g1oJxKYI5YGQs",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipO09VJpwdavEE3xflMr2DuOzq8g1oJxKYI5YGQs=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/22/2022 15:00:00",
-                "photo_upload_source": "gmb_ios",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipO09VJpwdavEE3xflMr2DuOzq8g1oJxKYI5YGQs=w203-h135-k-no"
-            },
-            {
-                "photo_id": "AF1QipNPFvbz6AUGyIZiaRqEbIwx8oJ0X5Nlj8vYwDGp",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNPFvbz6AUGyIZiaRqEbIwx8oJ0X5Nlj8vYwDGp",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNPFvbz6AUGyIZiaRqEbIwx8oJ0X5Nlj8vYwDGp=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": null,
-                "photo_tag_ids": null,
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNPFvbz6AUGyIZiaRqEbIwx8oJ0X5Nlj8vYwDGp=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipNnGENLc0lvNtbLA3a_nTivrcrwlTccJ3z0Qps3",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNnGENLc0lvNtbLA3a_nTivrcrwlTccJ3z0Qps3",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNnGENLc0lvNtbLA3a_nTivrcrwlTccJ3z0Qps3=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNnGENLc0lvNtbLA3a_nTivrcrwlTccJ3z0Qps3=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipPYzyySPG47I1QKF1QoVlZoXfSrRmQGCR0F9nW_",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipPYzyySPG47I1QKF1QoVlZoXfSrRmQGCR0F9nW_",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipPYzyySPG47I1QKF1QoVlZoXfSrRmQGCR0F9nW_=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/22/2022 15:00:00",
-                "photo_upload_source": "gmb_ios",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipPYzyySPG47I1QKF1QoVlZoXfSrRmQGCR0F9nW_=w203-h135-k-no"
-            },
-            {
-                "photo_id": "AF1QipP8nHbYdKYXdkUMMh5vZHl-yo076h5h7i5XEwbr",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipP8nHbYdKYXdkUMMh5vZHl-yo076h5h7i5XEwbr",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipP8nHbYdKYXdkUMMh5vZHl-yo076h5h7i5XEwbr=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "drink",
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    3,
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipP8nHbYdKYXdkUMMh5vZHl-yo076h5h7i5XEwbr=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipMQQ50UOqCjZVGGUB3_WSQ87IBU682GPn4iis03",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipMQQ50UOqCjZVGGUB3_WSQ87IBU682GPn4iis03",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipMQQ50UOqCjZVGGUB3_WSQ87IBU682GPn4iis03=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipMQQ50UOqCjZVGGUB3_WSQ87IBU682GPn4iis03=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipONE6NnSMwd3G6PvgXQxysJLpxTEeFuBgJpIa5_",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipONE6NnSMwd3G6PvgXQxysJLpxTEeFuBgJpIa5_",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipONE6NnSMwd3G6PvgXQxysJLpxTEeFuBgJpIa5_=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": null,
-                "photo_tag_ids": null,
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipONE6NnSMwd3G6PvgXQxysJLpxTEeFuBgJpIa5_=w203-h152-k-no"
-            },
-            {
-                "photo_id": "AF1QipMecr6hfxUS_VbMPtbvQG6CylZG5QMjh9FTJBXR",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipMecr6hfxUS_VbMPtbvQG6CylZG5QMjh9FTJBXR",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipMecr6hfxUS_VbMPtbvQG6CylZG5QMjh9FTJBXR=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/22/2022 15:00:00",
-                "photo_upload_source": "gmb_ios",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipMecr6hfxUS_VbMPtbvQG6CylZG5QMjh9FTJBXR=w203-h135-k-no"
-            },
-            {
-                "photo_id": "AF1QipM5eem4PP0WGSBP500yJN2OJpylkePDyhqk2mmG",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipM5eem4PP0WGSBP500yJN2OJpylkePDyhqk2mmG",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipM5eem4PP0WGSBP500yJN2OJpylkePDyhqk2mmG=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/22/2022 15:00:00",
-                "photo_upload_source": "gmb_ios",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipM5eem4PP0WGSBP500yJN2OJpylkePDyhqk2mmG=w203-h135-k-no"
-            },
-            {
-                "photo_id": "AF1QipNTZs5scF7FuS7Knnu2Cz3VHR94BjbMmxWVyijI",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNTZs5scF7FuS7Knnu2Cz3VHR94BjbMmxWVyijI",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNTZs5scF7FuS7Knnu2Cz3VHR94BjbMmxWVyijI=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "drink"
-                ],
-                "photo_tag_ids": [
-                    3
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNTZs5scF7FuS7Knnu2Cz3VHR94BjbMmxWVyijI=w203-h152-k-no"
-            },
-            {
-                "photo_id": "AF1QipPpXZGurrSMEyPDVxnqUq7dT-wGWYVAwW9vDrn2",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipPpXZGurrSMEyPDVxnqUq7dT-wGWYVAwW9vDrn2",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipPpXZGurrSMEyPDVxnqUq7dT-wGWYVAwW9vDrn2=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "drink",
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    3,
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipPpXZGurrSMEyPDVxnqUq7dT-wGWYVAwW9vDrn2=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipNUQYKy_5v9EId_uzpL7bTqa0IYKVaIZLfccx-y",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNUQYKy_5v9EId_uzpL7bTqa0IYKVaIZLfccx-y",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNUQYKy_5v9EId_uzpL7bTqa0IYKVaIZLfccx-y=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": null,
-                "photo_tag_ids": null,
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNUQYKy_5v9EId_uzpL7bTqa0IYKVaIZLfccx-y=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipMf1StOsaiKgChkc5WNxDwlJq4aD20iEofeCHTg",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipMf1StOsaiKgChkc5WNxDwlJq4aD20iEofeCHTg",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipMf1StOsaiKgChkc5WNxDwlJq4aD20iEofeCHTg=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/22/2022 15:00:00",
-                "photo_upload_source": "gmb_ios",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipMf1StOsaiKgChkc5WNxDwlJq4aD20iEofeCHTg=w203-h135-k-no"
-            },
-            {
-                "photo_id": "AF1QipNIptHxMi1mucmLPo77tyFPSh8RsI3KGFL5al87",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNIptHxMi1mucmLPo77tyFPSh8RsI3KGFL5al87",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNIptHxMi1mucmLPo77tyFPSh8RsI3KGFL5al87=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/8/2022 15:00:00",
-                "photo_upload_source": "gmb_web",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNIptHxMi1mucmLPo77tyFPSh8RsI3KGFL5al87=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipNog7AVpm1_xjSRothe3K55_4sY8xvyUZOCy6Pv",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNog7AVpm1_xjSRothe3K55_4sY8xvyUZOCy6Pv",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNog7AVpm1_xjSRothe3K55_4sY8xvyUZOCy6Pv=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/22/2022 15:00:00",
-                "photo_upload_source": "gmb_ios",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNog7AVpm1_xjSRothe3K55_4sY8xvyUZOCy6Pv=w203-h135-k-no"
-            },
-            {
-                "photo_id": "AF1QipNYMhF6HUlUJQIgtBNVUhe7MBEZGh06RqEzJjeb",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNYMhF6HUlUJQIgtBNVUhe7MBEZGh06RqEzJjeb",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNYMhF6HUlUJQIgtBNVUhe7MBEZGh06RqEzJjeb=w2048-h2048-k-no",
-                "latitude": 35.0916348,
-                "longitude": -80.6518548,
-                "photo_date": "10/22/2022 15:00:00",
-                "photo_upload_source": "gmb_ios",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "food"
-                ],
-                "photo_tag_ids": [
-                    8
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNYMhF6HUlUJQIgtBNVUhe7MBEZGh06RqEzJjeb=w203-h135-k-no"
-            },
-            {
-                "photo_id": "Plt6yFcWQr2V0ny44b2tJg",
-                "photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Plt6yFcWQr2V0ny44b2tJg&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=312.97037&pitch=0&thumbfov=100",
-                "photo_url_big": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Plt6yFcWQr2V0ny44b2tJg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=312.97037&pitch=0&thumbfov=100",
-                "latitude": 35.09162105756398,
-                "longitude": -80.65186997465214,
-                "photo_date": "11/30/2018 16:00:00",
-                "photo_upload_source": "launch",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "front"
-                ],
-                "photo_tag_ids": [
-                    2
-                ],
-                "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Plt6yFcWQr2V0ny44b2tJg&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=312.97037&pitch=0&thumbfov=100"
-            }
-        ],
-        "last_refreshed": "2025-05-26T15:45:54.718156"
+        ]
     },
     "data_source": "OutscraperProvider",
-    "last_updated": "2025-04-18T17:37:05.593792"
+    "last_updated": "2025-09-01T20:29:22.431803"
 }
