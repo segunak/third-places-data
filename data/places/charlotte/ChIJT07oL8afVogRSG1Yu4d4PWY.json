@@ -1,13 +1,13 @@
 {
     "place_id": "ChIJT07oL8afVogRSG1Yu4d4PWY",
-    "place_name": "Summit Coffee | Wilmore",
+    "place_name": "Summit Coffee | South End",
     "details": {
         "place_name": "Summit Coffee Wilmore",
         "place_id": "ChIJT07oL8afVogRSG1Yu4d4PWY",
         "google_maps_url": "https://maps.google.com/?cid=7367177089807052104",
         "website": "https://www.summitcoffee.com/",
         "address": "536 W Tremont Ave #102, Charlotte, NC 28203",
-        "description": "Coming Soon!\nSpecialty coffee, local pastries, craft beer & wine.",
+        "description": "Summit Coffee is a neighborhood cafe creating moments of joy through good coffee, genuine hospitality, and a space built for community. We're serving up NC roasted coffee, tea and freshly baked pastries.",
         "purchase_required": "Yes",
         "parking": [
             "Unsure"
@@ -21,7 +21,7 @@
             "place_id": "ChIJT07oL8afVogRSG1Yu4d4PWY",
             "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
             "kgmid": "/g/11vwhv6wlq",
-            "full_address": "536 W Tremont Ave #102, Charlotte, NC 28203",
+            "full_address": "536 W Tremont Ave #102, Charlotte, NC 28203, United States",
             "borough": "Wilmore",
             "street": "536 W Tremont Ave #102",
             "postal_code": "28203",
@@ -41,7 +41,7 @@
             "phone": "+1 980-380-8872",
             "type": "Coffee shop",
             "logo": "https://lh5.googleusercontent.com/-cpFKn6CCszs/AAAAAAAAAAI/AAAAAAAAAAA/1iN7pcimdhU/s44-p-k-no-ns-nd/photo.jpg",
-            "description": "Coming Soon!\nSpecialty coffee, local pastries, craft beer & wine.",
+            "description": "Summit Coffee is a neighborhood cafe creating moments of joy through good coffee, genuine hospitality, and a space built for community. We're serving up NC roasted coffee, tea and freshly baked pastries.",
             "typical_time_spent": null,
             "located_in": null,
             "located_google_id": null,
@@ -49,47 +49,58 @@
             "subtypes": "Coffee shop",
             "posts": null,
             "reviews_tags": [
-                "parking"
+                "parking",
+                "space",
+                "barista"
             ],
-            "rating": 4.4,
-            "reviews": 7,
-            "photos_count": 9,
+            "rating": 4.6,
+            "reviews": 12,
+            "photos_count": 56,
             "cid": "7367177089807052104",
-            "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJT07oL8afVogRSG1Yu4d4PWY&authuser=0&hl=en&gl=US",
+            "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJT07oL8afVogRSG1Yu4d4PWY&authuser=0&hl=en&gl=UA",
             "reviews_id": "7367177089807052104",
-            "photo": "https://lh3.googleusercontent.com/p/AF1QipMpYrINbiP6ntdF06KnGCrUpMMlyB2tUFWpmtFk=w800-h500-k-no",
-            "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Iw3fVTQzRLQp4nTWSQFE6g&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=332.92307&pitch=0&thumbfov=100",
-            "working_hours_old_format": "Monday:7AM-5PM|Tuesday:7AM-5PM|Wednesday:7AM-5PM|Thursday:7AM-5PM|Friday:7AM-5PM|Saturday:7AM-5PM|Sunday:7AM-5PM",
+            "photo": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4novFXV72IjFPVF8E59aTsOzu9PHLwDwySuOuK9-56fIOr4BA7BAhQ0Uh5wrDQYwgXAtCfbnqNCJ1YjdGB4MOOKrHO8jafoZAf3uKB1lFdJqT90Eof5oDkhZ4FkeVbhq1OJn-cYxSg=w800-h500-k-no",
+            "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Iw3fVTQzRLQp4nTWSQFE6g&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=332.71658&pitch=0&thumbfov=100",
             "working_hours": {
+                "Sunday": "7AM-5PM",
                 "Monday": "7AM-5PM",
                 "Tuesday": "7AM-5PM",
                 "Wednesday": "7AM-5PM",
                 "Thursday": "7AM-5PM",
                 "Friday": "7AM-5PM",
-                "Saturday": "7AM-5PM",
-                "Sunday": "7AM-5PM"
+                "Saturday": "7AM-5PM"
             },
+            "working_hours_csv_compatible": "Sunday,7AM,5PM|Monday,7AM,5PM|Tuesday,7AM,5PM|Wednesday,7AM,5PM|Thursday,7AM,5PM|Friday,7AM,5PM|Saturday,7AM,5PM",
+            "working_hours_old_format": "Sunday:7AM-5PM|Monday:7AM-5PM|Tuesday:7AM-5PM|Wednesday:7AM-5PM|Thursday:7AM-5PM|Friday:7AM-5PM|Saturday:7AM-5PM",
             "other_hours": null,
             "business_status": "OPERATIONAL",
             "about": {
                 "Service options": {
-                    "Takeout": true,
+                    "Delivery": true,
+                    "Takeaway": true,
                     "Dine-in": true
                 },
                 "Highlights": {
-                    "Great coffee": true
+                    "Great coffee": true,
+                    "Great tea selection": true
                 },
                 "Accessibility": {
-                    "Wheelchair accessible parking lot": true
+                    "Wheelchair-accessible car park": true
                 },
                 "Offerings": {
                     "Coffee": true
                 },
+                "Dining options": {
+                    "Catering": true
+                },
                 "Atmosphere": {
-                    "Casual": true
+                    "Casual": true,
+                    "Trendy": true
                 },
                 "Payments": {
-                    "Credit cards": true
+                    "Credit cards": true,
+                    "Debit cards": true,
+                    "NFC mobile payments": true
                 },
                 "Children": {
                     "Kids' menu": true
@@ -99,6 +110,7 @@
                 }
             },
             "range": "$1\u201310",
+            "prices": null,
             "reviews_per_score": null,
             "reviews_per_score_1": null,
             "reviews_per_score_2": null,
@@ -106,9 +118,11 @@
             "reviews_per_score_4": null,
             "reviews_per_score_5": null,
             "reservation_links": null,
-            "booking_appointment_link": null,
+            "booking_appointment_link": "https://www.doordash.com/store/summit-coffee-charlotte-33747147/?utm_campaign=gpa&rwg_token=ACgRB3d35QyyN2WX-6vXdmaStXZqvG-nz_eXTyPbOwZtnVhMa0JE3t56NAHTYIESwGgJ1t3VsgSzAgz0OkjY2_FuKaGGICK5nk5v2hBJFPwviPY8V1VPoVw%3D",
             "menu_link": "https://www.summitcoffee.com/menu",
-            "order_links": null,
+            "order_links": [
+                "https://www.doordash.com/store/summit-coffee-charlotte-33747147/?utm_campaign=gpa&rwg_token=ACgRB3d35QyyN2WX-6vXdmaStXZqvG-nz_eXTyPbOwZtnVhMa0JE3t56NAHTYIESwGgJ1t3VsgSzAgz0OkjY2_FuKaGGICK5nk5v2hBJFPwviPY8V1VPoVw%3D"
+            ],
             "owner_id": "106995098253171564611",
             "verified": true,
             "owner_title": "Summit Coffee Wilmore",
@@ -123,14 +137,104 @@
         "reviews_data": [
             {
                 "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
+                "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2toVk5VdExMVFpVYkRac1FXRlVjMHhtZVZKak5IYxAB",
+                "review_pagination_id": "CAESY0NBRVFBeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMmhKZFZWNVExOWZSV2hCYlhkdFZrMUNXbDgyVEdGcVExVkZTVUZCUVVGQlIyZHVPVEpsYzBOaFJXazFWRWxKV1VGRFNVRQ==",
+                "author_link": "https://www.google.com/maps/contrib/117726704720410016795?hl=en",
+                "author_title": "Caroline Hager",
+                "author_id": "117726704720410016795",
+                "author_image": "https://lh3.googleusercontent.com/a/ACg8ocIg1-5_8cviiIkfs9IPv7V6P5OQ3LfPhqzlMS8xInXgDXI4kw=s120-c-rp-mo-br100",
+                "author_reviews_count": 7,
+                "author_ratings_count": 3,
+                "review_text": "Food and service are great but SO MANY FLIES on the porch! If they could do something about that it would be my new favorite!",
+                "review_img_urls": null,
+                "review_img_url": null,
+                "review_questions": {
+                    "Price per person": "$1\u201310",
+                    "Food": "5",
+                    "Service": "5",
+                    "Atmosphere": "3"
+                },
+                "review_photo_ids": null,
+                "owner_answer": "Hi, Caroline!\nThanks for taking the time to leave us a review. We LOVE that you love our food and service, and apologize for the flies outside. Please know that we\u2019re actively working on a solution for this and it should be resolved soon. \nHope to see you again soon! :)",
+                "owner_answer_timestamp": 1751297072,
+                "owner_answer_timestamp_datetime_utc": "06/30/2025 15:24:32",
+                "review_link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2toVk5VdExMVFpVYkRac1FXRlVjMHhtZVZKak5IYxAB!2m1!1s0x0:0x663d7887bb586d48!3m1!1s2@1:CAIQACodChtycF9oOkhVNUtLLTZUbDZsQWFUc0xmeVJjNHc%7C0cN07OQxGSc%7C?hl=en",
+                "review_rating": 4,
+                "review_timestamp": 1751126553,
+                "review_datetime_utc": "06/28/2025 16:02:33",
+                "review_likes": null,
+                "reviews_id": "7367177089807052104"
+            },
+            {
+                "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
+                "review_id": "ChZDSUhNMG9nS0VJZmg2X3VxNS1UVkR3EAE",
+                "review_pagination_id": "CAESY0NBRVFCQnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMnRyY1hjMWFGOWZSV2hDUmxsNGFYZFdjbFY1VlhKdGFWVnBXVUZCUVVGQlIyZHVPVEpYT0VOaFUxTnlSRzFGV1VGRFNVRQ==",
+                "author_link": "https://www.google.com/maps/contrib/106014529377572083058?hl=en",
+                "author_title": "Alessandro Cepero",
+                "author_id": "106014529377572083058",
+                "author_image": "https://lh3.googleusercontent.com/a/ACg8ocKx3ILkUPKt-n7-dc6nucrHqWIjUtOdgaGT8Fc4z1WzAQhJrA=s120-c-rp-mo-br100",
+                "author_reviews_count": 4,
+                "author_ratings_count": 1,
+                "review_text": "Great shop with a ton of space to work and study. The staff is very friendly and the coffee is great. All around would recommend to anyone looking for a great coffee shop.",
+                "review_img_urls": null,
+                "review_img_url": null,
+                "review_questions": {
+                    "Price per person": "$1\u201310",
+                    "Food": "5",
+                    "Service": "5",
+                    "Atmosphere": "5",
+                    "Wait time": "No wait"
+                },
+                "review_photo_ids": null,
+                "owner_answer": "Thanks so much! Looking forward to seeing you again soon!",
+                "owner_answer_timestamp": 1749491464,
+                "owner_answer_timestamp_datetime_utc": "06/09/2025 17:51:04",
+                "review_link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJZmg2X3VxNS1UVkR3EAE!2m1!1s0x0:0x663d7887bb586d48!3m1!1s2@1:CIHM0ogKEIfh6_uq5-TVDw%7CCgwI04efwQYQoNvfqgE%7C?hl=en",
+                "review_rating": 5,
+                "review_timestamp": 1747436499,
+                "review_datetime_utc": "05/16/2025 23:01:39",
+                "review_likes": null,
+                "reviews_id": "7367177089807052104"
+            },
+            {
+                "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
+                "review_id": "ChZDSUhNMG9nS0VQRFlxTFBybk11MVZBEAE",
+                "review_pagination_id": "CAESY0NBRVFCUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMnR5Ukd3eE1GOWZSV2hFV1hONGVVWTNVbE5sTFVKTlFrTk1NRUZCUVVGQlIyZHVPVEpTYjBOaFUzTlBXRmhSV1VGRFNVRQ==",
+                "author_link": "https://www.google.com/maps/contrib/109514450926780467451?hl=en",
+                "author_title": "Lauryn Anderson",
+                "author_id": "109514450926780467451",
+                "author_image": "https://lh3.googleusercontent.com/a/ACg8ocLTzkpUjMC4v5cijRNA6o6NbS0R7oI7gIXoEXGonEu6Qv0djA=s120-c-rp-mo-br100",
+                "author_reviews_count": 1,
+                "author_ratings_count": 0,
+                "review_text": "I love summit already but today was my first 5 stars across the board. The space has a beautiful aesthetic, with a cute little patio are & its extremely clean. It even smells clean & fresh. Plus the baristas are super sweet. I love it!",
+                "review_img_urls": null,
+                "review_img_url": null,
+                "review_questions": {
+                    "Food": "5",
+                    "Service": "5",
+                    "Atmosphere": "5"
+                },
+                "review_photo_ids": null,
+                "owner_answer": "Thanks for your kind words, Lauryn! We\u2019re so glad you love our space as much as we do! ",
+                "owner_answer_timestamp": 1749491444,
+                "owner_answer_timestamp_datetime_utc": "06/09/2025 17:50:44",
+                "review_link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VQRFlxTFBybk11MVZBEAE!2m1!1s0x0:0x663d7887bb586d48!3m1!1s2@1:CIHM0ogKEPDYqLPrnMu1VA%7CCgwIr8KYwQYQoOGX6AI%7C?hl=en",
+                "review_rating": 5,
+                "review_timestamp": 1747329327,
+                "review_datetime_utc": "05/15/2025 17:15:27",
+                "review_likes": null,
+                "reviews_id": "7367177089807052104"
+            },
+            {
+                "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
                 "review_id": "ChZDSUhNMG9nS0VJQ0FnTUNJNU15RGJBEAE",
-                "review_pagination_id": "CAESY0NBRVFBaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMjlaWHpOYVRsOWZSV2hCYW5KNGVXbzRiR1V4YTBKSlpGVnBUVUZCUVVGQlIyZHVPVFJzUlVOaGFHcGZaR3N3V1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFCeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMjlaWHpOYVRsOWZSV2hCYW5KNGVXbzRiR1V4YTBKSlpGVnBUVUZCUVVGQlIyZHVPVFYxV1VOaGFHcGZaR3N3V1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/111745495421761615464?hl=en",
                 "author_title": "Mark Vaccaro",
                 "author_id": "111745495421761615464",
                 "author_image": "https://lh3.googleusercontent.com/a/ACg8ocJe-CQdmA9BEsITMyd_CvmgFGEMk0U2yHBqJSNLqd6shsOCHA=s120-c-rp-mo-br100",
                 "author_reviews_count": 8,
-                "author_ratings_count": 1,
+                "author_ratings_count": 3,
                 "review_text": "Everyone here is so nice!",
                 "review_img_urls": null,
                 "review_img_url": null,
@@ -155,7 +259,7 @@
             {
                 "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
                 "review_id": "ChdDSUhNMG9nS0VJQ0FnTUNnNklxN3R3RRAB",
-                "review_pagination_id": "CAESY0NBRVFCQnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pmUTBSNVpsOWZSV2hCWVhaRWMyVTFWRkJuZFRCVGVsUkZUVUZCUVVGQlIyZHVPVEpSV1VOaGRqaEpVRW80V1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFDUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pmUTBSNVpsOWZSV2hCWVhaRWMyVTFWRkJuZFRCVGVsUkZUVUZCUVVGQlIyZHVPVEpWUVVOaGRqaEpVRW80V1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/103857818324751201523?hl=en",
                 "author_title": "Nam",
                 "author_id": "103857818324751201523",
@@ -184,7 +288,7 @@
             {
                 "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
                 "review_id": "ChZDSUhNMG9nS0VJQ0FnTUNnNlBDZ2ZnEAE",
-                "review_pagination_id": "CAESY0NBRVFCUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pmUjJkTmRWOWZSV2hFWTFvMlFtZE9aV1F0Tm5neU5WOXNhMEZCUVVGQlIyZHVPVEprVVVOaGRqaGhRWGswV1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFDaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pmUjJkTmRWOWZSV2hFWTFvMlFtZE9aV1F0Tm5neU5WOXNhMEZCUVVGQlIyZHVPVEo0VlVOaGRqaGhRWGswV1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/112469675670275756253?hl=en",
                 "author_title": "Ivy Interiano",
                 "author_id": "112469675670275756253",
@@ -212,7 +316,7 @@
             {
                 "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
                 "review_id": "ChZDSUhNMG9nS0VJQ0FnTURBb3Bia1ZnEAE",
-                "review_pagination_id": "CAESY0NBRVFCaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM05sUTFKNVMxOWZSV2hFTkU5bU5IcHdaVGRMV0VOU1FXNUpVVUZCUVVGQlIyZHVPVEpST0VOaGVEUktTRWx2V1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFDeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM05sUTFKNVMxOWZSV2hFTkU5bU5IcHdaVGRMV0VOU1FXNUpVVUZCUVVGQlIyZHVPVEpXT0VOaGVEUktTRWx2V1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/106001705382147497933?hl=en",
                 "author_title": "Joshua Chapman",
                 "author_id": "106001705382147497933",
@@ -248,7 +352,7 @@
                 "author_title": "Kat",
                 "author_id": "118034614551811158937",
                 "author_image": "https://lh3.googleusercontent.com/a-/ALV-UjXZruXep9-6W5FzgdxDsBBqSEC_gPagaa33qO7aYgu8ZWcWWc7O=s120-c-rp-mo-br100",
-                "author_reviews_count": 7,
+                "author_reviews_count": 10,
                 "author_ratings_count": 0,
                 "review_text": "Firstly no parking. Residents take all the parking spots on the street and in the lot.\nCoffee had curdled cream and I had to throw it away.",
                 "review_img_urls": null,
@@ -303,7 +407,7 @@
             "phone": "+1 980-380-8872",
             "type": "Coffee shop",
             "logo": "https://lh5.googleusercontent.com/-cpFKn6CCszs/AAAAAAAAAAI/AAAAAAAAAAA/1iN7pcimdhU/s44-p-k-no-ns-nd/photo.jpg",
-            "description": "Coming Soon!\nSpecialty coffee, local pastries, craft beer & wine.",
+            "description": "Summit Coffee is a neighborhood cafe creating moments of joy through good coffee, genuine hospitality, and a space built for community. We're serving up NC roasted coffee, tea and freshly baked pastries.",
             "typical_time_spent": null,
             "located_in": null,
             "located_google_id": null,
@@ -311,21 +415,113 @@
             "subtypes": "Coffee shop",
             "posts": null,
             "reviews_tags": [
-                "parking"
+                "parking",
+                "space",
+                "barista"
             ],
-            "rating": 4.4,
-            "reviews": 7,
+            "rating": 4.6,
+            "reviews": 12,
             "reviews_data": [
                 {
                     "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
+                    "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2toVk5VdExMVFpVYkRac1FXRlVjMHhtZVZKak5IYxAB",
+                    "review_pagination_id": "CAESY0NBRVFBeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMmhKZFZWNVExOWZSV2hCYlhkdFZrMUNXbDgyVEdGcVExVkZTVUZCUVVGQlIyZHVPVEpsYzBOaFJXazFWRWxKV1VGRFNVRQ==",
+                    "author_link": "https://www.google.com/maps/contrib/117726704720410016795?hl=en",
+                    "author_title": "Caroline Hager",
+                    "author_id": "117726704720410016795",
+                    "author_image": "https://lh3.googleusercontent.com/a/ACg8ocIg1-5_8cviiIkfs9IPv7V6P5OQ3LfPhqzlMS8xInXgDXI4kw=s120-c-rp-mo-br100",
+                    "author_reviews_count": 7,
+                    "author_ratings_count": 3,
+                    "review_text": "Food and service are great but SO MANY FLIES on the porch! If they could do something about that it would be my new favorite!",
+                    "review_img_urls": null,
+                    "review_img_url": null,
+                    "review_questions": {
+                        "Price per person": "$1\u201310",
+                        "Food": "5",
+                        "Service": "5",
+                        "Atmosphere": "3"
+                    },
+                    "review_photo_ids": null,
+                    "owner_answer": "Hi, Caroline!\nThanks for taking the time to leave us a review. We LOVE that you love our food and service, and apologize for the flies outside. Please know that we\u2019re actively working on a solution for this and it should be resolved soon. \nHope to see you again soon! :)",
+                    "owner_answer_timestamp": 1751297072,
+                    "owner_answer_timestamp_datetime_utc": "06/30/2025 15:24:32",
+                    "review_link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2toVk5VdExMVFpVYkRac1FXRlVjMHhtZVZKak5IYxAB!2m1!1s0x0:0x663d7887bb586d48!3m1!1s2@1:CAIQACodChtycF9oOkhVNUtLLTZUbDZsQWFUc0xmeVJjNHc%7C0cN07OQxGSc%7C?hl=en",
+                    "review_rating": 4,
+                    "review_timestamp": 1751126553,
+                    "review_datetime_utc": "06/28/2025 16:02:33",
+                    "review_likes": null,
+                    "reviews_id": "7367177089807052104"
+                },
+                {
+                    "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
+                    "review_id": "ChZDSUhNMG9nS0VJZmg2X3VxNS1UVkR3EAE",
+                    "review_pagination_id": "CAESY0NBRVFCQnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMnRyY1hjMWFGOWZSV2hDUmxsNGFYZFdjbFY1VlhKdGFWVnBXVUZCUVVGQlIyZHVPVEpYT0VOaFUxTnlSRzFGV1VGRFNVRQ==",
+                    "author_link": "https://www.google.com/maps/contrib/106014529377572083058?hl=en",
+                    "author_title": "Alessandro Cepero",
+                    "author_id": "106014529377572083058",
+                    "author_image": "https://lh3.googleusercontent.com/a/ACg8ocKx3ILkUPKt-n7-dc6nucrHqWIjUtOdgaGT8Fc4z1WzAQhJrA=s120-c-rp-mo-br100",
+                    "author_reviews_count": 4,
+                    "author_ratings_count": 1,
+                    "review_text": "Great shop with a ton of space to work and study. The staff is very friendly and the coffee is great. All around would recommend to anyone looking for a great coffee shop.",
+                    "review_img_urls": null,
+                    "review_img_url": null,
+                    "review_questions": {
+                        "Price per person": "$1\u201310",
+                        "Food": "5",
+                        "Service": "5",
+                        "Atmosphere": "5",
+                        "Wait time": "No wait"
+                    },
+                    "review_photo_ids": null,
+                    "owner_answer": "Thanks so much! Looking forward to seeing you again soon!",
+                    "owner_answer_timestamp": 1749491464,
+                    "owner_answer_timestamp_datetime_utc": "06/09/2025 17:51:04",
+                    "review_link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJZmg2X3VxNS1UVkR3EAE!2m1!1s0x0:0x663d7887bb586d48!3m1!1s2@1:CIHM0ogKEIfh6_uq5-TVDw%7CCgwI04efwQYQoNvfqgE%7C?hl=en",
+                    "review_rating": 5,
+                    "review_timestamp": 1747436499,
+                    "review_datetime_utc": "05/16/2025 23:01:39",
+                    "review_likes": null,
+                    "reviews_id": "7367177089807052104"
+                },
+                {
+                    "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
+                    "review_id": "ChZDSUhNMG9nS0VQRFlxTFBybk11MVZBEAE",
+                    "review_pagination_id": "CAESY0NBRVFCUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMnR5Ukd3eE1GOWZSV2hFV1hONGVVWTNVbE5sTFVKTlFrTk1NRUZCUVVGQlIyZHVPVEpTYjBOaFUzTlBXRmhSV1VGRFNVRQ==",
+                    "author_link": "https://www.google.com/maps/contrib/109514450926780467451?hl=en",
+                    "author_title": "Lauryn Anderson",
+                    "author_id": "109514450926780467451",
+                    "author_image": "https://lh3.googleusercontent.com/a/ACg8ocLTzkpUjMC4v5cijRNA6o6NbS0R7oI7gIXoEXGonEu6Qv0djA=s120-c-rp-mo-br100",
+                    "author_reviews_count": 1,
+                    "author_ratings_count": 0,
+                    "review_text": "I love summit already but today was my first 5 stars across the board. The space has a beautiful aesthetic, with a cute little patio are & its extremely clean. It even smells clean & fresh. Plus the baristas are super sweet. I love it!",
+                    "review_img_urls": null,
+                    "review_img_url": null,
+                    "review_questions": {
+                        "Food": "5",
+                        "Service": "5",
+                        "Atmosphere": "5"
+                    },
+                    "review_photo_ids": null,
+                    "owner_answer": "Thanks for your kind words, Lauryn! We\u2019re so glad you love our space as much as we do! ",
+                    "owner_answer_timestamp": 1749491444,
+                    "owner_answer_timestamp_datetime_utc": "06/09/2025 17:50:44",
+                    "review_link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VQRFlxTFBybk11MVZBEAE!2m1!1s0x0:0x663d7887bb586d48!3m1!1s2@1:CIHM0ogKEPDYqLPrnMu1VA%7CCgwIr8KYwQYQoOGX6AI%7C?hl=en",
+                    "review_rating": 5,
+                    "review_timestamp": 1747329327,
+                    "review_datetime_utc": "05/15/2025 17:15:27",
+                    "review_likes": null,
+                    "reviews_id": "7367177089807052104"
+                },
+                {
+                    "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
                     "review_id": "ChZDSUhNMG9nS0VJQ0FnTUNJNU15RGJBEAE",
-                    "review_pagination_id": "CAESY0NBRVFBaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMjlaWHpOYVRsOWZSV2hCYW5KNGVXbzRiR1V4YTBKSlpGVnBUVUZCUVVGQlIyZHVPVFJzUlVOaGFHcGZaR3N3V1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFCeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSMjlaWHpOYVRsOWZSV2hCYW5KNGVXbzRiR1V4YTBKSlpGVnBUVUZCUVVGQlIyZHVPVFYxV1VOaGFHcGZaR3N3V1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/111745495421761615464?hl=en",
                     "author_title": "Mark Vaccaro",
                     "author_id": "111745495421761615464",
                     "author_image": "https://lh3.googleusercontent.com/a/ACg8ocJe-CQdmA9BEsITMyd_CvmgFGEMk0U2yHBqJSNLqd6shsOCHA=s120-c-rp-mo-br100",
                     "author_reviews_count": 8,
-                    "author_ratings_count": 1,
+                    "author_ratings_count": 3,
                     "review_text": "Everyone here is so nice!",
                     "review_img_urls": null,
                     "review_img_url": null,
@@ -350,7 +546,7 @@
                 {
                     "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
                     "review_id": "ChdDSUhNMG9nS0VJQ0FnTUNnNklxN3R3RRAB",
-                    "review_pagination_id": "CAESY0NBRVFCQnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pmUTBSNVpsOWZSV2hCWVhaRWMyVTFWRkJuZFRCVGVsUkZUVUZCUVVGQlIyZHVPVEpSV1VOaGRqaEpVRW80V1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFDUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pmUTBSNVpsOWZSV2hCWVhaRWMyVTFWRkJuZFRCVGVsUkZUVUZCUVVGQlIyZHVPVEpWUVVOaGRqaEpVRW80V1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/103857818324751201523?hl=en",
                     "author_title": "Nam",
                     "author_id": "103857818324751201523",
@@ -379,7 +575,7 @@
                 {
                     "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
                     "review_id": "ChZDSUhNMG9nS0VJQ0FnTUNnNlBDZ2ZnEAE",
-                    "review_pagination_id": "CAESY0NBRVFCUnBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pmUjJkTmRWOWZSV2hFWTFvMlFtZE9aV1F0Tm5neU5WOXNhMEZCUVVGQlIyZHVPVEprVVVOaGRqaGhRWGswV1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFDaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM0pmUjJkTmRWOWZSV2hFWTFvMlFtZE9aV1F0Tm5neU5WOXNhMEZCUVVGQlIyZHVPVEo0VlVOaGRqaGhRWGswV1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/112469675670275756253?hl=en",
                     "author_title": "Ivy Interiano",
                     "author_id": "112469675670275756253",
@@ -407,7 +603,7 @@
                 {
                     "google_id": "0x88569fc62fe84e4f:0x663d7887bb586d48",
                     "review_id": "ChZDSUhNMG9nS0VJQ0FnTURBb3Bia1ZnEAE",
-                    "review_pagination_id": "CAESY0NBRVFCaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM05sUTFKNVMxOWZSV2hFTkU5bU5IcHdaVGRMV0VOU1FXNUpVVUZCUVVGQlIyZHVPVEpST0VOaGVEUktTRWx2V1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFDeHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lSM05sUTFKNVMxOWZSV2hFTkU5bU5IcHdaVGRMV0VOU1FXNUpVVUZCUVVGQlIyZHVPVEpXT0VOaGVEUktTRWx2V1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/106001705382147497933?hl=en",
                     "author_title": "Joshua Chapman",
                     "author_id": "106001705382147497933",
@@ -443,7 +639,7 @@
                     "author_title": "Kat",
                     "author_id": "118034614551811158937",
                     "author_image": "https://lh3.googleusercontent.com/a-/ALV-UjXZruXep9-6W5FzgdxDsBBqSEC_gPagaa33qO7aYgu8ZWcWWc7O=s120-c-rp-mo-br100",
-                    "author_reviews_count": 7,
+                    "author_reviews_count": 10,
                     "author_ratings_count": 0,
                     "review_text": "Firstly no parking. Residents take all the parking spots on the street and in the lot.\nCoffee had curdled cream and I had to throw it away.",
                     "review_img_urls": null,
@@ -471,31 +667,34 @@
                     "reviews_id": "7367177089807052104"
                 }
             ],
-            "photos_count": 9,
+            "photos_count": 56,
             "cid": "7367177089807052104",
             "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJT07oL8afVogRSG1Yu4d4PWY&authuser=0&hl=en&gl=US",
             "reviews_id": "7367177089807052104",
-            "photo": "https://lh3.googleusercontent.com/gps-cs-s/AB5caB_135_eAqhtiJCWUIcecOUM544A1bT5iP2psnPxgrOkZr0GXac_6XI6fxfBClDg7aqAZ1HKekqC9DMJs9dSCTsL443DkvIDal-KxV5Ab9ku0WvHNO542Ux08xCceW0fes_oz2gr=w800-h500-k-no",
-            "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Iw3fVTQzRLQp4nTWSQFE6g&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=332.92307&pitch=0&thumbfov=100",
-            "working_hours_old_format": "Monday:7AM-5PM|Tuesday:7AM-5PM|Wednesday:7AM-5PM|Thursday:7AM-5PM|Friday:7AM-5PM|Saturday:7AM-5PM|Sunday:7AM-5PM",
+            "photo": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4novFXV72IjFPVF8E59aTsOzu9PHLwDwySuOuK9-56fIOr4BA7BAhQ0Uh5wrDQYwgXAtCfbnqNCJ1YjdGB4MOOKrHO8jafoZAf3uKB1lFdJqT90Eof5oDkhZ4FkeVbhq1OJn-cYxSg=w800-h500-k-no",
+            "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Iw3fVTQzRLQp4nTWSQFE6g&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=332.71658&pitch=0&thumbfov=100",
             "working_hours": {
+                "Sunday": "7AM-5PM",
                 "Monday": "7AM-5PM",
                 "Tuesday": "7AM-5PM",
                 "Wednesday": "7AM-5PM",
                 "Thursday": "7AM-5PM",
                 "Friday": "7AM-5PM",
-                "Saturday": "7AM-5PM",
-                "Sunday": "7AM-5PM"
+                "Saturday": "7AM-5PM"
             },
+            "working_hours_csv_compatible": "Sunday,7AM,5PM|Monday,7AM,5PM|Tuesday,7AM,5PM|Wednesday,7AM,5PM|Thursday,7AM,5PM|Friday,7AM,5PM|Saturday,7AM,5PM",
+            "working_hours_old_format": "Sunday:7AM-5PM|Monday:7AM-5PM|Tuesday:7AM-5PM|Wednesday:7AM-5PM|Thursday:7AM-5PM|Friday:7AM-5PM|Saturday:7AM-5PM",
             "other_hours": null,
             "business_status": "OPERATIONAL",
             "about": {
                 "Service options": {
+                    "Delivery": true,
                     "Takeout": true,
                     "Dine-in": true
                 },
                 "Highlights": {
-                    "Great coffee": true
+                    "Great coffee": true,
+                    "Great tea selection": true
                 },
                 "Accessibility": {
                     "Wheelchair accessible parking lot": true
@@ -503,11 +702,17 @@
                 "Offerings": {
                     "Coffee": true
                 },
+                "Dining options": {
+                    "Catering": true
+                },
                 "Atmosphere": {
-                    "Casual": true
+                    "Casual": true,
+                    "Trendy": true
                 },
                 "Payments": {
-                    "Credit cards": true
+                    "Credit cards": true,
+                    "Debit cards": true,
+                    "NFC mobile payments": true
                 },
                 "Children": {
                     "Kids' menu": true
@@ -517,6 +722,7 @@
                 }
             },
             "range": "$1\u201310",
+            "prices": null,
             "reviews_per_score": null,
             "reviews_per_score_1": null,
             "reviews_per_score_2": null,
@@ -524,7 +730,7 @@
             "reviews_per_score_4": null,
             "reviews_per_score_5": null,
             "reservation_links": null,
-            "booking_appointment_link": null,
+            "booking_appointment_link": "https://www.google.com/viewer/chooseprovider?mid=/g/11vwhv6wlq&g2lbs=AO8LyOJ4j-3zj-4jLeyU48abmzyC6jepJEUqfAuiQThbJMPzlclXYv-OhL3jb-9hQMtrxyWReACME_jx5BvYuBiEoewXKeTZJg%3D%3D&hl=en-US&gl=us&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=tactile&gei=Wzq2aKq6DZqYkPIPyJ7nuQI&ei=Wzq2aKq6DZqYkPIPyJ7nuQI&fo_s=OA,SOE&opi=79508299&ebb=1&cs=0&foub=mcpp",
             "menu_link": "https://www.summitcoffee.com/menu",
             "order_links": null,
             "owner_id": "106995098253171564611",
@@ -537,7 +743,7 @@
     },
     "photos": {
         "place_id": "ChIJT07oL8afVogRSG1Yu4d4PWY",
-        "message": "Photos refreshed by admin function using outscraper selection algorithm",
+        "message": "Retrieved from Airtable",
         "photo_urls": [
             "https://lh3.googleusercontent.com/p/AF1QipOhworK_WgvrRBlOYevTO78kwHsSUxsGm0LRcux=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipMKda-z39MXN2qM4o_RZUqDyVFKQ4nOQOmdaBM_=w2048-h2048-k-no",
@@ -548,164 +754,8 @@
             "https://lh3.googleusercontent.com/p/AF1QipPnrWIAgMNfj9czJw1TPIu5H0AeOjft3ZXgGZEL=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNPDtYJgxd2sWY6Oiho_U2mstu7Z8FJfEFThaPC=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipMoT_lIgD99BYEWtsrzLz-1vK-hQFtSKjoxjVeQ=w2048-h2048-k-no"
-        ],
-        "raw_data": [
-            {
-                "photo_id": "AF1QipOhworK_WgvrRBlOYevTO78kwHsSUxsGm0LRcux",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipOhworK_WgvrRBlOYevTO78kwHsSUxsGm0LRcux",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipOhworK_WgvrRBlOYevTO78kwHsSUxsGm0LRcux=w2048-h2048-k-no",
-                "latitude": 35.2114459,
-                "longitude": -80.869278,
-                "photo_date": "3/24/2025 12:00:00",
-                "photo_upload_source": "gmm_ios_review_post",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "vibe",
-                    "all"
-                ],
-                "photo_tag_ids": [
-                    9,
-                    1
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipOhworK_WgvrRBlOYevTO78kwHsSUxsGm0LRcux=w203-h152-k-no"
-            },
-            {
-                "photo_id": "AF1QipMpYrINbiP6ntdF06KnGCrUpMMlyB2tUFWpmtFk",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipMpYrINbiP6ntdF06KnGCrUpMMlyB2tUFWpmtFk",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipMpYrINbiP6ntdF06KnGCrUpMMlyB2tUFWpmtFk=w2048-h2048-k-no",
-                "latitude": 35.2114459,
-                "longitude": -80.869278,
-                "photo_date": "3/24/2025 12:00:00",
-                "photo_upload_source": "gmm_ios_review_post",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "front"
-                ],
-                "photo_tag_ids": [
-                    2
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipMpYrINbiP6ntdF06KnGCrUpMMlyB2tUFWpmtFk=w203-h152-k-no"
-            },
-            {
-                "photo_id": "AF1QipOy5s5-TnbmbEh5qna--TsgD5SgidRcg5VADvva",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipOy5s5-TnbmbEh5qna--TsgD5SgidRcg5VADvva",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipOy5s5-TnbmbEh5qna--TsgD5SgidRcg5VADvva=w2048-h2048-k-no",
-                "latitude": 35.2114459,
-                "longitude": -80.869278,
-                "photo_date": "3/24/2025 12:00:00",
-                "photo_upload_source": "gmm_ios_review_post",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "menu"
-                ],
-                "photo_tag_ids": [
-                    6
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipOy5s5-TnbmbEh5qna--TsgD5SgidRcg5VADvva=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipPnrWIAgMNfj9czJw1TPIu5H0AeOjft3ZXgGZEL",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipPnrWIAgMNfj9czJw1TPIu5H0AeOjft3ZXgGZEL",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipPnrWIAgMNfj9czJw1TPIu5H0AeOjft3ZXgGZEL=w2048-h2048-k-no",
-                "latitude": 35.2114459,
-                "longitude": -80.869278,
-                "photo_date": "3/24/2025 12:00:00",
-                "photo_upload_source": "gmm_ios_review_post",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "menu"
-                ],
-                "photo_tag_ids": [
-                    6
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipPnrWIAgMNfj9czJw1TPIu5H0AeOjft3ZXgGZEL=w203-h178-k-no"
-            },
-            {
-                "photo_id": "AF1QipMKda-z39MXN2qM4o_RZUqDyVFKQ4nOQOmdaBM_",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipMKda-z39MXN2qM4o_RZUqDyVFKQ4nOQOmdaBM_",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipMKda-z39MXN2qM4o_RZUqDyVFKQ4nOQOmdaBM_=w2048-h2048-k-no",
-                "latitude": 35.2114459,
-                "longitude": -80.869278,
-                "photo_date": "3/24/2025 12:00:00",
-                "photo_upload_source": "gmm_ios_review_post",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "vibe",
-                    "all"
-                ],
-                "photo_tag_ids": [
-                    1,
-                    9
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipMKda-z39MXN2qM4o_RZUqDyVFKQ4nOQOmdaBM_=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipNPDtYJgxd2sWY6Oiho_U2mstu7Z8FJfEFThaPC",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNPDtYJgxd2sWY6Oiho_U2mstu7Z8FJfEFThaPC",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNPDtYJgxd2sWY6Oiho_U2mstu7Z8FJfEFThaPC=w2048-h2048-k-no",
-                "latitude": 35.2114459,
-                "longitude": -80.869278,
-                "photo_date": "3/24/2025 12:00:00",
-                "photo_upload_source": "gmm_ios_review_post",
-                "photo_source_video": null,
-                "photo_tags": null,
-                "photo_tag_ids": null,
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNPDtYJgxd2sWY6Oiho_U2mstu7Z8FJfEFThaPC=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipORyTN-7vynJBEB70-DaYyw-WxLDA4AahP2yCbC",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipORyTN-7vynJBEB70-DaYyw-WxLDA4AahP2yCbC",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipORyTN-7vynJBEB70-DaYyw-WxLDA4AahP2yCbC=w2048-h2048-k-no",
-                "latitude": 35.2114459,
-                "longitude": -80.869278,
-                "photo_date": "2/4/2025 16:00:00",
-                "photo_upload_source": "gmm_android",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "front"
-                ],
-                "photo_tag_ids": [
-                    2
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipORyTN-7vynJBEB70-DaYyw-WxLDA4AahP2yCbC=w203-h270-k-no"
-            },
-            {
-                "photo_id": "AF1QipMoT_lIgD99BYEWtsrzLz-1vK-hQFtSKjoxjVeQ",
-                "photo_url": "https://lh3.googleusercontent.com/p/AF1QipMoT_lIgD99BYEWtsrzLz-1vK-hQFtSKjoxjVeQ",
-                "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipMoT_lIgD99BYEWtsrzLz-1vK-hQFtSKjoxjVeQ=w2048-h2048-k-no",
-                "latitude": 35.2114459,
-                "longitude": -80.869278,
-                "photo_date": "3/20/2024 18:00:00",
-                "photo_upload_source": "gmb_on_local_universal_desktop",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "drink"
-                ],
-                "photo_tag_ids": [
-                    3
-                ],
-                "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipMoT_lIgD99BYEWtsrzLz-1vK-hQFtSKjoxjVeQ=w203-h152-k-no"
-            },
-            {
-                "photo_id": "Iw3fVTQzRLQp4nTWSQFE6g",
-                "photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Iw3fVTQzRLQp4nTWSQFE6g&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=332.92307&pitch=0&thumbfov=100",
-                "photo_url_big": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Iw3fVTQzRLQp4nTWSQFE6g&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=332.92307&pitch=0&thumbfov=100",
-                "latitude": 35.211213517224806,
-                "longitude": -80.86923717563988,
-                "photo_date": "9/21/2022 12:00:00",
-                "photo_upload_source": "launch",
-                "photo_source_video": null,
-                "photo_tags": [
-                    "front"
-                ],
-                "photo_tag_ids": [
-                    2
-                ],
-                "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Iw3fVTQzRLQp4nTWSQFE6g&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=332.92307&pitch=0&thumbfov=100"
-            }
-        ],
-        "last_refreshed": "2025-05-26T15:46:17.882762"
+        ]
     },
     "data_source": "OutscraperProvider",
-    "last_updated": "2025-04-18T18:40:28.806271"
+    "last_updated": "2025-09-01T20:29:16.976149"
 }
