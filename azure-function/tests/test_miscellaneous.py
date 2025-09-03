@@ -4,10 +4,10 @@ import json
 import csv
 import datetime
 import ast
-import helper_functions as helpers
+from services import utils as helpers
 from collections import Counter
 from constants import SearchField
-from airtable_client import AirtableClient
+from services.airtable_service import AirtableService
 
 
 print("Enrichment complete.")

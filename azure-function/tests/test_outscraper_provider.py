@@ -1,5 +1,5 @@
 """
-Integration tests for the OutscraperDataProvider class from place_data_providers.py.
+Integration tests for the OutscraperProvider class from services.place_data_service.
 """
 
 import os
@@ -13,7 +13,7 @@ from datetime import datetime
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from constants import DEFAULT_REVIEWS_LIMIT
-from place_data_providers import OutscraperProvider
+from services.place_data_service import OutscraperProvider
 
 # Sample real place to test with
 TEST_PLACE_NAME = "Mattie Ruth's Coffee House"

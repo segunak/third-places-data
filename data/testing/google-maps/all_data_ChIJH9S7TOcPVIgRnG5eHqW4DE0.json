@@ -4,7 +4,7 @@
     "details": {
         "place_name": "Mattie Ruth's Coffee House",
         "place_id": "ChIJH9S7TOcPVIgRnG5eHqW4DE0",
-        "google_maps_url": "https://maps.google.com/?cid=5552015459959598748",
+        "google_maps_url": "https://maps.google.com/?cid=5552015459959598748&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAAYBCAA",
         "website": "https://www.mattieruths.com/",
         "address": "300 McGill Ave NW, Concord, NC 28027, USA",
         "description": "",
@@ -22,9 +22,9 @@
                 "coffee_shop",
                 "cafe",
                 "food_store",
-                "store",
                 "food",
                 "point_of_interest",
+                "store",
                 "establishment"
             ],
             "formattedAddress": "300 McGill Ave NW, Concord, NC 28027, USA",
@@ -102,7 +102,7 @@
                 "latitude": 35.4165135,
                 "longitude": -80.6031644
             },
-            "googleMapsUri": "https://maps.google.com/?cid=5552015459959598748",
+            "googleMapsUri": "https://maps.google.com/?cid=5552015459959598748&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAAYBCAA",
             "websiteUri": "https://www.mattieruths.com/",
             "businessStatus": "OPERATIONAL",
             "displayName": {
@@ -112,7 +112,9 @@
             "primaryType": "coffee_shop",
             "paymentOptions": {
                 "acceptsCreditCards": true,
-                "acceptsCashOnly": false
+                "acceptsDebitCards": true,
+                "acceptsCashOnly": false,
+                "acceptsNfc": true
             },
             "parkingOptions": {
                 "freeParkingLot": true,
@@ -132,5 +134,5 @@
         "photo_urls": []
     },
     "data_source": "GoogleMapsProvider",
-    "last_updated": "2025-05-03T18:33:58.862973"
+    "last_updated": "2025-09-03T13:14:33.692158"
 }

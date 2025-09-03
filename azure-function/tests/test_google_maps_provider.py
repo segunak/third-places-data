@@ -1,5 +1,5 @@
 """
-Integration tests for the GoogleMapsProvider class from place_data_providers.py.
+Integration tests for the GoogleMapsProvider class from services.place_data_service.
 """
 
 import os
@@ -12,7 +12,7 @@ from datetime import datetime
 # Add parent directory to path so we can import from parent
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from place_data_providers import GoogleMapsProvider
+from services.place_data_service import GoogleMapsProvider
 
 # Sample real place to test with
 TEST_PLACE_NAME = "Mattie Ruth's Coffee House"
