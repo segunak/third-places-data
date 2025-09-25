@@ -43,7 +43,7 @@ This report provides information about 10 physical locations based on their JSON
 
 1. **Size**: Medium
 2. **Cinnamon rolls**: No
-3. **Parking**: Free (shopping center location)
+3. **Parking**: Unknown
 4. **Free Wi-Fi**: Unknown
 5. **Description**: Moji Teahouse is a bubble tea store located at 4841 Shopton Rd, Charlotte, NC 28278. The establishment specializes in bubble tea service and maintains an excellent reputation with a 4.6-star rating based on 242 reviews. It operates as a community gathering space for bubble tea enthusiasts.
 
@@ -88,6 +88,6 @@ This report provides information about 10 physical locations based on their JSON
 
 1. **Size**: Medium
 2. **Cinnamon rolls**: Yes (offers cinnamon boba as a specialty item)
-3. **Parking**: Free (mobile/truck location with flexible parking)
+3. **Parking**: Unknown
 4. **Free Wi-Fi**: Unknown
 5. **Description**: BoCha Bubble Tea is a bubble tea store located at 3709 Oakdale Rd, Charlotte, NC 28216. Originally starting as the first bubble tea truck in Gaston County, they have expanded to bring their unique and refreshing bubble tea taste to Charlotte. They are known for their specialty items including homemade cinnamon bobas, making them stand out in the local bubble tea scene.
