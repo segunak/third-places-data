@@ -196,9 +196,6 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
 
         logging.info(f"refresh_all_photos_orchestrator completed. Processed {total_places} places, {updated} updated, {skipped} skipped, {no_change} no change needed, {errors} errors.")
 
-        custom_status = 'Succeeded' if all_successful else 'Failed'
-        context.set_custom_status(custom_status)
-
         return result
     except Exception as ex:
         logging.error(f"Critical error in refresh_all_photos_orchestrator: {ex}", exc_info=True)
@@ -208,7 +205,6 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
             "data": None,
             "error": str(ex)
         }
-        context.set_custom_status('Failed')
         return error_response
 
 

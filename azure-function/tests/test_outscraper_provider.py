@@ -12,8 +12,8 @@ from datetime import datetime
 # Add parent directory to path so we can import from parent
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from constants import DEFAULT_REVIEWS_LIMIT
-from place_data_providers import OutscraperProvider
+from constants import DEFAULT_REVIEWS_LIMIT, OUTSCRAPER_BALANCE_THRESHOLD
+from services.place_data_service import OutscraperProvider
 
 # Sample real place to test with
 TEST_PLACE_NAME = "Mattie Ruth's Coffee House"
@@ -147,6 +147,47 @@ class TestOutscraperProvider(unittest.TestCase):
             json.dump(all_data, f, indent=4, ensure_ascii=False)
         print(f"Saved all place data to {output_file}")
 
+    def test_balance_check_blocks_low_balance(self):
+        """Provider should raise if balance < threshold even when amount_due == 0."""
+        from services import place_data_service as pds
+        original = pds.OutscraperProvider._fetch_outscraper_balance
+        try:
+            def fake_low_balance(_self):
+                return {"balance": OUTSCRAPER_BALANCE_THRESHOLD - 0.01, "upcoming_invoice": {"amount_due": 0}}
+            pds.OutscraperProvider._fetch_outscraper_balance = fake_low_balance
+            with self.assertRaises(Exception) as ctx:
+                pds.OutscraperProvider()
+            self.assertIn("below required minimum", str(ctx.exception))
+        finally:
+            pds.OutscraperProvider._fetch_outscraper_balance = original
+
+    def test_balance_check_allows_high_balance(self):
+        """Provider instantiates when balance >= threshold AND amount_due == 0."""
+        from services import place_data_service as pds
+        original = pds.OutscraperProvider._fetch_outscraper_balance
+        try:
+            def fake_ok_balance(_self):
+                return {"balance": OUTSCRAPER_BALANCE_THRESHOLD + 5.25, "upcoming_invoice": {"amount_due": 0}}
+            pds.OutscraperProvider._fetch_outscraper_balance = fake_ok_balance
+            provider = pds.OutscraperProvider()
+            self.assertEqual(provider.provider_type, 'outscraper')
+        finally:
+            pds.OutscraperProvider._fetch_outscraper_balance = original
+
+    def test_balance_check_blocks_outstanding_amount_due(self):
+        """Provider should raise when amount_due > 0 even if balance is high."""
+        from services import place_data_service as pds
+        original = pds.OutscraperProvider._fetch_outscraper_balance
+        try:
+            def fake_amount_due(_self):
+                return {"balance": OUTSCRAPER_BALANCE_THRESHOLD + 50, "upcoming_invoice": {"amount_due": 12.34}}
+            pds.OutscraperProvider._fetch_outscraper_balance = fake_amount_due
+            with self.assertRaises(Exception) as ctx:
+                pds.OutscraperProvider()
+            self.assertIn("amount_due", str(ctx.exception))
+        finally:
+            pds.OutscraperProvider._fetch_outscraper_balance = original
+
 # This if condition ensures that the tests are only run when this script is executed directly.
 # It prevents the tests from running when this module is imported elsewhere.
 if __name__ == "__main__":
@@ -178,6 +219,8 @@ if __name__ == "__main__":
     run_test('test_find_place_id', test_instance.test_find_place_id)
     run_test('test_is_place_operational', test_instance.test_is_place_operational)
     run_test('test_all_place_data', test_instance.test_all_place_data)
+    run_test('test_balance_check_blocks_low_balance', test_instance.test_balance_check_blocks_low_balance)
+    run_test('test_balance_check_allows_high_balance', test_instance.test_balance_check_allows_high_balance)
     
     # Print summary
     print("\n==== TEST SUMMARY ====")

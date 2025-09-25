@@ -21,10 +21,11 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
     logging.info("Received request for place data refresh.")
 
     try:
+        city = req.params.get('city')
         provider_type = req.params.get('provider_type')
         force_refresh = req.params.get('force_refresh', '').lower() == 'true'
         sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
-        city = req.params.get('city')
+        insufficient_only = req.params.get('insufficient_only', '').lower() == 'true'
 
         if not provider_type:
             return func.HttpResponse(
@@ -50,14 +51,17 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
                 mimetype="application/json"
             )
 
-        logging.info(f"Starting place data refresh with parameters: force_refresh={force_refresh}, "
-                     f"sequential_mode={sequential_mode}, city={city}, provider_type={provider_type}")
+        logging.info(
+            "Starting place data refresh with parameters: force_refresh=%s, sequential_mode=%s, city=%s, provider_type=%s, insufficient_only=%s",
+            force_refresh, sequential_mode, city, provider_type, insufficient_only
+        )
 
         orchestration_input = {
             "force_refresh": force_refresh,
             "sequential_mode": sequential_mode,
             "city": city,
-            "provider_type": provider_type
+            "provider_type": provider_type,
+            "insufficient_only": insufficient_only
         }
 
         instance_id = await client.start_new("get_place_data_orchestrator", client_input=orchestration_input)
@@ -86,10 +90,12 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
         logging.info("get_place_data_orchestrator started.")
 
         orchestration_input = context.get_input() or {}
+        
+        city = orchestration_input.get("city")
         force_refresh = orchestration_input.get("force_refresh", False)
         sequential_mode = orchestration_input.get("sequential_mode", False)
-        city = orchestration_input.get("city")
         provider_type = orchestration_input.get("provider_type", None)
+        insufficient_only = orchestration_input.get("insufficient_only", False)
 
         if not city:
             raise ValueError("Missing required parameter: city")
@@ -101,13 +107,12 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
             "provider_type": provider_type,
             "sequential_mode": sequential_mode,
             "city": city,
-            "force_refresh": force_refresh
+            "force_refresh": force_refresh,
+            "insufficient_only": insufficient_only
         }
 
-        all_third_places = yield context.call_activity(
-            'get_all_third_places',
-            {"config": config_dict}
-        )
+        all_third_places = yield context.call_activity('get_all_third_places',{"config": config_dict})
+        logging.info(f"get_place_data_orchestrator: Retrieved {len(all_third_places)} places from get_all_third_places with config: {config_dict}")
 
         results = []
         if sequential_mode:
@@ -153,9 +158,6 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
 
         logging.info(f"get_place_data_orchestrator completed. Processed {len(all_third_places)} places.")
 
-        custom_status = 'Succeeded' if all_successful else 'Failed'
-        context.set_custom_status(custom_status)
-
         return result
     except Exception as ex:
         logging.error(f"Critical error in get_place_data_orchestrator: {ex}", exc_info=True)
@@ -165,7 +167,6 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
             "data": None,
             "error": str(ex)
         }
-        context.set_custom_status('Failed')
         return error_response
 
 
@@ -173,13 +174,12 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
 @bp.function_name("get_place_data")
 def get_place_data(activityInput):
     try:
-        place = activityInput.get("place")
         config_dict = activityInput.get("config", {})
-
+        
+        place = activityInput.get("place")
         place_name = place['fields']['Place'] if place and 'fields' in place and 'Place' in place['fields'] else "Unknown Place"
 
         provider_type = config_dict.get('provider_type')
-
         if not provider_type:
             error_msg = f"Error processing place data: provider_type cannot be None - must be 'google' or 'outscraper'"
             logging.error(error_msg)
@@ -189,7 +189,6 @@ def get_place_data(activityInput):
         place_id = place['fields'].get('Google Maps Place Id', None)
 
         city = config_dict.get('city')
-
         if not city:
             error_msg = f"Error processing place data: city cannot be None. It is a required parameter."
             logging.error(error_msg)
@@ -203,17 +202,13 @@ def get_place_data(activityInput):
             place_name=place_name,
             place_id=place_id,
             city=city,
-            force_refresh=force_refresh
+            force_refresh=force_refresh,
+            airtable_record_id=record_id
         )
 
         if status == 'succeeded' or status == 'cached':
-            record_id = place['id']
-            airtable_service = AirtableService(provider_type)
-            airtable_service.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
-
-        if status == 'succeeded' or status == 'cached':
-            place_id = place_data.get('place_id', place_id)
-            github_url = f'https://github.com/segunak/third-places-data/blob/master/data/places/{city}/{place_id}.json'
+            final_place_id = place_data.get('place_id', place_id)
+            github_url = f'https://github.com/segunak/third-places-data/blob/master/data/places/{city}/{final_place_id}.json'
             return helpers.create_place_response(status, place_name, github_url, message)
         else:
             return helpers.create_place_response(status, place_name, None, message)
@@ -393,8 +388,6 @@ def refresh_single_place_orchestrator(context: df.DurableOrchestrationContext):
             },
             "error": None if overall_success else f"Refresh: {refresh_result.get('message', 'Unknown error')}; Enrich: {enrich_result.get('message', 'Unknown error')}"
         }
-        context.set_custom_status('Succeeded' if overall_success else 'Failed')
-
         logging.info(f"Single place refresh orchestrator completed with status: {refresh_result.get('status')}")
         return result
 
@@ -406,7 +399,6 @@ def refresh_single_place_orchestrator(context: df.DurableOrchestrationContext):
             "data": None,
             "error": str(ex)
         }
-        context.set_custom_status('Failed')
         return error_response
 
 

@@ -71,7 +71,7 @@ class AirtableService:
                 )
                 
                 if not self._all_third_places:
-                    logging.info("No records found in the 'Insufficient' view. Nothing to enrich.")
+                    logging.info("No records found in the 'Insufficient' view. Nothing to return.")
                 else:
                     logging.info(f"Retrieved {len(self._all_third_places)} places from 'Insufficient' view.")
             else:
@@ -216,7 +216,8 @@ class AirtableService:
                 place_name=place_name,
                 place_id=place_id,
                 city=city,
-                force_refresh=force_refresh
+                force_refresh=force_refresh,
+                airtable_record_id=record_id
             )
 
             result["status"] = status
@@ -233,9 +234,6 @@ class AirtableService:
             if not place_data or 'details' not in place_data:
                 logging.info(f"No place data found for {place_name}.")
                 return result
-
-            update_result = self.update_place_record(record_id, 'Has Data File', 'Yes', overwrite=True)
-            result['field_updates']['Has Data File'] = update_result
 
             details = place_data['details']
             website = details.get('website', '')
@@ -474,6 +472,14 @@ class AirtableService:
 
             current_operational_value = third_place['fields'].get('Operational', '')
             result['old_value'] = current_operational_value
+
+            # Special case: preserve 'Opening Soon' without modification
+            if current_operational_value == 'Opening Soon':
+                result['new_value'] = current_operational_value
+                result['update_status'] = 'success'
+                result['message'] = 'Place is marked as Opening Soon; manual update required when operational. Automated refresh skipped.'
+                return result
+
             is_operational = data_provider.is_place_operational(place_id)
             new_operational_value = 'Yes' if is_operational else 'No'
             result['new_value'] = new_operational_value

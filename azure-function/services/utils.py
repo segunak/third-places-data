@@ -10,7 +10,7 @@ import unicodedata
 from datetime import datetime
 from azure.storage.filedatalake import DataLakeServiceClient
 from threading import Lock
-from constants import DEFAULT_CACHE_REFRESH_INTERVAL, SearchField
+from constants import SearchField
 from services.place_data_service import PlaceDataProviderFactory
 
 
@@ -123,82 +123,106 @@ def fetch_data_github(full_file_path) -> Tuple[bool, Optional[Dict], str]:
         return False, None, f"Failed to fetch from GitHub: {str(e)}"
 
 
-def is_cache_valid(cached_data: Dict, refresh_interval_days: int) -> bool:
-    try:
-        last_updated_str = cached_data.get('last_updated')
-        if not last_updated_str:
-            logging.warning("No last_updated timestamp found in cached data")
-            return False
-        last_updated = datetime.fromisoformat(last_updated_str)
-        now = datetime.now()
-        cache_age = now - last_updated
-        return cache_age.days < refresh_interval_days
-    except Exception as e:
-        logging.error(f"Error checking cache validity: {str(e)}")
-        return False
 
 
 def _fill_photos_from_airtable(place_data: Dict, photos_json: str) -> bool:
+    logging.info(f"_fill_photos_from_airtable: place_data={place_data}")
+    logging.info(f"_fill_photos_from_airtable: photos_json={photos_json}")
+    
     try:
         photos = json.loads(photos_json)
         if 'photos' not in place_data:
             place_data['photos'] = {}
         place_data['photos']['photo_urls'] = photos
         place_data['photos']['message'] = "Retrieved from Airtable"
+        logging.info(f"_fill_photos_from_airtable: Successfully filled photos from Airtable")
         return True
     except json.JSONDecodeError as e:
-        logging.error(f"Error parsing photos JSON from Airtable: {e}")
+        logging.error(f"_fill_photos_from_airtable: Error parsing photos JSON from Airtable: {e}")
         return False
     except Exception as e:
-        logging.error(f"Error filling photos from Airtable: {e}")
+        logging.error(f"_fill_photos_from_airtable: Error filling photos from Airtable: {e}")
         return False
 
 
 def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str = None,
-                              city: str = None, force_refresh: bool = False) -> Tuple[str, Dict, str]:
-    if not city:
-        return 'failed', None, 'Missing required parameter: city'
+                              city: str = None, force_refresh: bool = False, airtable_record_id: str = None) -> Tuple[str, Dict, str]:
     try:
+        if not city:
+            return 'failed', None, 'Missing required parameter: city'
+
         if not provider_type:
             error_msg = f"Cannot get place data for {place_name} - provider_type not specified"
             logging.error(error_msg)
             return 'failed', None, error_msg
         data_provider = PlaceDataProviderFactory.get_provider(provider_type)
+
+        did_lookup_find_new_place_id = False
         if not place_id:
             logging.info(f"No place_id provided for {place_name}, looking up...")
             place_id = data_provider.find_place_id(place_name)
+
             if not place_id:
                 return 'failed', None, f"Could not find place ID for {place_name}"
+            did_lookup_find_new_place_id = True
             logging.info(f"Found place_id {place_id} for {place_name}")
+
         cached_file_path = f"data/places/{city}/{place_id}.json"
         skip_photos = False
         existing_photos_json = None
-        try:
-            from services.airtable_service import AirtableService
-            airtable_client = AirtableService(provider_type)
-            record = airtable_client.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
-            if record and 'Photos' in record['fields'] and record['fields']['Photos'] and not force_refresh:
-                logging.info(f"Place {place_id} already has photos in Airtable, skipping photo retrieval")
-                skip_photos = True
-                existing_photos_json = record['fields']['Photos']
-        except Exception as e:
-            logging.error(f"Error checking if photos should be skipped: {e}")
-            skip_photos = False
-            existing_photos_json = None
-        if not force_refresh:
-            success, cached_data, message = fetch_data_github(cached_file_path)
-            if success and is_cache_valid(cached_data, DEFAULT_CACHE_REFRESH_INTERVAL):
-                logging.info(f"Using cached data for {place_name} from {cached_file_path}")
-                return 'cached', cached_data, f"Using cached data from {cached_file_path}"
-        logging.info(f"Getting fresh data from API provider {provider_type} for {place_name} with place_id {place_id}. The value of skip_photos is {skip_photos} and the value of force_refresh is {force_refresh}.")
+
+        from services.airtable_service import AirtableService
+        airtable_client = AirtableService(provider_type)
+
+        if did_lookup_find_new_place_id and airtable_record_id:
+            try:
+                airtable_client.update_place_record(airtable_record_id, 'Google Maps Place Id', place_id, overwrite=True)
+            except Exception as e:
+                logging.error(f"Failed to persist newly discovered place_id for {place_name} (record {airtable_record_id}): {e}")
+
+        record = airtable_client.get_record(SearchField.GOOGLE_MAPS_PLACE_ID, place_id)
+        if record and 'Photos' in record['fields'] and record['fields']['Photos'] and not force_refresh:
+            logging.info(f"Place {place_id} already has photos in Airtable, skipping photo retrieval")
+            skip_photos = True
+            existing_photos_json = record['fields']['Photos']
+
+        # 1. Attempt to load cached data from GitHub
+        cached_file_exists, cached_json, cache_message = fetch_data_github(cached_file_path)
+
+        if cached_file_exists and not force_refresh:
+            logging.info(f"Using cached data for {place_name} (place_id={place_id}) from {cached_file_path}")
+            if airtable_record_id and airtable_client:
+                try:
+                    airtable_client.update_place_record(airtable_record_id, 'Has Data File', 'Yes', overwrite=True)
+                except Exception as e:
+                    logging.error(f"Failed to update 'Has Data File' (cached path) for {place_name}: {e}")
+            return 'cached', cached_json, f"Using cached data for {place_name} from {cached_file_path}"
+        if cached_file_exists and force_refresh:
+            logging.info(f"Cache present for {place_name} but force_refresh=True; fetching fresh data")
+        if not cached_file_exists:
+            logging.info(f"No cached file found for {place_name} at {cached_file_path} ({cache_message}); fetching fresh data")
+
+        # 2. Fetch fresh data (either no cache or force_refresh requested)
+        logging.info(f"Fetching fresh data from provider {provider_type} for {place_name} (place_id={place_id}) skip_photos={skip_photos} force_refresh={force_refresh}")
         place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=skip_photos)
+
         if skip_photos and existing_photos_json:
             _fill_photos_from_airtable(place_data, existing_photos_json)
+
         place_data['last_updated'] = datetime.now().isoformat()
-        success, message = save_data_github(json.dumps(place_data, indent=4), cached_file_path)
+        success, save_message = save_data_github(json.dumps(place_data, indent=4), cached_file_path)
+
         if not success:
-            logging.warning(f"Failed to cache data for {place_name}: {message}")
-        return 'succeeded', place_data, f"Successfully retrieved fresh data for {place_name}"
+            logging.warning(f"Failed to save fresh data for {place_name}: {save_message}")
+        else:
+            logging.info(f"Saved fresh data for {place_name} to {cached_file_path}")
+
+        if airtable_record_id and airtable_client:
+            try:
+                airtable_client.update_place_record(airtable_record_id, 'Has Data File', 'Yes', overwrite=True)
+            except Exception as e:
+                logging.error(f"Failed to update 'Has Data File' (fresh path) for {place_name}: {e}")
+        return 'succeeded', place_data, f"Fetched fresh data for {place_name}"
     except Exception as e:
         logging.error(f"Error getting place data for {place_name}: {e}", exc_info=True)
         return 'failed', None, f"Error: {str(e)}"

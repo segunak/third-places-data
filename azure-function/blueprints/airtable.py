@@ -26,6 +26,29 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
         city = req.params.get('city')
         insufficient_only = req.params.get('insufficient_only', '').lower() == 'true'
 
+        if not provider_type:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Missing required parameter: provider_type",
+                    "data": None,
+                    "error": "The provider_type parameter is required"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+        if not city:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Missing required parameter: city",
+                    "data": None,
+                    "error": "The city parameter is required"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+
         logging.info(f"Starting enrichment with parameters: city={city}, force_refresh={force_refresh}, "
                      f"sequential_mode={sequential_mode}, provider_type={provider_type}, "
                      f"insufficient_only={insufficient_only}")
@@ -88,7 +111,6 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
                 },
                 "error": None
             }
-            context.set_custom_status('Succeeded')
             return result
 
         results = []
@@ -143,7 +165,6 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
             },
             "error": None
         }
-        context.set_custom_status('Succeeded')
         return result
     except Exception as ex:
         logging.error(f"Critical error in enrich_airtable_base_orchestrator: {ex}", exc_info=True)
@@ -153,7 +174,6 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
             "data": None,
             "error": str(ex)
         }
-        context.set_custom_status('Failed')
         return error_response
 
 
@@ -195,9 +215,10 @@ def enrich_single_place(activityInput):
 def get_all_third_places(activityInput):
     try:
         config_dict = activityInput.get("config", {})
+        
+        city = config_dict.get('city')
         provider_type = config_dict.get('provider_type')
         sequential_mode = config_dict.get('sequential_mode', False)
-        city = config_dict.get('city')
         insufficient_only = config_dict.get('insufficient_only', False)
 
         if not city:
@@ -213,7 +234,8 @@ def get_all_third_places(activityInput):
 
     except Exception as ex:
         logging.error(f"Error in get_all_third_places: {ex}", exc_info=True)
-        return []
+        # Re-raise so the orchestrator can surface a failure instead of silently proceeding.
+        raise
 
 
 @bp.activity_trigger(input_name="activityInput")
@@ -362,7 +384,6 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
             "data": results,
             "error": None if not failed_updates else f"{len(failed_updates)} failed updates"
         }
-        context.set_custom_status('Succeeded' if not failed_updates else 'Failed')
         return result
     except Exception as ex:
         logging.error(f"Critical error in refresh_airtable_operational_statuses_orchestrator: {ex}", exc_info=True)
@@ -372,5 +393,4 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
             "data": None,
             "error": str(ex)
         }
-        context.set_custom_status('Failed')
         return error_response

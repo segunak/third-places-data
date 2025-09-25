@@ -4,11 +4,11 @@ from enum import Enum
 # Default number of reviews to retrieve from place data providers
 DEFAULT_REVIEWS_LIMIT = 250
 
-# Cache refresh intervals (in days)
-DEFAULT_CACHE_REFRESH_INTERVAL = 90  # Default refresh interval for all data types
-
 # Thread pool configuration
 MAX_THREAD_WORKERS = 50 # Maximum number of threads for concurrent tasks
+
+# Outscraper minimum balance threshold (USD) required to allow OutscraperProvider instantiation
+OUTSCRAPER_BALANCE_THRESHOLD = 5.0
 
 class SearchField(Enum):
     """Enumeration of unique fields for searching records in the Airtable database.

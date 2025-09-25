@@ -8,7 +8,7 @@ from unidecode import unidecode
 from outscraper import ApiClient
 from abc import ABC, abstractmethod
 from typing import Dict, List, Any, Optional
-from constants import DEFAULT_REVIEWS_LIMIT, PlaceDetailsField
+from constants import DEFAULT_REVIEWS_LIMIT, PlaceDetailsField, OUTSCRAPER_BALANCE_THRESHOLD
 
 
 class PlaceDataService(ABC):
@@ -294,11 +294,56 @@ class OutscraperProvider(PlaceDataService):
         else:
             logging.info('OutscraperProvider instantiated for local use.')
             dotenv.load_dotenv()
+
         self.API_KEY = os.environ['OUTSCRAPER_API_KEY']
         self.client = ApiClient(api_key=self.API_KEY)
         self._provider_type = 'outscraper'
         self.charlotte_coordinates = "@35.23075539296459,-80.83165532446358,9z"
         self.default_params = {'language': 'en', 'region': 'US', 'async': False}
+        self.balance_threshold = OUTSCRAPER_BALANCE_THRESHOLD
+
+        try:
+            balance_payload = self._fetch_outscraper_balance()
+            balance = float(balance_payload.get('balance', -1))
+            upcoming_invoice = balance_payload.get('upcoming_invoice', {}) or {}
+            amount_due = float(upcoming_invoice.get('amount_due', -1))
+            logging.info(f"Outscraper balance retrieved: balance=${balance:.2f}, amount_due=${amount_due:.2f}")
+
+            if amount_due != 0:
+                raise Exception(
+                    f"Outstanding amount_due ${amount_due:.2f} must be 0 before using Outscraper features."
+                )
+            if balance < self.balance_threshold:
+                raise Exception(
+                    f"Outscraper balance ${balance:.2f} is below required minimum ${self.balance_threshold:.2f}. Add funds before using Outscraper features."
+                )
+            logging.info(
+                f"Outscraper billing check passed: balance=${balance:.2f} (>= ${self.balance_threshold:.2f}), amount_due=${amount_due:.2f}"
+            )
+        except Exception as e:
+            raise Exception(f"Failed Outscraper balance check: {e}")
+
+    def _fetch_outscraper_balance(self) -> Dict[str, Any]:
+        """Fetch current Outscraper billing snapshot. Returns full JSON including upcoming_invoice.
+
+        Expected keys:
+          - balance (float)
+          - upcoming_invoice.amount_due (float)
+        Raises on any failure or malformed response.
+        """
+        url = 'https://api.outscraper.cloud/profile/balance'
+        headers = {'X-API-KEY': self.API_KEY, 'Accept': 'application/json'}
+        try:
+            resp = requests.get(url, headers=headers, timeout=10)
+            resp.raise_for_status()
+            data = resp.json()
+            if 'balance' not in data:
+                raise ValueError("'balance' field missing in response JSON")
+            if 'upcoming_invoice' not in data:
+                data['upcoming_invoice'] = {"amount_due": 0}
+            return data
+        except Exception as e:
+            raise Exception(f"Unable to retrieve balance from Outscraper endpoint '{url}': {e}")
 
     def get_place_details(self, place_id: str) -> Dict[str, Any]:
         try:

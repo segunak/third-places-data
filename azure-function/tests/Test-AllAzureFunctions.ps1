@@ -10,6 +10,17 @@ $script:City = "charlotte"            # Set to the city you want to use for cach
 $script:ProviderType = "outscraper"   # Set to 'google' or 'outscraper'
 $script:InsufficientOnly = $true      # Set to $true to only process records from the "Insufficient" view
 
+# Endpoint test toggles (set individual values to $false to skip a test)
+$script:RunEndpointTests = @{
+    Smoke                      = $true
+    EnrichAirtableBase         = $true
+    RefreshPlaceData           = $true
+    RefreshOperationalStatuses = $true
+    RefreshSinglePlace         = $true
+    RefreshAllPhotos           = $true
+    PurgeOrchestrations        = $true
+} 
+
 # Array to store test results
 $script:TestResults = @()
 
@@ -222,32 +233,46 @@ Write-Log "Test configuration: Sequential=$script:SequentialMode, ForceRefresh=$
 # Preflight check: ensure function host is running locally
 Assert-FunctionHostRunning -PingUrl $baseUrl
 
-# Smoke Test (HTTP)
-Test-HttpFunction -Endpoint 'smoke-test' -Body '{"House": "Martell"}' -Description 'API health check'
+if ($script:RunEndpointTests.Smoke) {
+    # Smoke Test (HTTP)
+    Test-HttpFunction -Endpoint 'smoke-test' -Body '{"House": "Martell"}' -Description 'API health check'
+}
 
-# Enrich Airtable Base (Durable)
-$enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())&city=$script:City"
-Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode, insufficient_only=$script:InsufficientOnly)"
+if ($script:RunEndpointTests.EnrichAirtableBase) {
+    # Enrich Airtable Base (Durable)
+    $enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())&city=$script:City"
+    Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode, insufficient_only=$script:InsufficientOnly)"
+}
 
-# Refresh Place Data (Durable)
-$refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&city=$script:City"
-Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+if ($script:RunEndpointTests.RefreshPlaceData) {
+    # Refresh Place Data (Durable)
+    $refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())&city=$script:City"
+    Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential_mode=$script:SequentialMode, insufficient_only=$script:InsufficientOnly)"
+}
 
-# Refresh Operational Statuses (HTTP)
-$opsEndpoint = "refresh-airtable-operational-statuses?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&city=$script:City"
-Test-DurableFunction -Endpoint $opsEndpoint -Description "Refresh operational statuses ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+if ($script:RunEndpointTests.RefreshOperationalStatuses) {
+    # Refresh Operational Statuses (HTTP)
+    $opsEndpoint = "refresh-airtable-operational-statuses?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&city=$script:City"
+    Test-DurableFunction -Endpoint $opsEndpoint -Description "Refresh operational statuses ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+}
 
-# Refresh Single Place (Durable) - Test with a known place ID
-$singlePlaceId = "ChIJjcmjAUqJVogRgDI5HoEqy0w"  # Mado Bakery and Cafe
-$singlePlaceEndpoint = "refresh-single-place?place_id=$singlePlaceId&provider_type=$script:ProviderType&city=$script:City"
-Test-DurableFunction -Endpoint $singlePlaceEndpoint -Description "Refresh single place data (place_id=$singlePlaceId, provider=$script:ProviderType)"
+if ($script:RunEndpointTests.RefreshSinglePlace) {
+    # Refresh Single Place (Durable) - Test with a known place ID
+    $singlePlaceId = "ChIJqX87rVYOVIgRjYMMiz1W5Sg"  # Cabarrus County Library | Concord
+    $singlePlaceEndpoint = "refresh-single-place?place_id=$singlePlaceId&provider_type=$script:ProviderType&city=$script:City"
+    Test-DurableFunction -Endpoint $singlePlaceEndpoint -Description "Refresh single place data (place_id=$singlePlaceId, provider=$script:ProviderType)"
+}
 
-# Refresh All Photos (Durable)
-$photosEndpoint = "refresh-all-photos?provider_type=$script:ProviderType&city=$script:City&dry_run=true&sequential_mode=$($script:SequentialMode.ToString().ToLower())"
-Test-DurableFunction -Endpoint $photosEndpoint -Description "Refresh all photos in dry run mode ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+if ($script:RunEndpointTests.RefreshAllPhotos) {
+    # Refresh All Photos (Durable)
+    $photosEndpoint = "refresh-all-photos?provider_type=$script:ProviderType&city=$script:City&dry_run=true&sequential_mode=$($script:SequentialMode.ToString().ToLower())"
+    Test-DurableFunction -Endpoint $photosEndpoint -Description "Refresh all photos in dry run mode ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+}
 
-# Purge Orchestrations (HTTP)
-Test-HttpFunction -Endpoint 'purge-orchestrations' -Description 'Purge completed orchestrations'
+if ($script:RunEndpointTests.PurgeOrchestrations) {
+    # Purge Orchestrations (HTTP)
+    Test-HttpFunction -Endpoint 'purge-orchestrations' -Description 'Purge completed orchestrations'
+}
 
 # Display test completion
 Write-Log "All Azure Function endpoint tests completed."
@@ -260,8 +285,22 @@ Write-Host "======================================================="
 Write-Host ""
 
 $totalTests = $script:TestResults.Count
-$passedTests = ($script:TestResults | Where-Object { $_.Success -eq $true }).Count
-$failedTests = $totalTests - $passedTests
+
+# Ensure Success property is treated as a boolean (defensive; handles any accidental string coercion)
+foreach ($r in $script:TestResults) { $r.Success = [bool]$r.Success }
+
+# Robust counting using explicit groupings instead of arithmetic on potentially null values
+$passedSet = @($script:TestResults | Where-Object { $_.Success })
+$failedSet = @($script:TestResults | Where-Object { -not $_.Success })
+[int]$passedTests = $passedSet.Count
+[int]$failedTests = $failedSet.Count
+
+# Fallback integrity check — if counts don't add up, recalc failed via subtraction and emit a warning
+if (($passedTests + $failedTests) -ne $totalTests) {
+    Write-Host "WARNING: Inconsistent test counts detected (passed=$passedTests failed=$failedTests total=$totalTests). Recomputing failed count via subtraction." -ForegroundColor Yellow
+    [int]$failedTests = $totalTests - $passedTests
+}
+
 $passRate = if ($totalTests -gt 0) { [math]::Round(($passedTests / $totalTests) * 100, 2) } else { 0 }
 
 Write-Host "SUMMARY:"
