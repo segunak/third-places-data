@@ -348,14 +348,16 @@ class OutscraperProvider(PlaceDataService):
     def get_place_details(self, place_id: str) -> Dict[str, Any]:
         try:
             results = self.client.google_maps_search(place_id, limit=1, language=self.default_params['language'], region=self.default_params['region'], coordinates=self.charlotte_coordinates)
+    
             if results and len(results) > 0 and len(results[0]) > 0:
                 raw = results[0][0]
                 full_address = raw.get('full_address', '')
                 clean_address = self._clean_address(full_address)
+                cid = raw.get('cid')
                 return {
                     "place_name": raw.get('name', ''),
                     "place_id": raw.get('place_id', place_id),
-                    "google_maps_url": f'https://maps.google.com/?cid={raw.get("cid", "")}',
+                    "google_maps_url": f'https://maps.google.com/?cid={cid}' if cid else '',
                     "website": raw.get('site', ''),
                     "address": clean_address,
                     "description": raw.get('description', ''),

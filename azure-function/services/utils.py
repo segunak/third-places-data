@@ -148,6 +148,7 @@ def _fill_photos_from_airtable(place_data: Dict, photos_json: str) -> bool:
 def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str = None,
                               city: str = None, force_refresh: bool = False, airtable_record_id: str = None) -> Tuple[str, Dict, str]:
     try:
+        SENTINEL_NO_PLACE = "__NO_PLACE_FOUND__"
         if not city:
             return 'failed', None, 'Missing required parameter: city'
 
@@ -162,7 +163,7 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
             logging.info(f"No place_id provided for {place_name}, looking up...")
             place_id = data_provider.find_place_id(place_name)
 
-            if not place_id:
+            if not place_id or place_id == SENTINEL_NO_PLACE:
                 return 'failed', None, f"Could not find place ID for {place_name}"
             did_lookup_find_new_place_id = True
             logging.info(f"Found place_id {place_id} for {place_name}")
@@ -197,14 +198,26 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
                 except Exception as e:
                     logging.error(f"Failed to update 'Has Data File' (cached path) for {place_name}: {e}")
             return 'cached', cached_json, f"Using cached data for {place_name} from {cached_file_path}"
+
         if cached_file_exists and force_refresh:
             logging.info(f"Cache present for {place_name} but force_refresh=True; fetching fresh data")
+
         if not cached_file_exists:
             logging.info(f"No cached file found for {place_name} at {cached_file_path} ({cache_message}); fetching fresh data")
 
         # 2. Fetch fresh data (either no cache or force_refresh requested)
         logging.info(f"Fetching fresh data from provider {provider_type} for {place_name} (place_id={place_id}) skip_photos={skip_photos} force_refresh={force_refresh}")
         place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=skip_photos)
+
+        # If provider returned a sentinel indicating no real data, treat as failure and DO NOT save or update Airtable
+        try:
+            details = place_data.get('details', {}) if place_data else {}
+            raw_details_place_id = details.get('place_id') or details.get('raw_data', {}).get('place_id')
+            if raw_details_place_id == SENTINEL_NO_PLACE:
+                logging.warning(f"Provider returned sentinel NO_PLACE_FOUND for {place_name} (place_id={place_id}); skipping save & Airtable updates.")
+                return 'failed', None, f"No data found for {place_name}"
+        except Exception as sentinel_check_err:
+            logging.error(f"Error while evaluating sentinel NO_PLACE_FOUND for {place_name}: {sentinel_check_err}")
 
         if skip_photos and existing_photos_json:
             _fill_photos_from_airtable(place_data, existing_photos_json)
