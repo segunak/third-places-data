@@ -304,18 +304,27 @@ class OutscraperProvider(PlaceDataService):
 
         try:
             balance_payload = self._fetch_outscraper_balance()
-            balance = float(balance_payload.get('balance', -1))
+            
+            if 'balance' not in balance_payload:
+                raise ValueError("Response from Outscraper is missing 'balance' field")
+            balance = float(balance_payload['balance'])
+            
             upcoming_invoice = balance_payload.get('upcoming_invoice', {}) or {}
-            amount_due = float(upcoming_invoice.get('amount_due', -1))
+            if 'amount_due' not in upcoming_invoice:
+                raise ValueError("Response from Outscraper is missing 'upcoming_invoice.amount_due' field")
+            amount_due = float(upcoming_invoice['amount_due'])
+            
             logging.info(f"Outscraper balance retrieved: balance=${balance:.2f}, amount_due=${amount_due:.2f}")
 
             if amount_due != 0:
                 raise Exception(
-                    f"Outstanding amount_due ${amount_due:.2f} must be 0 before using Outscraper features."
+                    f"Outstanding amount_due ${amount_due:.2f} must be 0 before using Outscraper features. "
+                    f"Current state: balance=${balance:.2f}, amount_due=${amount_due:.2f}"
                 )
             if balance < self.balance_threshold:
                 raise Exception(
-                    f"Outscraper balance ${balance:.2f} is below required minimum ${self.balance_threshold:.2f}. Add funds before using Outscraper features."
+                    f"Outscraper balance ${balance:.2f} is below required minimum ${self.balance_threshold:.2f}. "
+                    f"Add funds before using Outscraper features. Current state: balance=${balance:.2f}, amount_due=${amount_due:.2f}"
                 )
             logging.info(
                 f"Outscraper billing check passed: balance=${balance:.2f} (>= ${self.balance_threshold:.2f}), amount_due=${amount_due:.2f}"
