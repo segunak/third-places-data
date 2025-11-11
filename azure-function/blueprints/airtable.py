@@ -148,20 +148,68 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
                 batch_results = yield context.task_all(batch_tasks)
                 results.extend(batch_results)
 
-        actually_updated_places = [
-            place for place in results
-            if place and place.get('field_updates') and any(updates["updated"] for updates in place.get('field_updates', {}).values())
-        ]
+        # Categorize results into enriched, not found, skipped, and failed
+        actually_updated_places = []
+        not_found_places = []
+        skipped_places = []
+        failed_places = []
+        
+        for place in results:
+            if not place:
+                continue
+                
+            # Check if place was enriched (has updates with updated=True)
+            if place.get('field_updates') and any(updates.get("updated") for updates in place.get('field_updates', {}).values()):
+                actually_updated_places.append(place)
+            # Check if place was not found (sentinel case)
+            elif place.get('status') == 'failed' and 'NO_PLACE_FOUND' in place.get('message', ''):
+                not_found_places.append({
+                    'place_name': place.get('place_name'),
+                    'place_id': place.get('place_id'),
+                    'record_id': place.get('record_id'),
+                    'message': place.get('message', '')
+                })
+            # Skipped places (intentionally skipped, not a failure)
+            elif place.get('status') == 'skipped':
+                skipped_places.append({
+                    'place_name': place.get('place_name'),
+                    'place_id': place.get('place_id'),
+                    'record_id': place.get('record_id'),
+                    'message': place.get('message', 'Place skipped')
+                })
+            # Other failures (actual errors)
+            elif place.get('status') == 'failed':
+                failed_places.append({
+                    'place_name': place.get('place_name'),
+                    'place_id': place.get('place_id'),
+                    'record_id': place.get('record_id'),
+                    'message': place.get('message', 'Unknown error')
+                })
+        
+        total_places_enriched = len(actually_updated_places)
+        total_places_not_found = len(not_found_places)
+        total_places_skipped = len(skipped_places)
+        total_places_failed = len(failed_places)
+        
         message = "Airtable base enrichment processed successfully."
         if insufficient_only:
-            message = f"Airtable base enrichment processed {len(results)} records from 'Insufficient' view."
+            message = f"Airtable base enrichment processed {len(results)} records from 'Insufficient' view. {total_places_enriched} enriched, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
+        else:
+            message = f"Airtable base enrichment processed {len(results)} records. {total_places_enriched} enriched, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
+        
         result = {
             "success": True,
             "message": message,
             "data": {
                 "total_places_processed": len(results),
-                "total_places_enriched": len(actually_updated_places),
-                "places_enriched": actually_updated_places
+                "total_places_enriched": total_places_enriched,
+                "total_places_not_found": total_places_not_found,
+                "total_places_skipped": total_places_skipped,
+                "total_places_failed": total_places_failed,
+                "places_enriched": actually_updated_places,
+                "places_not_found": not_found_places,
+                "places_skipped": skipped_places,
+                "places_failed": failed_places
             },
             "error": None
         }

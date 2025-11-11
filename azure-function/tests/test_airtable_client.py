@@ -7,26 +7,27 @@ import unittest
 import pyairtable
 from unittest import mock
 from datetime import datetime, timedelta
+
 # Add parent directory to path so we can import from parent
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from constants import SearchField
-from airtable_client import AirtableClient
-from place_data_providers import OutscraperProvider, PlaceDataProviderFactory
+from services.airtable_service import AirtableService
+from services.place_data_service import OutscraperProvider, PlaceDataProviderFactory
 
 # Sample real place to test with - same as in other tests for consistency
 TEST_PLACE_NAME = "Mattie Ruth's Coffee House"
 TEST_PLACE_ID = "ChIJH9S7TOcPVIgRnG5eHqW4DE0"
 
-class TestAirtableClient(unittest.TestCase):
-    """Integration test Suite for the AirtableClient class."""
+class TestAirtableService(unittest.TestCase):
+    """Integration test Suite for the AirtableService class."""
 
     def setUp(self):
         """Set up test environment before each test."""
         # Load environment variables from .env file
         dotenv.load_dotenv()
         
-        self.client = AirtableClient(
+        self.client = AirtableService(
             provider_type='outscraper', 
             sequential_mode=True
         )
@@ -39,7 +40,7 @@ class TestAirtableClient(unittest.TestCase):
         os.makedirs(self.output_dir, exist_ok=True)
     
     def test_init(self):
-        """Test the initialization of AirtableClient."""
+        """Test the initialization of AirtableService."""
         # Check if Airtable-related credentials are loaded
         self.assertIsNotNone(self.client.AIRTABLE_BASE_ID)
         self.assertIsNotNone(self.client.AIRTABLE_PERSONAL_ACCESS_TOKEN)
@@ -116,7 +117,7 @@ class TestAirtableClient(unittest.TestCase):
             json.dump(photos, f, indent=4, ensure_ascii=False)
         print(f"Saved place photos to {output_file}")
     
-    @mock.patch('airtable_client.AirtableClient.update_place_record')
+    @mock.patch('services.airtable_service.AirtableService.update_place_record')
     def test_refresh_operational_statuses(self, mock_update_place_record):
         """Test that operational status refresh correctly updates place records."""
         # Setup mock data provider
@@ -147,11 +148,11 @@ class TestAirtableClient(unittest.TestCase):
         mock_provider.is_place_operational.side_effect = lambda place_id: place_id == 'place1'
         
         # Mock the all_third_places property
-        with mock.patch('airtable_client.AirtableClient.all_third_places', new_callable=mock.PropertyMock) as mock_all_places:
+        with mock.patch('services.airtable_service.AirtableService.all_third_places', new_callable=mock.PropertyMock) as mock_all_places:
             mock_all_places.return_value = test_places
             
             # Create client instance and run the method
-            client = AirtableClient(provider_type='outscraper')
+            client = AirtableService(provider_type='outscraper')
             results = client.refresh_operational_statuses(mock_provider)
             
             # Verify that update_place_record was called with correct parameters for place2 only
@@ -178,7 +179,7 @@ class TestAirtableClient(unittest.TestCase):
     def test_has_data_file(self):
         """Test the has_data_file method."""
         # We need to mock get_record to control its response without hitting the real API
-        with mock.patch('airtable_client.AirtableClient.get_record') as mock_get_record:
+        with mock.patch('services.airtable_service.AirtableService.get_record') as mock_get_record:
             # Set up mock to return a record with 'Has Data File' set to 'Yes'
             mock_get_record.return_value = {
                 'id': 'rec123',
@@ -241,8 +242,8 @@ class TestAirtableClient(unittest.TestCase):
     
     def test_get_place_types(self):
         """Test that get_place_types correctly returns place types from Airtable."""
-        # Create AirtableClient instance with mocked data
-        with mock.patch('airtable_client.AirtableClient.all_third_places', new_callable=mock.PropertyMock) as mock_fetch:
+        # Create AirtableService instance with mocked data
+        with mock.patch('services.airtable_service.AirtableService.all_third_places', new_callable=mock.PropertyMock) as mock_fetch:
             # Setup test data with various place types
             mock_fetch.return_value = [
                 {"id": "rec1", "fields": {"Google Maps Place Id": "place1", "Name": "Place 1", "Type": "Cafe"}},
@@ -252,7 +253,7 @@ class TestAirtableClient(unittest.TestCase):
             ]
             
             # Create client with valid provider_type
-            client = AirtableClient(provider_type="outscraper")
+            client = AirtableService(provider_type="outscraper")
             place_types = client.get_place_types()
             
             # Verify correct types are returned and sorted alphabetically
@@ -290,13 +291,13 @@ class TestAirtableClient(unittest.TestCase):
             return None
         
         # Mock helper function that gets and caches place data
-        with mock.patch('airtable_client.AirtableClient.all_third_places', new_callable=mock.PropertyMock, return_value=test_places), \
-             mock.patch('airtable_client.AirtableClient.update_place_record') as mock_update_record, \
-             mock.patch('helper_functions.get_and_cache_place_data') as mock_get_data, \
+        with mock.patch('services.airtable_service.AirtableService.all_third_places', new_callable=mock.PropertyMock, return_value=test_places), \
+             mock.patch('services.airtable_service.AirtableService.update_place_record') as mock_update_record, \
+             mock.patch('services.utils.get_and_cache_place_data') as mock_get_data, \
              mock.patch.object(pyairtable.Table, 'get', side_effect=mock_get_record):
             
             # Configure mock to return different data for the two test places
-            def mock_get_data_side_effect(provider_type, place_name, place_id, city, force_refresh):
+            def mock_get_data_side_effect(provider_type, place_name, place_id, city, force_refresh, airtable_record_id=None):
                 if place_id == 'place123':
                     return 'succeeded', {
                         'place_id': 'place123',
@@ -341,7 +342,7 @@ class TestAirtableClient(unittest.TestCase):
     
     def test_insufficient_only_filter(self):
         """Test that the insufficient_only parameter correctly filters records from the 'Insufficient' view."""
-        # Create AirtableClient instances with and without insufficient_only
+        # Create AirtableService instances with and without insufficient_only
         with mock.patch('pyairtable.Table.all') as mock_all:
             # Configure the mock to track different calls
             mock_all.side_effect = lambda **kwargs: {
@@ -361,7 +362,7 @@ class TestAirtableClient(unittest.TestCase):
             }.get('view=Insufficient' if 'view' in kwargs and kwargs['view'] == 'Insufficient' else 'no_view', [])
             
             # Test with insufficient_only=True
-            client_filtered = AirtableClient(provider_type='outscraper', insufficient_only=True)
+            client_filtered = AirtableService(provider_type='outscraper', insufficient_only=True)
             filtered_places = client_filtered.all_third_places
             
             # Verify that the "Insufficient" view was requested
@@ -370,7 +371,7 @@ class TestAirtableClient(unittest.TestCase):
             mock_all.reset_mock()
             
             # Test with insufficient_only=False (default)
-            client_all = AirtableClient(provider_type='outscraper', insufficient_only=False)
+            client_all = AirtableService(provider_type='outscraper', insufficient_only=False)
             all_places = client_all.all_third_places
             
             # Verify that no view filter was applied
@@ -395,8 +396,8 @@ class TestAirtableClient(unittest.TestCase):
         city = 'charlotte'
         force_refresh = False
 
-        with mock.patch('airtable_client.AirtableClient.update_place_record') as mock_update_record, \
-             mock.patch('helper_functions.get_and_cache_place_data') as mock_get_data, \
+        with mock.patch('services.airtable_service.AirtableService.update_place_record') as mock_update_record, \
+             mock.patch('services.utils.get_and_cache_place_data') as mock_get_data, \
              mock.patch.object(pyairtable.Table, 'get', return_value=test_place):
 
             # Mock the helper to return a successful enrichment
@@ -421,7 +422,7 @@ class TestAirtableClient(unittest.TestCase):
                 'Data found'
             )
 
-            client = AirtableClient(provider_type=provider_type)
+            client = AirtableService(provider_type=provider_type)
             result = client.enrich_single_place(test_place, provider_type, city, force_refresh)
 
             self.assertEqual(result['status'], 'succeeded')
@@ -434,7 +435,7 @@ class TestAirtableClient(unittest.TestCase):
 # It prevents the tests from running when this module is imported elsewhere.
 if __name__ == "__main__":
     # Instantiate the test class
-    test_instance = TestAirtableClient()
+    test_instance = TestAirtableService()
     
     # Set up the test environment
     test_instance.setUp()

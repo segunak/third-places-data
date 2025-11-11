@@ -215,7 +215,7 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
             raw_details_place_id = details.get('place_id') or details.get('raw_data', {}).get('place_id')
             if raw_details_place_id == SENTINEL_NO_PLACE:
                 logging.warning(f"Provider returned sentinel NO_PLACE_FOUND for {place_name} (place_id={place_id}); skipping save & Airtable updates.")
-                return 'failed', None, f"No data found for {place_name}"
+                return 'failed', None, f"NO_PLACE_FOUND: Provider could not find data for {place_name}"
         except Exception as sentinel_check_err:
             logging.error(f"Error while evaluating sentinel NO_PLACE_FOUND for {place_name}: {sentinel_check_err}")
 
