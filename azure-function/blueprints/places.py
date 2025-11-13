@@ -232,6 +232,7 @@ async def refresh_single_place(req: func.HttpRequest, client) -> func.HttpRespon
         place_id = req.params.get('place_id')
         provider_type = req.params.get('provider_type')
         city = req.params.get('city')
+        force_refresh = req.params.get('force_refresh', '').lower() == 'true'
 
         if not place_id:
             return func.HttpResponse(
@@ -282,13 +283,13 @@ async def refresh_single_place(req: func.HttpRequest, client) -> func.HttpRespon
             )
 
         logging.info(f"Starting single place refresh for place_id={place_id}, "
-                     f"provider_type={provider_type}, city={city}")
+                     f"provider_type={provider_type}, city={city}, force_refresh={force_refresh}")
 
         orchestration_input = {
             "place_id": place_id,
             "provider_type": provider_type,
             "city": city,
-            "force_refresh": True
+            "force_refresh": force_refresh
         }
 
         instance_id = await client.start_new("refresh_single_place_orchestrator", client_input=orchestration_input)
@@ -320,11 +321,12 @@ def refresh_single_place_orchestrator(context: df.DurableOrchestrationContext):
         place_id = orchestration_input.get("place_id")
         provider_type = orchestration_input.get("provider_type")
         city = orchestration_input.get("city")
+        force_refresh = orchestration_input.get("force_refresh", False)
 
         if not place_id or not provider_type or not city:
             raise ValueError("Missing required parameters: place_id, provider_type, or city")
 
-        logging.info(f"Processing single place refresh for place_id: {place_id}")
+        logging.info(f"Processing single place refresh for place_id: {place_id}, force_refresh: {force_refresh}")
 
         place_record = yield context.call_activity(
             "find_place_by_id",
@@ -353,7 +355,7 @@ def refresh_single_place_orchestrator(context: df.DurableOrchestrationContext):
                 "config": {
                     "provider_type": provider_type,
                     "city": city,
-                    "force_refresh": True
+                    "force_refresh": force_refresh
                 }
             }
         )
@@ -364,7 +366,7 @@ def refresh_single_place_orchestrator(context: df.DurableOrchestrationContext):
                 "place": place_record,
                 "provider_type": provider_type,
                 "city": city,
-                "force_refresh": False
+                "force_refresh": force_refresh
             }
         )
 
