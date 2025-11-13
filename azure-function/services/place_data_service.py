@@ -329,10 +329,10 @@ class OutscraperProvider(PlaceDataService):
           - balance (float)
         Raises on any failure or malformed response.
         """
-        url = 'https://api.outscraper.cloud/profile/balance'
+        url = 'https://api.app.outscraper.com/profile/balance'
         headers = {'X-API-KEY': self.API_KEY, 'Accept': 'application/json'}
         try:
-            resp = requests.get(url, headers=headers, timeout=10)
+            resp = requests.get(url, headers=headers, timeout=120)
             resp.raise_for_status()
             data = resp.json()
             if 'balance' not in data:
