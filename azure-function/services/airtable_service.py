@@ -17,7 +17,7 @@ class AirtableService:
     """Defines methods for interaction with the Charlotte Third Places Airtable database.
     """
 
-    def __init__(self, provider_type=None, sequential_mode=False, insufficient_only=False):
+    def __init__(self, provider_type=None, sequential_mode=False, view="Production"):
         logging.basicConfig(level=logging.INFO)
 
         if 'FUNCTIONS_WORKER_RUNTIME' in os.environ:
@@ -30,9 +30,10 @@ class AirtableService:
         if self.sequential_mode:
             logging.info('Airtable Service running in DEBUG MODE with SEQUENTIAL execution')
 
-        self.insufficient_only = insufficient_only
-        if self.insufficient_only:
-            logging.info('Airtable Service running in FILTER MODE for "Insufficient" view only')
+        # The Airtable view to use when fetching records. Defaults to "Production".
+        # Pass a different view name (e.g., "Insufficient") to filter records.
+        self.view = view
+        logging.info(f'Airtable Service configured to use view: "{self.view}"')
 
         self.AIRTABLE_BASE_ID = os.environ['AIRTABLE_BASE_ID']
         self.AIRTABLE_PERSONAL_ACCESS_TOKEN = os.environ['AIRTABLE_PERSONAL_ACCESS_TOKEN']
@@ -56,30 +57,23 @@ class AirtableService:
     def all_third_places(self):
         """
         Gets third places from Airtable, but only when needed.
-        If insufficient_only is True, filters to only records in the "Insufficient" view.
+        Uses the configured view to filter records (defaults to "Production").
         Caches the result to avoid repeated API calls.
         
         Returns:
             list: Third places records from the Airtable database
         """
         if self._all_third_places is None:
-            if self.insufficient_only:
-                logging.info("Retrieving third places from 'Insufficient' view in Airtable.")
-                self._all_third_places = self.charlotte_third_places.all(
-                    view="Insufficient", 
-                    sort=["-Created Time"]
-                )
-                
-                if not self._all_third_places:
-                    logging.info("No records found in the 'Insufficient' view. Nothing to return.")
-                else:
-                    logging.info(f"Retrieved {len(self._all_third_places)} places from 'Insufficient' view.")
+            logging.info(f"Retrieving third places from '{self.view}' view in Airtable.")
+            self._all_third_places = self.charlotte_third_places.all(
+                view=self.view, 
+                sort=["-Created Time"]
+            )
+            
+            if not self._all_third_places:
+                logging.info(f"No records found in the '{self.view}' view. Nothing to return.")
             else:
-                logging.info("Retrieving all third places from Airtable.")
-                self._all_third_places = self.charlotte_third_places.all(
-                    sort=["-Created Time"]
-                )
-                logging.info(f"Retrieved {len(self._all_third_places)} places total.")
+                logging.info(f"Retrieved {len(self._all_third_places)} places from '{self.view}' view.")
         return self._all_third_places
     
     def clear_cached_places(self):

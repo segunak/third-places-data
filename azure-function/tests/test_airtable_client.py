@@ -340,29 +340,27 @@ class TestAirtableService(unittest.TestCase):
         print("✓ Successfully tested enrich_base_data")
         
     
-    def test_insufficient_only_filter(self):
-        """Test that the insufficient_only parameter correctly filters records from the 'Insufficient' view."""
-        # Create AirtableService instances with and without insufficient_only
+    def test_view_parameter_filter(self):
+        """Test that the view parameter correctly filters records from the specified Airtable view."""
+        # Create AirtableService instances with different views
         with mock.patch('pyairtable.Table.all') as mock_all:
             # Configure the mock to track different calls
             mock_all.side_effect = lambda **kwargs: {
-                # When view="Insufficient" is passed, return a filtered dataset
+                # When view="Insufficient" is passed, return only places with missing data
                 'view=Insufficient': [
-                    {'id': 'rec1', 'fields': {'Place': 'Insufficient Place 1'}},
-                    {'id': 'rec2', 'fields': {'Place': 'Insufficient Place 2'}}
+                    {'id': 'rec1', 'fields': {'Place': 'Incomplete Place 1'}},
+                    {'id': 'rec2', 'fields': {'Place': 'Incomplete Place 2'}}
                 ],
-                # When no view is passed, return all records
-                'no_view': [
-                    {'id': 'rec1', 'fields': {'Place': 'Insufficient Place 1'}},
-                    {'id': 'rec2', 'fields': {'Place': 'Insufficient Place 2'}},
+                # When view="Production" is passed, return only complete/good records
+                'view=Production': [
                     {'id': 'rec3', 'fields': {'Place': 'Complete Place 3'}},
                     {'id': 'rec4', 'fields': {'Place': 'Complete Place 4'}},
                     {'id': 'rec5', 'fields': {'Place': 'Complete Place 5'}}
                 ]
-            }.get('view=Insufficient' if 'view' in kwargs and kwargs['view'] == 'Insufficient' else 'no_view', [])
+            }.get(f"view={kwargs.get('view')}" if 'view' in kwargs else 'view=Production', [])
             
-            # Test with insufficient_only=True
-            client_filtered = AirtableService(provider_type='outscraper', insufficient_only=True)
+            # Test with view="Insufficient"
+            client_filtered = AirtableService(provider_type='outscraper', view="Insufficient")
             filtered_places = client_filtered.all_third_places
             
             # Verify that the "Insufficient" view was requested
@@ -370,18 +368,18 @@ class TestAirtableService(unittest.TestCase):
             # Reset the mock counter between calls
             mock_all.reset_mock()
             
-            # Test with insufficient_only=False (default)
-            client_all = AirtableService(provider_type='outscraper', insufficient_only=False)
+            # Test with view="Production" (default)
+            client_all = AirtableService(provider_type='outscraper', view="Production")
             all_places = client_all.all_third_places
             
-            # Verify that no view filter was applied
-            mock_all.assert_called_with(sort=["-Created Time"])
+            # Verify that Production view was requested
+            mock_all.assert_called_with(view="Production", sort=["-Created Time"])
             
             # Verify correct number of places in each case
             self.assertEqual(len(filtered_places), 2, "Should have 2 places when filtered to Insufficient view")
-            self.assertEqual(len(all_places), 5, "Should have all 5 places when not filtered")
+            self.assertEqual(len(all_places), 3, "Should have 3 complete places in Production view")
             
-            print("✓ Successfully tested insufficient_only filter parameter")
+            print("✓ Successfully tested view parameter filter")
     
     def test_enrich_single_place(self):
         """Test enrich_single_place with explicit parameters and proper mocking."""
@@ -463,7 +461,7 @@ if __name__ == "__main__":
     run_test('test_get_record', test_instance.test_get_record)
     run_test('test_get_place_types', test_instance.test_get_place_types)
     run_test('test_enrich_base_data', test_instance.test_enrich_base_data)
-    run_test('test_insufficient_only_filter', test_instance.test_insufficient_only_filter)
+    run_test('test_view_parameter_filter', test_instance.test_view_parameter_filter)
     run_test('test_enrich_single_place', test_instance.test_enrich_single_place)
     
     # Print summary

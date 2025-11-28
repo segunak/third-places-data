@@ -8,7 +8,7 @@ $script:SequentialMode = $false        # Set to $true for sequential processing,
 $script:ForceRefresh = $false         # Set to $true to bypass caching, $false to use cache when available
 $script:City = "charlotte"            # Set to the city you want to use for caching
 $script:ProviderType = "outscraper"   # Set to 'google' or 'outscraper'
-$script:InsufficientOnly = $true      # Set to $true to only process records from the "Insufficient" view
+$script:View = "Insufficient"         # Set to the Airtable view to use (e.g., "Production", "Insufficient")
 
 # Endpoint test toggles (set individual values to $false to skip a test)
 $script:RunEndpointTests = @{
@@ -19,6 +19,8 @@ $script:RunEndpointTests = @{
     RefreshSinglePlace         = $true
     RefreshAllPhotos           = $true
     PurgeOrchestrations        = $true
+    CosmosSyncPlaces           = $true
+    CosmosSyncSinglePlace      = $true
 } 
 
 # Array to store test results
@@ -228,7 +230,7 @@ Write-Log "Starting Azure Function endpoint tests"
 Write-Log "Base URL: $baseUrl"
 Write-Log "Using key: $(if ($functionKey) { 'Yes' } else { 'No' })"
 Write-Log "Scripts directory: $(Split-Path $script:InvokeAzureFunction -Parent)"
-Write-Log "Test configuration: Sequential=$script:SequentialMode, ForceRefresh=$script:ForceRefresh, City=$script:City, Provider=$script:ProviderType"
+Write-Log "Test configuration: Sequential=$script:SequentialMode, ForceRefresh=$script:ForceRefresh, City=$script:City, Provider=$script:ProviderType, View=$script:View"
 
 # Preflight check: ensure function host is running locally
 Assert-FunctionHostRunning -PingUrl $baseUrl
@@ -240,14 +242,14 @@ if ($script:RunEndpointTests.Smoke) {
 
 if ($script:RunEndpointTests.EnrichAirtableBase) {
     # Enrich Airtable Base (Durable)
-    $enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())&city=$script:City"
-    Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode, insufficient_only=$script:InsufficientOnly)"
+    $enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&view=$script:View&city=$script:City"
+    Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode, view=$script:View)"
 }
 
 if ($script:RunEndpointTests.RefreshPlaceData) {
     # Refresh Place Data (Durable)
-    $refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&insufficient_only=$($script:InsufficientOnly.ToString().ToLower())&city=$script:City"
-    Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential_mode=$script:SequentialMode, insufficient_only=$script:InsufficientOnly)"
+    $refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&view=$script:View&city=$script:City"
+    Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential_mode=$script:SequentialMode, view=$script:View)"
 }
 
 if ($script:RunEndpointTests.RefreshOperationalStatuses) {
@@ -272,6 +274,18 @@ if ($script:RunEndpointTests.RefreshAllPhotos) {
 if ($script:RunEndpointTests.PurgeOrchestrations) {
     # Purge Orchestrations (HTTP)
     Test-HttpFunction -Endpoint 'purge-orchestrations' -Description 'Purge completed orchestrations'
+}
+
+if ($script:RunEndpointTests.CosmosSyncPlaces) {
+    # Cosmos DB Sync All Places (HTTP) - syncs places and chunks with embeddings
+    # Use limit=2 for testing to avoid processing all places
+    Test-HttpFunction -Endpoint 'cosmos/sync-places?limit=2' -Description 'Sync places to Cosmos DB (limit=2 for testing)'
+}
+
+if ($script:RunEndpointTests.CosmosSyncSinglePlace) {
+    # Cosmos DB Sync Single Place (HTTP) - syncs a single place by Google Maps Place ID
+    $cosmosPlaceId = "ChIJH9S7TOcPVIgRnG5eHqW4DE0"  # Mattie Ruth's Coffee House
+    Test-HttpFunction -Endpoint "cosmos/sync-place/$cosmosPlaceId" -Description "Sync single place to Cosmos DB (place_id=$cosmosPlaceId)"
 }
 
 # Display test completion

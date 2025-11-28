@@ -25,7 +25,9 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
         provider_type = req.params.get('provider_type')
         force_refresh = req.params.get('force_refresh', '').lower() == 'true'
         sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
-        insufficient_only = req.params.get('insufficient_only', '').lower() == 'true'
+        # view parameter specifies which Airtable view to use. Defaults to "Production".
+        # Pass "Insufficient" to only process records needing enrichment.
+        view = req.params.get('view', 'Production')
 
         if not provider_type:
             return func.HttpResponse(
@@ -52,8 +54,8 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
             )
 
         logging.info(
-            "Starting place data refresh with parameters: force_refresh=%s, sequential_mode=%s, city=%s, provider_type=%s, insufficient_only=%s",
-            force_refresh, sequential_mode, city, provider_type, insufficient_only
+            "Starting place data refresh with parameters: force_refresh=%s, sequential_mode=%s, city=%s, provider_type=%s, view=%s",
+            force_refresh, sequential_mode, city, provider_type, view
         )
 
         orchestration_input = {
@@ -61,7 +63,7 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
             "sequential_mode": sequential_mode,
             "city": city,
             "provider_type": provider_type,
-            "insufficient_only": insufficient_only
+            "view": view
         }
 
         instance_id = await client.start_new("get_place_data_orchestrator", client_input=orchestration_input)
@@ -95,7 +97,7 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
         force_refresh = orchestration_input.get("force_refresh", False)
         sequential_mode = orchestration_input.get("sequential_mode", False)
         provider_type = orchestration_input.get("provider_type", None)
-        insufficient_only = orchestration_input.get("insufficient_only", False)
+        view = orchestration_input.get("view", "Production")
 
         if not city:
             raise ValueError("Missing required parameter: city")
@@ -108,7 +110,7 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
             "sequential_mode": sequential_mode,
             "city": city,
             "force_refresh": force_refresh,
-            "insufficient_only": insufficient_only
+            "view": view
         }
 
         all_third_places = yield context.call_activity('get_all_third_places',{"config": config_dict})

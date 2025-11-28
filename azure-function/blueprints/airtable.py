@@ -24,7 +24,9 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
         force_refresh = req.params.get('force_refresh', '').lower() == 'true'
         sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
         city = req.params.get('city')
-        insufficient_only = req.params.get('insufficient_only', '').lower() == 'true'
+        # view parameter specifies which Airtable view to use. Defaults to "Production".
+        # Pass "Insufficient" to only process records needing enrichment.
+        view = req.params.get('view', 'Production')
 
         if not provider_type:
             return func.HttpResponse(
@@ -51,14 +53,14 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
 
         logging.info(f"Starting enrichment with parameters: city={city}, force_refresh={force_refresh}, "
                      f"sequential_mode={sequential_mode}, provider_type={provider_type}, "
-                     f"insufficient_only={insufficient_only}")
+                     f"view={view}")
 
         config_dict = {
             "force_refresh": force_refresh,
             "sequential_mode": sequential_mode,
             "provider_type": provider_type,
             "city": city,
-            "insufficient_only": insufficient_only
+            "view": view
         }
 
         instance_id = await client.start_new("enrich_airtable_base_orchestrator", client_input=config_dict)
@@ -89,7 +91,7 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
         sequential_mode = config_dict.get("sequential_mode", False)
         provider_type = config_dict.get("provider_type", None)
         city = config_dict.get("city")
-        insufficient_only = config_dict.get("insufficient_only", False)
+        view = config_dict.get("view", "Production")
 
         if not city:
             raise ValueError("Missing required parameter: city")
@@ -99,11 +101,11 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
             {"config": config_dict}
         )
 
-        if insufficient_only and not all_third_places:
-            logging.info("No records were found in the 'Insufficient' view to enrich.")
+        if view != "Production" and not all_third_places:
+            logging.info(f"No records were found in the '{view}' view to enrich.")
             result = {
                 "success": True,
-                "message": "No records were found in the 'Insufficient' view to enrich.",
+                "message": f"No records were found in the '{view}' view to enrich.",
                 "data": {
                     "total_places_processed": 0,
                     "total_places_enriched": 0,
@@ -126,7 +128,7 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
                     "city": city,
                     "force_refresh": force_refresh,
                     "sequential_mode": sequential_mode,
-                    "insufficient_only": insufficient_only
+                    "view": view
                 }
                 result = yield context.call_activity("enrich_single_place", activity_input)
                 results.append(result)
@@ -142,7 +144,7 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
                         "city": city,
                         "force_refresh": force_refresh,
                         "sequential_mode": sequential_mode,
-                        "insufficient_only": insufficient_only
+                        "view": view
                     }
                     batch_tasks.append(context.call_activity("enrich_single_place", activity_input))
                 batch_results = yield context.task_all(batch_tasks)
@@ -192,8 +194,8 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
         total_places_failed = len(failed_places)
         
         message = "Airtable base enrichment processed successfully."
-        if insufficient_only:
-            message = f"Airtable base enrichment processed {len(results)} records from 'Insufficient' view. {total_places_enriched} enriched, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
+        if view != "Production":
+            message = f"Airtable base enrichment processed {len(results)} records from '{view}' view. {total_places_enriched} enriched, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
         else:
             message = f"Airtable base enrichment processed {len(results)} records. {total_places_enriched} enriched, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
         
@@ -234,7 +236,7 @@ def enrich_single_place(activityInput):
         city = activityInput.get("city")
         force_refresh = activityInput.get("force_refresh", False)
         sequential_mode = activityInput.get("sequential_mode", False)
-        insufficient_only = activityInput.get("insufficient_only", False)
+        view = activityInput.get("view", "Production")
         place_name = place['fields']['Place'] if place and 'fields' in place and 'Place' in place['fields'] else "Unknown Place"
 
         if not provider_type or not city:
@@ -245,7 +247,7 @@ def enrich_single_place(activityInput):
                 "field_updates": {}
             }
 
-        airtable_client = AirtableService(provider_type, sequential_mode, insufficient_only)
+        airtable_client = AirtableService(provider_type, sequential_mode, view)
         result = airtable_client.enrich_single_place(place, provider_type, city, force_refresh)
         return result
     except Exception as ex:
@@ -267,7 +269,7 @@ def get_all_third_places(activityInput):
         city = config_dict.get('city')
         provider_type = config_dict.get('provider_type')
         sequential_mode = config_dict.get('sequential_mode', False)
-        insufficient_only = config_dict.get('insufficient_only', False)
+        view = config_dict.get('view', 'Production')
 
         if not city:
             logging.error("Cannot get Airtable Service - city is not set")
@@ -277,7 +279,7 @@ def get_all_third_places(activityInput):
             logging.error("Cannot get Airtable Service - provider_type is not set")
             return []
 
-        airtable_client = AirtableService(provider_type, sequential_mode, insufficient_only)
+        airtable_client = AirtableService(provider_type, sequential_mode, view)
         return airtable_client.all_third_places
 
     except Exception as ex:
