@@ -1,0 +1,63 @@
+name: Trigger Cosmos Sync Single Place
+
+on:
+  workflow_call:
+    inputs:
+      place_id:
+        description: 'Google Maps Place ID of the place to sync'
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      place_id:
+        description: 'Google Maps Place ID of the place to sync'
+        required: true
+        type: string
+
+concurrency: 
+  group: cosmos-sync-single-place
+  cancel-in-progress: true
+
+jobs:
+  trigger-cosmos-sync-single-place:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Invoke PowerShell Script
+        id: invoke_script
+        shell: pwsh
+        working-directory: ./scripts
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          $placeId = "${{ github.event.inputs.place_id }}"
+          
+          # Validate required place_id parameter
+          if ([string]::IsNullOrWhiteSpace($placeId)) {
+            Write-Error "place_id parameter is required (Google Maps Place Id)"
+            exit 1
+          }
+          
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/cosmos/sync-place/$placeId"
+          
+          Write-Host "Using function URL: $FunctionUrl"
+          
+          $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
+          ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 600
+
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "Azure Function call failed."
+            exit $LASTEXITCODE
+          } else {
+            Write-Output "Azure Function call succeeded."
+          }
+
+      - name: Check Script Result
+        if: always()
+        run: |
+          echo "Script execution completed with status: ${{ steps.invoke_script.outcome }}"
+          if ("${{ steps.invoke_script.outcome }}" -ne "success") {
+            exit 1
+          }
