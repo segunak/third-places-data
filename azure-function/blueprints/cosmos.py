@@ -30,7 +30,10 @@ from services.utils import fetch_data_github
 # Configure logging
 logger = logging.getLogger(__name__)
 
-COSMOS_SYNC_BATCH_SIZE = 100
+# Batch size for parallel processing.
+# Keep this LOW (5-10) to avoid Cosmos DB 429 rate limiting errors.
+# Each place sync does: 1 place upsert + N chunk deletes + N chunk upserts.
+COSMOS_SYNC_BATCH_SIZE = 10
 
 # Create Durable Functions blueprint
 bp = df.Blueprint()
