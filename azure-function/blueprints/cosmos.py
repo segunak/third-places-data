@@ -177,7 +177,7 @@ def _sync_single_place_logic(
 # =============================================================================
 
 @bp.function_name("CosmosSyncPlaces")
-@bp.route(route="cosmos/sync-places", methods=["POST"], auth_level=func.AuthLevel.FUNCTION)
+@bp.route(route="cosmos/sync-places", auth_level=func.AuthLevel.FUNCTION)
 @bp.durable_client_input(client_name="client")
 async def cosmos_sync_places(req: func.HttpRequest, client) -> func.HttpResponse:
     """
