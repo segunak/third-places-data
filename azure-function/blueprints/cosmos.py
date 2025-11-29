@@ -560,7 +560,7 @@ def _get_github_json_file_count(city: str = "charlotte") -> Dict[str, Any]:
         city: City folder name (default: "charlotte")
         
     Returns:
-        Dict with count and any errors.
+        Dict with count, file list, and any errors.
     """
     import os
     import requests
@@ -568,7 +568,7 @@ def _get_github_json_file_count(city: str = "charlotte") -> Dict[str, Any]:
     try:
         github_token = os.environ.get('GITHUB_PERSONAL_ACCESS_TOKEN')
         if not github_token:
-            return {"count": None, "error": "GitHub token not configured"}
+            return {"count": None, "files": [], "error": "GitHub token not configured"}
         
         headers = {
             "Authorization": f"token {github_token}",
@@ -585,22 +585,91 @@ def _get_github_json_file_count(city: str = "charlotte") -> Dict[str, Any]:
         response = requests.get(url, headers=headers, timeout=30)
         
         if response.status_code != 200:
-            return {"count": None, "error": f"GitHub API returned {response.status_code}"}
+            return {"count": None, "files": [], "error": f"GitHub API returned {response.status_code}"}
         
         contents = response.json()
         
-        # Count only .json files
+        # Get only .json files and extract place IDs (filename without extension)
         json_files = [f for f in contents if f.get("name", "").endswith(".json")]
+        file_info = [
+            {
+                "filename": f.get("name"),
+                "placeId": f.get("name", "").replace(".json", ""),
+                "downloadUrl": f.get("download_url")
+            }
+            for f in json_files
+        ]
         
         return {
             "count": len(json_files),
+            "files": file_info,
             "path": f"data/places/{city}",
             "error": None
         }
         
     except Exception as e:
         logger.error(f"Error getting GitHub file count: {e}", exc_info=True)
-        return {"count": None, "error": str(e)}
+        return {"count": None, "files": [], "error": str(e)}
+
+
+def _get_place_name_from_github_file(download_url: str) -> str:
+    """
+    Fetch a JSON file from GitHub and extract the place_name field.
+    
+    Args:
+        download_url: Direct download URL for the raw JSON file
+        
+    Returns:
+        The place_name value or "Unknown" if not found.
+    """
+    import requests
+    
+    try:
+        response = requests.get(download_url, timeout=10)
+        if response.status_code == 200:
+            data = response.json()
+            return data.get("place_name", "Unknown")
+    except Exception as e:
+        logger.warning(f"Could not fetch place name from {download_url}: {e}")
+    
+    return "Unknown"
+
+
+def _get_orphaned_json_files(github_files: list, airtable_place_ids: set) -> list:
+    """
+    Find JSON files in GitHub that don't have corresponding Airtable records.
+    
+    Args:
+        github_files: List of file info dicts from _get_github_json_file_count
+        airtable_place_ids: Set of Place IDs from Airtable
+        
+    Returns:
+        List of orphaned file details with place names.
+    """
+    orphaned = []
+    
+    for file_info in github_files:
+        place_id = file_info.get("placeId")
+        if place_id and place_id not in airtable_place_ids:
+            # Fetch the place name from the JSON file
+            place_name = _get_place_name_from_github_file(file_info.get("downloadUrl", ""))
+            orphaned.append({
+                "filename": file_info.get("filename"),
+                "placeId": place_id,
+                "placeName": place_name
+            })
+    
+    return orphaned
+
+
+def _get_status_description(status: str) -> str:
+    """Get a human-readable description for each status value."""
+    descriptions = {
+        "healthy": "All systems are in sync. No action required.",
+        "healthy_with_warnings": "Systems are operational but have data inconsistencies that should be addressed. Check the 'discrepancies' section for details.",
+        "degraded": "One or more data sources could not be reached. Check the 'errors' section for details."
+    }
+    return descriptions.get(status, "Unknown status")
 
 
 @bp.function_name("CosmosHealthCheck")
@@ -649,6 +718,7 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
         report["status"] = "degraded"
     
     # 2. Get Airtable record count
+    airtable_place_ids = set()  # Track Place IDs for orphan detection
     try:
         airtable_service = _get_airtable_service()
         airtable_records = airtable_service.all_third_places
@@ -664,6 +734,13 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
             1 for r in airtable_records 
             if r.get("fields", {}).get("Has Data File") == "Yes"
         ) if airtable_records else 0
+        
+        # Extract Place IDs for orphan detection
+        airtable_place_ids = {
+            r.get("fields", {}).get("Place ID")
+            for r in airtable_records
+            if r.get("fields", {}).get("Place ID")
+        } if airtable_records else set()
         
         report["sources"]["airtable"] = {
             "totalRecords": airtable_count,
@@ -681,13 +758,34 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
     
     # 3. Get GitHub JSON file count
     github_stats = _get_github_json_file_count(city)
-    report["sources"]["github"] = github_stats
+    github_files = github_stats.get("files", [])
+    
+    # Don't include the full file list in the response (too verbose)
+    report["sources"]["github"] = {
+        "count": github_stats.get("count"),
+        "path": github_stats.get("path"),
+        "error": github_stats.get("error")
+    }
     
     if github_stats.get("error"):
         report["errors"].append({"source": "github", "error": github_stats["error"]})
         report["status"] = "degraded"
     
-    # 4. Calculate discrepancies
+    # 4. Find orphaned JSON files (in GitHub but not in Airtable)
+    orphaned_files = []
+    if github_files and airtable_place_ids:
+        logger.info(f"Checking for orphaned files: {len(github_files)} GitHub files vs {len(airtable_place_ids)} Airtable Place IDs")
+        orphaned_files = _get_orphaned_json_files(github_files, airtable_place_ids)
+        
+        if orphaned_files:
+            report["orphanedFiles"] = {
+                "description": "JSON files in GitHub that have no corresponding place in Airtable. These are typically from places that were deleted from the website. This is informational only and not necessarily an issue.",
+                "count": len(orphaned_files),
+                "files": orphaned_files
+            }
+            logger.info(f"Found {len(orphaned_files)} orphaned JSON files")
+    
+    # 5. Calculate discrepancies
     cosmos_places_count = report.get("cosmos", {}).get("places", {}).get("count")
     airtable_count = report.get("sources", {}).get("airtable", {}).get("totalRecords")
     github_count = report.get("sources", {}).get("github", {}).get("count")
@@ -740,17 +838,72 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
     else:
         report["status"] = "healthy"
     
-    # Summary for quick reference
+    # Summary for quick reference with clear descriptions
     report["summary"] = {
-        "cosmosPlaces": cosmos_places_count,
-        "cosmosChunks": report.get("cosmos", {}).get("chunks", {}).get("count"),
-        "airtableRecords": airtable_count,
-        "githubFiles": github_count,
-        "errorCount": len(report["errors"]),
-        "discrepancyCount": len(report["discrepancies"]),
+        "status": {
+            "value": report["status"],
+            "description": _get_status_description(report["status"])
+        },
+        "cosmosPlaces": {
+            "value": cosmos_places_count,
+            "description": "Number of place documents in Cosmos DB 'places' container. Each place synced from Airtable becomes one document."
+        },
+        "cosmosChunks": {
+            "value": report.get("cosmos", {}).get("chunks", {}).get("count"),
+            "description": "Number of text chunks in Cosmos DB 'chunks' container. Each place is split into ~140 searchable chunks for RAG/vector search."
+        },
+        "airtableRecords": {
+            "value": airtable_count,
+            "description": "Number of records in Airtable's 'Production' view. This is the source of truth for all places."
+        },
+        "githubFiles": {
+            "value": github_count,
+            "description": f"Number of JSON files in GitHub 'data/places/{city}/' folder. These contain enriched data (reviews, photos, metadata) from external APIs."
+        },
+        "errorCount": {
+            "value": len(report["errors"]),
+            "description": "Number of errors encountered while gathering stats. Errors indicate a data source was unreachable."
+        },
+        "discrepancyCount": {
+            "value": len(report["discrepancies"]),
+            "description": "Number of data inconsistencies detected. See 'discrepancies' array for details and recommended actions."
+        },
+        "orphanedFileCount": {
+            "value": len(orphaned_files),
+            "description": "Number of JSON files in GitHub with no corresponding Airtable record. These are from deleted places and are informational only."
+        },
     }
     
-    logger.info(f"Health check complete: status={report['status']}, discrepancies={len(report['discrepancies'])}")
+    # Add explanation section
+    report["explanations"] = {
+        "dataFlow": "Airtable (source of truth) → Cosmos DB (sync target for app). GitHub JSON files provide supplementary data during sync.",
+        "expectedState": "Cosmos places count should match Airtable records. GitHub files may have extras (orphaned files from deleted places).",
+        "orphanedFiles": "JSON files in GitHub that don't have a matching Place ID in Airtable. This happens when a place is deleted from Airtable but the JSON file remains. These files are harmless - they're simply not used during sync.",
+        "discrepancies": [
+            {
+                "type": "cosmos_vs_airtable",
+                "meaning": "Cosmos has fewer places than Airtable, meaning some places haven't been synced yet.",
+                "fix": "Run the sync-places endpoint to sync missing places to Cosmos DB."
+            },
+            {
+                "type": "github_vs_airtable_datafile", 
+                "meaning": "Mismatch between GitHub JSON files and Airtable's 'Has Data File' field. Could be orphaned files or outdated flags.",
+                "fix": "Check for JSON files in GitHub that correspond to deleted Airtable records, or update Airtable flags."
+            },
+            {
+                "type": "missing_place_embeddings",
+                "meaning": "Some place documents in Cosmos don't have vector embeddings, which breaks similarity search.",
+                "fix": "Re-sync with force=true to regenerate embeddings for all places."
+            },
+            {
+                "type": "missing_chunk_embeddings",
+                "meaning": "Some chunk documents in Cosmos don't have vector embeddings, which breaks RAG search.",
+                "fix": "Re-sync with force=true to regenerate embeddings for all chunks."
+            }
+        ]
+    }
+    
+    logger.info(f"Health check complete: status={report['status']}, discrepancies={len(report['discrepancies'])}, orphaned_files={len(orphaned_files)}")
     
     return func.HttpResponse(
         body=json.dumps(report, indent=2),
