@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 # Batch size for parallel processing.
 # Keep this LOW (5-10) to avoid Cosmos DB 429 rate limiting errors.
 # Each place sync does: 1 place upsert + N chunk deletes + N chunk upserts.
-COSMOS_SYNC_BATCH_SIZE = 10
+COSMOS_SYNC_BATCH_SIZE = 5
 
 # Create Durable Functions blueprint
 bp = df.Blueprint()
