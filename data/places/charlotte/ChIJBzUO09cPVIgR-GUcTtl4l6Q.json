@@ -896,7 +896,7 @@
             "place_id": "ChIJBzUO09cPVIgR-GUcTtl4l6Q",
             "google_id": "0x88540fd7d30e3507:0xa49778d94e1c65f8",
             "kgmid": "/g/11tp13t_yl",
-            "full_address": "56 Wilshire Ave SW, Concord, NC 28025, United States",
+            "full_address": "56 Wilshire Ave SW, Concord, NC 28025",
             "borough": null,
             "street": "56 Wilshire Ave SW",
             "postal_code": "28025",
@@ -1729,19 +1729,19 @@
             "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Fi8PMyw5eW78W9N83X0bhQ&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=5.334126&pitch=0&thumbfov=100",
             "working_hours": {
                 "Monday": "Closed",
-                "Tuesday": "6am-4pm",
-                "Wednesday": "6am-4pm",
-                "Thursday": "6am-4pm",
-                "Friday": "6am-4pm",
-                "Saturday": "9am-2pm",
+                "Tuesday": "6AM-4PM",
+                "Wednesday": "6AM-4PM",
+                "Thursday": "6AM-4PM",
+                "Friday": "6AM-4PM",
+                "Saturday": "9AM-2PM",
                 "Sunday": "Closed"
             },
-            "working_hours_csv_compatible": "Sunday,|Monday,|Tuesday,6am,4pm|Wednesday,6am,4pm|Thursday,6am,4pm|Friday,6am,4pm|Saturday,9am,2pm",
-            "working_hours_old_format": "Monday:Closed|Tuesday:6am-4pm|Wednesday:6am-4pm|Thursday:6am-4pm|Friday:6am-4pm|Saturday:9am-2pm|Sunday:Closed",
+            "working_hours_csv_compatible": "Sunday,|Monday,|Tuesday,6AM,4PM|Wednesday,6AM,4PM|Thursday,6AM,4PM|Friday,6AM,4PM|Saturday,9AM,2PM",
+            "working_hours_old_format": "Monday:Closed|Tuesday:6AM-4PM|Wednesday:6AM-4PM|Thursday:6AM-4PM|Friday:6AM-4PM|Saturday:9AM-2PM|Sunday:Closed",
             "other_hours": null,
             "business_status": "OPERATIONAL",
             "about": {},
-            "range": "1\u201310\u00a0$",
+            "range": "$1\u201310",
             "prices": null,
             "reviews_per_score": null,
             "reviews_per_score_1": null,
@@ -1893,12 +1893,12 @@
                     "photo_upload_source": "gmb_web",
                     "photo_source_video": null,
                     "photo_tags": [
-                        "other",
-                        "food"
+                        "food",
+                        "other"
                     ],
                     "photo_tag_ids": [
-                        5,
-                        8
+                        8,
+                        5
                     ],
                     "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipM0u1I6leJp_Ya0FiF46qTrRH73cxSELG9-mFo_=w203-h231-k-no"
                 },
@@ -2180,12 +2180,12 @@
                     "photo_upload_source": "gmm_ios_review_post",
                     "photo_source_video": null,
                     "photo_tags": [
-                        "all",
-                        "vibe"
+                        "vibe",
+                        "all"
                     ],
                     "photo_tag_ids": [
-                        1,
-                        9
+                        9,
+                        1
                     ],
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSywXSJhPnGQcD65cBnSfpayKPPwstKIJVLI8K2pHhPkzXRDjoCTK-2pq_DpU1KP7ckyKhIgCmwottzEyzAuay6swElG_HQXa6kHmC_3Q7X6OTtOmZpSNLp_TW1qHAKwsZGJ5OJX=w203-h270-k-no"
                 },
@@ -2338,5 +2338,5 @@
         }
     },
     "data_source": "OutscraperProvider",
-    "last_updated": "2025-11-29T15:23:00.795022"
+    "last_updated": "2025-11-29T15:23:23.240050"
 }
