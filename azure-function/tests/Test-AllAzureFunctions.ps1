@@ -283,7 +283,7 @@ if ($script:RunEndpointTests.CosmosSyncPlaces) {
 }
 
 if ($script:RunEndpointTests.CosmosSyncSinglePlace) {
-    # Cosmos DB Sync Single Place (HTTP) - syncs a single place by Google Maps Place ID
+    # Cosmos DB Sync Single Place (HTTP) - syncs a single place by Google Maps Place Id
     $cosmosPlaceId = "ChIJH9S7TOcPVIgRnG5eHqW4DE0"  # Mattie Ruth's Coffee House
     Test-HttpFunction -Endpoint "cosmos/sync-place/$cosmosPlaceId" -Description "Sync single place to Cosmos DB (place_id=$cosmosPlaceId)"
 }

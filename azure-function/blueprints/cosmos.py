@@ -60,7 +60,7 @@ def _sync_single_place_logic(
     Sync a single place and its reviews to Cosmos DB.
     
     Args:
-        place_id: Google Maps Place ID.
+        place_id: Google Maps Place Id.
         airtable_record: Airtable record for this place.
         cosmos_service: Cosmos DB service instance.
         embedding_service: Embedding service instance.
@@ -403,7 +403,7 @@ def cosmos_sync_single_place(activityInput: Dict[str, Any]) -> Dict[str, Any]:
     appropriate for the Durable Functions pattern.
     
     Input params:
-        place_id: Google Maps Place ID.
+        place_id: Google Maps Place Id.
         airtable_record: Airtable record dict.
         force: If True, sync regardless of timestamps. If False, skip if no changes.
     """
@@ -455,11 +455,11 @@ def cosmos_sync_place(req: func.HttpRequest) -> func.HttpResponse:
     """
     Sync a single place to Cosmos DB with embeddings.
     
-    Fetches the place from Airtable by Google Maps Place ID, retrieves JSON
+    Fetches the place from Airtable by Google Maps Place Id, retrieves JSON
     data from GitHub, generates embeddings, and upserts to Cosmos DB.
     
     Path params:
-        place_id: Google Maps Place ID to sync.
+        place_id: Google Maps Place Id to sync.
         
     Returns:
         JSON response with sync results or error details.
@@ -484,7 +484,7 @@ def cosmos_sync_place(req: func.HttpRequest) -> func.HttpResponse:
         embedding_service = EmbeddingService()
         airtable_service = _get_airtable_service()
 
-        # Find the place in Airtable by Google Maps Place ID
+        # Find the place in Airtable by Google Maps Place Id
         airtable_record = None
         for record in airtable_service.all_third_places:
             if record.get("fields", {}).get("Google Maps Place Id") == place_id:
@@ -737,9 +737,9 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
         
         # Extract Place IDs for orphan detection
         airtable_place_ids = {
-            r.get("fields", {}).get("Place ID")
+            r.get("fields", {}).get("Google Maps Place Id")
             for r in airtable_records
-            if r.get("fields", {}).get("Place ID")
+            if r.get("fields", {}).get("Google Maps Place Id")
         } if airtable_records else set()
         
         report["sources"]["airtable"] = {

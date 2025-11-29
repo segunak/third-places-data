@@ -4,13 +4,13 @@ on:
   workflow_call:
     inputs:
       place_id:
-        description: 'Google Maps Place ID of the place to sync'
+        description: 'Google Maps Place Id of the place to sync'
         required: true
         type: string
   workflow_dispatch:
     inputs:
       place_id:
-        description: 'Google Maps Place ID of the place to sync'
+        description: 'Google Maps Place Id of the place to sync'
         required: true
         type: string
 

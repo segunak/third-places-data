@@ -104,28 +104,65 @@ jobs:
               }
             }
             
-            # Build orphaned files list for summary
-            $orphanedFilesList = ""
-            if ($orphanedFileCount -gt 0 -and $response.orphanedFiles.files) {
+            # --- GENERATE GITHUB SUMMARY DIRECTLY HERE ---
+            # This avoids using temp files and ensures we have access to the full response object
+            
+            echo "## Cosmos DB Health Check Report" >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            
+            # Status section
+            if ($status -eq "healthy") {
+              echo "### ✅ Status: Healthy" >> $env:GITHUB_STEP_SUMMARY
+              echo "All systems are in sync. No action required." >> $env:GITHUB_STEP_SUMMARY
+            } elseif ($status -eq "healthy_with_warnings") {
+              echo "### ⚠️ Status: Healthy with Warnings" >> $env:GITHUB_STEP_SUMMARY
+              echo "Systems are operational but have data inconsistencies that should be addressed." >> $env:GITHUB_STEP_SUMMARY
+            } else {
+              echo "### ❌ Status: Degraded" >> $env:GITHUB_STEP_SUMMARY
+              echo "One or more data sources could not be reached. Check errors below." >> $env:GITHUB_STEP_SUMMARY
+            }
+            
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "### Data Source Counts" >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "| Metric | Value | Description |" >> $env:GITHUB_STEP_SUMMARY
+            echo "|--------|-------|-------------|" >> $env:GITHUB_STEP_SUMMARY
+            echo "| **Cosmos Places** | $($response.summary.cosmosPlaces.value) | Place documents in Cosmos DB (synced from Airtable) |" >> $env:GITHUB_STEP_SUMMARY
+            echo "| **Cosmos Chunks** | $($response.summary.cosmosChunks.value) | Text chunks for RAG/vector search (~140 per place) |" >> $env:GITHUB_STEP_SUMMARY
+            echo "| **Airtable Records** | $($response.summary.airtableRecords.value) | Source of truth - all places in Production view |" >> $env:GITHUB_STEP_SUMMARY
+            echo "| **GitHub JSON Files** | $($response.summary.githubFiles.value) | Enriched data files (reviews, photos, metadata) |" >> $env:GITHUB_STEP_SUMMARY
+            
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "### Health Indicators" >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "| Indicator | Count | Notes |" >> $env:GITHUB_STEP_SUMMARY
+            echo "|-----------|-------|-------|" >> $env:GITHUB_STEP_SUMMARY
+            echo "| Errors | $errorCount | Data source connectivity issues |" >> $env:GITHUB_STEP_SUMMARY
+            echo "| Discrepancies | $discrepancyCount | Data sync issues needing attention |" >> $env:GITHUB_STEP_SUMMARY
+            echo "| Orphaned Files | $orphanedFileCount | JSON files from deleted places (informational) |" >> $env:GITHUB_STEP_SUMMARY
+            
+            # Add orphaned files list if any exist
+            if ($orphanedFileCount -gt 0) {
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "### Orphaned JSON Files ($orphanedFileCount files)" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "These files exist in GitHub but the corresponding place was deleted from Airtable. This is not an error - the files are simply no longer used during sync." >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "| Filename | Place Name |" >> $env:GITHUB_STEP_SUMMARY
+              echo "|----------|------------|" >> $env:GITHUB_STEP_SUMMARY
               foreach ($file in $response.orphanedFiles.files) {
-                $orphanedFilesList += "| $($file.filename) | $($file.placeName) |`n"
+                echo "| $($file.filename) | $($file.placeName) |" >> $env:GITHUB_STEP_SUMMARY
               }
             }
             
-            # Output summary as GitHub step output
-            "cosmos_places=$($response.summary.cosmosPlaces.value)" >> $env:GITHUB_OUTPUT
-            "cosmos_chunks=$($response.summary.cosmosChunks.value)" >> $env:GITHUB_OUTPUT
-            "airtable_records=$($response.summary.airtableRecords.value)" >> $env:GITHUB_OUTPUT
-            "github_files=$($response.summary.githubFiles.value)" >> $env:GITHUB_OUTPUT
-            "status=$status" >> $env:GITHUB_OUTPUT
-            "discrepancy_count=$discrepancyCount" >> $env:GITHUB_OUTPUT
-            "orphaned_file_count=$orphanedFileCount" >> $env:GITHUB_OUTPUT
-            "error_count=$errorCount" >> $env:GITHUB_OUTPUT
-            
-            # Save orphaned files to a temp file for the summary step
-            if ($orphanedFilesList) {
-              $orphanedFilesList | Out-File -FilePath "$env:RUNNER_TEMP\orphaned_files.txt" -Encoding utf8
-            }
+            # Add explanation
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "### Understanding the Numbers" >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "- **Cosmos Places should equal Airtable Records** - If Cosmos has fewer, run ``cosmos/sync-places`` to sync missing places" >> $env:GITHUB_STEP_SUMMARY
+            echo "- **Errors** mean a data source couldn't be reached" >> $env:GITHUB_STEP_SUMMARY
+            echo "- **Discrepancies** mean data is out of sync and needs attention" >> $env:GITHUB_STEP_SUMMARY
+            echo "- **Orphaned Files** are JSON files in GitHub for places that were deleted from Airtable. This is normal and not an issue." >> $env:GITHUB_STEP_SUMMARY
             
             # Fail the workflow if there are errors (not just discrepancies)
             if ($status -eq "degraded") {
@@ -148,67 +185,4 @@ jobs:
           echo "Script execution completed with status: ${{ steps.invoke_script.outcome }}"
           if ("${{ steps.invoke_script.outcome }}" -ne "success") {
             exit 1
-          }
-
-      - name: Create Summary
-        if: always()
-        run: |
-          echo "## Cosmos DB Health Check Report" >> $env:GITHUB_STEP_SUMMARY
-          echo "" >> $env:GITHUB_STEP_SUMMARY
-          
-          # Status section
-          $status = "${{ steps.invoke_script.outputs.status }}"
-          if ($status -eq "healthy") {
-            echo "### ✅ Status: Healthy" >> $env:GITHUB_STEP_SUMMARY
-            echo "All systems are in sync. No action required." >> $env:GITHUB_STEP_SUMMARY
-          } elseif ($status -eq "healthy_with_warnings") {
-            echo "### ⚠️ Status: Healthy with Warnings" >> $env:GITHUB_STEP_SUMMARY
-            echo "Systems are operational but have data inconsistencies that should be addressed." >> $env:GITHUB_STEP_SUMMARY
-          } else {
-            echo "### ❌ Status: Degraded" >> $env:GITHUB_STEP_SUMMARY
-            echo "One or more data sources could not be reached. Check errors below." >> $env:GITHUB_STEP_SUMMARY
-          }
-          
-          echo "" >> $env:GITHUB_STEP_SUMMARY
-          echo "### Data Source Counts" >> $env:GITHUB_STEP_SUMMARY
-          echo "" >> $env:GITHUB_STEP_SUMMARY
-          echo "| Metric | Value | Description |" >> $env:GITHUB_STEP_SUMMARY
-          echo "|--------|-------|-------------|" >> $env:GITHUB_STEP_SUMMARY
-          echo "| **Cosmos Places** | ${{ steps.invoke_script.outputs.cosmos_places }} | Place documents in Cosmos DB (synced from Airtable) |" >> $env:GITHUB_STEP_SUMMARY
-          echo "| **Cosmos Chunks** | ${{ steps.invoke_script.outputs.cosmos_chunks }} | Text chunks for RAG/vector search (~140 per place) |" >> $env:GITHUB_STEP_SUMMARY
-          echo "| **Airtable Records** | ${{ steps.invoke_script.outputs.airtable_records }} | Source of truth - all places in Production view |" >> $env:GITHUB_STEP_SUMMARY
-          echo "| **GitHub JSON Files** | ${{ steps.invoke_script.outputs.github_files }} | Enriched data files (reviews, photos, metadata) |" >> $env:GITHUB_STEP_SUMMARY
-          
-          echo "" >> $env:GITHUB_STEP_SUMMARY
-          echo "### Health Indicators" >> $env:GITHUB_STEP_SUMMARY
-          echo "" >> $env:GITHUB_STEP_SUMMARY
-          echo "| Indicator | Count | Notes |" >> $env:GITHUB_STEP_SUMMARY
-          echo "|-----------|-------|-------|" >> $env:GITHUB_STEP_SUMMARY
-          echo "| Errors | ${{ steps.invoke_script.outputs.error_count }} | Data source connectivity issues |" >> $env:GITHUB_STEP_SUMMARY
-          echo "| Discrepancies | ${{ steps.invoke_script.outputs.discrepancy_count }} | Data sync issues needing attention |" >> $env:GITHUB_STEP_SUMMARY
-          echo "| Orphaned Files | ${{ steps.invoke_script.outputs.orphaned_file_count }} | JSON files from deleted places (informational) |" >> $env:GITHUB_STEP_SUMMARY
-          
-          # Add explanation
-          echo "" >> $env:GITHUB_STEP_SUMMARY
-          echo "### Understanding the Numbers" >> $env:GITHUB_STEP_SUMMARY
-          echo "" >> $env:GITHUB_STEP_SUMMARY
-          echo "- **Cosmos Places should equal Airtable Records** - If Cosmos has fewer, run ``cosmos/sync-places`` to sync missing places" >> $env:GITHUB_STEP_SUMMARY
-          echo "- **Errors** mean a data source couldn't be reached" >> $env:GITHUB_STEP_SUMMARY
-          echo "- **Discrepancies** mean data is out of sync and needs attention" >> $env:GITHUB_STEP_SUMMARY
-          echo "- **Orphaned Files** are JSON files in GitHub for places that were deleted from Airtable. This is normal and not an issue." >> $env:GITHUB_STEP_SUMMARY
-          
-          # Add orphaned files list if any exist
-          $orphanedCount = [int]"${{ steps.invoke_script.outputs.orphaned_file_count }}"
-          if ($orphanedCount -gt 0) {
-            $orphanedFilePath = "$env:RUNNER_TEMP\orphaned_files.txt"
-            if (Test-Path $orphanedFilePath) {
-              echo "" >> $env:GITHUB_STEP_SUMMARY
-              echo "### Orphaned JSON Files ($orphanedCount files)" >> $env:GITHUB_STEP_SUMMARY
-              echo "" >> $env:GITHUB_STEP_SUMMARY
-              echo "These files exist in GitHub but the corresponding place was deleted from Airtable. This is not an error - the files are simply no longer used during sync." >> $env:GITHUB_STEP_SUMMARY
-              echo "" >> $env:GITHUB_STEP_SUMMARY
-              echo "| Filename | Place Name |" >> $env:GITHUB_STEP_SUMMARY
-              echo "|----------|------------|" >> $env:GITHUB_STEP_SUMMARY
-              Get-Content $orphanedFilePath >> $env:GITHUB_STEP_SUMMARY
-            }
           }

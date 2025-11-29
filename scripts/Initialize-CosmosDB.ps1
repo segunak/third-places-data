@@ -205,7 +205,7 @@ Write-Host "`nPolicy files created in: $TempDir"
 # 
 # Document structure:
 # {
-#   "id": "ChIJYXyT1nHBVogRO0z_uPKgq4g",  // Google Maps Place ID (partition key)
+#   "id": "ChIJYXyT1nHBVogRO0z_uPKgq4g",  // Google Maps Place Id (partition key)
 #   "name": "The Wandering Cup | Gastonia",
 #   "neighborhood": "Gastonia",
 #   "type": ["Coffee Shop"],
@@ -215,7 +215,7 @@ Write-Host "`nPolicy files created in: $TempDir"
 #   "lastSynced": "2025-11-28T00:00:00Z"
 # }
 #
-# Partition key: /id (the Google Maps Place ID)
+# Partition key: /id (the Google Maps Place Id)
 # - Each place is its own partition (perfect distribution)
 # - Point reads by ID are cheap (1 RU)
 # - Vector search is cross-partition anyway, so partition choice doesn't affect it

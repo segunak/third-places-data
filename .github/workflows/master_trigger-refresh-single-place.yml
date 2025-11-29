@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       place_id:
-        description: 'Google Maps Place ID of the place to refresh'
+        description: 'Google Maps Place Id of the place to refresh'
         required: true
         type: string
       provider_type:
@@ -25,7 +25,7 @@ on:
   workflow_dispatch:
     inputs:
       place_id:
-        description: 'Google Maps Place ID of the place to refresh'
+        description: 'Google Maps Place Id of the place to refresh'
         required: true
         type: string
       provider_type:
