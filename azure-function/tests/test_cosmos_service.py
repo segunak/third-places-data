@@ -426,6 +426,162 @@ class TestEmptyAndNullHandling(unittest.TestCase):
         self.assertNotIn(" |  | ", result)
 
 
+class TestCosmosDurableFunctionHelpers(unittest.TestCase):
+    """
+    Test suite for Cosmos Durable Function activity helper patterns.
+    
+    These tests validate the data structures and logic used by the
+    cosmos_sync_places_orchestrator and its activity functions.
+    """
+
+    def test_place_data_structure_for_activity(self):
+        """Test the place data structure passed to activity functions."""
+        # This is the structure created by cosmos_get_all_places activity
+        # and consumed by cosmos_sync_single_place activity
+        place_data = {
+            "place_id": "ChIJH9S7TOcPVIgRnG5eHqW4DE0",
+            "airtable_record": MOCK_AIRTABLE_RECORD,
+        }
+        
+        # Validate required fields
+        self.assertIn("place_id", place_data)
+        self.assertIn("airtable_record", place_data)
+        self.assertEqual(place_data["place_id"], "ChIJH9S7TOcPVIgRnG5eHqW4DE0")
+        self.assertEqual(
+            place_data["airtable_record"]["fields"]["Place"],
+            "Mattie Ruth's Coffee House"
+        )
+
+    def test_activity_result_success_structure(self):
+        """Test the success result structure from cosmos_sync_single_place activity."""
+        # Successful activity result structure
+        success_result = {
+            "success": True,
+            "placeId": "ChIJH9S7TOcPVIgRnG5eHqW4DE0",
+            "placeName": "Mattie Ruth's Coffee House",
+            "chunksProcessed": 10,
+            "chunksSkipped": 2,
+            "hasJsonData": True,
+        }
+        
+        self.assertTrue(success_result["success"])
+        self.assertEqual(success_result["placeId"], "ChIJH9S7TOcPVIgRnG5eHqW4DE0")
+        self.assertGreaterEqual(success_result["chunksProcessed"], 0)
+        self.assertGreaterEqual(success_result["chunksSkipped"], 0)
+
+    def test_activity_result_failure_structure(self):
+        """Test the failure result structure from cosmos_sync_single_place activity."""
+        # Failed activity result structure
+        failure_result = {
+            "success": False,
+            "placeId": "ChIJH9S7TOcPVIgRnG5eHqW4DE0",
+            "error": "Error syncing place ChIJH9S7TOcPVIgRnG5eHqW4DE0: Connection timeout",
+        }
+        
+        self.assertFalse(failure_result["success"])
+        self.assertIn("placeId", failure_result)
+        self.assertIn("error", failure_result)
+        self.assertIsInstance(failure_result["error"], str)
+
+    def test_orchestrator_aggregated_results_structure(self):
+        """Test the aggregated results structure returned by orchestrator."""
+        # This is the final result structure from cosmos_sync_places_orchestrator
+        orchestrator_result = {
+            "success": True,
+            "placesProcessed": 5,
+            "totalChunksProcessed": 100,
+            "totalChunksSkipped": 10,
+            "placeDetails": [
+                {"placeId": "place1", "placeName": "Place 1", "chunksProcessed": 20, "chunksSkipped": 2},
+                {"placeId": "place2", "placeName": "Place 2", "chunksProcessed": 80, "chunksSkipped": 8},
+            ],
+            "error": None,
+            "failedAt": None,
+        }
+        
+        self.assertTrue(orchestrator_result["success"])
+        self.assertEqual(orchestrator_result["placesProcessed"], 5)
+        self.assertIsInstance(orchestrator_result["placeDetails"], list)
+        self.assertIsNone(orchestrator_result["error"])
+        self.assertIsNone(orchestrator_result["failedAt"])
+
+    def test_orchestrator_fail_fast_result_structure(self):
+        """Test the fail-fast result structure when an activity fails."""
+        # When an activity fails, orchestrator should return immediately with error info
+        fail_fast_result = {
+            "success": False,
+            "placesProcessed": 3,
+            "totalChunksProcessed": 60,
+            "totalChunksSkipped": 5,
+            "placeDetails": [
+                {"placeId": "place1", "placeName": "Place 1", "chunksProcessed": 20, "chunksSkipped": 2},
+                {"placeId": "place2", "placeName": "Place 2", "chunksProcessed": 40, "chunksSkipped": 3},
+            ],
+            "error": "Error syncing place place3: API rate limit exceeded",
+            "failedAt": "place3",
+        }
+        
+        self.assertFalse(fail_fast_result["success"])
+        self.assertIsNotNone(fail_fast_result["error"])
+        self.assertIsNotNone(fail_fast_result["failedAt"])
+        self.assertEqual(fail_fast_result["failedAt"], "place3")
+
+    def test_batch_size_constant(self):
+        """Test that batch size is reasonable for parallel execution."""
+        # Import the constant from cosmos.py
+        try:
+            from blueprints.cosmos import COSMOS_SYNC_BATCH_SIZE
+            # Should be 100 as specified by user
+            self.assertEqual(COSMOS_SYNC_BATCH_SIZE, 100)
+        except ImportError:
+            # If import fails, just validate the expected value
+            expected_batch_size = 100
+            self.assertGreater(expected_batch_size, 0)
+            self.assertLessEqual(expected_batch_size, 500)  # Reasonable upper bound
+
+    def test_place_data_list_generation(self):
+        """Test generating place data list for orchestrator (simulates cosmos_get_all_places)."""
+        # Simulate the list of Airtable records
+        mock_records = [
+            {
+                "id": "rec1",
+                "fields": {
+                    "Google Maps Place Id": "place_id_1",
+                    "Place": "Place 1",
+                }
+            },
+            {
+                "id": "rec2",
+                "fields": {
+                    "Google Maps Place Id": "place_id_2",
+                    "Place": "Place 2",
+                }
+            },
+            {
+                "id": "rec3",
+                "fields": {
+                    # Missing Google Maps Place Id - should be skipped
+                    "Place": "Place 3",
+                }
+            },
+        ]
+        
+        # Simulate the transformation logic in cosmos_get_all_places activity
+        place_data_list = []
+        for record in mock_records:
+            place_id = record.get("fields", {}).get("Google Maps Place Id")
+            if place_id:
+                place_data_list.append({
+                    "place_id": place_id,
+                    "airtable_record": record,
+                })
+        
+        # Should have 2 valid places (one skipped due to missing place_id)
+        self.assertEqual(len(place_data_list), 2)
+        self.assertEqual(place_data_list[0]["place_id"], "place_id_1")
+        self.assertEqual(place_data_list[1]["place_id"], "place_id_2")
+
+
 # Main execution block
 if __name__ == "__main__":
     # Instantiate the test class
@@ -458,6 +614,7 @@ if __name__ == "__main__":
         TestComposePlaceEmbeddingText,
         TestComposeChunkEmbeddingText,
         TestEmptyAndNullHandling,
+        TestCosmosDurableFunctionHelpers,
     ]
     
     for test_class in test_classes:

@@ -277,9 +277,9 @@ if ($script:RunEndpointTests.PurgeOrchestrations) {
 }
 
 if ($script:RunEndpointTests.CosmosSyncPlaces) {
-    # Cosmos DB Sync All Places (HTTP) - syncs places and chunks with embeddings
+    # Cosmos DB Sync All Places (Durable) - syncs places and chunks with embeddings
     # Use limit=2 for testing to avoid processing all places
-    Test-HttpFunction -Endpoint 'cosmos/sync-places?limit=2' -Description 'Sync places to Cosmos DB (limit=2 for testing)'
+    Test-DurableFunction -Endpoint 'cosmos/sync-places?limit=2' -Description 'Sync places to Cosmos DB (limit=2 for testing)'
 }
 
 if ($script:RunEndpointTests.CosmosSyncSinglePlace) {

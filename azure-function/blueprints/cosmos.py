@@ -1,12 +1,16 @@
 """
 Azure Functions blueprint for Cosmos DB RAG sync operations.
 Provides endpoints to sync places and chunks with embeddings.
+
+Uses Azure Durable Functions for the bulk sync operation to handle
+long-running syncs that exceed the 10-minute HTTP timeout.
 """
 
 import json
 import logging
-from typing import Dict, Any
+from typing import Dict, Any, List
 import azure.functions as func
+import azure.durable_functions as df
 
 from services.cosmos_service import (
     CosmosService,
@@ -26,8 +30,10 @@ from services.utils import fetch_data_github
 # Configure logging
 logger = logging.getLogger(__name__)
 
-# Create blueprint
-bp = func.Blueprint()
+COSMOS_SYNC_BATCH_SIZE = 100
+
+# Create Durable Functions blueprint
+bp = df.Blueprint()
 
 
 def _get_airtable_service():
@@ -36,7 +42,7 @@ def _get_airtable_service():
     return AirtableService(provider_type="outscraper")
 
 
-def _sync_single_place(
+def _sync_single_place_logic(
     place_id: str,
     airtable_record: Dict[str, Any],
     cosmos_service: CosmosService,
@@ -166,117 +172,195 @@ def _sync_single_place(
     }
 
 
+# =============================================================================
+# Durable Functions for Bulk Sync
+# =============================================================================
+
 @bp.function_name("CosmosSyncPlaces")
 @bp.route(route="cosmos/sync-places", methods=["POST"], auth_level=func.AuthLevel.FUNCTION)
-def cosmos_sync_places(req: func.HttpRequest) -> func.HttpResponse:
+@bp.durable_client_input(client_name="client")
+async def cosmos_sync_places(req: func.HttpRequest, client) -> func.HttpResponse:
     """
-    Sync all places from Airtable to Cosmos DB with embeddings.
+    HTTP trigger to start bulk sync of all places to Cosmos DB.
     
-    Fetches all places from Airtable, retrieves JSON data from GitHub,
-    generates embeddings, and upserts to Cosmos DB.
-    
-    Fails fast on any error - returns detailed error information.
+    This is a Durable Function orchestration starter. It returns immediately
+    with a status URL that can be polled to check progress.
     
     Query params:
         limit: Optional max number of places to sync (for testing).
         
     Returns:
-        JSON response with sync results or error details.
+        HTTP 202 with status check URLs.
     """
-    logger.info("Starting full places sync to Cosmos DB")
+    logger.info("Starting Cosmos DB bulk sync orchestration")
+    
+    # Parse optional limit parameter
+    limit_param = req.params.get("limit")
+    limit = int(limit_param) if limit_param else None
+    
+    # Configuration to pass to orchestrator
+    config = {
+        "limit": limit,
+    }
+    
+    # Start the orchestration
+    instance_id = await client.start_new("cosmos_sync_places_orchestrator", client_input=config)
+    logger.info(f"Started orchestration with ID: {instance_id}")
+    
+    # Return status check response
+    response = client.create_check_status_response(req, instance_id)
+    return response
 
-    try:
-        # Parse optional limit parameter
-        limit_param = req.params.get("limit")
-        limit = int(limit_param) if limit_param else None
 
-        # Initialize services
-        cosmos_service = CosmosService()
-        embedding_service = EmbeddingService()
-        airtable_service = _get_airtable_service()
-
-        # Get all places from Airtable
-        all_places = airtable_service.all_third_places
-        logger.info(f"Retrieved {len(all_places)} places from Airtable")
-
-        if limit:
-            all_places = all_places[:limit]
-            logger.info(f"Limited to {limit} places for sync")
-
-        # Track progress
-        results = {
+@bp.orchestration_trigger(context_name="context")
+def cosmos_sync_places_orchestrator(context: df.DurableOrchestrationContext):
+    """
+    Orchestrator function for bulk Cosmos DB sync.
+    
+    Fetches all places from Airtable, then processes them in parallel batches.
+    Uses fan-out/fan-in pattern for efficient parallel processing.
+    """
+    config = context.get_input()
+    limit = config.get("limit") if config else None
+    
+    # Get all places from Airtable (activity function)
+    all_places = yield context.call_activity("cosmos_get_all_places", {"limit": limit})
+    
+    if not all_places:
+        return {
             "success": True,
             "placesProcessed": 0,
             "totalChunksProcessed": 0,
             "totalChunksSkipped": 0,
-            "placeDetails": [],
-            "error": None,
-            "failedAt": None,
+            "message": "No places to sync",
+        }
+    
+    # Track overall results
+    results = {
+        "success": True,
+        "placesProcessed": 0,
+        "totalChunksProcessed": 0,
+        "totalChunksSkipped": 0,
+        "placeDetails": [],
+        "error": None,
+        "failedAt": None,
+    }
+    
+    # Process in batches for parallel execution
+    batch_size = COSMOS_SYNC_BATCH_SIZE
+    
+    for i in range(0, len(all_places), batch_size):
+        batch = all_places[i:i + batch_size]
+        
+        # Create parallel tasks for this batch
+        batch_tasks = [
+            context.call_activity("cosmos_sync_single_place", place_data)
+            for place_data in batch
+        ]
+        
+        # Execute batch in parallel and wait for all to complete
+        batch_results = yield context.task_all(batch_tasks)
+        
+        # Process batch results
+        for place_result in batch_results:
+            if place_result.get("success", False):
+                results["placesProcessed"] += 1
+                results["totalChunksProcessed"] += place_result.get("chunksProcessed", 0)
+                results["totalChunksSkipped"] += place_result.get("chunksSkipped", 0)
+                results["placeDetails"].append(place_result)
+            else:
+                # Fail fast on any error
+                results["success"] = False
+                results["error"] = place_result.get("error")
+                results["failedAt"] = place_result.get("placeId")
+                return results
+    
+    return results
+
+
+@bp.activity_trigger(input_name="activityInput")
+@bp.function_name("cosmos_get_all_places")
+def cosmos_get_all_places(activityInput: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """
+    Activity function to fetch all places from Airtable.
+    
+    Returns a list of place data dicts containing place_id and airtable_record.
+    """
+    limit = activityInput.get("limit") if activityInput else None
+    
+    logger.info("Fetching all places from Airtable")
+    airtable_service = _get_airtable_service()
+    all_places = airtable_service.all_third_places
+    
+    logger.info(f"Retrieved {len(all_places)} places from Airtable")
+    
+    if limit:
+        all_places = all_places[:limit]
+        logger.info(f"Limited to {limit} places for sync")
+    
+    # Transform to list of place data for activity processing
+    place_data_list = []
+    for record in all_places:
+        place_id = record.get("fields", {}).get("Google Maps Place Id")
+        if place_id:
+            place_data_list.append({
+                "place_id": place_id,
+                "airtable_record": record,
+            })
+        else:
+            logger.warning(f"Skipping record without Google Maps Place Id: {record.get('id')}")
+    
+    return place_data_list
+
+
+@bp.activity_trigger(input_name="activityInput")
+@bp.function_name("cosmos_sync_single_place")
+def cosmos_sync_single_place(activityInput: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Activity function to sync a single place to Cosmos DB.
+    
+    This wraps the core sync logic and adds success/error handling
+    appropriate for the Durable Functions pattern.
+    """
+    place_id = activityInput.get("place_id")
+    airtable_record = activityInput.get("airtable_record")
+    
+    if not place_id or not airtable_record:
+        return {
+            "success": False,
+            "placeId": place_id,
+            "error": "Missing place_id or airtable_record",
+        }
+    
+    try:
+        # Initialize services (each activity gets fresh instances)
+        cosmos_service = CosmosService()
+        embedding_service = EmbeddingService()
+        
+        # Call the core sync logic
+        result = _sync_single_place_logic(
+            place_id=place_id,
+            airtable_record=airtable_record,
+            cosmos_service=cosmos_service,
+            embedding_service=embedding_service,
+        )
+        
+        result["success"] = True
+        return result
+        
+    except Exception as e:
+        error_msg = f"Error syncing place {place_id}: {str(e)}"
+        logger.error(error_msg, exc_info=True)
+        return {
+            "success": False,
+            "placeId": place_id,
+            "error": error_msg,
         }
 
-        # Process each place
-        for airtable_record in all_places:
-            place_id = airtable_record.get("fields", {}).get("Google Maps Place Id")
 
-            if not place_id:
-                logger.warning(f"Skipping record without Google Maps Place Id: {airtable_record.get('id')}")
-                continue
-
-            try:
-                place_result = _sync_single_place(
-                    place_id=place_id,
-                    airtable_record=airtable_record,
-                    cosmos_service=cosmos_service,
-                    embedding_service=embedding_service,
-                )
-
-                results["placesProcessed"] += 1
-                results["totalChunksProcessed"] += place_result["chunksProcessed"]
-                results["totalChunksSkipped"] += place_result["chunksSkipped"]
-                results["placeDetails"].append(place_result)
-
-            except Exception as e:
-                # Fail fast - stop processing and return error
-                error_msg = f"Error syncing place {place_id}: {str(e)}"
-                logger.error(error_msg, exc_info=True)
-
-                results["success"] = False
-                results["error"] = error_msg
-                results["failedAt"] = place_id
-
-                return func.HttpResponse(
-                    body=json.dumps(results, indent=2),
-                    status_code=500,
-                    mimetype="application/json"
-                )
-
-        logger.info(
-            f"Sync complete: {results['placesProcessed']} places, "
-            f"{results['totalChunksProcessed']} chunks processed"
-        )
-
-        return func.HttpResponse(
-            body=json.dumps(results, indent=2),
-            status_code=200,
-            mimetype="application/json"
-        )
-
-    except Exception as e:
-        error_msg = f"Fatal error during sync: {str(e)}"
-        logger.error(error_msg, exc_info=True)
-
-        return func.HttpResponse(
-            body=json.dumps({
-                "success": False,
-                "error": error_msg,
-                "failedAt": "initialization",
-                "placesProcessed": 0,
-                "totalChunksProcessed": 0,
-            }, indent=2),
-            status_code=500,
-            mimetype="application/json"
-        )
-
+# =============================================================================
+# Single Place Sync (Regular HTTP Function - fast enough without Durable)
+# =============================================================================
 
 @bp.function_name("CosmosSyncPlace")
 @bp.route(route="cosmos/sync-place/{place_id}", methods=["POST"], auth_level=func.AuthLevel.FUNCTION)
@@ -332,7 +416,7 @@ def cosmos_sync_place(req: func.HttpRequest) -> func.HttpResponse:
             )
 
         # Sync the place
-        place_result = _sync_single_place(
+        place_result = _sync_single_place_logic(
             place_id=place_id,
             airtable_record=airtable_record,
             cosmos_service=cosmos_service,
