@@ -8,12 +8,22 @@ on:
         required: false
         default: ''
         type: string
+      batch_size:
+        description: 'Degree of parallelism for processing places (default: 1 = sequential). Keep low (1-10) to avoid Cosmos DB 429 errors.'
+        required: false
+        default: '1'
+        type: string
   workflow_dispatch:
     inputs:
       limit:
         description: 'Maximum number of places to sync (optional, leave empty for all)'
         required: false
         default: ''
+        type: string
+      batch_size:
+        description: 'Degree of parallelism for processing places (default: 1 = sequential). Keep low (1-10) to avoid Cosmos DB 429 errors.'
+        required: false
+        default: '1'
         type: string
 
 concurrency: 
@@ -35,11 +45,21 @@ jobs:
           AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
         run: |
           $limit = "${{ inputs.limit }}"
+          $batchSize = "${{ inputs.batch_size }}"
           
           $FunctionUrl = "https://third-places-data.azurewebsites.net/api/cosmos/sync-places"
+          $queryParams = @()
           
           if ($limit -ne '') {
-            $FunctionUrl += "?limit=$limit"
+            $queryParams += "limit=$limit"
+          }
+          
+          if ($batchSize -ne '') {
+            $queryParams += "batch_size=$batchSize"
+          }
+          
+          if ($queryParams.Count -gt 0) {
+            $FunctionUrl += "?" + ($queryParams -join "&")
           }
           
           Write-Host "Using function URL: $FunctionUrl"

@@ -30,10 +30,12 @@ from services.utils import fetch_data_github
 # Configure logging
 logger = logging.getLogger(__name__)
 
-# Batch size for parallel processing.
+# Default batch size for parallel processing.
 # Keep this LOW (5-10) to avoid Cosmos DB 429 rate limiting errors.
+# With 500 RU/s per container, high parallelism causes 429 errors.
 # Each place sync does: 1 place upsert + N chunk deletes + N chunk upserts.
-COSMOS_SYNC_BATCH_SIZE = 5
+# Can be overridden via the batch_size query parameter.
+DEFAULT_COSMOS_SYNC_BATCH_SIZE = 1
 
 # Create Durable Functions blueprint
 bp = df.Blueprint()
@@ -191,6 +193,8 @@ async def cosmos_sync_places(req: func.HttpRequest, client) -> func.HttpResponse
     
     Query params:
         limit: Optional max number of places to sync (for testing).
+        batch_size: Degree of parallelism for processing places (default: 1 = sequential).
+                    Keep low to avoid Cosmos DB 429 rate limiting errors.
         
     Returns:
         HTTP 202 with status check URLs.
@@ -201,9 +205,14 @@ async def cosmos_sync_places(req: func.HttpRequest, client) -> func.HttpResponse
     limit_param = req.params.get("limit")
     limit = int(limit_param) if limit_param else None
     
+    # Parse optional batch_size parameter (degree of parallelism)
+    batch_size_param = req.params.get("batch_size")
+    batch_size = int(batch_size_param) if batch_size_param else DEFAULT_COSMOS_SYNC_BATCH_SIZE
+    
     # Configuration to pass to orchestrator
     config = {
         "limit": limit,
+        "batch_size": batch_size,
     }
     
     # Start the orchestration
@@ -222,9 +231,14 @@ def cosmos_sync_places_orchestrator(context: df.DurableOrchestrationContext):
     
     Fetches all places from Airtable, then processes them in parallel batches.
     Uses fan-out/fan-in pattern for efficient parallel processing.
+    
+    Config params:
+        limit: Max number of places to sync (optional).
+        batch_size: Degree of parallelism (default: 1 = sequential).
     """
-    config = context.get_input()
-    limit = config.get("limit") if config else None
+    config = context.get_input() or {}
+    limit = config.get("limit")
+    batch_size = config.get("batch_size", DEFAULT_COSMOS_SYNC_BATCH_SIZE)
     
     # Get all places from Airtable (activity function)
     all_places = yield context.call_activity("cosmos_get_all_places", {"limit": limit})
@@ -247,11 +261,10 @@ def cosmos_sync_places_orchestrator(context: df.DurableOrchestrationContext):
         "placeDetails": [],
         "error": None,
         "failedAt": None,
+        "batchSize": batch_size,
     }
     
-    # Process in batches for parallel execution
-    batch_size = COSMOS_SYNC_BATCH_SIZE
-    
+    # Process in batches for parallel execution (batch_size from config)
     for i in range(0, len(all_places), batch_size):
         batch = all_places[i:i + batch_size]
         

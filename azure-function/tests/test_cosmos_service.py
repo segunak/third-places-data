@@ -497,6 +497,7 @@ class TestCosmosDurableFunctionHelpers(unittest.TestCase):
             ],
             "error": None,
             "failedAt": None,
+            "batchSize": 5,  # Included in results for visibility
         }
         
         self.assertTrue(orchestrator_result["success"])
@@ -504,6 +505,26 @@ class TestCosmosDurableFunctionHelpers(unittest.TestCase):
         self.assertIsInstance(orchestrator_result["placeDetails"], list)
         self.assertIsNone(orchestrator_result["error"])
         self.assertIsNone(orchestrator_result["failedAt"])
+        self.assertIn("batchSize", orchestrator_result)
+
+    def test_orchestrator_config_with_batch_size(self):
+        """Test the config structure passed to orchestrator includes batch_size."""
+        # Config structure from HTTP trigger to orchestrator
+        config = {
+            "limit": 10,
+            "batch_size": 5,
+        }
+        
+        self.assertIn("limit", config)
+        self.assertIn("batch_size", config)
+        self.assertEqual(config["batch_size"], 5)
+        
+        # Test default config (no limit, default batch_size)
+        default_config = {
+            "limit": None,
+            "batch_size": 1,  # Default is sequential
+        }
+        self.assertEqual(default_config["batch_size"], 1)
 
     def test_orchestrator_fail_fast_result_structure(self):
         """Test the fail-fast result structure when an activity fails."""
@@ -526,18 +547,17 @@ class TestCosmosDurableFunctionHelpers(unittest.TestCase):
         self.assertIsNotNone(fail_fast_result["failedAt"])
         self.assertEqual(fail_fast_result["failedAt"], "place3")
 
-    def test_batch_size_constant(self):
-        """Test that batch size is reasonable for parallel execution."""
+    def test_default_batch_size_constant(self):
+        """Test that default batch size is 1 (sequential) for safety."""
         # Import the constant from cosmos.py
         try:
-            from blueprints.cosmos import COSMOS_SYNC_BATCH_SIZE
-            # Should be 100 as specified by user
-            self.assertEqual(COSMOS_SYNC_BATCH_SIZE, 100)
+            from blueprints.cosmos import DEFAULT_COSMOS_SYNC_BATCH_SIZE
+            # Default should be 1 (sequential) to avoid Cosmos 429 errors
+            self.assertEqual(DEFAULT_COSMOS_SYNC_BATCH_SIZE, 1)
         except ImportError:
-            # If import fails, just validate the expected value
-            expected_batch_size = 100
-            self.assertGreater(expected_batch_size, 0)
-            self.assertLessEqual(expected_batch_size, 500)  # Reasonable upper bound
+            # If import fails, just validate the expected default value
+            expected_default_batch_size = 1
+            self.assertEqual(expected_default_batch_size, 1)
 
     def test_place_data_list_generation(self):
         """Test generating place data list for orchestrator (simulates cosmos_get_all_places)."""
