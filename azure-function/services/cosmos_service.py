@@ -300,3 +300,86 @@ def extract_place_context(airtable_record: Dict[str, Any]) -> Dict[str, Any]:
         "type": fields.get("Type"),
         "tags": fields.get("Tags"),
     }
+
+
+def parse_timestamp(timestamp_str: Optional[str]) -> Optional[datetime]:
+    """
+    Parse an ISO timestamp string to a timezone-aware datetime in UTC.
+    
+    Handles various formats:
+    - Airtable: "2025-11-28T12:00:00.000Z"
+    - JSON last_updated: "2025-09-22T12:40:00.502075"
+    - Cosmos lastSynced: "2025-11-28T12:00:00+00:00"
+    
+    Args:
+        timestamp_str: ISO format timestamp string, or None.
+        
+    Returns:
+        Timezone-aware datetime in UTC, or None if parsing fails.
+    """
+    if not timestamp_str:
+        return None
+    
+    try:
+        # Handle 'Z' suffix (Airtable format)
+        if timestamp_str.endswith('Z'):
+            timestamp_str = timestamp_str[:-1] + '+00:00'
+        
+        # Parse the timestamp
+        dt = datetime.fromisoformat(timestamp_str)
+        
+        # If naive (no timezone), assume UTC
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        
+        return dt
+    except (ValueError, TypeError) as e:
+        logger.warning(f"Failed to parse timestamp '{timestamp_str}': {e}")
+        return None
+
+
+def should_sync_place(
+    airtable_modified: Optional[str],
+    json_last_updated: Optional[str],
+    cosmos_last_synced: Optional[str]
+) -> Tuple[bool, str]:
+    """
+    Determine if a place needs to be synced based on timestamp comparison.
+    
+    Compares the Airtable last modified time and JSON file last_updated time
+    against the Cosmos document's lastSynced time. A place needs syncing if
+    either source has been modified since the last sync.
+    
+    Args:
+        airtable_modified: Airtable "Last Modified Time" field value.
+        json_last_updated: JSON file "last_updated" field value.
+        cosmos_last_synced: Cosmos document "lastSynced" field value.
+        
+    Returns:
+        Tuple of (should_sync: bool, reason: str).
+        Reasons: "new_place", "airtable_modified", "json_modified", 
+                 "missing_timestamps", "no_changes"
+    """
+    # Parse timestamps to UTC datetime
+    airtable_dt = parse_timestamp(airtable_modified)
+    json_dt = parse_timestamp(json_last_updated)
+    cosmos_dt = parse_timestamp(cosmos_last_synced)
+    
+    # If no Cosmos record exists, it's a new place - must sync
+    if cosmos_dt is None:
+        return True, "new_place"
+    
+    # If we have no source timestamps to compare, sync to be safe
+    if airtable_dt is None and json_dt is None:
+        return True, "missing_timestamps"
+    
+    # Check if Airtable record was modified after last sync
+    if airtable_dt is not None and airtable_dt > cosmos_dt:
+        return True, "airtable_modified"
+    
+    # Check if JSON file was updated after last sync
+    if json_dt is not None and json_dt > cosmos_dt:
+        return True, "json_modified"
+    
+    # No changes detected
+    return False, "no_changes"

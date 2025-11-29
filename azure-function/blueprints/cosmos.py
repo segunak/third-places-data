@@ -17,6 +17,7 @@ from services.cosmos_service import (
     transform_airtable_to_place,
     transform_review_to_chunk,
     extract_place_context,
+    should_sync_place,
 )
 
 from services.embedding_service import (
@@ -52,7 +53,8 @@ def _sync_single_place_logic(
     airtable_record: Dict[str, Any],
     cosmos_service: CosmosService,
     embedding_service: EmbeddingService,
-    city: str = "charlotte"
+    city: str = "charlotte",
+    force: bool = True
 ) -> Dict[str, Any]:
     """
     Sync a single place and its reviews to Cosmos DB.
@@ -63,6 +65,8 @@ def _sync_single_place_logic(
         cosmos_service: Cosmos DB service instance.
         embedding_service: Embedding service instance.
         city: City folder name for JSON files.
+        force: If False, skip sync if no changes detected since last sync.
+               If True (default), always sync regardless of timestamps.
         
     Returns:
         Dict with sync results for this place.
@@ -80,6 +84,33 @@ def _sync_single_place_logic(
     if not success:
         logger.warning(f"No JSON data for {place_name}: {message}")
         json_data = None
+
+    # Incremental sync check (only when force=False)
+    if not force:
+        # Get existing Cosmos document to check lastSynced
+        existing_place = cosmos_service.get_place(place_id)
+        cosmos_last_synced = existing_place.get("lastSynced") if existing_place else None
+        
+        # Get timestamps from sources
+        airtable_modified = airtable_record.get("fields", {}).get("Last Modified Time")
+        json_last_updated = json_data.get("last_updated") if json_data else None
+        
+        # Check if sync is needed
+        needs_sync, reason = should_sync_place(airtable_modified, json_last_updated, cosmos_last_synced)
+        
+        if not needs_sync:
+            logger.info(f"Skipping {place_name} ({place_id}): {reason}")
+            return {
+                "placeId": place_id,
+                "placeName": place_name,
+                "skipped": True,
+                "skipReason": reason,
+                "chunksProcessed": 0,
+                "chunksSkipped": 0,
+                "hasJsonData": json_data is not None,
+            }
+        else:
+            logger.info(f"Syncing {place_name} ({place_id}): {reason}")
 
     # Transform Airtable record to place document
     place_doc = transform_airtable_to_place(airtable_record, json_data)
@@ -171,6 +202,7 @@ def _sync_single_place_logic(
     return {
         "placeId": place_id,
         "placeName": place_name,
+        "skipped": False,
         "chunksProcessed": chunks_processed,
         "chunksSkipped": chunks_skipped,
         "hasJsonData": json_data is not None,
@@ -195,6 +227,9 @@ async def cosmos_sync_places(req: func.HttpRequest, client) -> func.HttpResponse
         limit: Optional max number of places to sync (for testing).
         batch_size: Degree of parallelism for processing places (default: 1 = sequential).
                     Keep low to avoid Cosmos DB 429 rate limiting errors.
+        force: If "true", sync all places regardless of whether they've changed.
+               If "false" (default), only sync places that have been modified since
+               the last sync (based on Airtable Last Modified Time and JSON last_updated).
         
     Returns:
         HTTP 202 with status check URLs.
@@ -209,15 +244,20 @@ async def cosmos_sync_places(req: func.HttpRequest, client) -> func.HttpResponse
     batch_size_param = req.params.get("batch_size")
     batch_size = int(batch_size_param) if batch_size_param else DEFAULT_COSMOS_SYNC_BATCH_SIZE
     
+    # Parse optional force parameter (default: False for incremental sync)
+    force_param = req.params.get("force", "false").lower()
+    force = force_param in ("true", "1", "yes")
+    
     # Configuration to pass to orchestrator
     config = {
         "limit": limit,
         "batch_size": batch_size,
+        "force": force,
     }
     
     # Start the orchestration
     instance_id = await client.start_new("cosmos_sync_places_orchestrator", client_input=config)
-    logger.info(f"Started orchestration with ID: {instance_id}")
+    logger.info(f"Started orchestration with ID: {instance_id}, force={force}")
     
     # Return status check response
     response = client.create_check_status_response(req, instance_id)
@@ -235,10 +275,12 @@ def cosmos_sync_places_orchestrator(context: df.DurableOrchestrationContext):
     Config params:
         limit: Max number of places to sync (optional).
         batch_size: Degree of parallelism (default: 1 = sequential).
+        force: If True, sync all places. If False, only sync modified places.
     """
     config = context.get_input() or {}
     limit = config.get("limit")
     batch_size = config.get("batch_size", DEFAULT_COSMOS_SYNC_BATCH_SIZE)
+    force = config.get("force", False)
     
     # Get all places from Airtable (activity function)
     all_places = yield context.call_activity("cosmos_get_all_places", {"limit": limit})
@@ -247,31 +289,43 @@ def cosmos_sync_places_orchestrator(context: df.DurableOrchestrationContext):
         return {
             "success": True,
             "placesProcessed": 0,
+            "placesSkipped": 0,
             "totalChunksProcessed": 0,
             "totalChunksSkipped": 0,
             "message": "No places to sync",
+            "force": force,
         }
     
     # Track overall results
     results = {
         "success": True,
         "placesProcessed": 0,
+        "placesSkipped": 0,
         "totalChunksProcessed": 0,
         "totalChunksSkipped": 0,
         "placeDetails": [],
+        "skippedPlaces": [],
         "error": None,
         "failedAt": None,
         "batchSize": batch_size,
+        "force": force,
+        "totalPlaces": len(all_places),
     }
     
     # Process in batches for parallel execution (batch_size from config)
     for i in range(0, len(all_places), batch_size):
         batch = all_places[i:i + batch_size]
         
+        # Add force flag to each place data
+        batch_with_force = [
+            {**place_data, "force": force}
+            for place_data in batch
+        ]
+        
         # Create parallel tasks for this batch
         batch_tasks = [
             context.call_activity("cosmos_sync_single_place", place_data)
-            for place_data in batch
+            for place_data in batch_with_force
         ]
         
         # Execute batch in parallel and wait for all to complete
@@ -280,10 +334,20 @@ def cosmos_sync_places_orchestrator(context: df.DurableOrchestrationContext):
         # Process batch results
         for place_result in batch_results:
             if place_result.get("success", False):
-                results["placesProcessed"] += 1
-                results["totalChunksProcessed"] += place_result.get("chunksProcessed", 0)
-                results["totalChunksSkipped"] += place_result.get("chunksSkipped", 0)
-                results["placeDetails"].append(place_result)
+                if place_result.get("skipped", False):
+                    # Place was skipped (no changes since last sync)
+                    results["placesSkipped"] += 1
+                    results["skippedPlaces"].append({
+                        "placeId": place_result.get("placeId"),
+                        "placeName": place_result.get("placeName"),
+                        "reason": place_result.get("skipReason"),
+                    })
+                else:
+                    # Place was synced
+                    results["placesProcessed"] += 1
+                    results["totalChunksProcessed"] += place_result.get("chunksProcessed", 0)
+                    results["totalChunksSkipped"] += place_result.get("chunksSkipped", 0)
+                    results["placeDetails"].append(place_result)
             else:
                 # Fail fast on any error
                 results["success"] = False
@@ -337,9 +401,15 @@ def cosmos_sync_single_place(activityInput: Dict[str, Any]) -> Dict[str, Any]:
     
     This wraps the core sync logic and adds success/error handling
     appropriate for the Durable Functions pattern.
+    
+    Input params:
+        place_id: Google Maps Place ID.
+        airtable_record: Airtable record dict.
+        force: If True, sync regardless of timestamps. If False, skip if no changes.
     """
     place_id = activityInput.get("place_id")
     airtable_record = activityInput.get("airtable_record")
+    force = activityInput.get("force", True)  # Default to True for backward compatibility
     
     if not place_id or not airtable_record:
         return {
@@ -353,12 +423,13 @@ def cosmos_sync_single_place(activityInput: Dict[str, Any]) -> Dict[str, Any]:
         cosmos_service = CosmosService()
         embedding_service = EmbeddingService()
         
-        # Call the core sync logic
+        # Call the core sync logic with force flag
         result = _sync_single_place_logic(
             place_id=place_id,
             airtable_record=airtable_record,
             cosmos_service=cosmos_service,
             embedding_service=embedding_service,
+            force=force,
         )
         
         result["success"] = True

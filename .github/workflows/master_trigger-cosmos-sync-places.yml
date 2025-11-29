@@ -13,6 +13,11 @@ on:
         required: false
         default: '1'
         type: string
+      force:
+        description: 'Force sync all places regardless of changes (true/false). Default is false (incremental sync - only sync places modified since last sync).'
+        required: false
+        default: 'false'
+        type: string
   workflow_dispatch:
     inputs:
       limit:
@@ -25,6 +30,14 @@ on:
         required: false
         default: '1'
         type: string
+      force:
+        description: 'Force sync all places regardless of changes (true/false). Default is false (incremental sync - only sync places modified since last sync).'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
 
 concurrency: 
   group: cosmos-sync-places
@@ -46,6 +59,7 @@ jobs:
         run: |
           $limit = "${{ inputs.limit }}"
           $batchSize = "${{ inputs.batch_size }}"
+          $force = "${{ inputs.force }}"
           
           $FunctionUrl = "https://third-places-data.azurewebsites.net/api/cosmos/sync-places"
           $queryParams = @()
@@ -58,14 +72,19 @@ jobs:
             $queryParams += "batch_size=$batchSize"
           }
           
+          if ($force -ne '' -and $force -ne 'false') {
+            $queryParams += "force=$force"
+          }
+          
           if ($queryParams.Count -gt 0) {
             $FunctionUrl += "?" + ($queryParams -join "&")
           }
           
           Write-Host "Using function URL: $FunctionUrl"
+          Write-Host "Force sync: $force"
           
           $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
-          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 7200
+          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 18000
 
           if ($LASTEXITCODE -ne 0) {
             Write-Error "Azure Function call failed."
