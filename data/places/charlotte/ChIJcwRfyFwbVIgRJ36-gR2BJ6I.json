@@ -21,7 +21,7 @@
             "place_id": "ChIJcwRfyFwbVIgRJ36-gR2BJ6I",
             "google_id": "0x88541b5cc85f0473:0xa227811d81be7e27",
             "kgmid": "/g/11d_v6h0sb",
-            "full_address": "10005 Weddington Rd Ext., Concord, NC 28027, United States",
+            "full_address": "10005 Weddington Rd Ext., Concord, NC 28027",
             "borough": null,
             "street": "10005 Weddington Rd Ext.",
             "postal_code": "28027",
@@ -766,24 +766,24 @@
             "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=_nsrgjjtRCKvU2ZuNVGTjg&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=227.8316&pitch=0&thumbfov=100",
             "working_hours": {
                 "Monday": "Closed",
-                "Tuesday": "6:30am-3pm",
-                "Wednesday": "6:30am-3pm",
-                "Thursday": "6:30am-3pm",
-                "Friday": "6:30am-3pm",
-                "Saturday": "6:30am-3pm",
-                "Sunday": "6:30am-3pm"
+                "Tuesday": "6:30AM-3PM",
+                "Wednesday": "6:30AM-3PM",
+                "Thursday": "6:30AM-3PM",
+                "Friday": "6:30AM-3PM",
+                "Saturday": "6:30AM-3PM",
+                "Sunday": "6:30AM-3PM"
             },
-            "working_hours_csv_compatible": "Sunday,6:30am,3pm|Monday,|Tuesday,6:30am,3pm|Wednesday,6:30am,3pm|Thursday,6:30am,3pm|Friday,6:30am,3pm|Saturday,6:30am,3pm",
-            "working_hours_old_format": "Monday:Closed|Tuesday:6:30am-3pm|Wednesday:6:30am-3pm|Thursday:6:30am-3pm|Friday:6:30am-3pm|Saturday:6:30am-3pm|Sunday:6:30am-3pm",
+            "working_hours_csv_compatible": "Sunday,6:30AM,3PM|Monday,|Tuesday,6:30AM,3PM|Wednesday,6:30AM,3PM|Thursday,6:30AM,3PM|Friday,6:30AM,3PM|Saturday,6:30AM,3PM",
+            "working_hours_old_format": "Monday:Closed|Tuesday:6:30AM-3PM|Wednesday:6:30AM-3PM|Thursday:6:30AM-3PM|Friday:6:30AM-3PM|Saturday:6:30AM-3PM|Sunday:6:30AM-3PM",
             "other_hours": null,
             "business_status": "OPERATIONAL",
             "about": {
                 "Service options": {
                     "Delivery": true,
-                    "In-store pick-up": true,
+                    "In-store pickup": true,
                     "In-store shopping": true,
-                    "On-site services": true,
-                    "Takeaway": true,
+                    "Onsite services": true,
+                    "Takeout": true,
                     "Dine-in": true
                 },
                 "Highlights": {
@@ -793,9 +793,9 @@
                     "Solo dining": true
                 },
                 "Accessibility": {
-                    "Wheelchair-accessible car park": true,
-                    "Wheelchair-accessible entrance": true,
-                    "Wheelchair-accessible toilet": true
+                    "Wheelchair accessible entrance": true,
+                    "Wheelchair accessible parking lot": true,
+                    "Wheelchair accessible restroom": true
                 },
                 "Offerings": {
                     "Coffee": true
@@ -806,7 +806,7 @@
                     "Table service": false
                 },
                 "Amenities": {
-                    "Toilet": true
+                    "Restroom": true
                 },
                 "Atmosphere": {
                     "Casual": true
@@ -823,7 +823,7 @@
                     "Free parking lot": true
                 }
             },
-            "range": "1\u201310\u00a0$",
+            "range": "$1\u201310",
             "prices": null,
             "reviews_per_score": null,
             "reviews_per_score_1": null,
@@ -833,7 +833,7 @@
             "reviews_per_score_5": null,
             "reservation_links": null,
             "booking_appointment_link": null,
-            "menu_link": "/url?q=http://places.singleplatform.com/omg-donuts--bakery/menu%3Fref%3Dgoogle&opi=79508299&sa=U&ved=0ahUKEwi6ta3N2JeRAxV9XvEDHbGgDAcQqRkIGSgR&usg=AOvVaw3yd9gg6I65DiRTyhKYir6Z",
+            "menu_link": "/url?q=http://places.singleplatform.com/omg-donuts--bakery/menu%3Fref%3Dgoogle&opi=79508299&sa=U&ved=0ahUKEwjFpuPi2JeRAxW2AdsEHYM8CSwQqRkIFygP&usg=AOvVaw10bSw4jyxGdhwjr5aeQZAM",
             "order_links": null,
             "owner_id": "113336653886898609086",
             "verified": true,
@@ -3819,7 +3819,7 @@
             {
                 "google_id": "0x88541b5cc85f0473:0xa227811d81be7e27",
                 "review_id": "ChdDSUhNMG9nS0VJQ0FnSUNqazZuc21BRRAB",
-                "review_pagination_id": "CAESY0NBRVFmaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTRVJ4TFZCdFJGOWZSV2hFTjIxM0xWQjFUMFJCVmpVeVgwZHRPRUZCUVVGQlIyZHVPVE4xWjBOalQzSTBMVmxOV1VGRFNVRQ==",
+                "review_pagination_id": "CAESY0NBRVFmaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTRVJ4TFZCdFJGOWZSV2hFTjIxM0xWQjFUMFJCVmpVeVgwZHRPRUZCUVVGQlIyZHVPVE13TUVOalQzSTBMVmxOV1VGRFNVRQ==",
                 "author_link": "https://www.google.com/maps/contrib/114446145587735057848?hl=en",
                 "author_title": "Jorge Triana",
                 "author_id": "114446145587735057848",
@@ -8164,7 +8164,7 @@
             "place_id": "ChIJcwRfyFwbVIgRJ36-gR2BJ6I",
             "google_id": "0x88541b5cc85f0473:0xa227811d81be7e27",
             "kgmid": "/g/11d_v6h0sb",
-            "full_address": "10005 Weddington Rd Ext., Concord, NC 28027, United States",
+            "full_address": "10005 Weddington Rd Ext., Concord, NC 28027",
             "borough": null,
             "street": "10005 Weddington Rd Ext.",
             "postal_code": "28027",
@@ -11874,7 +11874,7 @@
                 {
                     "google_id": "0x88541b5cc85f0473:0xa227811d81be7e27",
                     "review_id": "ChdDSUhNMG9nS0VJQ0FnSUNqazZuc21BRRAB",
-                    "review_pagination_id": "CAESY0NBRVFmaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTRVJ4TFZCdFJGOWZSV2hFTjIxM0xWQjFUMFJCVmpVeVgwZHRPRUZCUVVGQlIyZHVPVE4xWjBOalQzSTBMVmxOV1VGRFNVRQ==",
+                    "review_pagination_id": "CAESY0NBRVFmaHBFUTJwRlNVRlNTWEJEWjI5QlVEY3lTRVJ4TFZCdFJGOWZSV2hFTjIxM0xWQjFUMFJCVmpVeVgwZHRPRUZCUVVGQlIyZHVPVE13TUVOalQzSTBMVmxOV1VGRFNVRQ==",
                     "author_link": "https://www.google.com/maps/contrib/114446145587735057848?hl=en",
                     "author_title": "Jorge Triana",
                     "author_id": "114446145587735057848",
@@ -16220,24 +16220,24 @@
             "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=_nsrgjjtRCKvU2ZuNVGTjg&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=227.8316&pitch=0&thumbfov=100",
             "working_hours": {
                 "Monday": "Closed",
-                "Tuesday": "6:30am-3pm",
-                "Wednesday": "6:30am-3pm",
-                "Thursday": "6:30am-3pm",
-                "Friday": "6:30am-3pm",
-                "Saturday": "6:30am-3pm",
-                "Sunday": "6:30am-3pm"
+                "Tuesday": "6:30AM-3PM",
+                "Wednesday": "6:30AM-3PM",
+                "Thursday": "6:30AM-3PM",
+                "Friday": "6:30AM-3PM",
+                "Saturday": "6:30AM-3PM",
+                "Sunday": "6:30AM-3PM"
             },
-            "working_hours_csv_compatible": "Sunday,6:30am,3pm|Monday,|Tuesday,6:30am,3pm|Wednesday,6:30am,3pm|Thursday,6:30am,3pm|Friday,6:30am,3pm|Saturday,6:30am,3pm",
-            "working_hours_old_format": "Monday:Closed|Tuesday:6:30am-3pm|Wednesday:6:30am-3pm|Thursday:6:30am-3pm|Friday:6:30am-3pm|Saturday:6:30am-3pm|Sunday:6:30am-3pm",
+            "working_hours_csv_compatible": "Sunday,6:30AM,3PM|Monday,|Tuesday,6:30AM,3PM|Wednesday,6:30AM,3PM|Thursday,6:30AM,3PM|Friday,6:30AM,3PM|Saturday,6:30AM,3PM",
+            "working_hours_old_format": "Monday:Closed|Tuesday:6:30AM-3PM|Wednesday:6:30AM-3PM|Thursday:6:30AM-3PM|Friday:6:30AM-3PM|Saturday:6:30AM-3PM|Sunday:6:30AM-3PM",
             "other_hours": null,
             "business_status": "OPERATIONAL",
             "about": {
                 "Service options": {
                     "Delivery": true,
-                    "In-store pick-up": true,
+                    "In-store pickup": true,
                     "In-store shopping": true,
-                    "On-site services": true,
-                    "Takeaway": true,
+                    "Onsite services": true,
+                    "Takeout": true,
                     "Dine-in": true
                 },
                 "Highlights": {
@@ -16247,9 +16247,9 @@
                     "Solo dining": true
                 },
                 "Accessibility": {
-                    "Wheelchair-accessible car park": true,
-                    "Wheelchair-accessible entrance": true,
-                    "Wheelchair-accessible toilet": true
+                    "Wheelchair accessible entrance": true,
+                    "Wheelchair accessible parking lot": true,
+                    "Wheelchair accessible restroom": true
                 },
                 "Offerings": {
                     "Coffee": true
@@ -16260,7 +16260,7 @@
                     "Table service": false
                 },
                 "Amenities": {
-                    "Toilet": true
+                    "Restroom": true
                 },
                 "Atmosphere": {
                     "Casual": true
@@ -16277,7 +16277,7 @@
                     "Free parking lot": true
                 }
             },
-            "range": "1\u201310\u00a0$",
+            "range": "$1\u201310",
             "prices": null,
             "reviews_per_score": null,
             "reviews_per_score_1": null,
@@ -16287,7 +16287,7 @@
             "reviews_per_score_5": null,
             "reservation_links": null,
             "booking_appointment_link": null,
-            "menu_link": "/url?q=http://places.singleplatform.com/omg-donuts--bakery/menu%3Fref%3Dgoogle&opi=79508299&sa=U&ved=0ahUKEwjUkKbO2JeRAxUZRfEDHaUJFJwQqRkIGSgR&usg=AOvVaw1FmGlH2iBl1bNMQbM9BUUV",
+            "menu_link": "/url?q=http://places.singleplatform.com/omg-donuts--bakery/menu%3Fref%3Dgoogle&opi=79508299&sa=U&ved=0ahUKEwikz_fj2JeRAxUSEzQIHc9-ORoQqRkIFygP&usg=AOvVaw38pEXTE8Td__x3iJQaOAb_",
             "order_links": null,
             "owner_id": "113336653886898609086",
             "verified": true,
@@ -17120,7 +17120,7 @@
             "reviews_per_score_5": null,
             "reservation_links": null,
             "booking_appointment_link": null,
-            "menu_link": "/url?q=http://places.singleplatform.com/omg-donuts--bakery/menu%3Fref%3Dgoogle&opi=79508299&sa=U&ved=0ahUKEwiHwObZ2JeRAxWXkmoFHaseCrAQqRkIFygP&usg=AOvVaw0LanTNeooeY13ZeIDW_mny",
+            "menu_link": "/url?q=http://places.singleplatform.com/omg-donuts--bakery/menu%3Fref%3Dgoogle&opi=79508299&sa=U&ved=0ahUKEwiGvMrt2JeRAxWkPDQIHcV-Df4QqRkIFygP&usg=AOvVaw2IKCIxFhh4KWM7xHXPdU1y",
             "order_links": null,
             "owner_id": "113336653886898609086",
             "verified": true,
@@ -17160,8 +17160,8 @@
                         "drink"
                     ],
                     "photo_tag_ids": [
-                        8,
-                        3
+                        3,
+                        8
                     ],
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzJ-AG6IQ-pfaK6eQqaJsAbvi0gVEFDiMAzv0Msy2iWf7t0RpQNOSRnpbZRFTSUJPlUGc6YEHuhoXWfA5dltSnf1_zJjxnzI2BbLsXypHawZRCuWwsJHs6n8x6Gyz9yGm0B9g=w203-h360-k-no"
                 },
@@ -17379,23 +17379,6 @@
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwDZ357G2u66R2XUOk4Y0lF2BoBAE2fMKJ2IOv3DtnACKwiV47HL7vuoBf9QU1qS-DEtuLUSDG-fYLu9uMD0JFBuCdJCboJDvQfSyqSr7SGWfQl_9x6wR8e6D7G-9MvS_12IKY=w203-h270-k-no"
                 },
                 {
-                    "photo_id": "CIHM0ogKEICAgICkuqOfWQ",
-                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzQlSYJImO6bBtM9hYp-T5Y7HQD6jDxfGJ3i0W6pN_PeegYqZabzbVNr_oq2n9QMWsZExp1ZUZuXaXWwZcXU5el1YWv7Sburf8WEB7WZRNLsOkVYtr_S7jxpkCLeqvbWDGBV19h",
-                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzQlSYJImO6bBtM9hYp-T5Y7HQD6jDxfGJ3i0W6pN_PeegYqZabzbVNr_oq2n9QMWsZExp1ZUZuXaXWwZcXU5el1YWv7Sburf8WEB7WZRNLsOkVYtr_S7jxpkCLeqvbWDGBV19h=w2048-h2048-k-no",
-                    "latitude": 35.3652176,
-                    "longitude": -80.7109026,
-                    "photo_date": "6/14/2019 23:00:00",
-                    "photo_upload_source": "gmm_android",
-                    "photo_source_video": null,
-                    "photo_tags": [
-                        "food"
-                    ],
-                    "photo_tag_ids": [
-                        8
-                    ],
-                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzQlSYJImO6bBtM9hYp-T5Y7HQD6jDxfGJ3i0W6pN_PeegYqZabzbVNr_oq2n9QMWsZExp1ZUZuXaXWwZcXU5el1YWv7Sburf8WEB7WZRNLsOkVYtr_S7jxpkCLeqvbWDGBV19h=w203-h270-k-no"
-                },
-                {
                     "photo_id": "CIABIhB4ZBuwA62mtOtUXuL5TtA0",
                     "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxRjjnPGqF3IHU4Z8RvQQOmYBNInat4rQCpJZHOhng67lUf4kOB3Jwggw-ITT2_9Z5_B1IzLPokUhCMVo1EzN0mLHbB3YtekTb1CzzSEov_yjOUEtPIS4QvTRACnlmvCn4t9kEXD2zHs3Vt",
                     "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxRjjnPGqF3IHU4Z8RvQQOmYBNInat4rQCpJZHOhng67lUf4kOB3Jwggw-ITT2_9Z5_B1IzLPokUhCMVo1EzN0mLHbB3YtekTb1CzzSEov_yjOUEtPIS4QvTRACnlmvCn4t9kEXD2zHs3Vt=w2048-h2048-k-no",
@@ -17411,6 +17394,23 @@
                         8
                     ],
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxRjjnPGqF3IHU4Z8RvQQOmYBNInat4rQCpJZHOhng67lUf4kOB3Jwggw-ITT2_9Z5_B1IzLPokUhCMVo1EzN0mLHbB3YtekTb1CzzSEov_yjOUEtPIS4QvTRACnlmvCn4t9kEXD2zHs3Vt=w203-h152-k-no"
+                },
+                {
+                    "photo_id": "CIHM0ogKEICAgICkuqOfWQ",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzQlSYJImO6bBtM9hYp-T5Y7HQD6jDxfGJ3i0W6pN_PeegYqZabzbVNr_oq2n9QMWsZExp1ZUZuXaXWwZcXU5el1YWv7Sburf8WEB7WZRNLsOkVYtr_S7jxpkCLeqvbWDGBV19h",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzQlSYJImO6bBtM9hYp-T5Y7HQD6jDxfGJ3i0W6pN_PeegYqZabzbVNr_oq2n9QMWsZExp1ZUZuXaXWwZcXU5el1YWv7Sburf8WEB7WZRNLsOkVYtr_S7jxpkCLeqvbWDGBV19h=w2048-h2048-k-no",
+                    "latitude": 35.3652176,
+                    "longitude": -80.7109026,
+                    "photo_date": "6/14/2019 23:00:00",
+                    "photo_upload_source": "gmm_android",
+                    "photo_source_video": null,
+                    "photo_tags": [
+                        "food"
+                    ],
+                    "photo_tag_ids": [
+                        8
+                    ],
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzQlSYJImO6bBtM9hYp-T5Y7HQD6jDxfGJ3i0W6pN_PeegYqZabzbVNr_oq2n9QMWsZExp1ZUZuXaXWwZcXU5el1YWv7Sburf8WEB7WZRNLsOkVYtr_S7jxpkCLeqvbWDGBV19h=w203-h270-k-no"
                 },
                 {
                     "photo_id": "http://t2.gstatic.com/images?q=tbn:ANd9GcQtkWEsMuCcIoJACXwe8Zzmx6vlRgDsZ1HOnRhHXq5vSdJNjDnj",
@@ -17838,8 +17838,8 @@
                         "vibe"
                     ],
                     "photo_tag_ids": [
-                        9,
-                        1
+                        1,
+                        9
                     ],
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxjzXgE1Kf7ib_cq9wtPvhPyduQwu_bPMSCov6bot6wHSgMd2cROixyr3rsed86VxmkvSAxyydpBjqzJG_sVBJxSlYikoi-cL07A6RcJjhfvjBh1TtavKGOleP7hcEff0BBPKWflWhVg804=w203-h152-k-no"
                 },
@@ -17908,8 +17908,8 @@
                         "drink"
                     ],
                     "photo_tag_ids": [
-                        8,
-                        3
+                        3,
+                        8
                     ],
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy0G-MyIh3EvdR-mTekbh4wjC9uMxG_7y7UZqetRjToKbW_tD18QX1KBiS21jGVrbVjom_6Fo3EGco7jhfYJ8oUj9YxyIZmoKeAIAO9cmDrz5JXhn5T-j8ZbdOBtA2yC-SQoY5IfQ=w203-h270-k-no"
                 },
@@ -18312,8 +18312,8 @@
                         "vibe"
                     ],
                     "photo_tag_ids": [
-                        9,
-                        1
+                        1,
+                        9
                     ],
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwVTzoRHQGcgQyZvF7bqL_eWa3ZuML1c1-cPieREP9PWkdkSCm1SpTsuk-XfWMhexRCiOe2rCFsn92JJziwKRerFJgXGzF2yis9Iyo2zXhtgC_tr4hg8zAoMssbAyeTbvirksDn=w203-h152-k-no"
                 },
@@ -18516,8 +18516,8 @@
                         "vibe"
                     ],
                     "photo_tag_ids": [
-                        9,
-                        1
+                        1,
+                        9
                     ],
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwc0RFdhZZgnCBnX8iOtj4fJzVsD4-Y4V6mi6Di0T8YLhmLWEEK6WyRzvO8hJrxfORiYp4ymXsA74tO3770IiwE2UdEeFOdaXAFeDuYBwyK5-oJKqWYYLczxwBEJAneWRnnF_Ya=w203-h114-k-no"
                 },
@@ -18789,5 +18789,5 @@
         }
     },
     "data_source": "OutscraperProvider",
-    "last_updated": "2025-11-29T15:39:03.066005"
+    "last_updated": "2025-11-29T15:39:44.638001"
 }
