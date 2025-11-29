@@ -104,6 +104,14 @@ jobs:
               }
             }
             
+            # Build orphaned files list for summary
+            $orphanedFilesList = ""
+            if ($orphanedFileCount -gt 0 -and $response.orphanedFiles.files) {
+              foreach ($file in $response.orphanedFiles.files) {
+                $orphanedFilesList += "| $($file.filename) | $($file.placeName) |`n"
+              }
+            }
+            
             # Output summary as GitHub step output
             "cosmos_places=$($response.summary.cosmosPlaces.value)" >> $env:GITHUB_OUTPUT
             "cosmos_chunks=$($response.summary.cosmosChunks.value)" >> $env:GITHUB_OUTPUT
@@ -113,6 +121,11 @@ jobs:
             "discrepancy_count=$discrepancyCount" >> $env:GITHUB_OUTPUT
             "orphaned_file_count=$orphanedFileCount" >> $env:GITHUB_OUTPUT
             "error_count=$errorCount" >> $env:GITHUB_OUTPUT
+            
+            # Save orphaned files to a temp file for the summary step
+            if ($orphanedFilesList) {
+              $orphanedFilesList | Out-File -FilePath "$env:RUNNER_TEMP\orphaned_files.txt" -Encoding utf8
+            }
             
             # Fail the workflow if there are errors (not just discrepancies)
             if ($status -eq "degraded") {
@@ -182,4 +195,20 @@ jobs:
           echo "- **Cosmos Places should equal Airtable Records** - If Cosmos has fewer, run ``cosmos/sync-places`` to sync missing places" >> $env:GITHUB_STEP_SUMMARY
           echo "- **Errors** mean a data source couldn't be reached" >> $env:GITHUB_STEP_SUMMARY
           echo "- **Discrepancies** mean data is out of sync and needs attention" >> $env:GITHUB_STEP_SUMMARY
-          echo "- **Orphaned Files** are JSON files in GitHub for places that were deleted from Airtable. This is normal and not an issue - see the full report for the list of files." >> $env:GITHUB_STEP_SUMMARY
+          echo "- **Orphaned Files** are JSON files in GitHub for places that were deleted from Airtable. This is normal and not an issue." >> $env:GITHUB_STEP_SUMMARY
+          
+          # Add orphaned files list if any exist
+          $orphanedCount = [int]"${{ steps.invoke_script.outputs.orphaned_file_count }}"
+          if ($orphanedCount -gt 0) {
+            $orphanedFilePath = "$env:RUNNER_TEMP\orphaned_files.txt"
+            if (Test-Path $orphanedFilePath) {
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "### Orphaned JSON Files ($orphanedCount files)" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "These files exist in GitHub but the corresponding place was deleted from Airtable. This is not an error - the files are simply no longer used during sync." >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "| Filename | Place Name |" >> $env:GITHUB_STEP_SUMMARY
+              echo "|----------|------------|" >> $env:GITHUB_STEP_SUMMARY
+              Get-Content $orphanedFilePath >> $env:GITHUB_STEP_SUMMARY
+            }
+          }
