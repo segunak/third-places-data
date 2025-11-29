@@ -1,0 +1,139 @@
+name: Trigger Cosmos Health Check
+
+on:
+  workflow_call:
+    inputs:
+      city:
+        description: 'City folder name for GitHub JSON files (default: charlotte)'
+        required: false
+        default: 'charlotte'
+        type: string
+  workflow_dispatch:
+    inputs:
+      city:
+        description: 'City folder name for GitHub JSON files (default: charlotte)'
+        required: false
+        default: 'charlotte'
+        type: string
+
+concurrency: 
+  group: cosmos-health-check
+  cancel-in-progress: true
+
+jobs:
+  trigger-cosmos-health-check:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Invoke Health Check
+        id: invoke_script
+        shell: pwsh
+        working-directory: ./scripts
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          $city = "${{ inputs.city }}"
+          if ([string]::IsNullOrWhiteSpace($city)) {
+            $city = "charlotte"
+          }
+          
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/cosmos/health?city=$city"
+          
+          Write-Host "Using function URL: $FunctionUrl"
+          
+          $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
+          
+          # Call the health check endpoint
+          $headers = @{
+            "x-functions-key" = $FunctionKey
+            "Content-Type" = "application/json"
+          }
+          
+          try {
+            $response = Invoke-RestMethod -Uri $FunctionUrl -Method GET -Headers $headers -TimeoutSec 120
+            
+            # Pretty print the response
+            $jsonOutput = $response | ConvertTo-Json -Depth 10
+            Write-Host "=== Health Check Report ===" -ForegroundColor Cyan
+            Write-Host $jsonOutput
+            
+            # Check status and set appropriate exit code
+            $status = $response.status
+            $discrepancyCount = $response.summary.discrepancyCount
+            $errorCount = $response.summary.errorCount
+            
+            Write-Host ""
+            Write-Host "=== Summary ===" -ForegroundColor Cyan
+            Write-Host "Status: $status"
+            Write-Host "Cosmos Places: $($response.summary.cosmosPlaces)"
+            Write-Host "Cosmos Chunks: $($response.summary.cosmosChunks)"
+            Write-Host "Airtable Records: $($response.summary.airtableRecords)"
+            Write-Host "GitHub Files: $($response.summary.githubFiles)"
+            Write-Host "Errors: $errorCount"
+            Write-Host "Discrepancies: $discrepancyCount"
+            
+            if ($errorCount -gt 0) {
+              Write-Host ""
+              Write-Host "=== Errors ===" -ForegroundColor Red
+              foreach ($error in $response.errors) {
+                Write-Host "- [$($error.source)] $($error.error)" -ForegroundColor Red
+              }
+            }
+            
+            if ($discrepancyCount -gt 0) {
+              Write-Host ""
+              Write-Host "=== Discrepancies ===" -ForegroundColor Yellow
+              foreach ($discrepancy in $response.discrepancies) {
+                Write-Host "- [$($discrepancy.type)] $($discrepancy.description)" -ForegroundColor Yellow
+                Write-Host "  Action: $($discrepancy.action)" -ForegroundColor Gray
+              }
+            }
+            
+            # Output summary as GitHub step output
+            "cosmos_places=$($response.summary.cosmosPlaces)" >> $env:GITHUB_OUTPUT
+            "cosmos_chunks=$($response.summary.cosmosChunks)" >> $env:GITHUB_OUTPUT
+            "airtable_records=$($response.summary.airtableRecords)" >> $env:GITHUB_OUTPUT
+            "github_files=$($response.summary.githubFiles)" >> $env:GITHUB_OUTPUT
+            "status=$status" >> $env:GITHUB_OUTPUT
+            "discrepancy_count=$discrepancyCount" >> $env:GITHUB_OUTPUT
+            "error_count=$errorCount" >> $env:GITHUB_OUTPUT
+            
+            # Fail the workflow if there are errors (not just discrepancies)
+            if ($status -eq "degraded") {
+              Write-Warning "Health check returned degraded status due to errors"
+              exit 1
+            }
+            
+            Write-Host ""
+            Write-Host "Health check completed successfully." -ForegroundColor Green
+            exit 0
+          }
+          catch {
+            Write-Error "Failed to call health check endpoint: $_"
+            exit 1
+          }
+
+      - name: Check Script Result
+        if: always()
+        run: |
+          echo "Script execution completed with status: ${{ steps.invoke_script.outcome }}"
+          if ("${{ steps.invoke_script.outcome }}" -ne "success") {
+            exit 1
+          }
+
+      - name: Create Summary
+        if: always()
+        run: |
+          echo "## Cosmos DB Health Check Report" >> $env:GITHUB_STEP_SUMMARY
+          echo "" >> $env:GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $env:GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $env:GITHUB_STEP_SUMMARY
+          echo "| Status | ${{ steps.invoke_script.outputs.status }} |" >> $env:GITHUB_STEP_SUMMARY
+          echo "| Cosmos Places | ${{ steps.invoke_script.outputs.cosmos_places }} |" >> $env:GITHUB_STEP_SUMMARY
+          echo "| Cosmos Chunks | ${{ steps.invoke_script.outputs.cosmos_chunks }} |" >> $env:GITHUB_STEP_SUMMARY
+          echo "| Airtable Records | ${{ steps.invoke_script.outputs.airtable_records }} |" >> $env:GITHUB_STEP_SUMMARY
+          echo "| GitHub Files | ${{ steps.invoke_script.outputs.github_files }} |" >> $env:GITHUB_STEP_SUMMARY
+          echo "| Errors | ${{ steps.invoke_script.outputs.error_count }} |" >> $env:GITHUB_STEP_SUMMARY
+          echo "| Discrepancies | ${{ steps.invoke_script.outputs.discrepancy_count }} |" >> $env:GITHUB_STEP_SUMMARY

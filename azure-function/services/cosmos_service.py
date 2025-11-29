@@ -125,6 +125,118 @@ class CosmosService:
 
         return deleted_count
 
+    def get_places_count(self) -> int:
+        """
+        Get the total count of documents in the places container.
+        
+        Returns:
+            Number of place documents.
+        """
+        query = "SELECT VALUE COUNT(1) FROM c"
+        result = list(self.places_container.query_items(
+            query=query,
+            enable_cross_partition_query=True
+        ))
+        return result[0] if result else 0
+
+    def get_chunks_count(self) -> int:
+        """
+        Get the total count of documents in the chunks container.
+        
+        Returns:
+            Number of chunk documents.
+        """
+        query = "SELECT VALUE COUNT(1) FROM c"
+        result = list(self.chunks_container.query_items(
+            query=query,
+            enable_cross_partition_query=True
+        ))
+        return result[0] if result else 0
+
+    def get_places_with_chunks_count(self) -> int:
+        """
+        Get the count of unique places that have chunks (reviews).
+        
+        Returns:
+            Number of unique placeIds in the chunks container.
+        """
+        query = "SELECT VALUE COUNT(1) FROM (SELECT DISTINCT c.placeId FROM c)"
+        result = list(self.chunks_container.query_items(
+            query=query,
+            enable_cross_partition_query=True
+        ))
+        return result[0] if result else 0
+
+    def get_sync_stats(self) -> Dict[str, Any]:
+        """
+        Get comprehensive sync statistics from Cosmos DB.
+        
+        Returns:
+            Dict with counts, timestamps, and health indicators.
+        """
+        # Get basic counts
+        places_count = self.get_places_count()
+        chunks_count = self.get_chunks_count()
+        places_with_chunks = self.get_places_with_chunks_count()
+        
+        # Get latest and oldest sync timestamps from places
+        latest_sync_query = "SELECT TOP 1 c.lastSynced, c.id, c.place FROM c ORDER BY c.lastSynced DESC"
+        oldest_sync_query = "SELECT TOP 1 c.lastSynced, c.id, c.place FROM c ORDER BY c.lastSynced ASC"
+        
+        latest_sync_result = list(self.places_container.query_items(
+            query=latest_sync_query,
+            enable_cross_partition_query=True
+        ))
+        
+        oldest_sync_result = list(self.places_container.query_items(
+            query=oldest_sync_query,
+            enable_cross_partition_query=True
+        ))
+        
+        latest_sync = latest_sync_result[0] if latest_sync_result else None
+        oldest_sync = oldest_sync_result[0] if oldest_sync_result else None
+        
+        # Get places without embeddings (potential issues)
+        places_without_embeddings_query = "SELECT VALUE COUNT(1) FROM c WHERE NOT IS_DEFINED(c.embedding) OR c.embedding = null"
+        places_without_embeddings = list(self.places_container.query_items(
+            query=places_without_embeddings_query,
+            enable_cross_partition_query=True
+        ))
+        
+        # Get chunks without embeddings
+        chunks_without_embeddings = list(self.chunks_container.query_items(
+            query=places_without_embeddings_query,
+            enable_cross_partition_query=True
+        ))
+        
+        # Calculate average chunks per place
+        avg_chunks_per_place = round(chunks_count / places_with_chunks, 2) if places_with_chunks > 0 else 0
+        
+        return {
+            "places": {
+                "count": places_count,
+                "withoutEmbeddings": places_without_embeddings[0] if places_without_embeddings else 0,
+            },
+            "chunks": {
+                "count": chunks_count,
+                "uniquePlaces": places_with_chunks,
+                "averagePerPlace": avg_chunks_per_place,
+                "withoutEmbeddings": chunks_without_embeddings[0] if chunks_without_embeddings else 0,
+            },
+            "sync": {
+                "latestSync": {
+                    "timestamp": latest_sync.get("lastSynced") if latest_sync else None,
+                    "placeId": latest_sync.get("id") if latest_sync else None,
+                    "placeName": latest_sync.get("place") if latest_sync else None,
+                },
+                "oldestSync": {
+                    "timestamp": oldest_sync.get("lastSynced") if oldest_sync else None,
+                    "placeId": oldest_sync.get("id") if oldest_sync else None,
+                    "placeName": oldest_sync.get("place") if oldest_sync else None,
+                },
+            },
+        }
+
 
 def transform_airtable_to_place(
     airtable_record: Dict[str, Any],

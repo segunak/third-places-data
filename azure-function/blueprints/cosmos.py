@@ -546,3 +546,214 @@ def cosmos_sync_place(req: func.HttpRequest) -> func.HttpResponse:
             status_code=500,
             mimetype="application/json"
         )
+
+
+# =============================================================================
+# Health Check / Sync Status Report
+# =============================================================================
+
+def _get_github_json_file_count(city: str = "charlotte") -> Dict[str, Any]:
+    """
+    Get the count of JSON files in the GitHub repository for a given city.
+    
+    Args:
+        city: City folder name (default: "charlotte")
+        
+    Returns:
+        Dict with count and any errors.
+    """
+    import os
+    import requests
+    
+    try:
+        github_token = os.environ.get('GITHUB_PERSONAL_ACCESS_TOKEN')
+        if not github_token:
+            return {"count": None, "error": "GitHub token not configured"}
+        
+        headers = {
+            "Authorization": f"token {github_token}",
+            "Accept": "application/vnd.github.v3+json"
+        }
+        
+        repo_name = "segunak/third-places-data"
+        branch = "master"
+        path = f"data/places/{city}"
+        
+        # Use GitHub API to list directory contents
+        url = f"https://api.github.com/repos/{repo_name}/contents/{path}?ref={branch}"
+        
+        response = requests.get(url, headers=headers, timeout=30)
+        
+        if response.status_code != 200:
+            return {"count": None, "error": f"GitHub API returned {response.status_code}"}
+        
+        contents = response.json()
+        
+        # Count only .json files
+        json_files = [f for f in contents if f.get("name", "").endswith(".json")]
+        
+        return {
+            "count": len(json_files),
+            "path": f"data/places/{city}",
+            "error": None
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting GitHub file count: {e}", exc_info=True)
+        return {"count": None, "error": str(e)}
+
+
+@bp.function_name("CosmosHealthCheck")
+@bp.route(route="cosmos/health", methods=["GET"], auth_level=func.AuthLevel.FUNCTION)
+def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
+    """
+    Health check endpoint that returns sync status and statistics.
+    
+    Provides a comprehensive view of the data ecosystem:
+    - Cosmos DB document counts and sync timestamps
+    - Airtable record count (Production view)
+    - GitHub JSON file count
+    - Discrepancy indicators for monitoring
+    
+    Query params:
+        city: City folder for GitHub files (default: "charlotte")
+        
+    Returns:
+        JSON report with counts, timestamps, and health indicators.
+    """
+    from datetime import datetime, timezone
+    
+    city = req.params.get("city", "charlotte")
+    
+    logger.info(f"Running health check for city: {city}")
+    
+    report = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "city": city,
+        "status": "healthy",
+        "sources": {},
+        "cosmos": {},
+        "discrepancies": [],
+        "errors": [],
+    }
+    
+    # 1. Get Cosmos DB stats
+    try:
+        cosmos_service = CosmosService()
+        cosmos_stats = cosmos_service.get_sync_stats()
+        report["cosmos"] = cosmos_stats
+    except Exception as e:
+        error_msg = f"Failed to get Cosmos DB stats: {str(e)}"
+        logger.error(error_msg, exc_info=True)
+        report["errors"].append({"source": "cosmos", "error": error_msg})
+        report["status"] = "degraded"
+    
+    # 2. Get Airtable record count
+    try:
+        airtable_service = _get_airtable_service()
+        airtable_records = airtable_service.all_third_places
+        airtable_count = len(airtable_records) if airtable_records else 0
+        
+        # Get additional Airtable metadata
+        operational_count = sum(
+            1 for r in airtable_records 
+            if r.get("fields", {}).get("Operational") == "Yes"
+        ) if airtable_records else 0
+        
+        has_data_file_count = sum(
+            1 for r in airtable_records 
+            if r.get("fields", {}).get("Has Data File") == "Yes"
+        ) if airtable_records else 0
+        
+        report["sources"]["airtable"] = {
+            "totalRecords": airtable_count,
+            "operationalRecords": operational_count,
+            "recordsWithDataFile": has_data_file_count,
+            "view": "Production",
+            "error": None
+        }
+    except Exception as e:
+        error_msg = f"Failed to get Airtable stats: {str(e)}"
+        logger.error(error_msg, exc_info=True)
+        report["errors"].append({"source": "airtable", "error": error_msg})
+        report["sources"]["airtable"] = {"totalRecords": None, "error": error_msg}
+        report["status"] = "degraded"
+    
+    # 3. Get GitHub JSON file count
+    github_stats = _get_github_json_file_count(city)
+    report["sources"]["github"] = github_stats
+    
+    if github_stats.get("error"):
+        report["errors"].append({"source": "github", "error": github_stats["error"]})
+        report["status"] = "degraded"
+    
+    # 4. Calculate discrepancies
+    cosmos_places_count = report.get("cosmos", {}).get("places", {}).get("count")
+    airtable_count = report.get("sources", {}).get("airtable", {}).get("totalRecords")
+    github_count = report.get("sources", {}).get("github", {}).get("count")
+    
+    if cosmos_places_count is not None and airtable_count is not None:
+        diff = airtable_count - cosmos_places_count
+        if diff != 0:
+            report["discrepancies"].append({
+                "type": "cosmos_vs_airtable",
+                "description": f"Cosmos has {cosmos_places_count} places, Airtable has {airtable_count} records",
+                "difference": diff,
+                "action": "Run cosmos/sync-places to sync missing places" if diff > 0 else "Check for deleted Airtable records"
+            })
+    
+    if airtable_count is not None and github_count is not None:
+        has_data_file_count = report.get("sources", {}).get("airtable", {}).get("recordsWithDataFile", 0)
+        diff = github_count - has_data_file_count
+        if abs(diff) > 5:  # Allow small variance
+            report["discrepancies"].append({
+                "type": "github_vs_airtable_datafile",
+                "description": f"GitHub has {github_count} JSON files, Airtable shows {has_data_file_count} with 'Has Data File'",
+                "difference": diff,
+                "action": "Update Airtable 'Has Data File' flags or check for orphaned JSON files"
+            })
+    
+    # Check for places without embeddings
+    places_without_embeddings = report.get("cosmos", {}).get("places", {}).get("withoutEmbeddings", 0)
+    if places_without_embeddings and places_without_embeddings > 0:
+        report["discrepancies"].append({
+            "type": "missing_place_embeddings",
+            "description": f"{places_without_embeddings} places in Cosmos DB are missing embeddings",
+            "count": places_without_embeddings,
+            "action": "Run cosmos/sync-places?force=true to regenerate embeddings"
+        })
+    
+    chunks_without_embeddings = report.get("cosmos", {}).get("chunks", {}).get("withoutEmbeddings", 0)
+    if chunks_without_embeddings and chunks_without_embeddings > 0:
+        report["discrepancies"].append({
+            "type": "missing_chunk_embeddings",
+            "description": f"{chunks_without_embeddings} chunks in Cosmos DB are missing embeddings",
+            "count": chunks_without_embeddings,
+            "action": "Run cosmos/sync-places?force=true to regenerate embeddings"
+        })
+    
+    # Set final status
+    if report["errors"]:
+        report["status"] = "degraded"
+    elif report["discrepancies"]:
+        report["status"] = "healthy_with_warnings"
+    else:
+        report["status"] = "healthy"
+    
+    # Summary for quick reference
+    report["summary"] = {
+        "cosmosPlaces": cosmos_places_count,
+        "cosmosChunks": report.get("cosmos", {}).get("chunks", {}).get("count"),
+        "airtableRecords": airtable_count,
+        "githubFiles": github_count,
+        "errorCount": len(report["errors"]),
+        "discrepancyCount": len(report["discrepancies"]),
+    }
+    
+    logger.info(f"Health check complete: status={report['status']}, discrepancies={len(report['discrepancies'])}")
+    
+    return func.HttpResponse(
+        body=json.dumps(report, indent=2),
+        status_code=200,
+        mimetype="application/json"
+    )
