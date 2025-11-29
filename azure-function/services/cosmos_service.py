@@ -237,6 +237,174 @@ class CosmosService:
             },
         }
 
+    def vector_search_places(
+        self,
+        query_embedding: List[float],
+        top_k: int = 5,
+        min_score: float = 0.7
+    ) -> List[Dict[str, Any]]:
+        """
+        Perform vector similarity search on places container.
+        
+        Uses Cosmos DB's VectorDistance function for cosine similarity search.
+        
+        Args:
+            query_embedding: The embedding vector to search with (1536 dimensions).
+            top_k: Maximum number of results to return.
+            min_score: Minimum similarity score threshold (0-1, higher is more similar).
+            
+        Returns:
+            List of place documents with similarity scores, ordered by relevance.
+        """
+        # Cosmos DB VectorDistance returns distance (lower = more similar)
+        # For cosine, distance = 1 - similarity, so we filter where distance < (1 - min_score)
+        max_distance = 1 - min_score
+        
+        query = """
+        SELECT TOP @topK
+            c.id,
+            c.place,
+            c.neighborhood,
+            c.address,
+            c.type,
+            c.tags,
+            c.description,
+            c.googleMapsProfileUrl,
+            c.appleMapsProfileUrl,
+            c.website,
+            c.freeWifi,
+            c.parking,
+            c.size,
+            c.purchaseRequired,
+            c.placeRating,
+            c.reviewsCount,
+            c.workingHours,
+            c.about,
+            c.typicalTimeSpent,
+            VectorDistance(c.embedding, @queryEmbedding) AS distance
+        FROM c
+        WHERE VectorDistance(c.embedding, @queryEmbedding) < @maxDistance
+        ORDER BY VectorDistance(c.embedding, @queryEmbedding)
+        """
+        
+        parameters = [
+            {"name": "@topK", "value": top_k},
+            {"name": "@queryEmbedding", "value": query_embedding},
+            {"name": "@maxDistance", "value": max_distance}
+        ]
+        
+        results = list(self.places_container.query_items(
+            query=query,
+            parameters=parameters,
+            enable_cross_partition_query=True
+        ))
+        
+        # Convert distance to similarity score for easier interpretation
+        for result in results:
+            result["similarityScore"] = round(1 - result.get("distance", 1), 4)
+            del result["distance"]
+        
+        logger.info(f"Vector search on places returned {len(results)} results")
+        return results
+
+    def vector_search_chunks(
+        self,
+        query_embedding: List[float],
+        top_k: int = 10,
+        min_score: float = 0.7,
+        place_id: Optional[str] = None
+    ) -> List[Dict[str, Any]]:
+        """
+        Perform vector similarity search on chunks (reviews) container.
+        
+        Args:
+            query_embedding: The embedding vector to search with (1536 dimensions).
+            top_k: Maximum number of results to return.
+            min_score: Minimum similarity score threshold (0-1).
+            place_id: Optional place ID to filter chunks for a specific place.
+            
+        Returns:
+            List of chunk documents with similarity scores, ordered by relevance.
+        """
+        max_distance = 1 - min_score
+        
+        if place_id:
+            # Search within a specific place's reviews (single partition)
+            query = """
+            SELECT TOP @topK
+                c.id,
+                c.placeId,
+                c.placeName,
+                c.neighborhood,
+                c.address,
+                c.placeType,
+                c.placeTags,
+                c.reviewText,
+                c.reviewRating,
+                c.reviewDatetimeUtc,
+                c.reviewLink,
+                c.ownerAnswer,
+                c.reviewsTags,
+                VectorDistance(c.embedding, @queryEmbedding) AS distance
+            FROM c
+            WHERE c.placeId = @placeId
+              AND VectorDistance(c.embedding, @queryEmbedding) < @maxDistance
+            ORDER BY VectorDistance(c.embedding, @queryEmbedding)
+            """
+            parameters = [
+                {"name": "@topK", "value": top_k},
+                {"name": "@queryEmbedding", "value": query_embedding},
+                {"name": "@maxDistance", "value": max_distance},
+                {"name": "@placeId", "value": place_id}
+            ]
+            
+            results = list(self.chunks_container.query_items(
+                query=query,
+                parameters=parameters,
+                partition_key=place_id
+            ))
+        else:
+            # Cross-partition search across all reviews
+            query = """
+            SELECT TOP @topK
+                c.id,
+                c.placeId,
+                c.placeName,
+                c.neighborhood,
+                c.address,
+                c.placeType,
+                c.placeTags,
+                c.reviewText,
+                c.reviewRating,
+                c.reviewDatetimeUtc,
+                c.reviewLink,
+                c.ownerAnswer,
+                c.reviewsTags,
+                VectorDistance(c.embedding, @queryEmbedding) AS distance
+            FROM c
+            WHERE VectorDistance(c.embedding, @queryEmbedding) < @maxDistance
+            ORDER BY VectorDistance(c.embedding, @queryEmbedding)
+            """
+            parameters = [
+                {"name": "@topK", "value": top_k},
+                {"name": "@queryEmbedding", "value": query_embedding},
+                {"name": "@maxDistance", "value": max_distance}
+            ]
+            
+            results = list(self.chunks_container.query_items(
+                query=query,
+                parameters=parameters,
+                enable_cross_partition_query=True
+            ))
+        
+        # Convert distance to similarity score
+        for result in results:
+            result["similarityScore"] = round(1 - result.get("distance", 1), 4)
+            del result["distance"]
+        
+        logger.info(f"Vector search on chunks returned {len(results)} results (place_id filter: {place_id})")
+        return results
+
 
 def transform_airtable_to_place(
     airtable_record: Dict[str, Any],
