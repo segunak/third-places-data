@@ -6,7 +6,7 @@ on:
       provider_type:
         description: 'Provider type for data refresh'
         required: false
-        default: 'outscraper'
+        default: 'google'
         type: string
       sequential_mode:
         description: 'Whether to run in sequential mode'
@@ -23,7 +23,7 @@ on:
       provider_type:
         description: 'Provider type for data refresh'
         required: false
-        default: 'outscraper'
+        default: 'google'
         type: string
       sequential_mode:
         description: 'Whether to run in sequential mode'
