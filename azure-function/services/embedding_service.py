@@ -127,9 +127,13 @@ def compose_place_embedding_text(place_doc: Dict[str, Any]) -> str:
     if place_doc.get("address"):
         parts.append(place_doc["address"])
 
-    # Type
-    if place_doc.get("type"):
-        parts.append(place_doc["type"])
+    # Type (can be string or list in Airtable multi-select)
+    place_type = place_doc.get("type")
+    if place_type:
+        if isinstance(place_type, list):
+            parts.append(", ".join(place_type))
+        else:
+            parts.append(str(place_type))
 
     # Tags (list to comma-separated string)
     tags = place_doc.get("tags")
@@ -199,8 +203,13 @@ def compose_chunk_embedding_text(chunk_doc: Dict[str, Any]) -> str:
     if chunk_doc.get("neighborhood"):
         parts.append(chunk_doc["neighborhood"])
 
-    if chunk_doc.get("placeType"):
-        parts.append(chunk_doc["placeType"])
+    # Place type (can be string or list from Airtable)
+    place_type = chunk_doc.get("placeType")
+    if place_type:
+        if isinstance(place_type, list):
+            parts.append(", ".join(place_type))
+        else:
+            parts.append(str(place_type))
 
     # Place tags (list to comma-separated)
     place_tags = chunk_doc.get("placeTags")
