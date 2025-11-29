@@ -80,3 +80,20 @@ jobs:
           if ("${{ steps.invoke_script.outcome }}" -ne "success") {
             exit 1
           }
+
+      - name: Purge Orchestrations
+        if: always()
+        shell: pwsh
+        working-directory: ./scripts
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          Write-Host "Cleaning up completed orchestrations..."
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/purge-orchestrations"
+          $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
+          ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 300
+          if ($LASTEXITCODE -ne 0) {
+            Write-Warning "Orchestration purge failed, but this is non-critical."
+          } else {
+            Write-Host "Orchestration purge completed."
+          }
