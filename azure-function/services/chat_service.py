@@ -54,7 +54,7 @@ class ChatService:
         self.endpoint = "https://foundry-third-places.services.ai.azure.com/"
         self.model = "gpt-5-mini"
         self.max_completion_tokens = 1024
-        self.temperature = 0.7
+        self.temperature = 1
 
         # Initialize Azure OpenAI client
         self.client = AzureOpenAI(
