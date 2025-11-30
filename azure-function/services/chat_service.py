@@ -53,7 +53,7 @@ class ChatService:
 
         self.endpoint = "https://foundry-third-places.services.ai.azure.com/"
         self.model = "gpt-5-mini"
-        self.max_tokens = 1024
+        self.max_completion_tokens = 1024
         self.temperature = 0.7
 
         # Initialize Azure OpenAI client
@@ -208,7 +208,7 @@ class ChatService:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=full_messages,
-                max_tokens=self.max_tokens,
+                max_completion_tokens=self.max_completion_tokens,
                 temperature=self.temperature
             )
             return response.choices[0].message.content
@@ -218,7 +218,7 @@ class ChatService:
         response = self.client.chat.completions.create(
             model=self.model,
             messages=messages,
-            max_tokens=self.max_tokens,
+            max_completion_tokens=self.max_completion_tokens,
             temperature=self.temperature,
             stream=True
         )
