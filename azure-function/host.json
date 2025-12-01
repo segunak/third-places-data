@@ -7,13 +7,6 @@
     }
   },
   "logging": {
-    "applicationInsights": {
-      "enableDependencyTracking": false,
-      "samplingSettings": {
-        "isEnabled": true,
-        "excludedTypes": "Request;Dependency;Event;Exception"
-      }
-    },
     "fileLoggingMode": "debugOnly",
     "logLevel": {
       "default": "Information",
