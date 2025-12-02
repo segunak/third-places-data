@@ -17,7 +17,6 @@ from blueprints.places import bp as places_bp
 from blueprints.airtable import bp as airtable_bp 
 from blueprints.photos import bp as photos_bp
 from blueprints.cosmos import bp as cosmos_bp
-from blueprints.chat import bp as chat_bp
 
 # Register blueprints on the app (explicitly)
 app.register_functions(admin_bp)
@@ -25,4 +24,3 @@ app.register_functions(places_bp)
 app.register_functions(airtable_bp)
 app.register_functions(photos_bp)
 app.register_functions(cosmos_bp)
-app.register_functions(chat_bp)
