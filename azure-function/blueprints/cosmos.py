@@ -831,16 +831,9 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
                 
             report["discrepancies"].append(discrepancy_details)
     
-    if airtable_count is not None and github_count is not None:
-        has_data_file_count = report.get("sources", {}).get("airtable", {}).get("recordsWithDataFile", 0)
-        diff = github_count - has_data_file_count
-        if abs(diff) > 5:  # Allow small variance
-            report["discrepancies"].append({
-                "type": "github_vs_airtable_datafile",
-                "description": f"GitHub has {github_count} JSON files, Airtable shows {has_data_file_count} with 'Has Data File'",
-                "difference": diff,
-                "action": "Update Airtable 'Has Data File' flags or check for orphaned JSON files"
-            })
+    # NOTE: GitHub file count vs Airtable 'Has Data File' count is NOT a sync discrepancy.
+    # The orphaned files check above is informational only. Sync status is determined
+    # solely by whether Cosmos places count matches Airtable records count.
     
     # Check for places without embeddings
     places_without_embeddings = report.get("cosmos", {}).get("places", {}).get("withoutEmbeddings", 0)
@@ -915,11 +908,6 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
                 "type": "cosmos_vs_airtable",
                 "meaning": "Cosmos has fewer places than Airtable, meaning some places haven't been synced yet.",
                 "fix": "Run the sync-places endpoint to sync missing places to Cosmos DB."
-            },
-            {
-                "type": "github_vs_airtable_datafile", 
-                "meaning": "Mismatch between GitHub JSON files and Airtable's 'Has Data File' field. Could be orphaned files or outdated flags.",
-                "fix": "Check for JSON files in GitHub that correspond to deleted Airtable records, or update Airtable flags."
             },
             {
                 "type": "missing_place_embeddings",

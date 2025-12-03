@@ -69,8 +69,8 @@ class TestGoogleMapsProviderGetPlaceDetails:
         # PRICE_LEVEL_MODERATE in fixture should map to "Yes"
         assert details["purchase_required"] == "Yes"
 
-    def test_get_place_details_http_error_returns_empty(self, mock_env_vars):
-        """Test that HTTP errors return an empty dict."""
+    def test_get_place_details_http_error_returns_error_info(self, mock_env_vars):
+        """Test that HTTP errors return an error info dict with place_id, error, and message."""
         from services.place_data_service import GoogleMapsProvider
         from conftest import create_mock_response
         
@@ -79,7 +79,11 @@ class TestGoogleMapsProviderGetPlaceDetails:
             provider = GoogleMapsProvider()
             details = provider.get_place_details(TEST_PLACE_ID)
         
-        assert details == {}
+        assert "error" in details
+        assert "place_id" in details
+        assert "message" in details
+        assert details["place_id"] == TEST_PLACE_ID
+        assert "Failed to retrieve details" in details["message"]
 
 
 class TestGoogleMapsProviderDeterminePurchaseRequirement:
@@ -449,7 +453,7 @@ class TestGoogleMapsProviderGetAllPlaceData:
     def test_get_all_place_data_error_handling(self, mock_env_vars):
         """Test error handling in get_all_place_data when sub-methods fail.
         
-        When get_place_details fails, it returns empty dict, but get_all_place_data
+        When get_place_details fails, it returns an error info dict, and get_all_place_data
         still returns a valid response structure (graceful degradation).
         """
         from services.place_data_service import GoogleMapsProvider
@@ -467,5 +471,6 @@ class TestGoogleMapsProviderGetAllPlaceData:
         assert "details" in data
         assert "data_source" in data
         assert data["data_source"] == "GoogleMapsProvider"
-        # Details should be empty due to error
-        assert data["details"] == {}
+        # Details should contain error info due to failure
+        assert "error" in data["details"]
+        assert data["details"]["place_id"] == TEST_PLACE_ID

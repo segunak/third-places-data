@@ -84,11 +84,132 @@ jobs:
           Write-Host "Force sync: $force"
           
           $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
-          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 18000
-
-          if ($LASTEXITCODE -ne 0) {
+          
+          # Call the durable function script and capture its output
+          $scriptOutput = ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 18000 | Out-String
+          $scriptExitCode = $LASTEXITCODE
+          
+          # Print the output so it appears in logs
+          Write-Host $scriptOutput
+          
+          # Parse the JSON from the script output (it prints "Final Azure Function Output:" followed by JSON)
+          try {
+            # Extract the JSON portion after "Final Azure Function Output:"
+            if ($scriptOutput -match "Final Azure Function Output:\s*(\{[\s\S]*\})") {
+              $jsonString = $Matches[1]
+              $status = $jsonString | ConvertFrom-Json
+              $output = $status.output
+              
+              # --- GENERATE GITHUB SUMMARY ---
+              echo "## Cosmos DB Sync Report" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              
+              if ($status.runtimeStatus -ne "Completed") {
+                echo "### ❌ Sync Failed" >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "Runtime status: ``$($status.runtimeStatus)``" >> $env:GITHUB_STEP_SUMMARY
+              }
+              elseif ($null -eq $output -or $output.success -ne $true) {
+                echo "### ❌ Sync Completed with Errors" >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                if ($output.error) {
+                  echo "**Error:** $($output.error)" >> $env:GITHUB_STEP_SUMMARY
+                }
+                if ($output.failedAt) {
+                  echo "**Failed at place:** $($output.failedAt)" >> $env:GITHUB_STEP_SUMMARY
+                }
+              }
+              else {
+                # Success - generate full report
+                $placesProcessed = $output.placesProcessed
+                $placesSkipped = $output.placesSkipped
+                $totalChunks = $output.totalChunksProcessed
+                $chunksSkipped = $output.totalChunksSkipped
+                $totalPlaces = $output.totalPlaces
+                $forceSync = $output.force
+                
+                if ($placesProcessed -eq 0 -and $placesSkipped -gt 0) {
+                  echo "### ✅ No Changes Needed" >> $env:GITHUB_STEP_SUMMARY
+                  echo "" >> $env:GITHUB_STEP_SUMMARY
+                  echo "All **$totalPlaces** places are already in sync. No updates required." >> $env:GITHUB_STEP_SUMMARY
+                } else {
+                  echo "### ✅ Sync Completed Successfully" >> $env:GITHUB_STEP_SUMMARY
+                }
+                
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "### Summary" >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "| Metric | Count |" >> $env:GITHUB_STEP_SUMMARY
+                echo "|--------|-------|" >> $env:GITHUB_STEP_SUMMARY
+                echo "| **Total Places in Airtable** | $totalPlaces |" >> $env:GITHUB_STEP_SUMMARY
+                echo "| **Places Synced** | $placesProcessed |" >> $env:GITHUB_STEP_SUMMARY
+                echo "| **Places Skipped** (no changes) | $placesSkipped |" >> $env:GITHUB_STEP_SUMMARY
+                echo "| **Review Chunks Processed** | $totalChunks |" >> $env:GITHUB_STEP_SUMMARY
+                echo "| **Review Chunks Skipped** (empty text) | $chunksSkipped |" >> $env:GITHUB_STEP_SUMMARY
+                echo "| **Force Sync** | $forceSync |" >> $env:GITHUB_STEP_SUMMARY
+                
+                # List synced places
+                if ($placesProcessed -gt 0 -and $output.placeDetails) {
+                  echo "" >> $env:GITHUB_STEP_SUMMARY
+                  echo "### Synced Places ($placesProcessed)" >> $env:GITHUB_STEP_SUMMARY
+                  echo "" >> $env:GITHUB_STEP_SUMMARY
+                  echo "| Place Name | Place ID | Chunks |" >> $env:GITHUB_STEP_SUMMARY
+                  echo "|------------|----------|--------|" >> $env:GITHUB_STEP_SUMMARY
+                  foreach ($place in $output.placeDetails) {
+                    $name = $place.placeName
+                    $id = $place.placeId
+                    $chunks = $place.chunksProcessed
+                    echo "| $name | ``$id`` | $chunks |" >> $env:GITHUB_STEP_SUMMARY
+                  }
+                }
+                
+                # List skipped places (collapsed for brevity if many)
+                if ($placesSkipped -gt 0 -and $output.skippedPlaces) {
+                  echo "" >> $env:GITHUB_STEP_SUMMARY
+                  if ($placesSkipped -gt 20) {
+                    echo "<details>" >> $env:GITHUB_STEP_SUMMARY
+                    echo "<summary>Skipped Places ($placesSkipped) - click to expand</summary>" >> $env:GITHUB_STEP_SUMMARY
+                    echo "" >> $env:GITHUB_STEP_SUMMARY
+                  } else {
+                    echo "### Skipped Places ($placesSkipped)" >> $env:GITHUB_STEP_SUMMARY
+                    echo "" >> $env:GITHUB_STEP_SUMMARY
+                    echo "These places had no changes since their last sync:" >> $env:GITHUB_STEP_SUMMARY
+                    echo "" >> $env:GITHUB_STEP_SUMMARY
+                  }
+                  echo "| Place Name | Reason |" >> $env:GITHUB_STEP_SUMMARY
+                  echo "|------------|--------|" >> $env:GITHUB_STEP_SUMMARY
+                  foreach ($place in $output.skippedPlaces) {
+                    $name = $place.placeName
+                    $reason = $place.reason
+                    echo "| $name | $reason |" >> $env:GITHUB_STEP_SUMMARY
+                  }
+                  if ($placesSkipped -gt 20) {
+                    echo "" >> $env:GITHUB_STEP_SUMMARY
+                    echo "</details>" >> $env:GITHUB_STEP_SUMMARY
+                  }
+                }
+              }
+              
+              Write-Host "Summary generated successfully."
+            }
+            else {
+              Write-Warning "Could not find JSON output in script response"
+              echo "## Cosmos DB Sync Report" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "Summary generation failed - could not parse script output." >> $env:GITHUB_STEP_SUMMARY
+            }
+          }
+          catch {
+            Write-Warning "Failed to generate summary: $_"
+            echo "## Cosmos DB Sync Report" >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "Summary generation failed. Check the workflow logs for details." >> $env:GITHUB_STEP_SUMMARY
+          }
+          
+          # Exit with the original script's exit code
+          if ($scriptExitCode -ne 0) {
             Write-Error "Azure Function call failed."
-            exit $LASTEXITCODE
+            exit $scriptExitCode
           } else {
             Write-Output "Azure Function call succeeded."
           }

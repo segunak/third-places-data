@@ -158,7 +158,11 @@ class GoogleMapsProvider(PlaceDataService):
             return details
         except Exception as e:
             logging.error(f"Error retrieving details for place ID {place_id}: {e}")
-            return {}
+            return {
+                "place_id": place_id,
+                "error": str(e),
+                "message": "Failed to retrieve details from Google Maps API"
+            }
 
     def _determine_purchase_requirement(self, data: Dict[str, Any]) -> str:
         price_level = data.get('priceLevel', 'PRICE_LEVEL_UNSPECIFIED')
