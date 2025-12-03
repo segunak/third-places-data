@@ -428,68 +428,73 @@ def transform_airtable_to_place(
         "lastSynced": datetime.now(timezone.utc).isoformat(),
     }
 
-    # Map Airtable fields (using camelCase for Cosmos)
+    # Airtable field mappings: (airtable_field_name, include_in_embedding)
+    # Fields marked True will be included in the embedding vector for AI search.
+    # Fields marked False are stored but not used for semantic search.
     airtable_mappings = {
-        "address": "Address",
-        "appleMapsProfileUrl": "Apple Maps Profile URL",
-        "comments": "Comments",
-        "createdTime": "Created Time",
-        "curatorPhotos": "Curator Photos",
-        "description": "Description",
-        "facebook": "Facebook",
-        "featured": "Featured",
-        "freeWifi": "Free Wi-Fi",
-        "googleMapsPlaceId": "Google Maps Place Id",
-        "googleMapsProfileUrl": "Google Maps Profile URL",
-        "hasCinnamonRolls": "Has Cinnamon Rolls",
-        "hasDataFile": "Has Data File",
-        "instagram": "Instagram",
-        "lastModifiedTime": "Last Modified Time",
-        "lastRevalidated": "Last Revalidated",
-        "latitude": "Latitude",
-        "linkedIn": "LinkedIn",
-        "longitude": "Longitude",
-        "neighborhood": "Neighborhood",
-        "operational": "Operational",
-        "parking": "Parking",
-        "photos": "Photos",
-        "place": "Place",
-        "purchaseRequired": "Purchase Required",
-        "size": "Size",
-        "tags": "Tags",
-        "tikTok": "TikTok",
-        "twitter": "Twitter",
-        "type": "Type",
-        "website": "Website",
-        "youTube": "YouTube",
+        # Field name              Airtable column              Embed?
+        "address":                ("Address",                   True),
+        "appleMapsProfileUrl":    ("Apple Maps Profile URL",    False),
+        "comments":               ("Comments",                  True),   # Curator notes - valuable for search
+        "createdTime":            ("Created Time",              False),
+        "curatorPhotos":          ("Curator Photos",            False),
+        "description":            ("Description",               True),
+        "facebook":               ("Facebook",                  False),
+        "featured":               ("Featured",                  False),
+        "freeWifi":               ("Free Wi-Fi",                True),   # Common user query
+        "googleMapsPlaceId":      ("Google Maps Place Id",      False),
+        "googleMapsProfileUrl":   ("Google Maps Profile URL",   False),
+        "hasCinnamonRolls":       ("Has Cinnamon Rolls",        True),   # Special feature search
+        "hasDataFile":            ("Has Data File",             False),
+        "instagram":              ("Instagram",                 False),
+        "lastModifiedTime":       ("Last Modified Time",        False),
+        "lastRevalidated":        ("Last Revalidated",          False),
+        "latitude":               ("Latitude",                  False),
+        "linkedIn":               ("LinkedIn",                  False),
+        "longitude":              ("Longitude",                 False),
+        "neighborhood":           ("Neighborhood",              True),
+        "operational":            ("Operational",               False),
+        "parking":                ("Parking",                   True),   # Common user query
+        "photos":                 ("Photos",                    False),
+        "place":                  ("Place",                     True),   # Name is critical
+        "purchaseRequired":       ("Purchase Required",         True),   # Common user query
+        "size":                   ("Size",                      True),   # Common user query
+        "tags":                   ("Tags",                      True),   # Tags are key for search
+        "tikTok":                 ("TikTok",                    False),
+        "twitter":                ("Twitter",                   False),
+        "type":                   ("Type",                      True),   # Place type is key
+        "website":                ("Website",                   False),
+        "youTube":                ("YouTube",                   False),
     }
 
-    for cosmos_field, airtable_field in airtable_mappings.items():
+    for cosmos_field, (airtable_field, _) in airtable_mappings.items():
         value = fields.get(airtable_field)
         if value is not None:
             place_doc[cosmos_field] = value
 
     # Map JSON fields from details.raw_data
+    # Format: (json_field_name, include_in_embedding)
+    json_mappings = {
+        # Field name              JSON field                   Embed?
+        "popularTimes":           ("popular_times",             True),   # Helps with "busy times" queries
+        "typicalTimeSpent":       ("typical_time_spent",        True),   # Helps with "quick stop" vs "long hangout" queries
+        "workingHours":           ("working_hours",             True),   # Helps with "open late" queries
+        "about":                  ("about",                     True),   # Rich feature data
+        "category":               ("category",                  False),
+        "subtypes":               ("subtypes",                  False),
+        "reviewsLink":            ("reviews_link",              False),
+        "streetView":             ("street_view",               False),
+        "phone":                  ("phone",                     False),
+        "locatedIn":              ("located_in",                False),
+        "reviewsTags":            ("reviews_tags",              True),   # Aggregated review keywords
+        "placeRating":            ("rating",                    False),
+        "reviewsCount":           ("reviews",                   False),
+    }
+
     if json_data:
         raw_data = json_data.get("details", {}).get("raw_data", {})
 
-        json_mappings = {
-            "popularTimes": "popular_times",
-            "typicalTimeSpent": "typical_time_spent",
-            "workingHours": "working_hours",
-            "about": "about",
-            "category": "category",
-            "subtypes": "subtypes",
-            "reviewsLink": "reviews_link",
-            "streetView": "street_view",
-            "phone": "phone",
-            "locatedIn": "located_in",
-            "reviewsTags": "reviews_tags",
-            "placeRating": "rating",
-            "reviewsCount": "reviews",
-        }
-
-        for cosmos_field, json_field in json_mappings.items():
+        for cosmos_field, (json_field, _) in json_mappings.items():
             value = raw_data.get(json_field)
             if value is not None:
                 place_doc[cosmos_field] = value
@@ -501,6 +506,30 @@ def transform_airtable_to_place(
             place_doc["photosData"] = photos_data
 
     return place_doc
+
+
+# Export the embedding field configuration for use by embedding_service
+def get_place_embedding_fields() -> List[str]:
+    """
+    Get the list of field names that should be included in place embeddings.
+    
+    This is derived from the mapping configurations above where embed=True.
+    Centralizes the decision of what gets embedded.
+    
+    Returns:
+        List of Cosmos DB field names to include in embedding.
+    """
+    # Airtable fields to embed
+    airtable_embed_fields = [
+        "place", "description", "comments", "neighborhood", "address",
+        "type", "tags", "freeWifi", "hasCinnamonRolls", "parking",
+        "purchaseRequired", "size"
+    ]
+    
+    # JSON fields to embed
+    json_embed_fields = ["about", "reviewsTags", "workingHours", "popularTimes", "typicalTimeSpent"]
+    
+    return airtable_embed_fields + json_embed_fields
 
 
 def transform_review_to_chunk(

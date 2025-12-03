@@ -17,10 +17,12 @@ from services.cosmos_service import (
     transform_airtable_to_place,
     transform_review_to_chunk,
     extract_place_context,
+    get_place_embedding_fields,
 )
 from services.embedding_service import (
     compose_place_embedding_text,
     compose_chunk_embedding_text,
+    format_field_for_embedding,
 )
 
 
@@ -75,7 +77,26 @@ MOCK_JSON_DATA = {
                 "Sunday": "8:00 AM - 3:00 PM",
             },
             "popular_times": [
-                {"day": 1, "day_text": "Monday", "popular_times": []},
+                {
+                    "day": 1,
+                    "day_text": "Monday",
+                    "popular_times": [
+                        {"hour": 8, "percentage": 45, "time": "8a"},
+                        {"hour": 9, "percentage": 75, "time": "9a"},
+                        {"hour": 10, "percentage": 90, "time": "10a"},
+                        {"hour": 11, "percentage": 85, "time": "11a"},
+                        {"hour": 12, "percentage": 60, "time": "12p"},
+                    ]
+                },
+                {
+                    "day": 6,
+                    "day_text": "Saturday",
+                    "popular_times": [
+                        {"hour": 9, "percentage": 80, "time": "9a"},
+                        {"hour": 10, "percentage": 95, "time": "10a"},
+                        {"hour": 11, "percentage": 72, "time": "11a"},
+                    ]
+                },
             ],
             "typical_time_spent": "People typically spend 30-60 min here",
             "about": {
@@ -304,7 +325,7 @@ class TestComposePlaceEmbeddingText(unittest.TestCase):
         self.assertIn("300 McGill Ave NW", result)
         self.assertIn("Coffee Shop", result)
         self.assertIn("Wi-Fi", result)
-        self.assertIn("Coffee shop", result)  # category
+        # Note: category is NOT embedded (embed=False in mapping)
         
     def test_compose_with_about_section(self):
         """Test that about section is flattened into embedding text."""
@@ -423,6 +444,346 @@ class TestEmptyAndNullHandling(unittest.TestCase):
         self.assertIn("Test Place", result)
         self.assertIn("Cafe", result)
         # Should not have empty separators
+        self.assertNotIn(" |  | ", result)
+
+
+class TestFormatFieldForEmbedding(unittest.TestCase):
+    """Test suite for format_field_for_embedding function covering all field types."""
+
+    def test_boolean_field_true(self):
+        """Test boolean fields formatted as 'label: yes' when True."""
+        self.assertEqual(format_field_for_embedding("freeWifi", True), "free wifi: yes")
+        self.assertEqual(format_field_for_embedding("hasCinnamonRolls", True), "has cinnamon rolls: yes")
+        self.assertEqual(format_field_for_embedding("purchaseRequired", True), "purchase required: yes")
+
+    def test_boolean_field_false(self):
+        """Test boolean fields formatted as 'label: no' when False."""
+        self.assertEqual(format_field_for_embedding("freeWifi", False), "free wifi: no")
+        self.assertEqual(format_field_for_embedding("hasCinnamonRolls", False), "has cinnamon rolls: no")
+        self.assertEqual(format_field_for_embedding("purchaseRequired", False), "purchase required: no")
+
+    def test_boolean_field_none(self):
+        """Test boolean fields return None when value is None."""
+        self.assertIsNone(format_field_for_embedding("freeWifi", None))
+
+    def test_size_field_with_value(self):
+        """Test size field formatted with label prefix."""
+        self.assertEqual(format_field_for_embedding("size", "Medium"), "size: Medium")
+        self.assertEqual(format_field_for_embedding("size", "Large"), "size: Large")
+
+    def test_size_field_empty(self):
+        """Test size field returns None when empty."""
+        self.assertIsNone(format_field_for_embedding("size", ""))
+        self.assertIsNone(format_field_for_embedding("size", None))
+
+    def test_list_field_tags(self):
+        """Test list fields (tags) formatted as comma-separated."""
+        tags = ["Wi-Fi", "Outdoor Seating", "Study Friendly"]
+        result = format_field_for_embedding("tags", tags)
+        self.assertEqual(result, "Wi-Fi, Outdoor Seating, Study Friendly")
+
+    def test_list_field_type(self):
+        """Test type field formatted as comma-separated."""
+        types = ["Coffee shop", "Cafe"]
+        result = format_field_for_embedding("type", types)
+        self.assertEqual(result, "Coffee shop, Cafe")
+
+    def test_list_field_parking_array(self):
+        """Test parking field as array with label prefix."""
+        parking = ["Free", "Street"]
+        result = format_field_for_embedding("parking", parking)
+        self.assertEqual(result, "parking: Free, Street")
+
+    def test_list_field_parking_string(self):
+        """Test parking field as single string with label prefix."""
+        result = format_field_for_embedding("parking", "Paid Lot")
+        self.assertEqual(result, "parking: Paid Lot")
+
+    def test_list_field_empty(self):
+        """Test empty list returns None."""
+        self.assertIsNone(format_field_for_embedding("tags", []))
+        self.assertIsNone(format_field_for_embedding("type", []))
+
+    def test_list_field_reviews_tags(self):
+        """Test reviewsTags field formatted as comma-separated."""
+        tags = ["latte", "matcha", "parking", "desserts"]
+        result = format_field_for_embedding("reviewsTags", tags)
+        self.assertEqual(result, "latte, matcha, parking, desserts")
+
+    def test_about_field_nested_dict(self):
+        """Test about field flattens nested dictionaries."""
+        about = {
+            "Service options": {
+                "Dine-in": True,
+                "Takeout": True,
+                "Delivery": False,
+            },
+            "Highlights": {
+                "Great coffee": True,
+            },
+        }
+        result = format_field_for_embedding("about", about)
+        self.assertIn("Dine-in: yes", result)
+        self.assertIn("Takeout: yes", result)
+        self.assertIn("Delivery: no", result)
+        self.assertIn("Great coffee: yes", result)
+
+    def test_about_field_empty(self):
+        """Test about field returns None when empty."""
+        self.assertIsNone(format_field_for_embedding("about", {}))
+        self.assertIsNone(format_field_for_embedding("about", None))
+
+    def test_working_hours_field(self):
+        """Test workingHours field formatted with label prefix."""
+        working_hours = {
+            "Monday": "6AM-11PM",
+            "Tuesday": "6AM-11PM",
+            "Friday": "6AM-12AM",
+        }
+        result = format_field_for_embedding("workingHours", working_hours)
+        self.assertIn("hours:", result)
+        self.assertIn("Monday 6AM-11PM", result)
+        self.assertIn("Tuesday 6AM-11PM", result)
+        self.assertIn("Friday 6AM-12AM", result)
+
+    def test_working_hours_empty(self):
+        """Test workingHours returns None when empty."""
+        self.assertIsNone(format_field_for_embedding("workingHours", {}))
+        self.assertIsNone(format_field_for_embedding("workingHours", None))
+
+    def test_popular_times_field(self):
+        """Test popularTimes field summarizes peak hours."""
+        popular_times = [
+            {
+                "day_text": "Monday",
+                "popular_times": [
+                    {"hour": 8, "percentage": 45, "time": "8a"},
+                    {"hour": 9, "percentage": 75, "time": "9a"},
+                    {"hour": 10, "percentage": 90, "time": "10a"},
+                    {"hour": 11, "percentage": 85, "time": "11a"},
+                ]
+            },
+            {
+                "day_text": "Saturday",
+                "popular_times": [
+                    {"hour": 9, "percentage": 80, "time": "9a"},
+                    {"hour": 10, "percentage": 95, "time": "10a"},
+                ]
+            },
+        ]
+        result = format_field_for_embedding("popularTimes", popular_times)
+        self.assertIn("busy times:", result)
+        self.assertIn("Monday busy at", result)
+        self.assertIn("Saturday busy at", result)
+        # Should only include times with percentage >= 70
+        self.assertIn("9a", result)
+        self.assertIn("10a", result)
+        self.assertNotIn("8a", result)  # 45% is below threshold
+
+    def test_popular_times_empty(self):
+        """Test popularTimes returns None when empty."""
+        self.assertIsNone(format_field_for_embedding("popularTimes", []))
+        self.assertIsNone(format_field_for_embedding("popularTimes", None))
+
+    def test_popular_times_no_peak_hours(self):
+        """Test popularTimes when no hours meet threshold."""
+        popular_times = [
+            {
+                "day_text": "Monday",
+                "popular_times": [
+                    {"hour": 8, "percentage": 45, "time": "8a"},
+                    {"hour": 9, "percentage": 60, "time": "9a"},
+                ]
+            }
+        ]
+        # All percentages below 70, should return None
+        self.assertIsNone(format_field_for_embedding("popularTimes", popular_times))
+
+    def test_plain_string_field(self):
+        """Test plain string fields returned as-is."""
+        self.assertEqual(format_field_for_embedding("place", "Test Coffee Shop"), "Test Coffee Shop")
+        self.assertEqual(format_field_for_embedding("description", "Great place"), "Great place")
+        self.assertEqual(format_field_for_embedding("neighborhood", "Downtown"), "Downtown")
+        self.assertEqual(format_field_for_embedding("address", "123 Main St"), "123 Main St")
+
+    def test_plain_string_field_empty(self):
+        """Test empty strings return None."""
+        self.assertIsNone(format_field_for_embedding("place", ""))
+        self.assertIsNone(format_field_for_embedding("description", "   "))
+        self.assertIsNone(format_field_for_embedding("place", None))
+
+    def test_typical_time_spent_field(self):
+        """Test typicalTimeSpent field returned as plain string."""
+        result = format_field_for_embedding("typicalTimeSpent", "People typically spend 30-60 min here")
+        self.assertEqual(result, "People typically spend 30-60 min here")
+
+    def test_comments_field(self):
+        """Test comments field (curator notes) returned as plain string."""
+        comments = "This place has amazing vibes and is perfect for deep work sessions."
+        result = format_field_for_embedding("comments", comments)
+        self.assertEqual(result, comments)
+
+
+class TestGetPlaceEmbeddingFields(unittest.TestCase):
+    """Test suite for get_place_embedding_fields configuration function."""
+
+    def test_returns_list(self):
+        """Test that function returns a list."""
+        result = get_place_embedding_fields()
+        self.assertIsInstance(result, list)
+
+    def test_includes_all_airtable_embed_fields(self):
+        """Test that all Airtable fields marked for embedding are included."""
+        result = get_place_embedding_fields()
+        
+        expected_airtable_fields = [
+            "place", "description", "comments", "neighborhood", "address",
+            "type", "tags", "freeWifi", "hasCinnamonRolls", "parking",
+            "purchaseRequired", "size"
+        ]
+        
+        for field in expected_airtable_fields:
+            self.assertIn(field, result, f"Expected field '{field}' not in embedding fields")
+
+    def test_includes_all_json_embed_fields(self):
+        """Test that all JSON fields marked for embedding are included."""
+        result = get_place_embedding_fields()
+        
+        expected_json_fields = ["about", "reviewsTags", "workingHours", "popularTimes", "typicalTimeSpent"]
+        
+        for field in expected_json_fields:
+            self.assertIn(field, result, f"Expected field '{field}' not in embedding fields")
+
+    def test_excludes_non_embed_fields(self):
+        """Test that fields marked embed=False are NOT included."""
+        result = get_place_embedding_fields()
+        
+        excluded_fields = [
+            "category", "subtypes", "latitude", "longitude", "website",
+            "googleMapsPlaceId", "appleMapsProfileUrl", "createdTime",
+            "placeRating", "reviewsCount", "phone"
+        ]
+        
+        for field in excluded_fields:
+            self.assertNotIn(field, result, f"Field '{field}' should not be in embedding fields")
+
+    def test_field_count(self):
+        """Test that the total number of embedding fields is correct."""
+        result = get_place_embedding_fields()
+        # 12 Airtable fields + 5 JSON fields = 17 total
+        self.assertEqual(len(result), 17)
+
+
+class TestEmbeddingIntegration(unittest.TestCase):
+    """Integration tests for complete embedding text composition with all new fields."""
+
+    def test_place_embedding_includes_working_hours(self):
+        """Test that place embedding includes formatted working hours."""
+        place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
+        result = compose_place_embedding_text(place_doc)
+        
+        self.assertIn("hours:", result)
+        self.assertIn("Monday 6:30 AM - 5:00 PM", result)
+        self.assertIn("Sunday 8:00 AM - 3:00 PM", result)
+
+    def test_place_embedding_includes_popular_times(self):
+        """Test that place embedding includes peak busy times."""
+        place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
+        result = compose_place_embedding_text(place_doc)
+        
+        self.assertIn("busy times:", result)
+        self.assertIn("Monday busy at", result)
+        self.assertIn("Saturday busy at", result)
+
+    def test_place_embedding_includes_typical_time_spent(self):
+        """Test that place embedding includes typical time spent."""
+        place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
+        result = compose_place_embedding_text(place_doc)
+        
+        self.assertIn("People typically spend 30-60 min here", result)
+
+    def test_place_embedding_includes_parking_as_list(self):
+        """Test that parking field is formatted correctly as a list."""
+        place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
+        result = compose_place_embedding_text(place_doc)
+        
+        self.assertIn("parking: Free, Street", result)
+
+    def test_place_embedding_includes_boolean_fields(self):
+        """Test that boolean fields are formatted correctly."""
+        place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
+        result = compose_place_embedding_text(place_doc)
+        
+        self.assertIn("free wifi: yes", result)
+
+    def test_place_embedding_includes_size(self):
+        """Test that size field is formatted with label."""
+        place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
+        result = compose_place_embedding_text(place_doc)
+        
+        self.assertIn("size: Medium", result)
+
+    def test_place_embedding_includes_comments(self):
+        """Test that comments field is NOT in current mock but would be included if present."""
+        # Add comments to test record
+        mock_with_comments = MOCK_AIRTABLE_RECORD.copy()
+        mock_with_comments["fields"] = MOCK_AIRTABLE_RECORD["fields"].copy()
+        mock_with_comments["fields"]["Comments"] = "Insider tip: Order the cardamom latte!"
+        
+        place_doc = transform_airtable_to_place(mock_with_comments, MOCK_JSON_DATA)
+        result = compose_place_embedding_text(place_doc)
+        
+        self.assertIn("Insider tip: Order the cardamom latte!", result)
+
+    def test_place_embedding_includes_reviews_tags(self):
+        """Test that reviewsTags from JSON are included."""
+        place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
+        result = compose_place_embedding_text(place_doc)
+        
+        self.assertIn("coffee", result)
+        self.assertIn("atmosphere", result)
+        self.assertIn("pastries", result)
+
+    def test_place_embedding_excludes_non_embed_fields(self):
+        """Test that fields marked embed=False are NOT in embedding text."""
+        place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
+        result = compose_place_embedding_text(place_doc)
+        
+        # These should NOT be in the embedding
+        self.assertNotIn("ChIJH9S7TOcPVIgRnG5eHqW4DE0", result)  # place_id
+        self.assertNotIn("35.4165135", result)  # latitude
+        self.assertNotIn("80.6031644", result)  # longitude
+        self.assertNotIn("@mattieruths", result)  # instagram
+        self.assertNotIn("mattieruths.com", result)  # website
+
+    def test_embedding_field_order_consistency(self):
+        """Test that embedding fields are in consistent order."""
+        place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
+        result1 = compose_place_embedding_text(place_doc)
+        result2 = compose_place_embedding_text(place_doc)
+        
+        # Should be identical on repeated calls
+        self.assertEqual(result1, result2)
+
+    def test_embedding_with_missing_optional_fields(self):
+        """Test embedding composition when optional fields are missing."""
+        # Create minimal record without optional fields
+        minimal_record = {
+            "id": "rec123",
+            "fields": {
+                "Google Maps Place Id": "test_place_id",
+                "Place": "Test Cafe",
+                "Type": "Coffee Shop",
+            }
+        }
+        
+        place_doc = transform_airtable_to_place(minimal_record, None)
+        result = compose_place_embedding_text(place_doc)
+        
+        # Should still work with just these fields
+        self.assertIn("Test Cafe", result)
+        self.assertIn("Coffee Shop", result)
+        # Should not have pipe separators for missing fields
         self.assertNotIn(" |  | ", result)
 
 
@@ -634,6 +995,9 @@ if __name__ == "__main__":
         TestComposePlaceEmbeddingText,
         TestComposeChunkEmbeddingText,
         TestEmptyAndNullHandling,
+        TestFormatFieldForEmbedding,
+        TestGetPlaceEmbeddingFields,
+        TestEmbeddingIntegration,
         TestCosmosDurableFunctionHelpers,
     ]
     

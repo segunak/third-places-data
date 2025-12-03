@@ -5,7 +5,7 @@ Uses text-embedding-3-small model for 1536-dimensional embeddings.
 
 import os
 import logging
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from openai import AzureOpenAI
 
 # Configure logging
@@ -97,12 +97,137 @@ class EmbeddingService:
         return embeddings[0]
 
 
+def format_field_for_embedding(field_name: str, value: Any) -> Optional[str]:
+    """
+    Format a field value for inclusion in embedding text.
+    
+    Handles special formatting for different field types:
+    - Booleans: "field_name: yes/no"
+    - Lists: comma-separated values
+    - Dicts (about): flattened key-value pairs
+    - Strings: as-is or with label prefix for certain fields
+    
+    Args:
+        field_name: The Cosmos DB field name.
+        value: The field value (any type).
+        
+    Returns:
+        Formatted string for embedding, or None if value is empty/None.
+    """
+    if value is None:
+        return None
+    
+    # Boolean fields - format as "field: yes/no"
+    boolean_fields = {"freeWifi", "hasCinnamonRolls", "purchaseRequired"}
+    if field_name in boolean_fields:
+        if value is True:
+            # Convert camelCase to readable label
+            labels = {
+                "freeWifi": "free wifi",
+                "hasCinnamonRolls": "has cinnamon rolls",
+                "purchaseRequired": "purchase required"
+            }
+            return f"{labels.get(field_name, field_name)}: yes"
+        elif value is False:
+            labels = {
+                "freeWifi": "free wifi",
+                "hasCinnamonRolls": "has cinnamon rolls",
+                "purchaseRequired": "purchase required"
+            }
+            return f"{labels.get(field_name, field_name)}: no"
+        return None
+    
+    # Labeled string fields - format as "field: value"
+    labeled_fields = {"size"}
+    if field_name in labeled_fields:
+        if value:
+            return f"{field_name}: {value}"
+        return None
+    
+    # List fields - join with commas (some with label prefix for context)
+    list_fields = {"tags", "type", "reviewsTags", "parking"}
+    if field_name in list_fields:
+        if isinstance(value, list):
+            if value:
+                joined = ", ".join(str(v) for v in value)
+                # Add label prefix for fields that need context
+                if field_name == "parking":
+                    return f"parking: {joined}"
+                return joined
+            return None
+        elif value:
+            # Single value (not a list)
+            if field_name == "parking":
+                return f"parking: {value}"
+            return str(value)
+        return None
+    
+    # About field - flatten nested dict
+    if field_name == "about":
+        if isinstance(value, dict):
+            about_parts = []
+            for category, features in value.items():
+                if isinstance(features, dict):
+                    for feature, feat_value in features.items():
+                        if feat_value is True:
+                            about_parts.append(f"{feature}: yes")
+                        elif feat_value is False:
+                            about_parts.append(f"{feature}: no")
+                elif features:
+                    about_parts.append(f"{category}: {features}")
+            if about_parts:
+                return ", ".join(about_parts)
+        return None
+    
+    # Working hours - format as "hours: Monday 7am-3pm, Tuesday 7am-3pm, ..."
+    if field_name == "workingHours":
+        if isinstance(value, dict) and value:
+            hours_parts = []
+            for day, hours in value.items():
+                if hours:
+                    hours_parts.append(f"{day} {hours}")
+            if hours_parts:
+                return "hours: " + ", ".join(hours_parts)
+        return None
+    
+    # Popular times - summarize peak hours per day
+    if field_name == "popularTimes":
+        if isinstance(value, list) and value:
+            popular_parts = []
+            for day_data in value:
+                day_text = day_data.get("day_text")
+                popular_times_list = day_data.get("popular_times", [])
+                
+                # Find peak hours (percentage >= 70)
+                peak_hours = []
+                for pt in popular_times_list:
+                    if pt.get("percentage", 0) >= 70:
+                        peak_hours.append(pt.get("time", ""))
+                
+                if day_text and peak_hours:
+                    # Dedupe and format peak times
+                    unique_peaks = list(dict.fromkeys(peak_hours))
+                    popular_parts.append(f"{day_text} busy at {', '.join(unique_peaks)}")
+            
+            if popular_parts:
+                return "busy times: " + "; ".join(popular_parts)
+        return None
+    
+    # Plain string fields - return as-is
+    if isinstance(value, str):
+        return value if value.strip() else None
+    
+    # Fallback for any other types
+    return str(value) if value else None
+
+
 def compose_place_embedding_text(place_doc: Dict[str, Any]) -> str:
     """
     Compose the text to embed for a place document.
     
-    Combines semantic fields: place name, description, neighborhood, address,
-    type, tags, category, subtypes, and about (flattened).
+    Uses the embedding field configuration from cosmos_service to determine
+    which fields to include. Each field is formatted appropriately by
+    format_field_for_embedding().
     
     Args:
         place_doc: Place document dictionary with Cosmos DB field names.
@@ -110,70 +235,20 @@ def compose_place_embedding_text(place_doc: Dict[str, Any]) -> str:
     Returns:
         Composed text string for embedding.
     """
+    from services.cosmos_service import get_place_embedding_fields
+    
+    embedding_fields = get_place_embedding_fields()
     parts = []
-
-    # Place name
-    if place_doc.get("place"):
-        parts.append(place_doc["place"])
-
-    # Description
-    if place_doc.get("description"):
-        parts.append(place_doc["description"])
-
-    # Location context
-    if place_doc.get("neighborhood"):
-        parts.append(place_doc["neighborhood"])
-
-    if place_doc.get("address"):
-        parts.append(place_doc["address"])
-
-    # Type (can be string or list in Airtable multi-select)
-    place_type = place_doc.get("type")
-    if place_type:
-        if isinstance(place_type, list):
-            parts.append(", ".join(place_type))
-        else:
-            parts.append(str(place_type))
-
-    # Tags (list to comma-separated string)
-    tags = place_doc.get("tags")
-    if tags:
-        if isinstance(tags, list):
-            parts.append(", ".join(tags))
-        else:
-            parts.append(str(tags))
-
-    # Category
-    if place_doc.get("category"):
-        parts.append(place_doc["category"])
-
-    # Subtypes (can be string or list)
-    subtypes = place_doc.get("subtypes")
-    if subtypes:
-        if isinstance(subtypes, list):
-            parts.append(", ".join(subtypes))
-        else:
-            parts.append(str(subtypes))
-
-    # About (flatten nested dict to key-value pairs)
-    about = place_doc.get("about")
-    if about and isinstance(about, dict):
-        about_parts = []
-        for category, features in about.items():
-            if isinstance(features, dict):
-                for feature, value in features.items():
-                    if value is True:
-                        about_parts.append(f"{feature}: yes")
-                    elif value is False:
-                        about_parts.append(f"{feature}: no")
-            elif features:
-                about_parts.append(f"{category}: {features}")
-        if about_parts:
-            parts.append(", ".join(about_parts))
-
+    
+    for field_name in embedding_fields:
+        value = place_doc.get(field_name)
+        formatted = format_field_for_embedding(field_name, value)
+        if formatted:
+            parts.append(formatted)
+    
     # Join all parts with separator
-    embedding_text = " | ".join(filter(None, parts))
-
+    embedding_text = " | ".join(parts)
+    
     return embedding_text
 
 

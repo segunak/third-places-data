@@ -1,0 +1,95 @@
+{
+  "records": [
+    {
+      "id": "recABC123",
+      "createdTime": "2024-01-15T10:30:00.000Z",
+      "fields": {
+        "Place": "Mattie Ruth's Coffee House",
+        "Google Maps Place Id": "ChIJH9S7TOcPVIgRnG5eHqW4DE0",
+        "Type": ["Coffee Shop", "Cafe"],
+        "Neighborhood": "Plaza Midwood",
+        "Address": "1421 Central Ave, Charlotte, NC 28205",
+        "Website": "https://mattieruths.com",
+        "Description": "A cozy coffee house with excellent pastries and a welcoming atmosphere.",
+        "Operational": "Yes",
+        "Has Data File": "Yes",
+        "Photos": [
+          {
+            "id": "attXYZ123",
+            "url": "https://dl.airtable.com/photo1.jpg",
+            "filename": "photo1.jpg",
+            "type": "image/jpeg"
+          }
+        ],
+        "Latitude": 35.220585,
+        "Longitude": -80.814385
+      }
+    },
+    {
+      "id": "recDEF456",
+      "createdTime": "2024-02-20T14:45:00.000Z",
+      "fields": {
+        "Place": "Undercurrent Coffee",
+        "Google Maps Place Id": "ChIJY2xZ9DEPVIgRvE3y8K6ABCD",
+        "Type": ["Coffee Shop"],
+        "Neighborhood": "Elizabeth",
+        "Address": "2100 South Blvd, Charlotte, NC 28203",
+        "Website": "https://undercurrentcoffee.com",
+        "Description": "Specialty coffee roaster with multiple Charlotte locations.",
+        "Operational": "Yes",
+        "Has Data File": "No",
+        "Latitude": 35.205123,
+        "Longitude": -80.855678
+      }
+    },
+    {
+      "id": "recGHI789",
+      "createdTime": "2024-03-10T09:15:00.000Z",
+      "fields": {
+        "Place": "Central Coffee Co",
+        "Google Maps Place Id": "ChIJZ3yW1DIPVIgRwF4x9L7EFGH",
+        "Type": ["Coffee Shop", "Bakery"],
+        "Neighborhood": "NoDa",
+        "Address": "721 N Davidson St, Charlotte, NC 28206",
+        "Website": "https://centralcoffeeco.com",
+        "Description": "Artisan coffee and fresh baked goods in the heart of NoDa.",
+        "Operational": "Yes",
+        "Has Data File": "Yes",
+        "Photos": [
+          {
+            "id": "attABC456",
+            "url": "https://dl.airtable.com/photo2.jpg",
+            "filename": "photo2.jpg",
+            "type": "image/jpeg"
+          }
+        ],
+        "Latitude": 35.238456,
+        "Longitude": -80.821234
+      }
+    },
+    {
+      "id": "recJKL012",
+      "createdTime": "2024-04-05T11:00:00.000Z",
+      "fields": {
+        "Place": "Duplicate Test Place",
+        "Google Maps Place Id": "ChIJDuplicate123",
+        "Type": ["Coffee Shop"],
+        "Neighborhood": "South End",
+        "Address": "500 S Tryon St, Charlotte, NC 28202",
+        "Operational": "Yes"
+      }
+    },
+    {
+      "id": "recMNO345",
+      "createdTime": "2024-04-05T11:30:00.000Z",
+      "fields": {
+        "Place": "Duplicate Test Place",
+        "Google Maps Place Id": "ChIJDuplicate456",
+        "Type": ["Coffee Shop"],
+        "Neighborhood": "Uptown",
+        "Address": "501 S Tryon St, Charlotte, NC 28202",
+        "Operational": "Opening Soon"
+      }
+    }
+  ]
+}

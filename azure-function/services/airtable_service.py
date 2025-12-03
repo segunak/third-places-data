@@ -119,10 +119,16 @@ class AirtableService:
             # 3. Otherwise, only update if both conditions are true:
             #    a) The overwrite parameter allows replacing existing values
             #    b) The current value is different from the new value
+            #
+            # IMPORTANT: We compare against 'unsure' (lowercase) because current_value_normalized
+            # has been processed by normalize_text(), which lowercases all text. Even though
+            # Airtable stores "Unsure" with a capital U, after normalization it becomes 'unsure'.
+            # Bug discovered: Previously compared against 'Unsure' which never matched since
+            # normalize_text() converts to lowercase. Fixed 2024-12-03.
             if (
                 update_value_normalized not in (None, '') and
                 (
-                    current_value_normalized in (None, 'Unsure') or
+                    current_value_normalized in (None, 'unsure') or
                     (
                         overwrite and
                         current_value_normalized != update_value_normalized

@@ -1,0 +1,17 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+
+[tool.coverage.run]
+source = ["services"]
+omit = [
+    "services/utils.py",  # Infrastructure code for Azure Data Lake and GitHub API
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+]

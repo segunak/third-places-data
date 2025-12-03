@@ -21,8 +21,28 @@ env:
   PYTHON_VERSION: '3.11'
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        working-directory: ./azure-function
+
+      - name: Run tests with coverage
+        run: pytest tests/ --cov=services --cov-fail-under=80 --cov-report=term-missing -v
+        working-directory: ./azure-function
+
   build:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

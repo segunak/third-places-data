@@ -1,0 +1,65 @@
+{
+  "id": "ChIJH9S7TOcPVIgRnG5eHqW4DE0",
+  "displayName": {
+    "text": "Mattie Ruth's Coffee House",
+    "languageCode": "en"
+  },
+  "googleMapsUri": "https://maps.google.com/?cid=5555315679825756572",
+  "websiteUri": "https://mattieruths.com",
+  "formattedAddress": "1421 Central Ave, Charlotte, NC 28205, USA",
+  "editorialSummary": {
+    "text": "A cozy coffee house with excellent pastries and a welcoming atmosphere.",
+    "languageCode": "en"
+  },
+  "addressComponents": [
+    {
+      "longText": "1421",
+      "shortText": "1421",
+      "types": ["street_number"]
+    },
+    {
+      "longText": "Central Avenue",
+      "shortText": "Central Ave",
+      "types": ["route"]
+    },
+    {
+      "longText": "Charlotte",
+      "shortText": "Charlotte",
+      "types": ["locality", "political"]
+    },
+    {
+      "longText": "NC",
+      "shortText": "NC",
+      "types": ["administrative_area_level_1", "political"]
+    },
+    {
+      "longText": "28205",
+      "shortText": "28205",
+      "types": ["postal_code"]
+    }
+  ],
+  "parkingOptions": {
+    "freeParkingLot": true,
+    "freeStreetParking": true,
+    "paidParkingLot": false,
+    "paidStreetParking": false,
+    "valetParking": false,
+    "freeGarageParking": false,
+    "paidGarageParking": false
+  },
+  "priceLevel": "PRICE_LEVEL_MODERATE",
+  "paymentOptions": {
+    "acceptsCreditCards": true,
+    "acceptsDebitCards": true,
+    "acceptsCashOnly": false,
+    "acceptsNfc": true
+  },
+  "primaryType": "cafe",
+  "types": ["cafe", "coffee_shop", "food", "point_of_interest", "establishment"],
+  "outdoorSeating": true,
+  "location": {
+    "latitude": 35.220585,
+    "longitude": -80.814385
+  },
+  "businessStatus": "OPERATIONAL"
+}

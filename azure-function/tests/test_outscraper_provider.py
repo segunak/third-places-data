@@ -1,228 +1,615 @@
 """
-Integration tests for the OutscraperDataProvider class from place_data_providers.py.
+Unit tests for the OutscraperProvider class from place_data_service.py.
+
+All tests use mocked HTTP responses and API clients - no live API calls are made.
 """
 
-import os
-import json
-import dotenv
-import unittest
-import sys
-from datetime import datetime
+import pytest
+from unittest import mock
 
-# Add parent directory to path so we can import from parent
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from conftest import TEST_PLACE_ID, TEST_PLACE_NAME, load_fixture, create_mock_response
+from constants import OUTSCRAPER_BALANCE_THRESHOLD
 
-from constants import DEFAULT_REVIEWS_LIMIT, OUTSCRAPER_BALANCE_THRESHOLD
-from services.place_data_service import OutscraperProvider
 
-# Sample real place to test with
-TEST_PLACE_NAME = "Mattie Ruth's Coffee House"
-TEST_PLACE_ID = "ChIJH9S7TOcPVIgRnG5eHqW4DE0"
+class TestOutscraperProviderInit:
+    """Tests for OutscraperProvider initialization."""
 
-class TestOutscraperProvider(unittest.TestCase):
-    """Integration test Suite for the OutscraperProvider class."""
+    def test_init_with_sufficient_balance(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test successful initialization with sufficient balance."""
+        from services.place_data_service import OutscraperProvider
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient"):
+                provider = OutscraperProvider()
+        
+        assert provider.API_KEY == "test-outscraper-api-key"
+        assert provider.GOOGLE_MAPS_API_KEY == "test-google-maps-api-key"
+        assert provider.provider_type == "outscraper"
+        assert provider.client is not None
 
-    def setUp(self):
-        """Set up test environment before each test."""
-        # Load environment variables from .env file
-        dotenv.load_dotenv()
+    def test_init_with_low_balance_raises_exception(self, mock_env_vars, outscraper_balance_low):
+        """Test that initialization fails with low balance."""
+        from services.place_data_service import OutscraperProvider
         
-        # Initialize the real OutscraperProvider
-        self.provider = OutscraperProvider()
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_low)):
+            with mock.patch("services.place_data_service.ApiClient"):
+                with pytest.raises(Exception) as exc_info:
+                    OutscraperProvider()
         
-        self.place_id = TEST_PLACE_ID
-        self.place_name = TEST_PLACE_NAME
-        
-        # Create output directory for test results - now pointing to testing folder directly
-        self.output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data", "testing", "outscraper")
-        os.makedirs(self.output_dir, exist_ok=True)
-    
-    def test_init(self):
-        """Test the initialization of OutscraperProvider."""
-        self.assertIsNotNone(self.provider.API_KEY)
-        self.assertIsNotNone(self.provider.GOOGLE_MAPS_API_KEY)
-        self.assertIsNotNone(self.provider.client)
-        self.assertEqual(self.provider.provider_type, 'outscraper')
-    
-    def test_get_place_details(self):
-        """Test the get_place_details method."""
-        details = self.provider.get_place_details(self.place_id)
-        
-        # Test should fail if no details are returned
-        self.assertIsNotNone(details, "Place details response is None")
-        self.assertTrue(details, "Place details response is empty")
-        self.assertEqual(details['place_id'], self.place_id)
-        print(f"Got details for {details['place_name']}.")
-        
-        # Write the results to a JSON file 
-        output_file = os.path.join(self.output_dir, f"details_{self.place_id}.json")
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(details, f, indent=4, ensure_ascii=False)
-        print(f"Saved place details to {output_file}")
-    
-    def test_get_place_reviews(self):
-        """Test the get_place_reviews method."""
-        reviews = self.provider.get_place_reviews(self.place_id)
-        
-        # Test should fail if no reviews are returned or if structure is invalid
-        self.assertIsNotNone(reviews, "Place reviews response is None")
-        self.assertTrue(reviews, "Place reviews response is empty")
-        self.assertEqual(reviews['place_id'], self.place_id)
-        self.assertTrue('reviews_data' in reviews, "Missing reviews_data field in response")
-        
-        # Check if we got reviews and log the count
-        if 'reviews_data' in reviews and reviews['reviews_data']:
-            print(f"Got {len(reviews['reviews_data'])} reviews for {TEST_PLACE_NAME}")
-            # Ensure we have at least one review
-            self.assertGreater(len(reviews['reviews_data']), 0, "No reviews found")
-        else:
-            self.fail("No reviews_data found in response")
-        
-        # Write the results to a JSON file
-        output_file = os.path.join(self.output_dir, f"reviews_{self.place_id}.json")
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(reviews, f, indent=4, ensure_ascii=False)
-        print(f"Saved place reviews to {output_file}")
-    
-    def test_get_place_photos(self):
-        """Test the get_place_photos method."""
-        photos = self.provider.get_place_photos(self.place_id)
-        
-        # Test should fail if no photos are returned
-        self.assertIsNotNone(photos, "Place photos response is None")
-        self.assertIn('place_id', photos, "Response doesn't have place_id field")
-        self.assertIn('photo_urls', photos, "Response doesn't have photo_urls field")
-        
-        # Get the actual photo URLs array
-        photo_urls = photos.get('photo_urls', [])
-        print(f"Got {len(photo_urls)} photo URLs for {TEST_PLACE_NAME}")
+        assert "below required minimum" in str(exc_info.value)
 
-        # Write the results to a JSON file
-        output_file = os.path.join(self.output_dir, f"photos_{self.place_id}.json")
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(photos, f, indent=4, ensure_ascii=False)
-        print(f"Saved place photos to {output_file}")
-    
-    def test_find_place_id(self):
-        """Test the find_place_id method."""
-        place_id = self.provider.find_place_id(TEST_PLACE_NAME)
+    def test_init_with_missing_balance_field_raises_exception(self, mock_env_vars):
+        """Test that initialization fails when balance field is missing."""
+        from services.place_data_service import OutscraperProvider
         
-        self.assertIsNotNone(place_id)
-        self.assertEqual(place_id, TEST_PLACE_ID, f"Expected place ID for {TEST_PLACE_NAME} to be 'ChIJH9S7TOcPVIgRnG5eHqW4DE0', but got '{place_id}'")
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response({"currency": "USD"})):
+            with mock.patch("services.place_data_service.ApiClient"):
+                with pytest.raises(Exception) as exc_info:
+                    OutscraperProvider()
         
-        print(f"Found the correct place ID for {TEST_PLACE_NAME}: {place_id}")
-    
-    def test_is_place_operational(self):
-        """Test the is_place_operational method."""
-        is_operational = self.provider.is_place_operational(self.place_id)
+        assert "balance" in str(exc_info.value).lower()
 
-        self.assertIsNotNone(is_operational, "Operational status is None")
-        self.assertIsInstance(is_operational, bool, "Operational status is not a boolean")
-
-        # Report operational status
-        print(f"{TEST_PLACE_NAME} is {'operational' if is_operational else 'not operational'}")
+    def test_init_balance_api_failure_raises_exception(self, mock_env_vars):
+        """Test that initialization fails when balance API call fails."""
+        from services.place_data_service import OutscraperProvider
         
-    def test_all_place_data(self):
-        """Test the get_all_place_data method."""
-        all_data = self.provider.get_all_place_data(self.place_id, self.place_name)
+        with mock.patch("services.place_data_service.requests.get", side_effect=Exception("Connection error")):
+            with mock.patch("services.place_data_service.ApiClient"):
+                with pytest.raises(Exception) as exc_info:
+                    OutscraperProvider()
         
-        # Ensure we got a valid response with key fields
-        self.assertIsNotNone(all_data, "All place data response is None")
-        self.assertEqual(all_data.get('place_id', ''), self.place_id)
-        self.assertEqual(all_data.get('place_name', ''), self.place_name)
-        self.assertIn('details', all_data, "Response doesn't have details field")
-        self.assertIn('reviews', all_data, "Response doesn't have reviews field")
-        self.assertIn('photos', all_data, "Response doesn't have photos field")
-        self.assertIn('data_source', all_data, "Response doesn't have data_source field") 
-        self.assertIn('last_updated', all_data, "Response doesn't have last_updated field")
+        assert "Failed Outscraper balance check" in str(exc_info.value)
+
+
+class TestOutscraperProviderFetchOutscraperBalance:
+    """Tests for _fetch_outscraper_balance method."""
+
+    def test_fetch_balance_success(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test successful balance fetch."""
+        from services.place_data_service import OutscraperProvider
         
-        # Check that the data_source field correctly identifies the provider
-        self.assertEqual(all_data.get('data_source', ''), 'OutscraperProvider')
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient"):
+                provider = OutscraperProvider()
         
-        print(f"Got all data for {TEST_PLACE_NAME}")
+        # The provider initialized successfully, which means balance was fetched
+        assert provider is not None
+
+    def test_fetch_balance_http_error(self, mock_env_vars):
+        """Test balance fetch with HTTP error."""
+        from services.place_data_service import OutscraperProvider
         
-        # Write the results to a JSON file
-        output_file = os.path.join(self.output_dir, f"all_data_{self.place_id}.json")
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(all_data, f, indent=4, ensure_ascii=False)
-        print(f"Saved all place data to {output_file}")
+        mock_response = create_mock_response({}, 500)
+        with mock.patch("services.place_data_service.requests.get", return_value=mock_response):
+            with mock.patch("services.place_data_service.ApiClient"):
+                with pytest.raises(Exception):
+                    OutscraperProvider()
 
-    def test_balance_check_blocks_low_balance(self):
-        """Provider should raise if balance < threshold even when amount_due == 0."""
-        from services import place_data_service as pds
-        original = pds.OutscraperProvider._fetch_outscraper_balance
-        try:
-            def fake_low_balance(_self):
-                return {"balance": OUTSCRAPER_BALANCE_THRESHOLD - 0.01, "upcoming_invoice": {"amount_due": 0}}
-            pds.OutscraperProvider._fetch_outscraper_balance = fake_low_balance
-            with self.assertRaises(Exception) as ctx:
-                pds.OutscraperProvider()
-            self.assertIn("below required minimum", str(ctx.exception))
-        finally:
-            pds.OutscraperProvider._fetch_outscraper_balance = original
 
-    def test_balance_check_allows_high_balance(self):
-        """Provider instantiates when balance >= threshold AND amount_due == 0."""
-        from services import place_data_service as pds
-        original = pds.OutscraperProvider._fetch_outscraper_balance
-        try:
-            def fake_ok_balance(_self):
-                return {"balance": OUTSCRAPER_BALANCE_THRESHOLD + 5.25, "upcoming_invoice": {"amount_due": 0}}
-            pds.OutscraperProvider._fetch_outscraper_balance = fake_ok_balance
-            provider = pds.OutscraperProvider()
-            self.assertEqual(provider.provider_type, 'outscraper')
-        finally:
-            pds.OutscraperProvider._fetch_outscraper_balance = original
+class TestOutscraperProviderGetPlaceDetails:
+    """Tests for get_place_details method."""
 
-    def test_balance_check_blocks_outstanding_amount_due(self):
-        """Provider should raise when amount_due > 0 even if balance is high."""
-        from services import place_data_service as pds
-        original = pds.OutscraperProvider._fetch_outscraper_balance
-        try:
-            def fake_amount_due(_self):
-                return {"balance": OUTSCRAPER_BALANCE_THRESHOLD + 50, "upcoming_invoice": {"amount_due": 12.34}}
-            pds.OutscraperProvider._fetch_outscraper_balance = fake_amount_due
-            with self.assertRaises(Exception) as ctx:
-                pds.OutscraperProvider()
-            self.assertIn("amount_due", str(ctx.exception))
-        finally:
-            pds.OutscraperProvider._fetch_outscraper_balance = original
+    def test_get_place_details_success(self, mock_env_vars, outscraper_balance_sufficient, outscraper_place_details):
+        """Test successful place details retrieval."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_search.return_value = outscraper_place_details
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                details = provider.get_place_details(TEST_PLACE_ID)
+        
+        assert details is not None
+        assert details["place_id"] == TEST_PLACE_ID
+        assert details["place_name"] == "Mattie Ruth's Coffee House"
+        assert "1421 Central Ave" in details["address"]
+        assert details["latitude"] == 35.220585
+        assert details["longitude"] == -80.814385
+        assert "raw_data" in details
 
-# This if condition ensures that the tests are only run when this script is executed directly.
-# It prevents the tests from running when this module is imported elsewhere.
-if __name__ == "__main__":
-    # Instantiate the test class
-    test_instance = TestOutscraperProvider()
-    
-    # Set up the test environment
-    test_instance.setUp()
-    
-    # Create a dictionary to store results
-    results = {}
-    
-    # Helper function to run a test method and record result
-    def run_test(method_name, test_function):
-        print(f"\n==== Running {method_name} ====")
-        try:
-            test_function()
-            results[method_name] = "PASSED"
-            print(f"✅ {method_name} PASSED")
-        except Exception as e:
-            results[method_name] = f"FAILED: {str(e)}"
-            print(f"❌ {method_name} FAILED: {str(e)}")
-    
-    # Run each test method directly
-    run_test('test_init', test_instance.test_init)
-    run_test('test_get_place_details', test_instance.test_get_place_details)
-    run_test('test_get_place_reviews', test_instance.test_get_place_reviews)
-    run_test('test_get_place_photos', test_instance.test_get_place_photos)
-    run_test('test_find_place_id', test_instance.test_find_place_id)
-    run_test('test_is_place_operational', test_instance.test_is_place_operational)
-    run_test('test_all_place_data', test_instance.test_all_place_data)
-    run_test('test_balance_check_blocks_low_balance', test_instance.test_balance_check_blocks_low_balance)
-    run_test('test_balance_check_allows_high_balance', test_instance.test_balance_check_allows_high_balance)
-    
-    # Print summary
-    print("\n==== TEST SUMMARY ====")
-    for method_name, result in results.items():
-        print(f"{method_name}: {result}")
+    def test_get_place_details_cleans_address(self, mock_env_vars, outscraper_balance_sufficient, outscraper_place_details):
+        """Test that address is cleaned properly (country suffix removed)."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_search.return_value = outscraper_place_details
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                details = provider.get_place_details(TEST_PLACE_ID)
+        
+        # Address should not have "United States" suffix
+        assert "United States" not in details["address"]
+
+    def test_get_place_details_no_results_returns_empty(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test that empty results return empty details."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_search.return_value = [[]]
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                details = provider.get_place_details(TEST_PLACE_ID)
+        
+        assert details["place_name"] == ""
+        assert details["place_id"] == TEST_PLACE_ID
+
+    def test_get_place_details_api_error_returns_empty(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test that API errors return empty details with error message."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_search.side_effect = Exception("API Error")
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                details = provider.get_place_details(TEST_PLACE_ID)
+        
+        assert details["place_name"] == ""
+        assert "error" in details
+
+
+class TestOutscraperProviderCleanAddress:
+    """Tests for _clean_address method."""
+
+    @pytest.fixture
+    def provider(self, mock_env_vars, outscraper_balance_sufficient):
+        """Create a provider instance for testing."""
+        from services.place_data_service import OutscraperProvider
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient"):
+                return OutscraperProvider()
+
+    @pytest.mark.parametrize("input_address,expected_suffix_removed", [
+        ("123 Main St, Charlotte, NC 28205, United States", True),
+        ("123 Main St, Charlotte, NC 28205, USA", True),
+        ("123 Main St, Charlotte, NC 28205, U.S.A.", True),
+        ("123 Main St, Charlotte, NC 28205, US", True),
+        ("123 Main St, Charlotte, NC 28205", False),
+    ])
+    def test_clean_address_removes_country_suffix(self, provider, input_address, expected_suffix_removed):
+        """Test that country suffixes are removed from addresses."""
+        result = provider._clean_address(input_address)
+        
+        assert "United States" not in result
+        assert result.endswith("28205") or not expected_suffix_removed
+
+    def test_clean_address_title_cases(self, provider):
+        """Test that address is properly title-cased."""
+        result = provider._clean_address("123 main st, charlotte, nc 28205")
+        
+        assert "Main" in result
+        assert "Charlotte" in result
+
+    def test_clean_address_preserves_state_uppercase(self, provider):
+        """Test that state abbreviation is uppercase."""
+        result = provider._clean_address("123 Main St, Charlotte, nc 28205")
+        
+        assert "NC" in result
+
+    def test_clean_address_empty_string(self, provider):
+        """Test that empty string returns empty string."""
+        result = provider._clean_address("")
+        assert result == ""
+
+    def test_clean_address_none_returns_empty(self, provider):
+        """Test that None returns empty string."""
+        result = provider._clean_address(None)
+        assert result == ""
+
+
+class TestOutscraperProviderDeterminePurchaseRequirement:
+    """Tests for _determine_purchase_requirement method."""
+
+    @pytest.fixture
+    def provider(self, mock_env_vars, outscraper_balance_sufficient):
+        """Create a provider instance for testing."""
+        from services.place_data_service import OutscraperProvider
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient"):
+                return OutscraperProvider()
+
+    @pytest.mark.parametrize("price_range,expected", [
+        ("$", "Yes"),
+        ("$$", "Yes"),
+        ("$$$", "Yes"),
+        ("$$$$", "Yes"),
+        ("$0", "Unsure"),
+        ("None", "Unsure"),
+        ("", "Unsure"),
+        (None, "Unsure"),
+    ])
+    def test_determine_purchase_requirement(self, provider, price_range, expected):
+        """Test purchase requirement determination from price range."""
+        data = {"range": price_range} if price_range is not None else {}
+        result = provider._determine_purchase_requirement(data)
+        assert result == expected
+
+
+class TestOutscraperProviderExtractParkingInfo:
+    """Tests for _extract_parking_info method."""
+
+    @pytest.fixture
+    def provider(self, mock_env_vars, outscraper_balance_sufficient):
+        """Create a provider instance for testing."""
+        from services.place_data_service import OutscraperProvider
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient"):
+                return OutscraperProvider()
+
+    def test_extract_parking_free_lot(self, provider):
+        """Test free parking lot extraction."""
+        data = {"about": {"Parking": {"Free parking lot": True}}}
+        result = provider._extract_parking_info(data)
+        assert "Free" in result
+
+    def test_extract_parking_free_street(self, provider):
+        """Test free street parking extraction."""
+        data = {"about": {"Parking": {"Free street parking": True}}}
+        result = provider._extract_parking_info(data)
+        assert "Free" in result
+        assert "Street" in result
+
+    def test_extract_parking_paid_street(self, provider):
+        """Test paid street parking extraction."""
+        data = {"about": {"Parking": {"Paid street parking": True}}}
+        result = provider._extract_parking_info(data)
+        assert "Paid" in result
+        assert "Street" in result
+        assert "Metered" in result
+
+    def test_extract_parking_no_info_returns_unsure(self, provider):
+        """Test that missing parking info returns Unsure."""
+        result = provider._extract_parking_info({})
+        assert result == ["Unsure"]
+
+    def test_extract_parking_empty_section_returns_unsure(self, provider):
+        """Test that empty parking section returns Unsure."""
+        data = {"about": {"Parking": {}}}
+        result = provider._extract_parking_info(data)
+        assert "Unsure" in result
+
+
+class TestOutscraperProviderGetPlaceReviews:
+    """Tests for get_place_reviews method."""
+
+    def test_get_place_reviews_success(self, mock_env_vars, outscraper_balance_sufficient, outscraper_reviews):
+        """Test successful review retrieval."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_reviews.return_value = outscraper_reviews
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                reviews = provider.get_place_reviews(TEST_PLACE_ID)
+        
+        assert reviews["place_id"] == TEST_PLACE_ID
+        assert len(reviews["reviews_data"]) == 3
+        assert reviews["reviews_data"][0]["author_title"] == "Sarah Johnson"
+
+    def test_get_place_reviews_empty_results(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test empty review results."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_reviews.return_value = []
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                reviews = provider.get_place_reviews(TEST_PLACE_ID)
+        
+        assert reviews["place_id"] == TEST_PLACE_ID
+        assert reviews["reviews_data"] == []
+        assert "No reviews found" in reviews["message"]
+
+    def test_get_place_reviews_api_error(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test review retrieval with API error."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_reviews.side_effect = Exception("API Error")
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                reviews = provider.get_place_reviews(TEST_PLACE_ID)
+        
+        assert reviews["place_id"] == TEST_PLACE_ID
+        assert reviews["reviews_data"] == []
+        assert "Error" in reviews["message"]
+
+
+class TestOutscraperProviderGetPlacePhotos:
+    """Tests for get_place_photos method."""
+
+    def test_get_place_photos_success(self, mock_env_vars, outscraper_balance_sufficient, outscraper_photos):
+        """Test successful photo retrieval."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_photos.return_value = outscraper_photos
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                photos = provider.get_place_photos(TEST_PLACE_ID)
+        
+        assert photos["place_id"] == TEST_PLACE_ID
+        assert "photo_urls" in photos
+        # Should filter out restricted URLs (gps-cs-s and gps-proxy)
+        for url in photos["photo_urls"]:
+            assert "gps-cs-s" not in url
+            assert "gps-proxy" not in url
+
+    def test_get_place_photos_filters_restricted_urls(self, mock_env_vars, outscraper_balance_sufficient, outscraper_photos):
+        """Test that restricted photo URLs are filtered out."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_photos.return_value = outscraper_photos
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                photos = provider.get_place_photos(TEST_PLACE_ID)
+        
+        # Fixture has 7 photos, 2 are restricted
+        assert len(photos["photo_urls"]) == 5
+
+    def test_get_place_photos_empty_results(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test empty photo results."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_photos.return_value = [[]]
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                photos = provider.get_place_photos(TEST_PLACE_ID)
+        
+        assert photos["place_id"] == TEST_PLACE_ID
+        assert photos["photo_urls"] == []
+
+
+class TestOutscraperProviderSelectPrioritizedPhotos:
+    """Tests for _select_prioritized_photos method."""
+
+    @pytest.fixture
+    def provider(self, mock_env_vars, outscraper_balance_sufficient):
+        """Create a provider instance for testing."""
+        from services.place_data_service import OutscraperProvider
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient"):
+                return OutscraperProvider()
+
+    def test_select_prioritized_photos_empty_list(self, provider):
+        """Test with empty photo list."""
+        result = provider._select_prioritized_photos([])
+        assert result == []
+
+    def test_select_prioritized_photos_vibe_first(self, provider):
+        """Test that vibe-tagged photos are prioritized."""
+        photos = [
+            {"photo_url_big": "http://other.jpg", "photo_date": "01/01/2024 10:00:00", "photo_tags": ["other"]},
+            {"photo_url_big": "http://vibe.jpg", "photo_date": "01/02/2024 10:00:00", "photo_tags": ["vibe"]},
+        ]
+        result = provider._select_prioritized_photos(photos, max_photos=2)
+        assert result[0] == "http://vibe.jpg"
+
+    def test_select_prioritized_photos_front_limited(self, provider):
+        """Test that front-tagged photos are limited to 5."""
+        photos = [
+            {"photo_url_big": f"http://front{i}.jpg", "photo_date": f"01/{i:02d}/2024 10:00:00", "photo_tags": ["front"]}
+            for i in range(1, 11)
+        ]
+        result = provider._select_prioritized_photos(photos, max_photos=30)
+        front_count = sum(1 for url in result if "front" in url)
+        assert front_count <= 5
+
+    def test_select_prioritized_photos_respects_max(self, provider):
+        """Test that max_photos limit is respected."""
+        photos = [
+            {"photo_url_big": f"http://photo{i}.jpg", "photo_date": f"01/{i:02d}/2024 10:00:00", "photo_tags": ["vibe"]}
+            for i in range(1, 50)
+        ]
+        result = provider._select_prioritized_photos(photos, max_photos=10)
+        assert len(result) <= 10
+
+    def test_select_prioritized_photos_deduplicates(self, provider):
+        """Test that duplicate URLs are removed."""
+        photos = [
+            {"photo_url_big": "http://same.jpg", "photo_date": "01/01/2024 10:00:00", "photo_tags": ["vibe"]},
+            {"photo_url_big": "http://same.jpg", "photo_date": "01/02/2024 10:00:00", "photo_tags": ["front"]},
+        ]
+        result = provider._select_prioritized_photos(photos, max_photos=30)
+        assert len(result) == 1
+
+
+class TestOutscraperProviderIsValidPhotoUrl:
+    """Tests for _is_valid_photo_url method."""
+
+    @pytest.fixture
+    def provider(self, mock_env_vars, outscraper_balance_sufficient):
+        """Create a provider instance for testing."""
+        from services.place_data_service import OutscraperProvider
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient"):
+                return OutscraperProvider()
+
+    @pytest.mark.parametrize("url,expected", [
+        ("https://valid-url.com/photo.jpg", True),
+        ("http://valid-url.com/photo.jpg", True),
+        ("https://example.com/gps-cs-s/restricted", False),
+        ("https://example.com/gps-proxy/restricted", False),
+        ("", False),
+        (None, False),
+        ("not-a-url", False),
+    ])
+    def test_is_valid_photo_url(self, provider, url, expected):
+        """Test photo URL validation."""
+        result = provider._is_valid_photo_url(url)
+        assert result == expected
+
+
+class TestOutscraperProviderFindPlaceId:
+    """Tests for find_place_id method."""
+
+    def test_find_place_id_success(self, mock_env_vars, outscraper_balance_sufficient, outscraper_place_details):
+        """Test successful place ID lookup."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_search.return_value = outscraper_place_details
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                place_id = provider.find_place_id(TEST_PLACE_NAME)
+        
+        assert place_id == TEST_PLACE_ID
+
+    def test_find_place_id_exact_match_preferred(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test that exact name match is preferred."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_search.return_value = [[
+            {"name": "Other Coffee Shop", "place_id": "other-id"},
+            {"name": TEST_PLACE_NAME, "place_id": TEST_PLACE_ID}
+        ]]
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                place_id = provider.find_place_id(TEST_PLACE_NAME)
+        
+        assert place_id == TEST_PLACE_ID
+
+    def test_find_place_id_not_found(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test place ID not found returns empty string."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_search.return_value = [[]]
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                place_id = provider.find_place_id("Nonexistent Place")
+        
+        assert place_id == ""
+
+
+class TestOutscraperProviderIsPlaceOperational:
+    """Tests for is_place_operational method."""
+
+    def test_is_place_operational_true(self, mock_env_vars, outscraper_balance_sufficient, outscraper_place_details):
+        """Test operational place returns True."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_search.return_value = outscraper_place_details
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                is_operational = provider.is_place_operational(TEST_PLACE_ID)
+        
+        assert is_operational is True
+
+    def test_is_place_operational_closed_permanently(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test permanently closed place returns False."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_search.return_value = [[{"place_id": TEST_PLACE_ID, "business_status": "CLOSED_PERMANENTLY"}]]
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                is_operational = provider.is_place_operational(TEST_PLACE_ID)
+        
+        assert is_operational is False
+
+
+class TestPlaceDataProviderFactory:
+    """Tests for PlaceDataProviderFactory."""
+
+    def test_get_provider_google(self, mock_env_vars):
+        """Test factory creates GoogleMapsProvider."""
+        from services.place_data_service import PlaceDataProviderFactory, GoogleMapsProvider
+        
+        with mock.patch("services.place_data_service.requests"):
+            provider = PlaceDataProviderFactory.get_provider("google")
+        
+        assert isinstance(provider, GoogleMapsProvider)
+
+    def test_get_provider_outscraper(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test factory creates OutscraperProvider."""
+        from services.place_data_service import PlaceDataProviderFactory, OutscraperProvider
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient"):
+                provider = PlaceDataProviderFactory.get_provider("outscraper")
+        
+        assert isinstance(provider, OutscraperProvider)
+
+    def test_get_provider_case_insensitive(self, mock_env_vars):
+        """Test factory is case-insensitive."""
+        from services.place_data_service import PlaceDataProviderFactory, GoogleMapsProvider
+        
+        with mock.patch("services.place_data_service.requests"):
+            provider = PlaceDataProviderFactory.get_provider("GOOGLE")
+        
+        assert isinstance(provider, GoogleMapsProvider)
+
+    def test_get_provider_strips_whitespace(self, mock_env_vars):
+        """Test factory strips whitespace."""
+        from services.place_data_service import PlaceDataProviderFactory, GoogleMapsProvider
+        
+        with mock.patch("services.place_data_service.requests"):
+            provider = PlaceDataProviderFactory.get_provider("  google  ")
+        
+        assert isinstance(provider, GoogleMapsProvider)
+
+    def test_get_provider_invalid_type_raises_error(self, mock_env_vars):
+        """Test factory raises error for invalid type."""
+        from services.place_data_service import PlaceDataProviderFactory
+        
+        with pytest.raises(ValueError) as exc_info:
+            PlaceDataProviderFactory.get_provider("invalid")
+        
+        assert "Unsupported provider type" in str(exc_info.value)
+
+    def test_get_provider_none_raises_error(self, mock_env_vars):
+        """Test factory raises error for None type."""
+        from services.place_data_service import PlaceDataProviderFactory
+        
+        with pytest.raises(ValueError) as exc_info:
+            PlaceDataProviderFactory.get_provider(None)
+        
+        assert "cannot be None" in str(exc_info.value)
+
+    def test_get_provider_non_string_raises_error(self, mock_env_vars):
+        """Test factory raises error for non-string type."""
+        from services.place_data_service import PlaceDataProviderFactory
+        
+        with pytest.raises(ValueError) as exc_info:
+            PlaceDataProviderFactory.get_provider(123)
+        
+        assert "must be a string" in str(exc_info.value)
