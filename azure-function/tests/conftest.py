@@ -8,11 +8,16 @@ This module provides:
 """
 
 import os
+import sys
 import json
 import pytest
 from pathlib import Path
 from unittest import mock
 from typing import Dict, Any
+
+# Add the parent directory (azure-function) to sys.path so tests can import modules
+# This is necessary for CI environments where the working directory structure differs
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
 # =============================================================================
