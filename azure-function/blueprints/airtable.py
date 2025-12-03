@@ -1,5 +1,6 @@
 import json
 import logging
+import re
 import azure.functions as func
 import azure.durable_functions as df
 from services.airtable_service import AirtableService
@@ -444,3 +445,225 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
             "error": str(ex)
         }
         return error_response
+
+
+# ======================================================
+# Airtable Health Check / Data Quality Functions
+# ======================================================
+
+
+def _validate_place_id_format(place_id: str) -> tuple[bool, str]:
+    """
+    Validate that a string looks like a valid Google Maps Place ID.
+    
+    Based on Google's documentation, Place IDs:
+    - Are alphanumeric with underscores and hyphens
+    - Have no spaces
+    - Typically start with ChIJ, GhIJ, or other prefixes
+    - Are usually 20+ characters but can be longer (no max length)
+    
+    Args:
+        place_id: The Place ID string to validate
+        
+    Returns:
+        Tuple of (is_valid, error_message)
+    """
+    if not place_id:
+        return False, "Empty Place ID"
+    
+    if ' ' in place_id:
+        return False, "Contains spaces"
+    
+    # Place IDs should only contain alphanumeric, underscore, hyphen, and sometimes equals
+    # Based on examples: ChIJgUbEo8cfqokR5lP9_Wh_DaM, EicxMyBNYXJr...
+    if not re.match(r'^[A-Za-z0-9_\-=]+$', place_id):
+        return False, "Contains invalid characters (only alphanumeric, underscore, hyphen, equals allowed)"
+    
+    # Most valid Place IDs are at least 20 characters
+    if len(place_id) < 20:
+        return False, f"Too short ({len(place_id)} chars, expected 20+)"
+    
+    # Common prefixes for Google Place IDs
+    valid_prefixes = ('ChIJ', 'GhIJ', 'EicxM', 'Eiox', 'EpID', 'IhoS')
+    if not place_id.startswith(valid_prefixes):
+        # Not an error, just a warning - some valid IDs have other formats
+        return True, f"Unusual prefix (expected ChIJ/GhIJ/E.../I..., got {place_id[:4]})"
+    
+    return True, ""
+
+
+def _check_required_fields(record: dict, required_fields: list[str]) -> list[dict]:
+    """
+    Check if a record has all required fields populated.
+    
+    Args:
+        record: Airtable record with 'fields' dict
+        required_fields: List of field names that must be non-empty
+        
+    Returns:
+        List of issues found (empty if all fields present)
+    """
+    issues = []
+    fields = record.get("fields", {})
+    record_id = record.get("id", "unknown")
+    place_name = fields.get("Place", "Unknown Place")
+    
+    for field_name in required_fields:
+        value = fields.get(field_name)
+        if not value or (isinstance(value, str) and not value.strip()):
+            issues.append({
+                "recordId": record_id,
+                "placeName": place_name,
+                "field": field_name,
+                "issue": "Missing or empty"
+            })
+    
+    return issues
+
+
+@bp.function_name(name="AirtableHealthCheck")
+@bp.route(route="airtable/health", methods=["GET"])
+def airtable_health_check(req: func.HttpRequest) -> func.HttpResponse:
+    """
+    Perform data quality checks on Airtable records.
+    
+    Checks performed:
+    1. Duplicate Google Maps Place IDs
+    2. Invalid Place ID format (spaces, invalid characters, too short)
+    3. Missing required fields (Place, Address, Type, Neighborhood, 
+       Google Maps Place Id, Google Maps Profile URL, Apple Maps Profile URL)
+    
+    Returns a detailed report of all data quality issues found.
+    """
+    logging.info("Airtable health check requested")
+    
+    # Required fields that must be non-empty
+    required_fields = [
+        "Place",
+        "Address", 
+        "Type",
+        "Neighborhood",
+        "Google Maps Place Id",
+        "Google Maps Profile URL",
+        "Apple Maps Profile URL"
+    ]
+    
+    report = {
+        "status": "healthy",
+        "summary": {
+            "totalRecords": 0,
+            "duplicatePlaceIds": {"count": 0, "description": "Records with duplicate Google Maps Place IDs"},
+            "invalidPlaceIds": {"count": 0, "description": "Records with invalid Place ID format"},
+            "missingFields": {"count": 0, "description": "Records missing required fields"},
+            "totalIssues": {"count": 0, "description": "Total number of data quality issues"}
+        },
+        "issues": {
+            "duplicatePlaceIds": [],
+            "invalidPlaceIds": [],
+            "missingFields": []
+        },
+        "requiredFields": required_fields
+    }
+    
+    try:
+        # Get Airtable records
+        view = req.params.get('view', 'Production')
+        airtable_service = AirtableService(view=view)
+        records = airtable_service.all_third_places
+        
+        if not records:
+            report["summary"]["totalRecords"] = 0
+            return func.HttpResponse(
+                json.dumps(report, indent=2),
+                status_code=200,
+                mimetype="application/json"
+            )
+        
+        report["summary"]["totalRecords"] = len(records)
+        
+        # Track Place IDs for duplicate detection
+        place_id_occurrences = {}  # place_id -> list of records
+        
+        for record in records:
+            fields = record.get("fields", {})
+            record_id = record.get("id", "unknown")
+            place_name = fields.get("Place", "Unknown Place")
+            place_id = fields.get("Google Maps Place Id", "")
+            
+            # 1. Check for duplicate Place IDs
+            if place_id:
+                if place_id not in place_id_occurrences:
+                    place_id_occurrences[place_id] = []
+                place_id_occurrences[place_id].append({
+                    "recordId": record_id,
+                    "placeName": place_name
+                })
+            
+            # 2. Validate Place ID format
+            if place_id:
+                is_valid, error_msg = _validate_place_id_format(place_id)
+                if not is_valid or error_msg:
+                    report["issues"]["invalidPlaceIds"].append({
+                        "recordId": record_id,
+                        "placeName": place_name,
+                        "placeId": place_id,
+                        "issue": error_msg,
+                        "isError": not is_valid  # False = warning, True = error
+                    })
+            
+            # 3. Check required fields
+            missing_field_issues = _check_required_fields(record, required_fields)
+            report["issues"]["missingFields"].extend(missing_field_issues)
+        
+        # Process duplicate Place IDs
+        for place_id, occurrences in place_id_occurrences.items():
+            if len(occurrences) > 1:
+                report["issues"]["duplicatePlaceIds"].append({
+                    "placeId": place_id,
+                    "occurrences": occurrences,
+                    "count": len(occurrences)
+                })
+        
+        # Update summary counts
+        report["summary"]["duplicatePlaceIds"]["count"] = len(report["issues"]["duplicatePlaceIds"])
+        report["summary"]["invalidPlaceIds"]["count"] = len([
+            i for i in report["issues"]["invalidPlaceIds"] if i.get("isError", True)
+        ])
+        report["summary"]["missingFields"]["count"] = len(report["issues"]["missingFields"])
+        
+        # Calculate total issues (only count actual errors, not warnings)
+        total_issues = (
+            report["summary"]["duplicatePlaceIds"]["count"] +
+            report["summary"]["invalidPlaceIds"]["count"] +
+            report["summary"]["missingFields"]["count"]
+        )
+        report["summary"]["totalIssues"]["count"] = total_issues
+        
+        # Determine overall status
+        if total_issues > 0:
+            report["status"] = "unhealthy"
+        else:
+            # Check for warnings (like unusual prefixes)
+            warnings = [i for i in report["issues"]["invalidPlaceIds"] if not i.get("isError", True)]
+            if warnings:
+                report["status"] = "healthy_with_warnings"
+        
+        logging.info(f"Airtable health check complete: {total_issues} issues found")
+        
+        return func.HttpResponse(
+            json.dumps(report, indent=2),
+            status_code=200,
+            mimetype="application/json"
+        )
+        
+    except Exception as e:
+        logging.error(f"Error during Airtable health check: {e}", exc_info=True)
+        return func.HttpResponse(
+            json.dumps({
+                "status": "error",
+                "error": str(e),
+                "message": "Failed to complete Airtable health check"
+            }, indent=2),
+            status_code=500,
+            mimetype="application/json"
+        )

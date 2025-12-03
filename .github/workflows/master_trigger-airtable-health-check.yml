@@ -1,0 +1,241 @@
+name: Trigger Airtable Health Check
+
+on:
+  workflow_call:
+    inputs:
+      view:
+        description: 'Airtable view to check (default: Production)'
+        required: false
+        default: 'Production'
+        type: string
+  workflow_dispatch:
+    inputs:
+      view:
+        description: 'Airtable view to check (default: Production)'
+        required: false
+        default: 'Production'
+        type: string
+
+concurrency: 
+  group: airtable-health-check
+  cancel-in-progress: true
+
+jobs:
+  trigger-airtable-health-check:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Invoke Health Check
+        id: invoke_script
+        shell: pwsh
+        working-directory: ./scripts
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          $view = "${{ inputs.view }}"
+          if ([string]::IsNullOrWhiteSpace($view)) {
+            $view = "Production"
+          }
+          
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/airtable/health?view=$view"
+          
+          Write-Host "Using function URL: $FunctionUrl"
+          
+          $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
+          
+          # Call the health check using the standard script and capture its output
+          $scriptOutput = ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -Method GET -TimeoutSeconds 900 | Out-String
+          $scriptExitCode = $LASTEXITCODE
+          
+          # Print the output so it appears in logs
+          Write-Host $scriptOutput
+          
+          # Parse the JSON from the script output (it prints "Response Body:" followed by JSON)
+          try {
+            if ($scriptOutput -match "Response Body:\s*(\{[\s\S]*\})") {
+              $jsonString = $Matches[1]
+              $response = $jsonString | ConvertFrom-Json
+              
+              $status = $response.status
+              $totalRecords = $response.summary.totalRecords
+              $duplicateCount = $response.summary.duplicatePlaceIds.count
+              $invalidCount = $response.summary.invalidPlaceIds.count
+              $missingFieldsCount = $response.summary.missingFields.count
+              $totalIssues = $response.summary.totalIssues.count
+              
+              # --- GENERATE GITHUB SUMMARY ---
+              echo "## Airtable Data Quality Report" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              
+              # Status section
+              if ($status -eq "healthy") {
+                echo "### ✅ Status: Healthy" >> $env:GITHUB_STEP_SUMMARY
+                echo "All $totalRecords records pass data quality checks." >> $env:GITHUB_STEP_SUMMARY
+              } elseif ($status -eq "healthy_with_warnings") {
+                echo "### ⚠️ Status: Healthy with Warnings" >> $env:GITHUB_STEP_SUMMARY
+                echo "Data is valid but has some unusual patterns worth reviewing." >> $env:GITHUB_STEP_SUMMARY
+              } else {
+                echo "### ❌ Status: Issues Found" >> $env:GITHUB_STEP_SUMMARY
+                echo "**$totalIssues data quality issues** require attention." >> $env:GITHUB_STEP_SUMMARY
+              }
+              
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "### Summary" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "| Check | Count | Status |" >> $env:GITHUB_STEP_SUMMARY
+              echo "|-------|-------|--------|" >> $env:GITHUB_STEP_SUMMARY
+              echo "| **Total Records** | $totalRecords | - |" >> $env:GITHUB_STEP_SUMMARY
+              
+              $dupStatus = if ($duplicateCount -eq 0) { "✅" } else { "❌" }
+              echo "| **Duplicate Place IDs** | $duplicateCount | $dupStatus |" >> $env:GITHUB_STEP_SUMMARY
+              
+              $invalidStatus = if ($invalidCount -eq 0) { "✅" } else { "❌" }
+              echo "| **Invalid Place ID Format** | $invalidCount | $invalidStatus |" >> $env:GITHUB_STEP_SUMMARY
+              
+              $missingStatus = if ($missingFieldsCount -eq 0) { "✅" } else { "❌" }
+              echo "| **Missing Required Fields** | $missingFieldsCount | $missingStatus |" >> $env:GITHUB_STEP_SUMMARY
+              
+              # Duplicate Place IDs section
+              if ($duplicateCount -gt 0) {
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "### ❌ Duplicate Place IDs ($duplicateCount)" >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "These Place IDs appear in multiple Airtable records. Each Place ID should be unique." >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                
+                foreach ($dup in $response.issues.duplicatePlaceIds) {
+                  echo "**Place ID:** ``$($dup.placeId)`` (appears $($dup.count) times)" >> $env:GITHUB_STEP_SUMMARY
+                  echo "" >> $env:GITHUB_STEP_SUMMARY
+                  echo "| Record ID | Place Name |" >> $env:GITHUB_STEP_SUMMARY
+                  echo "|-----------|------------|" >> $env:GITHUB_STEP_SUMMARY
+                  foreach ($occ in $dup.occurrences) {
+                    # Escape pipe characters in place name
+                    $escapedName = $occ.placeName -replace '\|', '\|'
+                    echo "| $($occ.recordId) | $escapedName |" >> $env:GITHUB_STEP_SUMMARY
+                  }
+                  echo "" >> $env:GITHUB_STEP_SUMMARY
+                }
+              }
+              
+              # Invalid Place ID format section
+              $invalidErrors = $response.issues.invalidPlaceIds | Where-Object { $_.isError -eq $true }
+              $invalidWarnings = $response.issues.invalidPlaceIds | Where-Object { $_.isError -eq $false }
+              
+              if ($invalidErrors.Count -gt 0) {
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "### ❌ Invalid Place ID Format ($($invalidErrors.Count))" >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "These Place IDs have format issues that need to be fixed." >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "| Place Name | Place ID | Issue |" >> $env:GITHUB_STEP_SUMMARY
+                echo "|------------|----------|-------|" >> $env:GITHUB_STEP_SUMMARY
+                foreach ($invalid in $invalidErrors) {
+                  # Escape pipe characters in place name
+                  $escapedName = $invalid.placeName -replace '\|', '\|'
+                  echo "| $escapedName | ``$($invalid.placeId)`` | $($invalid.issue) |" >> $env:GITHUB_STEP_SUMMARY
+                }
+              }
+              
+              if ($invalidWarnings.Count -gt 0) {
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "### ⚠️ Place ID Warnings ($($invalidWarnings.Count))" >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "These Place IDs are valid but have unusual patterns." >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "| Place Name | Place ID | Note |" >> $env:GITHUB_STEP_SUMMARY
+                echo "|------------|----------|------|" >> $env:GITHUB_STEP_SUMMARY
+                foreach ($warn in $invalidWarnings) {
+                  # Escape pipe characters in place name
+                  $escapedName = $warn.placeName -replace '\|', '\|'
+                  echo "| $escapedName | ``$($warn.placeId)`` | $($warn.issue) |" >> $env:GITHUB_STEP_SUMMARY
+                }
+              }
+              
+              # Missing required fields section
+              if ($missingFieldsCount -gt 0) {
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "### ❌ Missing Required Fields ($missingFieldsCount)" >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                echo "These records are missing data in required fields." >> $env:GITHUB_STEP_SUMMARY
+                echo "" >> $env:GITHUB_STEP_SUMMARY
+                
+                # Group by place for readability
+                $byPlace = $response.issues.missingFields | Group-Object -Property placeName
+                
+                if ($byPlace.Count -le 20) {
+                  echo "| Place Name | Missing Field |" >> $env:GITHUB_STEP_SUMMARY
+                  echo "|------------|---------------|" >> $env:GITHUB_STEP_SUMMARY
+                  foreach ($issue in $response.issues.missingFields) {
+                    # Escape pipe characters in place name
+                    $escapedName = $issue.placeName -replace '\|', '\|'
+                    echo "| $escapedName | $($issue.field) |" >> $env:GITHUB_STEP_SUMMARY
+                  }
+                } else {
+                  echo "<details>" >> $env:GITHUB_STEP_SUMMARY
+                  echo "<summary>Click to expand ($missingFieldsCount issues)</summary>" >> $env:GITHUB_STEP_SUMMARY
+                  echo "" >> $env:GITHUB_STEP_SUMMARY
+                  echo "| Place Name | Missing Field |" >> $env:GITHUB_STEP_SUMMARY
+                  echo "|------------|---------------|" >> $env:GITHUB_STEP_SUMMARY
+                  foreach ($issue in $response.issues.missingFields) {
+                    # Escape pipe characters in place name
+                    $escapedName = $issue.placeName -replace '\|', '\|'
+                    echo "| $escapedName | $($issue.field) |" >> $env:GITHUB_STEP_SUMMARY
+                  }
+                  echo "" >> $env:GITHUB_STEP_SUMMARY
+                  echo "</details>" >> $env:GITHUB_STEP_SUMMARY
+                }
+              }
+              
+              # Required fields reference
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "### Required Fields" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "Every record must have non-empty values for:" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              foreach ($field in $response.requiredFields) {
+                echo "- $field" >> $env:GITHUB_STEP_SUMMARY
+              }
+              
+              # Place ID format info
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "### Place ID Format" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "Valid Google Maps Place IDs:" >> $env:GITHUB_STEP_SUMMARY
+              echo "- Contain only letters, numbers, underscores, hyphens, and equals signs" >> $env:GITHUB_STEP_SUMMARY
+              echo "- Have no spaces" >> $env:GITHUB_STEP_SUMMARY
+              echo "- Are typically 20+ characters" >> $env:GITHUB_STEP_SUMMARY
+              echo "- Usually start with ``ChIJ``, ``GhIJ``, or similar prefixes" >> $env:GITHUB_STEP_SUMMARY
+              
+              Write-Host "Summary generated successfully."
+            }
+            else {
+              Write-Warning "Could not find JSON output in script response"
+              echo "## Airtable Data Quality Report" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "Summary generation failed - could not parse script output." >> $env:GITHUB_STEP_SUMMARY
+            }
+          }
+          catch {
+            Write-Warning "Failed to generate summary: $_"
+            echo "## Airtable Data Quality Report" >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "Summary generation failed. Check the workflow logs for details." >> $env:GITHUB_STEP_SUMMARY
+          }
+          
+          # Exit with the original script's exit code
+          if ($scriptExitCode -ne 0) {
+            Write-Error "Health check failed."
+            exit $scriptExitCode
+          } else {
+            Write-Host "Health check completed successfully." -ForegroundColor Green
+          }
+
+      - name: Check Script Result
+        if: always()
+        run: |
+          echo "Script execution completed with status: ${{ steps.invoke_script.outcome }}"
+          if ("${{ steps.invoke_script.outcome }}" -ne "success") {
+            exit 1
+          }
