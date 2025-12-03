@@ -90,6 +90,20 @@ jobs:
               foreach ($discrepancy in $response.discrepancies) {
                 Write-Host "- [$($discrepancy.type)] $($discrepancy.description)" -ForegroundColor Yellow
                 Write-Host "  Action: $($discrepancy.action)" -ForegroundColor Gray
+                
+                # Show missing places if available
+                if ($discrepancy.missingFromCosmos) {
+                  Write-Host "  Missing from Cosmos:" -ForegroundColor Red
+                  foreach ($place in $discrepancy.missingFromCosmos) {
+                    Write-Host "    - $($place.placeName) ($($place.placeId))" -ForegroundColor Red
+                  }
+                }
+                if ($discrepancy.missingFromAirtable) {
+                  Write-Host "  In Cosmos but not in Airtable:" -ForegroundColor Magenta
+                  foreach ($placeId in $discrepancy.missingFromAirtable) {
+                    Write-Host "    - $placeId" -ForegroundColor Magenta
+                  }
+                }
               }
             }
             
@@ -140,6 +154,24 @@ jobs:
             echo "| Errors | $errorCount | Data source connectivity issues |" >> $env:GITHUB_STEP_SUMMARY
             echo "| Discrepancies | $discrepancyCount | Data sync issues needing attention |" >> $env:GITHUB_STEP_SUMMARY
             echo "| Orphaned Files | $orphanedFileCount | JSON files from deleted places (informational) |" >> $env:GITHUB_STEP_SUMMARY
+            
+            # Add missing places section if there's a cosmos_vs_airtable discrepancy with details
+            $cosmosDiscrepancy = $response.discrepancies | Where-Object { $_.type -eq "cosmos_vs_airtable" }
+            if ($cosmosDiscrepancy -and $cosmosDiscrepancy.missingFromCosmos) {
+              $missingCount = $cosmosDiscrepancy.missingFromCosmos.Count
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "### ⚠️ Places Missing from Cosmos DB ($missingCount)" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "These places exist in Airtable but have not been synced to Cosmos DB:" >> $env:GITHUB_STEP_SUMMARY
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "| Place Name | Place ID |" >> $env:GITHUB_STEP_SUMMARY
+              echo "|------------|----------|" >> $env:GITHUB_STEP_SUMMARY
+              foreach ($place in $cosmosDiscrepancy.missingFromCosmos) {
+                echo "| $($place.placeName) | $($place.placeId) |" >> $env:GITHUB_STEP_SUMMARY
+              }
+              echo "" >> $env:GITHUB_STEP_SUMMARY
+              echo "**Action:** Run ``cosmos/sync-places`` to sync these places." >> $env:GITHUB_STEP_SUMMARY
+            }
             
             # Add orphaned files list if any exist
             if ($orphanedFileCount -gt 0) {
