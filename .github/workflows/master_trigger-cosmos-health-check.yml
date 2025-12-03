@@ -110,7 +110,9 @@ jobs:
                 echo "| Place Name | Place ID |" >> $env:GITHUB_STEP_SUMMARY
                 echo "|------------|----------|" >> $env:GITHUB_STEP_SUMMARY
                 foreach ($place in $cosmosDiscrepancy.missingFromCosmos) {
-                  echo "| $($place.placeName) | $($place.placeId) |" >> $env:GITHUB_STEP_SUMMARY
+                  # Escape pipe characters in place name to prevent Markdown table breakage
+                  $escapedName = $place.placeName -replace '\|', '\|'
+                  echo "| $escapedName | $($place.placeId) |" >> $env:GITHUB_STEP_SUMMARY
                 }
                 echo "" >> $env:GITHUB_STEP_SUMMARY
                 echo "**Action:** Run ``cosmos/sync-places`` to sync these places." >> $env:GITHUB_STEP_SUMMARY

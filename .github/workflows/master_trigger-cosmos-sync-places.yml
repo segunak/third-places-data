@@ -156,10 +156,11 @@ jobs:
                   echo "| Place Name | Place ID | Chunks |" >> $env:GITHUB_STEP_SUMMARY
                   echo "|------------|----------|--------|" >> $env:GITHUB_STEP_SUMMARY
                   foreach ($place in $output.placeDetails) {
-                    $name = $place.placeName
+                    # Escape pipe characters in place name to prevent Markdown table breakage
+                    $escapedName = $place.placeName -replace '\|', '\|'
                     $id = $place.placeId
                     $chunks = $place.chunksProcessed
-                    echo "| $name | ``$id`` | $chunks |" >> $env:GITHUB_STEP_SUMMARY
+                    echo "| $escapedName | ``$id`` | $chunks |" >> $env:GITHUB_STEP_SUMMARY
                   }
                 }
                 
@@ -179,9 +180,10 @@ jobs:
                   echo "| Place Name | Reason |" >> $env:GITHUB_STEP_SUMMARY
                   echo "|------------|--------|" >> $env:GITHUB_STEP_SUMMARY
                   foreach ($place in $output.skippedPlaces) {
-                    $name = $place.placeName
+                    # Escape pipe characters in place name to prevent Markdown table breakage
+                    $escapedName = $place.placeName -replace '\|', '\|'
                     $reason = $place.reason
-                    echo "| $name | $reason |" >> $env:GITHUB_STEP_SUMMARY
+                    echo "| $escapedName | $reason |" >> $env:GITHUB_STEP_SUMMARY
                   }
                   if ($placesSkipped -gt 20) {
                     echo "" >> $env:GITHUB_STEP_SUMMARY
