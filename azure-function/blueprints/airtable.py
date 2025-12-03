@@ -567,8 +567,9 @@ def airtable_health_check(req: func.HttpRequest) -> func.HttpResponse:
     
     try:
         # Get Airtable records
+        # Note: provider_type is required by AirtableService but not used for read-only operations
         view = req.params.get('view', 'Production')
-        airtable_service = AirtableService(view=view)
+        airtable_service = AirtableService(provider_type="google", view=view)
         records = airtable_service.all_third_places
         
         if not records:
