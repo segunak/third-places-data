@@ -793,12 +793,43 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
     if cosmos_places_count is not None and airtable_count is not None:
         diff = airtable_count - cosmos_places_count
         if diff != 0:
-            report["discrepancies"].append({
+            # Identify exactly which places are mismatched
+            missing_from_cosmos = []
+            missing_from_airtable = []
+            try:
+                cosmos_place_ids = set(cosmos_service.get_all_place_ids())
+                # airtable_place_ids was already collected above for orphan detection
+                
+                missing_from_cosmos = [
+                    {"placeId": pid, "placeName": next(
+                        (r.get("fields", {}).get("Place", "Unknown") 
+                         for r in airtable_records 
+                         if r.get("fields", {}).get("Google Maps Place Id") == pid),
+                        "Unknown"
+                    )}
+                    for pid in (airtable_place_ids - cosmos_place_ids)
+                ]
+                missing_from_airtable = list(cosmos_place_ids - airtable_place_ids)
+                
+                logger.info(f"Place ID comparison: {len(airtable_place_ids)} in Airtable, {len(cosmos_place_ids)} in Cosmos")
+                logger.info(f"Missing from Cosmos: {missing_from_cosmos}")
+                logger.info(f"Missing from Airtable (in Cosmos but not Airtable): {missing_from_airtable}")
+            except Exception as e:
+                logger.error(f"Error comparing place IDs: {e}")
+            
+            discrepancy_details = {
                 "type": "cosmos_vs_airtable",
                 "description": f"Cosmos has {cosmos_places_count} places, Airtable has {airtable_count} records",
                 "difference": diff,
                 "action": "Run cosmos/sync-places to sync missing places" if diff > 0 else "Check for deleted Airtable records"
-            })
+            }
+            
+            if missing_from_cosmos:
+                discrepancy_details["missingFromCosmos"] = missing_from_cosmos
+            if missing_from_airtable:
+                discrepancy_details["missingFromAirtable"] = missing_from_airtable
+                
+            report["discrepancies"].append(discrepancy_details)
     
     if airtable_count is not None and github_count is not None:
         has_data_file_count = report.get("sources", {}).get("airtable", {}).get("recordsWithDataFile", 0)
