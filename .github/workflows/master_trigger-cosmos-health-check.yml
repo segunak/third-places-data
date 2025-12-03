@@ -46,7 +46,7 @@ jobs:
           $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
           
           # Call the health check using the standard script and capture its output
-          $scriptOutput = ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 900 | Out-String
+          $scriptOutput = ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -Method GET -TimeoutSeconds 900 | Out-String
           $scriptExitCode = $LASTEXITCODE
           
           # Print the output so it appears in logs

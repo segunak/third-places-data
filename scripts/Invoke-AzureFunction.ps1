@@ -9,6 +9,10 @@ param(
     [string]$RequestBody,
 
     [Parameter(Mandatory = $false)]
+    [ValidateSet("GET", "POST", "PUT", "DELETE")]
+    [string]$Method = "POST",
+
+    [Parameter(Mandatory = $false)]
     [int]$TimeoutSeconds = 3600 # 1 hour default timeout
 )
 
@@ -30,8 +34,12 @@ try {
         $body = $RequestBody
     }
 
-    # Make the POST request
-    $response = Invoke-WebRequest -Uri $FunctionUrl -Method POST -Headers $headers -Body $body -TimeoutSec $TimeoutSeconds -UseBasicParsing
+    # Make the request
+    if ($Method -eq "GET") {
+        $response = Invoke-WebRequest -Uri $FunctionUrl -Method GET -Headers $headers -TimeoutSec $TimeoutSeconds -UseBasicParsing
+    } else {
+        $response = Invoke-WebRequest -Uri $FunctionUrl -Method $Method -Headers $headers -Body $body -TimeoutSec $TimeoutSeconds -UseBasicParsing
+    }
 
     Write-Output "Function call completed. Status Code: $($response.StatusCode) $($response.StatusDescription)"
 
