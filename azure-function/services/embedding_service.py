@@ -97,104 +97,66 @@ class EmbeddingService:
         return embeddings[0]
 
 
-def format_field_for_embedding(field_name: str, value: Any) -> Optional[str]:
+def sanitize_field_value(value: str) -> str:
     """
-    Format a field value for inclusion in embedding text.
+    Sanitize a field value for embedding text.
     
-    Handles special formatting for different field types:
-    - Booleans: "field_name: yes/no"
-    - Lists: comma-separated values
-    - Dicts (about): flattened key-value pairs
-    - Strings: as-is or with label prefix for certain fields
+    - Replaces newlines (\n, \r\n, \r) with single space
+    - Collapses multiple consecutive spaces into one
+    - Strips leading/trailing whitespace
     
     Args:
-        field_name: The Cosmos DB field name.
+        value: The string value to sanitize.
+        
+    Returns:
+        Sanitized string.
+    """
+    import re
+    
+    # Replace all newline variants with space
+    result = value.replace('\r\n', ' ').replace('\n', ' ').replace('\r', ' ')
+    
+    # Collapse multiple spaces into one
+    result = re.sub(r' +', ' ', result)
+    
+    # Strip leading/trailing whitespace
+    return result.strip()
+
+
+def format_field_for_embedding(field_name: str, value: Any) -> Optional[str]:
+    """
+    Format a single field value for inclusion in embedding text.
+    
+    Called once per field during embedding composition. Returns a formatted
+    string like "fieldName: value" for the field, or None if the field is
+    empty/missing (in which case it's simply skipped in the final output).
+    
+    Special formatting for complex types:
+    - Lists: comma-separated values
+    - about dict: flattened nested key-value pairs
+    - workingHours dict: "Day HH:MM" format
+    - popularTimes list: summarized peak hours per day
+    
+    All other fields: "fieldName: value" with sanitized string value.
+    
+    Args:
+        field_name: The Cosmos DB field name (used as the label).
         value: The field value (any type).
         
     Returns:
-        Formatted string for embedding, or None if value is empty/None.
+        Formatted string like "fieldName: value", or None if empty/missing.
     """
     if value is None:
         return None
     
-    # Boolean fields - format as "field: yes/no"
-    boolean_fields = {"freeWifi", "hasCinnamonRolls", "purchaseRequired"}
-    if field_name in boolean_fields:
-        if value is True:
-            # Convert camelCase to readable label
-            labels = {
-                "freeWifi": "free wifi",
-                "hasCinnamonRolls": "has cinnamon rolls",
-                "purchaseRequired": "purchase required"
-            }
-            return f"{labels.get(field_name, field_name)}: yes"
-        elif value is False:
-            labels = {
-                "freeWifi": "free wifi",
-                "hasCinnamonRolls": "has cinnamon rolls",
-                "purchaseRequired": "purchase required"
-            }
-            return f"{labels.get(field_name, field_name)}: no"
-        return None
-    
-    # Labeled string fields - format as "field: value"
-    labeled_fields = {"size"}
-    if field_name in labeled_fields:
-        if value:
-            return f"{field_name}: {value}"
-        return None
-    
-    # List fields - join with commas (some with label prefix for context)
-    list_fields = {"tags", "type", "reviewsTags", "parking"}
-    if field_name in list_fields:
-        if isinstance(value, list):
-            if value:
-                joined = ", ".join(str(v) for v in value)
-                # Add label prefix for fields that need context
-                if field_name == "parking":
-                    return f"parking: {joined}"
-                return joined
-            return None
-        elif value:
-            # Single value (not a list)
-            if field_name == "parking":
-                return f"parking: {value}"
-            return str(value)
-        return None
-    
-    # About field - flatten nested dict
-    if field_name == "about":
-        if isinstance(value, dict):
-            about_parts = []
-            for category, features in value.items():
-                if isinstance(features, dict):
-                    for feature, feat_value in features.items():
-                        if feat_value is True:
-                            about_parts.append(f"{feature}: yes")
-                        elif feat_value is False:
-                            about_parts.append(f"{feature}: no")
-                elif features:
-                    about_parts.append(f"{category}: {features}")
-            if about_parts:
-                return ", ".join(about_parts)
-        return None
-    
-    # Working hours - format as "hours: Monday 7am-3pm, Tuesday 7am-3pm, ..."
-    if field_name == "workingHours":
-        if isinstance(value, dict) and value:
-            hours_parts = []
-            for day, hours in value.items():
-                if hours:
-                    hours_parts.append(f"{day} {hours}")
-            if hours_parts:
-                return "hours: " + ", ".join(hours_parts)
-        return None
-    
-    # Popular times - summarize peak hours per day
-    if field_name == "popularTimes":
-        if isinstance(value, list) and value:
+    # List fields - join with commas
+    if isinstance(value, list):
+        # Special case: popularTimes has nested structure
+        if field_name == "popularTimes" and value:
             popular_parts = []
             for day_data in value:
+                if not isinstance(day_data, dict):
+                    continue
                 day_text = day_data.get("day_text")
                 popular_times_list = day_data.get("popular_times", [])
                 
@@ -205,20 +167,53 @@ def format_field_for_embedding(field_name: str, value: Any) -> Optional[str]:
                         peak_hours.append(pt.get("time", ""))
                 
                 if day_text and peak_hours:
-                    # Dedupe and format peak times
                     unique_peaks = list(dict.fromkeys(peak_hours))
                     popular_parts.append(f"{day_text} busy at {', '.join(unique_peaks)}")
             
-            if popular_parts:
-                return "busy times: " + "; ".join(popular_parts)
+            return f"{field_name}: {'; '.join(popular_parts)}" if popular_parts else None
+        
+        # Regular list - join non-empty values with commas
+        if value:
+            joined = ", ".join(sanitize_field_value(str(v)) for v in value if v)
+            return f"{field_name}: {joined}" if joined else None
         return None
     
-    # Plain string fields - return as-is
-    if isinstance(value, str):
-        return value if value.strip() else None
+    # Dict fields - flatten to key-value pairs
+    if isinstance(value, dict):
+        # Special case: about has nested dicts with boolean values
+        if field_name == "about":
+            about_parts = []
+            for category, features in value.items():
+                if isinstance(features, dict):
+                    for feature, feat_value in features.items():
+                        if feat_value is True:
+                            about_parts.append(f"{feature}: yes")
+                        elif feat_value is False:
+                            about_parts.append(f"{feature}: no")
+                elif features:
+                    sanitized = sanitize_field_value(str(features))
+                    if sanitized:
+                        about_parts.append(f"{category}: {sanitized}")
+            return f"{field_name}: {', '.join(about_parts)}" if about_parts else None
+        
+        # workingHours - format as "Day HH:MM"
+        if field_name == "workingHours" and value:
+            hours_parts = [f"{day} {hours}" for day, hours in value.items() if hours]
+            return f"{field_name}: {', '.join(hours_parts)}" if hours_parts else None
+        
+        # Generic dict - just stringify (unlikely to hit this)
+        return None
     
-    # Fallback for any other types
-    return str(value) if value else None
+    # String and other scalar types - sanitize and return with label
+    if isinstance(value, str):
+        sanitized = sanitize_field_value(value)
+        # Use 'placeName' instead of 'place' for clarity in embeddings
+        label = "placeName" if field_name == "place" else field_name
+        return f"{label}: {sanitized}" if sanitized else None
+    
+    # Fallback for other types (int, float, bool, etc.)
+    sanitized = sanitize_field_value(str(value))
+    return f"{field_name}: {sanitized}" if sanitized else None
 
 
 def compose_place_embedding_text(place_doc: Dict[str, Any]) -> str:
@@ -246,8 +241,8 @@ def compose_place_embedding_text(place_doc: Dict[str, Any]) -> str:
         if formatted:
             parts.append(formatted)
     
-    # Join all parts with separator
-    embedding_text = " | ".join(parts)
+    # Join all parts with newline separator for readability
+    embedding_text = "\n".join(parts)
     
     return embedding_text
 

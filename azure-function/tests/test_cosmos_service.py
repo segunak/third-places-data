@@ -338,12 +338,12 @@ class TestComposePlaceEmbeddingText(unittest.TestCase):
         self.assertIn("Delivery: no", result)
         
     def test_compose_with_separator(self):
-        """Test that fields are joined with pipe separator."""
+        """Test that fields are joined with newline separator."""
         place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
         result = compose_place_embedding_text(place_doc)
         
-        # Should use pipe separator
-        self.assertIn(" | ", result)
+        # Should use newline separator
+        self.assertIn("\n", result)
         
     def test_compose_minimal_place(self):
         """Test composition with minimal fields."""
@@ -353,7 +353,7 @@ class TestComposePlaceEmbeddingText(unittest.TestCase):
         }
         result = compose_place_embedding_text(minimal_doc)
         
-        self.assertEqual(result, "Test Place")
+        self.assertEqual(result, "placeName: Test Place")
 
 
 class TestComposeChunkEmbeddingText(unittest.TestCase):
@@ -451,16 +451,16 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
     """Test suite for format_field_for_embedding function covering all field types."""
 
     def test_boolean_field_true(self):
-        """Test boolean fields formatted as 'label: yes' when True."""
-        self.assertEqual(format_field_for_embedding("freeWifi", True), "free wifi: yes")
-        self.assertEqual(format_field_for_embedding("hasCinnamonRolls", True), "has cinnamon rolls: yes")
-        self.assertEqual(format_field_for_embedding("purchaseRequired", True), "purchase required: yes")
+        """Test boolean fields stringify to 'True'."""
+        self.assertEqual(format_field_for_embedding("freeWifi", True), "freeWifi: True")
+        self.assertEqual(format_field_for_embedding("hasCinnamonRolls", True), "hasCinnamonRolls: True")
+        self.assertEqual(format_field_for_embedding("purchaseRequired", True), "purchaseRequired: True")
 
     def test_boolean_field_false(self):
-        """Test boolean fields formatted as 'label: no' when False."""
-        self.assertEqual(format_field_for_embedding("freeWifi", False), "free wifi: no")
-        self.assertEqual(format_field_for_embedding("hasCinnamonRolls", False), "has cinnamon rolls: no")
-        self.assertEqual(format_field_for_embedding("purchaseRequired", False), "purchase required: no")
+        """Test boolean fields stringify to 'False'."""
+        self.assertEqual(format_field_for_embedding("freeWifi", False), "freeWifi: False")
+        self.assertEqual(format_field_for_embedding("hasCinnamonRolls", False), "hasCinnamonRolls: False")
+        self.assertEqual(format_field_for_embedding("purchaseRequired", False), "purchaseRequired: False")
 
     def test_boolean_field_none(self):
         """Test boolean fields return None when value is None."""
@@ -477,16 +477,16 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
         self.assertIsNone(format_field_for_embedding("size", None))
 
     def test_list_field_tags(self):
-        """Test list fields (tags) formatted as comma-separated."""
+        """Test list fields (tags) formatted as comma-separated with label."""
         tags = ["Wi-Fi", "Outdoor Seating", "Study Friendly"]
         result = format_field_for_embedding("tags", tags)
-        self.assertEqual(result, "Wi-Fi, Outdoor Seating, Study Friendly")
+        self.assertEqual(result, "tags: Wi-Fi, Outdoor Seating, Study Friendly")
 
     def test_list_field_type(self):
-        """Test type field formatted as comma-separated."""
+        """Test type field formatted as comma-separated with label."""
         types = ["Coffee shop", "Cafe"]
         result = format_field_for_embedding("type", types)
-        self.assertEqual(result, "Coffee shop, Cafe")
+        self.assertEqual(result, "type: Coffee shop, Cafe")
 
     def test_list_field_parking_array(self):
         """Test parking field as array with label prefix."""
@@ -505,10 +505,10 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
         self.assertIsNone(format_field_for_embedding("type", []))
 
     def test_list_field_reviews_tags(self):
-        """Test reviewsTags field formatted as comma-separated."""
+        """Test reviewsTags field formatted as comma-separated with label."""
         tags = ["latte", "matcha", "parking", "desserts"]
         result = format_field_for_embedding("reviewsTags", tags)
-        self.assertEqual(result, "latte, matcha, parking, desserts")
+        self.assertEqual(result, "reviewsTags: latte, matcha, parking, desserts")
 
     def test_about_field_nested_dict(self):
         """Test about field flattens nested dictionaries."""
@@ -541,7 +541,7 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
             "Friday": "6AM-12AM",
         }
         result = format_field_for_embedding("workingHours", working_hours)
-        self.assertIn("hours:", result)
+        self.assertIn("workingHours:", result)
         self.assertIn("Monday 6AM-11PM", result)
         self.assertIn("Tuesday 6AM-11PM", result)
         self.assertIn("Friday 6AM-12AM", result)
@@ -572,7 +572,7 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
             },
         ]
         result = format_field_for_embedding("popularTimes", popular_times)
-        self.assertIn("busy times:", result)
+        self.assertIn("popularTimes:", result)
         self.assertIn("Monday busy at", result)
         self.assertIn("Saturday busy at", result)
         # Should only include times with percentage >= 70
@@ -600,11 +600,11 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
         self.assertIsNone(format_field_for_embedding("popularTimes", popular_times))
 
     def test_plain_string_field(self):
-        """Test plain string fields returned as-is."""
-        self.assertEqual(format_field_for_embedding("place", "Test Coffee Shop"), "Test Coffee Shop")
-        self.assertEqual(format_field_for_embedding("description", "Great place"), "Great place")
-        self.assertEqual(format_field_for_embedding("neighborhood", "Downtown"), "Downtown")
-        self.assertEqual(format_field_for_embedding("address", "123 Main St"), "123 Main St")
+        """Test plain string fields returned with labels."""
+        self.assertEqual(format_field_for_embedding("place", "Test Coffee Shop"), "placeName: Test Coffee Shop")
+        self.assertEqual(format_field_for_embedding("description", "Great place"), "description: Great place")
+        self.assertEqual(format_field_for_embedding("neighborhood", "Downtown"), "neighborhood: Downtown")
+        self.assertEqual(format_field_for_embedding("address", "123 Main St"), "address: 123 Main St")
 
     def test_plain_string_field_empty(self):
         """Test empty strings return None."""
@@ -613,15 +613,15 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
         self.assertIsNone(format_field_for_embedding("place", None))
 
     def test_typical_time_spent_field(self):
-        """Test typicalTimeSpent field returned as plain string."""
+        """Test typicalTimeSpent field returned with label."""
         result = format_field_for_embedding("typicalTimeSpent", "People typically spend 30-60 min here")
-        self.assertEqual(result, "People typically spend 30-60 min here")
+        self.assertEqual(result, "typicalTimeSpent: People typically spend 30-60 min here")
 
     def test_comments_field(self):
-        """Test comments field (curator notes) returned as plain string."""
+        """Test comments field (curator notes) returned with label."""
         comments = "This place has amazing vibes and is perfect for deep work sessions."
         result = format_field_for_embedding("comments", comments)
-        self.assertEqual(result, comments)
+        self.assertEqual(result, f"comments: {comments}")
 
 
 class TestGetPlaceEmbeddingFields(unittest.TestCase):
@@ -682,7 +682,7 @@ class TestEmbeddingIntegration(unittest.TestCase):
         place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
         result = compose_place_embedding_text(place_doc)
         
-        self.assertIn("hours:", result)
+        self.assertIn("workingHours:", result)
         self.assertIn("Monday 6:30 AM - 5:00 PM", result)
         self.assertIn("Sunday 8:00 AM - 3:00 PM", result)
 
@@ -691,7 +691,7 @@ class TestEmbeddingIntegration(unittest.TestCase):
         place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
         result = compose_place_embedding_text(place_doc)
         
-        self.assertIn("busy times:", result)
+        self.assertIn("popularTimes:", result)
         self.assertIn("Monday busy at", result)
         self.assertIn("Saturday busy at", result)
 
@@ -710,11 +710,16 @@ class TestEmbeddingIntegration(unittest.TestCase):
         self.assertIn("parking: Free, Street", result)
 
     def test_place_embedding_includes_boolean_fields(self):
-        """Test that boolean fields are formatted correctly."""
+        """Test that boolean fields are formatted correctly.
+        
+        Note: In the mock data, freeWifi is a Python bool (True), which
+        stringifies to 'True'. In production, Airtable sends strings
+        like 'Yes', 'No', etc. which preserve their original case.
+        """
         place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
         result = compose_place_embedding_text(place_doc)
         
-        self.assertIn("free wifi: yes", result)
+        self.assertIn("freeWifi: True", result)
 
     def test_place_embedding_includes_size(self):
         """Test that size field is formatted with label."""
