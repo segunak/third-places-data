@@ -387,8 +387,8 @@ class TestComposeChunkEmbeddingText(unittest.TestCase):
         
         self.assertIn("Thank you so much", result)
         
-    def test_compose_chunk_with_separator(self):
-        """Test that fields are joined with pipe separator."""
+    def test_compose_chunk_with_newline_separator(self):
+        """Test that fields are joined with newline separator and have labels."""
         place_context = extract_place_context(MOCK_AIRTABLE_RECORD)
         details_raw_data = MOCK_JSON_DATA["details"]["raw_data"]
         review = MOCK_JSON_DATA["reviews"]["raw_data"]["reviews_data"][0]
@@ -396,7 +396,10 @@ class TestComposeChunkEmbeddingText(unittest.TestCase):
         chunk_doc = transform_review_to_chunk(review, place_context, details_raw_data)
         result = compose_chunk_embedding_text(chunk_doc)
         
-        self.assertIn(" | ", result)
+        # Should use newline separator and have labels
+        self.assertIn("\n", result)
+        self.assertIn("placeName:", result)
+        self.assertIn("reviewText:", result)
         
     def test_compose_chunk_review_only(self):
         """Test composition with only review text (minimal chunk)."""
@@ -407,7 +410,8 @@ class TestComposeChunkEmbeddingText(unittest.TestCase):
         }
         result = compose_chunk_embedding_text(minimal_chunk)
         
-        self.assertEqual(result, "Great place for studying!")
+        # Should have label for review text
+        self.assertEqual(result, "reviewText: Great place for studying!")
 
 
 class TestEmptyAndNullHandling(unittest.TestCase):

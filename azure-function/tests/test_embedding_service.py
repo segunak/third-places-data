@@ -334,6 +334,56 @@ class TestFormatFieldForEmbedding:
         result = format_field_for_embedding("typicalTimeSpent", "1-2 hours")
         assert result == "typicalTimeSpent: 1-2 hours"
 
+    def test_format_review_questions_with_numeric_ratings(self, mock_env_vars):
+        """Test formatting reviewQuestions with numeric ratings adds scale context."""
+        from services.embedding_service import format_field_for_embedding
+        
+        questions_data = {
+            "Food": "5",
+            "Service": "4",
+            "Price per person": "$20-30"
+        }
+        
+        result = format_field_for_embedding("reviewQuestions", questions_data)
+        
+        assert result is not None
+        assert "reviewQuestions (ratings on 5-point scale):" in result
+        assert "Food 5" in result
+        assert "Service 4" in result
+        assert "Price per person $20-30" in result
+
+    def test_format_review_questions_without_numeric_ratings(self, mock_env_vars):
+        """Test formatting reviewQuestions without numeric ratings uses plain label."""
+        from services.embedding_service import format_field_for_embedding
+        
+        questions_data = {
+            "Price per person": "$20-30",
+            "Wait time": "Up to 10 min"
+        }
+        
+        result = format_field_for_embedding("reviewQuestions", questions_data)
+        
+        assert result is not None
+        assert "reviewQuestions:" in result
+        assert "(ratings on 5-point scale)" not in result
+        assert "Price per person $20-30" in result
+        assert "Wait time Up to 10 min" in result
+
+    def test_format_review_questions_empty(self, mock_env_vars):
+        """Test formatting empty reviewQuestions returns None."""
+        from services.embedding_service import format_field_for_embedding
+        
+        result = format_field_for_embedding("reviewQuestions", {})
+        assert result is None
+
+    def test_format_review_questions_all_rating_values(self, mock_env_vars):
+        """Test that all rating values 1-5 are detected as numeric ratings."""
+        from services.embedding_service import format_field_for_embedding
+        
+        for rating in ["1", "2", "3", "4", "5"]:
+            result = format_field_for_embedding("reviewQuestions", {"Quality": rating})
+            assert "(ratings on 5-point scale)" in result
+
 
 class TestComposePlaceEmbeddingText:
     """Tests for compose_place_embedding_text function."""
@@ -375,10 +425,10 @@ class TestComposePlaceEmbeddingText:
 
 
 class TestComposeChunkEmbeddingText:
-    """Tests for compose_chunk_embedding_text function."""
+    """Tests for compose_chunk_embedding_text function with labeled newline format."""
 
-    def test_compose_review_chunk(self, mock_env_vars):
-        """Test composing embedding text for a review chunk."""
+    def test_compose_review_chunk_with_labels(self, mock_env_vars):
+        """Test composing embedding text for a review chunk uses labeled format."""
         from services.embedding_service import compose_chunk_embedding_text
         
         chunk = {
@@ -389,25 +439,64 @@ class TestComposeChunkEmbeddingText:
         
         text = compose_chunk_embedding_text(chunk)
         
-        assert "Great coffee and atmosphere!" in text
+        assert "placeName: Test Cafe" in text
+        assert "reviewRating: 5" in text
+        assert "reviewText: Great coffee and atmosphere!" in text
+        # Should use newline separator
+        assert "\n" in text
 
-    def test_compose_with_place_context(self, mock_env_vars):
-        """Test that place context is included via placeName field."""
+    def test_compose_with_place_context_first(self, mock_env_vars):
+        """Test that place context comes before review text (context-first ordering)."""
         from services.embedding_service import compose_chunk_embedding_text
         
         chunk = {
             "reviewText": "Loved it!",
-            "placeName": "Test Cafe",  # Note: placeName, not place
+            "placeName": "Test Cafe",
             "neighborhood": "Downtown"
         }
         
         text = compose_chunk_embedding_text(chunk)
         
-        assert "Test Cafe" in text
-        assert "Downtown" in text
+        # Context should come before review text
+        place_idx = text.find("placeName:")
+        neighborhood_idx = text.find("neighborhood:")
+        review_idx = text.find("reviewText:")
+        
+        assert place_idx < review_idx
+        assert neighborhood_idx < review_idx
 
-    def test_compose_with_owner_answer(self, mock_env_vars):
-        """Test that owner answer is included."""
+    def test_compose_with_owner_response_true(self, mock_env_vars):
+        """Test that owner answer is only included when hasOwnerResponse is True."""
+        from services.embedding_service import compose_chunk_embedding_text
+        
+        chunk = {
+            "reviewText": "Loved it!",
+            "hasOwnerResponse": True,
+            "ownerAnswer": "Thank you for visiting!"
+        }
+        
+        text = compose_chunk_embedding_text(chunk)
+        
+        assert "hasOwnerResponse: yes" in text
+        assert "ownerAnswer: Thank you for visiting!" in text
+
+    def test_compose_excludes_owner_response_when_false(self, mock_env_vars):
+        """Test that owner answer is excluded when hasOwnerResponse is False."""
+        from services.embedding_service import compose_chunk_embedding_text
+        
+        chunk = {
+            "reviewText": "Loved it!",
+            "hasOwnerResponse": False,
+            "ownerAnswer": "Thank you for visiting!"
+        }
+        
+        text = compose_chunk_embedding_text(chunk)
+        
+        assert "hasOwnerResponse" not in text
+        assert "ownerAnswer" not in text
+
+    def test_compose_excludes_owner_response_when_missing(self, mock_env_vars):
+        """Test that owner answer is excluded when hasOwnerResponse is not present."""
         from services.embedding_service import compose_chunk_embedding_text
         
         chunk = {
@@ -417,37 +506,37 @@ class TestComposeChunkEmbeddingText:
         
         text = compose_chunk_embedding_text(chunk)
         
-        assert "Loved it!" in text
-        assert "Thank you for visiting!" in text
+        assert "hasOwnerResponse" not in text
+        assert "ownerAnswer" not in text
 
     def test_compose_with_place_type_string(self, mock_env_vars):
-        """Test that placeType as string is included."""
+        """Test that placeType as string is included with label."""
         from services.embedding_service import compose_chunk_embedding_text
         
         chunk = {
             "reviewText": "Great!",
-            "placeType": "Cafe"  # String, not list
+            "placeType": "Cafe"
         }
         
         text = compose_chunk_embedding_text(chunk)
         
-        assert "Cafe" in text
+        assert "placeType: Cafe" in text
 
-    def test_compose_with_place_tags_string(self, mock_env_vars):
-        """Test that placeTags as string is included."""
+    def test_compose_with_place_tags_list(self, mock_env_vars):
+        """Test that placeTags as list is joined with label."""
         from services.embedding_service import compose_chunk_embedding_text
         
         chunk = {
             "reviewText": "Great!",
-            "placeTags": "cozy, quiet"  # String, not list
+            "placeTags": ["cozy", "quiet"]
         }
         
         text = compose_chunk_embedding_text(chunk)
         
-        assert "cozy, quiet" in text
+        assert "placeTags: cozy, quiet" in text
 
     def test_compose_with_place_type_list(self, mock_env_vars):
-        """Test that placeType as list is joined."""
+        """Test that placeType as list is joined with label."""
         from services.embedding_service import compose_chunk_embedding_text
         
         chunk = {
@@ -457,7 +546,89 @@ class TestComposeChunkEmbeddingText:
         
         text = compose_chunk_embedding_text(chunk)
         
-        assert "Cafe, Bakery" in text
+        assert "placeType: Cafe, Bakery" in text
+
+    def test_compose_with_review_questions_numeric(self, mock_env_vars):
+        """Test reviewQuestions with numeric ratings gets scale context."""
+        from services.embedding_service import compose_chunk_embedding_text
+        
+        chunk = {
+            "reviewText": "Great!",
+            "reviewQuestions": {
+                "Food": "5",
+                "Service": "4",
+                "Price per person": "$20-30"
+            }
+        }
+        
+        text = compose_chunk_embedding_text(chunk)
+        
+        assert "reviewQuestions (ratings on 5-point scale):" in text
+        assert "Food 5" in text
+        assert "Service 4" in text
+        assert "Price per person $20-30" in text
+
+    def test_compose_with_review_questions_non_numeric(self, mock_env_vars):
+        """Test reviewQuestions without numeric ratings uses plain label."""
+        from services.embedding_service import compose_chunk_embedding_text
+        
+        chunk = {
+            "reviewText": "Great!",
+            "reviewQuestions": {
+                "Price per person": "$20-30",
+                "Wait time": "Up to 10 min"
+            }
+        }
+        
+        text = compose_chunk_embedding_text(chunk)
+        
+        # Should use plain label without scale context
+        assert "reviewQuestions:" in text
+        assert "(ratings on 5-point scale)" not in text
+
+    def test_compose_with_reviews_tags(self, mock_env_vars):
+        """Test that reviewsTags is included with label."""
+        from services.embedding_service import compose_chunk_embedding_text
+        
+        chunk = {
+            "reviewText": "Great!",
+            "reviewsTags": ["cozy atmosphere", "great coffee"]
+        }
+        
+        text = compose_chunk_embedding_text(chunk)
+        
+        assert "reviewsTags: cozy atmosphere, great coffee" in text
+
+    def test_compose_full_chunk(self, mock_env_vars):
+        """Test composing a chunk with all fields."""
+        from services.embedding_service import compose_chunk_embedding_text
+        
+        chunk = {
+            "placeName": "Test Cafe",
+            "neighborhood": "Downtown",
+            "placeType": ["Cafe"],
+            "placeTags": ["cozy", "quiet"],
+            "reviewRating": 5,
+            "reviewsTags": ["great coffee"],
+            "reviewText": "Amazing place!",
+            "hasOwnerResponse": True,
+            "ownerAnswer": "Thank you!",
+            "reviewQuestions": {"Food": "5", "Service": "4"}
+        }
+        
+        text = compose_chunk_embedding_text(chunk)
+        
+        # Verify all fields present with labels
+        assert "placeName: Test Cafe" in text
+        assert "neighborhood: Downtown" in text
+        assert "placeType: Cafe" in text
+        assert "placeTags: cozy, quiet" in text
+        assert "reviewRating: 5" in text
+        assert "reviewsTags: great coffee" in text
+        assert "reviewText: Amazing place!" in text
+        assert "hasOwnerResponse: yes" in text
+        assert "ownerAnswer: Thank you!" in text
+        assert "reviewQuestions (ratings on 5-point scale):" in text
 
 
 # =============================================================================

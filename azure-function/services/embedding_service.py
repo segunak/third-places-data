@@ -201,6 +201,23 @@ def format_field_for_embedding(field_name: str, value: Any) -> Optional[str]:
             hours_parts = [f"{day} {hours}" for day, hours in value.items() if hours]
             return f"{field_name}: {', '.join(hours_parts)}" if hours_parts else None
         
+        # reviewQuestions - flatten with context about ratings
+        # Example: {"Food": "5", "Service": "4", "Price per person": "$20-30"}
+        # Output: "reviewQuestions (ratings on 5-point scale): Food 5, Service 4, Price per person $20-30"
+        if field_name == "reviewQuestions" and value:
+            # Check if any value is a plain digit 1-5 (indicates rating scale)
+            has_numeric_rating = any(
+                str(v).strip() in ("1", "2", "3", "4", "5")
+                for v in value.values()
+            )
+            
+            question_parts = [f"{k} {v}" for k, v in value.items() if v]
+            if not question_parts:
+                return None
+            
+            label = "reviewQuestions (ratings on 5-point scale)" if has_numeric_rating else "reviewQuestions"
+            return f"{label}: {', '.join(question_parts)}"
+        
         # Generic dict - just stringify (unlikely to hit this)
         return None
     
@@ -251,49 +268,60 @@ def compose_chunk_embedding_text(chunk_doc: Dict[str, Any]) -> str:
     """
     Compose the text to embed for a chunk (review) document.
     
-    Combines: review text (primary), place name, neighborhood, place type,
-    place tags, and owner answer if present.
+    Uses format_field_for_embedding() for consistency with place embeddings.
+    Fields are ordered context-first to ground the review semantically:
+    - Place context: placeName, neighborhood, placeType, placeTags
+    - Review metadata: reviewRating, reviewsTags
+    - Review content: reviewText
+    - Owner response: hasOwnerResponse, ownerAnswer (only if hasOwnerResponse is True)
+    - Reviewer ratings: reviewQuestions
     
     Args:
         chunk_doc: Chunk document dictionary with Cosmos DB field names.
         
     Returns:
-        Composed text string for embedding.
+        Composed text string for embedding with newline separators.
     """
     parts = []
 
-    # Review text is the primary semantic payload
+    # Context-first ordering: place context grounds the review semantically
+    context_fields = ["placeName", "neighborhood", "placeType", "placeTags"]
+    for field_name in context_fields:
+        value = chunk_doc.get(field_name)
+        formatted = format_field_for_embedding(field_name, value)
+        if formatted:
+            parts.append(formatted)
+
+    # Review metadata
+    if chunk_doc.get("reviewRating") is not None:
+        parts.append(f"reviewRating: {chunk_doc['reviewRating']}")
+
+    if chunk_doc.get("reviewsTags"):
+        formatted = format_field_for_embedding("reviewsTags", chunk_doc["reviewsTags"])
+        if formatted:
+            parts.append(formatted)
+
+    # Primary content: the review text
     if chunk_doc.get("reviewText"):
-        parts.append(chunk_doc["reviewText"])
+        formatted = format_field_for_embedding("reviewText", chunk_doc["reviewText"])
+        if formatted:
+            parts.append(formatted)
 
-    # Denormalized place context for grounding
-    if chunk_doc.get("placeName"):
-        parts.append(chunk_doc["placeName"])
+    # Owner response - only include if hasOwnerResponse is True
+    if chunk_doc.get("hasOwnerResponse") is True:
+        parts.append("hasOwnerResponse: yes")
+        if chunk_doc.get("ownerAnswer"):
+            formatted = format_field_for_embedding("ownerAnswer", chunk_doc["ownerAnswer"])
+            if formatted:
+                parts.append(formatted)
 
-    if chunk_doc.get("neighborhood"):
-        parts.append(chunk_doc["neighborhood"])
+    # Reviewer ratings/questions
+    if chunk_doc.get("reviewQuestions"):
+        formatted = format_field_for_embedding("reviewQuestions", chunk_doc["reviewQuestions"])
+        if formatted:
+            parts.append(formatted)
 
-    # Place type (can be string or list from Airtable)
-    place_type = chunk_doc.get("placeType")
-    if place_type:
-        if isinstance(place_type, list):
-            parts.append(", ".join(place_type))
-        else:
-            parts.append(str(place_type))
-
-    # Place tags (list to comma-separated)
-    place_tags = chunk_doc.get("placeTags")
-    if place_tags:
-        if isinstance(place_tags, list):
-            parts.append(", ".join(place_tags))
-        else:
-            parts.append(str(place_tags))
-
-    # Owner answer provides additional context
-    if chunk_doc.get("ownerAnswer"):
-        parts.append(chunk_doc["ownerAnswer"])
-
-    # Join all parts with separator
-    embedding_text = " | ".join(filter(None, parts))
+    # Join all parts with newline separator for readability (consistent with places)
+    embedding_text = "\n".join(parts)
 
     return embedding_text
