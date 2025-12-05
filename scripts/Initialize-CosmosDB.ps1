@@ -59,7 +59,7 @@ $TempDir = Join-Path ([System.IO.Path]::GetTempPath()) "cosmos-setup-$PID"
 #
 # Current configuration (hardcoded in the az commands below):
 # -----------------------------------------------------------
-# - dimensions: 1536 (text-embedding-3-small).
+# - dimensions: 1536 (configured in embedding service)
 # - distanceFunction: "cosine" - measures angle between vectors. Standard for text.
 # - dataType: "float32" - standard precision for embeddings.
 # - vectorIndexType: "quantizedFlat" - good balance of speed and accuracy for <50k vectors.
@@ -343,7 +343,7 @@ Write-Host "    • $PlacesContainerName (partition key: /id)" -ForegroundColor 
 Write-Host "    • $ChunksContainerName (partition key: /placeId)" -ForegroundColor White
 Write-Host ""
 Write-Host "  Vector Configuration:" -ForegroundColor White
-Write-Host "    • Dimensions: 1536 (text-embedding-3-small)" -ForegroundColor White
+Write-Host "    • Dimensions: 1536" -ForegroundColor White
 Write-Host "    • Distance: cosine" -ForegroundColor White
 Write-Host "    • Index: quantizedFlat" -ForegroundColor White
 

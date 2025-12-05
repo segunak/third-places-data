@@ -1,6 +1,6 @@
 """
 Embedding service for generating vector embeddings using Microsoft Foundry.
-Uses text-embedding-3-small model for 1536-dimensional embeddings.
+Model and dimensions are configured as class constants below.
 """
 
 import os
