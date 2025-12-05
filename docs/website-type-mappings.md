@@ -12,13 +12,14 @@ The following changes should be applied to the [charlotte-third-places](https://
 
 #### Add Import
 
-Add `GiDominoMask` to the existing `react-icons/gi` import:
+Add `GiDominoMask` to the existing `react-icons/gi` import (keep all existing imports):
 
 ```tsx
+// Note: This shows only the gi imports - keep all other existing imports in the file
 import {
   GiPlantSeed,
   GiCoffeeMug,
-  GiDominoMask  // Add this
+  GiDominoMask  // Add this to the existing imports
 } from "react-icons/gi";
 ```
 
@@ -114,7 +115,7 @@ const typeEmojiMap: { [key: string]: string } = {
 
 ## Alternative Options
 
-If different icon/emoji choices are preferred:
+If different icon/emoji choices are preferred (all icons verified to exist in `react-icons`):
 
 | Type | Icon Option | Emoji Option | Notes |
 |------|-------------|--------------|-------|
@@ -122,3 +123,5 @@ If different icon/emoji choices are preferred:
 | Batman Theme | `GiBatMask` | 🦹 | More specific to Batman/dark heroes |
 | Book Theme | `FaBookOpen` | 📖 | Generic bookstore feel, less comic-specific |
 | Speech Bubble | `GiChatBubble` | 💬 | Represents comic panels/dialogue |
+
+> **Note:** Verify icon availability in the [React Icons documentation](https://react-icons.github.io/react-icons/) before implementing alternatives.
