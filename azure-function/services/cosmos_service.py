@@ -263,6 +263,7 @@ class CosmosService:
         query = """
         SELECT TOP @topK
             c.id,
+            c.airtableRecordId,
             c.place,
             c.neighborhood,
             c.address,
@@ -334,6 +335,7 @@ class CosmosService:
             SELECT TOP @topK
                 c.id,
                 c.placeId,
+                c.airtableRecordId,
                 c.placeName,
                 c.neighborhood,
                 c.address,
@@ -369,6 +371,7 @@ class CosmosService:
             SELECT TOP @topK
                 c.id,
                 c.placeId,
+                c.airtableRecordId,
                 c.placeName,
                 c.neighborhood,
                 c.address,
@@ -425,6 +428,7 @@ def transform_airtable_to_place(
     # Start with system fields
     place_doc = {
         "id": fields.get("Google Maps Place Id"),
+        "airtableRecordId": airtable_record.get("id"),
         "lastSynced": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -552,6 +556,7 @@ def transform_review_to_chunk(
         # System fields
         "id": review.get("review_id"),
         "placeId": place_context.get("googleMapsPlaceId"),
+        "airtableRecordId": place_context.get("airtableRecordId"),
         "lastSynced": datetime.now(timezone.utc).isoformat(),
 
         # Denormalized place fields
@@ -600,6 +605,7 @@ def extract_place_context(airtable_record: Dict[str, Any]) -> Dict[str, Any]:
     fields = airtable_record.get("fields", {})
 
     return {
+        "airtableRecordId": airtable_record.get("id"),
         "googleMapsPlaceId": fields.get("Google Maps Place Id"),
         "place": fields.get("Place"),
         "neighborhood": fields.get("Neighborhood"),
