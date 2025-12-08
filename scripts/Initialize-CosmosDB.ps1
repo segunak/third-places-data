@@ -210,7 +210,19 @@ $VectorPolicyPath = Join-Path $TempDir "vector-policy.json"
 '@ | Set-Content -Path $VectorPolicyPath -Encoding UTF8
 
 # Indexing policy with vector index
-$IndexPolicyPath = Join-Path $TempDir "index-policy.json"
+# 
+# EXCLUDED PATHS RATIONALE:
+# -------------------------
+# We exclude paths that are:
+# 1. Vector fields (use separate vector index)
+# 2. Large text blobs not used for filtering
+# 3. Nested objects/arrays not queried directly
+# 4. URLs and metadata never filtered on
+#
+# This reduces index storage and RU cost on writes.
+# See cosmos_service.py for the full document schemas.
+
+$PlacesIndexPolicyPath = Join-Path $TempDir "places-index-policy.json"
 @'
 {
     "indexingMode": "consistent",
@@ -219,13 +231,59 @@ $IndexPolicyPath = Join-Path $TempDir "index-policy.json"
     ],
     "excludedPaths": [
         {"path": "/embedding/*"},
+        {"path": "/embeddingText/*"},
+        {"path": "/description/*"},
+        {"path": "/comments/*"},
+        {"path": "/about/*"},
+        {"path": "/workingHours/*"},
+        {"path": "/popularTimes/*"},
+        {"path": "/reviewsTags/*"},
+        {"path": "/photosData/*"},
+        {"path": "/curatorPhotos/*"},
+        {"path": "/photos/*"},
+        {"path": "/streetView/*"},
+        {"path": "/googleMapsProfileUrl/*"},
+        {"path": "/appleMapsProfileUrl/*"},
+        {"path": "/website/*"},
+        {"path": "/facebook/*"},
+        {"path": "/instagram/*"},
+        {"path": "/twitter/*"},
+        {"path": "/tikTok/*"},
+        {"path": "/linkedIn/*"},
+        {"path": "/youTube/*"},
+        {"path": "/latitude/*"},
+        {"path": "/longitude/*"},
         {"path": "/_etag/?"}
     ],
     "vectorIndexes": [
         {"path": "/embedding", "type": "quantizedFlat"}
     ]
 }
-'@ | Set-Content -Path $IndexPolicyPath -Encoding UTF8
+'@ | Set-Content -Path $PlacesIndexPolicyPath -Encoding UTF8
+
+$ChunksIndexPolicyPath = Join-Path $TempDir "chunks-index-policy.json"
+@'
+{
+    "indexingMode": "consistent",
+    "includedPaths": [
+        {"path": "/*"}
+    ],
+    "excludedPaths": [
+        {"path": "/embedding/*"},
+        {"path": "/reviewText/*"},
+        {"path": "/ownerAnswer/*"},
+        {"path": "/reviewQuestions/*"},
+        {"path": "/reviewImgUrls/*"},
+        {"path": "/reviewsTags/*"},
+        {"path": "/googleMapsProfileUrl/*"},
+        {"path": "/appleMapsProfileUrl/*"},
+        {"path": "/_etag/?"}
+    ],
+    "vectorIndexes": [
+        {"path": "/embedding", "type": "quantizedFlat"}
+    ]
+}
+'@ | Set-Content -Path $ChunksIndexPolicyPath -Encoding UTF8
 
 Write-Host "`nPolicy files created in: $TempDir"
 
@@ -278,7 +336,7 @@ if ($existingPlaces) {
         --partition-key-path "/id" `
         --throughput 500 `
         --vector-embeddings "@$VectorPolicyPath" `
-        --idx "@$IndexPolicyPath" `
+        --idx "@$PlacesIndexPolicyPath" `
         | Out-Null
     
     if ($LASTEXITCODE -eq 0) {
@@ -346,7 +404,7 @@ if ($existingChunks) {
         --partition-key-path "/placeId" `
         --throughput 500 `
         --vector-embeddings "@$VectorPolicyPath" `
-        --idx "@$IndexPolicyPath" `
+        --idx "@$ChunksIndexPolicyPath" `
         | Out-Null
     
     if ($LASTEXITCODE -eq 0) {
@@ -378,6 +436,10 @@ Write-Host "  Vector Configuration:" -ForegroundColor White
 Write-Host "    • Dimensions: 1536" -ForegroundColor White
 Write-Host "    • Distance: cosine" -ForegroundColor White
 Write-Host "    • Index: quantizedFlat" -ForegroundColor White
+Write-Host ""
+Write-Host "  Index Optimizations:" -ForegroundColor White
+Write-Host "    • places: 23 paths excluded (text blobs, URLs, social links)" -ForegroundColor White
+Write-Host "    • chunks: 9 paths excluded (review text, images, URLs)" -ForegroundColor White
 
 } # end try
 finally {
