@@ -57,20 +57,52 @@ $TempDir = Join-Path ([System.IO.Path]::GetTempPath()) "cosmos-setup-$PID"
 #   "warm café with a fire"           → [0.11, -0.44, 0.88, ...] (very similar!)
 #   "loud sports bar"                 → [-0.67, 0.22, -0.15, ...] (very different)
 #
-# Current configuration (hardcoded in the az commands below):
-# -----------------------------------------------------------
-# - dimensions: 1536 (configured in embedding service)
+# Current configuration:
+# ----------------------
+# - dimensions: 1536 (text-embedding-3-small model)
 # - distanceFunction: "cosine" - measures angle between vectors. Standard for text.
 # - dataType: "float32" - standard precision for embeddings.
-# - vectorIndexType: "quantizedFlat" - good balance of speed and accuracy for <50k vectors.
+# - vectorIndexType: "quantizedFlat" (see rationale below)
 #
-# Vector index types:
-# - "flat": Exact search, 100% accuracy, but slow. Max 505 dimensions.
-# - "quantizedFlat": Compresses vectors, fast, ~99% accuracy. Good for <50k vectors.
-# - "diskANN": Approximate nearest neighbor, fastest, ~95%+ accuracy. Best for >50k vectors.
+# ------------------------------------------------------------------------------
+# WHY quantizedFlat INSTEAD OF diskANN?
+# ------------------------------------------------------------------------------
 #
-# Note: quantizedFlat/diskANN require at least 1,000 vectors to work; below that,
-# Cosmos falls back to full scan (which is fine for small datasets).
+# Microsoft's guidance (https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search):
+#   "quantizedFlat is recommended when the number of vectors to be indexed is
+#   somewhere around 50,000 or fewer per physical partition. This is a good
+#   option for smaller scenarios, or scenarios where you're using query filters
+#   to narrow down the vector search to a relatively small set of vectors."
+#
+# Our data scale (as of December 2025):
+#   - places container: ~380 vectors currently, ~500 max projected
+#   - chunks container: ~125,000 vectors max (500 places × 250 reviews each)
+#   - Physical partitions: 1 (Azure assigns based on data size)
+#
+# Our query patterns (see charlotte-third-places/lib/ai/rag.ts):
+#   - General chat (/chat page): Vector search on places only (~500 vectors, no filter)
+#   - Place-specific chat: Vector search on chunks WITH placeId filter (~250 vectors)
+#   - Cross-partition chunk search is SKIPPED for general queries (performance optimization)
+#
+# Why quantizedFlat wins for us:
+#   1. places container: ~380 vectors (500 max) is 100x below the 50k threshold
+#   2. chunks container: Always filtered by placeId, so each query searches ~250 vectors
+#   3. Brute-force search (quantizedFlat) = 100% accuracy vs diskANN's ~95%
+#   4. Lower storage overhead than diskANN's graph index
+#   5. Simpler - no tuning parameters (indexingSearchListSize, quantizationByteSize)
+#
+# When to reconsider diskANN:
+#   - If we add cross-partition chunk search for general queries (currently skipped)
+#   - If we exceed 50k+ places (currently ~500)
+#   - If latency becomes problematic (not observed)
+#
+# Vector index types summary:
+# - "flat": Exact brute-force, 100% accuracy. Max 505 dimensions. Slowest.
+# - "quantizedFlat": Compressed brute-force, ~99% accuracy. Good for <50k vectors/partition.
+# - "diskANN": Graph-based ANN, ~95%+ accuracy. Best for >50k vectors/partition.
+#
+# Note: quantizedFlat/diskANN require at least 1,000 vectors for accurate quantization;
+# below that, Cosmos falls back to full scan (which is fine for small datasets).
 #
 # To change these values, edit the --vector-embeddings and --idx JSON in the
 # container creation commands below.
