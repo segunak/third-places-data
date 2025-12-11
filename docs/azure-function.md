@@ -380,6 +380,30 @@ provider = PlaceDataProviderFactory.get_provider("outscraper")
 
 There are no longer any `get_airtable_client` or `get_place_data_provider` helpers. All instantiation is explicit and stateless.
 
+## Deployment Authentication (OIDC)
+
+The GitHub Actions workflow uses OpenID Connect (OIDC) with Azure for passwordless, secure deployments. This avoids storing secrets and uses federated identity with short-lived tokens.
+
+### Required GitHub Repository Variables
+
+These are configured in GitHub repo Settings → Secrets and variables → Actions → Variables tab:
+
+| Variable | Description |
+|----------|-------------|
+| `AZURE_CLIENT_ID` | Application (client) ID from the App Registration |
+| `AZURE_TENANT_ID` | Directory (tenant) ID from Microsoft Entra ID |
+| `AZURE_SUBSCRIPTION_ID` | Azure subscription ID |
+
+### Azure Setup
+
+1. **App Registration**: Created in Microsoft Entra ID with name `github-deploy-third-places-data`
+2. **Federated Credential**: Configured for GitHub Actions deploying from `segunak/third-places-data` on the `master` branch
+3. **RBAC Role Assignment**: The App Registration has `Contributor` role on the Function App
+
+### Why OIDC Instead of Publish Profile?
+
+The publish profile method uses Kudu's zipdeploy endpoint which has known issues with Linux Consumption plans (MountCifs 400 errors). OIDC authentication uses Azure Resource Manager APIs instead, bypassing this problematic code path.
+
 ## Troubleshooting
 
 Tips on troubleshooting weird stuff with the Azure Function.
