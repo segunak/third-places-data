@@ -8,7 +8,7 @@ DEFAULT_REVIEWS_LIMIT = 250
 MAX_THREAD_WORKERS = 50 # Maximum number of threads for concurrent tasks
 
 # Outscraper minimum balance threshold (USD) required to allow OutscraperProvider instantiation
-OUTSCRAPER_BALANCE_THRESHOLD = 5.0
+OUTSCRAPER_BALANCE_THRESHOLD = 2.0
 
 class SearchField(Enum):
     """Enumeration of unique fields for searching records in the Airtable database.
