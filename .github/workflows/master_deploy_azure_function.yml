@@ -83,16 +83,33 @@ jobs:
           client-id: ${{ vars.AZURE_CLIENT_ID }}
           tenant-id: ${{ vars.AZURE_TENANT_ID }}
           subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
-        
-      - name: 'Deploy to Azure Function'
-        uses: Azure/functions-action@v1
-        id: deploy-to-function
-        with:
-          app-name: 'third-places-data'
-          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          scm-do-build-during-deployment: false
-          enable-oryx-build: false
-          respect-funcignore: true
+
+      - name: Create deployment package
+        run: |
+          # Create zip excluding patterns from .funcignore and other non-deployment files
+          zip -r ../deploy.zip . \
+            -x ".git*" \
+            -x ".vscode/*" \
+            -x "__azurite_db*__.json" \
+            -x "__blobstorage__/*" \
+            -x "__queuestorage__/*" \
+            -x "local.settings.json" \
+            -x "tests/*" \
+            -x ".venv/*" \
+            -x "__pycache__/*" \
+            -x "*/__pycache__/*" \
+            -x "*.pyc"
+          echo "Created deploy.zip"
+          ls -lh ../deploy.zip
+        working-directory: ./azure-function
+
+      - name: Deploy to Azure Function
+        run: |
+          az functionapp deployment source config-zip \
+            --resource-group third-places-data \
+            --name third-places-data \
+            --src ./deploy.zip \
+            --build-remote false
 
       - name: Smoke Test
         shell: bash
