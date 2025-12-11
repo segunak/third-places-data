@@ -48,14 +48,11 @@ jobs:
         uses: actions/checkout@v4
         
       - name: 'Deploy to Azure Function'
-        uses: Azure/functions-action@v1
+        uses: azure/webapps-deploy@v2
         id: deploy-to-function
         with:
           app-name: 'third-places-data'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          scm-do-build-during-deployment: true
-          enable-oryx-build: true
-          respect-funcignore: true
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
 
       - name: Smoke Test
