@@ -46,6 +46,23 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup Python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: List package contents
+        run: |
+          echo "=== Package structure ==="
+          ls -la
+          echo ""
+          echo "=== Key files check ==="
+          ls -la host.json requirements.txt function_app.py 2>/dev/null || echo "Some expected files missing!"
+          echo ""
+          echo "=== Full directory tree (first 50 items) ==="
+          find . -type f | head -50
+        working-directory: ./azure-function
         
       - name: 'Deploy to Azure Function'
         uses: Azure/functions-action@v1
