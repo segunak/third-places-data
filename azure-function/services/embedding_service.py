@@ -133,9 +133,9 @@ def format_field_for_embedding(field_name: str, value: Any) -> Optional[str]:
     
     Special formatting for complex types:
     - Lists: comma-separated values
-    - about dict: flattened nested key-value pairs
+    - about dict: flattened nested key-value pairs (true values only)
     - workingHours dict: "Day HH:MM" format
-    - popularTimes list: summarized peak hours per day
+    - reviewQuestions dict: flattened ratings with 5-point scale context
     
     All other fields: "fieldName: value" with sanitized string value.
     
@@ -151,27 +151,6 @@ def format_field_for_embedding(field_name: str, value: Any) -> Optional[str]:
     
     # List fields - join with commas
     if isinstance(value, list):
-        # Special case: popularTimes has nested structure
-        if field_name == "popularTimes" and value:
-            popular_parts = []
-            for day_data in value:
-                if not isinstance(day_data, dict):
-                    continue
-                day_text = day_data.get("day_text")
-                popular_times_list = day_data.get("popular_times", [])
-                
-                # Find peak hours (percentage >= 70)
-                peak_hours = []
-                for pt in popular_times_list:
-                    if pt.get("percentage", 0) >= 70:
-                        peak_hours.append(pt.get("time", ""))
-                
-                if day_text and peak_hours:
-                    unique_peaks = list(dict.fromkeys(peak_hours))
-                    popular_parts.append(f"{day_text} busy at {', '.join(unique_peaks)}")
-            
-            return f"{field_name}: {'; '.join(popular_parts)}" if popular_parts else None
-        
         # Regular list - join non-empty values with commas
         if value:
             joined = ", ".join(sanitize_field_value(str(v)) for v in value if v)
@@ -181,15 +160,15 @@ def format_field_for_embedding(field_name: str, value: Any) -> Optional[str]:
     # Dict fields - flatten to key-value pairs
     if isinstance(value, dict):
         # Special case: about has nested dicts with boolean values
+        # Only include true values (amenities the place HAS, not what it lacks)
         if field_name == "about":
             about_parts = []
             for category, features in value.items():
                 if isinstance(features, dict):
                     for feature, feat_value in features.items():
                         if feat_value is True:
-                            about_parts.append(f"{feature}: yes")
-                        elif feat_value is False:
-                            about_parts.append(f"{feature}: no")
+                            about_parts.append(feature)
+                        # Skip false values - users ask "does it have X?" not "what doesn't it have?"
                 elif features:
                     sanitized = sanitize_field_value(str(features))
                     if sanitized:
@@ -285,7 +264,7 @@ def compose_chunk_embedding_text(chunk_doc: Dict[str, Any]) -> str:
     parts = []
 
     # Context-first ordering: place context grounds the review semantically
-    context_fields = ["placeName", "neighborhood", "placeType", "placeTags"]
+    context_fields = ["placeName", "neighborhood", "address", "placeType", "placeTags"]
     for field_name in context_fields:
         value = chunk_doc.get(field_name)
         formatted = format_field_for_embedding(field_name, value)

@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from typing import Dict, Any, List, Optional, Tuple
 from azure.cosmos import CosmosClient, PartitionKey
 from azure.cosmos.exceptions import CosmosResourceNotFoundError
+from services.utils import format_popular_times
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -503,6 +504,14 @@ def transform_airtable_to_place(
             if value is not None:
                 place_doc[cosmos_field] = value
 
+        # Pre-compute formatted popular times string for use by embedding and AI context.
+        # This centralizes the formatting logic - both embedding_service.py and prompts.ts
+        # use this pre-formatted field instead of duplicating the formatting algorithm.
+        if place_doc.get("popularTimes"):
+            formatted = format_popular_times(place_doc["popularTimes"])
+            if formatted:
+                place_doc["popularTimesFormatted"] = formatted
+
         # Raw Google Maps API photos data, not always present as it hasn't always been extracted
         photos_data = json_data.get("photos", {}).get("raw_data", {}).get("photos_data", {})
         
@@ -531,7 +540,9 @@ def get_place_embedding_fields() -> List[str]:
     ]
     
     # JSON fields to embed
-    json_embed_fields = ["about", "reviewsTags", "workingHours", "popularTimes", "typicalTimeSpent"]
+    # Note: popularTimesFormatted is the pre-computed human-readable summary,
+    # not the raw popularTimes JSON. The formatting is done once at ingestion time.
+    json_embed_fields = ["about", "reviewsTags", "workingHours", "popularTimesFormatted", "typicalTimeSpent"]
     
     return airtable_embed_fields + json_embed_fields
 

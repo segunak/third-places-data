@@ -1,4 +1,4 @@
-from typing import Dict, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Any
 import os
 import re
 import json
@@ -13,6 +13,177 @@ from threading import Lock
 from constants import SearchField
 from services.place_data_service import PlaceDataProviderFactory
 
+
+# =============================================================================
+# Popular Times Formatting
+# =============================================================================
+
+def _hours_to_ranges(hours: List[int]) -> List[str]:
+    """
+    Convert list of hours [15, 16, 17, 20, 21] → ["3-5pm", "8-9pm"]
+    Groups consecutive hours into ranges with 12-hour format.
+    
+    This is a helper for format_popular_times() and should not be called directly.
+    """
+    if not hours:
+        return []
+    
+    sorted_hours = sorted(hours)
+    ranges = []
+    start = sorted_hours[0]
+    end = sorted_hours[0]
+    
+    for i in range(1, len(sorted_hours) + 1):
+        if i < len(sorted_hours) and sorted_hours[i] == end + 1:
+            end = sorted_hours[i]
+        else:
+            ranges.append(_format_hour_range(start, end))
+            if i < len(sorted_hours):
+                start = sorted_hours[i]
+                end = sorted_hours[i]
+    
+    return ranges
+
+
+def _format_hour_range(start: int, end: int) -> str:
+    """
+    Format hour range: (15, 17) → "3-5pm", (21, 21) → "9pm"
+    
+    This is a helper for format_popular_times() and should not be called directly.
+    """
+    def format_hour(h: int) -> str:
+        period = "pm" if h >= 12 else "am"
+        hour12 = h - 12 if h > 12 else (12 if h == 0 else h)
+        return f"{hour12}{period}"
+    
+    if start == end:
+        return format_hour(start)
+    
+    # Remove am/pm from start if same period as end
+    start_str = format_hour(start).replace("am", "").replace("pm", "")
+    return f"{start_str}-{format_hour(end)}"
+
+
+def format_popular_times(popular_times: Optional[List[Dict[str, Any]]]) -> Optional[str]:
+    """
+    Format Google Maps popular_times data into a human-readable summary.
+    
+    This function is called ONCE during data ingestion to pre-compute a formatted
+    string that is stored in Cosmos DB. Both embedding generation and AI context
+    formatting then use this pre-computed field, avoiding duplicated logic.
+    
+    Algorithm (covers full 0-100% range):
+    - Busy hours: percentage >= 70 (crowded, hard to find seating)
+    - Moderate hours: percentage 51-69 (some crowd, but manageable)
+    - Quiet hours: percentage 1-50 (good for reading, studying, calls)
+    - Hours with 0% are closed/no data, skipped entirely
+    
+    Output format per day: "Mon: busy 3-4pm; moderate 12-2pm; quiet 11am, 6-7pm"
+    If all hours are quiet (max <= 50): "Tue: quiet all day"
+    
+    Args:
+        popular_times: List of day objects from Google Maps popular_times data.
+                       Each day has day_text (e.g., "Monday") and popular_times
+                       (list of hour objects with percentage and hour fields).
+    
+    Returns:
+        Formatted string like "Sun: busy 12-2pm. Mon: busy 3-4pm; quiet 11am"
+        or None if no valid data.
+    
+    Example input structure:
+        [
+            {
+                "day": 1,
+                "day_text": "Monday",
+                "popular_times": [
+                    {"hour": 11, "percentage": 47, ...},
+                    {"hour": 12, "percentage": 65, ...},
+                    ...
+                ]
+            },
+            ...
+        ]
+    """
+    if not popular_times or not isinstance(popular_times, list):
+        return None
+    
+    # Thresholds for categorizing hour-by-hour busyness
+    BUSY_THRESHOLD = 70      # Hours >= 70% are "busy" (crowded)
+    MODERATE_THRESHOLD = 51  # Hours 51-69% are "moderate" (some crowd)
+    QUIET_THRESHOLD = 50     # Hours 1-50% are "quiet" (good for focus)
+    
+    day_summaries = []
+    
+    for day_data in popular_times:
+        if not isinstance(day_data, dict):
+            continue
+        # Skip "live" data entry (real-time busyness, not historical pattern)
+        if day_data.get("day") == "live":
+            continue
+            
+        day_text = day_data.get("day_text")
+        popular_times_list = day_data.get("popular_times", [])
+        if not day_text or not isinstance(popular_times_list, list):
+            continue
+        
+        # Collect busy, moderate, and quiet hours separately
+        busy_hours = []
+        moderate_hours = []
+        quiet_hours = []
+        max_pct = 0
+        has_any_data = False
+        
+        for pt in popular_times_list:
+            pct = pt.get("percentage", 0) or 0
+            hour = pt.get("hour")
+            if hour is None:
+                continue
+            
+            if pct > 0:
+                has_any_data = True
+                max_pct = max(max_pct, pct)
+                
+                if pct >= BUSY_THRESHOLD:
+                    busy_hours.append(hour)
+                elif pct >= MODERATE_THRESHOLD:
+                    moderate_hours.append(hour)
+                else:
+                    # pct is 1-50%, quiet hours
+                    quiet_hours.append(hour)
+        
+        if not has_any_data:
+            continue  # Skip days with no data (likely closed)
+        
+        # Convert hours to ranges like "3-5pm"
+        busy_ranges = _hours_to_ranges(busy_hours)
+        moderate_ranges = _hours_to_ranges(moderate_hours)
+        quiet_ranges = _hours_to_ranges(quiet_hours)
+        
+        day_abbrev = day_text[:3]  # "Monday" → "Mon"
+        
+        # Check if entire day is quiet (max <= 50%)
+        if max_pct <= QUIET_THRESHOLD and max_pct > 0:
+            day_summaries.append(f"{day_abbrev}: quiet all day")
+            continue
+        
+        # Build parts for this day
+        parts = []
+        if busy_ranges:
+            parts.append(f"busy {', '.join(busy_ranges)}")
+        if moderate_ranges:
+            parts.append(f"moderate {', '.join(moderate_ranges)}")
+        if quiet_ranges:
+            parts.append(f"quiet {', '.join(quiet_ranges)}")
+        
+        if parts:
+            day_summaries.append(f"{day_abbrev}: {'; '.join(parts)}")
+    
+    return ". ".join(day_summaries) if day_summaries else None
+
+
+# =============================================================================
+# Text Utilities
+# =============================================================================
 
 def normalize_text(text: str) -> str:
     if isinstance(text, str):
