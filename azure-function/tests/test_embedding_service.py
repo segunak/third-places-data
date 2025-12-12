@@ -220,7 +220,7 @@ class TestFormatFieldForEmbedding:
         assert result == "reviewsTags: coffee"
 
     def test_format_about_field_nested_dict(self, mock_env_vars):
-        """Test formatting about field with nested dictionary."""
+        """Test formatting about field with nested dictionary - only true values shown."""
         from services.embedding_service import format_field_for_embedding
         
         about_data = {
@@ -235,9 +235,11 @@ class TestFormatFieldForEmbedding:
         
         result = format_field_for_embedding("about", about_data)
         
-        assert "Good for studying: yes" in result
-        assert "Has parking: no" in result
-        assert "Cozy: yes" in result
+        # Only true values are included (what the place HAS)
+        assert "Good for studying" in result
+        assert "Cozy" in result
+        # False values are NOT included
+        assert "Has parking" not in result
 
     def test_format_about_field_with_category_string(self, mock_env_vars):
         """Test formatting about field with category as string."""
@@ -302,23 +304,15 @@ class TestFormatFieldForEmbedding:
         assert "Monday" in result
         assert "12pm" in result
 
-    def test_format_popular_times_no_peaks(self, mock_env_vars):
-        """Test formatting popular times with no peak hours."""
+    def test_format_popular_times_formatted_string(self, mock_env_vars):
+        """Test formatting popularTimesFormatted (pre-computed string)."""
         from services.embedding_service import format_field_for_embedding
         
-        popular_data = [
-            {
-                "day_text": "Monday",
-                "popular_times": [
-                    {"time": "9am", "percentage": 30}
-                ]
-            }
-        ]
+        # popularTimesFormatted is now a pre-computed string from utils.format_popular_times
+        formatted = "Mon: busy 9-11am; moderate 12pm"
+        result = format_field_for_embedding("popularTimesFormatted", formatted)
         
-        result = format_field_for_embedding("popularTimes", popular_data)
-        
-        # No peaks above 70%, so should return None
-        assert result is None
+        assert result == "popularTimesFormatted: Mon: busy 9-11am; moderate 12pm"
 
     def test_format_fallback_other_types(self, mock_env_vars):
         """Test formatting fallback for other types (integers, etc.)."""
@@ -822,19 +816,19 @@ class TestFormatFieldForEmbeddingLabels:
     def test_about_has_label(self, mock_env_vars):
         from services.embedding_service import format_field_for_embedding
         result = format_field_for_embedding("about", {"Service options": {"Takeaway": True, "Dine-in": False}})
-        assert result == "about: Takeaway: yes, Dine-in: no"
+        # Only true values shown as feature names
+        assert result == "about: Takeaway"
     
     def test_workingHours_has_label(self, mock_env_vars):
         from services.embedding_service import format_field_for_embedding
         result = format_field_for_embedding("workingHours", {"Monday": "7AM-5PM", "Tuesday": "7AM-5PM"})
         assert result == "workingHours: Monday 7AM-5PM, Tuesday 7AM-5PM"
     
-    def test_popularTimes_has_label(self, mock_env_vars):
+    def test_popularTimesFormatted_has_label(self, mock_env_vars):
         from services.embedding_service import format_field_for_embedding
-        result = format_field_for_embedding("popularTimes", [
-            {"day_text": "Monday", "popular_times": [{"time": "9AM", "percentage": 80}]}
-        ])
-        assert result == "popularTimes: Monday busy at 9AM"
+        # popularTimesFormatted is now a pre-computed string
+        result = format_field_for_embedding("popularTimesFormatted", "Monday: busy 9AM")
+        assert result == "popularTimesFormatted: Monday: busy 9AM"
 
 
 # =============================================================================

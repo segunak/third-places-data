@@ -328,14 +328,16 @@ class TestComposePlaceEmbeddingText(unittest.TestCase):
         # Note: category is NOT embedded (embed=False in mapping)
         
     def test_compose_with_about_section(self):
-        """Test that about section is flattened into embedding text."""
+        """Test that about section shows only true values (amenities the place HAS)."""
         place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
         result = compose_place_embedding_text(place_doc)
         
-        # About features should be flattened
-        self.assertIn("Dine-in: yes", result)
-        self.assertIn("Takeout: yes", result)
-        self.assertIn("Delivery: no", result)
+        # About features should show only true values as comma-separated list
+        self.assertIn("about:", result)
+        self.assertIn("Dine-in", result)
+        self.assertIn("Takeout", result)
+        # False values should NOT be included (we only care about what the place HAS)
+        self.assertNotIn("Delivery", result)
         
     def test_compose_with_separator(self):
         """Test that fields are joined with newline separator."""
@@ -515,7 +517,7 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
         self.assertEqual(result, "reviewsTags: latte, matcha, parking, desserts")
 
     def test_about_field_nested_dict(self):
-        """Test about field flattens nested dictionaries."""
+        """Test about field shows only true values from nested dicts."""
         about = {
             "Service options": {
                 "Dine-in": True,
@@ -527,10 +529,12 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
             },
         }
         result = format_field_for_embedding("about", about)
-        self.assertIn("Dine-in: yes", result)
-        self.assertIn("Takeout: yes", result)
-        self.assertIn("Delivery: no", result)
-        self.assertIn("Great coffee: yes", result)
+        # Only true values are included as feature names
+        self.assertIn("Dine-in", result)
+        self.assertIn("Takeout", result)
+        self.assertIn("Great coffee", result)
+        # False values should NOT be included
+        self.assertNotIn("Delivery", result)
 
     def test_about_field_empty(self):
         """Test about field returns None when empty."""
@@ -555,53 +559,25 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
         self.assertIsNone(format_field_for_embedding("workingHours", {}))
         self.assertIsNone(format_field_for_embedding("workingHours", None))
 
-    def test_popular_times_field(self):
-        """Test popularTimes field summarizes peak hours."""
-        popular_times = [
-            {
-                "day_text": "Monday",
-                "popular_times": [
-                    {"hour": 8, "percentage": 45, "time": "8a"},
-                    {"hour": 9, "percentage": 75, "time": "9a"},
-                    {"hour": 10, "percentage": 90, "time": "10a"},
-                    {"hour": 11, "percentage": 85, "time": "11a"},
-                ]
-            },
-            {
-                "day_text": "Saturday",
-                "popular_times": [
-                    {"hour": 9, "percentage": 80, "time": "9a"},
-                    {"hour": 10, "percentage": 95, "time": "10a"},
-                ]
-            },
-        ]
-        result = format_field_for_embedding("popularTimes", popular_times)
-        self.assertIn("popularTimes:", result)
-        self.assertIn("Monday busy at", result)
-        self.assertIn("Saturday busy at", result)
-        # Should only include times with percentage >= 70
-        self.assertIn("9a", result)
-        self.assertIn("10a", result)
-        self.assertNotIn("8a", result)  # 45% is below threshold
+    def test_popular_times_formatted_field(self):
+        """Test popularTimesFormatted field (pre-computed string from utils.format_popular_times)."""
+        # popularTimes is now pre-computed as popularTimesFormatted by utils.format_popular_times
+        # and stored in the place document at sync time. The raw popularTimes JSON is no longer
+        # processed during embedding - instead we use the pre-formatted string.
+        formatted_string = "Mon: busy 9-11am; moderate 12pm. Sat: busy 9-10am"
+        result = format_field_for_embedding("popularTimesFormatted", formatted_string)
+        self.assertEqual(result, "popularTimesFormatted: Mon: busy 9-11am; moderate 12pm. Sat: busy 9-10am")
 
     def test_popular_times_empty(self):
         """Test popularTimes returns None when empty."""
         self.assertIsNone(format_field_for_embedding("popularTimes", []))
         self.assertIsNone(format_field_for_embedding("popularTimes", None))
 
-    def test_popular_times_no_peak_hours(self):
-        """Test popularTimes when no hours meet threshold."""
-        popular_times = [
-            {
-                "day_text": "Monday",
-                "popular_times": [
-                    {"hour": 8, "percentage": 45, "time": "8a"},
-                    {"hour": 9, "percentage": 60, "time": "9a"},
-                ]
-            }
-        ]
-        # All percentages below 70, should return None
-        self.assertIsNone(format_field_for_embedding("popularTimes", popular_times))
+    def test_popular_times_formatted_empty(self):
+        """Test popularTimesFormatted when empty or None."""
+        # popularTimesFormatted is a pre-computed string - when empty/None, returns None
+        self.assertIsNone(format_field_for_embedding("popularTimesFormatted", ""))
+        self.assertIsNone(format_field_for_embedding("popularTimesFormatted", None))
 
     def test_plain_string_field(self):
         """Test plain string fields returned with labels."""
@@ -653,7 +629,8 @@ class TestGetPlaceEmbeddingFields(unittest.TestCase):
         """Test that all JSON fields marked for embedding are included."""
         result = get_place_embedding_fields()
         
-        expected_json_fields = ["about", "reviewsTags", "workingHours", "popularTimes", "typicalTimeSpent"]
+        # Note: popularTimes is now pre-computed as popularTimesFormatted
+        expected_json_fields = ["about", "reviewsTags", "workingHours", "popularTimesFormatted", "typicalTimeSpent"]
         
         for field in expected_json_fields:
             self.assertIn(field, result, f"Expected field '{field}' not in embedding fields")
@@ -690,14 +667,16 @@ class TestEmbeddingIntegration(unittest.TestCase):
         self.assertIn("Monday 6:30 AM - 5:00 PM", result)
         self.assertIn("Sunday 8:00 AM - 3:00 PM", result)
 
-    def test_place_embedding_includes_popular_times(self):
-        """Test that place embedding includes peak busy times."""
+    def test_place_embedding_includes_popular_times_formatted(self):
+        """Test that place embedding includes pre-formatted popular times."""
         place_doc = transform_airtable_to_place(MOCK_AIRTABLE_RECORD, MOCK_JSON_DATA)
         result = compose_place_embedding_text(place_doc)
         
-        self.assertIn("popularTimes:", result)
-        self.assertIn("Monday busy at", result)
-        self.assertIn("Saturday busy at", result)
+        # popularTimesFormatted is pre-computed by utils.format_popular_times at sync time
+        self.assertIn("popularTimesFormatted:", result)
+        # The mock data has the pre-formatted string
+        self.assertIn("Mon:", result)
+        self.assertIn("Sat:", result)
 
     def test_place_embedding_includes_typical_time_spent(self):
         """Test that place embedding includes typical time spent."""
@@ -972,6 +951,259 @@ class TestCosmosDurableFunctionHelpers(unittest.TestCase):
         self.assertEqual(place_data_list[1]["place_id"], "place_id_2")
 
 
+class TestFormatPopularTimes(unittest.TestCase):
+    """Test suite for format_popular_times utility function from utils.py."""
+
+    def test_format_popular_times_basic(self):
+        """Test basic popular times formatting with busy, moderate, and quiet hours."""
+        from services.utils import format_popular_times
+        
+        popular_times = [
+            {
+                "day": 1,
+                "day_text": "Monday",
+                "popular_times": [
+                    {"hour": 8, "percentage": 30},   # quiet
+                    {"hour": 9, "percentage": 75},   # busy
+                    {"hour": 10, "percentage": 90},  # busy
+                    {"hour": 11, "percentage": 85},  # busy
+                    {"hour": 12, "percentage": 55},  # moderate
+                    {"hour": 13, "percentage": 40},  # quiet
+                ]
+            },
+        ]
+        
+        result = format_popular_times(popular_times)
+        
+        self.assertIsNotNone(result)
+        self.assertIn("Mon:", result)
+        self.assertIn("busy", result)
+        self.assertIn("9-11", result)  # Consecutive busy hours grouped
+        
+    def test_format_popular_times_multiple_days(self):
+        """Test formatting with multiple days."""
+        from services.utils import format_popular_times
+        
+        popular_times = [
+            {
+                "day": 1,
+                "day_text": "Monday",
+                "popular_times": [
+                    {"hour": 12, "percentage": 80},
+                ]
+            },
+            {
+                "day": 6,
+                "day_text": "Saturday",
+                "popular_times": [
+                    {"hour": 10, "percentage": 90},
+                    {"hour": 11, "percentage": 85},
+                ]
+            },
+        ]
+        
+        result = format_popular_times(popular_times)
+        
+        self.assertIsNotNone(result)
+        self.assertIn("Mon:", result)
+        self.assertIn("Sat:", result)
+        
+    def test_format_popular_times_quiet_all_day(self):
+        """Test day that is quiet all day (max <= 50%)."""
+        from services.utils import format_popular_times
+        
+        popular_times = [
+            {
+                "day": 2,
+                "day_text": "Tuesday",
+                "popular_times": [
+                    {"hour": 10, "percentage": 30},
+                    {"hour": 11, "percentage": 40},
+                    {"hour": 12, "percentage": 50},  # At the threshold
+                ]
+            },
+        ]
+        
+        result = format_popular_times(popular_times)
+        
+        self.assertIsNotNone(result)
+        self.assertIn("Tue: quiet all day", result)
+        
+    def test_format_popular_times_empty_input(self):
+        """Test with empty or None input."""
+        from services.utils import format_popular_times
+        
+        self.assertIsNone(format_popular_times(None))
+        self.assertIsNone(format_popular_times([]))
+        
+    def test_format_popular_times_skips_live_data(self):
+        """Test that 'live' day entries are skipped."""
+        from services.utils import format_popular_times
+        
+        popular_times = [
+            {
+                "day": "live",
+                "day_text": "Live",
+                "popular_times": [{"hour": 12, "percentage": 80}]
+            },
+            {
+                "day": 1,
+                "day_text": "Monday",
+                "popular_times": [{"hour": 12, "percentage": 80}]
+            },
+        ]
+        
+        result = format_popular_times(popular_times)
+        
+        self.assertIsNotNone(result)
+        self.assertNotIn("Live", result)
+        self.assertIn("Mon:", result)
+        
+    def test_format_popular_times_no_data_days_skipped(self):
+        """Test that days with all 0% are skipped (likely closed)."""
+        from services.utils import format_popular_times
+        
+        popular_times = [
+            {
+                "day": 1,
+                "day_text": "Monday",
+                "popular_times": [
+                    {"hour": 10, "percentage": 0},
+                    {"hour": 11, "percentage": 0},
+                ]
+            },
+        ]
+        
+        result = format_popular_times(popular_times)
+        
+        # All zeros means no data, should return None
+        self.assertIsNone(result)
+        
+    def test_format_popular_times_hour_ranges(self):
+        """Test that consecutive hours are grouped into ranges."""
+        from services.utils import format_popular_times
+        
+        popular_times = [
+            {
+                "day": 1,
+                "day_text": "Monday",
+                "popular_times": [
+                    {"hour": 9, "percentage": 80},
+                    {"hour": 10, "percentage": 85},
+                    {"hour": 11, "percentage": 75},
+                    {"hour": 14, "percentage": 90},  # Gap, separate range
+                    {"hour": 15, "percentage": 88},
+                ]
+            },
+        ]
+        
+        result = format_popular_times(popular_times)
+        
+        self.assertIsNotNone(result)
+        # Should have two ranges for busy hours: 9-11 and 2-3pm
+        self.assertIn("busy", result)
+        
+    def test_format_popular_times_moderate_hours(self):
+        """Test that moderate hours (51-69%) are categorized correctly."""
+        from services.utils import format_popular_times
+        
+        popular_times = [
+            {
+                "day": 1,
+                "day_text": "Monday",
+                "popular_times": [
+                    {"hour": 9, "percentage": 60},   # moderate
+                    {"hour": 10, "percentage": 65},  # moderate
+                    {"hour": 11, "percentage": 55},  # moderate
+                    {"hour": 12, "percentage": 80},  # busy - ensures we don't get "quiet all day"
+                ]
+            },
+        ]
+        
+        result = format_popular_times(popular_times)
+        
+        self.assertIsNotNone(result)
+        self.assertIn("moderate", result)
+
+
+class TestHoursToRanges(unittest.TestCase):
+    """Test suite for _hours_to_ranges helper function."""
+
+    def test_hours_to_ranges_consecutive(self):
+        """Test consecutive hours are grouped into ranges."""
+        from services.utils import _hours_to_ranges
+        
+        result = _hours_to_ranges([9, 10, 11])
+        
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0], "9-11am")
+        
+    def test_hours_to_ranges_non_consecutive(self):
+        """Test non-consecutive hours create separate ranges."""
+        from services.utils import _hours_to_ranges
+        
+        result = _hours_to_ranges([9, 10, 14, 15])
+        
+        self.assertEqual(len(result), 2)
+        self.assertIn("9-10am", result)
+        self.assertIn("2-3pm", result)
+        
+    def test_hours_to_ranges_single_hour(self):
+        """Test single hour is not a range."""
+        from services.utils import _hours_to_ranges
+        
+        result = _hours_to_ranges([12])
+        
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0], "12pm")
+        
+    def test_hours_to_ranges_empty(self):
+        """Test empty input returns empty list."""
+        from services.utils import _hours_to_ranges
+        
+        result = _hours_to_ranges([])
+        self.assertEqual(result, [])
+        
+    def test_hours_to_ranges_pm_hours(self):
+        """Test afternoon hours format correctly."""
+        from services.utils import _hours_to_ranges
+        
+        result = _hours_to_ranges([14, 15, 16])
+        
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0], "2-4pm")
+
+
+class TestFormatHourRange(unittest.TestCase):
+    """Test suite for _format_hour_range helper function."""
+
+    def test_format_single_am_hour(self):
+        """Test single AM hour."""
+        from services.utils import _format_hour_range
+        
+        self.assertEqual(_format_hour_range(9, 9), "9am")
+        
+    def test_format_single_pm_hour(self):
+        """Test single PM hour."""
+        from services.utils import _format_hour_range
+        
+        self.assertEqual(_format_hour_range(14, 14), "2pm")
+        
+    def test_format_range_same_period(self):
+        """Test range within same AM/PM period."""
+        from services.utils import _format_hour_range
+        
+        self.assertEqual(_format_hour_range(9, 11), "9-11am")
+        self.assertEqual(_format_hour_range(14, 16), "2-4pm")
+        
+    def test_format_range_noon(self):
+        """Test range including noon."""
+        from services.utils import _format_hour_range
+        
+        self.assertEqual(_format_hour_range(12, 12), "12pm")
+        self.assertEqual(_format_hour_range(11, 13), "11-1pm")
+
+
 # Main execution block
 if __name__ == "__main__":
     # Instantiate the test class
@@ -1008,6 +1240,9 @@ if __name__ == "__main__":
         TestGetPlaceEmbeddingFields,
         TestEmbeddingIntegration,
         TestCosmosDurableFunctionHelpers,
+        TestFormatPopularTimes,
+        TestHoursToRanges,
+        TestFormatHourRange,
     ]
     
     for test_class in test_classes:
