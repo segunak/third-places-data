@@ -86,7 +86,7 @@ jobs:
           $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
           
           # Call the durable function script and capture its output
-          $scriptOutput = ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 28800 | Out-String
+          $scriptOutput = ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 86400 | Out-String
           $scriptExitCode = $LASTEXITCODE
           
           # Print the output so it appears in logs
