@@ -209,6 +209,18 @@ $VectorPolicyPath = Join-Path $TempDir "vector-policy.json"
 }
 '@ | Set-Content -Path $VectorPolicyPath -Encoding UTF8
 
+# This enables exact matching via FullTextContainsAny
+$FullTextPolicyPath = Join-Path $TempDir "fulltext-policy.json"
+@'
+{
+    "defaultLanguage": "en-US",
+    "fullTextPaths": [
+        { "path": "/placeName", "language": "en-US" },
+        { "path": "/neighborhood", "language": "en-US" }
+    ]
+}
+'@ | Set-Content -Path $FullTextPolicyPath -Encoding UTF8
+
 # Indexing policy with vector index
 # 
 # EXCLUDED PATHS RATIONALE:
@@ -257,6 +269,10 @@ $PlacesIndexPolicyPath = Join-Path $TempDir "places-index-policy.json"
     ],
     "vectorIndexes": [
         {"path": "/embedding", "type": "quantizedFlat"}
+    ],
+    "fullTextIndexes": [
+        {"path": "/placeName"},
+        {"path": "/neighborhood"}
     ]
 }
 '@ | Set-Content -Path $PlacesIndexPolicyPath -Encoding UTF8
@@ -324,7 +340,7 @@ if ($existingPlaces) {
     Write-Host "Container '$PlacesContainerName' already exists. Skipping creation."
     Write-Host "To recreate with different settings, delete it first in the Azure Portal."
 } else {
-    # Create container with vector search enabled
+    # Create container with vector search and full-text search enabled
     # Using @file syntax as recommended by Azure for complex JSON
     # Vector indexing requires dedicated throughput (400 RU/s minimum per container)
     # Using 500 RU/s (half of 1000 free tier limit, split between 2 containers)
@@ -336,6 +352,7 @@ if ($existingPlaces) {
         --partition-key-path "/id" `
         --throughput 500 `
         --vector-embeddings "@$VectorPolicyPath" `
+        --full-text-policy "@$FullTextPolicyPath" `
         --idx "@$PlacesIndexPolicyPath" `
         | Out-Null
     
@@ -344,6 +361,7 @@ if ($existingPlaces) {
         Write-Host "  Partition key: /id"
         Write-Host "  Vector path: /embedding (1536 dimensions, cosine)"
         Write-Host "  Vector index: quantizedFlat"
+        Write-Host "  Full-text paths: /placeName, /neighborhood"
     } else {
         Write-Warning "Make sure 'Vector Search for NoSQL API' is enabled in account Features."
         throw "Failed to create '$PlacesContainerName' container."

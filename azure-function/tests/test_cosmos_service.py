@@ -581,16 +581,16 @@ class TestFormatFieldForEmbedding(unittest.TestCase):
 
     def test_plain_string_field(self):
         """Test plain string fields returned with labels."""
-        self.assertEqual(format_field_for_embedding("place", "Test Coffee Shop"), "placeName: Test Coffee Shop")
+        self.assertEqual(format_field_for_embedding("placeName", "Test Coffee Shop"), "placeName: Test Coffee Shop")
         self.assertEqual(format_field_for_embedding("description", "Great place"), "description: Great place")
         self.assertEqual(format_field_for_embedding("neighborhood", "Downtown"), "neighborhood: Downtown")
         self.assertEqual(format_field_for_embedding("address", "123 Main St"), "address: 123 Main St")
 
     def test_plain_string_field_empty(self):
         """Test empty strings return None."""
-        self.assertIsNone(format_field_for_embedding("place", ""))
+        self.assertIsNone(format_field_for_embedding("placeName", ""))
         self.assertIsNone(format_field_for_embedding("description", "   "))
-        self.assertIsNone(format_field_for_embedding("place", None))
+        self.assertIsNone(format_field_for_embedding("placeName", None))
 
     def test_typical_time_spent_field(self):
         """Test typicalTimeSpent field returned with label."""
@@ -617,9 +617,9 @@ class TestGetPlaceEmbeddingFields(unittest.TestCase):
         result = get_place_embedding_fields()
         
         expected_airtable_fields = [
-            "place", "description", "comments", "neighborhood", "address",
+            "placeName", "description", "comments", "neighborhood", "address",
             "type", "tags", "freeWifi", "hasCinnamonRolls", "parking",
-            "purchaseRequired", "size"
+            "purchaseRequired", "size", "operational"
         ]
         
         for field in expected_airtable_fields:
@@ -651,8 +651,8 @@ class TestGetPlaceEmbeddingFields(unittest.TestCase):
     def test_field_count(self):
         """Test that the total number of embedding fields is correct."""
         result = get_place_embedding_fields()
-        # 12 Airtable fields + 5 JSON fields = 17 total
-        self.assertEqual(len(result), 17)
+        # 13 Airtable fields + 5 JSON fields = 18 total
+        self.assertEqual(len(result), 18)
 
 
 class TestEmbeddingIntegration(unittest.TestCase):

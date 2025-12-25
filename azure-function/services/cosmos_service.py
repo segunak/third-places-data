@@ -181,8 +181,8 @@ class CosmosService:
         places_with_chunks = self.get_places_with_chunks_count()
         
         # Get latest and oldest sync timestamps from places
-        latest_sync_query = "SELECT TOP 1 c.lastSynced, c.id, c.place FROM c ORDER BY c.lastSynced DESC"
-        oldest_sync_query = "SELECT TOP 1 c.lastSynced, c.id, c.place FROM c ORDER BY c.lastSynced ASC"
+        latest_sync_query = "SELECT TOP 1 c.lastSynced, c.id, c.placeName FROM c ORDER BY c.lastSynced DESC"
+        oldest_sync_query = "SELECT TOP 1 c.lastSynced, c.id, c.placeName FROM c ORDER BY c.lastSynced ASC"
         
         latest_sync_result = list(self.places_container.query_items(
             query=latest_sync_query,
@@ -228,12 +228,12 @@ class CosmosService:
                 "latestSync": {
                     "timestamp": latest_sync.get("lastSynced") if latest_sync else None,
                     "placeId": latest_sync.get("id") if latest_sync else None,
-                    "placeName": latest_sync.get("place") if latest_sync else None,
+                    "placeName": latest_sync.get("placeName") if latest_sync else None,
                 },
                 "oldestSync": {
                     "timestamp": oldest_sync.get("lastSynced") if oldest_sync else None,
                     "placeId": oldest_sync.get("id") if oldest_sync else None,
-                    "placeName": oldest_sync.get("place") if oldest_sync else None,
+                    "placeName": oldest_sync.get("placeName") if oldest_sync else None,
                 },
             },
         }
@@ -265,7 +265,7 @@ class CosmosService:
         SELECT TOP @topK
             c.id,
             c.airtableRecordId,
-            c.place,
+            c.placeName,
             c.neighborhood,
             c.address,
             c.type,
@@ -283,6 +283,7 @@ class CosmosService:
             c.workingHours,
             c.about,
             c.typicalTimeSpent,
+            c.operational,
             VectorDistance(c.embedding, @queryEmbedding) AS distance
         FROM c
         WHERE VectorDistance(c.embedding, @queryEmbedding) < @maxDistance
@@ -458,10 +459,10 @@ def transform_airtable_to_place(
         "linkedIn":               ("LinkedIn",                  False),
         "longitude":              ("Longitude",                 False),
         "neighborhood":           ("Neighborhood",              True),
-        "operational":            ("Operational",               False),
+        "operational":            ("Operational",               True),   # Yes/No/Opening Soon - enables status queries
         "parking":                ("Parking",                   True),   # Common user query
         "photos":                 ("Photos",                    False),
-        "place":                  ("Place",                     True),   # Name is critical
+        "placeName":              ("Place",                     True),   # Name is critical
         "purchaseRequired":       ("Purchase Required",         True),   # Common user query
         "size":                   ("Size",                      True),   # Common user query
         "tags":                   ("Tags",                      True),   # Tags are key for search
@@ -534,9 +535,9 @@ def get_place_embedding_fields() -> List[str]:
     """
     # Airtable fields to embed
     airtable_embed_fields = [
-        "place", "description", "comments", "neighborhood", "address",
+        "placeName", "description", "comments", "neighborhood", "address",
         "type", "tags", "freeWifi", "hasCinnamonRolls", "parking",
-        "purchaseRequired", "size"
+        "purchaseRequired", "size", "operational"
     ]
     
     # JSON fields to embed

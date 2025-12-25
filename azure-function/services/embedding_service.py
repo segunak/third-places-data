@@ -203,9 +203,7 @@ def format_field_for_embedding(field_name: str, value: Any) -> Optional[str]:
     # String and other scalar types - sanitize and return with label
     if isinstance(value, str):
         sanitized = sanitize_field_value(value)
-        # Use 'placeName' instead of 'place' for clarity in embeddings
-        label = "placeName" if field_name == "place" else field_name
-        return f"{label}: {sanitized}" if sanitized else None
+        return f"{field_name}: {sanitized}" if sanitized else None
     
     # Fallback for other types (int, float, bool, etc.)
     sanitized = sanitize_field_value(str(value))

@@ -758,9 +758,10 @@ class TestFormatFieldForEmbeddingStringFields:
 class TestFormatFieldForEmbeddingLabels:
     """Tests for format_field_for_embedding field labels."""
     
-    def test_place_becomes_placeName(self, mock_env_vars):
+    def test_placeName_has_label(self, mock_env_vars):
+        """Test that placeName field is formatted with its own name."""
         from services.embedding_service import format_field_for_embedding
-        result = format_field_for_embedding("place", "Starbucks")
+        result = format_field_for_embedding("placeName", "Starbucks")
         assert result == "placeName: Starbucks"
     
     def test_description_has_label(self, mock_env_vars):
