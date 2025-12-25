@@ -387,7 +387,7 @@ class TestComposePlaceEmbeddingText:
         from services.embedding_service import compose_place_embedding_text
         
         place = {
-            "place": "Test Cafe",
+            "placeName": "Test Cafe",
             "neighborhood": "Downtown",
             "type": ["Cafe"]
         }
@@ -405,7 +405,7 @@ class TestComposePlaceEmbeddingText:
         from services.embedding_service import compose_place_embedding_text
         
         place = {
-            "place": "Test Cafe",
+            "placeName": "Test Cafe",
             "neighborhood": "",
             "description": None,
             "type": ["Cafe"]
@@ -919,7 +919,7 @@ class TestComposePlaceEmbeddingTextFormatting:
         from services.embedding_service import compose_place_embedding_text
         
         place_doc = {
-            "place": "Starbucks",
+            "placeName": "Starbucks",
             "description": "Coffee shop",
             "comments": "Great place",
             "neighborhood": "South End",
@@ -951,7 +951,7 @@ class TestComposePlaceEmbeddingTextFormatting:
         from services.embedding_service import compose_place_embedding_text
         
         place_doc = {
-            "place": "Test Place",
+            "placeName": "Test Place",
             "description": None,
             "neighborhood": "Test Area"
         }

@@ -182,7 +182,7 @@ class TestTransformAirtableToPlace(unittest.TestCase):
         result = transform_airtable_to_place(MOCK_AIRTABLE_RECORD)
         
         self.assertEqual(result["id"], "ChIJH9S7TOcPVIgRnG5eHqW4DE0")
-        self.assertEqual(result["place"], "Mattie Ruth's Coffee House")
+        self.assertEqual(result["placeName"], "Mattie Ruth's Coffee House")
         self.assertEqual(result["address"], "300 McGill Ave NW, Concord, NC 28027")
         self.assertEqual(result["neighborhood"], "Concord")
         self.assertEqual(result["type"], "Coffee Shop")
@@ -212,7 +212,7 @@ class TestTransformAirtableToPlace(unittest.TestCase):
         
         # Should still have Airtable fields
         self.assertEqual(result["id"], "ChIJH9S7TOcPVIgRnG5eHqW4DE0")
-        self.assertEqual(result["place"], "Mattie Ruth's Coffee House")
+        self.assertEqual(result["placeName"], "Mattie Ruth's Coffee House")
         
         # Should NOT have JSON-only fields
         self.assertNotIn("category", result)
@@ -351,7 +351,7 @@ class TestComposePlaceEmbeddingText(unittest.TestCase):
         """Test composition with minimal fields."""
         minimal_doc = {
             "id": "test123",
-            "place": "Test Place",
+            "placeName": "Test Place",
         }
         result = compose_place_embedding_text(minimal_doc)
         
@@ -431,7 +431,7 @@ class TestEmptyAndNullHandling(unittest.TestCase):
         result = transform_airtable_to_place(minimal_record)
         
         self.assertEqual(result["id"], "test_id")
-        self.assertEqual(result["place"], "Test Place")
+        self.assertEqual(result["placeName"], "Test Place")
         # Missing fields should not be present (not set to None)
         self.assertNotIn("description", result)
         
@@ -439,14 +439,14 @@ class TestEmptyAndNullHandling(unittest.TestCase):
         """Test that empty fields are skipped in embedding composition."""
         place_doc = {
             "id": "test",
-            "place": "Test Place",
+            "placeName": "Test Place",
             "description": "",  # Empty string
             "neighborhood": None,  # None value
             "type": "Cafe",
         }
         result = compose_place_embedding_text(place_doc)
         
-        # Should only have place and type
+        # Should only have placeName and type
         self.assertIn("Test Place", result)
         self.assertIn("Cafe", result)
         # Should not have empty separators
