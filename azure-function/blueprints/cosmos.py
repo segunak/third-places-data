@@ -718,7 +718,8 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
         report["status"] = "degraded"
     
     # 2. Get Airtable record count
-    airtable_place_ids = set()  # Track Place IDs for orphan detection
+    airtable_place_ids = set()  # Track Place IDs for sync comparison
+    syncable_count = 0  # Records with Google Maps Place Id (can be synced to Cosmos)
     try:
         airtable_service = _get_airtable_service()
         airtable_records = airtable_service.all_third_places
@@ -727,23 +728,26 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
         # Get additional Airtable metadata
         operational_count = sum(
             1 for r in airtable_records 
-            if r.get("fields", {}).get("Operational") == "Yes"
+            if r["fields"].get("Operational") == "Yes"
         ) if airtable_records else 0
         
         has_data_file_count = sum(
             1 for r in airtable_records 
-            if r.get("fields", {}).get("Has Data File") == "Yes"
+            if r["fields"].get("Has Data File") == "Yes"
         ) if airtable_records else 0
         
-        # Extract Place IDs for orphan detection
+        # Syncable records = those with a Google Maps Place Id (required for Cosmos sync)
+        # This naturally excludes Opening Soon places that don't have a Place Id yet
         airtable_place_ids = {
-            r.get("fields", {}).get("Google Maps Place Id")
+            r["fields"].get("Google Maps Place Id")
             for r in airtable_records
-            if r.get("fields", {}).get("Google Maps Place Id")
-        } if airtable_records else set()
+            if r["fields"].get("Google Maps Place Id")
+        }
+        syncable_count = len(airtable_place_ids)
         
         report["sources"]["airtable"] = {
             "totalRecords": airtable_count,
+            "syncableRecords": syncable_count,
             "operationalRecords": operational_count,
             "recordsWithDataFile": has_data_file_count,
             "view": "Production",
@@ -787,24 +791,24 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
     
     # 5. Calculate discrepancies
     cosmos_places_count = report.get("cosmos", {}).get("places", {}).get("count")
-    airtable_count = report.get("sources", {}).get("airtable", {}).get("totalRecords")
+    # Use syncable_count (records with Google Maps Place Id) for comparison with Cosmos
     github_count = report.get("sources", {}).get("github", {}).get("count")
     
-    if cosmos_places_count is not None and airtable_count is not None:
-        diff = airtable_count - cosmos_places_count
+    if cosmos_places_count is not None and syncable_count is not None:
+        diff = syncable_count - cosmos_places_count
         if diff != 0:
             # Identify exactly which places are mismatched
             missing_from_cosmos = []
             missing_from_airtable = []
             try:
                 cosmos_place_ids = set(cosmos_service.get_all_place_ids())
-                # airtable_place_ids was already collected above for orphan detection
+                # airtable_place_ids contains only records with Google Maps Place Id
                 
                 missing_from_cosmos = [
                     {"placeId": pid, "placeName": next(
-                        (r.get("fields", {}).get("Place", "Unknown") 
+                        (r["fields"].get("Place", "Unknown") 
                          for r in airtable_records 
-                         if r.get("fields", {}).get("Google Maps Place Id") == pid),
+                         if r["fields"].get("Google Maps Place Id") == pid),
                         "Unknown"
                     )}
                     for pid in (airtable_place_ids - cosmos_place_ids)
@@ -819,7 +823,7 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
             
             discrepancy_details = {
                 "type": "cosmos_vs_airtable",
-                "description": f"Cosmos has {cosmos_places_count} places, Airtable has {airtable_count} records",
+                "description": f"Cosmos has {cosmos_places_count} places, Airtable has {syncable_count} syncable records (with Google Maps Place Id)",
                 "difference": diff,
                 "action": "Run cosmos/sync-places to sync missing places" if diff > 0 else "Check for deleted Airtable records"
             }
@@ -876,9 +880,13 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
             "value": report.get("cosmos", {}).get("chunks", {}).get("count"),
             "description": "Number of text chunks in Cosmos DB 'chunks' container. Each place is split into ~140 searchable chunks for RAG/vector search."
         },
-        "airtableRecords": {
+        "airtableSyncableRecords": {
+            "value": syncable_count,
+            "description": "Number of Airtable records with a Google Maps Place Id. Only these can be synced to Cosmos."
+        },
+        "airtableTotalRecords": {
             "value": airtable_count,
-            "description": "Number of records in Airtable's 'Production' view. This is the source of truth for all places."
+            "description": "Total records in Airtable's 'Production' view, including those without a Google Maps Place Id."
         },
         "githubFiles": {
             "value": github_count,

@@ -86,7 +86,8 @@ jobs:
               echo "|--------|-------|-------------|" >> $env:GITHUB_STEP_SUMMARY
               echo "| **Cosmos Places** | $($response.summary.cosmosPlaces.value) | Place documents in Cosmos DB (synced from Airtable) |" >> $env:GITHUB_STEP_SUMMARY
               echo "| **Cosmos Chunks** | $($response.summary.cosmosChunks.value) | Text chunks for RAG/vector search (~140 per place) |" >> $env:GITHUB_STEP_SUMMARY
-              echo "| **Airtable Records** | $($response.summary.airtableRecords.value) | Source of truth - all places in Production view |" >> $env:GITHUB_STEP_SUMMARY
+              echo "| **Airtable Syncable** | $($response.summary.airtableSyncableRecords.value) | Records with Google Maps Place Id (can sync to Cosmos) |" >> $env:GITHUB_STEP_SUMMARY
+              echo "| **Airtable Total** | $($response.summary.airtableTotalRecords.value) | All records in Production view |" >> $env:GITHUB_STEP_SUMMARY
               echo "| **GitHub JSON Files** | $($response.summary.githubFiles.value) | Enriched data files (reviews, photos, metadata) |" >> $env:GITHUB_STEP_SUMMARY
               
               echo "" >> $env:GITHUB_STEP_SUMMARY
@@ -136,7 +137,7 @@ jobs:
               echo "" >> $env:GITHUB_STEP_SUMMARY
               echo "### Understanding the Numbers" >> $env:GITHUB_STEP_SUMMARY
               echo "" >> $env:GITHUB_STEP_SUMMARY
-              echo "- **Cosmos Places should equal Airtable Records** - If Cosmos has fewer, run ``cosmos/sync-places`` to sync missing places" >> $env:GITHUB_STEP_SUMMARY
+              echo "- **Cosmos Places should equal Airtable Syncable** - Only records with a Google Maps Place Id can sync to Cosmos" >> $env:GITHUB_STEP_SUMMARY
               echo "- **Errors** mean a data source couldn't be reached" >> $env:GITHUB_STEP_SUMMARY
               echo "- **Discrepancies** mean data is out of sync and needs attention" >> $env:GITHUB_STEP_SUMMARY
               echo "- **Orphaned Files** are JSON files in GitHub for places that were deleted from Airtable. This is normal and not an issue." >> $env:GITHUB_STEP_SUMMARY
