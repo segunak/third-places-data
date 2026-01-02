@@ -327,20 +327,19 @@ if ($existingPlaces) {
     # Create container with vector search enabled
     # Using @file syntax as recommended by Azure for complex JSON
     # Vector indexing requires dedicated throughput (400 RU/s minimum per container)
-    # Using 500 RU/s (half of 1000 free tier limit, split between 2 containers)
     az cosmosdb sql container create `
         --account-name $CosmosAccountName `
         --resource-group $ResourceGroup `
         --database-name $DatabaseName `
         --name $PlacesContainerName `
         --partition-key-path "/id" `
-        --throughput 500 `
+        --throughput 600 `
         --vector-embeddings "@$VectorPolicyPath" `
         --idx "@$PlacesIndexPolicyPath" `
         | Out-Null
     
     if ($LASTEXITCODE -eq 0) {
-        Write-Host "Container '$PlacesContainerName' created with 500 RU/s."
+        Write-Host "Container '$PlacesContainerName' created with 600 RU/s."
         Write-Host "  Partition key: /id"
         Write-Host "  Vector path: /embedding (1536 dimensions, cosine)"
         Write-Host "  Vector index: quantizedFlat"
@@ -395,20 +394,19 @@ if ($existingChunks) {
     # Create container with vector search enabled
     # Using @file syntax as recommended by Azure for complex JSON
     # Vector indexing requires dedicated throughput (400 RU/s minimum per container)
-    # Using 500 RU/s (half of 1000 free tier limit, split between 2 containers)
     az cosmosdb sql container create `
         --account-name $CosmosAccountName `
         --resource-group $ResourceGroup `
         --database-name $DatabaseName `
         --name $ChunksContainerName `
         --partition-key-path "/placeId" `
-        --throughput 500 `
+        --throughput 400 `
         --vector-embeddings "@$VectorPolicyPath" `
         --idx "@$ChunksIndexPolicyPath" `
         | Out-Null
     
     if ($LASTEXITCODE -eq 0) {
-        Write-Host "Container '$ChunksContainerName' created with 500 RU/s."
+        Write-Host "Container '$ChunksContainerName' created with 400 RU/s."
         Write-Host "  Partition key: /placeId"
         Write-Host "  Vector path: /embedding (1536 dimensions, cosine)"
         Write-Host "  Vector index: quantizedFlat"
