@@ -82,8 +82,81 @@ class AirtableService:
         """
         logging.info("Clearing cached third places data")
         self._all_third_places = None
+
+    def _extract_raw_provider_values(self, raw_data: dict, data_source: str) -> Dict[str, Any]:
+        """
+        Extracts raw provider values from the API response based on the data source.
+        Returns a mapping of Airtable field names to their raw API values.
+        
+        Args:
+            raw_data: The raw API response from the provider
+            data_source: The provider type ('GoogleMapsProvider' or 'OutscraperProvider')
+            
+        Returns:
+            dict: Mapping of field names to raw provider values (structured objects preserved)
+        """
+        no_value = "No Value From Provider"
+        
+        if not raw_data:
+            return {
+                'Google Maps Place Id': no_value,
+                'Google Maps Profile URL': no_value,
+                'Website': no_value,
+                'Address': no_value,
+                'Description': no_value,
+                'Purchase Required': no_value,
+                'Parking': no_value,
+                'Photos': no_value,
+                'Latitude': no_value,
+                'Longitude': no_value,
+            }
+        
+        if data_source == 'GoogleMapsProvider':
+            return {
+                'Google Maps Place Id': no_value,  # Derived field
+                'Google Maps Profile URL': raw_data.get('googleMapsUri', no_value),
+                'Website': raw_data.get('websiteUri', no_value),
+                'Address': raw_data.get('formattedAddress', no_value),
+                'Description': raw_data.get('editorialSummary', no_value),
+                'Purchase Required': raw_data.get('priceLevel', no_value),
+                'Parking': raw_data.get('parkingOptions', no_value),
+                'Photos': no_value,  # Photos come from separate API call
+                'Latitude': raw_data.get('location', {}).get('latitude', no_value) if isinstance(raw_data.get('location'), dict) else no_value,
+                'Longitude': raw_data.get('location', {}).get('longitude', no_value) if isinstance(raw_data.get('location'), dict) else no_value,
+            }
+        elif data_source == 'OutscraperProvider':
+            # Outscraper stores parking info under 'about' -> 'Parking'
+            about = raw_data.get('about', {})
+            parking_raw = about.get('Parking', no_value) if isinstance(about, dict) else no_value
+            
+            return {
+                'Google Maps Place Id': no_value,  # Derived field
+                'Google Maps Profile URL': no_value,  # Constructed from CID
+                'Website': raw_data.get('site', no_value),
+                'Address': raw_data.get('full_address', no_value),
+                'Description': raw_data.get('description', no_value),
+                'Purchase Required': raw_data.get('range', no_value),
+                'Parking': parking_raw,
+                'Photos': no_value,  # Photos come from separate API call
+                'Latitude': raw_data.get('latitude', no_value),
+                'Longitude': raw_data.get('longitude', no_value),
+            }
+        else:
+            # Unknown provider, return no_value for all fields
+            return {
+                'Google Maps Place Id': no_value,
+                'Google Maps Profile URL': no_value,
+                'Website': no_value,
+                'Address': no_value,
+                'Description': no_value,
+                'Purchase Required': no_value,
+                'Parking': no_value,
+                'Photos': no_value,
+                'Latitude': no_value,
+                'Longitude': no_value,
+            }
     
-    def update_place_record(self, record_id: str, field_to_update: str, update_value, overwrite: bool) -> Dict[str, Any]:
+    def update_place_record(self, record_id: str, field_to_update: str, update_value, overwrite: bool, raw_provider_value="No Value From Provider") -> Dict[str, Any]:
         """
         Attempts to update a record in the Airtable database based on given parameters.
         The function considers whether the field should be overwritten if it already exists.
@@ -110,7 +183,8 @@ class AirtableService:
                 "field_name": field_to_update,
                 "record_id": record_id,
                 "old_value": current_value,
-                "new_value": update_value
+                "new_value": update_value,
+                "raw_provider_value": raw_provider_value
             }
 
             # Determine whether to update the field based on these rules:
@@ -155,7 +229,8 @@ class AirtableService:
                 "field_name": field_to_update,
                 "record_id": record_id,
                 "old_value": None,
-                "new_value": None
+                "new_value": None,
+                "raw_provider_value": raw_provider_value
             }
 
     def get_base_url(self, url: str) -> str:
@@ -255,6 +330,11 @@ class AirtableService:
             google_maps_url = details.get('google_maps_url', '')
             photos_list = place_data.get('photos', {}).get('photo_urls', [])
             
+            # Extract raw provider values from the API response
+            raw_data = details.get('raw_data', {})
+            data_source = place_data.get('data_source', '')
+            raw_provider_values = self._extract_raw_provider_values(raw_data, data_source)
+            
             # Tuple format is (field_value, overwrite)
             # Overwrite is True for fields that should be updated even if they already have a value
             fields_to_update = {
@@ -272,11 +352,13 @@ class AirtableService:
 
             for field_name, (field_value, overwrite) in fields_to_update.items():
                 if field_value:
+                    raw_value = raw_provider_values.get(field_name, "No Value From Provider")
                     update_result = self.update_place_record(
                         record_id,
                         field_name,
                         field_value,
-                        overwrite
+                        overwrite,
+                        raw_provider_value=raw_value
                     )
                     result['field_updates'][field_name] = update_result
             return result

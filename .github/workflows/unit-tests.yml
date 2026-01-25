@@ -1,0 +1,72 @@
+# Unit tests workflow for Azure Function
+# This workflow runs pytest unit tests for all services and classes
+# It can be called by other workflows or triggered manually
+
+name: Unit Tests
+
+on:
+  # Allow this workflow to be called by other workflows
+  workflow_call:
+    outputs:
+      test_result:
+        description: "Result of the unit tests"
+        value: ${{ jobs.test.outputs.result }}
+  
+  # Allow manual trigger
+  workflow_dispatch:
+  
+  # Run on pull requests that affect azure-function code
+  pull_request:
+    paths:
+      - 'azure-function/**'
+    branches:
+      - master
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.test.outcome }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('azure-function/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        working-directory: ./azure-function
+
+      - name: Run tests with coverage
+        id: test
+        run: |
+          pytest tests/ \
+            --cov=services \
+            --cov-fail-under=80 \
+            --cov-report=term-missing \
+            --cov-report=xml \
+            -v
+        working-directory: ./azure-function
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: azure-function/coverage.xml
+          retention-days: 7

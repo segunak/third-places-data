@@ -151,11 +151,12 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
                 batch_results = yield context.task_all(batch_tasks)
                 results.extend(batch_results)
 
-        # Categorize results into enriched, not found, skipped, and failed
+        # Categorize results into enriched, not found, skipped, unchanged, and failed
         actually_updated_places = []
         not_found_places = []
         skipped_places = []
         failed_places = []
+        unchanged_places = []
         
         for place in results:
             if not place:
@@ -188,17 +189,58 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
                     'record_id': place.get('record_id'),
                     'message': place.get('message', 'Unknown error')
                 })
+            # Unchanged places - successfully processed but no fields needed updating
+            # This happens when status is 'succeeded' or 'cached' but all field_updates have updated=False
+            elif place.get('status') in ('succeeded', 'cached'):
+                # Build a summary of why each field wasn't updated
+                field_comparison = {}
+                for field_name, field_update in place.get('field_updates', {}).items():
+                    field_comparison[field_name] = {
+                        'current_value': field_update.get('old_value'),
+                        'provider_value': field_update.get('new_value'),
+                        'raw_provider_value': field_update.get('raw_provider_value', 'No Value From Provider'),
+                        'reason': 'Values match' if field_update.get('old_value') == field_update.get('new_value') else 'Overwrite disabled and field has value'
+                    }
+                unchanged_places.append({
+                    'place_name': place.get('place_name'),
+                    'place_id': place.get('place_id'),
+                    'record_id': place.get('record_id'),
+                    'status': place.get('status'),
+                    'message': 'All fields already up to date or overwrite not allowed',
+                    'field_comparison': field_comparison
+                })
         
         total_places_enriched = len(actually_updated_places)
         total_places_not_found = len(not_found_places)
         total_places_skipped = len(skipped_places)
         total_places_failed = len(failed_places)
+        total_places_unchanged = len(unchanged_places)
+        
+        # Build detailed field changes summary - only include fields that actually changed
+        field_changes_detail = []
+        for place in actually_updated_places:
+            place_changes = {
+                'place_name': place.get('place_name'),
+                'place_id': place.get('place_id'),
+                'record_id': place.get('record_id'),
+                'changes': []
+            }
+            for field_name, field_update in place.get('field_updates', {}).items():
+                if field_update.get('updated'):
+                    place_changes['changes'].append({
+                        'field_name': field_name,
+                        'old_value': field_update.get('old_value'),
+                        'new_value': field_update.get('new_value'),
+                        'raw_provider_value': field_update.get('raw_provider_value', 'No Value From Provider')
+                    })
+            if place_changes['changes']:
+                field_changes_detail.append(place_changes)
         
         message = "Airtable base enrichment processed successfully."
         if view != "Production":
-            message = f"Airtable base enrichment processed {len(results)} records from '{view}' view. {total_places_enriched} enriched, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
+            message = f"Airtable base enrichment processed {len(results)} records from '{view}' view. {total_places_enriched} enriched, {total_places_unchanged} unchanged, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
         else:
-            message = f"Airtable base enrichment processed {len(results)} records. {total_places_enriched} enriched, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
+            message = f"Airtable base enrichment processed {len(results)} records. {total_places_enriched} enriched, {total_places_unchanged} unchanged, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
         
         result = {
             "success": True,
@@ -206,10 +248,13 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
             "data": {
                 "total_places_processed": len(results),
                 "total_places_enriched": total_places_enriched,
+                "total_places_unchanged": total_places_unchanged,
                 "total_places_not_found": total_places_not_found,
                 "total_places_skipped": total_places_skipped,
                 "total_places_failed": total_places_failed,
+                "field_changes_detail": field_changes_detail,
                 "places_enriched": actually_updated_places,
+                "places_unchanged": unchanged_places,
                 "places_not_found": not_found_places,
                 "places_skipped": skipped_places,
                 "places_failed": failed_places

@@ -292,6 +292,181 @@ class TestAirtableServiceUpdatePlaceRecord:
         
         assert result["updated"] is False
 
+    def test_update_place_record_includes_raw_provider_value(self, service_with_mock_table):
+        """Test that raw_provider_value is included in the result."""
+        service, mock_table = service_with_mock_table
+        
+        mock_table.get.return_value = {
+            "id": "recABC123",
+            "fields": {"Place": TEST_PLACE_NAME, "Website": None}
+        }
+        
+        raw_value = "https://example.com/full/path?query=param"
+        result = service.update_place_record(
+            record_id="recABC123",
+            field_to_update="Website",
+            update_value="https://example.com",
+            overwrite=False,
+            raw_provider_value=raw_value
+        )
+        
+        assert result["raw_provider_value"] == raw_value
+        assert result["updated"] is True
+
+    def test_update_place_record_default_raw_provider_value(self, service_with_mock_table):
+        """Test that raw_provider_value defaults to 'No Value From Provider'."""
+        service, mock_table = service_with_mock_table
+        
+        mock_table.get.return_value = {
+            "id": "recABC123",
+            "fields": {"Place": TEST_PLACE_NAME, "Website": None}
+        }
+        
+        result = service.update_place_record(
+            record_id="recABC123",
+            field_to_update="Website",
+            update_value="https://example.com",
+            overwrite=False
+        )
+        
+        assert result["raw_provider_value"] == "No Value From Provider"
+
+    def test_update_place_record_raw_provider_value_preserved_on_error(self, service_with_mock_table):
+        """Test that raw_provider_value is preserved even on error."""
+        service, mock_table = service_with_mock_table
+        
+        mock_table.get.side_effect = Exception("API Error")
+        
+        raw_value = {"parkingOptions": {"freeParkingLot": True}}
+        result = service.update_place_record(
+            record_id="recABC123",
+            field_to_update="Parking",
+            update_value="Free",
+            overwrite=True,
+            raw_provider_value=raw_value
+        )
+        
+        assert result["updated"] is False
+        assert result["raw_provider_value"] == raw_value
+
+
+class TestAirtableServiceExtractRawProviderValues:
+    """Tests for _extract_raw_provider_values method."""
+
+    @pytest.fixture
+    def service(self, mock_env_vars):
+        """Create a service instance."""
+        from services.airtable_service import AirtableService
+        
+        with mock.patch("services.airtable_service.pyairtable.Table"):
+            with mock.patch("services.airtable_service.Api"):
+                with mock.patch("services.airtable_service.PlaceDataProviderFactory.get_provider") as mock_factory:
+                    mock_factory.return_value = mock.MagicMock()
+                    return AirtableService(provider_type="google")
+
+    def test_extract_google_provider_values(self, service):
+        """Test extraction of raw values from Google Maps provider response."""
+        raw_data = {
+            "websiteUri": "https://example.com/full/path",
+            "formattedAddress": "123 Main St, Charlotte, NC 28202",
+            "editorialSummary": {"text": "A great coffee shop"},
+            "priceLevel": "PRICE_LEVEL_MODERATE",
+            "parkingOptions": {"freeParkingLot": True, "paidStreetParking": False},
+            "googleMapsUri": "https://maps.google.com/?cid=123456",
+            "location": {"latitude": 35.2271, "longitude": -80.8431}
+        }
+        
+        result = service._extract_raw_provider_values(raw_data, "GoogleMapsProvider")
+        
+        assert result["Website"] == "https://example.com/full/path"
+        assert result["Address"] == "123 Main St, Charlotte, NC 28202"
+        assert result["Description"] == {"text": "A great coffee shop"}
+        assert result["Purchase Required"] == "PRICE_LEVEL_MODERATE"
+        assert result["Parking"] == {"freeParkingLot": True, "paidStreetParking": False}
+        assert result["Google Maps Profile URL"] == "https://maps.google.com/?cid=123456"
+        assert result["Latitude"] == 35.2271
+        assert result["Longitude"] == -80.8431
+        # Derived fields should have no value
+        assert result["Google Maps Place Id"] == "No Value From Provider"
+        assert result["Photos"] == "No Value From Provider"
+
+    def test_extract_outscraper_provider_values(self, service):
+        """Test extraction of raw values from Outscraper provider response."""
+        raw_data = {
+            "site": "https://example.com/full/path",
+            "full_address": "123 Main St, Charlotte, NC 28202, United States",
+            "description": "A great coffee shop",
+            "range": "$$",
+            "about": {"Parking": {"Free parking lot": True, "Paid street parking": False}},
+            "latitude": 35.2271,
+            "longitude": -80.8431
+        }
+        
+        result = service._extract_raw_provider_values(raw_data, "OutscraperProvider")
+        
+        assert result["Website"] == "https://example.com/full/path"
+        assert result["Address"] == "123 Main St, Charlotte, NC 28202, United States"
+        assert result["Description"] == "A great coffee shop"
+        assert result["Purchase Required"] == "$$"
+        assert result["Parking"] == {"Free parking lot": True, "Paid street parking": False}
+        assert result["Latitude"] == 35.2271
+        assert result["Longitude"] == -80.8431
+        # Derived fields should have no value
+        assert result["Google Maps Place Id"] == "No Value From Provider"
+        assert result["Google Maps Profile URL"] == "No Value From Provider"
+        assert result["Photos"] == "No Value From Provider"
+
+    def test_extract_empty_raw_data(self, service):
+        """Test extraction with empty raw data returns all 'No Value From Provider'."""
+        result = service._extract_raw_provider_values({}, "GoogleMapsProvider")
+        
+        for field in ["Website", "Address", "Description", "Purchase Required", "Parking", "Photos", "Latitude", "Longitude"]:
+            assert result[field] == "No Value From Provider"
+
+    def test_extract_none_raw_data(self, service):
+        """Test extraction with None raw data returns all 'No Value From Provider'."""
+        result = service._extract_raw_provider_values(None, "GoogleMapsProvider")
+        
+        for field in ["Website", "Address", "Description", "Purchase Required", "Parking", "Photos", "Latitude", "Longitude"]:
+            assert result[field] == "No Value From Provider"
+
+    def test_extract_unknown_provider(self, service):
+        """Test extraction with unknown provider returns all 'No Value From Provider'."""
+        raw_data = {"site": "https://example.com"}
+        result = service._extract_raw_provider_values(raw_data, "UnknownProvider")
+        
+        for field in ["Website", "Address", "Description", "Purchase Required", "Parking", "Photos", "Latitude", "Longitude"]:
+            assert result[field] == "No Value From Provider"
+
+    def test_extract_preserves_structured_objects(self, service):
+        """Test that structured objects are preserved, not stringified."""
+        raw_data = {
+            "parkingOptions": {"freeParkingLot": True, "paidGarage": False, "valetParking": True},
+            "editorialSummary": {"text": "Great place", "languageCode": "en"},
+            "location": {"latitude": 35.2271, "longitude": -80.8431}
+        }
+        
+        result = service._extract_raw_provider_values(raw_data, "GoogleMapsProvider")
+        
+        # Parking should be a dict, not a string
+        assert isinstance(result["Parking"], dict)
+        assert result["Parking"]["freeParkingLot"] is True
+        
+        # Description should be a dict (editorialSummary object)
+        assert isinstance(result["Description"], dict)
+        assert result["Description"]["text"] == "Great place"
+
+    def test_extract_outscraper_missing_about_section(self, service):
+        """Test extraction when Outscraper response has no 'about' section."""
+        raw_data = {
+            "site": "https://example.com",
+            "full_address": "123 Main St"
+        }
+        
+        result = service._extract_raw_provider_values(raw_data, "OutscraperProvider")
+        
+        assert result["Parking"] == "No Value From Provider"
+
 
 class TestAirtableServiceGetBaseUrl:
     """Tests for get_base_url method."""
