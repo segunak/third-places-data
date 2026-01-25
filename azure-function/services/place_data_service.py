@@ -351,8 +351,9 @@ class OutscraperProvider(PlaceDataService):
     
             if results and len(results) > 0 and len(results[0]) > 0:
                 raw = results[0][0]
-                full_address = raw.get('full_address', '')
-                clean_address = self._clean_address(full_address)
+                # Try address first, then fallback to full_address. Outscraper API can be inconsistent.
+                raw_address = raw.get('address') or raw.get('full_address', '')
+                clean_address = self._clean_address(raw_address)
                 cid = raw.get('cid')
                 return {
                     "place_name": raw.get('name', ''),

@@ -154,6 +154,57 @@ class TestOutscraperProviderGetPlaceDetails:
         assert details["place_name"] == ""
         assert "error" in details
 
+    def test_get_place_details_uses_full_address_when_address_missing(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test that 'full_address' field is used when 'address' is not present."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        # Return response with 'full_address' but no 'address'
+        mock_client.google_maps_search.return_value = [[{
+            "place_id": TEST_PLACE_ID,
+            "name": "Test Place",
+            "full_address": "123 Main St, Charlotte, NC 28202, United States",  # Using 'full_address' not 'address'
+            "latitude": 35.2271,
+            "longitude": -80.8431,
+            "cid": "12345678901234567890"
+        }]]
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                details = provider.get_place_details(TEST_PLACE_ID)
+        
+        assert details["place_name"] == "Test Place"
+        assert "123 Main St" in details["address"]
+        assert "Charlotte" in details["address"]
+        # Country suffix should be cleaned
+        assert "United States" not in details["address"]
+
+    def test_get_place_details_prefers_address_over_full_address(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test that 'address' is preferred when both fields are present."""
+        from services.place_data_service import OutscraperProvider
+        
+        mock_client = mock.MagicMock()
+        # Return response with both 'address' and 'full_address'
+        mock_client.google_maps_search.return_value = [[{
+            "place_id": TEST_PLACE_ID,
+            "name": "Test Place",
+            "address": "123 Main St, Charlotte, NC 28202",  # Preferred
+            "full_address": "123 Main St, Charlotte, NC 28202, United States",  # Fallback
+            "latitude": 35.2271,
+            "longitude": -80.8431,
+            "cid": "12345678901234567890"
+        }]]
+        
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                details = provider.get_place_details(TEST_PLACE_ID)
+        
+        # Should use address (preferred) - note: _clean_address still processes it
+        assert "Charlotte" in details["address"]
+        assert "28202" in details["address"]
+
 
 class TestOutscraperProviderCleanAddress:
     """Tests for _clean_address method."""

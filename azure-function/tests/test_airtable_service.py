@@ -467,6 +467,30 @@ class TestAirtableServiceExtractRawProviderValues:
         
         assert result["Parking"] == "No Value From Provider"
 
+    def test_extract_outscraper_address_fallback(self, service):
+        """Test extraction uses 'full_address' when 'address' is missing."""
+        raw_data = {
+            "site": "https://example.com",
+            "full_address": "123 Main St, Charlotte, NC 28202, United States"
+            # Note: 'address' is intentionally missing
+        }
+        
+        result = service._extract_raw_provider_values(raw_data, "OutscraperProvider")
+        
+        assert result["Address"] == "123 Main St, Charlotte, NC 28202, United States"
+
+    def test_extract_outscraper_prefers_address_over_full_address(self, service):
+        """Test extraction prefers 'address' over 'full_address' when both present."""
+        raw_data = {
+            "address": "123 Main St, Charlotte, NC 28202",  # Preferred
+            "full_address": "123 Main St, Charlotte, NC 28202, United States"  # Fallback
+        }
+        
+        result = service._extract_raw_provider_values(raw_data, "OutscraperProvider")
+        
+        # Should use address (preferred)
+        assert result["Address"] == "123 Main St, Charlotte, NC 28202"
+
 
 class TestAirtableServiceGetBaseUrl:
     """Tests for get_base_url method."""
@@ -1194,6 +1218,63 @@ class TestAirtableServiceEnrichSinglePlace:
             result = service.enrich_single_place(third_place, "google", "Charlotte", False)
         
         assert result["status"] == "skipped"
+
+    def test_enrich_single_place_empty_provider_value_records_skipped_reason(self, service_with_mocks):
+        """Test that empty provider values are recorded with skipped_reason for visibility."""
+        service, mock_table, mock_provider = service_with_mocks
+        
+        third_place = {
+            "id": "recABC123",
+            "fields": {
+                "Place": TEST_PLACE_NAME,
+                "Google Maps Place Id": TEST_PLACE_ID
+            }
+        }
+        
+        mock_table.get.return_value = {"id": "recABC123", "fields": {"Place": TEST_PLACE_NAME}}
+        mock_table.update.return_value = {"id": "recABC123"}
+        
+        # Provider returns empty values for some fields
+        mock_place_data = {
+            "place_id": TEST_PLACE_ID,
+            "data_source": "GoogleMapsProvider",
+            "details": {
+                "address": "123 Main St",  # Has value
+                "website": "",              # Empty - should be recorded with skipped_reason
+                "description": "",          # Empty - should be recorded with skipped_reason
+                "parking": ["Free lot"],    # Has value
+                "latitude": 35.2271,
+                "longitude": -80.8431,
+                "purchase_required": "Yes",
+                "google_maps_url": "https://maps.google.com/?cid=123",
+                "raw_data": {
+                    "formattedAddress": "123 Main St",
+                    "websiteUri": "",           # Empty in raw data too
+                    "editorialSummary": None,   # None in raw data too
+                    "parkingOptions": {"freeParkingLot": True}
+                }
+            },
+            "photos": {"photo_urls": ["http://photo.jpg"]}
+        }
+        
+        with mock.patch("services.airtable_service.helpers.get_and_cache_place_data") as mock_get_data:
+            mock_get_data.return_value = ("success", mock_place_data, "")
+            result = service.enrich_single_place(third_place, "google", "Charlotte", False)
+        
+        assert result["status"] == "success"
+        
+        # Empty fields should have skipped_reason (Website is empty in details)
+        # Check that the field_updates dict contains Website with skipped_reason
+        assert "Website" in result["field_updates"]
+        website_update = result["field_updates"]["Website"]
+        assert website_update.get("skipped_reason") == "Provider returned empty value"
+        assert website_update.get("updated") is False
+        
+        # Description should also be skipped
+        assert "Description" in result["field_updates"]
+        description_update = result["field_updates"]["Description"]
+        assert description_update.get("skipped_reason") == "Provider returned empty value"
+        assert description_update.get("updated") is False
 
 
 class TestAirtableServiceEnrichBaseData:

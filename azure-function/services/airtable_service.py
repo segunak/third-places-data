@@ -128,12 +128,14 @@ class AirtableService:
             # Outscraper stores parking info under 'about' -> 'Parking'
             about = raw_data.get('about', {})
             parking_raw = about.get('Parking', no_value) if isinstance(about, dict) else no_value
+            # Try address first, then fallback to full_address. Outscraper API can be inconsistent.
+            raw_address = raw_data.get('address') or raw_data.get('full_address', no_value)
             
             return {
                 'Google Maps Place Id': no_value,  # Derived field
                 'Google Maps Profile URL': no_value,  # Constructed from CID
                 'Website': raw_data.get('site', no_value),
-                'Address': raw_data.get('full_address', no_value),
+                'Address': raw_address,
                 'Description': raw_data.get('description', no_value),
                 'Purchase Required': raw_data.get('range', no_value),
                 'Parking': parking_raw,
@@ -351,8 +353,10 @@ class AirtableService:
             }
 
             for field_name, (field_value, overwrite) in fields_to_update.items():
+                raw_value = raw_provider_values.get(field_name, "No Value From Provider")
+                
                 if field_value:
-                    raw_value = raw_provider_values.get(field_name, "No Value From Provider")
+                    # Field has a value from provider, attempt to update Airtable
                     update_result = self.update_place_record(
                         record_id,
                         field_name,
@@ -361,6 +365,17 @@ class AirtableService:
                         raw_provider_value=raw_value
                     )
                     result['field_updates'][field_name] = update_result
+                else:
+                    # Field is empty/None from provider - record this for visibility
+                    result['field_updates'][field_name] = {
+                        "updated": False,
+                        "field_name": field_name,
+                        "record_id": record_id,
+                        "old_value": None,  # We don't fetch current Airtable value for skipped fields
+                        "new_value": None,
+                        "raw_provider_value": raw_value,
+                        "skipped_reason": "Provider returned empty value"
+                    }
             return result
         except Exception as e:
             logging.error(f"Error processing place {place_name if 'place_name' in locals() else 'unknown'}: {e}")
