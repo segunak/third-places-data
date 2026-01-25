@@ -14,7 +14,7 @@ on:
         default: 'false'
         type: string
       force_refresh:
-        description: 'Force refresh of all data'
+        description: 'Force refresh cached data for records in the selected view (does not affect other records)'
         required: false
         default: 'false'
         type: string
@@ -41,7 +41,7 @@ on:
         default: 'false'
         type: string
       force_refresh:
-        description: 'Force refresh of all data'
+        description: 'Force refresh cached data for records in the selected view (does not affect other records)'
         required: false
         default: 'false'
         type: string
