@@ -15413,7 +15413,7 @@
     },
     "photos": {
         "place_id": "ChIJaVGF2A0fVIgRgr4hzR0kNUg",
-        "message": "Retrieved 100 photos, filtered out 67, selected 30",
+        "message": "Photos refreshed by admin function using outscraper and mode refresh_from_data_file_photo_urls",
         "photo_urls": [
             "https://lh3.googleusercontent.com/p/AF1QipMEa-XnIM7KLmsz_qaDsjfJT3ssiwwA_ekDO4CA=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOFdws1fTXA921HnWFpUkmYeBkvm9n9tLVf7GC6=w2048-h2048-k-no",
@@ -18060,7 +18060,8 @@
                     "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNUDjOt6Ip6ARDuI-DIFzDImMXWnvZC_th0ZX4o=w203-h270-k-no"
                 }
             ]
-        }
+        },
+        "last_refreshed": "2026-02-16T02:43:09.960034"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-07-25T21:25:51.447679"
