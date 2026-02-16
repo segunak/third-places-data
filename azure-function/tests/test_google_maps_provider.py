@@ -191,16 +191,16 @@ class TestGoogleMapsProviderGetPlacePhotos:
         # Should have valid photos (3 photo refs in fixture, each returns a valid URL)
         assert len(photos["photo_urls"]) == 3
 
-    def test_get_place_photos_filters_invalid_urls(self, mock_env_vars):
-        """Test that invalid photo URLs are filtered out."""
+    def test_get_place_photos_accepts_gps_urls(self, mock_env_vars):
+        """Test that gps-based photo URLs are accepted when otherwise valid."""
         from services.place_data_service import GoogleMapsProvider
         from conftest import create_mock_response
         
-        # Response with photos that have restricted URLs
+        # Response with one normal and one gps-based URL
         photos_response = {
             "photos": [
                 {"name": "places/test/photos/good-photo"},
-                {"name": "places/test/photos/bad-photo"}
+                {"name": "places/test/photos/gps-photo"}
             ]
         }
         
@@ -216,9 +216,8 @@ class TestGoogleMapsProviderGetPlacePhotos:
             provider = GoogleMapsProvider()
             photos = provider.get_place_photos(TEST_PLACE_ID)
         
-        # Only valid URL should be included
-        assert len(photos["photo_urls"]) == 1
-        assert "gps-cs-s" not in photos["photo_urls"][0]
+        assert len(photos["photo_urls"]) == 2
+        assert any("gps-cs-s" in url for url in photos["photo_urls"])
 
 
 class TestGoogleMapsProviderIsValidPhotoUrl:
@@ -227,8 +226,8 @@ class TestGoogleMapsProviderIsValidPhotoUrl:
     @pytest.mark.parametrize("url,expected", [
         ("https://valid-url.com/photo.jpg", True),
         ("http://valid-url.com/photo.jpg", True),
-        ("https://example.com/gps-cs-s/restricted", False),
-        ("https://example.com/gps-proxy/restricted", False),
+        ("https://example.com/gps-cs-s/restricted", True),
+        ("https://example.com/gps-proxy/restricted", True),
         ("", False),
         (None, False),
         ("not-a-url", False),

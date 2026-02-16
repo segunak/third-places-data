@@ -44,6 +44,66 @@ class PlaceDataService(ABC):
     def find_place_id(self, place_name: str) -> str:
         pass
 
+    def _is_valid_photo_url(self, url: str) -> bool:
+        if not url or not isinstance(url, str):
+            logging.debug("Invalid photo URL: empty or not a string")
+            return False
+        if not url.startswith('http'):
+            logging.debug(f"Invalid photo URL: does not start with http - {url}")
+            return False
+        return True
+
+    def _select_prioritized_photos(self, photos_data: List[Dict[str, Any]], max_photos: int = 30) -> List[str]:
+        if not photos_data:
+            return []
+
+        def parse_date(date_str: str):
+            try:
+                return datetime.datetime.strptime(date_str, "%m/%d/%Y %H:%M:%S")
+            except (ValueError, AttributeError, TypeError):
+                return datetime.datetime.min
+
+        photos_data.sort(key=lambda x: parse_date(x.get('photo_date', '')), reverse=True)
+        all_valid = [p for p in photos_data if isinstance(p, dict) and p.get('photo_url_big')]
+        front, vibe, all_tag, other, tagless = [], [], [], [], []
+
+        for photo in all_valid:
+            tags = photo.get('photo_tags', [])
+            if not isinstance(tags, list) or not tags:
+                tagless.append(photo)
+                continue
+            if 'front' in tags:
+                front.append(photo)
+            elif 'vibe' in tags:
+                vibe.append(photo)
+            elif 'all' in tags:
+                all_tag.append(photo)
+            elif 'other' in tags:
+                other.append(photo)
+            else:
+                tagless.append(photo)
+
+        selected = []
+        selected.extend(vibe[:min(len(vibe), max_photos)])
+        remaining = max_photos - len(selected)
+        selected.extend(front[:min(5, len(front), remaining)])
+        remaining = max_photos - len(selected)
+        selected.extend(all_tag[:remaining])
+        remaining = max_photos - len(selected)
+        selected.extend(other[:remaining])
+        remaining = max_photos - len(selected)
+        if remaining > 0:
+            selected.extend(tagless[:remaining])
+
+        unique, seen = [], set()
+        for photo in selected:
+            url = photo['photo_url_big']
+            if url not in seen:
+                unique.append(photo)
+                seen.add(url)
+
+        return [photo['photo_url_big'] for photo in unique[:max_photos]]
+
     def validate_place_id(self, place_id: str) -> bool:
         url = f'https://places.googleapis.com/v1/places/{place_id}?fields=id&languageCode=en'
         headers = {
@@ -197,19 +257,6 @@ class GoogleMapsProvider(PlaceDataService):
         logging.warning("Direct Google Maps API doesn't provide reviews. Consider using OutscraperProvider for reviews.")
         return {"place_id": place_id, "message": "Reviews are not available directly from the Google Maps API", "reviews_data": []}
 
-    def _is_valid_photo_url(self, url: str) -> bool:
-        if not url or not isinstance(url, str):
-            logging.debug("Invalid photo URL: empty or not a string")
-            return False
-        if not url.startswith('http'):
-            logging.debug(f"Invalid photo URL: does not start with http - {url}")
-            return False
-        for pattern in ['/gps-cs-s/', '/gps-proxy/']:
-            if pattern in url:
-                logging.debug(f"Filtered out restricted photo URL containing '{pattern}': {url}")
-                return False
-        return True
-
     def get_place_photos(self, place_id: str) -> Dict[str, Any]:
         try:
             url = f'https://places.googleapis.com/v1/places/{place_id}?languageCode=en'
@@ -222,22 +269,32 @@ class GoogleMapsProvider(PlaceDataService):
             logging.debug(f"Received photo response: {response.text}")
             response.raise_for_status()
             raw_data = response.json()
+
+            # Place Photos (New) note:
+            # Place Details/Nearby/Text Search responses can include at most 10 photo resources.
+            # https://developers.google.com/maps/documentation/places/web-service/place-photos
             photo_refs = [p.get('name', '') for p in raw_data.get('photos', []) if 'name' in p]
-            all_urls = []
+            photo_records = []
             for name in photo_refs:
                 if not name:
                     continue
                 details = self._get_photo_details(name)
                 if details and 'photoUri' in details:
-                    all_urls.append(details['photoUri'])
-            valid_urls = [u for u in all_urls if self._is_valid_photo_url(u)][:30]
-            logging.info(f"Photo selection for {place_id}: Total={len(all_urls)}, Selected={len(valid_urls)}")
-            return {"place_id": place_id, "message": f"Selected {len(valid_urls)} photos", "photo_urls": valid_urls, "raw_data": raw_data}
+                    photo_records.append({'photo_url_big': details['photoUri'], 'photo_tags': [], 'photo_date': ''})
+
+            valid_records = [photo for photo in photo_records if self._is_valid_photo_url(photo.get('photo_url_big', ''))]
+            selected_urls = [photo.get('photo_url_big', '') for photo in valid_records if photo.get('photo_url_big')][:30]
+            raw_data['photos_data'] = valid_records
+            logging.info(f"Photo selection for {place_id}: Total={len(photo_records)}, Selected={len(selected_urls)}")
+            return {"place_id": place_id, "message": f"Selected {len(selected_urls)} photos", "photo_urls": selected_urls, "raw_data": raw_data}
         except Exception as e:
             logging.error(f"Error retrieving photos for place ID {place_id}: {e}")
             return {"place_id": place_id, "message": f"Error retrieving photos: {str(e)}", "photo_urls": [], "raw_data": {}}
 
     def _get_photo_details(self, photo_name: str) -> Dict[str, Any]:
+        # Place photo resource names can expire. Always request fresh names from a recent
+        # Place Details/Nearby/Text Search response before fetching media.
+        # https://developers.google.com/maps/documentation/places/web-service/place-photos
         params = {'maxHeightPx': '4800', 'maxWidthPx': '4800', 'key': self.API_KEY, 'skipHttpRedirect': 'true'}
         try:
             resp = requests.get(f'https://places.googleapis.com/v1/{photo_name}/media', params=params)
@@ -435,19 +492,6 @@ class OutscraperProvider(PlaceDataService):
             logging.error(f"Error retrieving reviews from Outscraper for {place_id}: {e}")
             return {"place_id": place_id, "message": f"Error retrieving reviews: {str(e)}", "reviews_data": []}
 
-    def _is_valid_photo_url(self, url: str) -> bool:
-        if not url or not isinstance(url, str):
-            logging.debug("Invalid photo URL: empty or not a string")
-            return False
-        if not url.startswith('http'):
-            logging.debug(f"Invalid photo URL: does not start with http - {url}")
-            return False
-        for pattern in ['/gps-cs-s/', '/gps-proxy/']:
-            if pattern in url:
-                logging.debug(f"Filtered out restricted photo URL containing '{pattern}': {url}")
-                return False
-        return True
-
     def get_place_photos(self, place_id: str) -> Dict[str, Any]:
         try:
             response = self.client.google_maps_photos(place_id, language=self.default_params['language'], region=self.default_params['region'])
@@ -455,66 +499,18 @@ class OutscraperProvider(PlaceDataService):
                 raw = response[0][0]
                 all_photos = raw.get('photos_data', [])
                 valid = []
-                filtered = 0
                 for p in all_photos:
                     url = p.get('photo_url_big', '')
                     if self._is_valid_photo_url(url):
                         valid.append(p)
-                    else:
-                        filtered += 1
                 selected = self._select_prioritized_photos(valid, max_photos=30)
-                logging.info(f"Photo selection for {place_id}: Total={len(all_photos)}, Filtered out={filtered}, Valid={len(valid)}, Selected={len(selected)}")
-                return {"place_id": place_id, "message": f"Retrieved {len(all_photos)} photos, filtered out {filtered}, selected {len(selected)}", "photo_urls": selected, "raw_data": raw}
+                logging.info(f"Photo selection for {place_id}: Total={len(all_photos)}, Valid={len(valid)}, Selected={len(selected)}")
+                return {"place_id": place_id, "message": f"Retrieved {len(all_photos)} photos, selected {len(selected)}", "photo_urls": selected, "raw_data": raw}
             logging.warning(f"No photo results found for place ID {place_id} using Outscraper.")
             return {"place_id": place_id, "message": "No photos found", "photo_urls": []}
         except Exception as e:
             logging.error(f"Error retrieving photos from Outscraper for {place_id}: {e}")
             return {"place_id": place_id, "message": f"Error retrieving photos: {str(e)}",                "photo_urls": []}
-
-    def _select_prioritized_photos(self, photos_data, max_photos=30):
-        if not photos_data:
-            return []
-        def parse_date(date_str):
-            try:
-                return datetime.datetime.strptime(date_str, "%m/%d/%Y %H:%M:%S")
-            except (ValueError, AttributeError):
-                return datetime.datetime.min
-        photos_data.sort(key=lambda x: parse_date(x.get('photo_date', '')), reverse=True)
-        all_valid = [p for p in photos_data if 'photo_url_big' in p]
-        front, vibe, all_tag, other, tagless = [], [], [], [], []
-        for p in all_valid:
-            tags = p.get('photo_tags', [])
-            if not isinstance(tags, list) or not tags:
-                tagless.append(p)
-                continue
-            if 'front' in tags:
-                front.append(p)
-            elif 'vibe' in tags:
-                vibe.append(p)
-            elif 'all' in tags:
-                all_tag.append(p)
-            elif 'other' in tags:
-                other.append(p)
-            else:
-                tagless.append(p)
-        selected = []
-        selected.extend(vibe[:min(len(vibe), max_photos)])
-        remaining = max_photos - len(selected)
-        selected.extend(front[:min(5, len(front), remaining)])
-        remaining = max_photos - len(selected)
-        selected.extend(all_tag[:remaining])
-        remaining = max_photos - len(selected)
-        selected.extend(other[:remaining])
-        remaining = max_photos - len(selected)
-        if remaining > 0:
-            selected.extend(tagless[:remaining])
-        unique, seen = [], set()
-        for p in selected:
-            url = p['photo_url_big']
-            if url not in seen:
-                unique.append(p)
-                seen.add(url)
-        return [p['photo_url_big'] for p in unique[:max_photos]]
 
     def find_place_id(self, place_name: str) -> str:
         try:

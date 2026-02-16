@@ -10,6 +10,98 @@ from services.utils import fetch_data_github, save_data_github
 bp = df.Blueprint()
 
 
+def validate_refresh_all_photos_request(req: func.HttpRequest):
+    provider_type = req.params.get('provider_type')
+    city = req.params.get('city', 'charlotte')
+    dry_run = req.params.get('dry_run', 'true').lower() == 'true'
+    sequential_mode = req.params.get('sequential_mode', 'false').lower() == 'true'
+    max_places_param = req.params.get('max_places')
+    photo_source_mode = req.params.get('photo_source_mode', 'refresh_from_data_file_raw_data')
+    valid_photo_source_modes = {
+        'refresh_from_data_provider',
+        'refresh_from_data_file_raw_data',
+        'refresh_from_data_file_photo_urls'
+    }
+
+    if not provider_type:
+        return None, func.HttpResponse(
+            json.dumps({
+                "success": False,
+                "message": "Missing required parameter: provider_type",
+                "data": None,
+                "error": "The provider_type parameter is required ('google' or 'outscraper')"
+            }),
+            status_code=400,
+            mimetype="application/json"
+        )
+
+    if provider_type not in ['google', 'outscraper']:
+        return None, func.HttpResponse(
+            json.dumps({
+                "success": False,
+                "message": "Invalid provider_type",
+                "data": None,
+                "error": "provider_type must be 'google' or 'outscraper'"
+            }),
+            status_code=400,
+            mimetype="application/json"
+        )
+
+    if photo_source_mode not in valid_photo_source_modes:
+        return None, func.HttpResponse(
+            json.dumps({
+                "success": False,
+                "message": "Invalid photo_source_mode",
+                "data": None,
+                "error": (
+                    "photo_source_mode must be one of: "
+                    "refresh_from_data_provider, "
+                    "refresh_from_data_file_raw_data, "
+                    "refresh_from_data_file_photo_urls"
+                )
+            }),
+            status_code=400,
+            mimetype="application/json"
+        )
+
+    max_places = None
+    if max_places_param:
+        try:
+            max_places = int(max_places_param)
+            if max_places <= 0:
+                return None, func.HttpResponse(
+                    json.dumps({
+                        "success": False,
+                        "message": "Invalid max_places value",
+                        "data": None,
+                        "error": "max_places must be a positive integer"
+                    }),
+                    status_code=400,
+                    mimetype="application/json"
+                )
+        except ValueError:
+            return None, func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Invalid max_places value",
+                    "data": None,
+                    "error": "max_places must be a valid integer"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+
+    parsed = {
+        "provider_type": provider_type,
+        "city": city,
+        "dry_run": dry_run,
+        "sequential_mode": sequential_mode,
+        "max_places": max_places,
+        "photo_source_mode": photo_source_mode,
+    }
+    return parsed, None
+
+
 @bp.function_name(name="RefreshAllPhotos")
 @bp.route(route="refresh-all-photos")
 @bp.durable_client_input(client_name="client")
@@ -17,73 +109,29 @@ async def refresh_all_photos(req: func.HttpRequest, client) -> func.HttpResponse
     logging.info("Received request for administrative photo refresh.")
 
     try:
-        provider_type = req.params.get('provider_type')
-        city = req.params.get('city', 'charlotte')
-        dry_run = req.params.get('dry_run', 'true').lower() == 'true'
-        sequential_mode = req.params.get('sequential_mode', 'false').lower() == 'true'
-        max_places_param = req.params.get('max_places')
+        parsed_request, validation_error_response = validate_refresh_all_photos_request(req)
+        if validation_error_response:
+            return validation_error_response
 
-        if not provider_type:
-            return func.HttpResponse(
-                json.dumps({
-                    "success": False,
-                    "message": "Missing required parameter: provider_type",
-                    "data": None,
-                    "error": "The provider_type parameter is required ('google' or 'outscraper')"
-                }),
-                status_code=400,
-                mimetype="application/json"
-            )
-
-        if provider_type not in ['google', 'outscraper']:
-            return func.HttpResponse(
-                json.dumps({
-                    "success": False,
-                    "message": "Invalid provider_type",
-                    "data": None,
-                    "error": "provider_type must be 'google' or 'outscraper'"
-                }),
-                status_code=400,
-                mimetype="application/json"
-            )
-
-        max_places = None
-        if max_places_param:
-            try:
-                max_places = int(max_places_param)
-                if max_places <= 0:
-                    return func.HttpResponse(
-                        json.dumps({
-                            "success": False,
-                            "message": "Invalid max_places value",
-                            "data": None,
-                            "error": "max_places must be a positive integer"
-                        }),
-                        status_code=400,
-                        mimetype="application/json"
-                    )
-            except ValueError:
-                return func.HttpResponse(
-                    json.dumps({
-                        "success": False,
-                        "message": "Invalid max_places value",
-                        "data": None,
-                        "error": "max_places must be a valid integer"
-                    }),
-                    status_code=400,
-                    mimetype="application/json"
-                )
+        provider_type = parsed_request["provider_type"]
+        city = parsed_request["city"]
+        dry_run = parsed_request["dry_run"]
+        sequential_mode = parsed_request["sequential_mode"]
+        max_places = parsed_request["max_places"]
+        photo_source_mode = parsed_request["photo_source_mode"]
 
         logging.info(f"Starting administrative photo refresh with parameters: "
                      f"provider_type={provider_type}, city={city}, dry_run={dry_run}, "
-                     f"sequential_mode={sequential_mode}, max_places={max_places}")
+                     f"sequential_mode={sequential_mode}, max_places={max_places}, "
+                     f"photo_source_mode={photo_source_mode}")
 
         orchestration_input = {
             "provider_type": provider_type,
             "city": city,
             "dry_run": dry_run,
             "sequential_mode": sequential_mode,
-            "max_places": max_places
+            "max_places": max_places,
+            "photo_source_mode": photo_source_mode
         }
 
         instance_id = await client.start_new("refresh_all_photos_orchestrator", client_input=orchestration_input)
@@ -117,6 +165,7 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
         dry_run = orchestration_input.get("dry_run", True)
         sequential_mode = orchestration_input.get("sequential_mode", False)
         max_places = orchestration_input.get("max_places")
+        photo_source_mode = orchestration_input.get("photo_source_mode", "refresh_from_data_file_raw_data")
 
         if not provider_type:
             raise ValueError("Missing required parameter: provider_type")
@@ -126,7 +175,8 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
             "city": city,
             "dry_run": dry_run,
             "sequential_mode": sequential_mode,
-            "max_places": max_places
+            "max_places": max_places,
+            "photo_source_mode": photo_source_mode
         }
 
         all_third_places = yield context.call_activity(
@@ -218,6 +268,7 @@ def refresh_single_place_photos(activityInput):
         provider_type = config.get("provider_type")
         city = config.get("city", "charlotte")
         dry_run = config.get("dry_run", True)
+        photo_source_mode = config.get("photo_source_mode", "refresh_from_data_file_raw_data")
 
         place_result = {
             "place_name": "",
@@ -251,13 +302,7 @@ def refresh_single_place_photos(activityInput):
         try:
             airtable_client = AirtableService(provider_type)
             data_provider = PlaceDataProviderFactory.get_provider(provider_type)
-
-            if hasattr(data_provider, '_select_prioritized_photos'):
-                photo_selector = data_provider._select_prioritized_photos
-            else:
-                place_result["status"] = "error"
-                place_result["message"] = f"Provider {provider_type} does not have photo selection method"
-                return place_result
+            photo_selector = data_provider._select_prioritized_photos
 
         except Exception as e:
             place_result["status"] = "error"
@@ -273,61 +318,71 @@ def refresh_single_place_photos(activityInput):
             return place_result
 
         photos_section = place_data.get('photos', {})
-        raw_data = photos_section.get('raw_data', [])
-
-        if not raw_data:
-            place_result["status"] = "skipped"
-            place_result["message"] = "No raw photos data found"
-            return place_result
-
-        photo_list = []
-        parse_method = "unknown"
-
-        try:
-            if isinstance(raw_data, list) and raw_data:
-                if isinstance(raw_data[0], dict) and 'photo_url_big' in raw_data[0]:
-                    photo_list = raw_data
-                    parse_method = "direct_list"
-
-            if not photo_list and isinstance(raw_data, dict):
-                photos_data = raw_data.get('photos_data', [])
-                if isinstance(photos_data, list) and photos_data:
-                    if isinstance(photos_data[0], dict) and 'photo_url_big' in photos_data[0]:
-                        photo_list = photos_data
-                        parse_method = "nested_dict"
-
-            if not photo_list:
-                place_result["status"] = "error"
-                place_result["message"] = "Could not parse raw photos data - no valid structure found"
-                return place_result
-
-        except Exception as e:
-            place_result["status"] = "error"
-            place_result["message"] = f"Error parsing raw photos data: {str(e)}"
-            return place_result
-
         current_photos = photos_section.get('photo_urls', [])
         place_result["photos_before"] = len(current_photos)
 
-        logging.info(f"Found {len(photo_list)} raw photo data records for {place_name} (method: {parse_method})")
+        selected_photo_urls = []
 
         try:
-            valid_photos = []
-            for photo in photo_list:
-                photo_url = photo.get('photo_url_big', '')
-                if data_provider._is_valid_photo_url(photo_url):
-                    valid_photos.append(photo)
+            if photo_source_mode == "refresh_from_data_provider":
+                provider_photos = data_provider.get_place_photos(place_id)
+                selected_photo_urls = provider_photos.get('photo_urls', [])
 
-            logging.info(f"Filtered to {len(valid_photos)} valid photos for {place_name}")
+                provider_raw_data = provider_photos.get('raw_data')
+                if provider_raw_data:
+                    place_data.setdefault('photos', {})['raw_data'] = provider_raw_data
 
-            selected_photo_urls = photo_selector(valid_photos, max_photos=30)
+                logging.info(f"Selected {len(selected_photo_urls)} provider photos for {place_name}")
+
+            elif photo_source_mode == "refresh_from_data_file_photo_urls":
+                selected_photo_urls = current_photos if isinstance(current_photos, list) else []
+                logging.info(f"Using {len(selected_photo_urls)} existing cached photo_urls for {place_name}")
+
+            else:
+                raw_data = photos_section.get('raw_data', [])
+                if not raw_data:
+                    place_result["status"] = "skipped"
+                    place_result["message"] = "No raw photos data found"
+                    return place_result
+
+                photo_list = []
+                parse_method = "unknown"
+
+                if isinstance(raw_data, list) and raw_data:
+                    if isinstance(raw_data[0], dict) and 'photo_url_big' in raw_data[0]:
+                        photo_list = raw_data
+                        parse_method = "direct_list"
+
+                if not photo_list and isinstance(raw_data, dict):
+                    photos_data = raw_data.get('photos_data', [])
+                    if isinstance(photos_data, list) and photos_data:
+                        if isinstance(photos_data[0], dict) and 'photo_url_big' in photos_data[0]:
+                            photo_list = photos_data
+                            parse_method = "nested_dict"
+
+                if not photo_list:
+                    place_result["status"] = "error"
+                    place_result["message"] = "Could not parse raw photos data - no valid structure found"
+                    return place_result
+
+                logging.info(f"Found {len(photo_list)} raw photo data records for {place_name} (method: {parse_method})")
+
+                valid_photos = []
+                for photo in photo_list:
+                    photo_url = photo.get('photo_url_big', '')
+                    if data_provider._is_valid_photo_url(photo_url):
+                        valid_photos.append(photo)
+
+                selected_photo_urls = photo_selector(valid_photos, max_photos=30)
+                logging.info(f"Selected {len(selected_photo_urls)} photos from cached raw_data for {place_name}")
+
             place_result["photos_after"] = len(selected_photo_urls)
-
-            logging.info(f"Selected {len(selected_photo_urls)} photos for {place_name}")
-
             if not selected_photo_urls:
                 place_result["status"] = "skipped"
-                place_result["message"] = "No valid photos after selection"
+                if photo_source_mode == "refresh_from_data_file_photo_urls":
+                    place_result["message"] = "No cached photo_urls found"
+                else:
+                    place_result["message"] = "No valid photos after selection"
                 return place_result
 
         except Exception as e:
@@ -358,7 +413,10 @@ def refresh_single_place_photos(activityInput):
                     logging.info(f"Airtable was updated for {place_name}, updating data file cache")
 
                     place_data['photos']['photo_urls'] = selected_photo_urls
-                    place_data['photos']['message'] = f"Photos refreshed by admin function using {provider_type} selection algorithm"
+                    place_data['photos']['message'] = (
+                        f"Photos refreshed by admin function using {provider_type} "
+                        f"and mode {photo_source_mode}"
+                    )
                     place_data['photos']['last_refreshed'] = datetime.now().isoformat()
 
                     updated_json = json.dumps(place_data, indent=4)

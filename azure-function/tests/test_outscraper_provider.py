@@ -399,13 +399,12 @@ class TestOutscraperProviderGetPlacePhotos:
         
         assert photos["place_id"] == TEST_PLACE_ID
         assert "photo_urls" in photos
-        # Should filter out restricted URLs (gps-cs-s and gps-proxy)
-        for url in photos["photo_urls"]:
-            assert "gps-cs-s" not in url
-            assert "gps-proxy" not in url
+        assert len(photos["photo_urls"]) == 7
+        assert any("gps-cs-s" in url for url in photos["photo_urls"])
+        assert any("gps-proxy" in url for url in photos["photo_urls"])
 
-    def test_get_place_photos_filters_restricted_urls(self, mock_env_vars, outscraper_balance_sufficient, outscraper_photos):
-        """Test that restricted photo URLs are filtered out."""
+    def test_get_place_photos_does_not_filter_gps_urls(self, mock_env_vars, outscraper_balance_sufficient, outscraper_photos):
+        """Test that gps-based photo URLs are retained when otherwise valid."""
         from services.place_data_service import OutscraperProvider
         
         mock_client = mock.MagicMock()
@@ -416,8 +415,8 @@ class TestOutscraperProviderGetPlacePhotos:
                 provider = OutscraperProvider()
                 photos = provider.get_place_photos(TEST_PLACE_ID)
         
-        # Fixture has 7 photos, 2 are restricted
-        assert len(photos["photo_urls"]) == 5
+        # Fixture has 7 photos including gps-cs-s and gps-proxy URLs
+        assert len(photos["photo_urls"]) == 7
 
     def test_get_place_photos_empty_results(self, mock_env_vars, outscraper_balance_sufficient):
         """Test empty photo results."""
@@ -505,8 +504,8 @@ class TestOutscraperProviderIsValidPhotoUrl:
     @pytest.mark.parametrize("url,expected", [
         ("https://valid-url.com/photo.jpg", True),
         ("http://valid-url.com/photo.jpg", True),
-        ("https://example.com/gps-cs-s/restricted", False),
-        ("https://example.com/gps-proxy/restricted", False),
+        ("https://example.com/gps-cs-s/restricted", True),
+        ("https://example.com/gps-proxy/restricted", True),
         ("", False),
         (None, False),
         ("not-a-url", False),

@@ -28,6 +28,11 @@ on:
         required: false
         default: 'false'
         type: string
+      photo_source_mode:
+        description: 'Photo source mode: refresh_from_data_provider, refresh_from_data_file_raw_data, refresh_from_data_file_photo_urls'
+        required: false
+        default: 'refresh_from_data_file_raw_data'
+        type: string
   workflow_dispatch:
     inputs:
       provider_type:
@@ -55,6 +60,11 @@ on:
         required: false
         default: 'false'
         type: string
+      photo_source_mode:
+        description: 'Photo source mode: refresh_from_data_provider, refresh_from_data_file_raw_data, refresh_from_data_file_photo_urls'
+        required: false
+        default: 'refresh_from_data_file_raw_data'
+        type: string
 
 concurrency: 
   group: refresh-all-photos
@@ -79,8 +89,9 @@ jobs:
           $dryRun = "${{ inputs.dry_run }}"
           $maxPlaces = "${{ inputs.max_places }}"
           $sequentialMode = "${{ inputs.sequential_mode }}"
+          $photoSourceMode = "${{ inputs.photo_source_mode }}"
           
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&dry_run=$dryRun&sequential_mode=$sequentialMode"
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&dry_run=$dryRun&sequential_mode=$sequentialMode&photo_source_mode=$photoSourceMode"
           
           if ($maxPlaces -ne '') {
             $FunctionUrl += "&max_places=$maxPlaces"
