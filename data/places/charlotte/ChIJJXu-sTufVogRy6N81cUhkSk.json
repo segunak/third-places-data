@@ -2257,7 +2257,7 @@
     },
     "photos": {
         "place_id": "ChIJJXu-sTufVogRy6N81cUhkSk",
-        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 11 existing, added 6 new, total 17 photos",
+        "message": "Photos refreshed by admin function using outscraper and mode refresh_from_data_file_photo_urls",
         "photo_urls": [
             "https://lh3.googleusercontent.com/p/AF1QipPAT1rgm8JHa86wxGaQ-AP1CGXEQ55O7B0cXwiB=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNa8p7cc-WH7hZwCsVbCZ1qczfjSboR0_KPLyN2=w2048-h2048-k-no",
@@ -2674,7 +2674,7 @@
                 }
             ]
         },
-        "last_refreshed": "2026-02-15T18:14:05.292153"
+        "last_refreshed": "2026-02-16T02:41:40.878549"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-12-01T16:19:13.151738"
