@@ -4051,7 +4051,7 @@
     },
     "photos": {
         "place_id": "ChIJ2V_h_WslVIgRjQsvTfPclgY",
-        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 16 existing, added 14 new, total 30 photos",
+        "message": "Photos refreshed by admin function using outscraper and mode refresh_from_data_file_photo_urls",
         "photo_urls": [
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=3EHpKg86vWasqeP3TeWhow&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=284.2241&pitch=0&thumbfov=100",
             "https://lh3.googleusercontent.com/p/AF1QipOwvgW265bghRGNLTD3enyhN_xDp7swicBP3YZi=w2048-h2048-k-no",
@@ -4754,7 +4754,7 @@
                 }
             ]
         },
-        "last_refreshed": "2026-02-15T18:14:03.553377"
+        "last_refreshed": "2026-02-16T02:43:04.755034"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-08-23T12:36:45.858684"
