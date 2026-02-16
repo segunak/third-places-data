@@ -281,9 +281,14 @@
     },
     "photos": {
         "place_id": "ChIJP_7REwAPVIgRBRZgAqjFjlk",
-        "message": "Retrieved 6 photos, filtered out 5, selected 1",
+        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 1 existing, added 5 new, total 6 photos",
         "photo_urls": [
-            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=AZEdVvS_zNaTHgPsjF8_Dg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=28.499565&pitch=0&thumbfov=100"
+            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=AZEdVvS_zNaTHgPsjF8_Dg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=28.499565&pitch=0&thumbfov=100",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwy2sTpp8uPuxQEJd7vEAbT7p-xH6NcC94FCVRdMlJQ6oquN9JxIa0PTiQa4Y9K_q90ShqlKktAtqxPzp3kEEksEIwaU8J-cl6PJqphScg5cZvN01rn8VDQCsWEmDm_YN9Ny6DhG3KzM-84=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyp2PYAxlaM5EGMd2kf2_goxwZZIw0eWYE555uUqmYhR4VzVzQ33p8YCWk_d-fU7VcUQqFNp7g5bL7kNpm8KAvaXMbqbYM7jeTE8yHJRx4fRjZ6mQbS2TVVRo2fdk1sZ-nH6qpLTdlJv04=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSynpiI3JBoed4Pvss4ZO2N6FrCR3-JSqkBw2afnd10zIniBoDkmXjHXAcnCpLzXkLdcgQ0sPyYKdNhvs-IRN8_WOctfVPTTtYy13E0yBogd-95VPDasd_E3aZuqWSalnoazuzI1x69KaAg=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw8IFLbj2wQ1Yq3hi39IgfDaWBCZVotKGfLr5kyS1-CFbG1-_o62rX-gYQqUtMe9yEeQ3Kxy_fOZqnR58bjjT-oa17iajnvC8mlVOUluLTFAYV6mtkbojz2fULyATgdnzswznMg_7jvf6hP=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx2CQPycRRSBhCz3dNl4hhPcdc8ZsQIG9_qPOBVvUNyQWfJ-h4wgvoIippHsr8rFBK4m2bUHhXPw3dXX6OSktiWqEFDcJFHBWTvLGG-7rFpLELhviQZOKTbmgWxHgEkmET9FUo-PChGPAye=w2048-h2048-k-no"
         ],
         "raw_data": {
             "query": "ChIJP_7REwAPVIgRBRZgAqjFjlk",
@@ -456,7 +461,8 @@
                     "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=AZEdVvS_zNaTHgPsjF8_Dg&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=28.499565&pitch=0&thumbfov=100"
                 }
             ]
-        }
+        },
+        "last_refreshed": "2026-02-15T18:14:06.004738"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-11-06T21:41:27.872999"

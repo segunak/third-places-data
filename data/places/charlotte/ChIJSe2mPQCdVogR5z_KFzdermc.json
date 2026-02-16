@@ -337,7 +337,7 @@
     },
     "photos": {
         "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
-        "message": "Retrieved 14 photos, filtered out 3, selected 11",
+        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 11 existing, added 3 new, total 14 photos",
         "photo_urls": [
             "https://lh3.googleusercontent.com/p/AF1QipMRMk6orjqcUYRg6RUbLOeBYRKCohdaWMHDU_0K=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOE8195MLCsV2YCdpTdI_kJb5CoqLbDA7epZA2M=w2048-h2048-k-no",
@@ -349,7 +349,10 @@
             "https://lh3.googleusercontent.com/p/AF1QipNlvdXSCm2YHBgWiGn9IIXLaihSx0YeIxE1FQaQ=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNuZpbS0WhYMAy0eLtgk5Fp9_L1lIItpF1ysBoX=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipO39UaRL6Fle2Ht1D-Jy2SeswBE8Ql7LqsSMaHm=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipNQf5OgB4r6sBLYaNJ0AhvoS0g70XsfFS5DaMNW=w2048-h2048-k-no"
+            "https://lh3.googleusercontent.com/p/AF1QipNQf5OgB4r6sBLYaNJ0AhvoS0g70XsfFS5DaMNW=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no"
         ],
         "raw_data": {
             "query": "ChIJSe2mPQCdVogR5z_KFzdermc",
@@ -719,7 +722,8 @@
                     "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipO39UaRL6Fle2Ht1D-Jy2SeswBE8Ql7LqsSMaHm=w203-h360-k-no"
                 }
             ]
-        }
+        },
+        "last_refreshed": "2026-02-15T18:14:06.268823"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-11-18T15:11:38.194476"

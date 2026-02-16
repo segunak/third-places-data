@@ -367,9 +367,36 @@
     },
     "photos": {
         "place_id": "ChIJSedRfTGhVogR5xNXLKPI6Vk",
-        "message": "Retrieved 28 photos, filtered out 27, selected 1",
+        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 1 existing, added 27 new, total 28 photos",
         "photo_urls": [
-            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=uUo4RI5nYZ7fQd0mXhN3sw&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=14.104732&pitch=0&thumbfov=100"
+            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=uUo4RI5nYZ7fQd0mXhN3sw&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=14.104732&pitch=0&thumbfov=100",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw8dY0KvERL91UxWC8IT_EMMTL0EG3kNNrslefIqc1I5ETd2NbuaUfGm-9JDayetFbdHe59zfIi-NWQvXXAuNye_O2q79u-vFtbqz74It9RMryL7Bohumv5T_I3MB4aIWu5Vka7b9eeMbrG=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx-c0w-pZN6SRg59x0klmHHUvNxKXcGwagpvTCYMIXgDT2CtvabWKjdVVTSt3u19QTNhdhfGehLsklmy724I1OkSg1Rvfw8CoVPxpdgGmkezg1AGxKw5GUUUbMH9V9FFzGBWghbRgoVeKg=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIlkc65zOLlKUpQZNkXTZFrcZUcQj8v1-1ojewxXrlY1PRVF2MTTKfwq3ifj5m48yAUUkRHF0FDccK1IKJDs97_TeYK6Bpx-hPdA3488wYzo4KqwtatgzKfKzksA9NnX3NEr88yQiDM5Ms=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGFjXfOvDXXqZvrfgZmPC7FuaawLT2R_KS5M8MqTs-44MJ9ueNAtcks5LxfGJFSC7zSDswAM1w2Uwty9SOu4I5bpBdL_C4qYwt9Hh8JinWZ0PtxCPTMxtgPPo_JyJDnyyo84Y2Tghfbwa46ZcNv0o9TgdntVQ0oB0AnNmCG2VoYUKgz7H1Stzpl=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhH5-TLAT5nKPqwpm4wTsBgE3P9UNLi4XDWVQbOkbVXyLUXpGkivJSEFggtyhYmrQYk5YA35T1qsYJVv9qke6s3Gx7qwmIF9HFQJdAkJQ77WSqowGiVHNR7QX69CpWRuPFdrpDQHUWsfu1bfqjySvfYIZzbxKG9GtRTaUs3ic9mMMCxWmOc7m3E=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFA_YpxiWwxWX6Ml7zyTsHPoDiAkXYwY6ZVlE1bg8RlpoT2pIrPRsxTeiLF925nT6nSgtVf0abcPQCEe2jP9BiVYkq6xk9Iu-9oeBwpdB4PQG8dJ6S2dLWhq9sGI3EtHdF6Fx67sv93dFM6VYT1J8of-Bkxb6QrOZ-f7HC0b8P5XiBpfCTZVNH9=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHx2MhaoeDyRgHEu5GhbPaPobKwfuW0pCS-cGv8ENjslAmw94Fu5btNNELWiHPPJvtwF2nnqP8-eAE5r8ASRgo77GnLe1Y-goKGYJpCf9i1HhqRQNcWwb6u_1_Aj8E8UnHEvnwyGEMGuDRjGwP-xK9zn-J5DoTYAMSFfoolJv9V9MJjy7WnpYM=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGjQXpvKukw3FM7l8FTk1XVmSnFXqXt_WLDY_4LDRJtuZEGG4a466zNcowNzUg1EJmAlSJHOv7ypZDpL_J9lb-F2geJFmMKIFsA-fQzlzTragkT9YkbWrNvltIwLBiEGBLIbZq_tI_MRQtAO748Hs3eOCHEMbBLFAa8-Yi0mNmL9YlE-B9Pa_mV=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFjjP4LTRrTwuHkeoikb8X81xpA1PVuO0XPURWkK_Aas2iA4BtRbVgUEiEorcNGqw2I2WPZyKXIWhu3Idyd6PbPNud3mwSRgxmhoq53UD5xX0V_rFnllYq1DjMjh8ewXGCLIICVXWbXZJHN3x_XmZtANOxPLLUHynvA5NvC3lPPwBtVaXnqFfQ=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEmMsmaf6i6hA4GsVOahA79RPVFF0lNV-qm_Y0fA_cs416NFZTyuliWv274ie6Tg-2DSwgPIUiSAcL-wx50Y5Jik5Wrp1UJyezNNu_KTqfvWtJt1qSEWiAe4goBIKLU8BwQktYPCDWLVJvADvCa4fyd3aDAnKs6C4TT3XJ1MZ_BZ3Te1ELtDR4=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhH_7nl7OjZJZR_mGLd9vMZd4iz8KqSozFaZCuLIcKYnSMTK_2kQnwxoJzPa5yeJ2UtwQOmPP2x4Hp8sBE3Drm6hI0aKrClAef72Igkrb37C1yPc0dVXstm-Q5y5LMLkXxF-rH0D_1NHLVw3CkYYgW9J-wBQdAQadrmYNCcv4xH-LKmC54zZE14=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhE01rJH9P2gnL8LyahqkvJgByZK_QfkC5AaKhHNhUIDUY9lR4ZyScozTo3kwQpOeEvkmIwXDRfbP9jDx8pQyivV1pBdTcDoOrtMFme1ybqw3on0VyiKuuRrv0TfEdR76gpBpSxK83awLerdHPeGGI7T5eSJo0wrgQnqXNCnDXp_KZENtEr3IXiJ6Q=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGAebynJrBaXcmHn7uCSUgeIfpO5d6dr0E6uzzgRpwuLROyfcxeq_NyKatOYHtG88JoVPb69aKtMy2Bu8_NfLIMOP_ageG22JlBxHC5rnYct-QMJYxX3oW1j6cZOTfeq3A6EPOnNLxki_ZL0_A3MQwxiut2q9PUg9Gzyby7xR5hUo1RLEhrMHE=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFSW6tRief3ZZ4KpqfAxFOK4WY2AeypMvAJ3YHxg_tSoEvBk36yZpFhplSL_tlH9RzoYK_gO1okCoEUfPD2MEN49kcnDAJPJrRr6-e--RBEhxvv5o_Y8OT4aInRvtkeCgvIFZxuIcHZ2HPwNAC2rWpfuZ5DyFdlL40HhJqKh73REsvsFbjFigI=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhH9bS3mqbeeikfimz85dAlADu1_4hb3Gv_gO1z8U9c5l-uaamtL_nBnAmh30R08FvK5J-ameBSMDRqs7jZJUtcGo9-8RXa04P3wo6ADDhF2cDc4B9qGnHyKsMNFzBPBsOdSsN3yMctaK8YpOk2fhpFSoywSKU8x2KL_7rJyzJCG5Mvu0DDlPYUbBg=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHCp-mEJPytas09aEskLWOqMpxSUzjEQ22EcwKctZzuuMbQR48fComTRpV7AC_oUe6-pkgB0WuXbqeGKRPY5C0ejOuJc54rF9qxKnWHEQhyUo-WyyEAyxGkbg9uw4PGlrjOuePavqcWmUYPUFRKqP19Nq8rNFL9VQ9A2fJyorSKClaRVNNubPs=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhF_Ba8Ss8pz2-COdBtCadl-xQOFC8ElCx0HiTClHOy7BtEkM_3Biz4YZj-1kuxXpkV2gFP1HUaumo8WuqDyygwDzf3C0OKalZWfMxvyb-MSNnopul4nFbjrqYBsJHrtYNxFSYHbG4HZdS-pGkVDIwC5qCCpNutmEARv9ThhGFabeEAm4KGjs934_Q=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHyJreQ-XWIxbfuySnypudMrXXwGcmYKFBoimyvKvV-sAL15_8NChgo7cy4RK20AV5PIkqJ_6U00YtV0BYDc3oYPE1y8RRvB8_YBDPHBVlFQJBfXu2BaaPelRlzjI0vQG5o8sHpqBKK30h4owQ7OG1T_ndW49sb0-66plJgDmn-GN-HxqyXhRhr6A=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhE6qA_7oifPeGpkkiqxUUpeH7SaQg9A9Z5Dlbaf9qSxrmrQEpF8RqPl2QVqSeKlqq8LvASrRCrm8tMQPhFwgshTMXYrUAXqrHZYh2EQeiTisgJIbq1USDT0Zy4KSSGskHOd-UgcqyLgVZ1saeBx9PTwX5kIf53lDPVVIhFPqyQ4TlYi9BXrtNiE=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEyTAM79Oe4o6PdoF7qqTcS7X5QTrMXpoe9YbdrJ_r2JypAm2G17TGfR4QQQskKDRQ0CW36CXu9isq3i2uyRLouC8FGIjr1xY-JWpN8NjaFlV123RIpNe4R_pIahgCZZRdmZfio2wvGd9u1Y-ndhEDuGj3j5WfbwzWnwAsERQlTvrRuJskxcM0=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHUzHUV4xkkhnUJoU2r1L9KHWsU9HPGfXilZkemT0QEBbrflIUZWJlKnWasKzfXo4XCKY8OhkVdggl2ry3QkgSYi9mTBNvgCrPzfx7L8QolqHuOSJ3-PvRje8LSUBYBaBx4mVP0ak4tLun6msVygt8ohSmcH7i8a3IWxbaz7I-MsN0JvVbiTjWGXA=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHODUTxU7V94fMEG-lLiKLrABPm2FNTSV8wPwMrAnNa9JNlq8O0jbtbcfs8QP5gLkZD1hM3yVsB7xsWb3ACRNlbcFQh5iz8LoV3EgThY3Bhef38wyOZgy8uPWeaVPnhdsnQindo7niZVE9TMc8n7Xm38W1IAC_Bbu1XObsrn7KI9f5MoUADCvLD=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFEQwHjA4jMajK-82XmLfp0vyGREGnG_6eUi1VJKtWpD3eKu3gZ-DVFlm-NsRhfSwiSukgircRz1ULbTvVryLuyvjW49g5Gm2pMH6p5Sl4-prxsSEoJ1soxsT2XrV64AZL3D7SnPNXhvlkXGdyZwI0sls1AV_HU8jQANbiA1xpDnP82BLhY9PyF=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGoPsuJNmpLViREUT-kvaw98QsF8vOrc3x_1kgwN8SQo-G_ebii25Vbxl2IHc8p8izGlhoZm2x_GnnuNjjqAetT7peOlDy9dDkPcPLESSKX8FBpv8WYE1qYrzOzwhoCBjwYIxY8iUWOfuhKecMB2dlVcMe9LH1xKzrACOh7li9A2hUb7gyKogFu=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhG0oZpmNRghWethNCAyXlaofR4oja_V3gZNWO1gkhtWpwnAae2-S2EM5VnpFhIVEMlqe55YePutKn-9QHxXGC9H34gtasiveCuqZR3lEWHe-1YGd8H3dLPyCroMxJVcyZ3g241xrZx6FcMdCj-BP-xDOxs6M6sv2HEMfQkRHvAMhNz2GvUgU69v=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGqGtrF2DDBwaArR03VxlCQJI60XVyqCNmoJf6lCqruyynDdh8dQklMhdu_MV6Z7KN36snErEBCxTfhkJjj9jCD5mE5sqa_iz7tPHalMjlQLwSrps7D8CB4k17YbprwB-ZuvoBVDNBS4gkICf264hEezS017DkuUQE6ZnD3rJ_nGQ3xNUw2bLB-3Q=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-proxy/ALd4DhH5PIhk1YqojUA5lRVKFt9ODtehUwoegnOtfb-Skk_GIa-VQen3lVNIeJRSN7tUdAUXouLRXURKVG_qEthAHF9NEmI4xJRiFCi1mVKHTc4kgTScExbkqy6DGYd_WbPeTrS-p3z3RVW2u5YMyeIo1uBAdS1pOeoiDVpA59tsajMH4W7O8nQ14DKjMA=w2048-h2048-k-no"
         ],
         "raw_data": {
             "query": "ChIJSedRfTGhVogR5xNXLKPI6Vk",
@@ -990,7 +1017,8 @@
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhE6qA_7oifPeGpkkiqxUUpeH7SaQg9A9Z5Dlbaf9qSxrmrQEpF8RqPl2QVqSeKlqq8LvASrRCrm8tMQPhFwgshTMXYrUAXqrHZYh2EQeiTisgJIbq1USDT0Zy4KSSGskHOd-UgcqyLgVZ1saeBx9PTwX5kIf53lDPVVIhFPqyQ4TlYi9BXrtNiE=w203-h204-k-no"
                 }
             ]
-        }
+        },
+        "last_refreshed": "2026-02-15T18:14:06.271301"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2026-01-02T16:44:14.437668"

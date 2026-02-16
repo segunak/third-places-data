@@ -400,7 +400,7 @@
     },
     "photos": {
         "place_id": "ChIJjSJl6SudVogRKIKzSmMa6E4",
-        "message": "Retrieved 16 photos, filtered out 3, selected 13",
+        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 13 existing, added 3 new, total 16 photos",
         "photo_urls": [
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=pWOQib7ktXEMqIBA6u4Fag&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=66.59211&pitch=0&thumbfov=100",
             "https://lh3.googleusercontent.com/p/AF1QipPfTtlyyNuN_N5-HwJp43PMCwVl8nawQwabpnlk=w2048-h2048-k-no",
@@ -414,7 +414,10 @@
             "https://lh3.googleusercontent.com/p/AF1QipP1XBjTuoDDh4QqAfO1TMZnXpCbNWH0nN38yFHX=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipMQTuqsKjEtcyGqCvHFHWd_bMgwswHay9LHmMN8=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipPLE1y0j3E1mFIva2Waz6ZSLaUNmBBcxKe65iyD=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipNsLfOTikyWxf1Z5c2OVLMUvUyTpeMjFbdhxQsx=w2048-h2048-k-no"
+            "https://lh3.googleusercontent.com/p/AF1QipNsLfOTikyWxf1Z5c2OVLMUvUyTpeMjFbdhxQsx=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrx0wlYZIjALAv310M2cYzpsuawMB5DRG-E0N5l6HbyAUDxdakz3-ymwmfMrTHArJ2dDaRHoBpQ6uMX-4YVZW1WnJgJgsy5NZE84N797wRxncdrhK_tERyer0cSQCt0nkf3HEjT00eb2njT=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqCYwJoWqnQm6uhPMo8TDjsMQ0NnS5qvB7hF5POyRtW9d3hTIoKsOAMgAmRoralYuJSR1EYd1HQG6yH0hn4TcWCrwr6zF1kZnUebkmkh4N3b4KheQBOuVFBL8fYYABRP3-vKQSY40IucbBo=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq6-68zK6uYtgi2SG8c7zZ6rkMZYjqbtlOTpKRnQdn_U1cfCo1i2HGluik_g2ViDvKAGVreQIv45i6VJG1iM4F3EuqGFsXLNGfrSiVyWKNBpH47noRZdksAGAteQRlaKA1YwaXfX3gthp4=w2048-h2048-k-no"
         ],
         "raw_data": {
             "query": "ChIJjSJl6SudVogRKIKzSmMa6E4",
@@ -814,7 +817,8 @@
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq6-68zK6uYtgi2SG8c7zZ6rkMZYjqbtlOTpKRnQdn_U1cfCo1i2HGluik_g2ViDvKAGVreQIv45i6VJG1iM4F3EuqGFsXLNGfrSiVyWKNBpH47noRZdksAGAteQRlaKA1YwaXfX3gthp4=w203-h270-k-no"
                 }
             ]
-        }
+        },
+        "last_refreshed": "2026-02-15T18:14:05.289149"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-10-08T18:02:53.248826"

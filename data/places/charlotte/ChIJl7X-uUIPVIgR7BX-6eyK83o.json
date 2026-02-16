@@ -237,10 +237,12 @@
     },
     "photos": {
         "place_id": "ChIJl7X-uUIPVIgR7BX-6eyK83o",
-        "message": "Retrieved 4 photos, filtered out 2, selected 2",
+        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 2 existing, added 2 new, total 4 photos",
         "photo_urls": [
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=AZEdVvS_zNaTHgPsjF8_Dg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=39.630615&pitch=0&thumbfov=100",
-            "https://lh3.googleusercontent.com/p/AF1QipNnz3HJ5lhIGjveT3Y20lIop6tnRd6wJf8G2bAS=w2048-h2048-k-no"
+            "https://lh3.googleusercontent.com/p/AF1QipNnz3HJ5lhIGjveT3Y20lIop6tnRd6wJf8G2bAS=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyaYcbJt8K7z2ff3KA_OCQGXKdqaL1OKs0sm8aFUnDCUkfNOuvR7j-aRyY_m_JNENVA3a_8F0g6c8fpXezHcICQi22HMFDD_gIKABmXf2a_I4eSctJ1qz63-87Yz-Tyk0JebUJPlORe5fW3=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxRCTEJLtCYRuHzBUHgoaw1iLTvlSdVRrS5w2VPoM2Hxh1dar0rhnSCaVHgta1JrbFbhAYMnt4zXSHd5PSV7awS1jlf7_16HQ0UM3FKhmV9snVIFqi_UNzP5PChLylCHAG-mDW1jrgqOwg9=w2048-h2048-k-no"
         ],
         "raw_data": {
             "query": "ChIJl7X-uUIPVIgR7BX-6eyK83o",
@@ -384,7 +386,8 @@
                     "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNnz3HJ5lhIGjveT3Y20lIop6tnRd6wJf8G2bAS=w203-h122-k-no"
                 }
             ]
-        }
+        },
+        "last_refreshed": "2026-02-15T18:14:05.410018"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-11-06T21:41:35.969302"

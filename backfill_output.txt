@@ -1,0 +1,335 @@
+Processing 411 files in C:\GitHub\third-places-data\data\places\charlotte (dry_run=False)
+Backfill summary:
+  already_full: 128
+  no_new_photos: 5
+  preserved_existing: 141
+  skipped_no_raw_data: 41
+  updated: 96
+  total_files: 411
+
+  [preserved_existing] Have photo_urls but no usable raw_data to pull more from (141 files):
+    with photos: 141 (min=1, max=29, avg=15.7)
+        1 photos | ChIJ14-HHOihVogRdFAB4Zel1g4.json | Waterbean Coffee | Uptown
+        1 photos | ChIJ14Mb4NafVogR_Otcia1hJWs.json | Vicente
+        1 photos | ChIJ3aE9Bc2hVogRc6hcWnvSJ5s.json | Night Swim Coffee | One Wells Fargo
+        1 photos | ChIJ44LhkHWfVogRuUPcT76NBxg.json | Rhino Market & Deli | SouthPark
+        1 photos | ChIJE5foU-6fVogRbJLDgcstt3Y.json | Not Just Coffee | 421 Providence Road
+        1 photos | ChIJG9_9LYScVogRgaDlMnCy1_A.json | Carolina Tabletop Games
+        1 photos | ChIJhQoq4iyCVogRJVdXruYz_Ak.json | CrossRidge Cafe
+        1 photos | ChIJi8gj-VyhVogRsMFvosm9vCE.json | Lambert's Cafe
+        1 photos | ChIJJzzS4SYrVIgRgtfcnBeOY0c.json | Holy Cannoli
+        1 photos | ChIJtfTs7NqhVogRPEdbMhYVK6Y.json | Night Swim Coffee | Brevard
+        2 photos | ChIJ07iI9uE2VIgRoKYcwZqOTrc.json | KB's Coffee
+        2 photos | ChIJ9_BuwwEnVIgRxVLI2vk1ass.json | Breezeway Coffee
+        2 photos | ChIJC5zOYGsPVIgRGpvyj2CnRdo.json | High Grounds Coffeehouse
+        2 photos | ChIJEW_6jle9VogR9gmb90Vhe9I.json | Coffee Origin
+        2 photos | ChIJLRrxtX-fVogR1fxCF72AIHU.json | Starbucks | 436 Tyvola Road
+        2 photos | ChIJUURJWhiRVogR-CTkiLasET8.json | Knowledge Perk Coffee Company | Fort Mill
+        3 photos | ChIJ77Kr-hahVogRUGokDwqy1KE.json | The Pauline Tea Bar & Apothecary
+        3 photos | ChIJC_urdowdVIgRqsYDIexuGOA.json | Hilltop Coffee
+        3 photos | ChIJG1AjVjwGVIgRZJfBMFgFL2U.json | French Express Coffee House
+        3 photos | ChIJo0Z-GH2hVogROCIvzrkqkiU.json | Provided Coffee | Uptown
+        3 photos | ChIJU9iH7zUdVIgRHzF0f75seSk.json | Summit Coffee | Highland Creek
+        4 photos | ChIJ38r7sQAlVIgRqb7q9CbZm1I.json | Cathy's Coffee
+        4 photos | ChIJp3SlQKqhVogRoVTZDanY9dc.json | Rosie's Coffee & Wine Garden
+        5 photos | ChIJ8aerYIKQVogRrcB1gfL2nGM.json | Charlotte Mecklenburg Library | Steele Creek
+        5 photos | ChIJPenDPhMgVIgRRPg7WaiiQEg.json | JuliaΓÇÖs Caf├⌐ & Books
+        5 photos | ChIJpZby0KqdVogRUUD4YOZfFpw.json | Waterbean Coffee | Quail Corners
+        5 photos | ChIJU1btSbkhVIgR_u7EjvP_YPc.json | Troubadour Booksellers
+        5 photos | ChIJUdrm1RchVIgRYc7617z52qs.json | Night Swim Coffee | Oakhurst
+        6 photos | ChIJ0fXWI-YiVIgRwMw0Hfbimzo.json | Charlotte Mecklenburg Library | Mint Hill
+        6 photos | ChIJ4bomlJSkVogR5P87vRM-uoE.json | Charlotte Mecklenburg Library | Mountain Island
+        6 photos | ChIJ74Rnd68hVIgRTvVDxOsVc-g.json | Charlotte Mecklenburg Library | Independence Regional
+        6 photos | ChIJB8FZw6uDVogRSB-LsFV03fQ.json | Tous les Jours | Ballantyne
+        6 photos | ChIJbZvYnNqhVogRe9M4zY39SQo.json | Rhino Market & Deli | Wesley Heights
+        6 photos | ChIJI8K2vQCgVogRB4YcLnd_h2M.json | Charlotte Mecklenburg Library | Plaza Midwood
+        6 photos | ChIJIel45xeeVogRSeazinnEw7o.json | Charlotte Mecklenburg Library | SouthPark Regional
+        6 photos | ChIJPbluV0adVogR3JMScLHNzyA.json | Coffee Republic | Ballantyne
+        6 photos | ChIJRSIiwkgrVIgRBD59ZfQB9wc.json | Jebena Cafe
+        6 photos | ChIJVY1gNvCdVogRDlsmnDOdGL8.json | The Bowl at Ballantyne
+        7 photos | ChIJR_RWn3udVogRx4cfeLSF874.json | Starbucks | 6432 Rea Road
+        8 photos | ChIJm9neLXufVogR78Ku-LyqFho.json | Salted Melon | Eastover
+        8 photos | ChIJqSvHLOgfVIgREHkD607uzHY.json | Summit Coffee | NoDa
+        8 photos | ChIJu1xstQGrVogRXNgnir6yMBU.json | 77 Grounds Coffee
+        9 photos | ChIJa3UTEf6gVogRVSWB2mB9w-Q.json | Charlotte Mecklenburg Library | Allegra Westbrooks Regional
+        9 photos | ChIJHacK4I2hVogRden7F4yAktU.json | Change Please Coffee
+        9 photos | ChIJT07oL8afVogRSG1Yu4d4PWY.json | Summit Coffee | South End
+        9 photos | ChIJU36j5gEkVIgRDBSH0u_ZeWE.json | Brakeman's Coffee & Supply
+        9 photos | ChIJux77xBKPVogRtRL5ZExNkR8.json | Borboleta Caf├⌐
+       10 photos | ChIJ0UZ8gGOfVogRlEjtXncUS-c.json | Gourmand
+       10 photos | ChIJhXfYP80fVIgROx9ABiYtTfU.json | Charlotte Mecklenburg Library | Sugar Creek
+       10 photos | ChIJN_LtBVKDVogRoYG6wBnnYaY.json | Rendezbrew
+       13 photos | ChIJIU677M6hVogRpHUpHNhIE3o.json | Platform Coffee
+       13 photos | ChIJK2rxUe6hVogR2ej3bK2jwKs.json | Monarch Market
+       14 photos | ChIJ3T1DEZ2hVogRmFnTq2c9tLg.json | Undercurrent Coffee | Optimist Hall
+       14 photos | ChIJg0MLZk4fVIgR9M-cgBJp9Uc.json | Charlotte Mecklenburg Library | Hickory Grove
+       14 photos | ChIJHzmVHSqfVogRQPEYUMWMBrw.json | Wildroots Coffee
+       14 photos | ChIJSwWgqsonVIgRnoSj1fD4mz8.json | Coffee Republic | Matthews
+       15 photos | ChIJNxCZ3fyhVogRmifnuNlAvAc.json | Sunflour Baking Company | NoDa
+       16 photos | ChIJPZcDUry9VogRMfGyfItQmfM.json | The Wandering Cup | Belmont
+       17 photos | ChIJj3cMufKhVogRas8nFeRLdzY.json | The Giddy Goat Coffee Roasters
+       18 photos | ChIJD5OUXgCgVogRY-jdOPI66fg.json | Common Market | Plaza Midwood
+       18 photos | ChIJgZNAHJUJVIgRysrHhz8Dlnk.json | The Holy Grind Coffee House of Kannapolis
+       18 photos | ChIJJ1k-2i6gVogRYNxihxv5ONI.json | Am├⌐lieΓÇÖs French Bakery & Caf├⌐ | Carmel Commons
+       18 photos | ChIJM5X7QB69VogR5PKqFjP2I1A.json | Belmont Bookshop
+       18 photos | ChIJM_JUxo4tVIgRxFoQARnObwg.json | Caffiend
+       19 photos | ChIJFRhCRQCXVogR373gTARirFc.json | The Trailhead Store
+       19 photos | ChIJIWS8niSgVogR06cUHnjkmUU.json | The Market at 7th Street
+       19 photos | ChIJn-tzbVIPVIgR42OONZouirw.json | Verb Coffee
+       19 photos | ChIJNZwIQr6fVogRuWNva3wtFrA.json | Charlotte Mecklenburg Library | Myers Park
+       19 photos | ChIJw4FlFSWfVogRFE-oR_9KeqU.json | Pins Mechanical
+       19 photos | ChIJy1dEd02fVogR0FUuoeATqko.json | Charlotte Mecklenburg Library | West Boulevard
+       20 photos | ChIJ1Zy0mXCfVogRPyLjCWScplA.json | Not Just Coffee | Atherton Mill
+       20 photos | ChIJ2YWhcACdVogRDpUDHgNn51s.json | Alley 51
+       20 photos | ChIJaSLoAnuhVogRfBsIG4TjYs4.json | Undercurrent Coffee | Plaza Midwood
+       20 photos | ChIJDQ6XOXIPVIgRVxN3t-qyStY.json | Press & Porter Coffee & Pourhouse
+       20 photos | ChIJGVYxP5O8VogR1vMOJBmxeic.json | Catawba Coffee Co.
+       20 photos | ChIJh-Fbfr6WVogRUxsWCJF21sg.json | Daniel Stowe Conservancy
+       20 photos | ChIJi4TqJgChVogRqWBRZnffMKM.json | Cakeable Cafe
+       20 photos | ChIJmQuamJ-fVogRRVVKVkx3xjM.json | Not Just Coffee | Dilworth
+       20 photos | ChIJRdxkFXYxVIgRznroa5-xH_8.json | High Octane Coffee
+       20 photos | ChIJv-cvm4SpVogRjnaFd7NwGSs.json | Kunu Coffee Co. | Huntersville
+       20 photos | ChIJX2voOFmhVogRlnf0jpzsghY.json | Seoul Food Meat Company | Mill District
+       20 photos | ChIJx47_MM0nVIgRiqiMCJ90RLc.json | Whole Foods | Rea Farms
+       20 photos | ChIJy4NFRIehVogRsCs8MO0NfTc.json | Not Just Coffee | Jay Street
+       20 photos | ChIJYXyT1nHBVogRO0z_uPKgq4g.json | The Wandering Cup | Gastonia
+       20 photos | ChIJzXn4RROeVogRlX3BjPNu-bg.json | Starbucks | 4805 Sharon Road
+       20 photos | ChIJZZuqR5ihVogRu5vtlCIF3zE.json | Urban District Market
+       21 photos | ChIJ3VVpfi-fVogRMuoFolGsGQY.json | Rhino Market & Deli | South End
+       21 photos | ChIJa4_8nQ2gVogRPE90d2Wg2Yc.json | Super Abari Game Bar
+       21 photos | ChIJAY-74rMPVIgRfMhVk6Maz9w.json | Mac Tabby Cat Caf├⌐ | Concord
+       21 photos | ChIJG6l51F6dVogRiybaoWdlgMs.json | Starbucks | 7922 Rea Rd
+       21 photos | ChIJgTApvs-fVogR7OJTl9J0fw0.json | Summit Coffee | Eastover
+       21 photos | ChIJGUjwFVMhVIgRV7XZhBtP02Q.json | Your Mom's Donuts | Matthews
+       21 photos | ChIJH9S7TOcPVIgRnG5eHqW4DE0.json | Mattie Ruth's Coffee House
+       21 photos | ChIJkVk_VIsIVIgRqM9AeVUJf4A.json | WiredCoffeeEspress
+       21 photos | ChIJT35qZswnVIgRxNRIUf056kg.json | Starbucks | 11510 Waverly Center Drive
+       21 photos | ChIJT3LsQBGgVogR8Eqnx1q-fv8.json | Not Just Coffee | 7th Street
+       21 photos | ChIJvzV5ND6eVogR0ZYS1zs5oX8.json | Starbucks | 6701 Carnegie Blvd
+       22 photos | ChIJ22nvVMOfVogRSHDEA2s9lIs.json | Waterbean Coffee | Midtown
+       22 photos | ChIJ3zz-ZgOpVogRwwuceyM5eRM.json | Waterbean Coffee | Huntersville
+       22 photos | ChIJH5YDEv-IVogR3I3nQtefBy8.json | Knowledge Perk Coffee Company | Rock Hill
+       22 photos | ChIJiTNInUMaVIgRQ4Hun28Oe7A.json | Sunflour Baking Company | Harrisburg
+       22 photos | ChIJKzpW9PExVIgRB_lkoO5aPCQ.json | East Frank Superette and Kitchen
+       22 photos | ChIJZ0SFxxygVogRFPE_q59LVw4.json | Central Coffee Co
+       23 photos | ChIJbUDL6WyfVogRxZiUZEZlv2Q.json | Suffolk Punch | South End
+       23 photos | ChIJBZnWtyigVogRKk6-Z0WqHx0.json | Am├⌐lieΓÇÖs French Bakery & Caf├⌐ | Uptown
+       23 photos | ChIJdYnY8hefVogRNec3TcDvneQ.json | Charlotte Mecklenburg Library | South Boulevard
+       23 photos | ChIJgVSb59APVIgRxEvFsyO0d_s.json | Goldberry Books
+       23 photos | ChIJh4XCEgChVogRda6fX2EA-0g.json | Haraz Coffee House | Elizabeth
+       23 photos | ChIJk0bxMjshVIgRECQpU-sNgJU.json | Visart Cafe
+       23 photos | ChIJL8lGGP2hVogRPpzLhiingmg.json | Qahwah House
+       23 photos | ChIJMQ7XOtGfVogRAHRBzAYqn1U.json | Waterbean Coffee | Park Road
+       24 photos | ChIJ04QAL_afVogRbAqC96Tef2k.json | The Co-Op Gourmet Sandwiches
+       24 photos | ChIJbTydLvoPVIgRSR0jmZHN2IM.json | Allegiance Coffee
+       24 photos | ChIJdT3XiNSfVogRe73MdP3P8II.json | The Salty
+       24 photos | ChIJDZqNHuUPVIgRtxJfdezINTM.json | Provided Coffee | Concord
+       24 photos | ChIJx9uOLnqfVogRBm1-08LIq_c.json | SipCha
+       24 photos | ChIJY_5TrnWgVogRHbnVtqGvxm8.json | Am├⌐lieΓÇÖs French Bakery & Caf├⌐ | NoDa
+       25 photos | ChIJaWWErjIlVIgR4sIIccjflj0.json | Rockhounds Coffee
+       25 photos | ChIJF6jN0rwdVIgRCa7TB99kGgI.json | Vavela Cafe
+       25 photos | ChIJhVK71XCfVogRhtRvoY7yj80.json | ROOTS Cafe
+       25 photos | ChIJL6KX0gMkVIgRQ8jvyw61YdM.json | Charlotte Mecklenburg Library | Matthews
+       25 photos | ChIJQfjxw8OhVogRkzkq8gOu1lE.json | Rhino Market & Deli | NoDa
+       25 photos | ChIJRaKEk72fVogRIzEfZ76k0GQ.json | The Everyday Market | LoSo
+       25 photos | ChIJyybwmD8gVIgRBdbqZwP9UkM.json | Common Market | Oakwold
+       26 photos | ChIJ7REr4EIPVIgROQWL4jQnvIQ.json | Kunu Coffee Co. | Concord
+       26 photos | ChIJcdCvlVOeVogRjZKVjmCg_yY.json | Starbucks | 4425 Park Rd
+       26 photos | ChIJcV53qKqFVogR3fyWdHBv4GI.json | OliveΓÇÖs Mud Puddle
+       26 photos | ChIJgSdKiQQxVIgRcwCUv-k5KGE.json | A Cause for Tea
+       26 photos | ChIJQVrBpGKnVogRHwKLgMK6eFw.json | Starbucks | 8421 Davis Lake Pkwy
+       26 photos | ChIJrZWghE-9VogRsxgUeFQapTQ.json | Jade and Elise Obsidian Coffee Co.
+       26 photos | ChIJwbU1PyipVogRQXUghc0v-pM.json | Willow Wood Coffee
+       26 photos | ChIJzUFGL22hVogRXuG-SGJB45k.json | Archive CLT
+       27 photos | ChIJ3dubRKkfVIgRDeYIJtjFv5U.json | Summit Coffee | Plaza Midwood
+       27 photos | ChIJD19aqO-dVogRqdaGDjoTBHM.json | Starbucks | 4100 Carmel Road
+       27 photos | ChIJQ2ezt4-rVogRcl-Lwxjh8gc.json | The Coffeeshop
+       28 photos | ChIJJehEeOadVogRkNMnB96TYtk.json | Backyard Brew
+       28 photos | ChIJl0629fEhVIgRLHczIsBRc5g.json | 220C Banh Mi & Coffee
+       28 photos | ChIJuU6L7kOpVogRutcJJ_THWe4.json | Summit Coffee | Birkdale Landing
+       29 photos | ChIJOzOSYYK9VogRKKK-NNtEApE.json | Passion's Cafe & Pastry
+       29 photos | ChIJv43q1pW9VogRYlnD-YcVOQk.json | Waterbean Coffee | Belmont
+       29 photos | ChIJXV8saVGpVogR6zOOev4OwHM.json | Waterbean Coffee | Cornelius
+
+  [skipped_no_raw_data] Empty photo_urls AND no usable raw_data (41 files):
+    with 0 photos: 41
+        0 photos | ChIJ-de8mGcnVIgRZhRL6A8EG6U.json | Paris Baguette
+        0 photos | ChIJ0SBIbPEfVIgR1YUmfpGBZiY.json | Waterbean Coffee | NoDa
+        0 photos | ChIJ36RwlFkbVIgR3SksgOIykv8.json | Panera Bread | Concord Mills
+        0 photos | ChIJ4d1MXDqhVogRTqwpdCr8WMk.json | Waterbean Coffee | South End
+        0 photos | ChIJ69Xa0FgdVIgRdYe9FRlicUU.json | Anatolia Cafe & Cuisine
+        0 photos | ChIJ7RRxHTWrVogR5B1lz4b_dkw.json | Waterbean Coffee | Davidson
+        0 photos | ChIJ9cvSld3_U4gRh-TmYky6Ja4.json | Patisserie Cafe
+        0 photos | ChIJ_b0Xw_GpVogRTdEnIn0Boe8.json | Caribou Coffee | Huntersville
+        0 photos | ChIJBfDviOqhVogRLlGpl-uCOdU.json | Knowledge Perk Coffee Company | Uptown
+        0 photos | ChIJBQ7XQZEgVIgRMq3Bq_ELIGk.json | The Fresh Market | Providence Park
+        0 photos | ChIJBUvIHiqxVogRwpYFkKby93I.json | Coffee Republic | Denver
+        0 photos | ChIJcdwwVxoJVIgRARCskjwCdRY.json | B&K Tea Cafe | Kannapolis
+        0 photos | ChIJcT1nKIhVUYgRqjG1Q2LJPzY.json | Performance Coffee House
+        0 photos | ChIJcY74JAAfVIgR-dw9kycYwvk.json | Bayt Al Mocha
+        0 photos | ChIJd2U0NT0FVIgR9J_pRIoVzOc.json | Waterbean Coffee | Concord
+        0 photos | ChIJDQ1lceSxVogRKTUo7IJobNk.json | Cabbella's Coffee Shop
+        0 photos | ChIJDR6j9SJVUYgRDGE0Wuh6hk8.json | RegalCha
+        0 photos | ChIJE_NXZ3-fVogRziaSdpcl4nI.json | Salted Melon | SouthPark
+        0 photos | ChIJHeRGUOcfVIgREwA7wT_qvF8.json | The Exchange at 36th
+        0 photos | ChIJHSrLCJ9VUYgRSFsKBxWh4nU.json | Coffee Republic | Mooresville
+        0 photos | ChIJHWgM3CifVogRmu7-SRiyJ34.json | Bitty & Beau's Coffee
+        0 photos | ChIJIxbYi1qxVogRJ4UPFufHkeQ.json | Caribou Coffee | Denver
+        0 photos | ChIJIXvpQACfVogRqclhfIIQJOw.json | Keren Charlotte Radiance Coffee
+        0 photos | ChIJIxZdoHC1Jk4Rmupt9z7HZJA.json | B&K Tea Cafe | Concord
+        0 photos | ChIJL81LHgpVUYgRuh_oykDCFgM.json | Caribou Coffee | Mooresville
+        0 photos | ChIJLQa4xN83VIgRMxv1Wd7xKow.json | Caribou Coffee | Monroe
+        0 photos | ChIJLVc_556fVogRfV46u9ccHpA.json | Babaloo Coffee Club
+        0 photos | ChIJmSLqIjugVogRp0j3MjDJmH4.json | Rhino Market & Deli | Uptown
+        0 photos | ChIJOSJILL4rVIgRHquSeyfZNG8.json | Provisions Waxhaw
+        0 photos | ChIJOWmI1xUPVIgRWFV2eX7Wnew.json | Panera Bread | North Concord
+        0 photos | ChIJqcTYSHmhVogRpiSynwkqWY4.json | Sip City Market & Bottle Shop
+        0 photos | ChIJr-iHwRMnVIgRcD_Fy6hU0ZQ.json | Barnes & Noble | Arboretum
+        0 photos | ChIJt7hS7X2xVogRyv0I6wqhaDQ.json | Waterbean Coffee | Denver
+        0 photos | ChIJtd2vGvmfVogRAaQ0_wYj0NM.json | Chez Marie P├ótisserie
+        0 photos | ChIJUYFgtK-JVogR0-isVuNDEuY.json | Techno Caf├⌐
+        0 photos | ChIJwW1v78-fVogRvnC2-WIuAYM.json | La Dolcekca Bakery Cafe
+        0 photos | ChIJwXBNJaOpVogRAlHJFHGqeN8.json | B&K Tea Cafe | Huntersville
+        0 photos | ChIJWXtwUyhVUYgRdk2rjalMm9k.json | Summit Coffee | Mooresville
+        0 photos | ChIJwZS5JgCfVogR0MMspwYMbgo.json | The PeopleΓÇÖs Market | Myers Park
+        0 photos | ChIJy29pBQCfVogReTFaiadBMQ0.json | Higher Grounds by Manolo's
+        0 photos | ChIJy5ZGm5OnVogR4AMXqTPat1U.json | Cocobean Coffee and Boba Tea
+
+  [already_full] Already at 30 photo_urls, no room to add (128 files):
+    with photos: 128 (min=30, max=30, avg=30.0)
+       30 photos | ChIJ04NKITSqVogRGvRxeOeFXME.json | Summit Coffee | Davidson
+       30 photos | ChIJ0eBBb2CfVogRyrOWUu1QsXQ.json | The PeopleΓÇÖs Market | Elizabeth
+       30 photos | ChIJ0y7jB9QPVIgRxBtv6daWRAw.json | Coffin House Coffee
+       30 photos | ChIJ0zjvlrYnVIgR43iLTFvxDKU.json | Starbucks | 5361 Ballantyne Commons Pkwy
+       30 photos | ChIJ1wzLsnmfVogRjcyzDMN-7LA.json | Sunflour Baking Company | Dilworth
+       30 photos | ChIJ27CnxKgcVIgRc-Pmjo6fyh0.json | The Mighty Meeple
+       30 photos | ChIJ2af9VVCfVogRG52eEKo26Hs.json | Sumaq Coffee
+       30 photos | ChIJ2dWn_A6DVogRGGSo95Kem_g.json | Sweetwaters Coffee & Tea
+       30 photos | ChIJ2xDMAymdVogR8ilXXeLqP_0.json | Panera Bread | Ballantyne
+       30 photos | ChIJ3-etWgCpVogRh_OnVLz7fk0.json | Kunu Coffee Co. |  Cornelius
+       30 photos | ChIJ4baYhOyJVogRO5wOUyZqqaQ.json | The Mercantile
+       30 photos | ChIJ4T1q0XCJVogREyJh-jZljuk.json | Jackass Caf├⌐ & Wine Bar
+       30 photos | ChIJ4Wozo70hVIgR5qeX0htXwlQ.json | Mother of Dragons
+       30 photos | ChIJ87U4ohwhVIgRsLV8CYCx468.json | Starbucks | 4044 Connection Point Blvd
+       30 photos | ChIJ994_Tm4JVIgRtGznu28qdAQ.json | Willowbrook Grounds
+       30 photos | ChIJ9aLWUYKFVogRvHB8mSwVb9k.json | Tega Cay Coffee Co.
+       30 photos | ChIJ_4katjcbVIgRypXcxSipFDE.json | Barnes & Noble | Concord Mills
+       30 photos | ChIJ__-_IiEcVIgRWYRruNyziiw.json | Tea Fusion Cafe
+       30 photos | ChIJ___PjW2fVogRpQSJQZr2tKM.json | Hex Coffee
+       30 photos | ChIJ_XFKsSIJVIgRkg8cvObSRDc.json | Veni Vidi Vici Cafe
+       30 photos | ChIJA34_YiWgVogR195FiSsXR_0.json | Coco and the Director
+       30 photos | ChIJaQRagK4pVIgR9hPaSAbUh1M.json | Java's Brewing Bakery and Cafe
+       30 photos | ChIJARhV7nefVogRg5E98842nYU.json | Tous les Jours | SouthPark
+       30 photos | ChIJaSmx5QKhVogRgfFxybbnY3s.json | LottieΓÇÖs Cafe
+       30 photos | ChIJaVGF2A0fVIgRgr4hzR0kNUg.json | Deli St Charlotte
+       30 photos | ChIJAxppBCqpVogRu0CntYQ9j18.json | Coffee Republic | Cornelius
+       30 photos | ChIJbfPqPD0cVIgRgZm-jxDD3A8.json | Starbucks | 9335 N Tryon St
+       30 photos | ChIJbQMjaNKhVogRBAIkgTUVTcs.json | Resident Culture | South End
+       30 photos | ChIJbSonG9ofVIgRk1EtkCrc3cg.json | Salud Cervercia
+       30 photos | ChIJbzmQS5GdVogR_blFkKsadx4.json | Summit Coffee | Ballantyne
+       30 photos | ChIJC5TnfNidVogRv2kkNFAyxV4.json | Littl Madeleine | Organic Coffee & Bakery
+       30 photos | ChIJCYqkPICdVogR1FFL3gPAtCY.json | Charlotte Mecklenburg Library | South County Regional
+       30 photos | ChIJcyZ80YcjVIgRugUJIfOkkWk.json | Forest Trail House
+       30 photos | ChIJd-5XQVufVogRKJH_TYMN07M.json | Stable Hand
+       30 photos | ChIJD078Ed4kVIgRedVF2bp1H2M.json | Panera Bread | Indian Trail
+       30 photos | ChIJdw9IIvEPVIgRBP69rAk73ks.json | Gibson Mill Market
+       30 photos | ChIJeYjcc1OeVogRXavYTRIa67c.json | Caribou Coffee | Park Road
+       30 photos | ChIJf5GCCCidVogRNg7nrE-mons.json | Sunflour Baking Company | Ballantyne
+       30 photos | ChIJFerbIdofVIgR75JWFgcsMns.json | Smelly Cat Coffee House & Roastery
+       30 photos | ChIJfVhFZCWgVogRtV3PddPN-IQ.json | Starbucks | 1901 N Tryon St
+       30 photos | ChIJfzqI_nAPVIgR1LWTzEy73Dk.json | The Percantile at The Nook
+       30 photos | ChIJg-L8ezygVogRUbf2uz89PTI.json | Queen City Grounds | The Landing
+       30 photos | ChIJG1B4qy6gVogRhJ5-UXff9rc.json | Starbucks | 135 Levine Avenue of the Arts
+       30 photos | ChIJg5gfa_ChVogRNUIJ-gBl8ec.json | The Hobbyist
+       30 photos | ChIJG5x53dahVogRBn1Yikf2IZw.json | The Batch House
+       30 photos | ChIJgf5aPowJVIgRC8FpZaBv2TU.json | Local Patriot Roasting Company
+       30 photos | ChIJGQhyMLefVogRSjDgK7dGrvM.json | Summit Coffee | SouthPark
+       30 photos | ChIJgzb_EESDVogRdyycMFM3TZQ.json | Tea Plus
+       30 photos | ChIJHRRfMVScVogR2ONOx7WkfLk.json | The Book Rack
+       30 photos | ChIJHwl2ON-YVogRY4970_9opyI.json | Panera Bread | Renaissance Park
+       30 photos | ChIJISNW2VWIVogR20NKKcIAdWs.json | Am├⌐lieΓÇÖs French Bakery & Caf├⌐ | Rock Hill
+       30 photos | ChIJIUypPHSbVogRQDLR9PyZ6hc.json | Biggby Coffee
+       30 photos | ChIJIWFeOGQaVIgRNzPwGkkF1t8.json | Rocky River Coffee Co.
+       30 photos | ChIJJ8MqAWyfVogRWEUpHLgG6EE.json | Night Swim Coffee | Old Pineville Road
+       30 photos | ChIJk-Ie_nwgVIgR0aSPHrptLEE.json | Panera Bread | Cotswold
+       30 photos | ChIJK_9Nv76hVogRcYP2ZHINMag.json | Night Swim Coffee | Bank of America Tower
+       30 photos | ChIJL07rIaSfVogR0P9wlao5iNw.json | Gotcha Matcha & Espresso
+       30 photos | ChIJL0qfJJqhVogRbVpvuG2ieac.json | My Story Cafe
+       30 photos | ChIJL2yWy4ihVogRCcalxb9E7Cw.json | Optimist Hall
+       30 photos | ChIJL5iXvXodVIgRi9va0ff04Cc.json | The Grounds Bookstore and Caf├⌐
+       30 photos | ChIJl_ypTosFVIgR_XHDKiblPwA.json | Grounds & Vine
+       30 photos | ChIJLfKMafmfVogRFwaKv1SNTxs.json | Sunflour Baking Company | Elizabeth
+       30 photos | ChIJM6vihBSeVogRy6Qw_JteorU.json | Whole Foods | SouthPark
+       30 photos | ChIJMaMPcyWgVogRG8Siv7iTvh8.json | Founders Hall
+       30 photos | ChIJMaMPcyWgVogRSHMTi-U65B4.json | Caribou Coffee | Founders Hall
+       30 photos | ChIJMaPdE7KhVogRcLG8wJxLxaY.json | Petty Thieves Brewing Co.
+       30 photos | ChIJmaPz5ZOfVogR9q_0UwR5yJM.json | Vibe Wine & Coffee
+       30 photos | ChIJMRrxPIScVogRZLIRzjZaSRE.json | Waterbean Coffee | Pineville
+       30 photos | ChIJmwGTaCcxVIgR9iVPx9qlvdM.json | Sorella Coffee
+       30 photos | ChIJMXNInz6xVogRCh_eHutm3gk.json | Elysian Brews
+       30 photos | ChIJN7UPVFgjVIgROrIeh3MKju8.json | Sunflower Club Cafe
+       30 photos | ChIJnQIVUGieVogRa2QzwNUW93U.json | Panera Bread | Fairview Road
+       30 photos | ChIJnSAajqAgVIgRcqmtdsczoQI.json | Caribou Coffee | Foxcroft
+       30 photos | ChIJnSQaWTGfVogRRhsliZ7neYU.json | Suffolk Punch | SouthPark
+       30 photos | ChIJNXhwVHuZVogR8grgZixznog.json | Panera Bread | Whitehall Commons
+       30 photos | ChIJO1EDFgChVogRyC-Aaspn7Iw.json | Coffee Republic | Uptown
+       30 photos | ChIJoaXHociZVogRG5VYabWVaGo.json | Waterbean Coffee | Olde Whitehall
+       30 photos | ChIJp-OH6BMnVIgR2dl2Dj_u8CA.json | Panera Bread | Pineville-Matthews Road
+       30 photos | ChIJp4oqyCShVogRVyUka6YjHyI.json | Enderly Coffee Company
+       30 photos | ChIJp9PvEX-fVogRJbf7mk0dIRs.json | Wooden Robot
+       30 photos | ChIJPYHlQFmeVogR-1zizNW2XEU.json | Mugs Coffee
+       30 photos | ChIJq4RBQcedVogRS88bznyd_9w.json | Fly Kid Fly
+       30 photos | ChIJqYn6_umfVogRIQdBiNH8jHw.json | Harris Teeter | 1015 Providence Rd
+       30 photos | ChIJr6bgVPYjVIgRP25ysirLPFw.json | Panera Bread | Matthews
+       30 photos | ChIJRw72WTyeVogR8hnKaRrzgWQ.json | Barnes & Noble | SouthPark
+       30 photos | ChIJRWGzw4_BVogREmwtGLMhQuU.json | Gilmore's Mercantile Coffee Roaster
+       30 photos | ChIJRxlsdCEcVIgR43mw1gNsxUo.json | Charlotte Mecklenburg Library | University City Regional
+       30 photos | ChIJs1F7TR2dVogRScF8bJtAbxQ.json | Charlotte Mecklenburg Library | Pineville
+       30 photos | ChIJs5IwQRGgVogRaPNqaU0r0G0.json | Mac Tabby Cat Caf├⌐ | NoDa
+       30 photos | ChIJS9JDJdYwVIgRl8fFPJ5eMds.json | Alice Jules Coffee House
+       30 photos | ChIJsb4sTbClVogRzfaaSGOqmGU.json | Wake Coffee Co.
+       30 photos | ChIJSSHRCbYnVIgRebCEiB_GKWg.json | The Fresh Market | Providence Crossing
+       30 photos | ChIJSUoajZKcVogRXBDgw240hWc.json | Barnes & Noble | Carolina Place
+       30 photos | ChIJsybS2KEbVIgRwjz-vabgZBo.json | Coffee and Cream
+       30 photos | ChIJt-4_MeEnVIgRWCLMBqB6tkQ.json | Matcha Caf├⌐ Maiko
+       30 photos | ChIJt1kNIlwlVIgRXOMsa7P2O9M.json | Bill and Bobs Coffee Bar
+       30 photos | ChIJT8ogcxKZVogRllA99CfjkB8.json | Thousand Hills Coffee
+       30 photos | ChIJTb_cqc8fVIgRrzpQ7b9e-xM.json | Divine Barrel Brewing
+       30 photos | ChIJTfOOfSAPVIgRxjTlPeMYTW4.json | Luck Factory Games
+       30 photos | ChIJu2HsO4UIVIgRFbrK8SYY-nU.json | Editions Coffee and Bookstore
+       30 photos | ChIJU8QmLn6fVogRee93hyd3aCg.json | Seoul Food Meat Company | South End
+       30 photos | ChIJuaZA56GJVogRC_NiCBENcvA.json | Forte Legato Coffee
+       30 photos | ChIJUd2ZBEOfVogR17gpl8VbiBc.json | Salted Melon | South End
+       30 photos | ChIJuf9Qo80nVIgRauaVNVwMn8I.json | Panera Bread | Rea Farms
+       30 photos | ChIJV1vO4ZmfVogRQW0twxLgWi0.json | Starbucks | 1401 East Blvd
+       30 photos | ChIJV3ZOflehVogRpRMvsmoHomw.json | Heist Brewery and Barrel Arts
+       30 photos | ChIJV5VDAFQlVIgRbBDtqIR1tAE.json | The Collective Cafe
+       30 photos | ChIJvcImWK8cVIgRlzzmtXbWZmQ.json | The Percantile and Creamery
+       30 photos | ChIJvevTlMeRVogRc4OCP3g6Iuk.json | Javesca Coffee | Steele Creek
+       30 photos | ChIJVUELkUGpVogRxRcjTrJrDrg.json | Coffee Republic | Huntersville
+       30 photos | ChIJVVVpuNKhVogRyuKhzqr48OA.json | Community Matters Caf├⌐
+       30 photos | ChIJvVxqVlSeVogRz786_h7uyiQ.json | Am├⌐lieΓÇÖs French Bakery & Caf├⌐ | Park Road
+       30 photos | ChIJvYHjWrglVIgRpFAj3eiyPik.json | Raw Crunch and Coffee
+       30 photos | ChIJw5242L8rVIgR2fCTJAyLNbE.json | Crossroads Coffee House
+       30 photos | ChIJWcEwWC-gVogRbodKJtuzAIM.json | Panera Bread | Uptown
+       30 photos | ChIJWTt20X6FVogRys_wywbCBSg.json | Humble Cup Coffee Co.
+       30 photos | ChIJwU7TEDmZVogRpLYJ3W1p5jQ.json | Sharetea | Steele Creek
+       30 photos | ChIJWy8-QoM7TG8RttGA2Fc3yok.json | CHNO Coffee Co
+       30 photos | ChIJWYPeuP4fVIgRXxzShjRJN94.json | Resident Culture | Plaza Midwood
+       30 photos | ChIJX94-BBifVogR3Iyr3hvK6mo.json | Mocco Bistro
+       30 photos | ChIJxeGCbiigVogRI-OaVGVhhiw.json | Crane Coffee
+       30 photos | ChIJy29EH3-fVogRxofi_1TM0ao.json | Common Market | South End
+       30 photos | ChIJz089rCOGVogRuuewf8s_c08.json | Panera Bread | Rock Hill
+       30 photos | ChIJz1pqsh6pVogR14ipLxTk3Fg.json | Whole Foods | Huntersville
+       30 photos | ChIJz_ABQxG9VogRA78IsUz_UeE.json | The Everyday Market | Belmont
+       30 photos | ChIJZcUQ5aaJVogRG2a9oP6L8FE.json | Rock Hill Coffee
+       30 photos | ChIJzUkXAFKfVogRmG5VxgEakc8.json | Tous les Jours | South End
+       30 photos | ChIJzZ80FEKgVogRHADlfind7vg.json | Camp North End
+
+  [no_new_photos] raw_data exists but all URLs already in photo_urls (5 files):
+    with photos: 5 (min=1, max=19, avg=5.0)
+        1 photos | ChIJ4-YawlKfVogR-VEG8XKSYt0.json | Caffeena Coffee House
+        1 photos | ChIJoZPchFgFVIgR0joijzanlqs.json | Cosmic Hearth Games
+        1 photos | ChIJZe4XdHypVogRnS2a7YJjy0M.json | Suffolk Punch | Huntersville
+        3 photos | ChIJuUKQtOihVogRQY4wLZ6V410.json | Gotcha Matcha & Espresso | 401 S Tryon
+       19 photos | ChIJM7ryGqihVogRKYiHfEBt1W8.json | Queen City Grounds | The Refinery

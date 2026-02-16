@@ -4659,13 +4659,38 @@
     },
     "photos": {
         "place_id": "ChIJNRt6feefVogRnfFGWk0O3og",
-        "message": "Retrieved 49 photos, filtered out 44, selected 5",
+        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 5 existing, added 25 new, total 30 photos",
         "photo_urls": [
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=uOGaZQhYAkSKoYZzeR6EXQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=328.51694&pitch=0&thumbfov=100",
             "https://lh3.googleusercontent.com/p/AF1QipNZAIUZSIIWP9aFA9apK7J6QHWKPCOqD1IRX1Zg=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOHs61MJgzMd1ypkiqGnDGC8eYo_NFHgsXdwSMW=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipMjpuxf56qEQvSMEecVIdcSvkMUzO5JGs5Jf6T3=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipOWYHI_KE7Bk3UW8G5yWKk6iZlx8_sOxYZ2Oe_T=w2048-h2048-k-no"
+            "https://lh3.googleusercontent.com/p/AF1QipOWYHI_KE7Bk3UW8G5yWKk6iZlx8_sOxYZ2Oe_T=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrMehGBzFh4c2GG7Qxem4QTs9ppAb1WPS2NG5lesR5UAo60kQyVoulVQj3eSPk8qnK-L3u8ayNsbLfrk2jATtUUrGtzku6WH70dXB3PM94L=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrx287nmTmaKozJrqM3e74ej_wLJ7TLNllxugmKJ3WJuTW_Zr3QGTnEosh1RjeMRCl4o9LjSxwACYNectA32N2LpCRX71c-URcl5qKawDDUT45RjZLmxKnR3mUSvflAYTqzUkn1=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq6Td9dbzxTUwLoHn1eAtBlW4_Zl9sBXIRmrEYvnEp3NHocDy3hvpuCC5awSsuDbV7naWLqzta5490x_uepmXkmxdKkIexEHwF69QH2XobV6WJMTHZbh-UTwlDILFmAPDNnmyw=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrtD0UUwMtLyilaOphIoXjldsZ9pi7epPiTxlkYukUBPlGX3PMSftLZGvYf2dI6CYjnDZBoJo2R0g14dIPboxu3flYLN02-gmwxQmX2i1xUO3bK2zY2BUpHbXxVknVF1X0afWn_fQ=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noPkVgpH9Ko7DIC2xmhGoSBWEzryIz4zTryQQ1SX9hUdeQjb7Pt002-5Zzy8ZI6YzFBFHeDASWKjps2dTZ8OOujmRWVkmVqeB9UqE8=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npKGwXZSWVlRRBno1qDJ13d12gn4qNk-fjIzzl2yyQwssoGFHILkAtQU_qxeDCqapLz-L4HrHuCDlJoP2oMkHvZ7AzWSJbJDBGclQ=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqijM8gmzWF73UZXVUqWB0N7NAo7lrL7gMbEdQ2074B27SLxvMwIKU6GwOGHdR10aBL39ywbSXQTExl7UpA3ANei6KD_1yCOJOolIOMXVBV29iPvEZQOley8klyGODyMCHDZC_6yA=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrl5cFZTbqaWBM956dIPuAMbsNNoHql_5jiDjx6_KO-GvNeB2CNnZf1EUx5RY8sTSzuSpNxAvb-csVEJNraygNtsSoQ2uRHuM1kdJBazvvglswoU3BxZrDWZi84eZBcRKpBAxXG=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrfKWl8xhpJXz0GGmHaQOhVakikk1UrMEdJGJn4HLB87BmIrnFHF8ImqdRC4PHcOMMpeQagruYFqWMPeRmpQUCaZN-kTVlrC0PUZmOI5FnoUyNPmAEiAWom8Ko3260Bl6_pWa9uaA=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noMlBJ2M7oDdugB49Z3aLOvKEF6XN0hMN-aSXlLuveMCxK5q9es1YHQ3TvaaF_wx6Z_9MHoOfX3Drm6phgMGAH462JE8Ge6yFfD=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npoSS5OdEIqqBPFlPilnQGi-seRlfxRGmpYegVKDqhhXaQXAWcRwHCWm4mjf69z48T3qwCzrplWWdSQcLRWBhGuvlh1jd-IHyEl=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nruRBICKotjRvHxGg8XfwOJSWcpktOIBHVwH43plGglIDJ2E1YQcWoPY7VTEQVm4WzFbb-iK77ugcchMYe7U7vXV5XujDMtPLHoSRI9VQrLsw=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrUBJhE_s_0Aruz9oXLy2LrzUXy6t84KvNslqM7EPRuDnGJVw8Afaia1dlCD5ondb-63AjHZRvGx8G5TAbuPWLj4uX6Shvx_lO0aGbT-3oNXg=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nojpbpxGB1z6pWJyP1DxWD9gIE0aFzaBs2BPLYLmH2MoTf6PQzhDwlC2-o5kpRsfMB9PDSr7g4nMCHiHiMeC6KmtjyT4ETlknXzjR0kTzZQGw=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noQUQCwdXJPu98dhAmzIDu1c8UMMOd6trRSN2sp993r4uiTEi2vCEFDUhwh_06EKath0w-BNkMOBrAHehKlRBFZl_5esO29_ItdDeGlP559Bw=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrYf-NP_-WXjGOkOZoXw_7SUz5i8vi0B1_TOiiUNtWqu1QyOj0SK8kes7-XGgij4T6zD5D8zA3tJP7I3sEwhDEQ8N9YM7JwyT7ZgnILnrYnVg=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nreK15nLl6M1L-Yqe-H9ILgfSL0QyjJyi3l7RZAXxK1HxytI0qJ_FIhK1YSxtd2LxUI30o-K0vv_4Xd9PrRFZ5zFOPkEveGrex9AZMRAI8kQQ=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npF8iTj_BlzqVySpg8nKCWeLw67z8VNkc_YRhxUrZPwuQeSCJpY5twivysHXG4IM2m-b2g2kRgaH_0ZnMk1TUiYF3Es5AvGWX2ovw=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no25uq1bviyiLaoZsmr1pxfTPw3v17DvSUHiH5tmn2iyvu7PA18rqMngp7PH2R9FZsFvIp_DJS6Cz1O2eoM6OzWAhNGqceUz-rS7g=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrEo5dWWFYZrv66y1KlcbSG2p15erHdrs6ccPmgGWW-WPX_KZgk0t_LgmcpTDismehm_TbY4i6PxJoLgHXcT3o1yqQJt-5cunBRqg=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqrt9lMGoRIZQVAvyyrStVuWkvQO-zxPZ70Vqg1p5pzC1woEf0ESgewWGkC9QU_jPQIOolbpz6wdoIaXXpoSBTDnesyBs7o084w0w=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noGwYwrw-u0frUghdgU_HwONuEX80GuDqLRw0LXqVW6iDxqxBEps8nmXYWKHhDbK_WAbj-xCRkgbxLoF7jVc4DHqChBkM0ljIQ6rQ=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npZu2edGYeqzFy2YsYXjI5EBkbVAJsm4pmpFNoO6GeavVIybq1fSbMar_S2W28jDyH3e7fxxlBPreqeQZXMcrEjeYzpikkz8B4mfA=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noI1oR0Ubl-xZZ0idkxRZQEH25elC_kxEq1YGzjxmM6eyeDdfsWZnm-rrcSFC4CGVeHnLS6i9oFZWd-XBGW1kMPnjSzYIFLi8m9hUaG3dkIzXFMSPkLUx1-7ThL9vv--t7jN1I4=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npWM2Yef_4pInFmBOI_Jgks6r3tPNGUUxhOZEb9H4SscsmGgtS2fEGiphX4DfuIQ85uJa2dXHklJUTr20T8tqbc-4q6i__gKrlPWFk=w2048-h2048-k-no"
         ],
         "raw_data": {
             "query": "ChIJNRt6feefVogRnfFGWk0O3og",
@@ -6417,7 +6442,8 @@
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrYf-NP_-WXjGOkOZoXw_7SUz5i8vi0B1_TOiiUNtWqu1QyOj0SK8kes7-XGgij4T6zD5D8zA3tJP7I3sEwhDEQ8N9YM7JwyT7ZgnILnrYnVg=w203-h269-k-no"
                 }
             ]
-        }
+        },
+        "last_refreshed": "2026-02-15T18:14:05.719063"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-07-08T21:26:49.917149"

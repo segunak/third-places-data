@@ -383,9 +383,13 @@
     },
     "photos": {
         "place_id": "ChIJt0PJPpOhVogRYRxxLbCaxFE",
-        "message": "Retrieved 5 photos, filtered out 4, selected 1",
+        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 1 existing, added 4 new, total 5 photos",
         "photo_urls": [
-            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=hphyktvr3_KRDH5JVrLEsQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=264.95877&pitch=0&thumbfov=100"
+            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=hphyktvr3_KRDH5JVrLEsQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=264.95877&pitch=0&thumbfov=100",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noJme17FOA_pO28wc4t4Lnto7D2RB8disWFZrghw4AFrI5oIXi9I5lQDWAU7iGhDLIVMtRhnFQ3fD_-tqy9pYDI9pVr5Fh3USrhDTsahUsT3wuwHxITd9pTSQJEpCrN0EQohZ5giBTC6jA=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npbdcCEDVW6ZKnEs633Xne3-zDZXLvDaF5dy2A-3Sk5-oF1weKssCxyjjFQeK1Nw66UwmnY6oNYpLEndprcFb5QOzb3jhZcAZs9JrldQs2dwSqXhdQVZddA1xcTxu48kv1MVWWH_NDUll6i=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4novmXC0vSvVB3YggWkVKTzK9eouDcGRkbiyT-9A9fnwLwbbj0j_NDdutIb4EwfSEtAEj2KE-1H4hukl1ZfiVm55WlOKhbIdGLfHfUJTSUprOEdrUu3wmzNuyPjaEFVGLcfX8AtHAmnQRM7t=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqx0F909QioOpijihERPp-c1EON-K5Y_NNiQRO3FM7yYRBQDAcUXIJwWgZgEUvrzO3NCXxSEju-PTgnV3IeGVNEPmNdg1UC4aJCDblIgN43oJ08olfcbumrIZ8XO9NqLhvrvtFaI0lb09E=w2048-h2048-k-no"
         ],
         "raw_data": {
             "query": "ChIJt0PJPpOhVogRYRxxLbCaxFE",
@@ -551,7 +555,8 @@
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noJme17FOA_pO28wc4t4Lnto7D2RB8disWFZrghw4AFrI5oIXi9I5lQDWAU7iGhDLIVMtRhnFQ3fD_-tqy9pYDI9pVr5Fh3USrhDTsahUsT3wuwHxITd9pTSQJEpCrN0EQohZ5giBTC6jA=w203-h360-k-no"
                 }
             ]
-        }
+        },
+        "last_refreshed": "2026-02-15T18:14:06.331510"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-08-26T17:36:19.795216"

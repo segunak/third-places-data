@@ -1257,7 +1257,7 @@
     },
     "photos": {
         "place_id": "ChIJ6e1KBAAdVIgRBXdsuBE6sys",
-        "message": "Retrieved 37 photos, filtered out 22, selected 15",
+        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 15 existing, added 15 new, total 30 photos",
         "photo_urls": [
             "https://lh3.googleusercontent.com/p/AF1QipMK42i8WYTT5uB7iHII7jB-2e5e7j9Hucsc_aU=w2048-h2048-k-no",
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=uRsDvjzFTxp2OPZ99r-BMA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=132.14325&pitch=0&thumbfov=100",
@@ -1273,7 +1273,22 @@
             "https://lh3.googleusercontent.com/p/AF1QipNzH2vT6kcDy8kuHMIv9aJACL67Ke1VJ8gyqug=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipPdJ80a2xS3ltGxFuypjeuVLXH2By2MWpGlSLA=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipO9q_9ZM_2z5nedMpH4QtjjyfxL9esZcT8mt_g=w2048-h2048-k-no",
-            "https://lh3.googleusercontent.com/p/AF1QipPD4EoOByHlrlVifzH1ftCZfX7zuR-i7EkzBGk=w2048-h2048-k-no"
+            "https://lh3.googleusercontent.com/p/AF1QipPD4EoOByHlrlVifzH1ftCZfX7zuR-i7EkzBGk=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nonZxb2tARh-h8FnLsxGfwI-t0JC4PJ8gPK3ivnHQUKZWq4yTvH8E1Q_Q8ciHYM2mzwiw4PKd-k1eDLtghiTZNLgXqmkXdHwhRDk7NSgcgCa8XOOFCkSPDO4b6x6NRTHyq04wrALE7AtaIJ=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq2RLavXgAh_hNMrUOByf733LezDECZFhKGBeNsJj7B3BRIRMqf8IpfTndwFpfZXZq_1h-QYQQaHDtEV_WULrLFgl0U8Wiy4oUHhQ3H1QJp_zFfeNj5w73Ujc_31HbfngZwhc7vKFKF29HT=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrweYVzXo3Q12F15sNaD6E-oMvkdcU4HFe6VKXXm_tzpmlXcKPpA0HqsLmXvEBQbFAt_0CAugHkRnYF5vUNfnirlB_J0sC6IJwJFdAtMEdkjIdaNnTuTC7XFdtouBw_mRSn1cxF0V18yEJx=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np3iGHuTgbMzfLdgUIiOD435pFHLBPlnh8t7DEfK_yypendS2tZpbQeRCXkM1g2j3B7hDUQB5Oy35DBwocKJdIM7x30Hi2duFPvt8VAOY52FsJlCiP9sO_nnucczru13o0mMiH6E45SrYJR=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqP_dxnUO1bBNEQxxPZYrEoTiU8KwRAjTSd-wW1L71M3UEOcB2puxDwRpVWbEM_wTePoWzA42yj_KCS_MvWsRReWddR0KUqzO98dnk2aUbMrZqZbhZUBHF8dH4USjyYIjODBlpyNlhaexM=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrntR_tXizkJeUslx94JIAK-kPjuqGQqUQYWtWRxHREwe85qm2kpwSDYkGXIKVA5a8BUE70bze0EXJNVPiPGr18xE5D1zufBMmxjvifw0tMkPBVRFkd3AGgyboJmlLA47jC0WzYHALiujwB=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nor2DePNAaPuA8hhbb-xHVukFKeOUz2tZhyKFaFuNojBxLJ9xv088pNNpyBnhcTmzfCOq8IPOKXqID17KIlC8VCszvsWDUIa5cxMvWZbBNHZViZN4o--ObUDjYwOoaFclpR9tLssRE10vAi=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npm6Nn9fV72YOOAuRphoxS_pbKslR_QiPasGkUp_3JM5l6Y6oG5tv3iSkVOmP_JI3mpZDF3QY8a0c_zr_yhvxYQ834RiAaKrZ7x9CufAv6es2kgjt8u2wxmocj22zTpbtKY9zQWdmfuCus=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqQHmCcNVBqSc2U0YPJ8b5fXEn9J7FR4C3u5JddVID9BnilY9VQ70RYyWj9wdgn_21hU8vBkEm3qtN2tSg0xPkNuRTYfZDLt-Rn_gjLSAxyCvkQWiKyG12ExyOnIQ7q-VXuEXznE48DF_Q=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npsRO_FJJ4F4kR7afgoaGQs7S5ZERyHKaFLDOFK3wsVM1ogdOesbB4_QKrqv6GO67YZLBsccvl0jvW0RlvtPctkNgaigJH9dR7uVTS6EmFQB1AXPKJpDb9dxwmpgTZpWdz3LFi2eBHOqA9p=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrrqVjTWmW67wzmxxsO3PuheFn1ojmxNTbhjxnAnDov7-Px2UQTjYQOcKf7tixf2o4rxZjfwJ3inh3K2mEQtqYorsMZAhGSi7HCu7wtOOPJvuhn_KExnNNGdURVhfFY4j7U2Lh799qVC64=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrdxX9PlPXfCmXSv7bfsZGnKI83mFoA5wRuD8L3_NTazBGt7cOctwHXZ5CYBSIlm67UuJrHLHTdQXVbP3LiJFsZAXvL40d_DSRN9pfWhK4xhZsidzTi47gQfDnLW0OHs6pb4N8BblUzMCr3=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npLebj5Vy1pvMndzBpZ32X-UJXI9yLv0u5CV4egZD7YrEWQknspkbg39Dar_pZeoUcH_C6TEC-NEswUhMulqUzx412rVLXFY7cbeixNN0BoVattVGrugkvQQ3xgFRbWcLFCzdB51Kwu7kY=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nphr1r5eBsL2BxYRckXGXE_cuondJB-_MswJ3BFVRT54WuCTJPiyCVoI-_spcwv3Oqa_253uCrXJXKbwwjjXEA14VLJFrYpGe9xJnqtMb-71kStW8qW-Xk5Ru06VaXg5E3y0oQwjD_w8EuN=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr0GVf0NpcUZ_gf6rvOVeXv4UwkFLSl6RZjiFSmE2XkV-4MvEVg_s6sGOpgI0WN0riIhnZhca4XRa9UEPjsdp-itOgYIpLxmsFvDfZSsCqL7l_bYuJU0vnv2gWUaqpaVMr0q8DEOpPeo0Gr=w2048-h2048-k-no"
         ],
         "raw_data": {
             "query": "ChIJ6e1KBAAdVIgRBXdsuBE6sys",
@@ -2054,7 +2069,8 @@
                     "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noFxYbxwB5xO2OYt0plwzjOSJCfLTk5BwoAGFSsvdVU6tcI5UgNe5p2q1YuZiGESkR7A5jm9dDo33vHbmxYvHXkBWr8bkH7LbGJ18Wju5ZX9dK2LrYYywwctJNuV0fPSMD_8-Sx5xJd1qbX=w203-h270-k-no"
                 }
             ]
-        }
+        },
+        "last_refreshed": "2026-02-15T18:14:03.658555"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-08-23T12:36:20.589490"

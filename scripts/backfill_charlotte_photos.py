@@ -1,5 +1,6 @@
 import argparse
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -87,83 +88,161 @@ def process_file(file_path: Path, dry_run: bool) -> Dict[str, Any]:
     with file_path.open("r", encoding="utf-8") as fp:
         payload = json.load(fp)
 
+    place_name = payload.get("place_name", "Unknown")
+
     photos = payload.get("photos", {})
     if not isinstance(photos, dict):
-        return {"status": "skipped_invalid", "file": str(file_path)}
+        return {"status": "skipped_invalid", "file": str(file_path), "place_name": place_name}
 
     current_urls = photos.get("photo_urls", [])
     if not isinstance(current_urls, list):
         current_urls = []
 
+    # Validate existing URLs and deduplicate while preserving order
+    existing_valid = []
+    seen = set()
+    for url in current_urls:
+        if is_valid_photo_url(url) and url not in seen:
+            existing_valid.append(url)
+            seen.add(url)
+
+    max_photos = 30
+    remaining_capacity = max_photos - len(existing_valid)
+
+    # If already at or above the limit, nothing to backfill
+    if remaining_capacity <= 0:
+        return {
+            "status": "already_full",
+            "file": str(file_path),
+            "place_name": place_name,
+            "count": len(existing_valid),
+        }
+
     raw_data = photos.get("raw_data")
     photo_records, parse_method = extract_photo_records(raw_data)
 
     if not photo_records:
-        if current_urls:
+        if existing_valid:
             return {
                 "status": "preserved_existing",
                 "file": str(file_path),
-                "count": len(current_urls),
+                "place_name": place_name,
+                "count": len(existing_valid),
             }
         return {
             "status": "skipped_no_raw_data",
             "file": str(file_path),
+            "place_name": place_name,
+            "count": 0,
         }
 
     valid_records = [record for record in photo_records if is_valid_photo_url(record.get("photo_url_big", ""))]
-    selected_urls = select_prioritized_photos(valid_records, max_photos=30)
+    # Select up to max_photos from raw_data; we'll filter out duplicates of existing URLs below
+    candidate_urls = select_prioritized_photos(valid_records, max_photos=max_photos)
 
-    if not selected_urls:
-        if current_urls:
+    # Filter out any URLs already present in existing photo_urls
+    new_urls = [url for url in candidate_urls if url not in seen]
+
+    if not new_urls:
+        if existing_valid:
             return {
-                "status": "preserved_existing",
+                "status": "no_new_photos",
                 "file": str(file_path),
-                "count": len(current_urls),
+                "place_name": place_name,
+                "count": len(existing_valid),
+                "parse_method": parse_method,
             }
         return {
             "status": "skipped_no_selectable_photos",
             "file": str(file_path),
+            "place_name": place_name,
+            "count": 0,
             "parse_method": parse_method,
         }
 
-    if selected_urls == current_urls:
+    # Merge: keep all existing URLs first, then fill remaining slots with new ones
+    merged_urls = existing_valid + new_urls[:remaining_capacity]
+    added_count = len(merged_urls) - len(existing_valid)
+
+    if merged_urls == current_urls:
         return {
             "status": "no_change",
             "file": str(file_path),
-            "count": len(selected_urls),
+            "place_name": place_name,
+            "count": len(merged_urls),
             "parse_method": parse_method,
         }
 
-    photos["photo_urls"] = selected_urls
+    photos["photo_urls"] = merged_urls
     photos["message"] = (
-        f"Backfilled from raw_data (parse_method={parse_method}) with no GPS-specific URL filtering; "
-        f"selected {len(selected_urls)} photos"
+        f"Backfilled from raw_data (parse_method={parse_method}); "
+        f"kept {len(existing_valid)} existing, added {added_count} new, "
+        f"total {len(merged_urls)} photos"
     )
     photos["last_refreshed"] = datetime.now().isoformat()
     payload["photos"] = photos
 
     if not dry_run:
         with file_path.open("w", encoding="utf-8") as fp:
-            json.dump(payload, fp, indent=4, ensure_ascii=False)
+            json.dump(payload, fp, indent=4)
             fp.write("\n")
 
     return {
         "status": "updated" if not dry_run else "would_update",
         "file": str(file_path),
-        "count": len(selected_urls),
+        "place_name": place_name,
+        "count": len(merged_urls),
+        "existing_kept": len(existing_valid),
+        "new_added": added_count,
         "parse_method": parse_method,
     }
 
 
 def summarize(results: List[Dict[str, Any]]) -> None:
-    buckets = {}
+    # Force UTF-8 output to handle place names with special characters
+    sys.stdout.reconfigure(encoding="utf-8")
+
+    buckets: Dict[str, List[Dict[str, Any]]] = {}
     for item in results:
-        buckets[item["status"]] = buckets.get(item["status"], 0) + 1
+        buckets.setdefault(item["status"], []).append(item)
 
     print("Backfill summary:")
     for status in sorted(buckets.keys()):
-        print(f"  {status}: {buckets[status]}")
+        items = buckets[status]
+        print(f"  {status}: {len(items)}")
     print(f"  total_files: {len(results)}")
+
+    # Detailed breakdown for each status with per-file listing
+    for label, description in [
+        ("would_update", "Have room + raw_data available to add more photos"),
+        ("preserved_existing", "Have photo_urls but no usable raw_data to pull more from"),
+        ("skipped_no_raw_data", "Empty photo_urls AND no usable raw_data"),
+        ("already_full", "Already at 30 photo_urls, no room to add"),
+        ("no_new_photos", "raw_data exists but all URLs already in photo_urls"),
+    ]:
+        items = buckets.get(label, [])
+        if not items:
+            continue
+        counts = [item.get("count", 0) for item in items]
+        nonzero_counts = [c for c in counts if c > 0]
+        zero_count = sum(1 for c in counts if c == 0)
+        print(f"\n  [{label}] {description} ({len(items)} files):")
+        if nonzero_counts:
+            print(f"    with photos: {len(nonzero_counts)} "
+                  f"(min={min(nonzero_counts)}, max={max(nonzero_counts)}, "
+                  f"avg={sum(nonzero_counts)/len(nonzero_counts):.1f})")
+        if zero_count:
+            print(f"    with 0 photos: {zero_count}")
+        # List each file
+        sorted_items = sorted(items, key=lambda x: x.get("count", 0))
+        for item in sorted_items:
+            name = item.get("place_name", "Unknown")
+            count = item.get("count", 0)
+            fname = Path(item["file"]).name
+            extra = ""
+            if "existing_kept" in item:
+                extra = f" (kept={item['existing_kept']}, +{item['new_added']})"
+            print(f"      {count:>3} photos | {fname} | {name}{extra}")
 
 
 def main() -> int:
