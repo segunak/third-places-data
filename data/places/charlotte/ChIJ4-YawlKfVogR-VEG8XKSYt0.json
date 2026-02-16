@@ -187,7 +187,7 @@
     },
     "photos": {
         "place_id": "ChIJ4-YawlKfVogR-VEG8XKSYt0",
-        "message": "Retrieved 1 photos, filtered out 0, selected 1",
+        "message": "Photos refreshed by admin function using outscraper and mode refresh_from_data_file_photo_urls",
         "photo_urls": [
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=4d5ilNId7VTkGWsCVQBPXQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=231.61548&pitch=0&thumbfov=100"
         ],
@@ -291,7 +291,8 @@
             "website": "http://www.caffeenacoffeehouse.com/",
             "working_hours": null,
             "working_hours_csv_compatible": null
-        }
+        },
+        "last_refreshed": "2026-02-16T02:41:22.374402"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2026-01-25T19:11:05.935532"
