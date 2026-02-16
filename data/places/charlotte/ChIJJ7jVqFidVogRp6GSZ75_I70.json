@@ -14803,7 +14803,7 @@
     },
     "photos": {
         "place_id": "ChIJJ7jVqFidVogRp6GSZ75_I70",
-        "message": "Backfilled from raw_data (parse_method=nested_dict); kept 17 existing, added 13 new, total 30 photos",
+        "message": "Photos refreshed by admin function using outscraper and mode refresh_from_data_file_photo_urls",
         "photo_urls": [
             "https://lh3.googleusercontent.com/p/AF1QipOk6ED0rYsSG2JU_bFZpwNGsgd9p6McU79KG5gt=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipNFVZmd4AnPKJEtLk5YK-COO76QRRmezIzxMo8x=w2048-h2048-k-no",
@@ -17447,7 +17447,7 @@
             },
             "working_hours_csv_compatible": "Sunday,11AM,10PM|Monday,10AM,10PM|Tuesday,10AM,10PM|Wednesday,10AM,10PM|Thursday,10AM,10PM|Friday,10AM,11PM|Saturday,10AM,11PM"
         },
-        "last_refreshed": "2026-02-15T18:14:05.196220"
+        "last_refreshed": "2026-02-16T02:41:18.503585"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2026-02-15T23:48:42.802279"
