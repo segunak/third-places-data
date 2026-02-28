@@ -530,7 +530,11 @@ class AirtableService:
             List[Dict[str, Any]]: Results for each place with update status and details
         """
         results = []
-        for third_place in self.all_third_places:
+        places_to_refresh = [
+            p for p in self.all_third_places
+            if p.get('fields', {}).get('Operational') != 'Opening Soon'
+        ]
+        for third_place in places_to_refresh:
             result = self.refresh_single_place_operational_status(third_place, data_provider)
             results.append(result)
         return results
@@ -557,24 +561,24 @@ class AirtableService:
             place_name = third_place['fields'].get('Place', '')
             record_id = third_place.get('id', '')
             place_id = third_place['fields'].get('Google Maps Place Id')
+            current_operational_value = third_place['fields'].get('Operational', '')
 
             result['place_name'] = place_name
             result['record_id'] = record_id
             result['place_id'] = place_id
-
-            if not place_id:
-                result['update_status'] = 'failed'
-                result['message'] = 'No Google Maps Place Id.'
-                return result
-
-            current_operational_value = third_place['fields'].get('Operational', '')
             result['old_value'] = current_operational_value
 
-            # Special case: preserve 'Opening Soon' without modification
+            # Special case: preserve 'Opening Soon' without modification.
+            # Checked before place_id so Opening Soon places without a Google Maps Place Id don't fail.
             if current_operational_value == 'Opening Soon':
                 result['new_value'] = current_operational_value
                 result['update_status'] = 'success'
                 result['message'] = 'Place is marked as Opening Soon; manual update required when operational. Automated refresh skipped.'
+                return result
+
+            if not place_id:
+                result['update_status'] = 'failed'
+                result['message'] = 'No Google Maps Place Id.'
                 return result
 
             is_operational = data_provider.is_place_operational(place_id)

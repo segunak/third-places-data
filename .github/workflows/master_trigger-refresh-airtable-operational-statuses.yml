@@ -1,6 +1,8 @@
 name: Trigger Refresh Airtable Operational Statuses
 
 on:
+  schedule:
+    - cron: '0 21 * * 0'  # Every Sunday at 4 PM Eastern (9 PM UTC)
   workflow_call:
     inputs:
       provider_type:

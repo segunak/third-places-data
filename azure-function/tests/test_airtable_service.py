@@ -856,7 +856,11 @@ class TestAirtableServiceRefreshOperationalStatuses:
                     service = AirtableService(provider_type="google")
                     results = service.refresh_operational_statuses(mock_provider)
         
-        assert len(results) == 5
+        # 5 total records minus 1 'Opening Soon' record = 4 processed
+        assert len(results) == 4
+        # Verify no Opening Soon places were processed
+        for r in results:
+            assert r.get('update_status') != 'success' or 'Opening Soon' not in r.get('message', '')
 
 
 class TestAirtableServiceRefreshSinglePlaceOperationalStatus:
@@ -887,6 +891,25 @@ class TestAirtableServiceRefreshSinglePlaceOperationalStatus:
             "fields": {
                 "Place": "Duplicate Test Place",
                 "Google Maps Place Id": TEST_PLACE_ID,
+                "Operational": "Opening Soon"
+            }
+        }
+        
+        result = service.refresh_single_place_operational_status(third_place, mock_provider)
+        
+        assert result["update_status"] == "success"
+        assert "Opening Soon" in result["message"]
+        mock_provider.is_place_operational.assert_not_called()
+
+    def test_refresh_skips_opening_soon_without_place_id(self, service_with_mock_table):
+        """Test that 'Opening Soon' places without a Google Maps Place Id are handled gracefully (not failed)."""
+        service, mock_table = service_with_mock_table
+        
+        mock_provider = mock.MagicMock()
+        third_place = {
+            "id": "recNEW789",
+            "fields": {
+                "Place": "Brand New Cafe",
                 "Operational": "Opening Soon"
             }
         }
