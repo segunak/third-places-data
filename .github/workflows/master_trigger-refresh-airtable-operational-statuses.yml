@@ -57,9 +57,12 @@ jobs:
           AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
         continue-on-error: true
         run: |
-          $providerType = "${{ inputs.provider_type }}"
-          $sequentialMode = "${{ inputs.sequential_mode }}"
-          $city = "${{ inputs.city }}"
+          # The `|| 'value'` fallbacks are necessary because the `schedule` trigger
+          # does not populate the `inputs` context — only `workflow_dispatch` and
+          # `workflow_call` do. Without these, cron runs send empty query parameters.
+          $providerType = "${{ inputs.provider_type || 'google' }}"
+          $sequentialMode = "${{ inputs.sequential_mode || 'false' }}"
+          $city = "${{ inputs.city || 'charlotte' }}"
 
           $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-airtable-operational-statuses?provider_type=$providerType&sequential_mode=$sequentialMode&city=$city"
           
