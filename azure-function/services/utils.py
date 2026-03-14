@@ -239,7 +239,10 @@ def upload_blob(blob_path: str, data: bytes, content_type: str = "image/jpeg") -
     blob_client.upload_blob(
         data,
         overwrite=True,
-        content_settings=ContentSettings(content_type=content_type),
+        content_settings=ContentSettings(
+            content_type=content_type,
+            content_disposition="inline",
+        ),
     )
     logging.info(f"Uploaded blob: {blob_path}")
     return blob_client.url
@@ -268,11 +271,22 @@ def list_blobs(prefix: str) -> list:
 def download_image(url: str) -> Tuple[bytes, str]:
     """
     Download an image from a URL. Returns (bytes, content_type).
-    Raises on failure.
+    
+    Airtable's CDN sometimes returns 'application/octet-stream' instead of the
+    actual image MIME type. When that happens, we infer the correct content type
+    from the file extension in the URL (e.g. .jpg → image/jpeg, .png → image/png).
+    This ensures blobs are uploaded with the right Content-Type so browsers render
+    them inline instead of downloading. Falls back to image/jpeg if both the header
+    and filename provide no information.
     """
+    import mimetypes
     response = requests.get(url, timeout=60)
     response.raise_for_status()
-    content_type = response.headers.get("Content-Type", "image/jpeg")
+    content_type = response.headers.get("Content-Type", "")
+    # Airtable often returns generic content types; infer from URL/filename
+    if not content_type or content_type in ("application/octet-stream", "binary/octet-stream"):
+        guessed, _ = mimetypes.guess_type(url.split("?")[0])
+        content_type = guessed or "image/jpeg"
     return response.content, content_type
 
 
