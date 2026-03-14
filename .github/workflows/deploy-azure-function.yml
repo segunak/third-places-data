@@ -30,7 +30,7 @@ jobs:
     needs: unit-tests
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 'Deploy to Azure Function'
         uses: Azure/functions-action@v1
