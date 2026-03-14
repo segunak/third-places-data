@@ -1,10 +1,10 @@
-name: Trigger Refresh Place Data
+name: Enrich Airtable Base
 
 on:
   workflow_call:
     inputs:
       provider_type:
-        description: 'Provider type for data refresh'
+        description: 'Provider type for data enrichment'
         required: false
         default: 'outscraper'
         type: string
@@ -14,7 +14,7 @@ on:
         default: 'false'
         type: string
       force_refresh:
-        description: 'Force refresh of all data'
+        description: 'Force refresh of data for records in the selected view only'
         required: false
         default: 'false'
         type: string
@@ -24,14 +24,14 @@ on:
         default: 'Insufficient'
         type: string
       city:
-        description: 'City to refresh data for'
+        description: 'City to enrich data for'
         required: false
         default: 'charlotte'
         type: string
   workflow_dispatch:
     inputs:
       provider_type:
-        description: 'Provider type for data refresh'
+        description: 'Provider type for data enrichment'
         required: false
         default: 'outscraper'
         type: string
@@ -41,7 +41,7 @@ on:
         default: 'false'
         type: string
       force_refresh:
-        description: 'Force refresh of all data'
+        description: 'Force refresh of data for records in the selected view only'
         required: false
         default: 'false'
         type: string
@@ -51,17 +51,18 @@ on:
         default: 'Insufficient'
         type: string
       city:
-        description: 'City to refresh data for'
+        description: 'City to enrich data for'
         required: false
         default: 'charlotte'
         type: string
 
+# Ensures that only one instance of this workflow runs at a time
 concurrency: 
-  group: refresh-place-data
+  group: enrich-airtable-base
   cancel-in-progress: true
 
 jobs:
-  trigger-refresh-place-data:
+  trigger-enrich-airtable-base:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
@@ -69,8 +70,8 @@ jobs:
 
       - name: Invoke PowerShell Script
         id: invoke_script
-        working-directory: ./scripts
         shell: pwsh
+        working-directory: ./scripts
         env:
           AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
         run: |
@@ -80,14 +81,18 @@ jobs:
           $view = "${{ inputs.view }}"
           $city = "${{ inputs.city }}"
           
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-place-data?provider_type=$providerType&sequential_mode=$sequentialMode&force_refresh=$forceRefresh&view=$view&city=$city"
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/enrich-airtable-base?provider_type=$providerType&sequential_mode=$sequentialMode&force_refresh=$forceRefresh&view=$view&city=$city"
           
-          Write-Host "Using orchestrator URL: $FunctionUrl"
+          Write-Host "Using function URL: $FunctionUrl"
           
-          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey "$Env:AZURE_FUNCTION_KEY" -TimeoutSeconds 7200
+          $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
+          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 1800
 
           if ($LASTEXITCODE -ne 0) {
+            Write-Error "Azure Function call failed."
             exit $LASTEXITCODE
+          } else {
+            Write-Output "Azure Function call succeeded."
           }
 
       - name: Check Script Result

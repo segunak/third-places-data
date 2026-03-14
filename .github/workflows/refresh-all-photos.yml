@@ -1,68 +1,77 @@
-name: Trigger Enrich Airtable Base
+name: Refresh All Photos From Cache
 
 on:
   workflow_call:
     inputs:
       provider_type:
-        description: 'Provider type for data enrichment'
+        description: 'Provider type for photo selection algorithm'
         required: false
         default: 'outscraper'
+        type: string
+      city:
+        description: 'City to process'
+        required: false
+        default: 'charlotte'
+        type: string
+      dry_run:
+        description: 'Dry run: If true, only logs what would be done without making changes'
+        required: false
+        default: 'false'
+        type: string
+      max_places:
+        description: 'Maximum number of places to process (optional)'
+        required: false
+        default: ''
         type: string
       sequential_mode:
         description: 'Whether to run in sequential mode'
         required: false
         default: 'false'
         type: string
-      force_refresh:
-        description: 'Force refresh of data for records in the selected view only'
+      photo_source_mode:
+        description: 'Photo source mode: refresh_from_data_provider, refresh_from_data_file_raw_data, refresh_from_data_file_photo_urls'
         required: false
-        default: 'false'
-        type: string
-      view:
-        description: 'Airtable view to use (e.g., Production, Insufficient)'
-        required: false
-        default: 'Insufficient'
-        type: string
-      city:
-        description: 'City to enrich data for'
-        required: false
-        default: 'charlotte'
+        default: 'refresh_from_data_file_raw_data'
         type: string
   workflow_dispatch:
     inputs:
       provider_type:
-        description: 'Provider type for data enrichment'
+        description: 'Provider type for photo selection algorithm'
         required: false
         default: 'outscraper'
+        type: string
+      city:
+        description: 'City to process'
+        required: false
+        default: 'charlotte'
+        type: string
+      dry_run:
+        description: 'Dry run: If true, only logs what would be done without making changes'
+        required: false
+        default: 'false'
+        type: string
+      max_places:
+        description: 'Maximum number of places to process (optional)'
+        required: false
+        default: ''
         type: string
       sequential_mode:
         description: 'Whether to run in sequential mode'
         required: false
         default: 'false'
         type: string
-      force_refresh:
-        description: 'Force refresh of data for records in the selected view only'
+      photo_source_mode:
+        description: 'Photo source mode: refresh_from_data_provider, refresh_from_data_file_raw_data, refresh_from_data_file_photo_urls'
         required: false
-        default: 'false'
-        type: string
-      view:
-        description: 'Airtable view to use (e.g., Production, Insufficient)'
-        required: false
-        default: 'Insufficient'
-        type: string
-      city:
-        description: 'City to enrich data for'
-        required: false
-        default: 'charlotte'
+        default: 'refresh_from_data_file_raw_data'
         type: string
 
-# Ensures that only one instance of this workflow runs at a time
 concurrency: 
-  group: enrich-airtable-base
+  group: refresh-all-photos
   cancel-in-progress: true
 
 jobs:
-  trigger-enrich-airtable-base:
+  trigger-refresh-all-photos:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
@@ -70,18 +79,23 @@ jobs:
 
       - name: Invoke PowerShell Script
         id: invoke_script
-        shell: pwsh
         working-directory: ./scripts
+        shell: pwsh
         env:
           AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
         run: |
           $providerType = "${{ inputs.provider_type }}"
-          $sequentialMode = "${{ inputs.sequential_mode }}"
-          $forceRefresh = "${{ inputs.force_refresh }}"
-          $view = "${{ inputs.view }}"
           $city = "${{ inputs.city }}"
+          $dryRun = "${{ inputs.dry_run }}"
+          $maxPlaces = "${{ inputs.max_places }}"
+          $sequentialMode = "${{ inputs.sequential_mode }}"
+          $photoSourceMode = "${{ inputs.photo_source_mode }}"
           
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/enrich-airtable-base?provider_type=$providerType&sequential_mode=$sequentialMode&force_refresh=$forceRefresh&view=$view&city=$city"
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&dry_run=$dryRun&sequential_mode=$sequentialMode&photo_source_mode=$photoSourceMode"
+          
+          if ($maxPlaces -ne '') {
+            $FunctionUrl += "&max_places=$maxPlaces"
+          }
           
           Write-Host "Using function URL: $FunctionUrl"
           
@@ -89,10 +103,7 @@ jobs:
           ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 1800
 
           if ($LASTEXITCODE -ne 0) {
-            Write-Error "Azure Function call failed."
             exit $LASTEXITCODE
-          } else {
-            Write-Output "Azure Function call succeeded."
           }
 
       - name: Check Script Result
