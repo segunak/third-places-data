@@ -1,0 +1,36 @@
+# A wrapping/orchestration workflow that calls other workflows to keep the site up to date.
+# This workflow runs weekly and orchestrates all maintenance tasks in sequence.
+
+name: Do The Needful
+
+on:
+    schedule:
+      - cron: '0 18 * * 0'  # Every Sunday at 2 PM Eastern (6 PM UTC)
+    workflow_dispatch:
+
+jobs:
+
+  refresh-airtable-operational-statuses:
+    uses: ./.github/workflows/trigger-refresh-airtable-operational-statuses.yml
+    secrets: inherit
+
+  sync-curator-photos:
+    needs: refresh-airtable-operational-statuses
+    uses: ./.github/workflows/trigger-sync-curator-photos.yml
+    secrets: inherit
+
+  trigger-site-revalidation:
+    needs: sync-curator-photos
+    uses: ./.github/workflows/trigger-site-revalidation.yml
+    secrets: inherit
+
+  cosmos-sync-places:
+    uses: ./.github/workflows/trigger-cosmos-sync-places.yml
+    secrets: inherit
+
+  purge-orchestrations:
+    needs: [trigger-site-revalidation, cosmos-sync-places]
+    if: always()
+    uses: ./.github/workflows/purge-orchestrations.yml
+    secrets: inherit
+

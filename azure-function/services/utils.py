@@ -9,6 +9,7 @@ import requests
 import unicodedata
 from datetime import datetime
 from azure.storage.filedatalake import DataLakeServiceClient
+from azure.storage.blob import BlobServiceClient
 from threading import Lock
 from constants import SearchField
 from services.place_data_service import PlaceDataProviderFactory
@@ -208,6 +209,73 @@ def save_reviews_azure(json_data, review_file_name):
         logging.exception(e)
 
 
+# =============================================================================
+# Azure Blob Storage Helpers
+# =============================================================================
+
+CURATOR_PHOTOS_CONTAINER = "curator-photos"
+
+
+def _get_blob_service_client() -> BlobServiceClient:
+    connection_string = os.environ['AzureWebJobsStorage']
+    return BlobServiceClient.from_connection_string(connection_string)
+
+
+def upload_blob(blob_path: str, data: bytes, content_type: str = "image/jpeg") -> str:
+    """
+    Upload binary data to Azure Blob Storage and return the public URL.
+
+    Args:
+        blob_path: The path within the container (e.g., "recXYZ/attABC_photo.jpg").
+        data: The raw image bytes.
+        content_type: MIME type for the blob.
+
+    Returns:
+        The public URL of the uploaded blob.
+    """
+    from azure.storage.blob import ContentSettings
+    client = _get_blob_service_client()
+    blob_client = client.get_blob_client(container=CURATOR_PHOTOS_CONTAINER, blob=blob_path)
+    blob_client.upload_blob(
+        data,
+        overwrite=True,
+        content_settings=ContentSettings(content_type=content_type),
+    )
+    logging.info(f"Uploaded blob: {blob_path}")
+    return blob_client.url
+
+
+def delete_blob(blob_path: str) -> bool:
+    """Delete a blob from the curator-photos container. Returns True if deleted."""
+    try:
+        client = _get_blob_service_client()
+        blob_client = client.get_blob_client(container=CURATOR_PHOTOS_CONTAINER, blob=blob_path)
+        blob_client.delete_blob()
+        logging.info(f"Deleted blob: {blob_path}")
+        return True
+    except Exception as e:
+        logging.warning(f"Failed to delete blob {blob_path}: {e}")
+        return False
+
+
+def list_blobs(prefix: str) -> list:
+    """List blob names under a prefix in the curator-photos container."""
+    client = _get_blob_service_client()
+    container_client = client.get_container_client(CURATOR_PHOTOS_CONTAINER)
+    return [blob.name for blob in container_client.list_blobs(name_starts_with=prefix)]
+
+
+def download_image(url: str) -> Tuple[bytes, str]:
+    """
+    Download an image from a URL. Returns (bytes, content_type).
+    Raises on failure.
+    """
+    response = requests.get(url, timeout=60)
+    response.raise_for_status()
+    content_type = response.headers.get("Content-Type", "image/jpeg")
+    return response.content, content_type
+
+
 def save_data_github(json_data: str, full_file_path: str, max_retries=3):
     import time
     github_token = os.environ.get('GITHUB_PERSONAL_ACCESS_TOKEN')
@@ -292,8 +360,6 @@ def fetch_data_github(full_file_path) -> Tuple[bool, Optional[Dict], str]:
     except Exception as e:
         logging.error(f"Failed to fetch from GitHub: {str(e)}", exc_info=True)
         return False, None, f"Failed to fetch from GitHub: {str(e)}"
-
-
 
 
 def _fill_photos_from_airtable(place_data: Dict, photos_json: str) -> bool:

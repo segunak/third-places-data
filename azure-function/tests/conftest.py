@@ -49,6 +49,7 @@ def mock_env_vars(monkeypatch):
         "AIRTABLE_TABLE_NAME": "Charlotte Third Places",
         "FOUNDRY_API_KEY": "test-foundry-api-key",
         "COSMOS_DB_CONNECTION_STRING": "AccountEndpoint=https://test.documents.azure.com:443/;AccountKey=dGVzdC1rZXk=",
+        "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=testaccount;AccountKey=dGVzdA==;EndpointSuffix=core.windows.net",
     }
     for key, value in env_vars.items():
         monkeypatch.setenv(key, value)
@@ -131,6 +132,12 @@ def outscraper_reviews():
 def outscraper_photos():
     """Load the Outscraper photos fixture."""
     return load_fixture("outscraper_photos.json")
+
+
+@pytest.fixture
+def airtable_attachment_objects():
+    """Load the Airtable attachment objects fixture."""
+    return load_fixture("airtable_attachment_objects.json")
 
 
 @pytest.fixture

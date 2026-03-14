@@ -1,0 +1,73 @@
+name: Trigger Sync Curator Photos
+
+on:
+  workflow_call:
+    inputs:
+      city:
+        description: 'City to process'
+        required: false
+        default: 'charlotte'
+        type: string
+  workflow_dispatch:
+    inputs:
+      city:
+        description: 'City to process'
+        required: false
+        default: 'charlotte'
+        type: string
+
+concurrency: 
+  group: sync-curator-photos
+  cancel-in-progress: true
+
+jobs:
+  trigger-sync-curator-photos:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Invoke PowerShell Script
+        id: invoke_script
+        working-directory: ./scripts
+        shell: pwsh
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          $city = "${{ inputs.city || 'charlotte' }}"
+          
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/sync-curator-photos?city=$city"
+          
+          Write-Host "Using function URL: $FunctionUrl"
+          
+          $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
+          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 1800
+
+          if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
+          }
+
+      - name: Check Script Result
+        if: always()
+        run: |
+          echo "Script execution completed with status: ${{ steps.invoke_script.outcome }}"
+          if ("${{ steps.invoke_script.outcome }}" -ne "success") {
+            exit 1
+          }
+
+      - name: Purge Orchestrations
+        if: always()
+        shell: pwsh
+        working-directory: ./scripts
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          Write-Host "Cleaning up completed orchestrations..."
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/purge-orchestrations"
+          $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
+          ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 300
+          if ($LASTEXITCODE -ne 0) {
+            Write-Warning "Orchestration purge failed, but this is non-critical."
+          } else {
+            Write-Host "Orchestration purge completed."
+          }
