@@ -69,6 +69,7 @@ def sync_curator_photos_orchestrator(context: df.DurableOrchestrationContext):
 
         config_dict = {
             "city": city,
+            "provider_type": "google",  # Required by get_all_third_places activity
         }
 
         all_third_places = yield context.call_activity(
