@@ -1,4 +1,5 @@
 import os
+import json
 import time
 import dotenv
 import logging
@@ -83,6 +84,32 @@ class AirtableService:
         logging.info("Clearing cached third places data")
         self._all_third_places = None
 
+    def _extract_operating_hours(self, raw_data: dict, data_source: str) -> str:
+        """
+        Extracts operating hours from raw provider data and returns a JSON array string.
+        
+        Args:
+            raw_data: The raw API response from the provider
+            data_source: The provider type ('GoogleMapsProvider' or 'OutscraperProvider')
+            
+        Returns:
+            str: JSON array string of operating hours, or empty string if no hours found
+        """
+        if not raw_data:
+            return ''
+
+        hours_list = []
+        if data_source == 'GoogleMapsProvider':
+            hours_list = raw_data.get('regularOpeningHours', {}).get('weekdayDescriptions', [])
+        elif data_source == 'OutscraperProvider':
+            from services.place_data_service import OutscraperProvider
+            working_hours = raw_data.get('working_hours', {})
+            hours_list = OutscraperProvider._normalize_outscraper_hours(working_hours)
+
+        if hours_list:
+            return json.dumps(hours_list)
+        return ''
+
     def _extract_raw_provider_values(self, raw_data: dict, data_source: str) -> Dict[str, Any]:
         """
         Extracts raw provider values from the API response based on the data source.
@@ -109,6 +136,7 @@ class AirtableService:
                 'Photos': no_value,
                 'Latitude': no_value,
                 'Longitude': no_value,
+                'Operating Hours': no_value,
             }
         
         if data_source == 'GoogleMapsProvider':
@@ -123,6 +151,7 @@ class AirtableService:
                 'Photos': no_value,  # Photos come from separate API call
                 'Latitude': raw_data.get('location', {}).get('latitude', no_value) if isinstance(raw_data.get('location'), dict) else no_value,
                 'Longitude': raw_data.get('location', {}).get('longitude', no_value) if isinstance(raw_data.get('location'), dict) else no_value,
+                'Operating Hours': raw_data.get('regularOpeningHours', no_value),
             }
         elif data_source == 'OutscraperProvider':
             # Outscraper stores parking info under 'about' -> 'Parking'
@@ -142,6 +171,7 @@ class AirtableService:
                 'Photos': no_value,  # Photos come from separate API call
                 'Latitude': raw_data.get('latitude', no_value),
                 'Longitude': raw_data.get('longitude', no_value),
+                'Operating Hours': raw_data.get('working_hours', no_value),
             }
         else:
             # Unknown provider, return no_value for all fields
@@ -156,6 +186,7 @@ class AirtableService:
                 'Photos': no_value,
                 'Latitude': no_value,
                 'Longitude': no_value,
+                'Operating Hours': no_value,
             }
     
     def update_place_record(self, record_id: str, field_to_update: str, update_value, overwrite: bool, raw_provider_value="No Value From Provider") -> Dict[str, Any]:
@@ -331,10 +362,13 @@ class AirtableService:
             description = details.get('description', '')
             google_maps_url = details.get('google_maps_url', '')
             photos_list = place_data.get('photos', {}).get('photo_urls', [])
-            
-            # Extract raw provider values from the API response
+
+            # Extract operating hours from raw_data based on provider
             raw_data = details.get('raw_data', {})
             data_source = place_data.get('data_source', '')
+            operating_hours_json = self._extract_operating_hours(raw_data, data_source)
+            
+            # Extract raw provider values from the API response
             raw_provider_values = self._extract_raw_provider_values(raw_data, data_source)
             
             # Tuple format is (field_value, overwrite)
@@ -350,6 +384,7 @@ class AirtableService:
                 'Photos': (str(photos_list), True) if photos_list else (None, False),
                 'Latitude': (str(latitude), True) if latitude else (None, False),
                 'Longitude': (str(longitude), True) if longitude else (None, False),
+                'Operating Hours': (operating_hours_json, True) if operating_hours_json else (None, False),
             }
 
             for field_name, (field_value, overwrite) in fields_to_update.items():

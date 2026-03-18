@@ -1,0 +1,88 @@
+name: Refresh Operating Hours
+
+on:
+  workflow_call:
+    inputs:
+      provider_type:
+        description: 'Provider type for operating hours refresh'
+        required: false
+        default: 'google'
+        type: string
+      city:
+        description: 'City for the operating hours refresh'
+        required: false
+        default: 'charlotte'
+        type: string
+  workflow_dispatch:
+    inputs:
+      provider_type:
+        description: 'Provider type for operating hours refresh'
+        required: false
+        default: 'google'
+        type: string
+      city:
+        description: 'City for the operating hours refresh'
+        required: false
+        default: 'charlotte'
+        type: string
+
+concurrency: 
+  group: refresh-operating-hours
+  cancel-in-progress: true
+
+jobs:
+  trigger-refresh-operating-hours:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Invoke PowerShell Script
+        id: invoke_script
+        shell: pwsh
+        working-directory: ./scripts
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        continue-on-error: true
+        run: |
+          $providerType = "${{ inputs.provider_type || 'google' }}"
+          $city = "${{ inputs.city || 'charlotte' }}"
+
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-operating-hours?provider_type=$providerType&city=$city"
+          
+          Write-Host "Using function URL: $FunctionUrl"
+          
+          $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
+          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 1800
+
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "Azure Function call failed."
+            exit $LASTEXITCODE
+          } else {
+            Write-Output "Azure Function call succeeded."
+          }
+
+      - name: Check Script Result
+        if: always()
+        run: |
+          echo "Script execution completed with status: ${{ steps.invoke_script.outcome }}"
+          if ("${{ steps.invoke_script.outcome }}" -ne "success") {
+            exit 1
+          }
+
+      - name: Purge Orchestrations
+        if: always()
+        shell: pwsh
+        working-directory: ./scripts
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          Write-Host "Cleaning up completed orchestrations..."
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/purge-orchestrations"
+          $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
+          ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 300
+          if ($LASTEXITCODE -ne 0) {
+            Write-Warning "Orchestration purge failed, but this is non-critical."
+          } else {
+            Write-Host "Orchestration purge completed."
+          }

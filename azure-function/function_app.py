@@ -18,6 +18,7 @@ from blueprints.airtable import bp as airtable_bp
 from blueprints.photos import bp as photos_bp
 from blueprints.cosmos import bp as cosmos_bp
 from blueprints.curator_photos import bp as curator_photos_bp
+from blueprints.operating_hours import bp as operating_hours_bp
 
 # Register blueprints on the app (explicitly)
 app.register_functions(admin_bp)
@@ -26,3 +27,4 @@ app.register_functions(airtable_bp)
 app.register_functions(photos_bp)
 app.register_functions(cosmos_bp)
 app.register_functions(curator_photos_bp)
+app.register_functions(operating_hours_bp)

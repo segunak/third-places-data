@@ -14,13 +14,18 @@ jobs:
     uses: ./.github/workflows/refresh-airtable-operational-statuses.yml
     secrets: inherit
 
+  refresh-operating-hours:
+    needs: refresh-airtable-operational-statuses
+    uses: ./.github/workflows/refresh-operating-hours.yml
+    secrets: inherit
+
   sync-curator-photos:
     needs: refresh-airtable-operational-statuses
     uses: ./.github/workflows/sync-curator-photos.yml
     secrets: inherit
 
   site-revalidation:
-    needs: sync-curator-photos
+    needs: [sync-curator-photos, refresh-operating-hours]
     uses: ./.github/workflows/site-revalidation.yml
     secrets: inherit
 

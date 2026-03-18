@@ -129,6 +129,10 @@ class PlaceDataService(ABC):
     def is_place_operational(self, place_id: str) -> bool:
         pass
 
+    @abstractmethod
+    def get_operating_hours(self, place_id: str) -> List[str]:
+        pass
+
     def place_id_handler(self, place_name: str, place_id: Optional[str] = None) -> str:
         if place_id and self.validate_place_id(place_id):
             return place_id
@@ -192,6 +196,7 @@ class GoogleMapsProvider(PlaceDataService):
                 PlaceDetailsField.OUTDOOR_SEATING.value,
                 PlaceDetailsField.LOCATION.value,
                 PlaceDetailsField.BUSINESS_STATUS.value,
+                PlaceDetailsField.REGULAR_OPENING_HOURS.value,
             ]
             url = f'https://places.googleapis.com/v1/places/{place_id}?languageCode=en'
             headers = {
@@ -345,6 +350,25 @@ class GoogleMapsProvider(PlaceDataService):
         except Exception as e:
             logging.error(f"Error checking operational status for place ID {place_id}: {e}")
             return True
+
+    def get_operating_hours(self, place_id: str) -> List[str]:
+        try:
+            url = f'https://places.googleapis.com/v1/places/{place_id}?languageCode=en'
+            headers = {
+                'Content-Type': 'application/json',
+                'X-Goog-Api-Key': self.API_KEY,
+                'X-Goog-FieldMask': PlaceDetailsField.REGULAR_OPENING_HOURS.value
+            }
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
+            raw = response.json()
+            hours = raw.get('regularOpeningHours', {})
+            weekday_descriptions = hours.get('weekdayDescriptions', [])
+            logging.info(f"Retrieved operating hours for {place_id}: {len(weekday_descriptions)} days")
+            return weekday_descriptions
+        except Exception as e:
+            logging.error(f"Error retrieving operating hours for place ID {place_id}: {e}")
+            return []
 
 
 class OutscraperProvider(PlaceDataService):
@@ -541,6 +565,33 @@ class OutscraperProvider(PlaceDataService):
         except Exception as e:
             logging.error(f"Error checking operational status for place ID {place_id}: {e}")
             return True
+
+    @staticmethod
+    def _normalize_outscraper_hours(working_hours: Dict[str, Any]) -> List[str]:
+        if not working_hours or not isinstance(working_hours, dict):
+            return []
+        day_order = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        result = []
+        for day in day_order:
+            ranges = working_hours.get(day)
+            if ranges and isinstance(ranges, list):
+                result.append(f"{day}: {', '.join(ranges)}")
+            elif ranges and isinstance(ranges, str):
+                result.append(f"{day}: {ranges}")
+        return result
+
+    def get_operating_hours(self, place_id: str) -> List[str]:
+        try:
+            details = self.get_place_details(place_id)
+            if details and 'raw_data' in details:
+                working_hours = details['raw_data'].get('working_hours', {})
+                normalized = self._normalize_outscraper_hours(working_hours)
+                logging.info(f"Retrieved operating hours for {place_id} via Outscraper: {len(normalized)} days")
+                return normalized
+            return []
+        except Exception as e:
+            logging.error(f"Error retrieving operating hours for place ID {place_id} via Outscraper: {e}")
+            return []
 
 
 class PlaceDataProviderFactory:
