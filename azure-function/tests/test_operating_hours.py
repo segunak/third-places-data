@@ -154,6 +154,42 @@ class TestNormalizeOperatingHours:
         clean = ["Monday: 12 PM - 9 PM"]
         assert PlaceDataService.normalize_operating_hours(clean) == ["Monday: 12 PM - 9 PM"]
 
+    def test_fixes_bare_opening_time_inherits_pm(self):
+        """Google sends '4 - 10 PM' where 4 has no AM/PM — should become '4 PM - 10 PM'."""
+        raw = ["Tuesday: 4 - 10 PM"]
+        result = PlaceDataService.normalize_operating_hours(raw)
+        assert result == ["Tuesday: 4 PM - 10 PM"]
+
+    def test_fixes_bare_opening_time_inherits_am(self):
+        """Opening time inherits AM from close time."""
+        raw = ["Monday: 6 - 11 AM"]
+        result = PlaceDataService.normalize_operating_hours(raw)
+        assert result == ["Monday: 6 AM - 11 AM"]
+
+    def test_fixes_bare_opening_in_multi_range(self):
+        """Multi-range where second range has bare opening: '11 AM - 2 PM, 5 - 10 PM'."""
+        raw = ["Monday: 11 AM - 2 PM, 5 - 10 PM"]
+        result = PlaceDataService.normalize_operating_hours(raw)
+        assert result == ["Monday: 11 AM - 2 PM, 5 PM - 10 PM"]
+
+    def test_fixes_hopfly_brewing_hours(self):
+        """Real-world case from HopFly Brewing that was failing."""
+        raw = [
+            "Monday: Closed",
+            "Tuesday: 4:00\u202fPM\u2009\u2013\u200910:00\u202fPM",
+            "Friday: 1:00\u202fPM\u2009\u2013\u200911:00\u202fPM",
+        ]
+        result = PlaceDataService.normalize_operating_hours(raw)
+        assert result[0] == "Monday: Closed"
+        assert result[1] == "Tuesday: 4 PM - 10 PM"
+        assert result[2] == "Friday: 1 PM - 11 PM"
+
+    def test_fixes_bare_opening_with_minutes(self):
+        """Opening time with minutes but no AM/PM: '5:30 - 10 PM'."""
+        raw = ["Monday: 5:30 - 10 PM"]
+        result = PlaceDataService.normalize_operating_hours(raw)
+        assert result == ["Monday: 5:30 PM - 10 PM"]
+
     def test_handles_empty_list(self):
         assert PlaceDataService.normalize_operating_hours([]) == []
 

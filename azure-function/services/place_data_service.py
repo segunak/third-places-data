@@ -189,12 +189,42 @@ class PlaceDataService(ABC):
         return text
 
     @staticmethod
-    def _fix_bare_noon(text: str) -> str:
-        """Add PM to bare '12' opening times. Google sometimes sends noon without AM/PM.
-        '12 - 9 PM' -> '12 PM - 9 PM'. Only applies to '12' not followed by AM/PM."""
+    def _fix_bare_opening_times(text: str) -> str:
+        """Add AM/PM to opening times that are missing it. Google sometimes sends opening times
+        without AM/PM when it matches the close time's period.
+        
+        Examples:
+          '4 - 10 PM' -> '4 PM - 10 PM'
+          '12 - 9 PM' -> '12 PM - 9 PM'
+          '1 - 11 PM' -> '1 PM - 11 PM'
+          '11 AM - 2 PM, 5 - 10 PM' -> '11 AM - 2 PM, 5 PM - 10 PM'
+          '4 PM - 10 PM' -> '4 PM - 10 PM' (already has AM/PM, no change)
+        
+        Deterministic rule: for each 'open - close' range, if the open time has no AM/PM,
+        inherit it from the close time.
+        """
         if not text:
             return text
-        return re.sub(r'\b12(\s*-)', r'12 PM\1', text)
+
+        # Match a bare number (with optional :MM) followed by " - " then a time with AM/PM
+        # Pattern: captures a number NOT already followed by AM/PM, then " - ", then time with AM/PM
+        def fix_range(match: re.Match) -> str:
+            bare_time = match.group(1)    # e.g., "4" or "12" or "5:30"
+            separator = match.group(2)     # " - "
+            close_time = match.group(3)    # e.g., "10 PM"
+            # Extract AM/PM from close time
+            period_match = re.search(r'(AM|PM)', close_time, re.IGNORECASE)
+            if period_match:
+                return f"{bare_time} {period_match.group(1)}{separator}{close_time}"
+            return match.group(0)  # No change if can't determine period
+
+        # Match: a number (with optional :MM) NOT followed by AM/PM, then " - ", then a time with AM/PM
+        return re.sub(
+            r'(\d{1,2}(?::\d{2})?)(\s*-\s*)(\d{1,2}(?::\d{2})?\s*(?:AM|PM))',
+            lambda m: fix_range(m) if not re.search(r'(?:AM|PM)\s*$', m.group(1), re.IGNORECASE) else m.group(0),
+            text,
+            flags=re.IGNORECASE
+        )
 
     @staticmethod
     def normalize_operating_hours(hours_list: List[str]) -> List[str]:
@@ -202,14 +232,14 @@ class PlaceDataService(ABC):
 
         Handles both Google format (Unicode cleanup) and Outscraper format (compact time parsing).
         Strips :00 from on-the-hour times for cleaner display.
-        Adds PM to bare noon times from Google.
+        Ensures all times have AM/PM.
         Target: 'Day: 3 PM - 8 PM' or 'Day: 3:30 PM - 8 PM'
         """
         if not hours_list:
             return []
         result = [PlaceDataService._clean_google_hours_unicode(line) for line in hours_list]
         result = [PlaceDataService._strip_on_the_hour(line) for line in result]
-        return [PlaceDataService._fix_bare_noon(line) for line in result]
+        return [PlaceDataService._fix_bare_opening_times(line) for line in result]
 
     def _select_prioritized_photos(self, photos_data: List[Dict[str, Any]], max_photos: int = 30) -> List[str]:
         if not photos_data:
