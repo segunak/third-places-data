@@ -177,10 +177,24 @@ class PlaceDataService(ABC):
 
     @staticmethod
     def _strip_on_the_hour(text: str) -> str:
-        """Strip :00 from on-the-hour times. '7:00 AM' -> '7 AM', '7:30 AM' stays."""
+        """Strip :00 from on-the-hour times. '7:00 AM' -> '7 AM', '7:30 AM' stays.
+        Also strips :00 before ' - ' for times without AM/PM (e.g., Google's bare noon '12:00 - 9 PM' -> '12 - 9 PM').
+        The bare '12' case is then fixed by _fix_bare_noon which adds PM."""
         if not text:
             return text
-        return re.sub(r'(\d{1,2}):00(\s*(?:AM|PM))', r'\1\2', text)
+        # Strip :00 before AM/PM (e.g., "7:00 AM" -> "7 AM")
+        text = re.sub(r'(\d{1,2}):00(\s*(?:AM|PM))', r'\1\2', text)
+        # Strip :00 before " - " (opening time without AM/PM, e.g., "12:00 - 9 PM" -> "12 - 9 PM")
+        text = re.sub(r'(\d{1,2}):00(\s*-)', r'\1\2', text)
+        return text
+
+    @staticmethod
+    def _fix_bare_noon(text: str) -> str:
+        """Add PM to bare '12' opening times. Google sometimes sends noon without AM/PM.
+        '12 - 9 PM' -> '12 PM - 9 PM'. Only applies to '12' not followed by AM/PM."""
+        if not text:
+            return text
+        return re.sub(r'\b12(\s*-)', r'12 PM\1', text)
 
     @staticmethod
     def normalize_operating_hours(hours_list: List[str]) -> List[str]:
@@ -188,12 +202,14 @@ class PlaceDataService(ABC):
 
         Handles both Google format (Unicode cleanup) and Outscraper format (compact time parsing).
         Strips :00 from on-the-hour times for cleaner display.
+        Adds PM to bare noon times from Google.
         Target: 'Day: 3 PM - 8 PM' or 'Day: 3:30 PM - 8 PM'
         """
         if not hours_list:
             return []
         result = [PlaceDataService._clean_google_hours_unicode(line) for line in hours_list]
-        return [PlaceDataService._strip_on_the_hour(line) for line in result]
+        result = [PlaceDataService._strip_on_the_hour(line) for line in result]
+        return [PlaceDataService._fix_bare_noon(line) for line in result]
 
     def _select_prioritized_photos(self, photos_data: List[Dict[str, Any]], max_photos: int = 30) -> List[str]:
         if not photos_data:

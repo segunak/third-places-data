@@ -131,6 +131,29 @@ class TestNormalizeOperatingHours:
         with_minutes = ["Monday: 7:30 AM - 5 PM"]
         assert PlaceDataService.normalize_operating_hours(with_minutes) == ["Monday: 7:30 AM - 5 PM"]
 
+    def test_strips_on_the_hour_before_dash(self):
+        """Google sends '12:00 - 9:00 PM' for noon — strip :00 before dash too."""
+        raw = ["Monday: 12:00 - 9:00 PM"]
+        result = PlaceDataService.normalize_operating_hours(raw)
+        assert result == ["Monday: 12 PM - 9 PM"]
+
+    def test_fixes_bare_noon_from_google(self):
+        """Google sends noon as '12' without AM/PM — add PM."""
+        raw = ["Sunday: 12:00\u2009\u2013\u20096:00\u202fPM"]
+        result = PlaceDataService.normalize_operating_hours(raw)
+        assert result == ["Sunday: 12 PM - 6 PM"]
+
+    def test_fixes_bare_noon_with_minutes_close(self):
+        """Noon opening with minutes on close time."""
+        raw = ["Monday: 12:00\u2009\u2013\u20096:30\u202fPM"]
+        result = PlaceDataService.normalize_operating_hours(raw)
+        assert result == ["Monday: 12 PM - 6:30 PM"]
+
+    def test_does_not_add_pm_when_already_present(self):
+        """12 PM should not become 12 PM PM."""
+        clean = ["Monday: 12 PM - 9 PM"]
+        assert PlaceDataService.normalize_operating_hours(clean) == ["Monday: 12 PM - 9 PM"]
+
     def test_handles_empty_list(self):
         assert PlaceDataService.normalize_operating_hours([]) == []
 
