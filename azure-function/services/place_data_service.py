@@ -77,7 +77,8 @@ class PlaceDataService(ABC):
 
     @staticmethod
     def _parse_compact_time(time_str: str, fallback_period: str = '') -> str:
-        """Parse a compact time like '3PM', '11AM', '7:30AM', '12' into 'H:MM AM/PM' format.
+        """Parse a compact time like '3PM', '11AM', '7:30AM', '12' into 'H AM/PM' or 'H:MM AM/PM' format.
+        Drops minutes when on the hour (e.g., '3:00 PM' -> '3 PM', '3:30 PM' stays).
 
         Args:
             time_str: Compact time string (e.g., '3PM', '11AM', '7:30AM', '12')
@@ -113,6 +114,9 @@ class PlaceDataService(ABC):
         except ValueError:
             return time_str + period  # Can't parse, return as-is
 
+        # Drop :00 on the hour, keep :30 etc.
+        if minute == '00':
+            return f"{hour_int} {period}".strip()
         return f"{hour_int}:{minute} {period}".strip()
 
     @staticmethod
@@ -172,15 +176,24 @@ class PlaceDataService(ABC):
         return f"{open_formatted} - {close_formatted}"
 
     @staticmethod
+    def _strip_on_the_hour(text: str) -> str:
+        """Strip :00 from on-the-hour times. '7:00 AM' -> '7 AM', '7:30 AM' stays."""
+        if not text:
+            return text
+        return re.sub(r'(\d{1,2}):00(\s*(?:AM|PM))', r'\1\2', text)
+
+    @staticmethod
     def normalize_operating_hours(hours_list: List[str]) -> List[str]:
         """Normalize a list of operating hours strings to the canonical format.
 
         Handles both Google format (Unicode cleanup) and Outscraper format (compact time parsing).
-        Target: 'Day: H:MM AM - H:MM PM'
+        Strips :00 from on-the-hour times for cleaner display.
+        Target: 'Day: 3 PM - 8 PM' or 'Day: 3:30 PM - 8 PM'
         """
         if not hours_list:
             return []
-        return [PlaceDataService._clean_google_hours_unicode(line) for line in hours_list]
+        result = [PlaceDataService._clean_google_hours_unicode(line) for line in hours_list]
+        return [PlaceDataService._strip_on_the_hour(line) for line in result]
 
     def _select_prioritized_photos(self, photos_data: List[Dict[str, Any]], max_photos: int = 30) -> List[str]:
         if not photos_data:

@@ -2,7 +2,7 @@
 Tests for the operating hours feature across providers and enrichment pipeline.
 
 Canonical format: "Day: H:MM AM - H:MM PM"
-Examples: "Monday: 3:00 PM - 8:00 PM", "Tuesday: 11:00 AM - 2:00 PM, 5:00 PM - 10:00 PM"
+Examples: "Monday: 3 PM - 8 PM", "Tuesday: 11 AM - 2 PM, 5 PM - 10 PM"
 Pass-through values: "Closed", "Open 24 hours"
 """
 
@@ -51,22 +51,22 @@ class TestParseCompactTimeRange:
     """Tests for PlaceDataService._parse_compact_time_range."""
 
     def test_simple_pm_range(self):
-        assert PlaceDataService._parse_compact_time_range("3-8PM") == "3:00 PM - 8:00 PM"
+        assert PlaceDataService._parse_compact_time_range("3-8PM") == "3 PM - 8 PM"
 
     def test_am_pm_range(self):
-        assert PlaceDataService._parse_compact_time_range("11AM-2PM") == "11:00 AM - 2:00 PM"
+        assert PlaceDataService._parse_compact_time_range("11AM-2PM") == "11 AM - 2 PM"
 
     def test_with_minutes(self):
-        assert PlaceDataService._parse_compact_time_range("7:30AM-5PM") == "7:30 AM - 5:00 PM"
+        assert PlaceDataService._parse_compact_time_range("7:30AM-5PM") == "7:30 AM - 5 PM"
 
     def test_noon_range(self):
-        assert PlaceDataService._parse_compact_time_range("12-11PM") == "12:00 PM - 11:00 PM"
+        assert PlaceDataService._parse_compact_time_range("12-11PM") == "12 PM - 11 PM"
 
     def test_noon_to_pm(self):
-        assert PlaceDataService._parse_compact_time_range("12-7PM") == "12:00 PM - 7:00 PM"
+        assert PlaceDataService._parse_compact_time_range("12-7PM") == "12 PM - 7 PM"
 
     def test_am_only_range(self):
-        assert PlaceDataService._parse_compact_time_range("6AM-11AM") == "6:00 AM - 11:00 AM"
+        assert PlaceDataService._parse_compact_time_range("6AM-11AM") == "6 AM - 11 AM"
 
     def test_passes_through_closed(self):
         assert PlaceDataService._parse_compact_time_range("Closed") == "Closed"
@@ -81,7 +81,7 @@ class TestParseCompactTimeRange:
         assert PlaceDataService._parse_compact_time_range(None) == ""
 
     def test_both_am_pm_explicit(self):
-        assert PlaceDataService._parse_compact_time_range("9AM-5PM") == "9:00 AM - 5:00 PM"
+        assert PlaceDataService._parse_compact_time_range("9AM-5PM") == "9 AM - 5 PM"
 
     def test_minutes_on_both_sides(self):
         assert PlaceDataService._parse_compact_time_range("7:30AM-5:30PM") == "7:30 AM - 5:30 PM"
@@ -91,22 +91,22 @@ class TestParseCompactTime:
     """Tests for PlaceDataService._parse_compact_time."""
 
     def test_simple_pm(self):
-        assert PlaceDataService._parse_compact_time("3PM") == "3:00 PM"
+        assert PlaceDataService._parse_compact_time("3PM") == "3 PM"
 
     def test_simple_am(self):
-        assert PlaceDataService._parse_compact_time("7AM") == "7:00 AM"
+        assert PlaceDataService._parse_compact_time("7AM") == "7 AM"
 
     def test_with_minutes(self):
         assert PlaceDataService._parse_compact_time("7:30AM") == "7:30 AM"
 
     def test_number_only_with_fallback(self):
-        assert PlaceDataService._parse_compact_time("12", "PM") == "12:00 PM"
+        assert PlaceDataService._parse_compact_time("12", "PM") == "12 PM"
 
     def test_number_only_no_fallback(self):
-        assert PlaceDataService._parse_compact_time("3") == "3:00"
+        assert PlaceDataService._parse_compact_time("3") == "3"
 
     def test_double_digit_pm(self):
-        assert PlaceDataService._parse_compact_time("11PM") == "11:00 PM"
+        assert PlaceDataService._parse_compact_time("11PM") == "11 PM"
 
 
 class TestNormalizeOperatingHours:
@@ -119,13 +119,17 @@ class TestNormalizeOperatingHours:
         ]
         result = PlaceDataService.normalize_operating_hours(raw)
         assert result == [
-            "Monday: 7:00 AM - 5:00 PM",
-            "Tuesday: 8:00 AM - 3:00 PM"
+            "Monday: 7 AM - 5 PM",
+            "Tuesday: 8 AM - 3 PM"
         ]
 
     def test_preserves_clean_strings(self):
-        clean = ["Monday: 7:00 AM - 5:00 PM", "Sunday: Closed"]
+        clean = ["Monday: 7 AM - 5 PM", "Sunday: Closed"]
         assert PlaceDataService.normalize_operating_hours(clean) == clean
+
+    def test_preserves_minutes(self):
+        with_minutes = ["Monday: 7:30 AM - 5 PM"]
+        assert PlaceDataService.normalize_operating_hours(with_minutes) == ["Monday: 7:30 AM - 5 PM"]
 
     def test_handles_empty_list(self):
         assert PlaceDataService.normalize_operating_hours([]) == []
@@ -154,9 +158,9 @@ class TestOutscraperNormalizeHours:
         }
         result = OutscraperProvider._normalize_outscraper_hours(working_hours)
         assert len(result) == 7
-        assert result[0] == "Sunday: 12:00 PM - 7:00 PM"
-        assert result[1] == "Monday: 3:00 PM - 8:00 PM"
-        assert result[6] == "Saturday: 12:00 PM - 11:00 PM"
+        assert result[0] == "Sunday: 12 PM - 7 PM"
+        assert result[1] == "Monday: 3 PM - 8 PM"
+        assert result[6] == "Saturday: 12 PM - 11 PM"
 
     def test_handles_multi_range_days(self):
         working_hours = {
@@ -164,8 +168,8 @@ class TestOutscraperNormalizeHours:
             "Tuesday": ["11AM-2PM", "5-10PM"]
         }
         result = OutscraperProvider._normalize_outscraper_hours(working_hours)
-        assert "Monday: 11:00 AM - 2:00 PM, 5:00 PM - 10:00 PM" in result
-        assert "Tuesday: 11:00 AM - 2:00 PM, 5:00 PM - 10:00 PM" in result
+        assert "Monday: 11 AM - 2 PM, 5 PM - 10 PM" in result
+        assert "Tuesday: 11 AM - 2 PM, 5 PM - 10 PM" in result
 
     def test_handles_string_values(self):
         working_hours = {
@@ -173,7 +177,7 @@ class TestOutscraperNormalizeHours:
             "Tuesday": "9AM-5PM"
         }
         result = OutscraperProvider._normalize_outscraper_hours(working_hours)
-        assert "Monday: 9:00 AM - 5:00 PM" in result
+        assert "Monday: 9 AM - 5 PM" in result
 
     def test_handles_empty_dict(self):
         assert OutscraperProvider._normalize_outscraper_hours({}) == []
@@ -206,7 +210,7 @@ class TestOutscraperNormalizeHours:
         }
         result = OutscraperProvider._normalize_outscraper_hours(working_hours)
         assert len(result) == 3
-        assert result[0] == "Monday: 9:00 AM - 5:00 PM"
+        assert result[0] == "Monday: 9 AM - 5 PM"
 
 
 # ======================================================
@@ -224,7 +228,7 @@ class TestFormatConsistency:
         outscraper_raw = {"Monday": ["3-8PM"]}
         outscraper_result = OutscraperProvider._normalize_outscraper_hours(outscraper_raw)
 
-        assert google_result[0] == outscraper_result[0] == "Monday: 3:00 PM - 8:00 PM"
+        assert google_result[0] == outscraper_result[0] == "Monday: 3 PM - 8 PM"
 
     def test_same_format_am_pm(self):
         google_raw = ["Tuesday: 9:00\u202fAM\u2009\u2013\u20095:00\u202fPM"]
@@ -233,7 +237,7 @@ class TestFormatConsistency:
         outscraper_raw = {"Tuesday": ["9AM-5PM"]}
         outscraper_result = OutscraperProvider._normalize_outscraper_hours(outscraper_raw)
 
-        assert google_result[0] == outscraper_result[0] == "Tuesday: 9:00 AM - 5:00 PM"
+        assert google_result[0] == outscraper_result[0] == "Tuesday: 9 AM - 5 PM"
 
     def test_same_format_multi_range(self):
         google_raw = ["Monday: 11:00\u202fAM\u2009\u2013\u20092:00\u202fPM, 5:00\u202fPM\u2009\u2013\u200910:00\u202fPM"]
@@ -242,7 +246,7 @@ class TestFormatConsistency:
         outscraper_raw = {"Monday": ["11AM-2PM", "5-10PM"]}
         outscraper_result = OutscraperProvider._normalize_outscraper_hours(outscraper_raw)
 
-        assert google_result[0] == outscraper_result[0] == "Monday: 11:00 AM - 2:00 PM, 5:00 PM - 10:00 PM"
+        assert google_result[0] == outscraper_result[0] == "Monday: 11 AM - 2 PM, 5 PM - 10 PM"
 
 
 # ======================================================
@@ -271,7 +275,7 @@ class TestGoogleMapsProviderGetOperatingHours:
         provider = GoogleMapsProvider()
         result = provider.get_operating_hours("ChIJtest123")
 
-        assert result[0] == "Monday: 7:00 AM - 5:00 PM"
+        assert result[0] == "Monday: 7 AM - 5 PM"
         assert result[1] == "Sunday: Closed"
 
     @patch('services.place_data_service.requests.get')
@@ -318,8 +322,8 @@ class TestOutscraperProviderGetOperatingHours:
         result = provider.get_operating_hours("ChIJtest")
 
         assert result[0] == "Sunday: Closed"
-        assert result[1] == "Monday: 9:00 AM - 5:00 PM"
-        assert result[2] == "Tuesday: 9:00 AM - 5:00 PM"
+        assert result[1] == "Monday: 9 AM - 5 PM"
+        assert result[2] == "Tuesday: 9 AM - 5 PM"
 
         # Verify fields param was passed for lighter request
         call_kwargs = provider.client.google_maps_search.call_args
@@ -363,8 +367,8 @@ class TestOperatingHoursJsonRoundTrip:
 
     def test_canonical_format_round_trip(self):
         hours = [
-            "Monday: 7:00 AM - 5:00 PM",
-            "Tuesday: 7:00 AM - 5:00 PM",
+            "Monday: 7 AM - 5 PM",
+            "Tuesday: 7 AM - 5 PM",
             "Sunday: Closed"
         ]
         json_str = json.dumps(hours, ensure_ascii=False)
@@ -380,8 +384,8 @@ class TestOperatingHoursJsonRoundTrip:
         json_str = json.dumps(normalized, ensure_ascii=False)
         parsed = json.loads(json_str)
         assert parsed == normalized
-        assert "Sunday: 12:00 PM - 7:00 PM" in parsed
-        assert "Monday: 11:00 AM - 2:00 PM, 5:00 PM - 10:00 PM" in parsed
+        assert "Sunday: 12 PM - 7 PM" in parsed
+        assert "Monday: 11 AM - 2 PM, 5 PM - 10 PM" in parsed
 
 
 # ======================================================
@@ -410,7 +414,7 @@ class TestExtractOperatingHours:
         }
         result = svc._extract_operating_hours(raw_data, 'GoogleMapsProvider')
         parsed = json.loads(result)
-        assert parsed == ["Monday: 9:00 AM - 5:00 PM", "Tuesday: 9:00 AM - 5:00 PM"]
+        assert parsed == ["Monday: 9 AM - 5 PM", "Tuesday: 9 AM - 5 PM"]
 
     def test_extracts_and_normalizes_outscraper_hours(self):
         svc = self._create_airtable_service_mock()
@@ -422,8 +426,8 @@ class TestExtractOperatingHours:
         }
         result = svc._extract_operating_hours(raw_data, 'OutscraperProvider')
         parsed = json.loads(result)
-        assert "Monday: 9:00 AM - 5:00 PM" in parsed
-        assert "Friday: 9:00 AM - 9:00 PM" in parsed
+        assert "Monday: 9 AM - 5 PM" in parsed
+        assert "Friday: 9 AM - 9 PM" in parsed
 
     def test_returns_empty_string_when_no_data(self):
         svc = self._create_airtable_service_mock()
@@ -449,4 +453,4 @@ class TestExtractOperatingHours:
         google_result = json.loads(svc._extract_operating_hours(google_raw, 'GoogleMapsProvider'))
         outscraper_result = json.loads(svc._extract_operating_hours(outscraper_raw, 'OutscraperProvider'))
 
-        assert google_result[0] == outscraper_result[0] == "Monday: 3:00 PM - 8:00 PM"
+        assert google_result[0] == outscraper_result[0] == "Monday: 3 PM - 8 PM"
