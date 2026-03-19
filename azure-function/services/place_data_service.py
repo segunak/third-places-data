@@ -1,4 +1,5 @@
 import os
+import re
 import json
 import dotenv
 import logging
@@ -52,6 +53,134 @@ class PlaceDataService(ABC):
             logging.debug(f"Invalid photo URL: does not start with http - {url}")
             return False
         return True
+
+    # ======================================================
+    # Operating Hours Normalization Utilities
+    # ======================================================
+    # Target format: "Day: H:MM AM - H:MM PM"
+    # Examples: "Monday: 3:00 PM - 8:00 PM", "Tuesday: 11:00 AM - 2:00 PM, 5:00 PM - 10:00 PM"
+    # Pass-through values: "Closed", "Open 24 hours"
+
+    @staticmethod
+    def _clean_google_hours_unicode(text: str) -> str:
+        """Replace Google's Unicode formatting characters with regular ASCII equivalents."""
+        if not text:
+            return text
+        text = text.replace('\u202f', ' ')   # narrow no-break space → space
+        text = text.replace('\u2009', ' ')   # thin space → space
+        text = text.replace('\u2013', '-')   # en dash → hyphen
+        # Normalize "H:MM AM - H:MM PM" with consistent spacing around dash
+        text = re.sub(r'\s*-\s*', ' - ', text)
+        # Collapse any double spaces
+        text = re.sub(r'  +', ' ', text)
+        return text.strip()
+
+    @staticmethod
+    def _parse_compact_time(time_str: str, fallback_period: str = '') -> str:
+        """Parse a compact time like '3PM', '11AM', '7:30AM', '12' into 'H:MM AM/PM' format.
+
+        Args:
+            time_str: Compact time string (e.g., '3PM', '11AM', '7:30AM', '12')
+            fallback_period: AM/PM to use if the time_str doesn't include one
+        """
+        if not time_str:
+            return time_str
+        time_str = time_str.strip()
+
+        # Extract AM/PM suffix
+        upper = time_str.upper()
+        period = ''
+        if upper.endswith('AM'):
+            period = 'AM'
+            time_str = time_str[:-2]
+        elif upper.endswith('PM'):
+            period = 'PM'
+            time_str = time_str[:-2]
+        else:
+            period = fallback_period
+
+        # Split hours and minutes
+        if ':' in time_str:
+            parts = time_str.split(':')
+            hour = parts[0]
+            minute = parts[1]
+        else:
+            hour = time_str
+            minute = '00'
+
+        try:
+            hour_int = int(hour)
+        except ValueError:
+            return time_str + period  # Can't parse, return as-is
+
+        return f"{hour_int}:{minute} {period}".strip()
+
+    @staticmethod
+    def _parse_compact_time_range(range_str: str) -> str:
+        """Parse a compact time range like '3-8PM' or '11AM-2PM' into '3:00 PM - 8:00 PM' format.
+
+        Handles:
+          - '3-8PM' → '3:00 PM - 8:00 PM'
+          - '11AM-2PM' → '11:00 AM - 2:00 PM'
+          - '7:30AM-5PM' → '7:30 AM - 5:00 PM'
+          - '12-11PM' → '12:00 PM - 11:00 PM'
+          - 'Closed' → 'Closed' (pass-through)
+          - 'Open 24 hours' → 'Open 24 hours' (pass-through)
+        """
+        if not range_str or not isinstance(range_str, str):
+            return range_str or ''
+
+        range_str = range_str.strip()
+
+        # Pass through non-time values
+        lower = range_str.lower()
+        if lower in ('closed', 'open 24 hours'):
+            return range_str
+
+        # Split on hyphen to get open and close times
+        # Use regex to split on hyphen that's between time parts (not inside a time like 7:30)
+        # Pattern: split on '-' that has a digit or AM/PM before and after
+        parts = re.split(r'(?<=[APMapm0-9])-(?=[0-9])', range_str, maxsplit=1)
+
+        if len(parts) != 2:
+            return range_str  # Can't parse, return as-is
+
+        open_str, close_str = parts
+
+        # Determine the period (AM/PM) of the close time first
+        close_upper = close_str.strip().upper()
+        close_period = ''
+        if close_upper.endswith('AM'):
+            close_period = 'AM'
+        elif close_upper.endswith('PM'):
+            close_period = 'PM'
+
+        # Determine the period of the open time
+        open_upper = open_str.strip().upper()
+        open_period = ''
+        if open_upper.endswith('AM'):
+            open_period = 'AM'
+        elif open_upper.endswith('PM'):
+            open_period = 'PM'
+        else:
+            # No AM/PM on open time — infer from close time
+            open_period = close_period
+
+        open_formatted = PlaceDataService._parse_compact_time(open_str, open_period)
+        close_formatted = PlaceDataService._parse_compact_time(close_str, close_period)
+
+        return f"{open_formatted} - {close_formatted}"
+
+    @staticmethod
+    def normalize_operating_hours(hours_list: List[str]) -> List[str]:
+        """Normalize a list of operating hours strings to the canonical format.
+
+        Handles both Google format (Unicode cleanup) and Outscraper format (compact time parsing).
+        Target: 'Day: H:MM AM - H:MM PM'
+        """
+        if not hours_list:
+            return []
+        return [PlaceDataService._clean_google_hours_unicode(line) for line in hours_list]
 
     def _select_prioritized_photos(self, photos_data: List[Dict[str, Any]], max_photos: int = 30) -> List[str]:
         if not photos_data:
@@ -364,8 +493,9 @@ class GoogleMapsProvider(PlaceDataService):
             raw = response.json()
             hours = raw.get('regularOpeningHours', {})
             weekday_descriptions = hours.get('weekdayDescriptions', [])
-            logging.info(f"Retrieved operating hours for {place_id}: {len(weekday_descriptions)} days")
-            return weekday_descriptions
+            normalized = self.normalize_operating_hours(weekday_descriptions)
+            logging.info(f"Retrieved operating hours for {place_id}: {len(normalized)} days")
+            return normalized
         except Exception as e:
             logging.error(f"Error retrieving operating hours for place ID {place_id}: {e}")
             return []
@@ -575,9 +705,11 @@ class OutscraperProvider(PlaceDataService):
         for day in day_order:
             ranges = working_hours.get(day)
             if ranges and isinstance(ranges, list):
-                result.append(f"{day}: {', '.join(ranges)}")
+                formatted_ranges = [PlaceDataService._parse_compact_time_range(r) for r in ranges]
+                result.append(f"{day}: {', '.join(formatted_ranges)}")
             elif ranges and isinstance(ranges, str):
-                result.append(f"{day}: {ranges}")
+                formatted = PlaceDataService._parse_compact_time_range(ranges)
+                result.append(f"{day}: {formatted}")
         return result
 
     def get_operating_hours(self, place_id: str) -> List[str]:

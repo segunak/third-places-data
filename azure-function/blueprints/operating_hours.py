@@ -178,7 +178,7 @@ def refresh_single_place_operating_hours(activityInput):
                 "message": "No operating hours returned by provider"
             }
 
-        hours_json = json.dumps(hours_list)
+        hours_json = json.dumps(hours_list, ensure_ascii=False)
 
         airtable_client = AirtableService(provider_type)
         update_result = airtable_client.update_place_record(

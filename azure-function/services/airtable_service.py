@@ -100,14 +100,16 @@ class AirtableService:
 
         hours_list = []
         if data_source == 'GoogleMapsProvider':
-            hours_list = raw_data.get('regularOpeningHours', {}).get('weekdayDescriptions', [])
+            raw_hours = raw_data.get('regularOpeningHours', {}).get('weekdayDescriptions', [])
+            from services.place_data_service import PlaceDataService
+            hours_list = PlaceDataService.normalize_operating_hours(raw_hours)
         elif data_source == 'OutscraperProvider':
             from services.place_data_service import OutscraperProvider
             working_hours = raw_data.get('working_hours', {})
             hours_list = OutscraperProvider._normalize_outscraper_hours(working_hours)
 
         if hours_list:
-            return json.dumps(hours_list)
+            return json.dumps(hours_list, ensure_ascii=False)
         return ''
 
     def _extract_raw_provider_values(self, raw_data: dict, data_source: str) -> Dict[str, Any]:
