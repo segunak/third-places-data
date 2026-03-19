@@ -714,9 +714,15 @@ class OutscraperProvider(PlaceDataService):
 
     def get_operating_hours(self, place_id: str) -> List[str]:
         try:
-            details = self.get_place_details(place_id)
-            if details and 'raw_data' in details:
-                working_hours = details['raw_data'].get('working_hours', {})
+            results = self.client.google_maps_search(
+                place_id, limit=1,
+                language=self.default_params['language'],
+                region=self.default_params['region'],
+                fields=['working_hours', 'name', 'place_id']
+            )
+            if results and len(results) > 0 and len(results[0]) > 0:
+                raw = results[0][0]
+                working_hours = raw.get('working_hours', {})
                 normalized = self._normalize_outscraper_hours(working_hours)
                 logging.info(f"Retrieved operating hours for {place_id} via Outscraper: {len(normalized)} days")
                 return normalized

@@ -296,41 +296,60 @@ class TestGoogleMapsProviderGetOperatingHours:
 
 
 class TestOutscraperProviderGetOperatingHours:
-    """Tests for OutscraperProvider.get_operating_hours — returns normalized output."""
+    """Tests for OutscraperProvider.get_operating_hours — uses fields param for lighter requests."""
 
     @patch.object(OutscraperProvider, '__init__', lambda self: None)
     def test_extracts_and_normalizes_hours(self):
         provider = OutscraperProvider.__new__(OutscraperProvider)
         provider._provider_type = 'outscraper'
+        provider.client = MagicMock()
+        provider.default_params = {'language': 'en', 'region': 'US'}
 
-        mock_details = {
-            "place_name": "Test Place",
+        provider.client.google_maps_search.return_value = [[{
+            "name": "Test Place",
             "place_id": "ChIJtest",
-            "raw_data": {
-                "working_hours": {
-                    "Monday": ["9AM-5PM"],
-                    "Tuesday": ["9AM-5PM"],
-                    "Sunday": ["Closed"]
-                }
+            "working_hours": {
+                "Monday": ["9AM-5PM"],
+                "Tuesday": ["9AM-5PM"],
+                "Sunday": ["Closed"]
             }
-        }
+        }]]
 
-        with patch.object(provider, 'get_place_details', return_value=mock_details):
-            result = provider.get_operating_hours("ChIJtest")
+        result = provider.get_operating_hours("ChIJtest")
 
         assert result[0] == "Sunday: Closed"
         assert result[1] == "Monday: 9:00 AM - 5:00 PM"
         assert result[2] == "Tuesday: 9:00 AM - 5:00 PM"
 
+        # Verify fields param was passed for lighter request
+        call_kwargs = provider.client.google_maps_search.call_args
+        assert call_kwargs[1].get('fields') == ['working_hours', 'name', 'place_id']
+
     @patch.object(OutscraperProvider, '__init__', lambda self: None)
     def test_returns_empty_when_no_working_hours(self):
         provider = OutscraperProvider.__new__(OutscraperProvider)
         provider._provider_type = 'outscraper'
+        provider.client = MagicMock()
+        provider.default_params = {'language': 'en', 'region': 'US'}
 
-        mock_details = {"place_name": "Test Place", "place_id": "ChIJtest", "raw_data": {}}
+        provider.client.google_maps_search.return_value = [[{
+            "name": "Test Place",
+            "place_id": "ChIJtest"
+        }]]
 
-        with patch.object(provider, 'get_place_details', return_value=mock_details):
-            result = provider.get_operating_hours("ChIJtest")
+        result = provider.get_operating_hours("ChIJtest")
+        assert result == []
+
+    @patch.object(OutscraperProvider, '__init__', lambda self: None)
+    def test_returns_empty_on_api_error(self):
+        provider = OutscraperProvider.__new__(OutscraperProvider)
+        provider._provider_type = 'outscraper'
+        provider.client = MagicMock()
+        provider.default_params = {'language': 'en', 'region': 'US'}
+
+        provider.client.google_maps_search.side_effect = Exception("API error")
+
+        result = provider.get_operating_hours("ChIJtest")
         assert result == []
 
 
