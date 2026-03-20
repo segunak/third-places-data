@@ -459,7 +459,7 @@ def transform_airtable_to_place(
         "linkedIn":               ("LinkedIn",                  False),
         "longitude":              ("Longitude",                 False),
         "neighborhood":           ("Neighborhood",              True),
-        "operational":            ("Operational",               True),   # Yes/No/Opening Soon - enables status queries
+        "operational":            ("Operational",               True),   # Yes/No/Coming Soon - enables status queries
         "parking":                ("Parking",                   True),   # Common user query
         "photos":                 ("Photos",                    False),
         "placeName":              ("Place",                     True),   # Name is critical

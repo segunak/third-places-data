@@ -569,7 +569,7 @@ class AirtableService:
         results = []
         places_to_refresh = [
             p for p in self.all_third_places
-            if p.get('fields', {}).get('Operational') != 'Opening Soon'
+            if p.get('fields', {}).get('Operational') != 'Coming Soon'
         ]
         for third_place in places_to_refresh:
             result = self.refresh_single_place_operational_status(third_place, data_provider)
@@ -605,12 +605,12 @@ class AirtableService:
             result['place_id'] = place_id
             result['old_value'] = current_operational_value
 
-            # Special case: preserve 'Opening Soon' without modification.
-            # Checked before place_id so Opening Soon places without a Google Maps Place Id don't fail.
-            if current_operational_value == 'Opening Soon':
+            # Special case: preserve 'Coming Soon' without modification.
+            # Checked before place_id so Coming Soon places without a Google Maps Place Id don't fail.
+            if current_operational_value == 'Coming Soon':
                 result['new_value'] = current_operational_value
                 result['update_status'] = 'success'
-                result['message'] = 'Place is marked as Opening Soon; manual update required when operational. Automated refresh skipped.'
+                result['message'] = 'Place is marked as Coming Soon; manual update required when operational. Automated refresh skipped.'
                 return result
 
             if not place_id:

@@ -437,16 +437,16 @@ def refresh_airtable_operational_statuses_orchestrator(context: df.DurableOrches
             {"config": config_dict}
         )
 
-        # Filter out 'Opening Soon' places — they don't have operational data to refresh
+        # Filter out 'Coming Soon' places — they don't have operational data to refresh
         # and may lack a Google Maps Place Id.
         original_count = len(all_third_places)
         all_third_places = [
             p for p in all_third_places
-            if p.get('fields', {}).get('Operational') != 'Opening Soon'
+            if p.get('fields', {}).get('Operational') != 'Coming Soon'
         ]
         filtered_count = original_count - len(all_third_places)
         if filtered_count > 0:
-            logging.info(f"Filtered out {filtered_count} 'Opening Soon' places from operational status refresh.")
+            logging.info(f"Filtered out {filtered_count} 'Coming Soon' places from operational status refresh.")
 
         results = []
 

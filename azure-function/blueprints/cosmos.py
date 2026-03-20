@@ -737,7 +737,7 @@ def cosmos_health_check(req: func.HttpRequest) -> func.HttpResponse:
         ) if airtable_records else 0
         
         # Syncable records = those with a Google Maps Place Id (required for Cosmos sync)
-        # This naturally excludes Opening Soon places that don't have a Place Id yet
+        # This naturally excludes Coming Soon places that don't have a Place Id yet
         airtable_place_ids = {
             r["fields"].get("Google Maps Place Id")
             for r in airtable_records
