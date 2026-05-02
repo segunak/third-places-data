@@ -1032,10 +1032,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -1044,6 +1040,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1080,13 +1084,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw8dY0KvERL91UxWC8IT_EMMTL0EG3kNNrslefIqc1I5ETd2NbuaUfGm-9JDayetFbdHe59zfIi-NWQvXXAuNye_O2q79u-vFtbqz74It9RMryL7Bohumv5T_I3MB4aIWu5Vka7b9eeMbrG=w2048-h2048-k-no",
                 "source_url_sha256": "a84640b1db3b1ecf3ae145f9f19faaef63fc812e98cf035bc0b5bb47eeabcd46",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -1153,7 +1153,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:10.671217+00:00"
+                "failed_at": "2026-05-02T22:21:26.138147+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1163,13 +1163,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx-c0w-pZN6SRg59x0klmHHUvNxKXcGwagpvTCYMIXgDT2CtvabWKjdVVTSt3u19QTNhdhfGehLsklmy724I1OkSg1Rvfw8CoVPxpdgGmkezg1AGxKw5GUUUbMH9V9FFzGBWghbRgoVeKg=w2048-h2048-k-no",
                 "source_url_sha256": "55190af68ba0b72cea3eee64d3403a0a67257507a7da83a5ee5c581a6d0e4b7b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -1236,7 +1232,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:10.993941+00:00"
+                "failed_at": "2026-05-02T22:21:26.467442+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1246,13 +1242,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIlkc65zOLlKUpQZNkXTZFrcZUcQj8v1-1ojewxXrlY1PRVF2MTTKfwq3ifj5m48yAUUkRHF0FDccK1IKJDs97_TeYK6Bpx-hPdA3488wYzo4KqwtatgzKfKzksA9NnX3NEr88yQiDM5Ms=w2048-h2048-k-no",
                 "source_url_sha256": "b6eac49e172835596015d61b73969b0f8107d115f40610f6a78a139d36915b18",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -1319,7 +1311,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:11.340490+00:00"
+                "failed_at": "2026-05-02T22:21:26.856451+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1329,13 +1321,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGFjXfOvDXXqZvrfgZmPC7FuaawLT2R_KS5M8MqTs-44MJ9ueNAtcks5LxfGJFSC7zSDswAM1w2Uwty9SOu4I5bpBdL_C4qYwt9Hh8JinWZ0PtxCPTMxtgPPo_JyJDnyyo84Y2Tghfbwa46ZcNv0o9TgdntVQ0oB0AnNmCG2VoYUKgz7H1Stzpl=w2048-h2048-k-no",
                 "source_url_sha256": "30f65c3f2f01fbea187149a3b740b7de7876a56598f9c36a5b3955c34558f4e7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -1402,7 +1390,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:11.689579+00:00"
+                "failed_at": "2026-05-02T22:21:27.491262+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1412,13 +1400,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhH5-TLAT5nKPqwpm4wTsBgE3P9UNLi4XDWVQbOkbVXyLUXpGkivJSEFggtyhYmrQYk5YA35T1qsYJVv9qke6s3Gx7qwmIF9HFQJdAkJQ77WSqowGiVHNR7QX69CpWRuPFdrpDQHUWsfu1bfqjySvfYIZzbxKG9GtRTaUs3ic9mMMCxWmOc7m3E=w2048-h2048-k-no",
                 "source_url_sha256": "b2c9873f464b76b498db6cc2a9d77f088bdd52311b5f3fc27832018282702033",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -1485,7 +1469,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:12.000500+00:00"
+                "failed_at": "2026-05-02T22:21:32.893820+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1495,13 +1479,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFA_YpxiWwxWX6Ml7zyTsHPoDiAkXYwY6ZVlE1bg8RlpoT2pIrPRsxTeiLF925nT6nSgtVf0abcPQCEe2jP9BiVYkq6xk9Iu-9oeBwpdB4PQG8dJ6S2dLWhq9sGI3EtHdF6Fx67sv93dFM6VYT1J8of-Bkxb6QrOZ-f7HC0b8P5XiBpfCTZVNH9=w2048-h2048-k-no",
                 "source_url_sha256": "7a0a8a1669f3d8975e376f4be8c1bbd8622dc26f276b9eb6496dc4478a41b6ff",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -1568,7 +1548,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:12.351234+00:00"
+                "failed_at": "2026-05-02T22:21:33.189159+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1578,13 +1558,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHx2MhaoeDyRgHEu5GhbPaPobKwfuW0pCS-cGv8ENjslAmw94Fu5btNNELWiHPPJvtwF2nnqP8-eAE5r8ASRgo77GnLe1Y-goKGYJpCf9i1HhqRQNcWwb6u_1_Aj8E8UnHEvnwyGEMGuDRjGwP-xK9zn-J5DoTYAMSFfoolJv9V9MJjy7WnpYM=w2048-h2048-k-no",
                 "source_url_sha256": "0507d2b0e62691682d2b503bbca05336741d96140fe155fac91b759468436933",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -1651,7 +1627,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:12.667211+00:00"
+                "failed_at": "2026-05-02T22:21:33.473723+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1661,13 +1637,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGjQXpvKukw3FM7l8FTk1XVmSnFXqXt_WLDY_4LDRJtuZEGG4a466zNcowNzUg1EJmAlSJHOv7ypZDpL_J9lb-F2geJFmMKIFsA-fQzlzTragkT9YkbWrNvltIwLBiEGBLIbZq_tI_MRQtAO748Hs3eOCHEMbBLFAa8-Yi0mNmL9YlE-B9Pa_mV=w2048-h2048-k-no",
                 "source_url_sha256": "389a072bc5cb6b6178ec84340b3f16c25c2f3442b661ab6b258d5eceddf46b99",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -1734,7 +1706,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:13.011293+00:00"
+                "failed_at": "2026-05-02T22:21:33.782549+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1744,13 +1716,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFjjP4LTRrTwuHkeoikb8X81xpA1PVuO0XPURWkK_Aas2iA4BtRbVgUEiEorcNGqw2I2WPZyKXIWhu3Idyd6PbPNud3mwSRgxmhoq53UD5xX0V_rFnllYq1DjMjh8ewXGCLIICVXWbXZJHN3x_XmZtANOxPLLUHynvA5NvC3lPPwBtVaXnqFfQ=w2048-h2048-k-no",
                 "source_url_sha256": "23949d24147b59da1a614e6b2512a3687053f36b2b83d21c813fdf6ddb5b8462",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -1817,7 +1785,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:13.374787+00:00"
+                "failed_at": "2026-05-02T22:21:34.089140+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1827,13 +1795,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEmMsmaf6i6hA4GsVOahA79RPVFF0lNV-qm_Y0fA_cs416NFZTyuliWv274ie6Tg-2DSwgPIUiSAcL-wx50Y5Jik5Wrp1UJyezNNu_KTqfvWtJt1qSEWiAe4goBIKLU8BwQktYPCDWLVJvADvCa4fyd3aDAnKs6C4TT3XJ1MZ_BZ3Te1ELtDR4=w2048-h2048-k-no",
                 "source_url_sha256": "e782cf1ac63d535de7b0fd08eb04867dd1252cc9e2360a64debbe9b40219784f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -1900,7 +1864,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:13.713085+00:00"
+                "failed_at": "2026-05-02T22:21:34.419082+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1910,13 +1874,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhH_7nl7OjZJZR_mGLd9vMZd4iz8KqSozFaZCuLIcKYnSMTK_2kQnwxoJzPa5yeJ2UtwQOmPP2x4Hp8sBE3Drm6hI0aKrClAef72Igkrb37C1yPc0dVXstm-Q5y5LMLkXxF-rH0D_1NHLVw3CkYYgW9J-wBQdAQadrmYNCcv4xH-LKmC54zZE14=w2048-h2048-k-no",
                 "source_url_sha256": "3ed47194e8c494188c8a2c8e8a1226fe1b1670360f8d1aa0ae2088abb9f26644",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -1983,7 +1943,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:14.047457+00:00"
+                "failed_at": "2026-05-02T22:21:34.722087+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -1993,13 +1953,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhE01rJH9P2gnL8LyahqkvJgByZK_QfkC5AaKhHNhUIDUY9lR4ZyScozTo3kwQpOeEvkmIwXDRfbP9jDx8pQyivV1pBdTcDoOrtMFme1ybqw3on0VyiKuuRrv0TfEdR76gpBpSxK83awLerdHPeGGI7T5eSJo0wrgQnqXNCnDXp_KZENtEr3IXiJ6Q=w2048-h2048-k-no",
                 "source_url_sha256": "a5299063899c0cd3efcb66152c09ee4ce02c6906e7fb5129f60cc1a36666f4b2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -2066,7 +2022,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:14.425001+00:00"
+                "failed_at": "2026-05-02T22:21:35.024452+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2076,13 +2032,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGAebynJrBaXcmHn7uCSUgeIfpO5d6dr0E6uzzgRpwuLROyfcxeq_NyKatOYHtG88JoVPb69aKtMy2Bu8_NfLIMOP_ageG22JlBxHC5rnYct-QMJYxX3oW1j6cZOTfeq3A6EPOnNLxki_ZL0_A3MQwxiut2q9PUg9Gzyby7xR5hUo1RLEhrMHE=w2048-h2048-k-no",
                 "source_url_sha256": "4a478215f973462c4984958f3e25914f8af7597e2e2941965668131540bbe09b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -2149,7 +2101,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:14.790364+00:00"
+                "failed_at": "2026-05-02T22:21:35.325893+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2159,13 +2111,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFSW6tRief3ZZ4KpqfAxFOK4WY2AeypMvAJ3YHxg_tSoEvBk36yZpFhplSL_tlH9RzoYK_gO1okCoEUfPD2MEN49kcnDAJPJrRr6-e--RBEhxvv5o_Y8OT4aInRvtkeCgvIFZxuIcHZ2HPwNAC2rWpfuZ5DyFdlL40HhJqKh73REsvsFbjFigI=w2048-h2048-k-no",
                 "source_url_sha256": "75d16a5fd2f9b41788d893b6f5db7b899d162f99ae0f177f2be7e8222d75bff7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -2232,7 +2180,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:15.148795+00:00"
+                "failed_at": "2026-05-02T22:21:35.653455+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2242,13 +2190,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhH9bS3mqbeeikfimz85dAlADu1_4hb3Gv_gO1z8U9c5l-uaamtL_nBnAmh30R08FvK5J-ameBSMDRqs7jZJUtcGo9-8RXa04P3wo6ADDhF2cDc4B9qGnHyKsMNFzBPBsOdSsN3yMctaK8YpOk2fhpFSoywSKU8x2KL_7rJyzJCG5Mvu0DDlPYUbBg=w2048-h2048-k-no",
                 "source_url_sha256": "adf184f07d0085bf0acf998ca6b6a3f53f68298b9f784ec379c079b16994c3c2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -2315,7 +2259,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:15.616230+00:00"
+                "failed_at": "2026-05-02T22:21:35.945825+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2325,13 +2269,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHCp-mEJPytas09aEskLWOqMpxSUzjEQ22EcwKctZzuuMbQR48fComTRpV7AC_oUe6-pkgB0WuXbqeGKRPY5C0ejOuJc54rF9qxKnWHEQhyUo-WyyEAyxGkbg9uw4PGlrjOuePavqcWmUYPUFRKqP19Nq8rNFL9VQ9A2fJyorSKClaRVNNubPs=w2048-h2048-k-no",
                 "source_url_sha256": "49709afa69a4f785811a06ec9e9917df3ad64177477a3bd55550bd7574d0b270",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -2398,7 +2338,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:15.991736+00:00"
+                "failed_at": "2026-05-02T22:21:36.232908+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2408,13 +2348,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhF_Ba8Ss8pz2-COdBtCadl-xQOFC8ElCx0HiTClHOy7BtEkM_3Biz4YZj-1kuxXpkV2gFP1HUaumo8WuqDyygwDzf3C0OKalZWfMxvyb-MSNnopul4nFbjrqYBsJHrtYNxFSYHbG4HZdS-pGkVDIwC5qCCpNutmEARv9ThhGFabeEAm4KGjs934_Q=w2048-h2048-k-no",
                 "source_url_sha256": "a5e9fefa31232148c3a915a7f0d8560dee10cc5113044bb769a68742420feeae",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -2481,7 +2417,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:16.383811+00:00"
+                "failed_at": "2026-05-02T22:21:36.513364+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2491,13 +2427,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHyJreQ-XWIxbfuySnypudMrXXwGcmYKFBoimyvKvV-sAL15_8NChgo7cy4RK20AV5PIkqJ_6U00YtV0BYDc3oYPE1y8RRvB8_YBDPHBVlFQJBfXu2BaaPelRlzjI0vQG5o8sHpqBKK30h4owQ7OG1T_ndW49sb0-66plJgDmn-GN-HxqyXhRhr6A=w2048-h2048-k-no",
                 "source_url_sha256": "04fa5e918a5e1008252577e7df87384fb286d7f146168050466299096256c83b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -2564,7 +2496,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:16.752898+00:00"
+                "failed_at": "2026-05-02T22:21:36.829428+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2574,13 +2506,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhE6qA_7oifPeGpkkiqxUUpeH7SaQg9A9Z5Dlbaf9qSxrmrQEpF8RqPl2QVqSeKlqq8LvASrRCrm8tMQPhFwgshTMXYrUAXqrHZYh2EQeiTisgJIbq1USDT0Zy4KSSGskHOd-UgcqyLgVZ1saeBx9PTwX5kIf53lDPVVIhFPqyQ4TlYi9BXrtNiE=w2048-h2048-k-no",
                 "source_url_sha256": "202a12fb4f360c27b677fc4f263d78f7ab450b01c244719106b568e76bd21405",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -2647,7 +2575,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:17.101689+00:00"
+                "failed_at": "2026-05-02T22:21:37.208973+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2657,13 +2585,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEyTAM79Oe4o6PdoF7qqTcS7X5QTrMXpoe9YbdrJ_r2JypAm2G17TGfR4QQQskKDRQ0CW36CXu9isq3i2uyRLouC8FGIjr1xY-JWpN8NjaFlV123RIpNe4R_pIahgCZZRdmZfio2wvGd9u1Y-ndhEDuGj3j5WfbwzWnwAsERQlTvrRuJskxcM0=w2048-h2048-k-no",
                 "source_url_sha256": "f6adfec3ea9f0c37d8d94b5f0b334bdab4ff37bf921fc8115b14a60fb716e05c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -2730,7 +2654,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:17.449239+00:00"
+                "failed_at": "2026-05-02T22:21:42.603936+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2740,13 +2664,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHUzHUV4xkkhnUJoU2r1L9KHWsU9HPGfXilZkemT0QEBbrflIUZWJlKnWasKzfXo4XCKY8OhkVdggl2ry3QkgSYi9mTBNvgCrPzfx7L8QolqHuOSJ3-PvRje8LSUBYBaBx4mVP0ak4tLun6msVygt8ohSmcH7i8a3IWxbaz7I-MsN0JvVbiTjWGXA=w2048-h2048-k-no",
                 "source_url_sha256": "f5414b005ec67907cfff7db1f3a4796107052402ee4a4d671aa00ccce12302c0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -2813,7 +2733,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:17.790123+00:00"
+                "failed_at": "2026-05-02T22:21:42.898201+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2823,13 +2743,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHODUTxU7V94fMEG-lLiKLrABPm2FNTSV8wPwMrAnNa9JNlq8O0jbtbcfs8QP5gLkZD1hM3yVsB7xsWb3ACRNlbcFQh5iz8LoV3EgThY3Bhef38wyOZgy8uPWeaVPnhdsnQindo7niZVE9TMc8n7Xm38W1IAC_Bbu1XObsrn7KI9f5MoUADCvLD=w2048-h2048-k-no",
                 "source_url_sha256": "0a3692f03ad607ab3a22e69df26ed0b2401c1d6f05ae9f71b5d859f746bd1a0d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -2896,7 +2812,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:18.147054+00:00"
+                "failed_at": "2026-05-02T22:21:43.326920+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2906,13 +2822,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFEQwHjA4jMajK-82XmLfp0vyGREGnG_6eUi1VJKtWpD3eKu3gZ-DVFlm-NsRhfSwiSukgircRz1ULbTvVryLuyvjW49g5Gm2pMH6p5Sl4-prxsSEoJ1soxsT2XrV64AZL3D7SnPNXhvlkXGdyZwI0sls1AV_HU8jQANbiA1xpDnP82BLhY9PyF=w2048-h2048-k-no",
                 "source_url_sha256": "6feb6596a7454446683442b37ce6177836ba772844fab6b9c36bb601e7418b2c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -2979,7 +2891,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:18.556116+00:00"
+                "failed_at": "2026-05-02T22:21:43.714011+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -2989,13 +2901,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGoPsuJNmpLViREUT-kvaw98QsF8vOrc3x_1kgwN8SQo-G_ebii25Vbxl2IHc8p8izGlhoZm2x_GnnuNjjqAetT7peOlDy9dDkPcPLESSKX8FBpv8WYE1qYrzOzwhoCBjwYIxY8iUWOfuhKecMB2dlVcMe9LH1xKzrACOh7li9A2hUb7gyKogFu=w2048-h2048-k-no",
                 "source_url_sha256": "f2f0c7f48273ba5f6ddc9e193c8e65485cd8a858a59c6130152c1f30566d7922",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -3062,7 +2970,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:19.015132+00:00"
+                "failed_at": "2026-05-02T22:21:44.006849+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3072,13 +2980,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhG0oZpmNRghWethNCAyXlaofR4oja_V3gZNWO1gkhtWpwnAae2-S2EM5VnpFhIVEMlqe55YePutKn-9QHxXGC9H34gtasiveCuqZR3lEWHe-1YGd8H3dLPyCroMxJVcyZ3g241xrZx6FcMdCj-BP-xDOxs6M6sv2HEMfQkRHvAMhNz2GvUgU69v=w2048-h2048-k-no",
                 "source_url_sha256": "d8cf326ae936a2f769fdfc9afbf0e482beec5d7a87e500cbef846b674cc65b0a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -3145,7 +3049,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:19.390825+00:00"
+                "failed_at": "2026-05-02T22:21:44.294295+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3155,13 +3059,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGqGtrF2DDBwaArR03VxlCQJI60XVyqCNmoJf6lCqruyynDdh8dQklMhdu_MV6Z7KN36snErEBCxTfhkJjj9jCD5mE5sqa_iz7tPHalMjlQLwSrps7D8CB4k17YbprwB-ZuvoBVDNBS4gkICf264hEezS017DkuUQE6ZnD3rJ_nGQ3xNUw2bLB-3Q=w2048-h2048-k-no",
                 "source_url_sha256": "e2d40d0f06861874701cbc63dbcb31f54927c4b99feccddd5baaf8b010ac907c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -3228,7 +3128,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:19.718101+00:00"
+                "failed_at": "2026-05-02T22:21:44.595603+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3238,13 +3138,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhH5PIhk1YqojUA5lRVKFt9ODtehUwoegnOtfb-Skk_GIa-VQen3lVNIeJRSN7tUdAUXouLRXURKVG_qEthAHF9NEmI4xJRiFCi1mVKHTc4kgTScExbkqy6DGYd_WbPeTrS-p3z3RVW2u5YMyeIo1uBAdS1pOeoiDVpA59tsajMH4W7O8nQ14DKjMA=w2048-h2048-k-no",
                 "source_url_sha256": "e3a839b27b6cd9e559e06787a74bc05a8eb6b497ba7642e9704a4a3510bcd1af",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -3311,7 +3207,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:20.208390+00:00"
+                "failed_at": "2026-05-02T22:21:44.909793+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3390,7 +3286,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:20.917980+00:00"
+                "failed_at": "2026-05-02T22:21:45.255666+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3469,7 +3365,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:21.253222+00:00"
+                "failed_at": "2026-05-02T22:21:45.594826+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3548,7 +3444,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:21.591905+00:00"
+                "failed_at": "2026-05-02T22:21:50.932948+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3627,7 +3523,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:21.984589+00:00"
+                "failed_at": "2026-05-02T22:21:51.268670+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3706,7 +3602,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:22.533314+00:00"
+                "failed_at": "2026-05-02T22:21:51.568692+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3785,7 +3681,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:27.884518+00:00"
+                "failed_at": "2026-05-02T22:21:51.891544+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3864,7 +3760,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:28.213487+00:00"
+                "failed_at": "2026-05-02T22:21:52.195751+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -3943,7 +3839,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:28.536498+00:00"
+                "failed_at": "2026-05-02T22:21:52.529532+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4022,7 +3918,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:28.849992+00:00"
+                "failed_at": "2026-05-02T22:21:52.826969+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4101,7 +3997,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:29.194595+00:00"
+                "failed_at": "2026-05-02T22:21:53.122711+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4180,7 +4076,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:29.531649+00:00"
+                "failed_at": "2026-05-02T22:21:53.437690+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4259,7 +4155,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:29.865439+00:00"
+                "failed_at": "2026-05-02T22:21:53.717579+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4338,7 +4234,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:30.181617+00:00"
+                "failed_at": "2026-05-02T22:21:53.996488+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4417,7 +4313,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:30.502382+00:00"
+                "failed_at": "2026-05-02T22:21:54.269081+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4496,7 +4392,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:30.820499+00:00"
+                "failed_at": "2026-05-02T22:21:54.543445+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4575,7 +4471,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:31.131463+00:00"
+                "failed_at": "2026-05-02T22:21:54.821469+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4654,7 +4550,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:31.437775+00:00"
+                "failed_at": "2026-05-02T22:21:55.115587+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4733,7 +4629,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:31.767651+00:00"
+                "failed_at": "2026-05-02T22:21:55.433204+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4812,7 +4708,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:32.091898+00:00"
+                "failed_at": "2026-05-02T22:21:55.774641+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4891,7 +4787,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:32.431608+00:00"
+                "failed_at": "2026-05-02T22:21:56.053544+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -4970,7 +4866,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:32.728824+00:00"
+                "failed_at": "2026-05-02T22:21:56.352072+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -5049,7 +4945,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:33.026386+00:00"
+                "failed_at": "2026-05-02T22:21:56.642991+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -5128,7 +5024,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:33.331405+00:00"
+                "failed_at": "2026-05-02T22:21:56.932100+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -5207,7 +5103,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:33.611539+00:00"
+                "failed_at": "2026-05-02T22:21:57.207642+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -5286,7 +5182,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:33.896281+00:00"
+                "failed_at": "2026-05-02T22:21:57.489827+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -5365,7 +5261,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:34.183198+00:00"
+                "failed_at": "2026-05-02T22:21:57.804958+00:00"
             },
             {
                 "place_name": "The Salty Donut | Plaza Midwood",
@@ -5444,27 +5340,27 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:58:34.474827+00:00"
+                "failed_at": "2026-05-02T22:21:58.112181+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 56,
-            "duplicate_count": 28,
-            "airtable_photos_count": 28,
+            "candidate_count": 57,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 28,
             "data_file_photo_urls_count": 28,
             "provider_raw_photo_url_big_count": 28,
             "place_name": "The Salty Donut | Plaza Midwood",
             "place_id": "ChIJSedRfTGhVogR5xNXLKPI6Vk",
             "record_id": "rec9yc0JhPTquM6Fo",
-            "generated_at": "2026-05-02T21:58:34.475346+00:00",
+            "generated_at": "2026-05-02T22:21:58.112464+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 54,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 28
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
