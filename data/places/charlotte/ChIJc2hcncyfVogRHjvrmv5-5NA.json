@@ -701,7 +701,1376 @@
                 }
             ]
         },
-        "last_refreshed": "2026-02-16T02:41:40.533957"
+        "last_refreshed": "2026-02-16T02:41:40.533957",
+        "azure_assets": [
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=LkZAtVjpn-xA8HXbk75yxQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=59.52975&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=LkZAtVjpn-xA8HXbk75yxQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=59.52975&pitch=0&thumbfov=100",
+                "source_url_sha256": "15e4bd4fb6ad74de59178619770096889c0561b91306d29540e87f1b5d165551",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[8].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJc2hcncyfVogRHjvrmv5-5NA/15e4bd4fb6ad74de59178619770096889c0561b91306d29540e87f1b5d165551.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJc2hcncyfVogRHjvrmv5-5NA/15e4bd4fb6ad74de59178619770096889c0561b91306d29540e87f1b5d165551.jpg",
+                "content_sha256": "4d3ab7aa58556d50373ae913e2217c3c45b387cc55609303aa3529dd4d058cfb",
+                "content_type": "image/jpeg",
+                "bytes": 102505,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=LkZAtVjpn-xA8HXbk75yxQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=59.52975&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=LkZAtVjpn-xA8HXbk75yxQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=59.52975&pitch=0&thumbfov=100",
+                        "bytes": 102505,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:00:24.865829+00:00"
+            }
+        ],
+        "azure_asset_failures": [
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
+                "source_url_sha256": "38bb2590a21d5bb89feea132b9b29364825d8c5382c18564daf1f53a9a9b9d5c",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:25.197334+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
+                "source_url_sha256": "e655e0ffb5ec87527b68c0ad03b0e821d69cecc3413754f82b7ac21abc814239",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:25.541768+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
+                "source_url_sha256": "a05a9c4f8cbf1a26b3ebc5b321e35ae2173da36d2db05629fc7b028387477bd3",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[3]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:25.890416+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
+                "source_url_sha256": "dd23cd137bb14cd06e35d429c1257b168bdd65ce99c6a829d2c0b89df75dce1b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[4]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:26.239187+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
+                "source_url_sha256": "426d3f335bd03e2444e474579686187d0381fc9989644680f932a1418093a9df",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[5]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:26.630250+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
+                "source_url_sha256": "3504bf49e9d991a4724027269bef9ae8b1be3d54b282a9f87782c152cf49f3b1",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[6]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[6]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:27.022623+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
+                "source_url_sha256": "625e6f30f73b78e255958e28567caf65f180112c4854e35c6a27613e69919172",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[7]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[7]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:27.368216+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
+                "source_url_sha256": "487b2af800cf9841255a54dc143988664a9eca1d1125a97ff492cd7106caa1e1",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[8]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[8]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:27.705856+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
+                "source_url_sha256": "38bb2590a21d5bb89feea132b9b29364825d8c5382c18564daf1f53a9a9b9d5c",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[0].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:28.041301+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
+                "source_url_sha256": "a05a9c4f8cbf1a26b3ebc5b321e35ae2173da36d2db05629fc7b028387477bd3",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[1].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:28.455231+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
+                "source_url_sha256": "dd23cd137bb14cd06e35d429c1257b168bdd65ce99c6a829d2c0b89df75dce1b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[2].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:28.945367+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
+                "source_url_sha256": "625e6f30f73b78e255958e28567caf65f180112c4854e35c6a27613e69919172",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[3].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:29.341440+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
+                "source_url_sha256": "487b2af800cf9841255a54dc143988664a9eca1d1125a97ff492cd7106caa1e1",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[4].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[4].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:29.673203+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
+                "source_url_sha256": "426d3f335bd03e2444e474579686187d0381fc9989644680f932a1418093a9df",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[5].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[5].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:30.020259+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
+                "source_url_sha256": "3504bf49e9d991a4724027269bef9ae8b1be3d54b282a9f87782c152cf49f3b1",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[6].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[6].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:30.369723+00:00"
+            },
+            {
+                "place_name": "Night Swim Coffee | Hawkins",
+                "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+                "record_id": "rec1m6emIUSOeewEq",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
+                "source_url_sha256": "e655e0ffb5ec87527b68c0ad03b0e821d69cecc3413754f82b7ac21abc814239",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[7].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[7].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:00:30.728309+00:00"
+            }
+        ],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 18,
+            "duplicate_count": 9,
+            "airtable_photos_count": 9,
+            "airtable_photos_google_count": 9,
+            "data_file_photo_urls_count": 9,
+            "provider_raw_photo_url_big_count": 9,
+            "place_name": "Night Swim Coffee | Hawkins",
+            "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
+            "record_id": "rec1m6emIUSOeewEq",
+            "generated_at": "2026-05-02T22:00:30.980755+00:00",
+            "azure_assets_count": 1,
+            "failed_upload_count": 16,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 1,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 9
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-12-04T19:21:14.594863"
