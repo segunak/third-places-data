@@ -3643,7 +3643,353 @@
                 }
             ]
         },
-        "last_refreshed": "2026-02-16T02:41:56.813082"
+        "last_refreshed": "2026-02-16T02:41:56.813082",
+        "azure_assets": [],
+        "azure_asset_failures": [
+            {
+                "place_name": "Starbucks | 330 W Tremont Ave",
+                "place_id": "ChIJp0tZRwmfVogRfR9zKupliJE",
+                "record_id": "recwj5ZdZ3AARlAAS",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w2048-h2048-k-no",
+                "source_url_sha256": "80d62d021bf88b1c68f4d5a996fc3b9d95a3c486aa7cc815432b69fc0d0d3ccd",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:02:32.801305+00:00"
+            },
+            {
+                "place_name": "Starbucks | 330 W Tremont Ave",
+                "place_id": "ChIJp0tZRwmfVogRfR9zKupliJE",
+                "record_id": "recwj5ZdZ3AARlAAS",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w2048-h2048-k-no",
+                "source_url_sha256": "cb82ad7083dae6a972ed0a220948af6af61e6abe84081267ca4ba9f0f5891d3c",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:02:33.203001+00:00"
+            },
+            {
+                "place_name": "Starbucks | 330 W Tremont Ave",
+                "place_id": "ChIJp0tZRwmfVogRfR9zKupliJE",
+                "record_id": "recwj5ZdZ3AARlAAS",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w2048-h2048-k-no",
+                "source_url_sha256": "80d62d021bf88b1c68f4d5a996fc3b9d95a3c486aa7cc815432b69fc0d0d3ccd",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[0].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7zb4EprNwcI2g6jjFQlsSFwhp9jJ6GVwDwvq0UgzAUOdLKDzHji_UYfr-xzVEtoHyfqQ7LauQDsuXC2JWY4bjFH343rdXoPeydeyJ-Q-jv1yaUNhBZFWXozOaveS_6KG3p-Y1dJ-F3dpL=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:02:33.592514+00:00"
+            },
+            {
+                "place_name": "Starbucks | 330 W Tremont Ave",
+                "place_id": "ChIJp0tZRwmfVogRfR9zKupliJE",
+                "record_id": "recwj5ZdZ3AARlAAS",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w2048-h2048-k-no",
+                "source_url_sha256": "cb82ad7083dae6a972ed0a220948af6af61e6abe84081267ca4ba9f0f5891d3c",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[1].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvoYAYxVizpnOzvM0nw9ic_r_Fzp7DMx6FhP_VkO2qLIpEbR7CSb5o7H_MNn8zLFsJS9THC5sJiv9F8Arki2aoIO3rSdrupcIZNEhFCWZj3kysPovOWGNrY2YuEsPBQRpZLY4TBQwUIY4D=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:02:33.981646+00:00"
+            }
+        ],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 4,
+            "duplicate_count": 2,
+            "airtable_photos_count": 2,
+            "airtable_photos_google_count": 2,
+            "data_file_photo_urls_count": 2,
+            "provider_raw_photo_url_big_count": 2,
+            "place_name": "Starbucks | 330 W Tremont Ave",
+            "place_id": "ChIJp0tZRwmfVogRfR9zKupliJE",
+            "record_id": "recwj5ZdZ3AARlAAS",
+            "generated_at": "2026-05-02T22:02:33.981671+00:00",
+            "azure_assets_count": 0,
+            "failed_upload_count": 4,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 0,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 2
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-11-29T15:36:26.404129"
