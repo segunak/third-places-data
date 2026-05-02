@@ -4493,10 +4493,6 @@
                 "source_path": "fields.Photos[12]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
                     }
@@ -4505,6 +4501,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[61].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -4547,7 +4551,12 @@
                         "path": "photos.raw_data.photos_data[1].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ8WMNQY7BVogRUaT7UZdGmVg/9db07478f841d4692699b257caa17963ae66734fe6f3c7f1137dff3237943116.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJ8WMNQY7BVogRUaT7UZdGmVg/9db07478f841d4692699b257caa17963ae66734fe6f3c7f1137dff3237943116.jpg",
@@ -4578,13 +4587,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerOdiTN4nQP7oYy11aIwckhOXwGZKIyYRhXdywBYH74yZzhLj-2WtpjzWrZz5It4XcWG4Pm2Y9cPYb4X9zp9F6vMHxW8I2yi0YhkhfsCA0vbP5X93sQHA1iUcdK7t7vZ3-M5bk27vgH7uxi=w2048-h2048-k-no",
                 "source_url_sha256": "4c582d7eaa150095a92634518d4b1cc5c0b335d27f758578aec0cc96ba7f39d9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[0]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[0]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
@@ -4651,7 +4656,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:01.773699+00:00"
+                "failed_at": "2026-05-02T22:19:58.255742+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -4661,13 +4666,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweodd0sJZGYaT4319rrj4_riCvAamLJ5xRSFqMnBoi1TWpbpI6HMpxjZyp6Rjtc1ed6oeakUH9MqWtM3eSXErGPHl0brbqL8TDlt85CxeaHUFkHrcpMm2iCQhTnkdBRgvsu6_drbAcGE2fxg=w2048-h2048-k-no",
                 "source_url_sha256": "8954d2b56df4e5da6c2ccef3a37a62472cf45c85877909d696c478794906b662",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -4734,7 +4735,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:02.109144+00:00"
+                "failed_at": "2026-05-02T22:19:58.688568+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -4744,13 +4745,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq3lN_YF7wmrKcAAM5Vo4E_4pIRVubmzpcy-k60B-A4fCGCBF_Fk3dzGy3_c7JIKsCRa7c_LcqfBsPelV6v7EpgUJoimQJm7e77Hy3YI9fd5P67HTQB2bzJLa4YnFAgT_od4szPMqTMKCVd=w2048-h2048-k-no",
                 "source_url_sha256": "5d9fcf3680861020a346793ef43f08c188726b7ca41b19026cdbbdab6f50e6b5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -4817,7 +4814,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:02.536364+00:00"
+                "failed_at": "2026-05-02T22:20:09.129747+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -4827,13 +4824,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweore02qpWaGGc4yAuVOLL3977H-EA7Lpy8gT0-XVp8RZ-gLkAF8MiuhDhVVzPKxbOWqSY-XaBxJ-dA6R2nJD3oV2-qt90TF_ydX4bX2W5oI8869Rz-6VQY-huFtkrSG6QOHH9MHM-xcmaVI=w2048-h2048-k-no",
                 "source_url_sha256": "0dad041d611010e17ff7b104192eeab184f82bacba8baa075bf6479bc24122d5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -4900,7 +4893,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:02.887938+00:00"
+                "failed_at": "2026-05-02T22:20:09.486314+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -4910,13 +4903,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweraApDKDJOXfOv81BN1_5B8oSJnM7gzQpiN4EcXdEXjCGg_NkHdxGwLF9YzyZbzL9_F68oH2EhOrwfBJ2wb6ebMN0ltb8-fwY8RXz7ClX8Xx4g_WoHL9TKlO0YJtPLV9hBubmGLZeeDHyWi=w2048-h2048-k-no",
                 "source_url_sha256": "d42ddf06120197296788b0204cb77fa97aa0c14e694287718708bebbc1dc4264",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -4983,7 +4972,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:03.224875+00:00"
+                "failed_at": "2026-05-02T22:20:09.853880+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -4993,13 +4982,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq2vLh-J819WeegD9poG2zD5zbBbrarvQoI_YMyUIQ3KW3pJWcZ-haZCVnBFxhUFFlj_YuiDfe6nJz8dqBiRI38eu3ao2L3_WTBekHA5yWHsyWg3-Qqo32BATAf_2Ur--tSiYXvB6s3ENEW=w2048-h2048-k-no",
                 "source_url_sha256": "6040e6807957982c8bfaf31bde9712b75c0f456998611c86e33260aa91551880",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -5066,7 +5051,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:03.572871+00:00"
+                "failed_at": "2026-05-02T22:20:10.195540+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5076,13 +5061,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq_ltIQoj55hDLttEU79FzvsN9foWMPlDZ-Zej77BovWY9jzqXM_YE_Cm_SUTj_uCQScN6CStOG5m5BtRq_Er8RKLhYqXvJ2iNLNws4duDd02bJV05cst4Al3DPV9k7WZw3s9MBa1qRIYcu=w2048-h2048-k-no",
                 "source_url_sha256": "47835a5d738e2001dc399193c2952e17ae4cf3728e55797d16eeb13b1b2f8145",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -5149,7 +5130,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:03.908823+00:00"
+                "failed_at": "2026-05-02T22:20:10.544924+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5159,13 +5140,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerT3y8Ht5C1mVL-NQS2DmdBD6eBJz1mD8EP8eGJ36BWWh4wpD7n-LUVfWCM-_j5mSuEBlbjU-B-2lXY584QGmZwMvzv9R53gbX1fbeyTyeNBhPy2w23c6kHgFV1r5Qtw9QsixWJtT_6Td8=w2048-h2048-k-no",
                 "source_url_sha256": "801006d96b11850286f8f6b90c17ac102bb005cf3799d010df1310782b200fdf",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -5232,7 +5209,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:04.255621+00:00"
+                "failed_at": "2026-05-02T22:20:10.913280+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5242,13 +5219,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoFz9DfRXjiiBorAzEZxNAatSLDMtsYd_R93_3CjWSHE9ETo5E-zwfGT-nAKKvQsVNsscnWLrEpDEwPqxFx1g2GHq-oUSLb0oBLg6l8w6IM7PFrWi1jlGjWmYwvaxfChAjXgLHxu9uj-dCW=w2048-h2048-k-no",
                 "source_url_sha256": "45b4d292a2d846c7cea06db90a010f412cd35b21461cce85d0fac29951525314",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -5315,7 +5288,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:04.591454+00:00"
+                "failed_at": "2026-05-02T22:20:11.315368+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5325,13 +5298,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepFQMo3pjhLM1IgbX51qisTqQ9OU03OXji9FQxvYA76Zm5lv5CiwplSe_MD4QrKbMMKtlu5H19xBqh1Du_MD-n9Aigk71F43cf46hLIL6yU_qq5UWQX78u5CTKiGvcNHnCY7ImJANpNq1ms=w2048-h2048-k-no",
                 "source_url_sha256": "6743f7f449dc60657e325f23866b23bccaea49348ec537ac54658294a4479d80",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -5398,7 +5367,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:04.921721+00:00"
+                "failed_at": "2026-05-02T22:20:11.743217+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5408,13 +5377,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoDGG5YHjMYwHXtm59wSFEyKp6wyDYXUByUfTuzrQPw2JCoPeRblibyORXjHa475MchT7GiHGjP8h8SRItlseKh4TLTnZzGXvNix6kidFjayxqC3lkci4Z2uGs4LVNbI1GIm2A6GeaOcrY=w2048-h2048-k-no",
                 "source_url_sha256": "1334e3f851485e663389024dd39cdcd11b529c763df8d64e68e41d7786b56ce1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -5481,7 +5446,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:05.310597+00:00"
+                "failed_at": "2026-05-02T22:20:12.114809+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5491,13 +5456,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweo9OCcpm4MlQ1VrBm0XLPXF_Nzmpk_JPBhWlNA8-eUT2OziCINq5cYnp_zDBVi0AnVUj_F4K1k9h43wcf8gevuW5p5e0xze9Tu4UQDigR5iaOtsTgmMB8-CJnTdM8IAFzvjIClrODKTpuo=w2048-h2048-k-no",
                 "source_url_sha256": "613d9119efdc0e87b9a2fc1b1c9d268f4476db9c332748b88c1158a5ac08afb5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -5564,7 +5525,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:05.673733+00:00"
+                "failed_at": "2026-05-02T22:20:12.518006+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5574,13 +5535,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqli--7YkrGVn13AxpH18WCz2rUqI4Tx0rsvXPeNZQ9sFTfB4okMY6w1p4v3l80vg3RIutA6CM69XvmKUohg-Y7fvSA5mdvDXigoXZe805KzHDHCxYXYCeCCQ_PkVIlhCK-fDu8tL-PMJY=w2048-h2048-k-no",
                 "source_url_sha256": "7b410f38a8896a36306d6d15b35163811845ded9653bde1d6d8f35de6f912522",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -5647,7 +5604,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:06.369927+00:00"
+                "failed_at": "2026-05-02T22:20:12.935962+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5657,13 +5614,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoWwMPRaS6OpGwLzuCWj-lUue0oW1lBHr5gAPbcxr9rGWi0PXVW0__FcwahozBU5JkpP9_TvT_8PEI9z3Mx9qih_G7R5KuyTGicSeGMwPZt24e3vNlizfmgL7e36HaP8_GyxgkpwxQ5D43K=w2048-h2048-k-no",
                 "source_url_sha256": "7a0de1037915939fe1e027cb9d121c30600a590c9848b6e9665695c6065534e5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -5730,7 +5683,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:06.752887+00:00"
+                "failed_at": "2026-05-02T22:20:13.386614+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5740,13 +5693,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepdHsWolFE75ZK9kAQ8WJipBVLqWbXAi-s53dZcjDQIzE6IdSPprOlY5P-JibBUYNn2lAlcnZbXOxc8axVIy_d9zm0YOqx3o8psUH5-WDc7yOmSvWBEXpqnZes2JwpCbUNtK5dJQaxMyak=w2048-h2048-k-no",
                 "source_url_sha256": "49475c650930aad8ab46e2fb33c1347dbb80e0ce12fdb5b73e7af184d5e0f479",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -5813,7 +5762,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:07.127552+00:00"
+                "failed_at": "2026-05-02T22:20:13.849681+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5823,13 +5772,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqpgryPiIABkUK8XOJIWz3E20HrANkDa5sWoeHWfr1kjQ98Qxu-ChDoRCZ4_Q_XbOdbiS0e1-ViTb9TLplz79LKkDM-Uqn66gG8ptw3HHIAVkRKB3ENCN5WEwmSoSHhlc3DgGL8h0haNPpJ=w2048-h2048-k-no",
                 "source_url_sha256": "657ba941a54079ca5762b00b1e67506343d9c94e5b6b38c235e7b2aafdbe4179",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -5896,7 +5841,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:07.492882+00:00"
+                "failed_at": "2026-05-02T22:20:14.332161+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5906,13 +5851,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwero8iUYCVcFYJc1Gvi37pDSnxkySyz7xgZdL7cMmn7QiGfLg5Av7AfrlzdsnXLh_IBjRqzRfEXy7zdpVNj9y6KiNzy_lLMl3w1yllb2AvD1dkDoyYV3B20E-78zIrzKweZ4YAfvIXV1m7s=w2048-h2048-k-no",
                 "source_url_sha256": "751c233222e78d9154f583ca5af39ea93f66608434cf1e2d5415124e293334a5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -5979,7 +5920,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:07.781499+00:00"
+                "failed_at": "2026-05-02T22:20:14.781800+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -5989,13 +5930,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerpNUgfi6_N0WxVNcu8aVqCJcUCKf3gzKdP9aFRPaiwjehUobhkj3vJcYn64ssNy_KJun_VI67mSk5pRs9ud3hGXG0O89VoUHh6eZf31Li4McWosvdIwM2Qa7yCeGPFNPQSWwfiVnT0CM1F=w2048-h2048-k-no",
                 "source_url_sha256": "80394a9c02134b20d324a039d9370064b61b597f6d7bde0f104290c068c0cde0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -6062,7 +5999,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:08.078933+00:00"
+                "failed_at": "2026-05-02T22:20:15.227357+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6072,13 +6009,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepZd5y7qxcVXpnML4RveR1OS2XzzSXLzjt0RABfosG6x9frkf7g1tuOWHnGuxiKW1t1N4uStXy6tedUnid7cOa910Mx8KVIsb4haHJ8c8rRtKDlKP3Nu5aJnju9xTP8nQb8RAN-vrZv_NLE=w2048-h2048-k-no",
                 "source_url_sha256": "6d97c5fc74d31b930827c20636600fad1ceca0b2085e54885fd018bb3bdf7871",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -6145,7 +6078,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:08.395095+00:00"
+                "failed_at": "2026-05-02T22:20:20.657617+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6155,13 +6088,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepg_TVNGlDqI3g8btGy391u0gZmn7bs_vRzfpPRZHtnA2pvGolq7q6D9ITaqwYH20VkgPIKPVnIbcQVJxUPfkuN9gpdfCo2j-90Mv4mAizHziYue0VQ81G2w8aUb38nrKkxvYsDI3cBzTb_=w2048-h2048-k-no",
                 "source_url_sha256": "382fcab1b8942dc12a4dc4d325ec2f05b1887650a8cd64be39c82c8a041706c7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -6228,7 +6157,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:08.689289+00:00"
+                "failed_at": "2026-05-02T22:20:21.026579+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6238,13 +6167,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerisqeTV2Qmp29Of67rhgPTPpZLaFn98GcWECz1FXBtwumK6SVn3v20wN0OFkbfoy8xEfmiJZJCM_4HTZy6a2dv66LwzWB6Qt1Ur2cSHVxg-HQdHADI0zzscSM5cdow3ipTMIZ9ylpy8os=w2048-h2048-k-no",
                 "source_url_sha256": "1c8e78f4575f1522f8cca16c76cc65ea4a31a7d1d145a1363ea3f9b995d1d61c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -6311,7 +6236,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:08.993544+00:00"
+                "failed_at": "2026-05-02T22:20:21.460592+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6321,13 +6246,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweodWxz6L3SzcJ1MagebKNqDR93hS1UAprGBoc_bYvn27X_9UREE2HKDnA_6otpHib1OFGzuJ_SuxjZMWO95u-toMec_b9daSDJCRuKtqc-CnprrUshsP80QkFlso1A7-pl7Mkie6-JHvBeh=w2048-h2048-k-no",
                 "source_url_sha256": "1b534e57a32b5f5b414d81265670d4342605723229e0061b64e42d17e2688dfa",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -6394,7 +6315,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:09.304071+00:00"
+                "failed_at": "2026-05-02T22:20:21.917502+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6404,13 +6325,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepUD2AuVbgp12WRyLOAnYO00yvrviihFhRpEXnShN5TOWvyuVes7BIsbO8_WKPdxu2BIQFXHyvHwrueC1xuLwPPfejs7iK3DoOoEWzvBVTfSzu_5Guq6XNsAATJRHIGTdZ83KreSlE08dej=w2048-h2048-k-no",
                 "source_url_sha256": "e43d95dc5110f265a4f6f8a300e2c0e57b8f64613c55736479ac863fc51ad98a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -6477,7 +6394,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:09.603465+00:00"
+                "failed_at": "2026-05-02T22:20:22.286351+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6487,13 +6404,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqqRGGo8RIA8dIzc30uomNysXwuTDUYFUP9cs0JuHRhfKS7xr2YFxKVLu9LXTnfEde_ZMAwtA9KaA1-UZ36bpnStNaGaVwAcsKmqi2kPjBHMYJvrxXYxb_8zNAkTDasHlYPJQ_peJ33djOE=w2048-h2048-k-no",
                 "source_url_sha256": "6c9a45b6dee5dad2e111597aa038f6a38f49afc27e4bd9500001de6f0f8aa36c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -6560,7 +6473,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:09.902955+00:00"
+                "failed_at": "2026-05-02T22:20:22.666412+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6570,13 +6483,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepOHTYsDHtTlZ6royatncW2XUOxOyuFck28O8rjlrljSffo7rueJcdpntd3ViE7WoTCNn-xEep_y7S3pu2ifiP7kfEHN1G21sDL4x8-Og6Q3FE6d3VEAcHqiHo5_JnwgyiiY_deOdUwe24p=w2048-h2048-k-no",
                 "source_url_sha256": "c551aa466306785acad222aa501bf4bce1a309169cc1515bd77591a42317fbf7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -6643,7 +6552,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:10.200270+00:00"
+                "failed_at": "2026-05-02T22:20:28.068487+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6653,13 +6562,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweo4dzbv_9BKJZgrZZWWOLzqnQjbVlGZ5Od81DJnQ5AkQpvG5t_81I0UQZOEUw7S7U_RyYiXPTETD0Ykv7DQpsnQHlY-eQjPyiHipEUhbcfbeogkal0_QZMK5POknBgrRYWO1U2rBkWrJLv7=w2048-h2048-k-no",
                 "source_url_sha256": "2fa39067049e8ab5c2b3778862ccb6f7dcd30abc1c00609544fc767201aad972",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -6726,7 +6631,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:10.485543+00:00"
+                "failed_at": "2026-05-02T22:20:28.525901+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6736,13 +6641,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqGGI67TlSzgoN_0a5w3d84HvqQZIIAzMGplZbsaFTcn5TF0x7vkeqe4yEUX1NQ3rs8n0CjTJ0PEvxbz1w3_mqWv1uyJX1mf_Yh4Jnx4MaYfgzD4LloaGCp3XfT5PcRb91HDNKcFS75xH2V=w2048-h2048-k-no",
                 "source_url_sha256": "6fe51f22a431bb1a533f53a8019fffbb7d5297d0797f989c31946fbdee1b1c2f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -6809,7 +6710,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:10.845748+00:00"
+                "failed_at": "2026-05-02T22:20:28.953389+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6819,13 +6720,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepjjODIQy-3EQ9uqN6lay_KlRllTL6HmP65iTMnsHyyrywoNXQMJCkO06Z43V6qeYoKUTb3Ldffoo_Q-XXNAvF-qLv2ywTuHnojz5By3b5_eCNk5YzkDNO02SyffWas1vxMLgui7Euqf5fz=w2048-h2048-k-no",
                 "source_url_sha256": "6fdedce9dca195562e7479387afe1bfddbfedacf6029498acf12f989a7168761",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -6892,7 +6789,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:11.120996+00:00"
+                "failed_at": "2026-05-02T22:20:29.398078+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -6902,13 +6799,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepJM6FaECY4IZZ2nJP9-61gIX2CXcy6Fr4e6xGoDq1YomzYh-Y_sXsN9-RkJuv4CZb9D1dXFl7vqBw8USql1XZD9lQ6Et3ubLS20QrSm39plmSOFSdji03dOTU3Gved1S0gKXlH7PCKi7fK=w2048-h2048-k-no",
                 "source_url_sha256": "f4748da7a044c5c6becedd5fb3c176b3b5d3bf10e7aa4fb0296d8ba5557a864e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -6975,7 +6868,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:11.421850+00:00"
+                "failed_at": "2026-05-02T22:20:29.836732+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7054,7 +6947,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:11.719185+00:00"
+                "failed_at": "2026-05-02T22:20:30.290769+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7133,7 +7026,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:12.364892+00:00"
+                "failed_at": "2026-05-02T22:20:30.684755+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7212,7 +7105,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:12.663865+00:00"
+                "failed_at": "2026-05-02T22:20:31.088979+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7291,7 +7184,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:12.980823+00:00"
+                "failed_at": "2026-05-02T22:20:31.463914+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7370,7 +7263,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:13.305776+00:00"
+                "failed_at": "2026-05-02T22:20:31.851096+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7449,7 +7342,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:13.668216+00:00"
+                "failed_at": "2026-05-02T22:20:32.215619+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7528,7 +7421,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:13.991643+00:00"
+                "failed_at": "2026-05-02T22:20:32.598663+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7607,7 +7500,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:14.361856+00:00"
+                "failed_at": "2026-05-02T22:20:32.976514+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7686,7 +7579,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:14.711831+00:00"
+                "failed_at": "2026-05-02T22:20:33.367018+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7765,7 +7658,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:15.017775+00:00"
+                "failed_at": "2026-05-02T22:20:33.783883+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7844,7 +7737,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:15.315020+00:00"
+                "failed_at": "2026-05-02T22:20:34.177825+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -7923,7 +7816,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:15.644318+00:00"
+                "failed_at": "2026-05-02T22:20:34.592843+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8002,7 +7895,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:15.970924+00:00"
+                "failed_at": "2026-05-02T22:20:34.985744+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8081,7 +7974,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:16.273579+00:00"
+                "failed_at": "2026-05-02T22:20:35.402922+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8160,7 +8053,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:16.600226+00:00"
+                "failed_at": "2026-05-02T22:20:35.817061+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8239,7 +8132,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:16.922865+00:00"
+                "failed_at": "2026-05-02T22:20:36.184455+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8318,7 +8211,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:17.305586+00:00"
+                "failed_at": "2026-05-02T22:20:36.617991+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8397,7 +8290,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:17.656963+00:00"
+                "failed_at": "2026-05-02T22:20:37.043961+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8476,7 +8369,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:18.002496+00:00"
+                "failed_at": "2026-05-02T22:20:37.426988+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8555,7 +8448,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:18.329909+00:00"
+                "failed_at": "2026-05-02T22:20:37.809220+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8634,7 +8527,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:18.647236+00:00"
+                "failed_at": "2026-05-02T22:20:38.182929+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8713,7 +8606,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:18.943896+00:00"
+                "failed_at": "2026-05-02T22:20:38.547850+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8792,7 +8685,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:19.253526+00:00"
+                "failed_at": "2026-05-02T22:20:38.928328+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8871,7 +8764,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:19.584117+00:00"
+                "failed_at": "2026-05-02T22:20:39.291012+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -8950,7 +8843,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:19.925424+00:00"
+                "failed_at": "2026-05-02T22:20:39.661575+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9029,7 +8922,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:20.256474+00:00"
+                "failed_at": "2026-05-02T22:20:40.086184+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9108,7 +9001,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:20.593622+00:00"
+                "failed_at": "2026-05-02T22:20:40.448068+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9187,7 +9080,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:20.932745+00:00"
+                "failed_at": "2026-05-02T22:20:40.765351+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9266,7 +9159,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:21.236455+00:00"
+                "failed_at": "2026-05-02T22:20:41.091182+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9345,7 +9238,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:21.530577+00:00"
+                "failed_at": "2026-05-02T22:20:41.427728+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9424,7 +9317,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:21.851384+00:00"
+                "failed_at": "2026-05-02T22:20:41.769922+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9503,7 +9396,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:22.155552+00:00"
+                "failed_at": "2026-05-02T22:20:42.108305+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9582,7 +9475,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:27.469193+00:00"
+                "failed_at": "2026-05-02T22:20:42.484462+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9661,7 +9554,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:27.851236+00:00"
+                "failed_at": "2026-05-02T22:20:42.872349+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9740,7 +9633,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:28.229535+00:00"
+                "failed_at": "2026-05-02T22:20:48.281931+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9819,7 +9712,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:28.609534+00:00"
+                "failed_at": "2026-05-02T22:20:48.646388+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9898,7 +9791,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:28.954433+00:00"
+                "failed_at": "2026-05-02T22:20:49.054496+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -9977,7 +9870,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:29.282876+00:00"
+                "failed_at": "2026-05-02T22:20:49.430213+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10056,7 +9949,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:29.597529+00:00"
+                "failed_at": "2026-05-02T22:20:49.847489+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10135,7 +10028,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:29.903392+00:00"
+                "failed_at": "2026-05-02T22:20:50.201988+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10214,7 +10107,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:30.226528+00:00"
+                "failed_at": "2026-05-02T22:20:50.565823+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10293,7 +10186,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:30.556499+00:00"
+                "failed_at": "2026-05-02T22:20:51.026451+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10372,7 +10265,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:30.872133+00:00"
+                "failed_at": "2026-05-02T22:20:51.614522+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10451,7 +10344,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:31.197421+00:00"
+                "failed_at": "2026-05-02T22:20:52.096574+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10530,7 +10423,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:31.519820+00:00"
+                "failed_at": "2026-05-02T22:20:57.543771+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10609,7 +10502,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:31.847581+00:00"
+                "failed_at": "2026-05-02T22:20:58.117864+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10688,7 +10581,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:32.167461+00:00"
+                "failed_at": "2026-05-02T22:20:58.494975+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10767,7 +10660,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:32.498065+00:00"
+                "failed_at": "2026-05-02T22:20:58.894881+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10846,7 +10739,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:32.815543+00:00"
+                "failed_at": "2026-05-02T22:20:59.340362+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -10925,7 +10818,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:33.152694+00:00"
+                "failed_at": "2026-05-02T22:20:59.797571+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11004,7 +10897,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:33.515087+00:00"
+                "failed_at": "2026-05-02T22:21:00.505495+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11083,7 +10976,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:33.886364+00:00"
+                "failed_at": "2026-05-02T22:21:00.902860+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11162,7 +11055,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:34.236971+00:00"
+                "failed_at": "2026-05-02T22:21:01.237098+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11241,7 +11134,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:34.559866+00:00"
+                "failed_at": "2026-05-02T22:21:01.586617+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11320,7 +11213,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:34.877020+00:00"
+                "failed_at": "2026-05-02T22:21:01.914656+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11399,7 +11292,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:35.192096+00:00"
+                "failed_at": "2026-05-02T22:21:02.250134+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11478,7 +11371,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:35.508879+00:00"
+                "failed_at": "2026-05-02T22:21:02.584374+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11557,7 +11450,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:35.819429+00:00"
+                "failed_at": "2026-05-02T22:21:02.939002+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11636,7 +11529,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:36.163813+00:00"
+                "failed_at": "2026-05-02T22:21:03.311075+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11715,7 +11608,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:36.503189+00:00"
+                "failed_at": "2026-05-02T22:21:03.674281+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11794,7 +11687,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:37.164761+00:00"
+                "failed_at": "2026-05-02T22:21:04.005184+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11873,7 +11766,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:37.528522+00:00"
+                "failed_at": "2026-05-02T22:21:04.365181+00:00"
             },
             {
                 "place_name": "Waterbean Coffee Exquisite | Gastonia",
@@ -11952,27 +11845,27 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:37.916709+00:00"
+                "failed_at": "2026-05-02T22:21:04.724361+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 95,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 97,
+            "duplicate_count": 0,
+            "airtable_photos_count": 2,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 65,
             "place_name": "Waterbean Coffee Exquisite | Gastonia",
             "place_id": "ChIJ8WMNQY7BVogRUaT7UZdGmVg",
             "record_id": "recVGS3lG4kFadvHe",
-            "generated_at": "2026-05-02T21:57:37.917069+00:00",
+            "generated_at": "2026-05-02T22:21:04.724766+00:00",
             "azure_assets_count": 2,
             "failed_upload_count": 92,
             "pending_upload_count": 0,
             "selected_airtable_count": 2,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
