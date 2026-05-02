@@ -14173,10 +14173,6 @@
                 "source_path": "fields.Photos[27]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
                     }
@@ -14185,6 +14181,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -14223,10 +14227,6 @@
                 "source_path": "fields.Photos[28]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
                     }
@@ -14235,6 +14235,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[8].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -14273,10 +14281,6 @@
                 "source_path": "fields.Photos[29]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
                     }
@@ -14285,6 +14289,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[15].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -14327,7 +14339,12 @@
                         "path": "photos.raw_data.photos_data[16].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/6242a0264dadf2a482eaa3018cd8e77c5ac82d75b3d9402031a445a3e867247c.png",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/6242a0264dadf2a482eaa3018cd8e77c5ac82d75b3d9402031a445a3e867247c.png",
@@ -14364,7 +14381,12 @@
                         "path": "photos.raw_data.photos_data[22].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/037440948966e1bf9749de51698cdd78a556d395067dd0c81de8b536e2f5946c.png",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/037440948966e1bf9749de51698cdd78a556d395067dd0c81de8b536e2f5946c.png",
@@ -14401,7 +14423,12 @@
                         "path": "photos.raw_data.photos_data[26].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/d9787adc43aa44cb032541b4231d821196f94d55f597ee5e5224350f2dcbec58.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/d9787adc43aa44cb032541b4231d821196f94d55f597ee5e5224350f2dcbec58.jpg",
@@ -14438,7 +14465,12 @@
                         "path": "photos.raw_data.photos_data[34].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[6]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/cb30b3d5c814fc174a9c36c5cb2c010c27f555d043aa699502a4a94df0f98be7.png",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/cb30b3d5c814fc174a9c36c5cb2c010c27f555d043aa699502a4a94df0f98be7.png",
@@ -14475,7 +14507,12 @@
                         "path": "photos.raw_data.photos_data[35].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[7]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/9628a220075db0c19a7a2f84e3ff8cd4fb09e927b308b5080b1c14b987ac82bc.png",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/9628a220075db0c19a7a2f84e3ff8cd4fb09e927b308b5080b1c14b987ac82bc.png",
@@ -14512,7 +14549,12 @@
                         "path": "photos.raw_data.photos_data[36].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[8]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/ddb04f6215e21384ca6e4cebf05a3b1951d4938056e7f07ea8a2caaf12b29b54.png",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/ddb04f6215e21384ca6e4cebf05a3b1951d4938056e7f07ea8a2caaf12b29b54.png",
@@ -14549,7 +14591,12 @@
                         "path": "photos.raw_data.photos_data[41].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[9]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/7e53a4916f7b577f1c05fe8c5fcb9db2286973b42eb51ccc0abf9b77da2d645c.png",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/7e53a4916f7b577f1c05fe8c5fcb9db2286973b42eb51ccc0abf9b77da2d645c.png",
@@ -14586,7 +14633,12 @@
                         "path": "photos.raw_data.photos_data[61].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[10]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/6e97437796dcfa9f29036ddd89ca430e3e93f35ab4edfc1869700d8440c3c299.png",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/6e97437796dcfa9f29036ddd89ca430e3e93f35ab4edfc1869700d8440c3c299.png",
@@ -14623,7 +14675,12 @@
                         "path": "photos.raw_data.photos_data[81].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[11]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/42629b02c9f48c68476054edbe00fa56069cc3eea0d6a788f5729fa212cc972a.png",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJMcD7MlmfVogRu5DhoLkCNGc/42629b02c9f48c68476054edbe00fa56069cc3eea0d6a788f5729fa212cc972a.png",
@@ -14654,13 +14711,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqmLgGp-BLuRLMlIbmlVz2TjE_uecYlaLsccdIFqy0-_R_Ph-YZTHOIcht4-8PfyUPJV2KSt3ciycZv9U0dISM2zs-vHWGQtTKnBew5KHSSIdWtzsHN9qV_0q-peSRx_u7RxNDW=w2048-h2048-k-no",
                 "source_url_sha256": "2016c2d7ad10b46f1c44b11d3ad9430f9adcf6a6a398311ef8d6811f4cffc2cd",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[0]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[0]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
@@ -14727,7 +14780,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:53.734179+00:00"
+                "failed_at": "2026-05-02T22:19:42.800545+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -14737,13 +14790,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepbaKZkq3mKuGQcD6ZD27lDms9bplSzn4uFTVD-Z2JXG5K4-UsEue0km-Iz-Fpu7e-_NxkV2dzrmaC-5xfErma3ZvQS0gHOcO_MBSnwGCNVodfFTnMda2kr2eRR81WDskVlP_8=w2048-h2048-k-no",
                 "source_url_sha256": "0c132973bb7df1c5cf97610a963d2461854335898a2e991dc588f1799307900e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -14810,7 +14859,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:54.035708+00:00"
+                "failed_at": "2026-05-02T22:19:43.536315+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -14820,13 +14869,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerRp8_WV-oLOnyLEKgvzNr1g7nl72ftz-ld0q7UZJ4_SjPqmT1a2QK8wBqW_RXzoE-_n5aHuwqW4WHmyXWXSwC3agkp2y8eEotwETNWg3SAfe77h5rGV9vE9O3CdZAbxALePqJS=w2048-h2048-k-no",
                 "source_url_sha256": "903e2ee81a4716d70320dd10d92156da024e8566a0053a0fe782c2dfaffb4f79",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -14893,7 +14938,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:54.358945+00:00"
+                "failed_at": "2026-05-02T22:19:43.944598+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -14903,13 +14948,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq_2S8vO1rQirIlrZYj4BO--5314-B6cPWxJz2gk4KMiS5FOjWIIK0-ca2qUMPgMfE7wsbjfjTVe3akML-iQ9870OXQHOgCUCWgUZZYAFTSgz6UEWM4FyQsAMc72VaVFal65uYJFw=w2048-h2048-k-no",
                 "source_url_sha256": "ba78e7f741705d68d6ec6797bb49346b7d3842516fd96048f7f94f6d144810a5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -14976,7 +15017,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:54.688152+00:00"
+                "failed_at": "2026-05-02T22:19:44.304430+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -14986,13 +15027,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqn-RNtQjSHpRMNeAHQ1mO8Z53Bz6wnbwkMAGpFbYZlOlqJLhD0Etz8NdUa9HIS2Ts2OO911kCM4BLfowdFizwqte4mE1HIV7mjiIXncKLmt8LxxTK9KLCvJo46wi-3f2-2uNZvUw=w2048-h2048-k-no",
                 "source_url_sha256": "f377c67bac1268996bdee3264a9775e378ecb143ad5ffd768fc6d8d8ddbe93fd",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -15059,7 +15096,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:55.006338+00:00"
+                "failed_at": "2026-05-02T22:19:44.805682+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15069,13 +15106,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoJRiGe1xZ2UkGCzoc6G3rrd3GvzFENq2fzHnV2GMV0Vk0lJS47qfhMXqZ_i-s13lTSYw2H1B86I_Z_5q2nJTuKN3nifdVeA-SieKpVZGzCLzenVt4IL89XhdmgAvVxMNd9mTa1=w2048-h2048-k-no",
                 "source_url_sha256": "bf0a9feec126c958eab384e7f30d211cf867aded09b5118771bb876985b63e5f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -15142,7 +15175,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:55.363606+00:00"
+                "failed_at": "2026-05-02T22:19:45.361871+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15152,13 +15185,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerOCqMQ8Rl_t6eetc3skzt5Rujaw7EQwzZdok6Q19IOHmSUXgaygHE3xi7SyeJbdo4C0UIqZ11m3DiyygsmhHrawa-ycQSfYnAu3woQFf0SlZUGPh_03u7npEmDx_sELFiyuGV7=w2048-h2048-k-no",
                 "source_url_sha256": "14b26fa678006ea761f89790e099b0af13256dd26a7876c2ca0e3cf4f591efb7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -15225,7 +15254,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:55.719876+00:00"
+                "failed_at": "2026-05-02T22:19:45.746689+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15235,13 +15264,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoALa4-3A9F3ezumAfz6Cluo3-OCxII3pFLV8PqFxK9DFrUffKgfRaTh5V367D9fwk-Kn5rsVHRmqODmOo4gfxZaEMjsdKdOBwTNdEevOeXhLnep1LnMmwk8BwS_SJ7tuSmVSE=w2048-h2048-k-no",
                 "source_url_sha256": "aab0654e14ee2ecc50c2a61cc898ae1c572df4745493755a4c6af275b3b8aeeb",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -15308,7 +15333,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:56.039397+00:00"
+                "failed_at": "2026-05-02T22:19:46.109010+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15318,13 +15343,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwer3Er5RLBgVaktxxCFWGyuwfySFSniG5lC6eefjqXF4qGpnRCpCBnTxK79MStGio0N2RGbl3rzyw-XiuAYP6J_1de_JPAzRR_mRK9KBSDMjRCqEBgGB_HwAeX9IRPesbiEBynmiFQ=w2048-h2048-k-no",
                 "source_url_sha256": "7f53754804ba491b2dd1fa6a4d09e7596e24e8a16a9cc2b0157016e725028c12",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -15391,7 +15412,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:56.365487+00:00"
+                "failed_at": "2026-05-02T22:19:46.453484+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15401,13 +15422,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoTvUrYIiblYCMcGhqBA28s245Qev_evkLbw-51RLfqBh-FW9vNaVkTHvLVqZaytZd0OvD83FJX0HB2HhZHfS_mcBIb4IJM0_IqaFSj61AZMI0DX7umfTvsOM_OvZRmU_Bo3d2M=w2048-h2048-k-no",
                 "source_url_sha256": "7fb4f2fa4c00d71ab072032d988fc2dfddc979be186d200d0918cc30c1a9ed75",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -15474,7 +15491,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:56.677063+00:00"
+                "failed_at": "2026-05-02T22:19:46.782205+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15484,13 +15501,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweorXE-_wTybypQeqK4vTU4TFA5ciF5VW0gITCbR_A3JEWeLl6o2DpsHAkAsiRvPWYaMXZATUtLFAr1VrXbXP9Rb0E49c1zrVe2l8SlCGOzLGlrk_1Ep4G4LLP5_FSUvD70c5Qef=w2048-h2048-k-no",
                 "source_url_sha256": "9c51d473a7ea0efed8462439d03c277423ff0d1a7e1c51f09fa14a8a0c292c8b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -15557,7 +15570,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:56.975172+00:00"
+                "failed_at": "2026-05-02T22:19:47.108440+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15567,13 +15580,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweocIO0DEaQV1oXWjiyqG_Owo--pzS5MP0pJE8XWSMujext2gsyM3YN9GeFUDODBuQmuetp4yG_tNF4WUH7CLQiouXQtJMlp9w3PRXPwMMzoy5gOc7J7dH3Bs2BkTDUneShJbG8G=w2048-h2048-k-no",
                 "source_url_sha256": "67c01d749130af894a82d90a6f9942bcdf1c7feb1474d8408471a0606a3e5204",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -15640,7 +15649,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:57.294200+00:00"
+                "failed_at": "2026-05-02T22:19:47.419385+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15650,13 +15659,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerC8WaXYBKGWiWNjkF-9Wbnk4mdgWD7i1L1OPxiLzBa7Y6RoMewD22aMkbZFnNv4YDaSRqjPgbbP74DNk2oTM5h_qod4_JilVZnBo0J9-27qGHJs01OoEX-g99ZpJDYt-AT1FU0uA=w2048-h2048-k-no",
                 "source_url_sha256": "7074284df7c8d76e6269ecbe0a52980ea99cc21db867bca68be878abc74037dd",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -15723,7 +15728,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:57.649845+00:00"
+                "failed_at": "2026-05-02T22:19:47.746290+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15733,13 +15738,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepnLS7k4XALf_S5JaLrLrYo5_Oit7oAYFarPdpj8P6_PME2Rhn8PpCnPj7dGlOa1B97_EpUu9X4aFaytVqjTRT4T0OmmmNICifRVqTMrgekgeGbSJ3hSXgdzeaIVrCo4VxpbDbb=w2048-h2048-k-no",
                 "source_url_sha256": "edd1fed590f97d316d6d05f386016da523065ef08716d9dbcdfc15a55cdf70da",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -15806,7 +15807,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:57.992632+00:00"
+                "failed_at": "2026-05-02T22:19:48.102140+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15816,13 +15817,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepP-6qf2Y_8kfyJwKZOuVBoUhQ1TVBQ2NjZ75A5Nf747lKi6BRA5nN76N6AX54YqaK6tPvsBrk_0JLsS4JPUVB7oteNF8jgB194N1hBVc8MRNpsFeK1Zmn-xsA990MDe36Tz_wE=w2048-h2048-k-no",
                 "source_url_sha256": "b5bec831df1ea7bdd544ccb97064cbfa699809d739a3c94c99747a159a498f16",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -15889,7 +15886,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:58.313802+00:00"
+                "failed_at": "2026-05-02T22:19:48.466264+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15899,13 +15896,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepMrNTThuuy3S6kVyzW1zg2PpU0nhzfOGVFWUkkFsMZxJWyzYQzg6xyXu0lekqV7OX0gx2hqEhx5OMSZEqiL_Y2kUuqOcGxxL2MNIALp7SpZGRCFYUItIJ47wGL2QPac94fL0RO=w2048-h2048-k-no",
                 "source_url_sha256": "385ff9b913b4a749013fda4fd6d8620938d612a3ff444837ada47194001597c1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -15972,7 +15965,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:58.630908+00:00"
+                "failed_at": "2026-05-02T22:19:48.836127+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -15982,13 +15975,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqkw0cgJUzGfPrFBlSZdj0syNU45WB0R2uDkrTLriAZCXE4t1y9RvQD2pBv9Kgm9QjuTNUOTH99u8QA4trsxRnk8Y7uTYTrY0eYz1rAt0e2NaVZObWHSzSP_FiRXiIIIhVCwFVh7w=w2048-h2048-k-no",
                 "source_url_sha256": "97cb38a99f41018e5c9896939938490cb0e2da14a66774a5ff0d8966e5ede717",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -16055,7 +16044,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:58.950695+00:00"
+                "failed_at": "2026-05-02T22:19:49.229265+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16065,13 +16054,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerbDMMKbYcdhMHuHmhktFrKS5kiDG0QXavM6bhwwvjERoAtw87owjsjE1oxUHA5nUFoC_I0DHJMaMuuQarMChzfCaSJxhGxuPbsfDsG1N1vRRX72a9qc7Dvr3kAi-rCGHeYdADu=w2048-h2048-k-no",
                 "source_url_sha256": "1e862823a9999e7b9ac3d7d8cbb21bd8e2a616497d4455adb7f35a5b67390fc8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -16138,7 +16123,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:59.298206+00:00"
+                "failed_at": "2026-05-02T22:19:49.624311+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16148,13 +16133,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqPJbW4BldAJ-CpRh9VtYu0ondHkw2mXRHXus0j0Gx9eKyqEBNcQmEniJ4QTDNXLmoscFSjHfq7qp-Oi_vA5q6-Bd26HNvmHD2yuBJXiwcNTT9LY97REt0V8EePk_s7Zdc0Iv0f=w2048-h2048-k-no",
                 "source_url_sha256": "850e5ce39860b32810e8c482993936056dcda541d7e87e996d6f30e02ceb1421",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -16221,7 +16202,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:59.616163+00:00"
+                "failed_at": "2026-05-02T22:19:49.964880+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16231,13 +16212,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqo8SQnKBpsllMGDEBn5XDNHfGutg6hdT91H40C8oIzyt4GtzVh04LYqOAEhc7htspcPLPd1p7wvbFSpLM1IoW4WcI6hdheiR8Gj5nCPoYfzmzKS8rjsWzSYCXvVXQFTOv3S__jdw=w2048-h2048-k-no",
                 "source_url_sha256": "b6b49db4fc4142262c0033b5fe8e28db7c620e34ba3c0be25907e63f566bad50",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -16304,7 +16281,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:59.946096+00:00"
+                "failed_at": "2026-05-02T22:19:50.330844+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16314,13 +16291,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwer5L6EoxTy4Oa2MRgjxtON4F6Xy6-SMwoNtKYqBvQbaALifo7MZZ6-8aX2j5_nxOYtdeZ5PbLVqtiYo8LeoC5JJguNteA92mR6P7CoywHkjNxGrQgGkQ6n45DHtLPHoD-xknPKRqQ=w2048-h2048-k-no",
                 "source_url_sha256": "b398f98ab3e3a4dc115133bb6627b20bdbbed759802d7bdbaafe1ba847cff6d5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -16387,7 +16360,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:00.249087+00:00"
+                "failed_at": "2026-05-02T22:19:50.682224+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16397,13 +16370,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep1XcF3FXlV3xUgY7bHZW4RIIP8_-tUk_w8Fa6R17g_3q4jdtfDXAUD1xM3uOIdNtoCqLxLwiBv97ZW1upuVvMMxAfpRq-npN_YdF-x60NWNWAOc3o2QMWPyDcadT-1lcL0Qg3Zaw=w2048-h2048-k-no",
                 "source_url_sha256": "db0fd5be8accfaca4d81240f44c9f7f1368cc40cd1a9b39b9447847b0f76a5a2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -16470,7 +16439,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:00.605962+00:00"
+                "failed_at": "2026-05-02T22:19:51.003326+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16480,13 +16449,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq8fuGroGTXeqNJKlhY5Reo2wBai4xrXI_2gfmSc_Wqzf-9MjUP_CgK8fs93Fw4FXMsizlB8vHLy4rbL7nM2qTcXaTI9GEgVq8_bVH9HpXIxATo5zLfonJAv5gdiUqkoD_IZrbn=w2048-h2048-k-no",
                 "source_url_sha256": "552da30aa247febaea7a09cd8766eb98c138821c7773057577fd9cea38e60c35",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -16553,7 +16518,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:01.157407+00:00"
+                "failed_at": "2026-05-02T22:19:51.290065+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16563,13 +16528,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqiHroVcVD9eeNQIzDf0cK-IX6hMZ2fnJu-FP0mfGj8O5jFWX4rWm6AT4mn0b8mfgVoz2_ndIStQUGZ4O2OPakm07uuaDmKWoNLlxT39cM878kyNcvJLTF2N7XopnGsGBRl8O2SMw=w2048-h2048-k-no",
                 "source_url_sha256": "7e07e016ac2cc26fbcf88d79e2d90a419e35d2465f2cdbaa8e3300e0b2440b30",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -16636,7 +16597,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:01.634071+00:00"
+                "failed_at": "2026-05-02T22:19:51.633140+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16646,13 +16607,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoYWUuOZS5FKOur09ndoY-l1bTcwtty_qjDtlerV9ABECcg8sTETPjBz93mjNwJt7J4uPGQieZ6gxJrohzjm0gVdNopMUVS7aax04p0mBSab5VHVe_9V6N2ZxRSgpZ3nurb-bNYqg=w2048-h2048-k-no",
                 "source_url_sha256": "1176c17ee8833a9b0b44aa8c51d317a30a539d2606eac42dd111d3b254e1d1c4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -16719,7 +16676,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:01.988529+00:00"
+                "failed_at": "2026-05-02T22:19:51.965931+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16729,13 +16686,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerYQYSKm-6lOaZN0-Tngl5UAlLsq2SIBiE7p3DfyZJIIzeQ4LSd946nabyUrXarmAkWcXsRD8H07hjuIaxtQxcWd30cU-aYgbAgk5Pk0ndr5YBJVX0fpSTjKUwelNrD2vrKvyNV_ZeOnesH=w2048-h2048-k-no",
                 "source_url_sha256": "0aa8212a3052077b0705abf5ff63a630fc486824b40a396f02af0aad9bcc241d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -16802,7 +16755,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:02.386308+00:00"
+                "failed_at": "2026-05-02T22:19:52.312875+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16812,13 +16765,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGoVUDUOwAITqQz6nrAYbYyRKsvZOteK2ug_coEPm9L8SFLflNjpDs6CSv2GROc0jQzNez0YRd2qkIUBLtUx6eG2E_V4UtSgfC42MaxqpOpDnAmanYzOljg9zVOc-U0kXxIJCr_nhmDlsbhCU-dViYgxKmPBMeXuJM9UpvR7pUFAIjQfI1a8gaoIA=w2048-h2048-k-no",
                 "source_url_sha256": "af9639e1bd259e660f4cea1d559c1c6ba5bb03538fee18c8412d38e6c9202ea1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -16885,7 +16834,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:02.814264+00:00"
+                "failed_at": "2026-05-02T22:19:52.675683+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -16964,7 +16913,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:05.433718+00:00"
+                "failed_at": "2026-05-02T22:19:52.996583+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17043,7 +16992,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:05.781136+00:00"
+                "failed_at": "2026-05-02T22:19:58.406569+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17122,7 +17071,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:06.564569+00:00"
+                "failed_at": "2026-05-02T22:19:58.840751+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17201,7 +17150,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:06.944077+00:00"
+                "failed_at": "2026-05-02T22:19:59.183059+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17280,7 +17229,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:07.323381+00:00"
+                "failed_at": "2026-05-02T22:19:59.496135+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17359,7 +17308,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:07.626902+00:00"
+                "failed_at": "2026-05-02T22:19:59.798495+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17438,7 +17387,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:07.922522+00:00"
+                "failed_at": "2026-05-02T22:20:00.110008+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17517,7 +17466,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:08.504303+00:00"
+                "failed_at": "2026-05-02T22:20:00.484350+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17596,7 +17545,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:08.824150+00:00"
+                "failed_at": "2026-05-02T22:20:00.772132+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17675,7 +17624,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:09.120126+00:00"
+                "failed_at": "2026-05-02T22:20:01.071497+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17754,7 +17703,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:09.429892+00:00"
+                "failed_at": "2026-05-02T22:20:01.374707+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17833,7 +17782,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:09.766874+00:00"
+                "failed_at": "2026-05-02T22:20:01.689876+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17912,7 +17861,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:10.092414+00:00"
+                "failed_at": "2026-05-02T22:20:02.027079+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -17991,7 +17940,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:13.227626+00:00"
+                "failed_at": "2026-05-02T22:20:02.336106+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18070,7 +18019,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:13.587505+00:00"
+                "failed_at": "2026-05-02T22:20:02.652228+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18149,7 +18098,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:13.930907+00:00"
+                "failed_at": "2026-05-02T22:20:02.946712+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18228,7 +18177,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:14.298577+00:00"
+                "failed_at": "2026-05-02T22:20:03.242461+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18307,7 +18256,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:14.647693+00:00"
+                "failed_at": "2026-05-02T22:20:03.550913+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18386,7 +18335,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:17.656137+00:00"
+                "failed_at": "2026-05-02T22:20:03.848625+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18465,7 +18414,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:18.004198+00:00"
+                "failed_at": "2026-05-02T22:20:04.316903+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18544,7 +18493,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:18.345649+00:00"
+                "failed_at": "2026-05-02T22:20:04.714555+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18623,7 +18572,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:19.214999+00:00"
+                "failed_at": "2026-05-02T22:20:05.136015+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18702,7 +18651,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:19.529872+00:00"
+                "failed_at": "2026-05-02T22:20:05.581822+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18781,7 +18730,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:19.862242+00:00"
+                "failed_at": "2026-05-02T22:20:11.000623+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18860,7 +18809,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:20.193415+00:00"
+                "failed_at": "2026-05-02T22:20:11.385419+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -18939,7 +18888,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:20.543483+00:00"
+                "failed_at": "2026-05-02T22:20:11.800065+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19018,7 +18967,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:20.866013+00:00"
+                "failed_at": "2026-05-02T22:20:12.188236+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19097,7 +19046,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:21.173096+00:00"
+                "failed_at": "2026-05-02T22:20:12.595009+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19176,7 +19125,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:27.605085+00:00"
+                "failed_at": "2026-05-02T22:20:13.011851+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19255,7 +19204,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:27.982096+00:00"
+                "failed_at": "2026-05-02T22:20:13.465477+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19334,7 +19283,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:28.351463+00:00"
+                "failed_at": "2026-05-02T22:20:13.924555+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19413,7 +19362,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:28.731286+00:00"
+                "failed_at": "2026-05-02T22:20:14.323768+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19492,7 +19441,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:31.574412+00:00"
+                "failed_at": "2026-05-02T22:20:14.772484+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19571,7 +19520,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:31.900872+00:00"
+                "failed_at": "2026-05-02T22:20:15.215006+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19650,7 +19599,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:32.228744+00:00"
+                "failed_at": "2026-05-02T22:20:15.641225+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19729,7 +19678,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:32.554896+00:00"
+                "failed_at": "2026-05-02T22:20:16.084551+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19808,7 +19757,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:32.873256+00:00"
+                "failed_at": "2026-05-02T22:20:16.531977+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19887,7 +19836,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:33.207475+00:00"
+                "failed_at": "2026-05-02T22:20:16.965585+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -19966,7 +19915,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:33.574853+00:00"
+                "failed_at": "2026-05-02T22:20:17.393581+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20045,7 +19994,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:33.951153+00:00"
+                "failed_at": "2026-05-02T22:20:22.803275+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20124,7 +20073,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:39.269608+00:00"
+                "failed_at": "2026-05-02T22:20:23.191206+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20203,7 +20152,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:39.612972+00:00"
+                "failed_at": "2026-05-02T22:20:23.529727+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20282,7 +20231,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:39.927304+00:00"
+                "failed_at": "2026-05-02T22:20:23.891907+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20361,7 +20310,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:40.231910+00:00"
+                "failed_at": "2026-05-02T22:20:24.269009+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20440,7 +20389,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:40.569005+00:00"
+                "failed_at": "2026-05-02T22:20:24.636868+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20519,7 +20468,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:40.900466+00:00"
+                "failed_at": "2026-05-02T22:20:25.033582+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20598,7 +20547,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:41.210907+00:00"
+                "failed_at": "2026-05-02T22:20:25.536614+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20677,7 +20626,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:41.599195+00:00"
+                "failed_at": "2026-05-02T22:20:26.007853+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20756,7 +20705,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:41.962948+00:00"
+                "failed_at": "2026-05-02T22:20:26.356811+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20835,7 +20784,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:42.307736+00:00"
+                "failed_at": "2026-05-02T22:20:26.769014+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20914,7 +20863,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:42.684669+00:00"
+                "failed_at": "2026-05-02T22:20:27.190624+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -20993,7 +20942,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:45.576695+00:00"
+                "failed_at": "2026-05-02T22:20:27.598420+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21072,7 +21021,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:45.918552+00:00"
+                "failed_at": "2026-05-02T22:20:28.038168+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21151,7 +21100,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:46.244985+00:00"
+                "failed_at": "2026-05-02T22:20:28.497541+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21230,7 +21179,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:46.563365+00:00"
+                "failed_at": "2026-05-02T22:20:28.950533+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21309,7 +21258,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:46.903237+00:00"
+                "failed_at": "2026-05-02T22:20:29.396335+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21388,7 +21337,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:47.242211+00:00"
+                "failed_at": "2026-05-02T22:20:29.855571+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21467,7 +21416,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:47.600058+00:00"
+                "failed_at": "2026-05-02T22:20:30.293494+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21546,7 +21495,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:47.945469+00:00"
+                "failed_at": "2026-05-02T22:20:30.689162+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21625,7 +21574,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:48.251418+00:00"
+                "failed_at": "2026-05-02T22:20:31.079144+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21704,7 +21653,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:48.557654+00:00"
+                "failed_at": "2026-05-02T22:20:31.462640+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21783,7 +21732,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:48.878265+00:00"
+                "failed_at": "2026-05-02T22:20:31.838747+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21862,7 +21811,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:49.207586+00:00"
+                "failed_at": "2026-05-02T22:20:32.222921+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -21941,7 +21890,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:49.530923+00:00"
+                "failed_at": "2026-05-02T22:20:32.589946+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22020,7 +21969,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:49.820354+00:00"
+                "failed_at": "2026-05-02T22:20:32.930725+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22099,7 +22048,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:50.121423+00:00"
+                "failed_at": "2026-05-02T22:20:33.318864+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22178,7 +22127,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:50.421615+00:00"
+                "failed_at": "2026-05-02T22:20:33.702660+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22257,7 +22206,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:50.761499+00:00"
+                "failed_at": "2026-05-02T22:20:34.055156+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22336,7 +22285,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:51.137621+00:00"
+                "failed_at": "2026-05-02T22:20:34.455413+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22415,7 +22364,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:51.444939+00:00"
+                "failed_at": "2026-05-02T22:20:34.860218+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22494,7 +22443,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:52.767344+00:00"
+                "failed_at": "2026-05-02T22:20:35.253102+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22573,7 +22522,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:53.301189+00:00"
+                "failed_at": "2026-05-02T22:20:35.624205+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22652,7 +22601,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:53.688142+00:00"
+                "failed_at": "2026-05-02T22:20:36.040691+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22731,7 +22680,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:54.023854+00:00"
+                "failed_at": "2026-05-02T22:20:36.452983+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22810,7 +22759,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:54.389101+00:00"
+                "failed_at": "2026-05-02T22:20:36.834712+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22889,7 +22838,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:54.753346+00:00"
+                "failed_at": "2026-05-02T22:20:37.230277+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -22968,7 +22917,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:55.052996+00:00"
+                "failed_at": "2026-05-02T22:20:37.620236+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23047,7 +22996,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:55.369499+00:00"
+                "failed_at": "2026-05-02T22:20:38.001091+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23126,7 +23075,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:55.687430+00:00"
+                "failed_at": "2026-05-02T22:20:38.366452+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23205,7 +23154,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:56.001502+00:00"
+                "failed_at": "2026-05-02T22:20:38.736815+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23284,7 +23233,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:56.308684+00:00"
+                "failed_at": "2026-05-02T22:20:39.122334+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23363,7 +23312,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:56.628176+00:00"
+                "failed_at": "2026-05-02T22:20:39.474017+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23442,7 +23391,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:56.947652+00:00"
+                "failed_at": "2026-05-02T22:20:39.868970+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23521,7 +23470,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:57.264069+00:00"
+                "failed_at": "2026-05-02T22:20:40.212976+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23600,7 +23549,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:57.561942+00:00"
+                "failed_at": "2026-05-02T22:20:40.563539+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23679,7 +23628,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:57.878004+00:00"
+                "failed_at": "2026-05-02T22:20:40.910176+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23758,7 +23707,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:58.192260+00:00"
+                "failed_at": "2026-05-02T22:20:41.216427+00:00"
             },
             {
                 "place_name": "Tutti Gelato & Caf\u00e9",
@@ -23837,27 +23786,27 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:58.516362+00:00"
+                "failed_at": "2026-05-02T22:20:41.552275+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 130,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 142,
+            "duplicate_count": 0,
+            "airtable_photos_count": 12,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 100,
             "place_name": "Tutti Gelato & Caf\u00e9",
             "place_id": "ChIJMcD7MlmfVogRu5DhoLkCNGc",
             "record_id": "recteDI7DqtptwONk",
-            "generated_at": "2026-05-02T21:57:58.516926+00:00",
+            "generated_at": "2026-05-02T22:20:41.552860+00:00",
             "azure_assets_count": 12,
             "failed_upload_count": 115,
             "pending_upload_count": 0,
             "selected_airtable_count": 12,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
