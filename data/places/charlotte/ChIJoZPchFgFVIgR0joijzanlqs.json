@@ -800,7 +800,79 @@
                 }
             ]
         },
-        "last_refreshed": "2026-02-16T02:41:22.934781"
+        "last_refreshed": "2026-02-16T02:41:22.934781",
+        "azure_assets": [
+            {
+                "place_name": "Cosmic Hearth Games",
+                "place_id": "ChIJoZPchFgFVIgR0joijzanlqs",
+                "record_id": "receMt0vXWErtemWU",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=-ph-5DNEeU6b78JRIjt5UA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=274.26346&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=-ph-5DNEeU6b78JRIjt5UA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=274.26346&pitch=0&thumbfov=100",
+                "source_url_sha256": "27937340bbc4743c070961f9937e4769611a4e60f8f5f599c75ac645270108d9",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJoZPchFgFVIgR0joijzanlqs/27937340bbc4743c070961f9937e4769611a4e60f8f5f599c75ac645270108d9.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJoZPchFgFVIgR0joijzanlqs/27937340bbc4743c070961f9937e4769611a4e60f8f5f599c75ac645270108d9.jpg",
+                "content_sha256": "d5cd41bc2007c543d4a4e953844868bc17abc2693d2fc47c9ffd58decf575459",
+                "content_type": "image/jpeg",
+                "bytes": 152143,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=-ph-5DNEeU6b78JRIjt5UA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=274.26346&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=-ph-5DNEeU6b78JRIjt5UA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=274.26346&pitch=0&thumbfov=100",
+                        "bytes": 152143,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:58:06.828122+00:00"
+            }
+        ],
+        "azure_asset_failures": [],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 2,
+            "duplicate_count": 1,
+            "airtable_photos_count": 1,
+            "airtable_photos_google_count": 1,
+            "data_file_photo_urls_count": 1,
+            "provider_raw_photo_url_big_count": 1,
+            "place_name": "Cosmic Hearth Games",
+            "place_id": "ChIJoZPchFgFVIgR0joijzanlqs",
+            "record_id": "receMt0vXWErtemWU",
+            "generated_at": "2026-05-02T21:58:07.150181+00:00",
+            "azure_assets_count": 1,
+            "failed_upload_count": 0,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 1,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 1
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-12-27T16:04:36.297278"
