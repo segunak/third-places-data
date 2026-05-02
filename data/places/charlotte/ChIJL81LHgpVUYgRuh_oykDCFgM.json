@@ -7908,7 +7908,183 @@
     "photos": {
         "place_id": "ChIJL81LHgpVUYgRuh_oykDCFgM",
         "message": "Photos retrieval skipped.",
-        "photo_urls": []
+        "photo_urls": [],
+        "azure_assets": [
+            {
+                "place_name": "Caribou Coffee | Mooresville",
+                "place_id": "ChIJL81LHgpVUYgRuh_oykDCFgM",
+                "record_id": "recPit7LC00kctj04",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=XWRm2dpTSRcU_IteuWRrBQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=161.98988&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=XWRm2dpTSRcU_IteuWRrBQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=161.98988&pitch=0&thumbfov=100",
+                "source_url_sha256": "d5f876a9c3c5813ef2621237c9e77961096c6f215dec0bff206cb2905101b227",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJL81LHgpVUYgRuh_oykDCFgM/d5f876a9c3c5813ef2621237c9e77961096c6f215dec0bff206cb2905101b227.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJL81LHgpVUYgRuh_oykDCFgM/d5f876a9c3c5813ef2621237c9e77961096c6f215dec0bff206cb2905101b227.jpg",
+                "content_sha256": "fa93d53f6abd6dff3475aeecf57a5736b13f33a4ca3ae086dd12375288b178b9",
+                "content_type": "image/jpeg",
+                "bytes": 6410,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=XWRm2dpTSRcU_IteuWRrBQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=161.98988&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=XWRm2dpTSRcU_IteuWRrBQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=161.98988&pitch=0&thumbfov=100",
+                        "bytes": 6410,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:08:26.662779+00:00"
+            },
+            {
+                "place_name": "Caribou Coffee | Mooresville",
+                "place_id": "ChIJL81LHgpVUYgRuh_oykDCFgM",
+                "record_id": "recPit7LC00kctj04",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOD_GWPUeeGzvJwmbHsU7zFW0L_2D5J0RMFmGFJ=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOD_GWPUeeGzvJwmbHsU7zFW0L_2D5J0RMFmGFJ=w2048-h2048-k-no",
+                "source_url_sha256": "8ce5434152260f77188eda979a6528cbeb2c290014932723e16565a073818fed",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJL81LHgpVUYgRuh_oykDCFgM/8ce5434152260f77188eda979a6528cbeb2c290014932723e16565a073818fed.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJL81LHgpVUYgRuh_oykDCFgM/8ce5434152260f77188eda979a6528cbeb2c290014932723e16565a073818fed.jpg",
+                "content_sha256": "aa10bbacdc5b4fe7b958c2d3521dec9bb38598b49f8d2d1664052b822c4a88fb",
+                "content_type": "image/jpeg",
+                "bytes": 25878,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOD_GWPUeeGzvJwmbHsU7zFW0L_2D5J0RMFmGFJ=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOD_GWPUeeGzvJwmbHsU7zFW0L_2D5J0RMFmGFJ=w2048-h2048-k-no",
+                        "bytes": 25878,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:08:28.158272+00:00"
+            }
+        ],
+        "azure_asset_failures": [
+            {
+                "place_name": "Caribou Coffee | Mooresville",
+                "place_id": "ChIJL81LHgpVUYgRuh_oykDCFgM",
+                "record_id": "recPit7LC00kctj04",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w2048-h2048-k-no",
+                "source_url_sha256": "862b8232b1834776ea50a6bc9966cf5e1eafce81ca0e4b0e7040a620000706ea",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    }
+                ],
+                "http_status": 404,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA",
+                    "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=s0",
+                    "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=s1600",
+                    "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w2048-h2048-k-no",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=s0",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=s0",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=s1600",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w800-h500-k-no",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w1600-h1000-k-no",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPWZ4_ZUw6KbQQsp9X7kSsXLxnn71dK0r7sR0NA=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    }
+                ],
+                "error": "HTTP 404",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:08:27.509929+00:00"
+            }
+        ],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 3,
+            "duplicate_count": 0,
+            "airtable_photos_count": 3,
+            "airtable_photos_google_count": 3,
+            "data_file_photo_urls_count": 0,
+            "provider_raw_photo_url_big_count": 0,
+            "place_name": "Caribou Coffee | Mooresville",
+            "place_id": "ChIJL81LHgpVUYgRuh_oykDCFgM",
+            "record_id": "recPit7LC00kctj04",
+            "generated_at": "2026-05-02T22:08:28.158323+00:00",
+            "azure_assets_count": 2,
+            "failed_upload_count": 1,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 2,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 3
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-22T12:39:28.161947"
