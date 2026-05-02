@@ -5555,7 +5555,167 @@
             "https://lh3.googleusercontent.com/p/AF1QipOIu-mw_wJBTEMtliRG99Uh7iN7Jxft0CU-2Ktm=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipPV4fsmv419EXvuO6UrzVOFAAF4bxTMEvZiIYB9=w2048-h2048-k-no"
         ],
-        "last_refreshed": "2026-02-16T02:42:15.351541"
+        "last_refreshed": "2026-02-16T02:42:15.351541",
+        "azure_assets": [
+            {
+                "place_name": "Provided Coffee | NoDa",
+                "place_id": "ChIJo0Z-GH2hVogROCIvzrkqkiU",
+                "record_id": "rec4SH9RRAxPAikPr",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Ul7upd97nei-UVDTrSAH7w&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=339.15643&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Ul7upd97nei-UVDTrSAH7w&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=339.15643&pitch=0&thumbfov=100",
+                "source_url_sha256": "b165178bdf0f9103fd5f4e9e7c7eaaaf6b5f31ccb724afb5f3e8aca3d4245750",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJo0Z-GH2hVogROCIvzrkqkiU/b165178bdf0f9103fd5f4e9e7c7eaaaf6b5f31ccb724afb5f3e8aca3d4245750.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJo0Z-GH2hVogROCIvzrkqkiU/b165178bdf0f9103fd5f4e9e7c7eaaaf6b5f31ccb724afb5f3e8aca3d4245750.jpg",
+                "content_sha256": "fe34723d25f4b97913ff06b9adc265e640e694d0be3d2bb8adf0a40cbaa56a4b",
+                "content_type": "image/jpeg",
+                "bytes": 123589,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Ul7upd97nei-UVDTrSAH7w&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=339.15643&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Ul7upd97nei-UVDTrSAH7w&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=339.15643&pitch=0&thumbfov=100",
+                        "bytes": 123589,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:03:55.792541+00:00"
+            },
+            {
+                "place_name": "Provided Coffee | NoDa",
+                "place_id": "ChIJo0Z-GH2hVogROCIvzrkqkiU",
+                "record_id": "rec4SH9RRAxPAikPr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOIu-mw_wJBTEMtliRG99Uh7iN7Jxft0CU-2Ktm=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOIu-mw_wJBTEMtliRG99Uh7iN7Jxft0CU-2Ktm=w2048-h2048-k-no",
+                "source_url_sha256": "5f63c5a55e0f5d2ea74946d28c0527d91f762c6e227feb8e75279c8451f49191",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJo0Z-GH2hVogROCIvzrkqkiU/5f63c5a55e0f5d2ea74946d28c0527d91f762c6e227feb8e75279c8451f49191.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJo0Z-GH2hVogROCIvzrkqkiU/5f63c5a55e0f5d2ea74946d28c0527d91f762c6e227feb8e75279c8451f49191.jpg",
+                "content_sha256": "8402a63c9f1e9b20f702bc48bfaf0d24b4f348740a17fc26e66a248c3593e86a",
+                "content_type": "image/jpeg",
+                "bytes": 452013,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOIu-mw_wJBTEMtliRG99Uh7iN7Jxft0CU-2Ktm=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOIu-mw_wJBTEMtliRG99Uh7iN7Jxft0CU-2Ktm=w2048-h2048-k-no",
+                        "bytes": 452013,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:03:56.282494+00:00"
+            },
+            {
+                "place_name": "Provided Coffee | NoDa",
+                "place_id": "ChIJo0Z-GH2hVogROCIvzrkqkiU",
+                "record_id": "rec4SH9RRAxPAikPr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPV4fsmv419EXvuO6UrzVOFAAF4bxTMEvZiIYB9=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPV4fsmv419EXvuO6UrzVOFAAF4bxTMEvZiIYB9=w2048-h2048-k-no",
+                "source_url_sha256": "a975c08cbadfddeb4ad33751aa3fe6464e797166180f85e02715b51c5ed30684",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJo0Z-GH2hVogROCIvzrkqkiU/a975c08cbadfddeb4ad33751aa3fe6464e797166180f85e02715b51c5ed30684.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJo0Z-GH2hVogROCIvzrkqkiU/a975c08cbadfddeb4ad33751aa3fe6464e797166180f85e02715b51c5ed30684.jpg",
+                "content_sha256": "760079d77ed067895d012555a137400984568f35560b7f429fe2eb38da2ee8eb",
+                "content_type": "image/jpeg",
+                "bytes": 298980,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPV4fsmv419EXvuO6UrzVOFAAF4bxTMEvZiIYB9=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPV4fsmv419EXvuO6UrzVOFAAF4bxTMEvZiIYB9=w2048-h2048-k-no",
+                        "bytes": 298980,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:03:56.797837+00:00"
+            }
+        ],
+        "azure_asset_failures": [],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 3,
+            "duplicate_count": 3,
+            "airtable_photos_count": 3,
+            "airtable_photos_google_count": 3,
+            "data_file_photo_urls_count": 3,
+            "provider_raw_photo_url_big_count": 0,
+            "place_name": "Provided Coffee | NoDa",
+            "place_id": "ChIJo0Z-GH2hVogROCIvzrkqkiU",
+            "record_id": "rec4SH9RRAxPAikPr",
+            "generated_at": "2026-05-02T22:03:56.797896+00:00",
+            "azure_assets_count": 3,
+            "failed_upload_count": 0,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 3,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 3
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-01T20:32:58.006327"
