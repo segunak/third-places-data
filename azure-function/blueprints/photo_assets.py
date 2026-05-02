@@ -120,6 +120,47 @@ def _aggregate_results(results: List[Dict[str, Any]], dry_run: bool) -> Dict[str
     return totals
 
 
+def _count_by_key(items: List[Dict[str, Any]], key: str) -> Dict[str, int]:
+    counts: Dict[str, int] = {}
+    for item in items:
+        value = str(item.get(key) or "unknown")
+        counts[value] = counts.get(value, 0) + 1
+    return counts
+
+
+def _compact_place_result(result: Dict[str, Any]) -> Dict[str, Any]:
+    compact_keys = [
+        "status",
+        "skip_reason",
+        "error_reason",
+        "message",
+        "warnings",
+        "place_name",
+        "place_id",
+        "record_id",
+        "summary",
+    ]
+    compact = {key: result.get(key) for key in compact_keys if key in result}
+
+    selected_urls = result.get("selected_airtable_urls") or []
+    if selected_urls:
+        compact["selected_airtable_count"] = len(selected_urls)
+        compact["selected_airtable_url_samples"] = selected_urls[:3]
+
+    assets = [asset for asset in result.get("assets", []) if isinstance(asset, dict)]
+    if assets:
+        compact["asset_count"] = len(assets)
+        compact["asset_status_counts"] = _count_by_key(assets, "status")
+
+    failures = [failure for failure in result.get("failures", []) if isinstance(failure, dict)]
+    if failures:
+        compact["failure_count"] = len(failures)
+        compact["failure_reason_counts"] = _count_by_key(failures, "reason")
+        compact["failure_error_samples"] = [failure.get("error") for failure in failures[:3]]
+
+    return compact
+
+
 @bp.function_name(name="PhotoAssetsMigrate")
 @bp.route(route="photo-assets/migrate")
 @bp.durable_client_input(client_name="client")
@@ -154,10 +195,11 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
             results.extend(batch_results)
 
         totals = _aggregate_results(results, bool(config.get("dry_run", True)))
+        compact_results = [_compact_place_result(result) for result in results]
         return {
             "success": totals["success"],
             "message": "Photo asset migration completed" if totals["success"] else "Photo asset migration completed with errors",
-            "data": {"totals": totals, "place_results": results},
+            "data": {"totals": totals, "place_results": compact_results},
             "error": None if totals["success"] else f"{totals['errors']} places failed",
         }
     except Exception as exc:
@@ -230,6 +272,37 @@ def migrate_single_place_photo_assets(activityInput):
             return {
                 "status": "skipped",
                 "skip_reason": "no_migratable_photo_urls",
+                "message": message,
+                "warnings": warnings,
+                "place_name": place_name,
+                "place_id": place_id,
+                "record_id": place.get("id", ""),
+                "summary": summary,
+                "selected_airtable_urls": selected_urls,
+                "assets": asset_result["assets"],
+                "failures": asset_result["failures"],
+            }
+
+        if not dry_run and not selected_urls:
+            summary = asset_result["summary"]
+            message = (
+                "Migration found photo candidates but selected zero Azure Photos URLs; "
+                "refusing to overwrite Airtable Photos with an empty list."
+            )
+            logging.error(
+                "Refusing empty Photos update for %s (%s, record_id=%s): "
+                "candidate_count=%s azure_assets_count=%s failed_upload_count=%s warnings=%s",
+                place_name,
+                place_id,
+                place.get("id", ""),
+                summary.get("candidate_count", 0),
+                summary.get("azure_assets_count", 0),
+                summary.get("failed_upload_count", 0),
+                warnings,
+            )
+            return {
+                "status": "error",
+                "error_reason": "no_selected_azure_urls",
                 "message": message,
                 "warnings": warnings,
                 "place_name": place_name,

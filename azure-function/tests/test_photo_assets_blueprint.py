@@ -46,6 +46,33 @@ def test_base_config_rejects_invalid_int():
         raise AssertionError("Expected ValueError")
 
 
+def test_compact_place_result_summarizes_large_asset_details():
+    compact = photo_assets._compact_place_result({
+        "status": "error",
+        "error_reason": "no_selected_azure_urls",
+        "message": "failed",
+        "place_name": "Large Result Place",
+        "place_id": "ChIJ123",
+        "record_id": "rec123",
+        "summary": {"candidate_count": 2},
+        "selected_airtable_urls": ["https://example.com/one.jpg"],
+        "assets": [{"status": "uploaded", "large": "not returned"}],
+        "failures": [
+            {"reason": "download_failed", "error": "HTTP 403", "attempts": [{"url": "large"}]},
+            {"reason": "download_failed", "error": "HTTP 403", "attempts": [{"url": "large"}]},
+        ],
+    })
+
+    assert compact["selected_airtable_count"] == 1
+    assert compact["asset_count"] == 1
+    assert compact["asset_status_counts"] == {"uploaded": 1}
+    assert compact["failure_count"] == 2
+    assert compact["failure_reason_counts"] == {"download_failed": 2}
+    assert compact["failure_error_samples"] == ["HTTP 403", "HTTP 403"]
+    assert "assets" not in compact
+    assert "failures" not in compact
+
+
 def test_filter_places_rejects_mismatched_record_and_place_id():
     places = [
         {"id": "rec123", "fields": {"Google Maps Place Id": "ChIJ123"}}
@@ -174,6 +201,60 @@ def test_migrate_single_place_skips_zero_candidate_result(monkeypatch):
         "Skipped: no migratable photo URLs found after checking Airtable Photos, "
         "data file photos.photo_urls, and raw provider photo_url_big sources."
     )
+
+
+def test_migrate_single_place_refuses_empty_airtable_photos_update(monkeypatch):
+    class DummyPhotoAssetService:
+        def process_place(self, place, place_data, config):
+            return {
+                "selected_airtable_urls": [],
+                "summary": {
+                    "candidate_count": 2,
+                    "azure_assets_count": 0,
+                    "failed_upload_count": 2,
+                },
+                "assets": [],
+                "failures": [{"reason": "download_failed"}, {"reason": "download_failed"}],
+            }
+
+    class FailingAirtableService:
+        def __init__(self, provider_type):
+            self.provider_type = provider_type
+
+        def update_place_record(self, *args, **kwargs):
+            raise AssertionError("Airtable should not be updated with an empty Photos list")
+
+    def fail_save(*args, **kwargs):
+        raise AssertionError("Data file should not be saved when no Azure URLs were selected")
+
+    monkeypatch.setattr(photo_assets, "PhotoAssetService", DummyPhotoAssetService)
+    monkeypatch.setattr(photo_assets, "AirtableService", FailingAirtableService)
+    monkeypatch.setattr(photo_assets, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
+    monkeypatch.setattr(photo_assets, "save_data_github", fail_save)
+
+    result = photo_assets.migrate_single_place_photo_assets({
+        "place": {
+            "id": "rec-empty-selected",
+            "fields": {
+                "Place": "Empty Selected Place",
+                "Google Maps Place Id": "ChIJ123",
+                "Photos": json.dumps(["https://example.com/photo.jpg"]),
+            },
+        },
+        "config": {
+            "city": "charlotte",
+            "provider_type": "outscraper",
+            "dry_run": False,
+            "upload": True,
+            "write_airtable": True,
+        },
+    })
+
+    assert result["status"] == "error"
+    assert result["error_reason"] == "no_selected_azure_urls"
+    assert "refusing to overwrite Airtable Photos with an empty list" in result["message"]
+    assert result["selected_airtable_urls"] == []
+    assert result["summary"]["candidate_count"] == 2
 
 
 def test_photo_health_check_reports_counts(monkeypatch):

@@ -421,8 +421,60 @@ def test_refresh_single_place_photos_falls_back_to_airtable_photos_without_raw_d
     result = photos.refresh_single_place_photos(activity_input)
 
     assert result["status"] == "would_update"
-    assert result["photos_before"] == 0
+    assert result["photos_before"] == 1
+    assert result["cached_photo_urls_before"] == 0
     assert result["photos_after"] == 1
+
+
+def test_refresh_single_place_photos_counts_existing_airtable_azure_photos_before(monkeypatch):
+    existing_azure_urls = [
+        "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ-azure/"
+        + ("a" * 64)
+        + ".jpg",
+        "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ-azure/"
+        + ("b" * 64)
+        + ".webp",
+    ]
+    provider_result = {
+        "photo_urls": ["https://lh5.googleusercontent.com/gps-cs-s/provider-photo-1"],
+        "raw_data": {"photos_data": []},
+    }
+
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: DummyProvider(provider_photos=provider_result)),
+    )
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, {"photos": {"photo_urls": []}}, "ok"),
+    )
+
+    activity_input = {
+        "place": {
+            "id": "rec-airtable-azure",
+            "fields": {
+                "Place": "Already Migrated Place",
+                "Google Maps Place Id": "ChIJ-azure",
+                "Photos": json.dumps(existing_azure_urls),
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": True,
+            "photo_source_mode": "refresh_from_data_provider",
+        },
+    }
+
+    result = photos.refresh_single_place_photos(activity_input)
+
+    assert result["status"] == "would_update"
+    assert result["photos_before"] == 2
+    assert result["cached_photo_urls_before"] == 0
+    assert result["photos_after"] == 3
 
 
 def test_refresh_single_place_photos_from_cached_photo_urls_dry_run(monkeypatch):
@@ -468,7 +520,8 @@ def test_refresh_single_place_photos_from_cached_photo_urls_dry_run(monkeypatch)
     result = photos.refresh_single_place_photos(activity_input)
 
     assert result["status"] == "would_update"
-    assert result["photos_before"] == 2
+    assert result["photos_before"] == 0
+    assert result["cached_photo_urls_before"] == 2
     assert result["photos_after"] == 2
 
 

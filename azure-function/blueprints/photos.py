@@ -4,7 +4,7 @@ import azure.functions as func
 import azure.durable_functions as df
 from datetime import datetime
 from services.airtable_service import AirtableService
-from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService
+from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, parse_url_list
 from services.place_data_service import PlaceDataProviderFactory
 from services.utils import fetch_data_github, save_data_github
 
@@ -377,7 +377,8 @@ def refresh_single_place_photos(activityInput):
             "status": "",
             "message": "",
             "photos_before": 0,
-            "photos_after": 0
+            "photos_after": 0,
+            "cached_photo_urls_before": 0,
         }
 
         if not place or 'fields' not in place:
@@ -418,8 +419,9 @@ def refresh_single_place_photos(activityInput):
             return place_result
 
         photos_section = place_data.get('photos', {})
-        current_photos = photos_section.get('photo_urls', [])
-        place_result["photos_before"] = len(current_photos)
+        current_photos = parse_url_list(photos_section.get('photo_urls', []))
+        place_result["photos_before"] = len(parse_url_list(fields.get('Photos')))
+        place_result["cached_photo_urls_before"] = len(current_photos)
 
         selected_photo_urls = []
 
