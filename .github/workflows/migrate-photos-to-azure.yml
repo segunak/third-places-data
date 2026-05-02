@@ -1,0 +1,98 @@
+name: Migrate Photos To Azure
+
+on:
+  workflow_call:
+    inputs:
+      provider_type:
+        description: 'Provider type for photo selection algorithm'
+        required: false
+        default: 'outscraper'
+        type: string
+      city:
+        description: 'City to migrate'
+        required: false
+        default: 'charlotte'
+        type: string
+      dry_run:
+        description: 'If true, report what would change without uploading or writing Airtable'
+        required: false
+        default: 'false'
+        type: string
+  workflow_dispatch:
+    inputs:
+      provider_type:
+        description: 'Provider type for photo selection algorithm'
+        required: false
+        default: 'outscraper'
+        type: string
+      city:
+        description: 'City to migrate'
+        required: false
+        default: 'charlotte'
+        type: string
+      dry_run:
+        description: 'If true, report what would change without uploading or writing Airtable'
+        required: false
+        default: 'false'
+        type: string
+
+concurrency:
+  group: migrate-photos-to-azure
+  cancel-in-progress: true
+
+jobs:
+  migrate-photos-to-azure:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Run photo migration
+        working-directory: ./scripts
+        shell: pwsh
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          $providerType = [uri]::EscapeDataString("${{ inputs.provider_type }}")
+          $city = [uri]::EscapeDataString("${{ inputs.city }}")
+          $dryRun = "${{ inputs.dry_run }}".ToLowerInvariant()
+          if ($dryRun -ne "true") {
+            $dryRun = "false"
+          }
+
+          if ($dryRun -eq "true") {
+            $upload = "false"
+            $writeAirtable = "false"
+          } else {
+            $upload = "true"
+            $writeAirtable = "true"
+          }
+
+          $overwrite = "false"
+          $retryFailures = "true"
+          $failureTtlHours = "0"
+          $tryUrlVariants = "true"
+
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/photo-assets/migrate?provider_type=$providerType&city=$city&dry_run=$dryRun&upload=$upload&write_airtable=$writeAirtable&overwrite=$overwrite&retry_failures=$retryFailures&failure_ttl_hours=$failureTtlHours&try_url_variants=$tryUrlVariants"
+          Write-Host "Using function URL: $FunctionUrl"
+
+          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey "$Env:AZURE_FUNCTION_KEY" -TimeoutSeconds 1800
+          if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
+          }
+
+      - name: Purge Orchestrations
+        if: always()
+        shell: pwsh
+        working-directory: ./scripts
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          Write-Host "Cleaning up completed orchestrations..."
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/purge-orchestrations"
+          ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey "$Env:AZURE_FUNCTION_KEY" -TimeoutSeconds 300
+          if ($LASTEXITCODE -ne 0) {
+            Write-Warning "Orchestration purge failed, but this is non-critical."
+          } else {
+            Write-Host "Orchestration purge completed."
+          }

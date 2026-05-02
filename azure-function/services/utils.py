@@ -10,6 +10,7 @@ import unicodedata
 from datetime import datetime
 from azure.storage.filedatalake import DataLakeServiceClient
 from azure.storage.blob import BlobServiceClient
+from azure.core.exceptions import ResourceExistsError, ResourceNotFoundError
 from threading import Lock
 from constants import SearchField
 from services.place_data_service import PlaceDataProviderFactory
@@ -221,6 +222,87 @@ def _get_blob_service_client() -> BlobServiceClient:
     return BlobServiceClient.from_connection_string(connection_string)
 
 
+def ensure_container_exists(container_name: str, public_access: str = "blob") -> None:
+    """Create a blob container when missing; treat existing containers as success."""
+    client = _get_blob_service_client()
+    container_client = client.get_container_client(container_name)
+    try:
+        container_client.get_container_properties()
+        return
+    except ResourceNotFoundError:
+        pass
+
+    access_type = "blob" if public_access == "blob" else None
+    try:
+        container_client.create_container(public_access=access_type)
+        logging.info(f"Created blob container: {container_name}")
+    except ResourceExistsError:
+        logging.info(f"Blob container already exists: {container_name}")
+
+
+def upload_blob_to_container(
+    container_name: str,
+    blob_path: str,
+    data: bytes,
+    content_type: str = "image/jpeg",
+    metadata: Optional[Dict[str, str]] = None,
+    cache_control: Optional[str] = None,
+    public_access: str = "blob",
+    overwrite: bool = True,
+) -> str:
+    """Upload binary data to an Azure Blob Storage container and return its URL."""
+    from azure.storage.blob import ContentSettings
+
+    ensure_container_exists(container_name, public_access=public_access)
+    client = _get_blob_service_client()
+    blob_client = client.get_blob_client(container=container_name, blob=blob_path)
+    blob_client.upload_blob(
+        data,
+        overwrite=overwrite,
+        content_settings=ContentSettings(
+            content_type=content_type,
+            content_disposition="inline",
+            cache_control=cache_control,
+        ),
+        metadata=metadata,
+    )
+    logging.info(f"Uploaded blob: {container_name}/{blob_path}")
+    return blob_client.url
+
+
+def delete_blob_from_container(container_name: str, blob_path: str) -> bool:
+    """Delete a blob from a container. Returns True if deleted."""
+    try:
+        client = _get_blob_service_client()
+        blob_client = client.get_blob_client(container=container_name, blob=blob_path)
+        blob_client.delete_blob()
+        logging.info(f"Deleted blob: {container_name}/{blob_path}")
+        return True
+    except Exception as e:
+        logging.warning(f"Failed to delete blob {container_name}/{blob_path}: {e}")
+        return False
+
+
+def list_blobs_in_container(container_name: str, prefix: str = "") -> list:
+    """List blob names under a prefix in a container."""
+    client = _get_blob_service_client()
+    container_client = client.get_container_client(container_name)
+    return [blob.name for blob in container_client.list_blobs(name_starts_with=prefix)]
+
+
+def delete_container(container_name: str) -> bool:
+    """Delete a blob container. Returns True if deleted."""
+    try:
+        client = _get_blob_service_client()
+        container_client = client.get_container_client(container_name)
+        container_client.delete_container()
+        logging.info(f"Deleted blob container: {container_name}")
+        return True
+    except Exception as e:
+        logging.warning(f"Failed to delete blob container {container_name}: {e}")
+        return False
+
+
 def upload_blob(blob_path: str, data: bytes, content_type: str = "image/jpeg") -> str:
     """
     Upload binary data to Azure Blob Storage and return the public URL.
@@ -233,39 +315,22 @@ def upload_blob(blob_path: str, data: bytes, content_type: str = "image/jpeg") -
     Returns:
         The public URL of the uploaded blob.
     """
-    from azure.storage.blob import ContentSettings
-    client = _get_blob_service_client()
-    blob_client = client.get_blob_client(container=CURATOR_PHOTOS_CONTAINER, blob=blob_path)
-    blob_client.upload_blob(
+    return upload_blob_to_container(
+        CURATOR_PHOTOS_CONTAINER,
+        blob_path,
         data,
-        overwrite=True,
-        content_settings=ContentSettings(
-            content_type=content_type,
-            content_disposition="inline",
-        ),
+        content_type=content_type,
     )
-    logging.info(f"Uploaded blob: {blob_path}")
-    return blob_client.url
 
 
 def delete_blob(blob_path: str) -> bool:
     """Delete a blob from the curator-photos container. Returns True if deleted."""
-    try:
-        client = _get_blob_service_client()
-        blob_client = client.get_blob_client(container=CURATOR_PHOTOS_CONTAINER, blob=blob_path)
-        blob_client.delete_blob()
-        logging.info(f"Deleted blob: {blob_path}")
-        return True
-    except Exception as e:
-        logging.warning(f"Failed to delete blob {blob_path}: {e}")
-        return False
+    return delete_blob_from_container(CURATOR_PHOTOS_CONTAINER, blob_path)
 
 
 def list_blobs(prefix: str) -> list:
     """List blob names under a prefix in the curator-photos container."""
-    client = _get_blob_service_client()
-    container_client = client.get_container_client(CURATOR_PHOTOS_CONTAINER)
-    return [blob.name for blob in container_client.list_blobs(name_starts_with=prefix)]
+    return list_blobs_in_container(CURATOR_PHOTOS_CONTAINER, prefix)
 
 
 def download_image(url: str) -> Tuple[bytes, str]:

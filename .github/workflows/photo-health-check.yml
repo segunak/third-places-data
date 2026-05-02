@@ -1,0 +1,52 @@
+name: Photo Health Check
+
+on:
+  workflow_call:
+    inputs:
+      city:
+        description: 'City to check'
+        required: false
+        default: 'charlotte'
+        type: string
+      place_id:
+        description: 'Required Google Maps Place ID'
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      city:
+        description: 'City to check'
+        required: false
+        default: 'charlotte'
+        type: string
+      place_id:
+        description: 'Required Google Maps Place ID'
+        required: true
+        type: string
+
+concurrency:
+  group: photo-health-check-${{ inputs.place_id }}
+  cancel-in-progress: true
+
+jobs:
+  photo-health-check:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Run photo health check
+        working-directory: ./scripts
+        shell: pwsh
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          $city = [uri]::EscapeDataString("${{ inputs.city }}")
+          $placeId = [uri]::EscapeDataString("${{ inputs.place_id }}")
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/photo-assets/health-check?city=$city&place_id=$placeId"
+          Write-Host "Using function URL: $FunctionUrl"
+
+          ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey "$Env:AZURE_FUNCTION_KEY" -Method GET -TimeoutSeconds 600
+          if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
+          }

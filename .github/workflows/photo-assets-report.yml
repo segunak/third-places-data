@@ -1,0 +1,77 @@
+name: Photo Assets Report
+
+on:
+  workflow_call:
+    inputs:
+      city:
+        description: 'City to report'
+        required: false
+        default: 'charlotte'
+        type: string
+      max_places:
+        description: 'Maximum places to include; 0 means all places'
+        required: false
+        default: '0'
+        type: string
+      record_id:
+        description: 'Optional Airtable record ID filter'
+        required: false
+        default: ''
+        type: string
+      place_id:
+        description: 'Optional Google Maps Place ID filter'
+        required: false
+        default: ''
+        type: string
+  workflow_dispatch:
+    inputs:
+      city:
+        description: 'City to report'
+        required: false
+        default: 'charlotte'
+        type: string
+      max_places:
+        description: 'Maximum places to include; 0 means all places'
+        required: false
+        default: '0'
+        type: string
+      record_id:
+        description: 'Optional Airtable record ID filter'
+        required: false
+        default: ''
+        type: string
+      place_id:
+        description: 'Optional Google Maps Place ID filter'
+        required: false
+        default: ''
+        type: string
+
+concurrency:
+  group: photo-assets-report
+  cancel-in-progress: true
+
+jobs:
+  photo-assets-report:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Run photo assets report
+        working-directory: ./scripts
+        shell: pwsh
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          $city = [uri]::EscapeDataString("${{ inputs.city }}")
+          $maxPlaces = [uri]::EscapeDataString("${{ inputs.max_places }}")
+          $recordId = [uri]::EscapeDataString("${{ inputs.record_id }}")
+          $placeId = [uri]::EscapeDataString("${{ inputs.place_id }}")
+
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/photo-assets/report?city=$city&max_places=$maxPlaces&record_id=$recordId&place_id=$placeId"
+          Write-Host "Using function URL: $FunctionUrl"
+
+          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey "$Env:AZURE_FUNCTION_KEY" -TimeoutSeconds 1800
+          if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
+          }

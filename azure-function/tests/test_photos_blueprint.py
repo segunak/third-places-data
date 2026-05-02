@@ -232,6 +232,43 @@ def test_refresh_single_place_photos_from_raw_data_dry_run(monkeypatch):
     assert result["photos_after"] == 2
 
 
+def test_refresh_single_place_photos_falls_back_to_airtable_photos_without_raw_data(monkeypatch):
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: DummyProvider()),
+    )
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, {"photos": {"photo_urls": []}}, "ok"),
+    )
+
+    activity_input = {
+        "place": {
+            "id": "rec-airtable-photos",
+            "fields": {
+                "Place": "Airtable Photos Place",
+                "Google Maps Place Id": "ChIJ-airtable-photos",
+                "Photos": json.dumps(["https://example.com/airtable-photo.jpg"]),
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": True,
+            "photo_source_mode": "refresh_from_data_file_raw_data",
+        },
+    }
+
+    result = photos.refresh_single_place_photos(activity_input)
+
+    assert result["status"] == "would_update"
+    assert result["photos_before"] == 0
+    assert result["photos_after"] == 1
+
+
 def test_refresh_single_place_photos_from_cached_photo_urls_dry_run(monkeypatch):
     monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
     monkeypatch.setattr(

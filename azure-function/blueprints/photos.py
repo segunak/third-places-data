@@ -4,6 +4,7 @@ import azure.functions as func
 import azure.durable_functions as df
 from datetime import datetime
 from services.airtable_service import AirtableService
+from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService
 from services.place_data_service import PlaceDataProviderFactory
 from services.utils import fetch_data_github, save_data_github
 
@@ -14,6 +15,12 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
     provider_type = req.params.get('provider_type')
     city = req.params.get('city', 'charlotte')
     dry_run = req.params.get('dry_run', 'true').lower() == 'true'
+    upload = req.params.get('upload', 'true').lower() == 'true'
+    write_airtable = req.params.get('write_airtable', 'true').lower() == 'true'
+    overwrite = req.params.get('overwrite', 'false').lower() == 'true'
+    retry_failures = req.params.get('retry_failures', 'false').lower() == 'true'
+    try_url_variants = req.params.get('try_url_variants', 'true').lower() == 'true'
+    failure_ttl_hours_param = req.params.get('failure_ttl_hours', '168')
     sequential_mode = req.params.get('sequential_mode', 'false').lower() == 'true'
     max_places_param = req.params.get('max_places')
     photo_source_mode = req.params.get('photo_source_mode', 'refresh_from_data_file_raw_data')
@@ -65,6 +72,7 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
         )
 
     max_places = None
+    failure_ttl_hours = 168
     if max_places_param:
         try:
             max_places = int(max_places_param)
@@ -91,10 +99,41 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
                 mimetype="application/json"
             )
 
+    try:
+        failure_ttl_hours = int(failure_ttl_hours_param)
+        if failure_ttl_hours < 0:
+            return None, func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Invalid failure_ttl_hours value",
+                    "data": None,
+                    "error": "failure_ttl_hours must be a non-negative integer"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+    except ValueError:
+        return None, func.HttpResponse(
+            json.dumps({
+                "success": False,
+                "message": "Invalid failure_ttl_hours value",
+                "data": None,
+                "error": "failure_ttl_hours must be a valid integer"
+            }),
+            status_code=400,
+            mimetype="application/json"
+        )
+
     parsed = {
         "provider_type": provider_type,
         "city": city,
         "dry_run": dry_run,
+        "upload": upload,
+        "write_airtable": write_airtable,
+        "overwrite": overwrite,
+        "retry_failures": retry_failures,
+        "failure_ttl_hours": failure_ttl_hours,
+        "try_url_variants": try_url_variants,
         "sequential_mode": sequential_mode,
         "max_places": max_places,
         "photo_source_mode": photo_source_mode,
@@ -119,9 +158,16 @@ async def refresh_all_photos(req: func.HttpRequest, client) -> func.HttpResponse
         sequential_mode = parsed_request["sequential_mode"]
         max_places = parsed_request["max_places"]
         photo_source_mode = parsed_request["photo_source_mode"]
+        upload = parsed_request["upload"]
+        write_airtable = parsed_request["write_airtable"]
+        overwrite = parsed_request["overwrite"]
+        retry_failures = parsed_request["retry_failures"]
+        failure_ttl_hours = parsed_request["failure_ttl_hours"]
+        try_url_variants = parsed_request["try_url_variants"]
 
         logging.info(f"Starting administrative photo refresh with parameters: "
                      f"provider_type={provider_type}, city={city}, dry_run={dry_run}, "
+                     f"upload={upload}, write_airtable={write_airtable}, "
                      f"sequential_mode={sequential_mode}, max_places={max_places}, "
                      f"photo_source_mode={photo_source_mode}")
 
@@ -129,6 +175,12 @@ async def refresh_all_photos(req: func.HttpRequest, client) -> func.HttpResponse
             "provider_type": provider_type,
             "city": city,
             "dry_run": dry_run,
+            "upload": upload,
+            "write_airtable": write_airtable,
+            "overwrite": overwrite,
+            "retry_failures": retry_failures,
+            "failure_ttl_hours": failure_ttl_hours,
+            "try_url_variants": try_url_variants,
             "sequential_mode": sequential_mode,
             "max_places": max_places,
             "photo_source_mode": photo_source_mode
@@ -166,6 +218,12 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
         sequential_mode = orchestration_input.get("sequential_mode", False)
         max_places = orchestration_input.get("max_places")
         photo_source_mode = orchestration_input.get("photo_source_mode", "refresh_from_data_file_raw_data")
+        upload = orchestration_input.get("upload", not dry_run)
+        write_airtable = orchestration_input.get("write_airtable", not dry_run)
+        overwrite = orchestration_input.get("overwrite", False)
+        retry_failures = orchestration_input.get("retry_failures", False)
+        failure_ttl_hours = orchestration_input.get("failure_ttl_hours", 168)
+        try_url_variants = orchestration_input.get("try_url_variants", True)
 
         if not provider_type:
             raise ValueError("Missing required parameter: provider_type")
@@ -176,7 +234,13 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
             "dry_run": dry_run,
             "sequential_mode": sequential_mode,
             "max_places": max_places,
-            "photo_source_mode": photo_source_mode
+            "photo_source_mode": photo_source_mode,
+            "upload": upload,
+            "write_airtable": write_airtable,
+            "overwrite": overwrite,
+            "retry_failures": retry_failures,
+            "failure_ttl_hours": failure_ttl_hours,
+            "try_url_variants": try_url_variants,
         }
 
         all_third_places = yield context.call_activity(
@@ -268,6 +332,12 @@ def refresh_single_place_photos(activityInput):
         provider_type = config.get("provider_type")
         city = config.get("city", "charlotte")
         dry_run = config.get("dry_run", True)
+        upload = config.get("upload", not dry_run)
+        write_airtable = config.get("write_airtable", not dry_run)
+        overwrite = config.get("overwrite", False)
+        retry_failures = config.get("retry_failures", False)
+        failure_ttl_hours = config.get("failure_ttl_hours", 168)
+        try_url_variants = config.get("try_url_variants", True)
         photo_source_mode = config.get("photo_source_mode", "refresh_from_data_file_raw_data")
 
         place_result = {
@@ -326,13 +396,14 @@ def refresh_single_place_photos(activityInput):
         try:
             if photo_source_mode == "refresh_from_data_provider":
                 provider_photos = data_provider.get_place_photos(place_id)
-                selected_photo_urls = provider_photos.get('photo_urls', [])
 
                 provider_raw_data = provider_photos.get('raw_data')
                 if provider_raw_data:
                     place_data.setdefault('photos', {})['raw_data'] = provider_raw_data
 
-                logging.info(f"Selected {len(selected_photo_urls)} provider photos for {place_name}")
+                selected_photo_urls = provider_photos.get('photo_urls', [])
+                place_data.setdefault('photos', {})['photo_urls'] = selected_photo_urls
+                logging.info(f"Fetched {len(selected_photo_urls)} provider photos for {place_name}")
 
             elif photo_source_mode == "refresh_from_data_file_photo_urls":
                 selected_photo_urls = current_photos if isinstance(current_photos, list) else []
@@ -341,40 +412,58 @@ def refresh_single_place_photos(activityInput):
             else:
                 raw_data = photos_section.get('raw_data', [])
                 if not raw_data:
-                    place_result["status"] = "skipped"
-                    place_result["message"] = "No raw photos data found"
-                    return place_result
+                    logging.info(f"No raw photos data found for {place_name}; falling back to Airtable and cached photo_urls inventory")
+                else:
+                    photo_list = []
+                    parse_method = "unknown"
 
-                photo_list = []
-                parse_method = "unknown"
+                    if isinstance(raw_data, list) and raw_data:
+                        if isinstance(raw_data[0], dict) and 'photo_url_big' in raw_data[0]:
+                            photo_list = raw_data
+                            parse_method = "direct_list"
 
-                if isinstance(raw_data, list) and raw_data:
-                    if isinstance(raw_data[0], dict) and 'photo_url_big' in raw_data[0]:
-                        photo_list = raw_data
-                        parse_method = "direct_list"
+                    if not photo_list and isinstance(raw_data, dict):
+                        photos_data = raw_data.get('photos_data', [])
+                        if isinstance(photos_data, list) and photos_data:
+                            if isinstance(photos_data[0], dict) and 'photo_url_big' in photos_data[0]:
+                                photo_list = photos_data
+                                parse_method = "nested_dict"
 
-                if not photo_list and isinstance(raw_data, dict):
-                    photos_data = raw_data.get('photos_data', [])
-                    if isinstance(photos_data, list) and photos_data:
-                        if isinstance(photos_data[0], dict) and 'photo_url_big' in photos_data[0]:
-                            photo_list = photos_data
-                            parse_method = "nested_dict"
+                    if not photo_list:
+                        logging.info(f"Could not parse raw photos data for {place_name}; falling back to Airtable and cached photo_urls inventory")
+                    else:
+                        logging.info(f"Found {len(photo_list)} raw photo data records for {place_name} (method: {parse_method})")
 
-                if not photo_list:
-                    place_result["status"] = "error"
-                    place_result["message"] = "Could not parse raw photos data - no valid structure found"
-                    return place_result
+                        valid_photos = []
+                        for photo in photo_list:
+                            photo_url = photo.get('photo_url_big', '')
+                            if data_provider._is_valid_photo_url(photo_url):
+                                valid_photos.append(photo)
 
-                logging.info(f"Found {len(photo_list)} raw photo data records for {place_name} (method: {parse_method})")
+                        selected_photo_urls = photo_selector(valid_photos, max_photos=30)
+                        logging.info(f"Selected {len(selected_photo_urls)} photos from cached raw_data for {place_name}")
 
-                valid_photos = []
-                for photo in photo_list:
-                    photo_url = photo.get('photo_url_big', '')
-                    if data_provider._is_valid_photo_url(photo_url):
-                        valid_photos.append(photo)
+            asset_service = PhotoAssetService()
+            asset_config = PhotoAssetConfig(
+                city=city,
+                dry_run=dry_run,
+                upload=upload,
+                write_airtable=write_airtable,
+                overwrite=overwrite,
+                retry_failures=retry_failures,
+                failure_ttl_hours=failure_ttl_hours,
+                try_url_variants=try_url_variants,
+            )
+            asset_result = asset_service.process_place(place, place_data, asset_config)
+            place_result["azure_asset_summary"] = asset_result.get("summary", {})
+            place_result["failed_uploads"] = len(asset_result.get("failures", []))
+            place_result["azure_assets"] = len(asset_result.get("assets", []))
 
-                selected_photo_urls = photo_selector(valid_photos, max_photos=30)
-                logging.info(f"Selected {len(selected_photo_urls)} photos from cached raw_data for {place_name}")
+            if dry_run:
+                selected_photo_urls = asset_result.get("selected_source_urls", [])
+            else:
+                selected_photo_urls = asset_result.get("selected_airtable_urls", [])
+                place_data = asset_result.get("place_data", place_data)
 
             place_result["photos_after"] = len(selected_photo_urls)
             if not selected_photo_urls:
@@ -392,43 +481,44 @@ def refresh_single_place_photos(activityInput):
 
         if not dry_run:
             try:
-                photos_json = json.dumps(selected_photo_urls)
-                update_result = airtable_client.update_place_record(
-                    record_id=place['id'],
-                    field_to_update='Photos',
-                    update_value=photos_json,
-                    overwrite=True
+                place_data['photos']['photo_urls'] = selected_photo_urls
+                place_data['photos']['message'] = (
+                    f"Photos refreshed to Azure by admin function using {provider_type} "
+                    f"and mode {photo_source_mode}"
                 )
-                if not update_result.get('updated', False):
-                    if update_result.get('old_value') is None and update_result.get('new_value') is None:
-                        place_result["status"] = "error"
-                        place_result["message"] = "Failed to update Airtable due to error"
+                place_data['photos']['last_refreshed'] = datetime.now().isoformat()
+
+                updated_json = json.dumps(place_data, indent=4)
+                save_success, save_message = save_data_github(updated_json, data_file_path)
+                if not save_success:
+                    place_result["status"] = "error"
+                    place_result["message"] = f"GitHub save failed: {save_message}"
+                    return place_result
+
+                if write_airtable:
+                    photos_json = json.dumps(selected_photo_urls)
+                    update_result = airtable_client.update_place_record(
+                        record_id=place['id'],
+                        field_to_update='Photos',
+                        update_value=photos_json,
+                        overwrite=True
+                    )
+                    if not update_result.get('updated', False):
+                        if update_result.get('old_value') is None and update_result.get('new_value') is None:
+                            place_result["status"] = "error"
+                            place_result["message"] = "Failed to update Airtable due to error"
+                            return place_result
+                        logging.info(f"Photos for {place_name} are already up to date in Airtable")
+                        place_result["status"] = "no_change"
+                        place_result["message"] = "Data file updated; Airtable Photos already up to date"
                         return place_result
                     else:
-                        logging.info(f"Photos for {place_name} are already up to date - no changes needed to Airtable or data file")
-                        place_result["status"] = "no_change"
-                        place_result["message"] = f"Photos already up to date - no changes needed"
-                        return place_result
+                        logging.info(f"Airtable was updated for {place_name}")
+                        place_result["status"] = "updated"
+                        place_result["message"] = f"Successfully updated with {len(selected_photo_urls)} Azure photos"
                 else:
-                    logging.info(f"Airtable was updated for {place_name}, updating data file cache")
-
-                    place_data['photos']['photo_urls'] = selected_photo_urls
-                    place_data['photos']['message'] = (
-                        f"Photos refreshed by admin function using {provider_type} "
-                        f"and mode {photo_source_mode}"
-                    )
-                    place_data['photos']['last_refreshed'] = datetime.now().isoformat()
-
-                    updated_json = json.dumps(place_data, indent=4)
-                    save_success, save_message = save_data_github(updated_json, data_file_path)
-
-                    if not save_success:
-                        place_result["status"] = "error"
-                        place_result["message"] = f"Airtable updated but GitHub save failed: {save_message}"
-                        return place_result
-
                     place_result["status"] = "updated"
-                    place_result["message"] = f"Successfully updated with {len(selected_photo_urls)} photos"
+                    place_result["message"] = f"Successfully updated data file with {len(selected_photo_urls)} Azure photos"
 
             except Exception as e:
                 place_result["status"] = "error"
