@@ -266,10 +266,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -278,6 +274,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -308,8 +312,8 @@
         "azure_asset_failures": [],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 2,
-            "duplicate_count": 1,
+            "candidate_count": 3,
+            "duplicate_count": 0,
             "airtable_photos_count": 1,
             "airtable_photos_google_count": 1,
             "data_file_photo_urls_count": 1,
@@ -317,13 +321,13 @@
             "place_name": "1368 Sweet Corner Cafe | University City",
             "place_id": "ChIJ79I38fsdVIgRD0su4wT_zaw",
             "record_id": "recliXq3KMsjNN8Dk",
-            "generated_at": "2026-05-02T21:53:18.312928+00:00",
+            "generated_at": "2026-05-02T22:12:37.709947+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 0,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 1
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
