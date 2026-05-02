@@ -723,7 +723,1066 @@
                 }
             ]
         },
-        "last_refreshed": "2026-02-16T02:42:02.019275"
+        "last_refreshed": "2026-02-16T02:42:02.019275",
+        "azure_assets": [
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMRMk6orjqcUYRg6RUbLOeBYRKCohdaWMHDU_0K=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMRMk6orjqcUYRg6RUbLOeBYRKCohdaWMHDU_0K=w2048-h2048-k-no",
+                "source_url_sha256": "2c9ade419c25a9b50e155ecd7866afcb6369fcdeac9bba2134efb251e2fbe36a",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[8].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/2c9ade419c25a9b50e155ecd7866afcb6369fcdeac9bba2134efb251e2fbe36a.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/2c9ade419c25a9b50e155ecd7866afcb6369fcdeac9bba2134efb251e2fbe36a.jpg",
+                "content_sha256": "39238dc3d60512e23aefbea6a2ef935e55279947fe808db62c0b2de4576ac954",
+                "content_type": "image/jpeg",
+                "bytes": 537813,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMRMk6orjqcUYRg6RUbLOeBYRKCohdaWMHDU_0K=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMRMk6orjqcUYRg6RUbLOeBYRKCohdaWMHDU_0K=w2048-h2048-k-no",
+                        "bytes": 537813,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:37.796014+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOE8195MLCsV2YCdpTdI_kJb5CoqLbDA7epZA2M=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOE8195MLCsV2YCdpTdI_kJb5CoqLbDA7epZA2M=w2048-h2048-k-no",
+                "source_url_sha256": "54b044261fef5378e6ca09f33c0bc2e0b01a060098f9d4ff11089ffb7032a063",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/54b044261fef5378e6ca09f33c0bc2e0b01a060098f9d4ff11089ffb7032a063.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/54b044261fef5378e6ca09f33c0bc2e0b01a060098f9d4ff11089ffb7032a063.jpg",
+                "content_sha256": "abb4074e4d32cbaa11627cd7c2ebce6f54cf9e3f3673507daae235d9032846f9",
+                "content_type": "image/jpeg",
+                "bytes": 908303,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOE8195MLCsV2YCdpTdI_kJb5CoqLbDA7epZA2M=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOE8195MLCsV2YCdpTdI_kJb5CoqLbDA7epZA2M=w2048-h2048-k-no",
+                        "bytes": 908303,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:38.661988+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=BhTgkY96fQ2XQBoMHnKjig&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=25.828604&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=BhTgkY96fQ2XQBoMHnKjig&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=25.828604&pitch=0&thumbfov=100",
+                "source_url_sha256": "a3175ca2d420c96359351d4cdc7ea700c0827a2a8c506cacffe04245366d4fe5",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[6].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/a3175ca2d420c96359351d4cdc7ea700c0827a2a8c506cacffe04245366d4fe5.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/a3175ca2d420c96359351d4cdc7ea700c0827a2a8c506cacffe04245366d4fe5.jpg",
+                "content_sha256": "cce36c4de9f7ea969dce3b5dcadaed22c1fa46fa68785c3e3d3d30743a392c36",
+                "content_type": "image/jpeg",
+                "bytes": 166107,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=BhTgkY96fQ2XQBoMHnKjig&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=25.828604&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=BhTgkY96fQ2XQBoMHnKjig&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=25.828604&pitch=0&thumbfov=100",
+                        "bytes": 166107,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:39.141315+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOwiL6ZIviE6ilYO4gPT_0N2G9Ymvxu9osCVpOu=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOwiL6ZIviE6ilYO4gPT_0N2G9Ymvxu9osCVpOu=w2048-h2048-k-no",
+                "source_url_sha256": "9cc3ea104096305e151004dac1562a60530bdebe148074e4984ab00012362e89",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[3]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/9cc3ea104096305e151004dac1562a60530bdebe148074e4984ab00012362e89.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/9cc3ea104096305e151004dac1562a60530bdebe148074e4984ab00012362e89.png",
+                "content_sha256": "432b257b2418e3f24f121e3fdb789a7b1958ef2835f42273a07cd6f41b796b73",
+                "content_type": "image/png",
+                "bytes": 2018739,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOwiL6ZIviE6ilYO4gPT_0N2G9Ymvxu9osCVpOu=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOwiL6ZIviE6ilYO4gPT_0N2G9Ymvxu9osCVpOu=w2048-h2048-k-no",
+                        "bytes": 2018739,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:40.984681+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNI9-ZCqSYcubMYdb098sFYEdokEV7LcvvlpSJO=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNI9-ZCqSYcubMYdb098sFYEdokEV7LcvvlpSJO=w2048-h2048-k-no",
+                "source_url_sha256": "c34a051fc5c16d183e6b6505bfe820299c53cdcea90f969799d6ceaa7ec7aefb",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[4]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/c34a051fc5c16d183e6b6505bfe820299c53cdcea90f969799d6ceaa7ec7aefb.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/c34a051fc5c16d183e6b6505bfe820299c53cdcea90f969799d6ceaa7ec7aefb.jpg",
+                "content_sha256": "880e9120c5871758e1ad0c6a076d12a82c33dde895b349680b889a9cf4265819",
+                "content_type": "image/jpeg",
+                "bytes": 288789,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNI9-ZCqSYcubMYdb098sFYEdokEV7LcvvlpSJO=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNI9-ZCqSYcubMYdb098sFYEdokEV7LcvvlpSJO=w2048-h2048-k-no",
+                        "bytes": 288789,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:41.558394+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNenFtWi-NF9I6ec5MsjokURpJbg0kK0ivsMOeh=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNenFtWi-NF9I6ec5MsjokURpJbg0kK0ivsMOeh=w2048-h2048-k-no",
+                "source_url_sha256": "b280608005d863e7f22a0da6ae469a5997a4680b5e8e7560356d899c74414203",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[5]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[4].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/b280608005d863e7f22a0da6ae469a5997a4680b5e8e7560356d899c74414203.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/b280608005d863e7f22a0da6ae469a5997a4680b5e8e7560356d899c74414203.jpg",
+                "content_sha256": "cea278b5b501cc673ed853fc724c20757ef4176b29eea1af273035f173ba2f89",
+                "content_type": "image/jpeg",
+                "bytes": 584127,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNenFtWi-NF9I6ec5MsjokURpJbg0kK0ivsMOeh=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNenFtWi-NF9I6ec5MsjokURpJbg0kK0ivsMOeh=w2048-h2048-k-no",
+                        "bytes": 584127,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:42.323865+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipP12JchzkYGPbW-4a4wcjKLYj-MXsR-yKyQGb23=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipP12JchzkYGPbW-4a4wcjKLYj-MXsR-yKyQGb23=w2048-h2048-k-no",
+                "source_url_sha256": "d87ba06f325a69a3dda69cb6c39e757eca0f303fd6957473f540317f629d8783",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[6]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[6]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[11].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/d87ba06f325a69a3dda69cb6c39e757eca0f303fd6957473f540317f629d8783.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/d87ba06f325a69a3dda69cb6c39e757eca0f303fd6957473f540317f629d8783.jpg",
+                "content_sha256": "64c5276738248ae2181cf5c599ef99ce39e8f8fe11da16f723412a6fc894430f",
+                "content_type": "image/jpeg",
+                "bytes": 312621,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipP12JchzkYGPbW-4a4wcjKLYj-MXsR-yKyQGb23=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipP12JchzkYGPbW-4a4wcjKLYj-MXsR-yKyQGb23=w2048-h2048-k-no",
+                        "bytes": 312621,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:42.807167+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNlvdXSCm2YHBgWiGn9IIXLaihSx0YeIxE1FQaQ=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNlvdXSCm2YHBgWiGn9IIXLaihSx0YeIxE1FQaQ=w2048-h2048-k-no",
+                "source_url_sha256": "47db449b0d7929e69528c1c47120be4524bbc205765999c34ce7692ab0f5e9c6",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[7]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[7]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[9].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/47db449b0d7929e69528c1c47120be4524bbc205765999c34ce7692ab0f5e9c6.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/47db449b0d7929e69528c1c47120be4524bbc205765999c34ce7692ab0f5e9c6.jpg",
+                "content_sha256": "58968105b4de70fa204f21ebe1958981d95a63ae7e9e2b62ab8554ddf999ec7f",
+                "content_type": "image/jpeg",
+                "bytes": 368495,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNlvdXSCm2YHBgWiGn9IIXLaihSx0YeIxE1FQaQ=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNlvdXSCm2YHBgWiGn9IIXLaihSx0YeIxE1FQaQ=w2048-h2048-k-no",
+                        "bytes": 368495,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:43.401068+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNuZpbS0WhYMAy0eLtgk5Fp9_L1lIItpF1ysBoX=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNuZpbS0WhYMAy0eLtgk5Fp9_L1lIItpF1ysBoX=w2048-h2048-k-no",
+                "source_url_sha256": "22e998450611948c2dcf9d6699134bf32f947d174961d78f84b606bb5a744c83",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[8]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[8]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[10].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/22e998450611948c2dcf9d6699134bf32f947d174961d78f84b606bb5a744c83.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/22e998450611948c2dcf9d6699134bf32f947d174961d78f84b606bb5a744c83.png",
+                "content_sha256": "aa0513c6678b5d03938f4ac19ffc1dcd9f47fa541484a658de923988316bfaed",
+                "content_type": "image/png",
+                "bytes": 432738,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNuZpbS0WhYMAy0eLtgk5Fp9_L1lIItpF1ysBoX=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNuZpbS0WhYMAy0eLtgk5Fp9_L1lIItpF1ysBoX=w2048-h2048-k-no",
+                        "bytes": 432738,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:44.122370+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipO39UaRL6Fle2Ht1D-Jy2SeswBE8Ql7LqsSMaHm=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipO39UaRL6Fle2Ht1D-Jy2SeswBE8Ql7LqsSMaHm=w2048-h2048-k-no",
+                "source_url_sha256": "f5f95593bc98ae9179a2a0e2a168a3174f136636b15870dbbe6dc75315a84302",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[9]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[9]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[9]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[9]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[13].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/f5f95593bc98ae9179a2a0e2a168a3174f136636b15870dbbe6dc75315a84302.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/f5f95593bc98ae9179a2a0e2a168a3174f136636b15870dbbe6dc75315a84302.png",
+                "content_sha256": "f2f2ec0924a3823557c2c5338e5b87bd19e739cbd487815886ce5c160d1a5882",
+                "content_type": "image/png",
+                "bytes": 283603,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipO39UaRL6Fle2Ht1D-Jy2SeswBE8Ql7LqsSMaHm=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipO39UaRL6Fle2Ht1D-Jy2SeswBE8Ql7LqsSMaHm=w2048-h2048-k-no",
+                        "bytes": 283603,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:44.704495+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNQf5OgB4r6sBLYaNJ0AhvoS0g70XsfFS5DaMNW=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNQf5OgB4r6sBLYaNJ0AhvoS0g70XsfFS5DaMNW=w2048-h2048-k-no",
+                "source_url_sha256": "c6d67e3dfc80ac8eb5b7094bcf0e26dd295831e895906f7dd7d5c0454e026e74",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[10]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[10]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[10]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[10]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[12].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/c6d67e3dfc80ac8eb5b7094bcf0e26dd295831e895906f7dd7d5c0454e026e74.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJSe2mPQCdVogR5z_KFzdermc/c6d67e3dfc80ac8eb5b7094bcf0e26dd295831e895906f7dd7d5c0454e026e74.jpg",
+                "content_sha256": "93595b49e6fe792e7cdb419e33fa9db45e223b6760b075653f1be0fb9ca1cca7",
+                "content_type": "image/jpeg",
+                "bytes": 187236,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNQf5OgB4r6sBLYaNJ0AhvoS0g70XsfFS5DaMNW=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNQf5OgB4r6sBLYaNJ0AhvoS0g70XsfFS5DaMNW=w2048-h2048-k-no",
+                        "bytes": 187236,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:02:45.297979+00:00"
+            }
+        ],
+        "azure_asset_failures": [
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+                "source_url_sha256": "1250e7f99a64e39c27ce887d2e858f4dad6d9795ec9e6900dcea1a12847a566b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[11]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[11]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[11]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:02:45.634493+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+                "source_url_sha256": "cccae174ef28b4f3ad467007646b12dbc18156d30f830afa657e29c0397d86a7",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[12]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[12]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[12]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:02:45.965378+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no",
+                "source_url_sha256": "f1177b802657cd2a3f024a252d3114105eb846939104e4dc59d4fc8d6a8edb7b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[13]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[13]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[13]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:02:46.312820+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+                "source_url_sha256": "cccae174ef28b4f3ad467007646b12dbc18156d30f830afa657e29c0397d86a7",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[3].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7iBrtDO2C2kE6lTg1BgO7gNQNtfZKbQ3GBA8xQXabuxqscU2kZfoDd3mzSGOvIxZUfaIaPZqpK8TgiY92axORdZyHcOaO_9Wj1x-VKRDyyt1vdkc_2FtMP4uycmbXhesHqPLK1-lbY6CZ=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:02:47.553136+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no",
+                "source_url_sha256": "f1177b802657cd2a3f024a252d3114105eb846939104e4dc59d4fc8d6a8edb7b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[5].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[5].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEFl8A_U5WkwLs8inQwaU70-7k6cRJpC9mSJsAi4OA23MSZLNntcPXFeQ5-J-rBpv2jd299aIvEtlQGAbbndu33KR19qs3syJeVtxAgKGr-T29JGfhPa7_1KOPq9sMOXnc8VgTwNpyOYL7=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:02:48.110409+00:00"
+            },
+            {
+                "place_name": "Haraz Coffee House | Ballantyne",
+                "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+                "record_id": "recvBMwPiVI6qhw7H",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+                "source_url_sha256": "1250e7f99a64e39c27ce887d2e858f4dad6d9795ec9e6900dcea1a12847a566b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[7].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[7].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmtxAHfWA41_6iTO8CL1BEoEDeJ-j2c2FneGp0p8jkHryCoKsM4WEyBpeJmvu9nbeGimlAjtP3RiK28lUKoau7M0vwu4negxSjMPhifJ8MHB74HRlJ4q0-9bU96bBv6k9zqU-yLO_74OTh=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:02:49.255059+00:00"
+            }
+        ],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 28,
+            "duplicate_count": 14,
+            "airtable_photos_count": 14,
+            "airtable_photos_google_count": 14,
+            "data_file_photo_urls_count": 14,
+            "provider_raw_photo_url_big_count": 14,
+            "place_name": "Haraz Coffee House | Ballantyne",
+            "place_id": "ChIJSe2mPQCdVogR5z_KFzdermc",
+            "record_id": "recvBMwPiVI6qhw7H",
+            "generated_at": "2026-05-02T22:02:50.900222+00:00",
+            "azure_assets_count": 11,
+            "failed_upload_count": 6,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 11,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 14
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-11-18T15:11:38.194476"
