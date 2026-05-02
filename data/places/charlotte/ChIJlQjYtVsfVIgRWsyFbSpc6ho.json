@@ -936,8 +936,28 @@
     },
     "photos": {
         "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
-        "message": "Retrieved 0 photos, selected 0",
-        "photo_urls": [],
+        "message": "Photos refreshed to Azure by admin function using outscraper and mode refresh_from_data_provider",
+        "photo_urls": [
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/d16d08f8f9e356d355c47dd592be676923c32c65e108afed4469262388cc3b6f.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/2119f91c6b442ab1a00497180a5d4450c3242c354a18411d5228224cdf46b7f2.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/27912d095636a6809360a702f6ea4b1e5c1b4ffd50a705e9b38bf176579ba063.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/7f84f36d5d1c6216c7f5a8e2c930d1dd3d8cb40d039866255d7fe6f744d888ca.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/eab227669ccf987ca28f2518d22bcbbe8426f115d8c7c49eec4568cc7a452290.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/3a0a6e44d193d536090a8aba0c0d8b5d476032fff86f5ab4622275f7e137770e.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/b483530c1025fa02c3a1a38ffb11061b5bffab9a3616b1a3276fdf9d0e74f84e.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/6f332a12635c321448802768921ba835c7a600e2e49e032e65e59fef8ef2482b.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/8b7e053bb65b104b41075d9d38e63508b28f0cb946ef037a205cc9954995fae7.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/36cbb39bf04749f77b60e58b059d7cccbb14084309cdc0d27face111e520de53.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/8714ca009044aeacd8fb6f5af4c583502530a62522c5d5ecbde6a50128c4aa2a.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/708b1cff78e4829fe6f96a9d6b0d0c07ca8b813ee9ce31e6817a1b6055cafe7e.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/5f986d38f5653f913dee11258af81062facca4b89e3415ecfe904ce1cde916e1.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/b3b33767ed392da9bab8467ba185a42b711662c944a38c567ebbee715b58c2f5.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/05c90c2fc3c674ccdbfe474ddf448e7c7ac5934df4ff08aa71001c1f729724d2.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/80bb670d53a59d54b6c3cfbecb4741153ca26b66b47311cb947767dcfbf3f63c.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/9acfe105be04361757df02a6da64953d0598184915800bf896c199f73036d362.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/2975511f6763aedc588c79dc87d50285dd4d971cfe4033d4e28e208c07cec108.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/6a1863dfaed7f497a26e419779127382694c8995aceabcbc1e63f0652eef8897.png"
+        ],
         "raw_data": {
             "about": {
                 "Accessibility": {
@@ -1028,9 +1048,345 @@
             "owner_link": "https://www.google.com/maps/contrib/114890614815412586589",
             "owner_title": "Plot Twist CLT",
             "phone": null,
-            "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgtrt5dlbNzZW1hJDDfi0-jn4b70ubWnVfGkyOly7FhfXROn_oSW8LPR8UK9h2z2199oNhaqswf2CrncxxWrhlVMYuJD3XQJEwKPlSq4XMsccqa0kNmihD3PDPp9S2W2vTYI4yYbJtVCM-=w800-h500-k-no",
-            "photos_count": 16,
-            "photos_data": [],
+            "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE8sHrijSD14SEq0sy7SuBzcyx2p8X1ZF17rAOKM8k9ibSsDIOx3U_0csx2TN-YR0QqBpfs51UrOr7lYyDIgcg5wxHWfBrB1U9fSXKagEc7caTKycZ9lbv9y8LGpUSd7gfVg6o9YBPrYwCU=w800-h500-k-no",
+            "photos_count": 19,
+            "photos_data": [
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE8sHrijSD14SEq0sy7SuBzcyx2p8X1ZF17rAOKM8k9ibSsDIOx3U_0csx2TN-YR0QqBpfs51UrOr7lYyDIgcg5wxHWfBrB1U9fSXKagEc7caTKycZ9lbv9y8LGpUSd7gfVg6o9YBPrYwCU=w203-h270-k-no",
+                    "photo_date": "4/25/2026 13:00:00",
+                    "photo_id": "CIABIhAtt8vxUr-c_rYgpOee2BUM",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        9,
+                        1
+                    ],
+                    "photo_tags": [
+                        "all",
+                        "vibe"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE8sHrijSD14SEq0sy7SuBzcyx2p8X1ZF17rAOKM8k9ibSsDIOx3U_0csx2TN-YR0QqBpfs51UrOr7lYyDIgcg5wxHWfBrB1U9fSXKagEc7caTKycZ9lbv9y8LGpUSd7gfVg6o9YBPrYwCU",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE8sHrijSD14SEq0sy7SuBzcyx2p8X1ZF17rAOKM8k9ibSsDIOx3U_0csx2TN-YR0QqBpfs51UrOr7lYyDIgcg5wxHWfBrB1U9fSXKagEc7caTKycZ9lbv9y8LGpUSd7gfVg6o9YBPrYwCU=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFsGU-HBLdl0wD6LbI5tyd7DMZqpu21RUK1XOfbHr__28_KRNtBdtX7rdH8wF1IHkYHijPZ6pQbKK825SE6qO_XqsETwjEiWxOOdjQY6DLNtsAKtd3PFQqcDwupe57geV32jczypUToVqk-=w203-h270-k-no",
+                    "photo_date": "4/27/2026 0:00:00",
+                    "photo_id": "CIABIhC6FjvbaMNfUEdiVkrZD90K",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        3,
+                        8
+                    ],
+                    "photo_tags": [
+                        "food",
+                        "drink"
+                    ],
+                    "photo_upload_source": "local_universal_mobile_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFsGU-HBLdl0wD6LbI5tyd7DMZqpu21RUK1XOfbHr__28_KRNtBdtX7rdH8wF1IHkYHijPZ6pQbKK825SE6qO_XqsETwjEiWxOOdjQY6DLNtsAKtd3PFQqcDwupe57geV32jczypUToVqk-",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFsGU-HBLdl0wD6LbI5tyd7DMZqpu21RUK1XOfbHr__28_KRNtBdtX7rdH8wF1IHkYHijPZ6pQbKK825SE6qO_XqsETwjEiWxOOdjQY6DLNtsAKtd3PFQqcDwupe57geV32jczypUToVqk-=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEDvpew7L7JeV6c39_IPj3JHS7WmULNC8oTmKg4AluNn6UuiKXDbIKR-DXZVCHdAjBG8Nah3uWNCqhcttzhUzCnUGjG4pu-gNdoYaSZzx2riLWcxQb9LEY_ERZQWP13h3S0Xn-X95XO9F7U=w203-h270-k-no",
+                    "photo_date": "4/28/2026 15:00:00",
+                    "photo_id": "CIABIhCrb02ZvD39q4akAnsNkq26",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        3,
+                        8
+                    ],
+                    "photo_tags": [
+                        "food",
+                        "drink"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEDvpew7L7JeV6c39_IPj3JHS7WmULNC8oTmKg4AluNn6UuiKXDbIKR-DXZVCHdAjBG8Nah3uWNCqhcttzhUzCnUGjG4pu-gNdoYaSZzx2riLWcxQb9LEY_ERZQWP13h3S0Xn-X95XO9F7U",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEDvpew7L7JeV6c39_IPj3JHS7WmULNC8oTmKg4AluNn6UuiKXDbIKR-DXZVCHdAjBG8Nah3uWNCqhcttzhUzCnUGjG4pu-gNdoYaSZzx2riLWcxQb9LEY_ERZQWP13h3S0Xn-X95XO9F7U=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHgaQbNiSfa30LQNEyC5gVkcPJrW-lsxnL_6U6ntnF255G_f6ornVgW4mGHPBBZmeOkEPu1dHuoXl-0MsBrw36OXuAx5ZPpk0Ry2HjFXgBV30P4vSkF13hC4DrHXRTEYtugfnupxbV5Dj71=w203-h152-k-no",
+                    "photo_date": "4/25/2026 13:00:00",
+                    "photo_id": "CIABIhB0EwkllAmvPks2WVdgBQlA",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        1
+                    ],
+                    "photo_tags": [
+                        "all"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHgaQbNiSfa30LQNEyC5gVkcPJrW-lsxnL_6U6ntnF255G_f6ornVgW4mGHPBBZmeOkEPu1dHuoXl-0MsBrw36OXuAx5ZPpk0Ry2HjFXgBV30P4vSkF13hC4DrHXRTEYtugfnupxbV5Dj71",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHgaQbNiSfa30LQNEyC5gVkcPJrW-lsxnL_6U6ntnF255G_f6ornVgW4mGHPBBZmeOkEPu1dHuoXl-0MsBrw36OXuAx5ZPpk0Ry2HjFXgBV30P4vSkF13hC4DrHXRTEYtugfnupxbV5Dj71=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHfcr8YOR3FSM4q-wg3N8O0u2tfB_3v83nSJynqqSPvhhK8TLdOxPk4gcorqSPUgpNjB-Ubpm7M5VdUJBHp-fwLKkE6l222f4_1Burec-kqb9kp7vfaNsyV-Jdnv5LWFmXJfPMm0JtoVqEq=w203-h270-k-no",
+                    "photo_date": "4/28/2026 14:00:00",
+                    "photo_id": "CIABIhCp1a4qWtLITjj58DfDHscw",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        3,
+                        8
+                    ],
+                    "photo_tags": [
+                        "food",
+                        "drink"
+                    ],
+                    "photo_upload_source": "local_universal_mobile_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHfcr8YOR3FSM4q-wg3N8O0u2tfB_3v83nSJynqqSPvhhK8TLdOxPk4gcorqSPUgpNjB-Ubpm7M5VdUJBHp-fwLKkE6l222f4_1Burec-kqb9kp7vfaNsyV-Jdnv5LWFmXJfPMm0JtoVqEq",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHfcr8YOR3FSM4q-wg3N8O0u2tfB_3v83nSJynqqSPvhhK8TLdOxPk4gcorqSPUgpNjB-Ubpm7M5VdUJBHp-fwLKkE6l222f4_1Burec-kqb9kp7vfaNsyV-Jdnv5LWFmXJfPMm0JtoVqEq=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGUHyiH3JMxB-BhEP8KndcDIz5OCA7SXYTXayWtK24orOzQRmYopfCSPV3m3WPIeFSFxDzbCRQ3OufqvOogPGsg2t5GlWj1WftCPbS1FsLxk3eqs2s6_ZDQWSAHnoRbnVkkQByv2Wqqe6TJ=w203-h360-k-no",
+                    "photo_date": "4/25/2026 17:00:00",
+                    "photo_id": "CIABIhD-oIPCrKDVSljRLjt8TAED",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        8,
+                        3
+                    ],
+                    "photo_tags": [
+                        "food",
+                        "drink"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGUHyiH3JMxB-BhEP8KndcDIz5OCA7SXYTXayWtK24orOzQRmYopfCSPV3m3WPIeFSFxDzbCRQ3OufqvOogPGsg2t5GlWj1WftCPbS1FsLxk3eqs2s6_ZDQWSAHnoRbnVkkQByv2Wqqe6TJ",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGUHyiH3JMxB-BhEP8KndcDIz5OCA7SXYTXayWtK24orOzQRmYopfCSPV3m3WPIeFSFxDzbCRQ3OufqvOogPGsg2t5GlWj1WftCPbS1FsLxk3eqs2s6_ZDQWSAHnoRbnVkkQByv2Wqqe6TJ=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHzACXwRD0pkA0ZlUGxgA8qyy7mVHv-fVq8UR01ifxE1Vh2ierDRCUbr9QBm9XSxJLS2VoIfEJffDd9fH-jIXTUHgp7A-vFiKUygP7XZ1ia3I1deRDjr-6M1o651S4llPNXXBrXLeijWGMB=w203-h360-k-no",
+                    "photo_date": "4/29/2026 22:00:00",
+                    "photo_id": "CIABIhCu8dazJfErUGqp0iYGLlBq",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        8
+                    ],
+                    "photo_tags": [
+                        "food"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHzACXwRD0pkA0ZlUGxgA8qyy7mVHv-fVq8UR01ifxE1Vh2ierDRCUbr9QBm9XSxJLS2VoIfEJffDd9fH-jIXTUHgp7A-vFiKUygP7XZ1ia3I1deRDjr-6M1o651S4llPNXXBrXLeijWGMB",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHzACXwRD0pkA0ZlUGxgA8qyy7mVHv-fVq8UR01ifxE1Vh2ierDRCUbr9QBm9XSxJLS2VoIfEJffDd9fH-jIXTUHgp7A-vFiKUygP7XZ1ia3I1deRDjr-6M1o651S4llPNXXBrXLeijWGMB=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.21900987268272,
+                    "longitude": -80.80007279508236,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH-dtJ1g8jo7UewzSmQruLaGJba2O1JyrGl3lSOGi93DIfTM_VKieqXYWH3TRcy8iWmqoOMyo4MSg2iRHOPR5zmTnssBU9Y2GTtX9UyXUktcjL5M5N7Qh084_t2SFCe5sdcTeP8Q4HGakAj=w203-h360-k-no",
+                    "photo_date": "4/28/2026 15:00:00",
+                    "photo_id": "CIABIhBv9cs4NfnZEAFzgEJJ5iST",
+                    "photo_source_video": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH-dtJ1g8jo7UewzSmQruLaGJba2O1JyrGl3lSOGi93DIfTM_VKieqXYWH3TRcy8iWmqoOMyo4MSg2iRHOPR5zmTnssBU9Y2GTtX9UyXUktcjL5M5N7Qh084_t2SFCe5sdcTeP8Q4HGakAj=m18",
+                    "photo_tag_ids": null,
+                    "photo_tags": null,
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH-dtJ1g8jo7UewzSmQruLaGJba2O1JyrGl3lSOGi93DIfTM_VKieqXYWH3TRcy8iWmqoOMyo4MSg2iRHOPR5zmTnssBU9Y2GTtX9UyXUktcjL5M5N7Qh084_t2SFCe5sdcTeP8Q4HGakAj",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH-dtJ1g8jo7UewzSmQruLaGJba2O1JyrGl3lSOGi93DIfTM_VKieqXYWH3TRcy8iWmqoOMyo4MSg2iRHOPR5zmTnssBU9Y2GTtX9UyXUktcjL5M5N7Qh084_t2SFCe5sdcTeP8Q4HGakAj=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFBwDi4rQE1wg09nf6Qmb1D9aNeB-L0yGY6McWatRCqGFMquuKWcAEOUbWTnW9vDZ6Qxlj4lpi3Hqch1Abk_aV_qElYSVgYiap67DcgivvJUHmNfXg1e4_wnZNCcezpmWOl0tzv9WDodxc=w203-h270-k-no",
+                    "photo_date": "4/26/2026 14:00:00",
+                    "photo_id": "CIABIhCOFNvy6Hby55hhnSKUrUzr",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        8,
+                        3
+                    ],
+                    "photo_tags": [
+                        "food",
+                        "drink"
+                    ],
+                    "photo_upload_source": "local_universal_mobile_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFBwDi4rQE1wg09nf6Qmb1D9aNeB-L0yGY6McWatRCqGFMquuKWcAEOUbWTnW9vDZ6Qxlj4lpi3Hqch1Abk_aV_qElYSVgYiap67DcgivvJUHmNfXg1e4_wnZNCcezpmWOl0tzv9WDodxc",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFBwDi4rQE1wg09nf6Qmb1D9aNeB-L0yGY6McWatRCqGFMquuKWcAEOUbWTnW9vDZ6Qxlj4lpi3Hqch1Abk_aV_qElYSVgYiap67DcgivvJUHmNfXg1e4_wnZNCcezpmWOl0tzv9WDodxc=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFP8Jr5X8El33LTkshPgy_7nkmLwPTtp9JvfbRkzTOnsi_cOVUKUXlh8wwsJWFiSKFn4QvKKWaX_NYLscHiGa1-yMUoOeSLuh2PPUXrX66HN5OzuJPCJbSsy_fDlKvCgZOcgkfwFH5Nx8Fr=w203-h270-k-no",
+                    "photo_date": "4/26/2026 20:00:00",
+                    "photo_id": "CIABIhAFAFtpw3iIrxUgCr5cDN4N",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        3,
+                        8
+                    ],
+                    "photo_tags": [
+                        "food",
+                        "drink"
+                    ],
+                    "photo_upload_source": "local_universal_mobile_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFP8Jr5X8El33LTkshPgy_7nkmLwPTtp9JvfbRkzTOnsi_cOVUKUXlh8wwsJWFiSKFn4QvKKWaX_NYLscHiGa1-yMUoOeSLuh2PPUXrX66HN5OzuJPCJbSsy_fDlKvCgZOcgkfwFH5Nx8Fr",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFP8Jr5X8El33LTkshPgy_7nkmLwPTtp9JvfbRkzTOnsi_cOVUKUXlh8wwsJWFiSKFn4QvKKWaX_NYLscHiGa1-yMUoOeSLuh2PPUXrX66HN5OzuJPCJbSsy_fDlKvCgZOcgkfwFH5Nx8Fr=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH3Fav6QmHQ4nfvmY6CsEBnZ8Hr49x07y5J1VP8HuRlfBXaNKmAnXn61HwyWo2DmlA0OAyZeu-MIuxtmstKoAlED5c2aOb79lRfwXeAzWnmuVrVLp0tKdQIQ_WN08Q7tM1gEFQbcVTKyguL=w203-h360-k-no",
+                    "photo_date": "4/26/2026 20:00:00",
+                    "photo_id": "CIABIhB6s1zv9p-QCb5QX8i-8ihh",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        8
+                    ],
+                    "photo_tags": [
+                        "food"
+                    ],
+                    "photo_upload_source": "local_universal_mobile_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH3Fav6QmHQ4nfvmY6CsEBnZ8Hr49x07y5J1VP8HuRlfBXaNKmAnXn61HwyWo2DmlA0OAyZeu-MIuxtmstKoAlED5c2aOb79lRfwXeAzWnmuVrVLp0tKdQIQ_WN08Q7tM1gEFQbcVTKyguL",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH3Fav6QmHQ4nfvmY6CsEBnZ8Hr49x07y5J1VP8HuRlfBXaNKmAnXn61HwyWo2DmlA0OAyZeu-MIuxtmstKoAlED5c2aOb79lRfwXeAzWnmuVrVLp0tKdQIQ_WN08Q7tM1gEFQbcVTKyguL=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGYOIwU2A1bWAo-6T4LVf3PQWrGKbkxnn9eZrXegeYIJG2UCjyzR19LyveGNQuda0f0KgBVfkQL3mdb8vdW8xkiDqyzffDSyCsQ-FxIlu_Z3xVI0nY4jFX5_c0Zla3QqAJ6xwM3VQjpLqc=w203-h152-k-no",
+                    "photo_date": "4/25/2026 13:00:00",
+                    "photo_id": "CIABIhA39p424zthWyKXjlACf0jN",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        2
+                    ],
+                    "photo_tags": [
+                        "front"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGYOIwU2A1bWAo-6T4LVf3PQWrGKbkxnn9eZrXegeYIJG2UCjyzR19LyveGNQuda0f0KgBVfkQL3mdb8vdW8xkiDqyzffDSyCsQ-FxIlu_Z3xVI0nY4jFX5_c0Zla3QqAJ6xwM3VQjpLqc",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGYOIwU2A1bWAo-6T4LVf3PQWrGKbkxnn9eZrXegeYIJG2UCjyzR19LyveGNQuda0f0KgBVfkQL3mdb8vdW8xkiDqyzffDSyCsQ-FxIlu_Z3xVI0nY4jFX5_c0Zla3QqAJ6xwM3VQjpLqc=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtc-xfdHy1jGI-RbiToawvGg5VysKGSmsH4fsrl9EMD9UUhdclwSZa_Uf-GgrSXq5srKvv_V9wVy_2qoqrT-e7zCxyY1sAsl21CpEJPEp8k1x7Nyt0zxjRhQGQRszxOen-WuAAsBMph4D7=w203-h152-k-no",
+                    "photo_date": "4/25/2026 13:00:00",
+                    "photo_id": "CIABIhCdxVTg5SL-vA8pmLmVCDNN",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        2
+                    ],
+                    "photo_tags": [
+                        "front"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtc-xfdHy1jGI-RbiToawvGg5VysKGSmsH4fsrl9EMD9UUhdclwSZa_Uf-GgrSXq5srKvv_V9wVy_2qoqrT-e7zCxyY1sAsl21CpEJPEp8k1x7Nyt0zxjRhQGQRszxOen-WuAAsBMph4D7",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtc-xfdHy1jGI-RbiToawvGg5VysKGSmsH4fsrl9EMD9UUhdclwSZa_Uf-GgrSXq5srKvv_V9wVy_2qoqrT-e7zCxyY1sAsl21CpEJPEp8k1x7Nyt0zxjRhQGQRszxOen-WuAAsBMph4D7=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH6w1EF1pqfRO5GpemHD1dTSVvMq8iXbCl7_62RLrfBUg7mNdfrcmLjV_lauuNXXSGN8sk1tOyp8YYb-ZAlyx_fvLQ9oW0hYEBeCsmZY564ekGXtztGPlyT9QW6xmmyYRku2bIrFWP8Xeg=w203-h360-k-no",
+                    "photo_date": "4/25/2026 17:00:00",
+                    "photo_id": "CIABIhBd9uzV136AfRGyZVP_4jg6",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        2
+                    ],
+                    "photo_tags": [
+                        "front"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH6w1EF1pqfRO5GpemHD1dTSVvMq8iXbCl7_62RLrfBUg7mNdfrcmLjV_lauuNXXSGN8sk1tOyp8YYb-ZAlyx_fvLQ9oW0hYEBeCsmZY564ekGXtztGPlyT9QW6xmmyYRku2bIrFWP8Xeg",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH6w1EF1pqfRO5GpemHD1dTSVvMq8iXbCl7_62RLrfBUg7mNdfrcmLjV_lauuNXXSGN8sk1tOyp8YYb-ZAlyx_fvLQ9oW0hYEBeCsmZY564ekGXtztGPlyT9QW6xmmyYRku2bIrFWP8Xeg=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-F64iByoArW0UxJiq4i6q6ybswTpsFLzbftPdz5_a20k3dYlr1sWXf-eC1YmFNIkduTKbbmTT75VsTAEqRda3uNbgjRI5KWibj9zTQtpGDvSCgFyhQPGefXzuoGBLQQlB0d4onexVHrSd=w203-h270-k-no",
+                    "photo_date": "4/25/2026 13:00:00",
+                    "photo_id": "CIABIhAkm7JXujrCuTFgIZ9LP6Xs",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        3,
+                        8
+                    ],
+                    "photo_tags": [
+                        "food",
+                        "drink"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-F64iByoArW0UxJiq4i6q6ybswTpsFLzbftPdz5_a20k3dYlr1sWXf-eC1YmFNIkduTKbbmTT75VsTAEqRda3uNbgjRI5KWibj9zTQtpGDvSCgFyhQPGefXzuoGBLQQlB0d4onexVHrSd",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-F64iByoArW0UxJiq4i6q6ybswTpsFLzbftPdz5_a20k3dYlr1sWXf-eC1YmFNIkduTKbbmTT75VsTAEqRda3uNbgjRI5KWibj9zTQtpGDvSCgFyhQPGefXzuoGBLQQlB0d4onexVHrSd=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFzBit8CWdMgFC7GJuK70l6i6yTWEjtlIeZLkbGBiKrE_RFSJtfflqQ79fA3BUZyY-TTnO2ZZazOYtd_nPflZmF66lUZ7Ct0-dCqP22AndWMvhWARajGNCE9vB59tc-IwhfXslWRs5PopON=w203-h331-k-no",
+                    "photo_date": "4/25/2026 13:00:00",
+                    "photo_id": "CIABIhAZIyVmG3eCw_Bg_Cb3_pLl",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        6
+                    ],
+                    "photo_tags": [
+                        "menu"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFzBit8CWdMgFC7GJuK70l6i6yTWEjtlIeZLkbGBiKrE_RFSJtfflqQ79fA3BUZyY-TTnO2ZZazOYtd_nPflZmF66lUZ7Ct0-dCqP22AndWMvhWARajGNCE9vB59tc-IwhfXslWRs5PopON",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFzBit8CWdMgFC7GJuK70l6i6yTWEjtlIeZLkbGBiKrE_RFSJtfflqQ79fA3BUZyY-TTnO2ZZazOYtd_nPflZmF66lUZ7Ct0-dCqP22AndWMvhWARajGNCE9vB59tc-IwhfXslWRs5PopON=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsIii92ghBoDvKxRQq7lugxDagn11FuAkGn7Abn87ygkDyJn3fa0Lg5niVQoMiE_13uHYV08wBbGeS8s244613Wf6IfPYIIOn-CQzlmyOVZBIHS7GidFNhZ3POJPX_zfOyf8G1LF54f4vr=w203-h314-k-no",
+                    "photo_date": "4/25/2026 13:00:00",
+                    "photo_id": "CIABIhD7vCbXhpkhyDCWMZI80taJ",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        3
+                    ],
+                    "photo_tags": [
+                        "drink"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsIii92ghBoDvKxRQq7lugxDagn11FuAkGn7Abn87ygkDyJn3fa0Lg5niVQoMiE_13uHYV08wBbGeS8s244613Wf6IfPYIIOn-CQzlmyOVZBIHS7GidFNhZ3POJPX_zfOyf8G1LF54f4vr",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsIii92ghBoDvKxRQq7lugxDagn11FuAkGn7Abn87ygkDyJn3fa0Lg5niVQoMiE_13uHYV08wBbGeS8s244613Wf6IfPYIIOn-CQzlmyOVZBIHS7GidFNhZ3POJPX_zfOyf8G1LF54f4vr=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXDhMqsWQQx5uf7oerSwF_SPZ2N0rJ68amJ_Nj2av6yO-okqAuR1uJiKXxivIUQqE7-vkHgcHAtrJweFz4QfCvx7dCPUsduOjrdwqmcaIJMCBC9n-Pp-_OUUUbecguwitXdCsXlKd1fcc=w203-h270-k-no",
+                    "photo_date": "4/26/2026 17:00:00",
+                    "photo_id": "CIABIhAXUdBEWIA3pCZGbeH_XU2M",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        6
+                    ],
+                    "photo_tags": [
+                        "menu"
+                    ],
+                    "photo_upload_source": "gmm_ios_photo_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXDhMqsWQQx5uf7oerSwF_SPZ2N0rJ68amJ_Nj2av6yO-okqAuR1uJiKXxivIUQqE7-vkHgcHAtrJweFz4QfCvx7dCPUsduOjrdwqmcaIJMCBC9n-Pp-_OUUUbecguwitXdCsXlKd1fcc",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXDhMqsWQQx5uf7oerSwF_SPZ2N0rJ68amJ_Nj2av6yO-okqAuR1uJiKXxivIUQqE7-vkHgcHAtrJweFz4QfCvx7dCPUsduOjrdwqmcaIJMCBC9n-Pp-_OUUUbecguwitXdCsXlKd1fcc=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.2189779,
+                    "longitude": -80.7997907,
+                    "original_photo_url": "https://lh3.googleusercontent.com/p/AF1QipNBN_hJt-Xlp2QZ8YYptD-vUmmnKngjwgTcVPb7=w203-h180-k-no",
+                    "photo_date": "4/23/2026 11:00:00",
+                    "photo_id": "AF1QipNBN_hJt-Xlp2QZ8YYptD-vUmmnKngjwgTcVPb7",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        4
+                    ],
+                    "photo_tags": [
+                        "sign"
+                    ],
+                    "photo_upload_source": "gmb_on_local_universal_desktop",
+                    "photo_url": "https://lh3.googleusercontent.com/p/AF1QipNBN_hJt-Xlp2QZ8YYptD-vUmmnKngjwgTcVPb7",
+                    "photo_url_big": "https://lh3.googleusercontent.com/p/AF1QipNBN_hJt-Xlp2QZ8YYptD-vUmmnKngjwgTcVPb7=w2048-h2048-k-no"
+                }
+            ],
             "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
             "plus_code": "867X659X+JX",
             "popular_times": null,
@@ -1038,19 +1394,21 @@
             "posts": null,
             "prices": null,
             "query": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
-            "range": null,
+            "range": "$1\u201310",
             "rating": 5,
             "reservation_links": null,
-            "reviews": 11,
+            "reviews": 16,
             "reviews_id": "1939463926832286810",
             "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJlQjYtVsfVIgRWsyFbSpc6ho&q=*&authuser=0&hl=en&gl=US",
             "reviews_per_score": null,
-            "reviews_tags": null,
+            "reviews_tags": [
+                "menu"
+            ],
             "state": "North Carolina",
             "state_code": "NC",
             "street": "1518 Lyon Ct",
-            "street_view": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEB-vYVt5OTS0gWL58eBoWD8Q-J0MTqOzx5VTHn-zmv1C_p87KGt9bsaf3wTNFfddHJYCGRPiM0jw6LXZpc9AcBE0uWw29YtXA53sSNcDP76QS8pNjvrcJHidLXuRzKNVPyCiHeloMOPxqF=w1600-h1000-k-no",
-            "subtypes": "Cocktail bar",
+            "street_view": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFsGU-HBLdl0wD6LbI5tyd7DMZqpu21RUK1XOfbHr__28_KRNtBdtX7rdH8wF1IHkYHijPZ6pQbKK825SE6qO_XqsETwjEiWxOOdjQY6DLNtsAKtd3PFQqcDwupe57geV32jczypUToVqk-=w1600-h1000-k-no",
+            "subtypes": "Cocktail bar, Coffee shop",
             "time_zone": "America/New_York",
             "type": "Cocktail bar",
             "typical_time_spent": null,
@@ -1080,7 +1438,828 @@
                 ]
             },
             "working_hours_csv_compatible": "Sunday,8AM,9PM|Tuesday,7AM,10PM|Wednesday,7AM,10PM|Thursday,7AM,10PM|Friday,7AM,11PM|Saturday,8AM,11PM"
-        }
+        },
+        "azure_assets": [
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE8sHrijSD14SEq0sy7SuBzcyx2p8X1ZF17rAOKM8k9ibSsDIOx3U_0csx2TN-YR0QqBpfs51UrOr7lYyDIgcg5wxHWfBrB1U9fSXKagEc7caTKycZ9lbv9y8LGpUSd7gfVg6o9YBPrYwCU=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE8sHrijSD14SEq0sy7SuBzcyx2p8X1ZF17rAOKM8k9ibSsDIOx3U_0csx2TN-YR0QqBpfs51UrOr7lYyDIgcg5wxHWfBrB1U9fSXKagEc7caTKycZ9lbv9y8LGpUSd7gfVg6o9YBPrYwCU=w2048-h2048-k-no",
+                "source_url_sha256": "d16d08f8f9e356d355c47dd592be676923c32c65e108afed4469262388cc3b6f",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[0]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/d16d08f8f9e356d355c47dd592be676923c32c65e108afed4469262388cc3b6f.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/d16d08f8f9e356d355c47dd592be676923c32c65e108afed4469262388cc3b6f.jpg",
+                "content_sha256": "64f139c56abd44015305ea0a8618b27997fe7d34606bd9bea633814e863cedce",
+                "content_type": "image/jpeg",
+                "bytes": 829330,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE8sHrijSD14SEq0sy7SuBzcyx2p8X1ZF17rAOKM8k9ibSsDIOx3U_0csx2TN-YR0QqBpfs51UrOr7lYyDIgcg5wxHWfBrB1U9fSXKagEc7caTKycZ9lbv9y8LGpUSd7gfVg6o9YBPrYwCU=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE8sHrijSD14SEq0sy7SuBzcyx2p8X1ZF17rAOKM8k9ibSsDIOx3U_0csx2TN-YR0QqBpfs51UrOr7lYyDIgcg5wxHWfBrB1U9fSXKagEc7caTKycZ9lbv9y8LGpUSd7gfVg6o9YBPrYwCU=w2048-h2048-k-no",
+                        "bytes": 829330,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:17.886802+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH6w1EF1pqfRO5GpemHD1dTSVvMq8iXbCl7_62RLrfBUg7mNdfrcmLjV_lauuNXXSGN8sk1tOyp8YYb-ZAlyx_fvLQ9oW0hYEBeCsmZY564ekGXtztGPlyT9QW6xmmyYRku2bIrFWP8Xeg=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH6w1EF1pqfRO5GpemHD1dTSVvMq8iXbCl7_62RLrfBUg7mNdfrcmLjV_lauuNXXSGN8sk1tOyp8YYb-ZAlyx_fvLQ9oW0hYEBeCsmZY564ekGXtztGPlyT9QW6xmmyYRku2bIrFWP8Xeg=w2048-h2048-k-no",
+                "source_url_sha256": "2119f91c6b442ab1a00497180a5d4450c3242c354a18411d5228224cdf46b7f2",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[13].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/2119f91c6b442ab1a00497180a5d4450c3242c354a18411d5228224cdf46b7f2.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/2119f91c6b442ab1a00497180a5d4450c3242c354a18411d5228224cdf46b7f2.jpg",
+                "content_sha256": "e8c73c3136ffc31e925daa6e695b75f2123bcf3fa390bc603bae5789cee24114",
+                "content_type": "image/jpeg",
+                "bytes": 872754,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH6w1EF1pqfRO5GpemHD1dTSVvMq8iXbCl7_62RLrfBUg7mNdfrcmLjV_lauuNXXSGN8sk1tOyp8YYb-ZAlyx_fvLQ9oW0hYEBeCsmZY564ekGXtztGPlyT9QW6xmmyYRku2bIrFWP8Xeg=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH6w1EF1pqfRO5GpemHD1dTSVvMq8iXbCl7_62RLrfBUg7mNdfrcmLjV_lauuNXXSGN8sk1tOyp8YYb-ZAlyx_fvLQ9oW0hYEBeCsmZY564ekGXtztGPlyT9QW6xmmyYRku2bIrFWP8Xeg=w2048-h2048-k-no",
+                        "bytes": 872754,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:18.492138+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGYOIwU2A1bWAo-6T4LVf3PQWrGKbkxnn9eZrXegeYIJG2UCjyzR19LyveGNQuda0f0KgBVfkQL3mdb8vdW8xkiDqyzffDSyCsQ-FxIlu_Z3xVI0nY4jFX5_c0Zla3QqAJ6xwM3VQjpLqc=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGYOIwU2A1bWAo-6T4LVf3PQWrGKbkxnn9eZrXegeYIJG2UCjyzR19LyveGNQuda0f0KgBVfkQL3mdb8vdW8xkiDqyzffDSyCsQ-FxIlu_Z3xVI0nY4jFX5_c0Zla3QqAJ6xwM3VQjpLqc=w2048-h2048-k-no",
+                "source_url_sha256": "27912d095636a6809360a702f6ea4b1e5c1b4ffd50a705e9b38bf176579ba063",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[11].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/27912d095636a6809360a702f6ea4b1e5c1b4ffd50a705e9b38bf176579ba063.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/27912d095636a6809360a702f6ea4b1e5c1b4ffd50a705e9b38bf176579ba063.jpg",
+                "content_sha256": "7759d6159d7901f35cd9c811a22881e42092be365cf815b13a9255f675e33294",
+                "content_type": "image/jpeg",
+                "bytes": 1258453,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGYOIwU2A1bWAo-6T4LVf3PQWrGKbkxnn9eZrXegeYIJG2UCjyzR19LyveGNQuda0f0KgBVfkQL3mdb8vdW8xkiDqyzffDSyCsQ-FxIlu_Z3xVI0nY4jFX5_c0Zla3QqAJ6xwM3VQjpLqc=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGYOIwU2A1bWAo-6T4LVf3PQWrGKbkxnn9eZrXegeYIJG2UCjyzR19LyveGNQuda0f0KgBVfkQL3mdb8vdW8xkiDqyzffDSyCsQ-FxIlu_Z3xVI0nY4jFX5_c0Zla3QqAJ6xwM3VQjpLqc=w2048-h2048-k-no",
+                        "bytes": 1258453,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:19.115023+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtc-xfdHy1jGI-RbiToawvGg5VysKGSmsH4fsrl9EMD9UUhdclwSZa_Uf-GgrSXq5srKvv_V9wVy_2qoqrT-e7zCxyY1sAsl21CpEJPEp8k1x7Nyt0zxjRhQGQRszxOen-WuAAsBMph4D7=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtc-xfdHy1jGI-RbiToawvGg5VysKGSmsH4fsrl9EMD9UUhdclwSZa_Uf-GgrSXq5srKvv_V9wVy_2qoqrT-e7zCxyY1sAsl21CpEJPEp8k1x7Nyt0zxjRhQGQRszxOen-WuAAsBMph4D7=w2048-h2048-k-no",
+                "source_url_sha256": "7f84f36d5d1c6216c7f5a8e2c930d1dd3d8cb40d039866255d7fe6f744d888ca",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[12].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/7f84f36d5d1c6216c7f5a8e2c930d1dd3d8cb40d039866255d7fe6f744d888ca.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/7f84f36d5d1c6216c7f5a8e2c930d1dd3d8cb40d039866255d7fe6f744d888ca.jpg",
+                "content_sha256": "227457e165d2beec0e24e7e4db6a0735efdf82404c705dc9ea4ca57bd4a3b715",
+                "content_type": "image/jpeg",
+                "bytes": 793307,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtc-xfdHy1jGI-RbiToawvGg5VysKGSmsH4fsrl9EMD9UUhdclwSZa_Uf-GgrSXq5srKvv_V9wVy_2qoqrT-e7zCxyY1sAsl21CpEJPEp8k1x7Nyt0zxjRhQGQRszxOen-WuAAsBMph4D7=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHtc-xfdHy1jGI-RbiToawvGg5VysKGSmsH4fsrl9EMD9UUhdclwSZa_Uf-GgrSXq5srKvv_V9wVy_2qoqrT-e7zCxyY1sAsl21CpEJPEp8k1x7Nyt0zxjRhQGQRszxOen-WuAAsBMph4D7=w2048-h2048-k-no",
+                        "bytes": 793307,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:19.759922+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHgaQbNiSfa30LQNEyC5gVkcPJrW-lsxnL_6U6ntnF255G_f6ornVgW4mGHPBBZmeOkEPu1dHuoXl-0MsBrw36OXuAx5ZPpk0Ry2HjFXgBV30P4vSkF13hC4DrHXRTEYtugfnupxbV5Dj71=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHgaQbNiSfa30LQNEyC5gVkcPJrW-lsxnL_6U6ntnF255G_f6ornVgW4mGHPBBZmeOkEPu1dHuoXl-0MsBrw36OXuAx5ZPpk0Ry2HjFXgBV30P4vSkF13hC4DrHXRTEYtugfnupxbV5Dj71=w2048-h2048-k-no",
+                "source_url_sha256": "eab227669ccf987ca28f2518d22bcbbe8426f115d8c7c49eec4568cc7a452290",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/eab227669ccf987ca28f2518d22bcbbe8426f115d8c7c49eec4568cc7a452290.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/eab227669ccf987ca28f2518d22bcbbe8426f115d8c7c49eec4568cc7a452290.jpg",
+                "content_sha256": "90af64c07c0aaa656f7abc43b9e134378f4971ff6e732684f6b81a73350f3bca",
+                "content_type": "image/jpeg",
+                "bytes": 730649,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHgaQbNiSfa30LQNEyC5gVkcPJrW-lsxnL_6U6ntnF255G_f6ornVgW4mGHPBBZmeOkEPu1dHuoXl-0MsBrw36OXuAx5ZPpk0Ry2HjFXgBV30P4vSkF13hC4DrHXRTEYtugfnupxbV5Dj71=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHgaQbNiSfa30LQNEyC5gVkcPJrW-lsxnL_6U6ntnF255G_f6ornVgW4mGHPBBZmeOkEPu1dHuoXl-0MsBrw36OXuAx5ZPpk0Ry2HjFXgBV30P4vSkF13hC4DrHXRTEYtugfnupxbV5Dj71=w2048-h2048-k-no",
+                        "bytes": 730649,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:20.359220+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHzACXwRD0pkA0ZlUGxgA8qyy7mVHv-fVq8UR01ifxE1Vh2ierDRCUbr9QBm9XSxJLS2VoIfEJffDd9fH-jIXTUHgp7A-vFiKUygP7XZ1ia3I1deRDjr-6M1o651S4llPNXXBrXLeijWGMB=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHzACXwRD0pkA0ZlUGxgA8qyy7mVHv-fVq8UR01ifxE1Vh2ierDRCUbr9QBm9XSxJLS2VoIfEJffDd9fH-jIXTUHgp7A-vFiKUygP7XZ1ia3I1deRDjr-6M1o651S4llPNXXBrXLeijWGMB=w2048-h2048-k-no",
+                "source_url_sha256": "3a0a6e44d193d536090a8aba0c0d8b5d476032fff86f5ab4622275f7e137770e",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[6].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/3a0a6e44d193d536090a8aba0c0d8b5d476032fff86f5ab4622275f7e137770e.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/3a0a6e44d193d536090a8aba0c0d8b5d476032fff86f5ab4622275f7e137770e.jpg",
+                "content_sha256": "26ea5504210f77457d3873e62a97eb37777d515d08f3524824e2e4fcf780013c",
+                "content_type": "image/jpeg",
+                "bytes": 560598,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHzACXwRD0pkA0ZlUGxgA8qyy7mVHv-fVq8UR01ifxE1Vh2ierDRCUbr9QBm9XSxJLS2VoIfEJffDd9fH-jIXTUHgp7A-vFiKUygP7XZ1ia3I1deRDjr-6M1o651S4llPNXXBrXLeijWGMB=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHzACXwRD0pkA0ZlUGxgA8qyy7mVHv-fVq8UR01ifxE1Vh2ierDRCUbr9QBm9XSxJLS2VoIfEJffDd9fH-jIXTUHgp7A-vFiKUygP7XZ1ia3I1deRDjr-6M1o651S4llPNXXBrXLeijWGMB=w2048-h2048-k-no",
+                        "bytes": 560598,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:20.781789+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEDvpew7L7JeV6c39_IPj3JHS7WmULNC8oTmKg4AluNn6UuiKXDbIKR-DXZVCHdAjBG8Nah3uWNCqhcttzhUzCnUGjG4pu-gNdoYaSZzx2riLWcxQb9LEY_ERZQWP13h3S0Xn-X95XO9F7U=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEDvpew7L7JeV6c39_IPj3JHS7WmULNC8oTmKg4AluNn6UuiKXDbIKR-DXZVCHdAjBG8Nah3uWNCqhcttzhUzCnUGjG4pu-gNdoYaSZzx2riLWcxQb9LEY_ERZQWP13h3S0Xn-X95XO9F7U=w2048-h2048-k-no",
+                "source_url_sha256": "b483530c1025fa02c3a1a38ffb11061b5bffab9a3616b1a3276fdf9d0e74f84e",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/b483530c1025fa02c3a1a38ffb11061b5bffab9a3616b1a3276fdf9d0e74f84e.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/b483530c1025fa02c3a1a38ffb11061b5bffab9a3616b1a3276fdf9d0e74f84e.jpg",
+                "content_sha256": "b3e52b25b40a748d7f7d632f01e6f9dd199153eea0c223ad7d24100eee4d9b82",
+                "content_type": "image/jpeg",
+                "bytes": 435752,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEDvpew7L7JeV6c39_IPj3JHS7WmULNC8oTmKg4AluNn6UuiKXDbIKR-DXZVCHdAjBG8Nah3uWNCqhcttzhUzCnUGjG4pu-gNdoYaSZzx2riLWcxQb9LEY_ERZQWP13h3S0Xn-X95XO9F7U=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEDvpew7L7JeV6c39_IPj3JHS7WmULNC8oTmKg4AluNn6UuiKXDbIKR-DXZVCHdAjBG8Nah3uWNCqhcttzhUzCnUGjG4pu-gNdoYaSZzx2riLWcxQb9LEY_ERZQWP13h3S0Xn-X95XO9F7U=w2048-h2048-k-no",
+                        "bytes": 435752,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:21.195914+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH-dtJ1g8jo7UewzSmQruLaGJba2O1JyrGl3lSOGi93DIfTM_VKieqXYWH3TRcy8iWmqoOMyo4MSg2iRHOPR5zmTnssBU9Y2GTtX9UyXUktcjL5M5N7Qh084_t2SFCe5sdcTeP8Q4HGakAj=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH-dtJ1g8jo7UewzSmQruLaGJba2O1JyrGl3lSOGi93DIfTM_VKieqXYWH3TRcy8iWmqoOMyo4MSg2iRHOPR5zmTnssBU9Y2GTtX9UyXUktcjL5M5N7Qh084_t2SFCe5sdcTeP8Q4HGakAj=w2048-h2048-k-no",
+                "source_url_sha256": "6f332a12635c321448802768921ba835c7a600e2e49e032e65e59fef8ef2482b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[7].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/6f332a12635c321448802768921ba835c7a600e2e49e032e65e59fef8ef2482b.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/6f332a12635c321448802768921ba835c7a600e2e49e032e65e59fef8ef2482b.jpg",
+                "content_sha256": "a099cc2adf2fc86bd6faf2aee3849b19cc7f8b0a2c1629c4b8147c1b1a194634",
+                "content_type": "image/jpeg",
+                "bytes": 1808167,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH-dtJ1g8jo7UewzSmQruLaGJba2O1JyrGl3lSOGi93DIfTM_VKieqXYWH3TRcy8iWmqoOMyo4MSg2iRHOPR5zmTnssBU9Y2GTtX9UyXUktcjL5M5N7Qh084_t2SFCe5sdcTeP8Q4HGakAj=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH-dtJ1g8jo7UewzSmQruLaGJba2O1JyrGl3lSOGi93DIfTM_VKieqXYWH3TRcy8iWmqoOMyo4MSg2iRHOPR5zmTnssBU9Y2GTtX9UyXUktcjL5M5N7Qh084_t2SFCe5sdcTeP8Q4HGakAj=w2048-h2048-k-no",
+                        "bytes": 1808167,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:21.523020+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHfcr8YOR3FSM4q-wg3N8O0u2tfB_3v83nSJynqqSPvhhK8TLdOxPk4gcorqSPUgpNjB-Ubpm7M5VdUJBHp-fwLKkE6l222f4_1Burec-kqb9kp7vfaNsyV-Jdnv5LWFmXJfPMm0JtoVqEq=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHfcr8YOR3FSM4q-wg3N8O0u2tfB_3v83nSJynqqSPvhhK8TLdOxPk4gcorqSPUgpNjB-Ubpm7M5VdUJBHp-fwLKkE6l222f4_1Burec-kqb9kp7vfaNsyV-Jdnv5LWFmXJfPMm0JtoVqEq=w2048-h2048-k-no",
+                "source_url_sha256": "8b7e053bb65b104b41075d9d38e63508b28f0cb946ef037a205cc9954995fae7",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[4].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/8b7e053bb65b104b41075d9d38e63508b28f0cb946ef037a205cc9954995fae7.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/8b7e053bb65b104b41075d9d38e63508b28f0cb946ef037a205cc9954995fae7.jpg",
+                "content_sha256": "43e5f01d63b4fd55fc3aa13a60e7210e420e02e339026b90342e2ee86e4255b2",
+                "content_type": "image/jpeg",
+                "bytes": 377143,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHfcr8YOR3FSM4q-wg3N8O0u2tfB_3v83nSJynqqSPvhhK8TLdOxPk4gcorqSPUgpNjB-Ubpm7M5VdUJBHp-fwLKkE6l222f4_1Burec-kqb9kp7vfaNsyV-Jdnv5LWFmXJfPMm0JtoVqEq=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHfcr8YOR3FSM4q-wg3N8O0u2tfB_3v83nSJynqqSPvhhK8TLdOxPk4gcorqSPUgpNjB-Ubpm7M5VdUJBHp-fwLKkE6l222f4_1Burec-kqb9kp7vfaNsyV-Jdnv5LWFmXJfPMm0JtoVqEq=w2048-h2048-k-no",
+                        "bytes": 377143,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:21.959547+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFsGU-HBLdl0wD6LbI5tyd7DMZqpu21RUK1XOfbHr__28_KRNtBdtX7rdH8wF1IHkYHijPZ6pQbKK825SE6qO_XqsETwjEiWxOOdjQY6DLNtsAKtd3PFQqcDwupe57geV32jczypUToVqk-=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFsGU-HBLdl0wD6LbI5tyd7DMZqpu21RUK1XOfbHr__28_KRNtBdtX7rdH8wF1IHkYHijPZ6pQbKK825SE6qO_XqsETwjEiWxOOdjQY6DLNtsAKtd3PFQqcDwupe57geV32jczypUToVqk-=w2048-h2048-k-no",
+                "source_url_sha256": "36cbb39bf04749f77b60e58b059d7cccbb14084309cdc0d27face111e520de53",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[9]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/36cbb39bf04749f77b60e58b059d7cccbb14084309cdc0d27face111e520de53.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/36cbb39bf04749f77b60e58b059d7cccbb14084309cdc0d27face111e520de53.jpg",
+                "content_sha256": "bc9263ab455088956d77c5ced7ca3f30dd43fd5750a43f9241f4e84d5e57798a",
+                "content_type": "image/jpeg",
+                "bytes": 440360,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFsGU-HBLdl0wD6LbI5tyd7DMZqpu21RUK1XOfbHr__28_KRNtBdtX7rdH8wF1IHkYHijPZ6pQbKK825SE6qO_XqsETwjEiWxOOdjQY6DLNtsAKtd3PFQqcDwupe57geV32jczypUToVqk-=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFsGU-HBLdl0wD6LbI5tyd7DMZqpu21RUK1XOfbHr__28_KRNtBdtX7rdH8wF1IHkYHijPZ6pQbKK825SE6qO_XqsETwjEiWxOOdjQY6DLNtsAKtd3PFQqcDwupe57geV32jczypUToVqk-=w2048-h2048-k-no",
+                        "bytes": 440360,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:22.444464+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFP8Jr5X8El33LTkshPgy_7nkmLwPTtp9JvfbRkzTOnsi_cOVUKUXlh8wwsJWFiSKFn4QvKKWaX_NYLscHiGa1-yMUoOeSLuh2PPUXrX66HN5OzuJPCJbSsy_fDlKvCgZOcgkfwFH5Nx8Fr=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFP8Jr5X8El33LTkshPgy_7nkmLwPTtp9JvfbRkzTOnsi_cOVUKUXlh8wwsJWFiSKFn4QvKKWaX_NYLscHiGa1-yMUoOeSLuh2PPUXrX66HN5OzuJPCJbSsy_fDlKvCgZOcgkfwFH5Nx8Fr=w2048-h2048-k-no",
+                "source_url_sha256": "8714ca009044aeacd8fb6f5af4c583502530a62522c5d5ecbde6a50128c4aa2a",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[10]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[9].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/8714ca009044aeacd8fb6f5af4c583502530a62522c5d5ecbde6a50128c4aa2a.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/8714ca009044aeacd8fb6f5af4c583502530a62522c5d5ecbde6a50128c4aa2a.jpg",
+                "content_sha256": "3bfc107ed8524b130e658c75b7e05cf0f41f7feba8f412f84479236eb912e0ad",
+                "content_type": "image/jpeg",
+                "bytes": 241032,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFP8Jr5X8El33LTkshPgy_7nkmLwPTtp9JvfbRkzTOnsi_cOVUKUXlh8wwsJWFiSKFn4QvKKWaX_NYLscHiGa1-yMUoOeSLuh2PPUXrX66HN5OzuJPCJbSsy_fDlKvCgZOcgkfwFH5Nx8Fr=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFP8Jr5X8El33LTkshPgy_7nkmLwPTtp9JvfbRkzTOnsi_cOVUKUXlh8wwsJWFiSKFn4QvKKWaX_NYLscHiGa1-yMUoOeSLuh2PPUXrX66HN5OzuJPCJbSsy_fDlKvCgZOcgkfwFH5Nx8Fr=w2048-h2048-k-no",
+                        "bytes": 241032,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:22.837285+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH3Fav6QmHQ4nfvmY6CsEBnZ8Hr49x07y5J1VP8HuRlfBXaNKmAnXn61HwyWo2DmlA0OAyZeu-MIuxtmstKoAlED5c2aOb79lRfwXeAzWnmuVrVLp0tKdQIQ_WN08Q7tM1gEFQbcVTKyguL=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH3Fav6QmHQ4nfvmY6CsEBnZ8Hr49x07y5J1VP8HuRlfBXaNKmAnXn61HwyWo2DmlA0OAyZeu-MIuxtmstKoAlED5c2aOb79lRfwXeAzWnmuVrVLp0tKdQIQ_WN08Q7tM1gEFQbcVTKyguL=w2048-h2048-k-no",
+                "source_url_sha256": "708b1cff78e4829fe6f96a9d6b0d0c07ca8b813ee9ce31e6817a1b6055cafe7e",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[11]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[10].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/708b1cff78e4829fe6f96a9d6b0d0c07ca8b813ee9ce31e6817a1b6055cafe7e.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/708b1cff78e4829fe6f96a9d6b0d0c07ca8b813ee9ce31e6817a1b6055cafe7e.jpg",
+                "content_sha256": "87a2191cf3bfc9fbf85bd3e14d6a7a88dbc6c76454785bd9e8cdca6c01e640b6",
+                "content_type": "image/jpeg",
+                "bytes": 178645,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH3Fav6QmHQ4nfvmY6CsEBnZ8Hr49x07y5J1VP8HuRlfBXaNKmAnXn61HwyWo2DmlA0OAyZeu-MIuxtmstKoAlED5c2aOb79lRfwXeAzWnmuVrVLp0tKdQIQ_WN08Q7tM1gEFQbcVTKyguL=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH3Fav6QmHQ4nfvmY6CsEBnZ8Hr49x07y5J1VP8HuRlfBXaNKmAnXn61HwyWo2DmlA0OAyZeu-MIuxtmstKoAlED5c2aOb79lRfwXeAzWnmuVrVLp0tKdQIQ_WN08Q7tM1gEFQbcVTKyguL=w2048-h2048-k-no",
+                        "bytes": 178645,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:23.202410+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXDhMqsWQQx5uf7oerSwF_SPZ2N0rJ68amJ_Nj2av6yO-okqAuR1uJiKXxivIUQqE7-vkHgcHAtrJweFz4QfCvx7dCPUsduOjrdwqmcaIJMCBC9n-Pp-_OUUUbecguwitXdCsXlKd1fcc=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXDhMqsWQQx5uf7oerSwF_SPZ2N0rJ68amJ_Nj2av6yO-okqAuR1uJiKXxivIUQqE7-vkHgcHAtrJweFz4QfCvx7dCPUsduOjrdwqmcaIJMCBC9n-Pp-_OUUUbecguwitXdCsXlKd1fcc=w2048-h2048-k-no",
+                "source_url_sha256": "5f986d38f5653f913dee11258af81062facca4b89e3415ecfe904ce1cde916e1",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[12]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[17].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/5f986d38f5653f913dee11258af81062facca4b89e3415ecfe904ce1cde916e1.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/5f986d38f5653f913dee11258af81062facca4b89e3415ecfe904ce1cde916e1.jpg",
+                "content_sha256": "14aab4ec095efd9f645447ca81bc70c4fafba7fa51e73d186d94103701a3c892",
+                "content_type": "image/jpeg",
+                "bytes": 375436,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXDhMqsWQQx5uf7oerSwF_SPZ2N0rJ68amJ_Nj2av6yO-okqAuR1uJiKXxivIUQqE7-vkHgcHAtrJweFz4QfCvx7dCPUsduOjrdwqmcaIJMCBC9n-Pp-_OUUUbecguwitXdCsXlKd1fcc=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXDhMqsWQQx5uf7oerSwF_SPZ2N0rJ68amJ_Nj2av6yO-okqAuR1uJiKXxivIUQqE7-vkHgcHAtrJweFz4QfCvx7dCPUsduOjrdwqmcaIJMCBC9n-Pp-_OUUUbecguwitXdCsXlKd1fcc=w2048-h2048-k-no",
+                        "bytes": 375436,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:23.465646+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFBwDi4rQE1wg09nf6Qmb1D9aNeB-L0yGY6McWatRCqGFMquuKWcAEOUbWTnW9vDZ6Qxlj4lpi3Hqch1Abk_aV_qElYSVgYiap67DcgivvJUHmNfXg1e4_wnZNCcezpmWOl0tzv9WDodxc=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFBwDi4rQE1wg09nf6Qmb1D9aNeB-L0yGY6McWatRCqGFMquuKWcAEOUbWTnW9vDZ6Qxlj4lpi3Hqch1Abk_aV_qElYSVgYiap67DcgivvJUHmNfXg1e4_wnZNCcezpmWOl0tzv9WDodxc=w2048-h2048-k-no",
+                "source_url_sha256": "b3b33767ed392da9bab8467ba185a42b711662c944a38c567ebbee715b58c2f5",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[13]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[8].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/b3b33767ed392da9bab8467ba185a42b711662c944a38c567ebbee715b58c2f5.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/b3b33767ed392da9bab8467ba185a42b711662c944a38c567ebbee715b58c2f5.jpg",
+                "content_sha256": "aeb3ef69a94f90de01909512891fd7d9a7b4d4ea28353138f841d15bb5223611",
+                "content_type": "image/jpeg",
+                "bytes": 302186,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFBwDi4rQE1wg09nf6Qmb1D9aNeB-L0yGY6McWatRCqGFMquuKWcAEOUbWTnW9vDZ6Qxlj4lpi3Hqch1Abk_aV_qElYSVgYiap67DcgivvJUHmNfXg1e4_wnZNCcezpmWOl0tzv9WDodxc=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFBwDi4rQE1wg09nf6Qmb1D9aNeB-L0yGY6McWatRCqGFMquuKWcAEOUbWTnW9vDZ6Qxlj4lpi3Hqch1Abk_aV_qElYSVgYiap67DcgivvJUHmNfXg1e4_wnZNCcezpmWOl0tzv9WDodxc=w2048-h2048-k-no",
+                        "bytes": 302186,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:24.066651+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGUHyiH3JMxB-BhEP8KndcDIz5OCA7SXYTXayWtK24orOzQRmYopfCSPV3m3WPIeFSFxDzbCRQ3OufqvOogPGsg2t5GlWj1WftCPbS1FsLxk3eqs2s6_ZDQWSAHnoRbnVkkQByv2Wqqe6TJ=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGUHyiH3JMxB-BhEP8KndcDIz5OCA7SXYTXayWtK24orOzQRmYopfCSPV3m3WPIeFSFxDzbCRQ3OufqvOogPGsg2t5GlWj1WftCPbS1FsLxk3eqs2s6_ZDQWSAHnoRbnVkkQByv2Wqqe6TJ=w2048-h2048-k-no",
+                "source_url_sha256": "05c90c2fc3c674ccdbfe474ddf448e7c7ac5934df4ff08aa71001c1f729724d2",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[14]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[5].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/05c90c2fc3c674ccdbfe474ddf448e7c7ac5934df4ff08aa71001c1f729724d2.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/05c90c2fc3c674ccdbfe474ddf448e7c7ac5934df4ff08aa71001c1f729724d2.jpg",
+                "content_sha256": "dc185bad5c98b93373a9156663258cd5f27c1ba0f7c8f526b30975763abdc5a9",
+                "content_type": "image/jpeg",
+                "bytes": 344295,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGUHyiH3JMxB-BhEP8KndcDIz5OCA7SXYTXayWtK24orOzQRmYopfCSPV3m3WPIeFSFxDzbCRQ3OufqvOogPGsg2t5GlWj1WftCPbS1FsLxk3eqs2s6_ZDQWSAHnoRbnVkkQByv2Wqqe6TJ=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGUHyiH3JMxB-BhEP8KndcDIz5OCA7SXYTXayWtK24orOzQRmYopfCSPV3m3WPIeFSFxDzbCRQ3OufqvOogPGsg2t5GlWj1WftCPbS1FsLxk3eqs2s6_ZDQWSAHnoRbnVkkQByv2Wqqe6TJ=w2048-h2048-k-no",
+                        "bytes": 344295,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:24.511331+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-F64iByoArW0UxJiq4i6q6ybswTpsFLzbftPdz5_a20k3dYlr1sWXf-eC1YmFNIkduTKbbmTT75VsTAEqRda3uNbgjRI5KWibj9zTQtpGDvSCgFyhQPGefXzuoGBLQQlB0d4onexVHrSd=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-F64iByoArW0UxJiq4i6q6ybswTpsFLzbftPdz5_a20k3dYlr1sWXf-eC1YmFNIkduTKbbmTT75VsTAEqRda3uNbgjRI5KWibj9zTQtpGDvSCgFyhQPGefXzuoGBLQQlB0d4onexVHrSd=w2048-h2048-k-no",
+                "source_url_sha256": "80bb670d53a59d54b6c3cfbecb4741153ca26b66b47311cb947767dcfbf3f63c",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[15]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[14].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/80bb670d53a59d54b6c3cfbecb4741153ca26b66b47311cb947767dcfbf3f63c.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/80bb670d53a59d54b6c3cfbecb4741153ca26b66b47311cb947767dcfbf3f63c.jpg",
+                "content_sha256": "e56a457f03b2c17118c09bed585a92e1fe1c4cd258c1a24156a7fbb6d5cdd642",
+                "content_type": "image/jpeg",
+                "bytes": 290991,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-F64iByoArW0UxJiq4i6q6ybswTpsFLzbftPdz5_a20k3dYlr1sWXf-eC1YmFNIkduTKbbmTT75VsTAEqRda3uNbgjRI5KWibj9zTQtpGDvSCgFyhQPGefXzuoGBLQQlB0d4onexVHrSd=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-F64iByoArW0UxJiq4i6q6ybswTpsFLzbftPdz5_a20k3dYlr1sWXf-eC1YmFNIkduTKbbmTT75VsTAEqRda3uNbgjRI5KWibj9zTQtpGDvSCgFyhQPGefXzuoGBLQQlB0d4onexVHrSd=w2048-h2048-k-no",
+                        "bytes": 290991,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:24.865532+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFzBit8CWdMgFC7GJuK70l6i6yTWEjtlIeZLkbGBiKrE_RFSJtfflqQ79fA3BUZyY-TTnO2ZZazOYtd_nPflZmF66lUZ7Ct0-dCqP22AndWMvhWARajGNCE9vB59tc-IwhfXslWRs5PopON=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFzBit8CWdMgFC7GJuK70l6i6yTWEjtlIeZLkbGBiKrE_RFSJtfflqQ79fA3BUZyY-TTnO2ZZazOYtd_nPflZmF66lUZ7Ct0-dCqP22AndWMvhWARajGNCE9vB59tc-IwhfXslWRs5PopON=w2048-h2048-k-no",
+                "source_url_sha256": "9acfe105be04361757df02a6da64953d0598184915800bf896c199f73036d362",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[16]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[15].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/9acfe105be04361757df02a6da64953d0598184915800bf896c199f73036d362.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/9acfe105be04361757df02a6da64953d0598184915800bf896c199f73036d362.jpg",
+                "content_sha256": "8b15ca56af6af93466698eff21dbcabae26157daeb55f779cd29283af3f00c3b",
+                "content_type": "image/jpeg",
+                "bytes": 354785,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFzBit8CWdMgFC7GJuK70l6i6yTWEjtlIeZLkbGBiKrE_RFSJtfflqQ79fA3BUZyY-TTnO2ZZazOYtd_nPflZmF66lUZ7Ct0-dCqP22AndWMvhWARajGNCE9vB59tc-IwhfXslWRs5PopON=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFzBit8CWdMgFC7GJuK70l6i6yTWEjtlIeZLkbGBiKrE_RFSJtfflqQ79fA3BUZyY-TTnO2ZZazOYtd_nPflZmF66lUZ7Ct0-dCqP22AndWMvhWARajGNCE9vB59tc-IwhfXslWRs5PopON=w2048-h2048-k-no",
+                        "bytes": 354785,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:25.287475+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsIii92ghBoDvKxRQq7lugxDagn11FuAkGn7Abn87ygkDyJn3fa0Lg5niVQoMiE_13uHYV08wBbGeS8s244613Wf6IfPYIIOn-CQzlmyOVZBIHS7GidFNhZ3POJPX_zfOyf8G1LF54f4vr=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsIii92ghBoDvKxRQq7lugxDagn11FuAkGn7Abn87ygkDyJn3fa0Lg5niVQoMiE_13uHYV08wBbGeS8s244613Wf6IfPYIIOn-CQzlmyOVZBIHS7GidFNhZ3POJPX_zfOyf8G1LF54f4vr=w2048-h2048-k-no",
+                "source_url_sha256": "2975511f6763aedc588c79dc87d50285dd4d971cfe4033d4e28e208c07cec108",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[17]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[16].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/2975511f6763aedc588c79dc87d50285dd4d971cfe4033d4e28e208c07cec108.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/2975511f6763aedc588c79dc87d50285dd4d971cfe4033d4e28e208c07cec108.jpg",
+                "content_sha256": "b92b7d495aabe88ae003c7058580aef943e066c2347c81604c365a29b471111a",
+                "content_type": "image/jpeg",
+                "bytes": 314772,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsIii92ghBoDvKxRQq7lugxDagn11FuAkGn7Abn87ygkDyJn3fa0Lg5niVQoMiE_13uHYV08wBbGeS8s244613Wf6IfPYIIOn-CQzlmyOVZBIHS7GidFNhZ3POJPX_zfOyf8G1LF54f4vr=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsIii92ghBoDvKxRQq7lugxDagn11FuAkGn7Abn87ygkDyJn3fa0Lg5niVQoMiE_13uHYV08wBbGeS8s244613Wf6IfPYIIOn-CQzlmyOVZBIHS7GidFNhZ3POJPX_zfOyf8G1LF54f4vr=w2048-h2048-k-no",
+                        "bytes": 314772,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:25.787417+00:00"
+            },
+            {
+                "place_name": "Plot Twist CLT",
+                "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+                "record_id": "recmEjGMV57K9Q6om",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNBN_hJt-Xlp2QZ8YYptD-vUmmnKngjwgTcVPb7=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNBN_hJt-Xlp2QZ8YYptD-vUmmnKngjwgTcVPb7=w2048-h2048-k-no",
+                "source_url_sha256": "6a1863dfaed7f497a26e419779127382694c8995aceabcbc1e63f0652eef8897",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
+                "provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[18]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[18].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/6a1863dfaed7f497a26e419779127382694c8995aceabcbc1e63f0652eef8897.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJlQjYtVsfVIgRWsyFbSpc6ho/6a1863dfaed7f497a26e419779127382694c8995aceabcbc1e63f0652eef8897.png",
+                "content_sha256": "60d6a3f17968485c5715e17e5d185ace26f932bbc23d9e220e55856c128ba965",
+                "content_type": "image/png",
+                "bytes": 178084,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNBN_hJt-Xlp2QZ8YYptD-vUmmnKngjwgTcVPb7=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNBN_hJt-Xlp2QZ8YYptD-vUmmnKngjwgTcVPb7=w2048-h2048-k-no",
+                        "bytes": 178084,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:48:26.478517+00:00"
+            }
+        ],
+        "azure_asset_failures": [],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 38,
+            "duplicate_count": 0,
+            "airtable_photos_count": 0,
+            "airtable_photos_google_count": 0,
+            "data_file_photo_urls_count": 19,
+            "provider_raw_photo_url_big_count": 19,
+            "place_name": "Plot Twist CLT",
+            "place_id": "ChIJlQjYtVsfVIgRWsyFbSpc6ho",
+            "record_id": "recmEjGMV57K9Q6om",
+            "generated_at": "2026-05-02T21:48:31.533138+00:00",
+            "azure_assets_count": 19,
+            "failed_upload_count": 0,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 19,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 0
+        },
+        "last_refreshed": "2026-05-02T21:48:31.533476"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2026-04-27T01:44:18.418630"
