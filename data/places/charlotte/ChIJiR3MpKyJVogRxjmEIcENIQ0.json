@@ -7747,10 +7747,6 @@
                 "source_path": "fields.Photos[3]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
                     }
@@ -7759,6 +7755,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[42].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -7789,6 +7793,48 @@
                 "place_name": "Flora Coffee",
                 "place_id": "ChIJiR3MpKyJVogRxjmEIcENIQ0",
                 "record_id": "recyl7Dgm4u1j3Ojd",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Gg2Fo9Zva-xXqhq-SRydjQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=265.69873&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Gg2Fo9Zva-xXqhq-SRydjQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=265.69873&pitch=0&thumbfov=100",
+                "source_url_sha256": "a2a2b441e064388772fb162a81a4b94d38acf79373bb101766427968165d172e",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[60].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[60].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJiR3MpKyJVogRxjmEIcENIQ0/a2a2b441e064388772fb162a81a4b94d38acf79373bb101766427968165d172e.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJiR3MpKyJVogRxjmEIcENIQ0/a2a2b441e064388772fb162a81a4b94d38acf79373bb101766427968165d172e.jpg",
+                "content_sha256": "7b8f8045cb86e356d0a6fbebb14a7101fce553a162d272cdbf20c4b47d2ffeda",
+                "content_type": "image/jpeg",
+                "bytes": 155760,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Gg2Fo9Zva-xXqhq-SRydjQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=265.69873&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Gg2Fo9Zva-xXqhq-SRydjQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=265.69873&pitch=0&thumbfov=100",
+                        "bytes": 155760,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:31.582549+00:00"
+            },
+            {
+                "place_name": "Flora Coffee",
+                "place_id": "ChIJiR3MpKyJVogRxjmEIcENIQ0",
+                "record_id": "recyl7Dgm4u1j3Ojd",
                 "source_url": "https://lh3.googleusercontent.com/p/AF1QipPP1kpEjcrOK-TH9xJ96wXV-Zn0PFwU1i2Tegy9=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPP1kpEjcrOK-TH9xJ96wXV-Zn0PFwU1i2Tegy9=w2048-h2048-k-no",
                 "source_url_sha256": "e59ed496c0ac21c7467d5e0f023a0abd753c66e9379a897c231ec116282ef28b",
@@ -7801,7 +7847,12 @@
                         "path": "photos.raw_data.photos_data[8].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJiR3MpKyJVogRxjmEIcENIQ0/e59ed496c0ac21c7467d5e0f023a0abd753c66e9379a897c231ec116282ef28b.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJiR3MpKyJVogRxjmEIcENIQ0/e59ed496c0ac21c7467d5e0f023a0abd753c66e9379a897c231ec116282ef28b.jpg",
@@ -7838,7 +7889,12 @@
                         "path": "photos.raw_data.photos_data[55].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJiR3MpKyJVogRxjmEIcENIQ0/f5e3c8adb2fe74699a5279d1e48ded86b9dd9b1dcf9ee13744a7581d18f4f840.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJiR3MpKyJVogRxjmEIcENIQ0/f5e3c8adb2fe74699a5279d1e48ded86b9dd9b1dcf9ee13744a7581d18f4f840.jpg",
@@ -7858,43 +7914,6 @@
                     }
                 ],
                 "uploaded_at": "2026-05-02T21:56:24.816380+00:00"
-            },
-            {
-                "place_name": "Flora Coffee",
-                "place_id": "ChIJiR3MpKyJVogRxjmEIcENIQ0",
-                "record_id": "recyl7Dgm4u1j3Ojd",
-                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Gg2Fo9Zva-xXqhq-SRydjQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=265.69873&pitch=0&thumbfov=100",
-                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Gg2Fo9Zva-xXqhq-SRydjQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=265.69873&pitch=0&thumbfov=100",
-                "source_url_sha256": "a2a2b441e064388772fb162a81a4b94d38acf79373bb101766427968165d172e",
-                "source_host": "streetviewpixels-pa.googleapis.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[60].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[60].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJiR3MpKyJVogRxjmEIcENIQ0/a2a2b441e064388772fb162a81a4b94d38acf79373bb101766427968165d172e.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJiR3MpKyJVogRxjmEIcENIQ0/a2a2b441e064388772fb162a81a4b94d38acf79373bb101766427968165d172e.jpg",
-                "content_sha256": "7b8f8045cb86e356d0a6fbebb14a7101fce553a162d272cdbf20c4b47d2ffeda",
-                "content_type": "image/jpeg",
-                "bytes": 155760,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Gg2Fo9Zva-xXqhq-SRydjQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=265.69873&pitch=0&thumbfov=100",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Gg2Fo9Zva-xXqhq-SRydjQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=265.69873&pitch=0&thumbfov=100",
-                        "bytes": 155760,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:31.582549+00:00"
             }
         ],
         "azure_asset_failures": [
@@ -7906,13 +7925,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepgcDJ1-_Jc0vzL8UB9Y9GlEkIOisLjt5-mDj7lguaf83MNO_GJL73TBB1-oH7A7oFAEnSLPxZ5R8g1Rajt2PxMq18nlhf9bT1XRhn5hb3LLyWRGvMRIo1C1dT-UCsTPQEErwuIlQJ0Db4R=w2048-h2048-k-no",
                 "source_url_sha256": "a722b326d17e71ae8ba4d1e030ad912a8bb47ff0dcfa033984b5c3589839b3b0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[0]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[0]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
@@ -7979,7 +7994,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:31.636362+00:00"
+                "failed_at": "2026-05-02T22:19:42.700069+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -7989,13 +8004,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepfO-V20zdcA5VuYIb3cVODaTUQwjPHQu04phifNRwZXtVbpkmk5Kp9SM77enFgVBWOl1MoFoLem43TMq3QJZyO_HMwIawXBcxEHWkVfLg13kD9PCqb2FUpPHhq_OFCMO7Dfmn6arJl5wTb=w2048-h2048-k-no",
                 "source_url_sha256": "691fa027ebf8ba122699acff0667492dd19a0f392c80fd85caec462a3f4d4467",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -8062,7 +8073,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:32.008013+00:00"
+                "failed_at": "2026-05-02T22:19:43.440541+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8072,13 +8083,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepCpNBPIsFA7xqCG0Se0EdW-EhS5xzXAyHb1fF-nasuY1G189rOhTuxFLwsXWgTpA64-7k-PMUh_mFQehQyDWZuW-m-iC1M-_-R9RiSMBrLsdEzPk3P_851fHrwdvmEZycWQ97uuhlFRU5S=w2048-h2048-k-no",
                 "source_url_sha256": "fc26f9455abe5615c0fc8eb3bb61c96210dc0419cb79122e4f6b596f39d4193b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -8145,7 +8152,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:32.355844+00:00"
+                "failed_at": "2026-05-02T22:19:48.868567+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8155,13 +8162,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqrjQpYysPdkc5YVOHKYpxtGxplicB7DwbYQfbXZkOqMtadNdZudunpPeTMn3-OxMkkDHh32yIgpb2t5ftP45F6R8GuWajGo_Lp9hCPWqOZa_4Vpeul1589U9wtI00Z01ESzyiYOhsZu8XS=w2048-h2048-k-no",
                 "source_url_sha256": "459ff7d8b9cfd1f96fe344ef939b24c757edf8f21ca16b77cdbfce727828b565",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -8228,7 +8231,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:33.416873+00:00"
+                "failed_at": "2026-05-02T22:19:49.221431+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8238,13 +8241,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerqmCxRXpUMjX6iqcTC6P-3z9DX3ndPuiRDjH3GaCSOOMlKlLHRNyC2B3NPi2SL5NecrIGvS6zZ9cmdjWvmPWbwiNKaIEPC0JAvi3gWIa8Q8arlzxilxoJfYcR6B7SYJuUbtZHof6ikRY4=w2048-h2048-k-no",
                 "source_url_sha256": "0d172271c6e3d0159be90bdaa44f1ce611cb41a3c90c479168ad84c3e3df5330",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -8311,7 +8310,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:33.708848+00:00"
+                "failed_at": "2026-05-02T22:19:49.612385+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8321,13 +8320,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepTo2Dgu0zc9Bsm5UiXI3tT7s5dHdTRDUmp6b8UfH14JBDd5Ona7iBvCOztIK-ekIddqgX-d4fKhOV6GeNgh1bPi-J9XyTmg55EB5qzSJ_OJ5yRszXTjbklbCCNYMR2Vfd5CvGrF_mdwdCP=w2048-h2048-k-no",
                 "source_url_sha256": "59d9c6a867bf1be69192860d5ee09cd4bd46373422e0e60aebf07465c5fe9595",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -8394,7 +8389,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:34.000957+00:00"
+                "failed_at": "2026-05-02T22:19:49.915814+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8404,13 +8399,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepmBtJZHGhCeeeSS1r0UY8yReK6zrq6XzhD1ErlYJjZZQdMig226o1txD9cT6Mmb8mzNInci5Jq8WXsd8NdNo4fNCS2NSIM5uAdX5P0Lfoz7_AEjUDQk3tCEM0y45lrxIFv2uDfs8GYa6sR=w2048-h2048-k-no",
                 "source_url_sha256": "4cc2993f81f404e89d44d6a0245ca21917b2b85576b10444e8a6390efe518140",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -8477,7 +8468,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:34.282814+00:00"
+                "failed_at": "2026-05-02T22:19:50.263175+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8487,13 +8478,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerOQRoy_W_YDeoRbuuOOVA6heWiZvgZUR2nM7urgKvOz0FpoIARJpz7tgLsYPuFGU-sKDNp0Mft7aQFpmeWXy0La9ERdYqb-yTlemai9CtRX1BwbWrt5PDTnk57GeNMPtSUX0XH=w2048-h2048-k-no",
                 "source_url_sha256": "80318af456cb50f34d04ffd69dc1b4a50ba338470b82e178909d35b19501e246",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -8560,7 +8547,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:34.571189+00:00"
+                "failed_at": "2026-05-02T22:19:50.637706+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8570,13 +8557,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweorFHh6mMNpc-3DrPCplMa5ck2IMiZDXLJL74AMkLiGk30GJC8VqXt1NRxmwhAec7iaq3INgUhKSux6Jv29EXRMfThLaEGslRntj6HO7U3HAAuw8c8MtBVz03Vxn0ESKXuYJrXeVdQPVzOn=w2048-h2048-k-no",
                 "source_url_sha256": "857bfcb6fa58430a6d4c389ac34c096edef9313702696ba935e562665bfdeafc",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -8643,7 +8626,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:34.845452+00:00"
+                "failed_at": "2026-05-02T22:19:50.971423+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8653,13 +8636,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoArwKu_PYtbsCazaEHhXgahkr5_5mpZld-RLdYfowCEwttlA5yt7d4ZyMDxTtflYzTK9ZRml9KOawhVtSkQLU4Lfs17Y8S-1kk9Hq_vjmGT3GsziBxoFOFEZWmcVQ7zXCUhDG41uHyzGgd=w2048-h2048-k-no",
                 "source_url_sha256": "ccad4b7bed182dc7a24c8bd31b8ffe55d5dcd6a04bea61aa8b2535229b342995",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -8726,7 +8705,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:35.143560+00:00"
+                "failed_at": "2026-05-02T22:19:51.268679+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8736,13 +8715,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweryUiWmJPLEtV5nqoSVTV7NAI4vVPxYOIIjESOfg1VbutVUke5XbbewS6n0cfuHveAb7KGD1VRPXNpWaoaenrjqfIjkTScd2wtaTGxnlXiPS52oEEE48ute55wFI8G_jcoXMPMWAcoTOFd_=w2048-h2048-k-no",
                 "source_url_sha256": "4e874b865b7fd8b34aa3c35fcb3bbcd8577f44c161d057c129b684afd205903b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -8809,7 +8784,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:35.440271+00:00"
+                "failed_at": "2026-05-02T22:19:51.580735+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8819,13 +8794,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepFzJ3H5srCrvfHG6dQshFj4wwFdmYEZz0OoqadeB6SvXO4G6sMyrpC8Q8ccUvFNxBedRN1q-2qyjiABZvLaZW3eFWlPCcX9aDkpinJ7m1bjZSD8XOd-eMIAB1dbtYqq3O6FrloYJMIvMY=w2048-h2048-k-no",
                 "source_url_sha256": "9514ada390dc1e58fd02f47115946883d2424eb7f2e76c4888fbe0c160339676",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -8892,7 +8863,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:35.720700+00:00"
+                "failed_at": "2026-05-02T22:19:56.923684+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8902,13 +8873,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqcDj9NLPaqnA0OUMkBbFlh5wkUL-ow71LOP_Otiy5bVY__SyWk5p2UQpHFy-PKygCMymfxQb721lab5IRfhebAnc16lqhzXYn_uIJN0CcIk5MkplwEVKJCGxy8aB2rGL_ncUBfIm831BzF=w2048-h2048-k-no",
                 "source_url_sha256": "8bcfaa76d6cac9ea7cad460f1a3e2f58a8cf5dd1d60c5cdb9fffcb792bdaa9b8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -8975,7 +8942,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:36.006513+00:00"
+                "failed_at": "2026-05-02T22:19:57.253901+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -8985,13 +8952,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqGEKvZfBWJAPmn0xbReDNSGpmbx-K5RV36noJyHUYE1jpzYmOmfIbx-o4TPje21P9J0OikradaXqawJ3siKgmwaXKzdeRbBLD4WSJoy5yr8Tm550bWyrZ9TC_szjj_1VMV1Dm8Rtvy78A=w2048-h2048-k-no",
                 "source_url_sha256": "3337e276d770ba4f0c954d564805bcee7e12ffa643d8306aea95232683704ca6",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -9058,7 +9021,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:36.289692+00:00"
+                "failed_at": "2026-05-02T22:19:57.630539+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9068,13 +9031,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweov8p3lX-4IGismIuKX03xx12u6buTmCIfrPGsqqClL9eo4PBPLJnK4SmgRNZC9u-147mJzkk3NXeUWp9L4AoWT0RfNFltqRsLU2qPwOhkYm5v0cFsyAiVxw8z78_ELf7IGMe2W7c767J9c=w2048-h2048-k-no",
                 "source_url_sha256": "af71e8fe185e5647fc32393e03a6c395400ac9af6db73b3010737845ac290751",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -9141,7 +9100,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:36.571771+00:00"
+                "failed_at": "2026-05-02T22:19:58.036427+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9151,13 +9110,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoee44PoV8aw4vRlBHYGF0p4RS6E9FHT5Nx21osS3AULTmFr1NUj8DXH5vS1aAMYnXt0yZZ60ml07Y3TrQpwpUpK7C1ihN73KvuWY4cW0vl72s7Jt-_FLZK1ww7RIDLYFHtMPVJlpB78M4=w2048-h2048-k-no",
                 "source_url_sha256": "abdcae9c7c04fa26300c4f986719edb6c5b5e27cbb97a4bd59f6c5529595d877",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -9224,7 +9179,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:41.876247+00:00"
+                "failed_at": "2026-05-02T22:19:58.474501+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9234,13 +9189,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqDDqgKlpxm3gzy2xrwko__4XlTILAaPx5YufjguLbzWdSK98KZgIiEmcGYwX6SoKqBjnx3aabA_jVTYGeRXjnjPY9COt2i4iTW9xg1TRGI5Hu8lj1pryjYy3j3kHJhF8-hpHOcOTXOP0G4=w2048-h2048-k-no",
                 "source_url_sha256": "8521646e0cd763cf8f45c3032189b03de43ffb7cf09ef039104377dbe4773ba2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -9307,7 +9258,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:42.163523+00:00"
+                "failed_at": "2026-05-02T22:20:03.931191+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9317,13 +9268,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoTesrJkBhlJlygeTNM_7cRdaQ7Lqxl2L33a04RuDHwgudNYiL-3L-ktuo5t8pXgNCz5JDV7RI8bN2n6tB20BE13QT-Lxtdc6CpfkKckfaZNZKx67saRC87ry-_bH27B5QsJKjyeX43Bis=w2048-h2048-k-no",
                 "source_url_sha256": "6746f04b01e0519b36746370c111211b26301d21ce6a5f0a203b66553b39fa1f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -9390,7 +9337,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:42.475147+00:00"
+                "failed_at": "2026-05-02T22:20:04.388884+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9400,13 +9347,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoFnxiZOktxjk4gDTTMHD2MHLq_bgoHH5tbh0BxyR15OTeRjrAJlbSSzIkx7Te3Fl_dMtQgsxc5kK4Oah5yl7qwt48iaHOy1RDCE_tyLdJQeNyeG6QjgC8stHhQ7FIHfoAlK04p0o6Rc4Y=w2048-h2048-k-no",
                 "source_url_sha256": "6d5718ee94a7a2ec8cd251998e59f19487a67700d1ff41462c34d97905899ca1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -9473,7 +9416,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:42.773446+00:00"
+                "failed_at": "2026-05-02T22:20:04.835237+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9483,13 +9426,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwer9cKPlNcqtohZpJZaRLaxiUSTETAI28a0DJs85td5a6ZURrLr5PJefWuA7Bccsg5I4E0KqFa_rFsWh4-Y2UEIO2Q1tq0wuDLxDg_gjmgE3N7H41-DCqBjo_gQ0aUl-m2LySvgd2Zm1-e0=w2048-h2048-k-no",
                 "source_url_sha256": "08b5af97304a1f8ab3be89538c9371746a032b6e9a66b9fb2aa49460d46ec169",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -9556,7 +9495,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:43.092975+00:00"
+                "failed_at": "2026-05-02T22:20:05.279160+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9566,13 +9505,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqPxsm0KUGfkonTvev0FafPWQxnJBxgR3E9ZpykhTw3h7ZHsE2-kGJ0rRIyKwh-IJzEPt9PkDzct7lBVCASzJz8WnO2WswcMs8EJLGn9uaCgVfB5BPXUEj4dvaBAS2YqpmRW6oZ2oTfJiw=w2048-h2048-k-no",
                 "source_url_sha256": "770d2cdb7dc50ca63822942f81f29dea9e3c83a6f72413da7c359b194dbca8b2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -9639,7 +9574,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:43.386269+00:00"
+                "failed_at": "2026-05-02T22:20:05.730920+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9649,13 +9584,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerZxwerN9pcVUsE9ZP4Jm4r0TudGOFoFo-DWxTZCjaQnUfUZ3i1Luv0MMKVqCayGP_1hVwMLsVY3FyM_b7Lqt6APOy8aZXRgx8RPPdtCXTOiRg_lV_T0TX-0u9Ld5vkJ7zGKk1A_vD3rjCe=w2048-h2048-k-no",
                 "source_url_sha256": "4545c7099cbd62c370c4ba8c6340200b228f0a5ab395d6d2e26af7122202e83c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -9722,7 +9653,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:43.662289+00:00"
+                "failed_at": "2026-05-02T22:20:06.417309+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9732,13 +9663,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqOf7M1IDRhZdwd492Qq9Is6L-rGHHd7gAoNwffmJuRSsDMAodRRUMzdqXRQtp4I9MH4jiK1LJzfydufi5GyhCY1CKUo1EXzxd6ybiGvBZsvDH-meY03vHQ0jjmNReN9tS8fkDI4ZjrcMs=w2048-h2048-k-no",
                 "source_url_sha256": "0bb798fdfcf4a0ce2ba310ace825bca88b763b217c31ae4856e2893467798dcc",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -9805,7 +9732,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:43.965339+00:00"
+                "failed_at": "2026-05-02T22:20:06.838930+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9815,13 +9742,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweo_4JS7oXwjcbH69-AyXGybGEliyYjL7GqRas3cGpiJwoXHlHTS9JRqmYoCttPJnmANxAafaWWR0oFyS-xskpdSuuu_UPWSQs9q6ohOW8AzmOUS8RsjqITyBGJCPWu609NY-J-xcqiSMqqU=w2048-h2048-k-no",
                 "source_url_sha256": "c719bba0976c5724c03328fd0f10b246dfd08a9bdae854d432e26f50e342e960",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -9888,7 +9811,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:44.257541+00:00"
+                "failed_at": "2026-05-02T22:20:07.210935+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9898,13 +9821,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerT4mua0Ze8KdlqTJG2zuoWyIQ23jGCL7Po7IiBR8MCdrIGjJh8X-_97T7gJUzCJwCkaDbtLnWqELJ3YesO9_bbTBmEp2JuTkLVjFGWhK8_8p7_wKyNeqZgPbleUuOwKz6-aBAJVQ-kY8N6=w2048-h2048-k-no",
                 "source_url_sha256": "817445899cfc1824936f1af6833ddca479dab5ed3aac59733fadfb289f820320",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -9971,7 +9890,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:44.553477+00:00"
+                "failed_at": "2026-05-02T22:20:07.557908+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -9981,13 +9900,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoFu2v1-lD9io497BH0sQHaV6rTmYJe2YmFCBP1JnEeO0tpfiS5ltoSfU8h2juiKRauNIbJTrjyN2kDl7ox0zdqnvcf_NjK7cHbeEYrW9kbDhwm7uwv54y5BCAHwVvFzAdj2JqS-40l89Fk=w2048-h2048-k-no",
                 "source_url_sha256": "431044fb1c09bc195ad3955b3cd2309a3c28d8f167616a36195407ce74687d89",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -10054,7 +9969,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:44.864210+00:00"
+                "failed_at": "2026-05-02T22:20:07.877999+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10064,13 +9979,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepzXckYWSreaW92VYreFuGS1dZooL0Tdwooxkkss4HTWFfPs4ST3l4xi1Uya8PjMO-E4xPL3PXsud6VYmbNEUGwtdAP7P3c3R-aI5eGEIxqs5YTvN8AGtP7O2erG3Q-OEI-R93hE6VFX4T7=w2048-h2048-k-no",
                 "source_url_sha256": "26845b47993a8409689a913a8bc2bf59a528c60b769c089cd323a264968c1ed3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -10137,7 +10048,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:45.161366+00:00"
+                "failed_at": "2026-05-02T22:20:08.229496+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10147,13 +10058,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwephHlmX3G4WOcdHigxQWEAJal_nV8MknfC42MLbxj6UDsI9z7LeCwCRUT8BAjSEfw8JkJUjkkOnyifOh5wyi0rxC-NOVcdl13AGhXnGJsAW0LeI0Yx6VJp7K8OjCO1sQjdDxVubt8i5G6c=w2048-h2048-k-no",
                 "source_url_sha256": "c0235d8f7157aa848d85583b937da057f23ed69e18abadf7f1a9c89101108b2d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -10220,7 +10127,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:45.448433+00:00"
+                "failed_at": "2026-05-02T22:20:08.560819+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10230,13 +10137,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepx8SWTGNE-cPJ4P9jpJO58aLyUa4DZEco9HvWcOvwlSb3Ah_tt-uRT-J4lN0aXXCsGWnGCj5Gg6K1Pd0yg_VEq2o3Lqtx_5F-lR1BRJIZ8Zx6IKFbe47TkneKLF9aoctwMaxQ9nvxkNXXs=w2048-h2048-k-no",
                 "source_url_sha256": "7db32ff43867d1a2fc7803378fdfe29fe997138dddf0cdcff44bdcd4c6697b62",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -10303,7 +10206,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:45.763178+00:00"
+                "failed_at": "2026-05-02T22:20:08.900352+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10382,7 +10285,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:46.073949+00:00"
+                "failed_at": "2026-05-02T22:20:09.252101+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10461,7 +10364,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:46.383436+00:00"
+                "failed_at": "2026-05-02T22:20:09.596958+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10540,7 +10443,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:46.721759+00:00"
+                "failed_at": "2026-05-02T22:20:09.956013+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10619,7 +10522,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:47.041089+00:00"
+                "failed_at": "2026-05-02T22:20:10.288015+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10698,7 +10601,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:47.379411+00:00"
+                "failed_at": "2026-05-02T22:20:10.669675+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10777,7 +10680,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:47.719290+00:00"
+                "failed_at": "2026-05-02T22:20:11.048577+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10856,7 +10759,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:48.061464+00:00"
+                "failed_at": "2026-05-02T22:20:11.460269+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -10935,7 +10838,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:53.410422+00:00"
+                "failed_at": "2026-05-02T22:20:11.858670+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11014,7 +10917,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:54.403009+00:00"
+                "failed_at": "2026-05-02T22:20:12.207547+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11093,7 +10996,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:54.720261+00:00"
+                "failed_at": "2026-05-02T22:20:12.605690+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11172,7 +11075,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:00.015787+00:00"
+                "failed_at": "2026-05-02T22:20:13.013681+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11251,7 +11154,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:00.354244+00:00"
+                "failed_at": "2026-05-02T22:20:13.456740+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11330,7 +11233,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:00.674860+00:00"
+                "failed_at": "2026-05-02T22:20:13.931255+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11409,7 +11312,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:00.978523+00:00"
+                "failed_at": "2026-05-02T22:20:14.409096+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11488,7 +11391,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:01.280065+00:00"
+                "failed_at": "2026-05-02T22:20:14.852272+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11567,7 +11470,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:01.555697+00:00"
+                "failed_at": "2026-05-02T22:20:15.292280+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11646,7 +11549,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:01.847770+00:00"
+                "failed_at": "2026-05-02T22:20:15.716668+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11725,7 +11628,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:02.148760+00:00"
+                "failed_at": "2026-05-02T22:20:16.170108+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11804,7 +11707,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:02.478291+00:00"
+                "failed_at": "2026-05-02T22:20:16.606012+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11883,7 +11786,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:02.778073+00:00"
+                "failed_at": "2026-05-02T22:20:17.030517+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -11962,7 +11865,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:03.131861+00:00"
+                "failed_at": "2026-05-02T22:20:17.464214+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12041,7 +11944,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:03.489187+00:00"
+                "failed_at": "2026-05-02T22:20:17.836026+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12120,7 +12023,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:03.823404+00:00"
+                "failed_at": "2026-05-02T22:20:18.174908+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12199,7 +12102,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:09.193715+00:00"
+                "failed_at": "2026-05-02T22:20:18.609272+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12278,7 +12181,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:09.501700+00:00"
+                "failed_at": "2026-05-02T22:20:24.042790+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12357,7 +12260,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:09.858239+00:00"
+                "failed_at": "2026-05-02T22:20:24.405858+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12436,7 +12339,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:10.213455+00:00"
+                "failed_at": "2026-05-02T22:20:24.807160+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12515,7 +12418,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:10.565881+00:00"
+                "failed_at": "2026-05-02T22:20:25.309942+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12594,7 +12497,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:10.871644+00:00"
+                "failed_at": "2026-05-02T22:20:25.792379+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12673,7 +12576,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:11.217341+00:00"
+                "failed_at": "2026-05-02T22:20:26.219209+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12752,7 +12655,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:11.552951+00:00"
+                "failed_at": "2026-05-02T22:20:26.633553+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12831,7 +12734,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:11.888476+00:00"
+                "failed_at": "2026-05-02T22:20:27.055692+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12910,7 +12813,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:12.239485+00:00"
+                "failed_at": "2026-05-02T22:20:27.462373+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -12989,7 +12892,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:12.538105+00:00"
+                "failed_at": "2026-05-02T22:20:27.911528+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13068,7 +12971,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:12.839376+00:00"
+                "failed_at": "2026-05-02T22:20:28.355990+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13147,7 +13050,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:13.154336+00:00"
+                "failed_at": "2026-05-02T22:20:28.783641+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13226,7 +13129,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:13.478870+00:00"
+                "failed_at": "2026-05-02T22:20:29.242258+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13305,7 +13208,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:13.811617+00:00"
+                "failed_at": "2026-05-02T22:20:34.666532+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13384,7 +13287,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:19.169057+00:00"
+                "failed_at": "2026-05-02T22:20:35.051440+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13463,7 +13366,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:19.569846+00:00"
+                "failed_at": "2026-05-02T22:20:35.470948+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13542,7 +13445,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:19.929512+00:00"
+                "failed_at": "2026-05-02T22:20:35.896288+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13621,7 +13524,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:20.629119+00:00"
+                "failed_at": "2026-05-02T22:20:36.317774+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13700,7 +13603,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:20.944494+00:00"
+                "failed_at": "2026-05-02T22:20:36.755808+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13779,7 +13682,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:21.264136+00:00"
+                "failed_at": "2026-05-02T22:20:37.168147+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13858,7 +13761,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:21.575233+00:00"
+                "failed_at": "2026-05-02T22:20:37.556820+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -13937,7 +13840,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:21.897325+00:00"
+                "failed_at": "2026-05-02T22:20:37.936120+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14016,7 +13919,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:22.219098+00:00"
+                "failed_at": "2026-05-02T22:20:38.307330+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14095,7 +13998,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:22.561062+00:00"
+                "failed_at": "2026-05-02T22:20:38.674863+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14174,7 +14077,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:22.856378+00:00"
+                "failed_at": "2026-05-02T22:20:39.047657+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14253,7 +14156,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:23.181953+00:00"
+                "failed_at": "2026-05-02T22:20:39.410892+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14332,7 +14235,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:23.469382+00:00"
+                "failed_at": "2026-05-02T22:20:39.794548+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14411,7 +14314,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:23.765563+00:00"
+                "failed_at": "2026-05-02T22:20:40.205399+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14490,7 +14393,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:24.052530+00:00"
+                "failed_at": "2026-05-02T22:20:45.603107+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14569,7 +14472,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:25.181012+00:00"
+                "failed_at": "2026-05-02T22:20:51.142141+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14648,7 +14551,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:25.522674+00:00"
+                "failed_at": "2026-05-02T22:20:51.699060+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14727,7 +14630,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:25.895447+00:00"
+                "failed_at": "2026-05-02T22:20:52.179904+00:00"
             },
             {
                 "place_name": "Flora Coffee",
@@ -14806,27 +14709,27 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:31.250025+00:00"
+                "failed_at": "2026-05-02T22:20:52.566545+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 91,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 95,
+            "duplicate_count": 0,
+            "airtable_photos_count": 4,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 61,
             "place_name": "Flora Coffee",
             "place_id": "ChIJiR3MpKyJVogRxjmEIcENIQ0",
             "record_id": "recyl7Dgm4u1j3Ojd",
-            "generated_at": "2026-05-02T21:56:31.582891+00:00",
+            "generated_at": "2026-05-02T22:20:52.566981+00:00",
             "azure_assets_count": 4,
             "failed_upload_count": 86,
             "pending_upload_count": 0,
             "selected_airtable_count": 4,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
