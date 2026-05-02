@@ -37,6 +37,27 @@ class DummyRequest:
         self.params = params
 
 
+class FakeOrchestrationContext:
+    def __init__(self, input_data):
+        self._input_data = input_data
+        self.activity_calls = []
+
+    def get_input(self):
+        return self._input_data
+
+    def call_activity(self, name, input_data):
+        activity_call = {"name": name, "input": input_data}
+        self.activity_calls.append(activity_call)
+        return activity_call
+
+    def task_all(self, tasks):
+        return {"name": "task_all", "tasks": tasks}
+
+
+def run_refresh_all_photos_orchestrator(context):
+    return photos.refresh_all_photos_orchestrator._function._func.orchestrator_function(context)
+
+
 def test_validate_refresh_all_photos_request_success_defaults():
     parsed, error_response = photos.validate_refresh_all_photos_request(
         DummyRequest({"provider_type": "outscraper"})
@@ -46,9 +67,144 @@ def test_validate_refresh_all_photos_request_success_defaults():
     assert parsed["provider_type"] == "outscraper"
     assert parsed["city"] == "charlotte"
     assert parsed["dry_run"] is True
+    assert parsed["place_id"] == ""
     assert parsed["sequential_mode"] is False
     assert parsed["max_places"] is None
     assert parsed["photo_source_mode"] == "refresh_from_data_file_raw_data"
+
+
+def test_validate_refresh_all_photos_request_accepts_place_id_filter():
+    parsed, error_response = photos.validate_refresh_all_photos_request(
+        DummyRequest({
+            "provider_type": "outscraper",
+            "place_id": " ChIJ123 ",
+        })
+    )
+
+    assert error_response is None
+    assert parsed["place_id"] == "ChIJ123"
+
+
+def test_filter_places_for_photo_refresh_filters_by_place_id():
+    places = [
+        {"id": "rec123", "fields": {"Google Maps Place Id": "ChIJ123"}},
+        {"id": "rec456", "fields": {"Google Maps Place Id": "ChIJ456"}},
+    ]
+
+    filtered = photos.filter_places_for_photo_refresh(places, {"place_id": "ChIJ456"})
+
+    assert filtered == [places[1]]
+
+
+def test_filter_places_for_photo_refresh_rejects_duplicate_place_id():
+    places = [
+        {"id": "rec123", "fields": {"Google Maps Place Id": "ChIJ123"}},
+        {"id": "rec456", "fields": {"Google Maps Place Id": "ChIJ123"}},
+    ]
+
+    try:
+        photos.filter_places_for_photo_refresh(places, {"place_id": "ChIJ123"})
+    except ValueError as exc:
+        assert "duplicate place_id found" in str(exc)
+    else:
+        raise AssertionError("Expected ValueError")
+
+
+def test_filter_places_for_photo_refresh_rejects_missing_place_id():
+    places = [
+        {"id": "rec123", "fields": {"Google Maps Place Id": "ChIJ123"}},
+        {"id": "rec456", "fields": {"Google Maps Place Id": "ChIJ456"}},
+    ]
+
+    try:
+        photos.filter_places_for_photo_refresh(places, {"place_id": "ChIJ789"})
+    except ValueError as exc:
+        assert "place_id not found" in str(exc)
+    else:
+        raise AssertionError("Expected ValueError")
+
+
+def test_refresh_all_photos_orchestrator_applies_place_id_before_parallel_fanout():
+    places = [
+        {"id": "rec123", "fields": {"Google Maps Place Id": "ChIJ123", "Place": "Wrong One"}},
+        {"id": "rec456", "fields": {"Google Maps Place Id": "ChIJ456", "Place": "Target"}},
+        {"id": "rec789", "fields": {"Google Maps Place Id": "ChIJ789", "Place": "Wrong Two"}},
+    ]
+    context = FakeOrchestrationContext({
+        "provider_type": "outscraper",
+        "city": "charlotte",
+        "place_id": "ChIJ456",
+        "dry_run": True,
+        "sequential_mode": False,
+        "photo_source_mode": "refresh_from_data_provider",
+    })
+
+    orchestrator = run_refresh_all_photos_orchestrator(context)
+    get_all_call = next(orchestrator)
+
+    assert get_all_call["name"] == "get_all_third_places"
+
+    fanout_call = orchestrator.send(places)
+    assert fanout_call["name"] == "task_all"
+    assert len(fanout_call["tasks"]) == 1
+
+    refresh_call = fanout_call["tasks"][0]
+    assert refresh_call["name"] == "refresh_single_place_photos"
+    assert refresh_call["input"]["place"] == places[1]
+    assert refresh_call["input"]["config"]["place_id"] == "ChIJ456"
+
+    try:
+        orchestrator.send([{"status": "would_update", "message": "ok"}])
+    except StopIteration as exc:
+        result = exc.value
+    else:
+        raise AssertionError("Expected orchestrator to complete")
+
+    refresh_calls = [
+        call for call in context.activity_calls
+        if call["name"] == "refresh_single_place_photos"
+    ]
+    assert len(refresh_calls) == 1
+    assert refresh_calls[0]["input"]["place"]["id"] == "rec456"
+    assert result["success"] is True
+    assert result["data"]["total_places"] == 1
+    assert result["data"]["updated"] == 1
+    assert len(result["data"]["place_results"]) == 1
+
+
+def test_refresh_all_photos_orchestrator_missing_place_id_does_not_fan_out():
+    places = [
+        {"id": "rec123", "fields": {"Google Maps Place Id": "ChIJ123", "Place": "Wrong One"}},
+        {"id": "rec456", "fields": {"Google Maps Place Id": "ChIJ456", "Place": "Wrong Two"}},
+    ]
+    context = FakeOrchestrationContext({
+        "provider_type": "outscraper",
+        "city": "charlotte",
+        "place_id": "ChIJ789",
+        "dry_run": True,
+        "sequential_mode": False,
+        "photo_source_mode": "refresh_from_data_provider",
+    })
+
+    orchestrator = run_refresh_all_photos_orchestrator(context)
+    get_all_call = next(orchestrator)
+
+    assert get_all_call["name"] == "get_all_third_places"
+
+    try:
+        orchestrator.send(places)
+    except StopIteration as exc:
+        result = exc.value
+    else:
+        raise AssertionError("Expected orchestrator to stop after missing place_id")
+
+    refresh_calls = [
+        call for call in context.activity_calls
+        if call["name"] == "refresh_single_place_photos"
+    ]
+    assert refresh_calls == []
+    assert result["success"] is False
+    assert result["error"] == "place_id not found: ChIJ789"
 
 
 def test_validate_refresh_all_photos_request_invalid_photo_source_mode():

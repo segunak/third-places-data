@@ -1,0 +1,109 @@
+name: Refresh Single Place Photos From Provider
+
+on:
+  workflow_call:
+    inputs:
+      provider_type:
+        description: 'Provider to fetch live photos from'
+        required: false
+        default: 'outscraper'
+        type: string
+      city:
+        description: 'City to process'
+        required: false
+        default: 'charlotte'
+        type: string
+      place_id:
+        description: 'Google Maps Place ID to refresh'
+        required: true
+        type: string
+      dry_run:
+        description: 'If true, only reports what would change without uploading or writing Airtable'
+        required: false
+        default: 'true'
+        type: string
+  workflow_dispatch:
+    inputs:
+      provider_type:
+        description: 'Provider to fetch live photos from'
+        required: false
+        default: 'outscraper'
+        type: string
+      city:
+        description: 'City to process'
+        required: false
+        default: 'charlotte'
+        type: string
+      place_id:
+        description: 'Google Maps Place ID to refresh'
+        required: true
+        type: string
+      dry_run:
+        description: 'If true, only reports what would change without uploading or writing Airtable'
+        required: false
+        default: 'true'
+        type: string
+
+concurrency:
+  group: refresh-single-place-photos-${{ inputs.place_id }}
+  cancel-in-progress: true
+
+jobs:
+  refresh-single-place-photos:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Refresh single place photos
+        working-directory: ./scripts
+        shell: pwsh
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          $providerType = [uri]::EscapeDataString("${{ inputs.provider_type }}")
+          $city = [uri]::EscapeDataString("${{ inputs.city }}")
+          $placeIdRaw = "${{ inputs.place_id }}"
+          $placeId = [uri]::EscapeDataString($placeIdRaw)
+          $dryRun = "${{ inputs.dry_run }}".ToLowerInvariant()
+
+          if ([string]::IsNullOrWhiteSpace($placeIdRaw)) {
+            Write-Error "place_id is required."
+            exit 1
+          }
+
+          if ($dryRun -ne "true") {
+            $dryRun = "false"
+          }
+
+          if ($dryRun -eq "true") {
+            $upload = "false"
+            $writeAirtable = "false"
+          } else {
+            $upload = "true"
+            $writeAirtable = "true"
+          }
+
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&place_id=$placeId&dry_run=$dryRun&sequential_mode=true&photo_source_mode=refresh_from_data_provider&upload=$upload&write_airtable=$writeAirtable&overwrite=false&retry_failures=true&failure_ttl_hours=0&try_url_variants=true"
+          Write-Host "Using function URL: $FunctionUrl"
+
+          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey "$Env:AZURE_FUNCTION_KEY" -TimeoutSeconds 1800
+          if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
+          }
+
+      - name: Purge Orchestrations
+        if: always()
+        shell: pwsh
+        working-directory: ./scripts
+        env:
+          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+        run: |
+          Write-Host "Cleaning up completed orchestrations..."
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/purge-orchestrations"
+          ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey "$Env:AZURE_FUNCTION_KEY" -TimeoutSeconds 300
+          if ($LASTEXITCODE -ne 0) {
+            Write-Warning "Orchestration purge failed, but this is non-critical."
+          } else {
+            Write-Host "Orchestration purge completed."
+          }

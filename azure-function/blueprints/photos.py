@@ -14,6 +14,7 @@ bp = df.Blueprint()
 def validate_refresh_all_photos_request(req: func.HttpRequest):
     provider_type = req.params.get('provider_type')
     city = req.params.get('city', 'charlotte')
+    place_id = req.params.get('place_id', '').strip()
     dry_run = req.params.get('dry_run', 'true').lower() == 'true'
     upload = req.params.get('upload', 'true').lower() == 'true'
     write_airtable = req.params.get('write_airtable', 'true').lower() == 'true'
@@ -127,6 +128,7 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
     parsed = {
         "provider_type": provider_type,
         "city": city,
+        "place_id": place_id,
         "dry_run": dry_run,
         "upload": upload,
         "write_airtable": write_airtable,
@@ -139,6 +141,23 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
         "photo_source_mode": photo_source_mode,
     }
     return parsed, None
+
+
+def filter_places_for_photo_refresh(places, config):
+    place_id = (config.get("place_id") or "").strip()
+
+    if place_id:
+        matching_places = [
+            place for place in places
+            if place.get("fields", {}).get("Google Maps Place Id") == place_id
+        ]
+        if not matching_places:
+            raise ValueError(f"place_id not found: {place_id}")
+        if len(matching_places) > 1:
+            raise ValueError(f"duplicate place_id found: {place_id}")
+        return [matching_places[0]]
+
+    return places
 
 
 @bp.function_name(name="RefreshAllPhotos")
@@ -154,6 +173,7 @@ async def refresh_all_photos(req: func.HttpRequest, client) -> func.HttpResponse
 
         provider_type = parsed_request["provider_type"]
         city = parsed_request["city"]
+        place_id = parsed_request["place_id"]
         dry_run = parsed_request["dry_run"]
         sequential_mode = parsed_request["sequential_mode"]
         max_places = parsed_request["max_places"]
@@ -169,11 +189,12 @@ async def refresh_all_photos(req: func.HttpRequest, client) -> func.HttpResponse
                      f"provider_type={provider_type}, city={city}, dry_run={dry_run}, "
                      f"upload={upload}, write_airtable={write_airtable}, "
                      f"sequential_mode={sequential_mode}, max_places={max_places}, "
-                     f"photo_source_mode={photo_source_mode}")
+                     f"photo_source_mode={photo_source_mode}, place_id={place_id}")
 
         orchestration_input = {
             "provider_type": provider_type,
             "city": city,
+            "place_id": place_id,
             "dry_run": dry_run,
             "upload": upload,
             "write_airtable": write_airtable,
@@ -214,6 +235,7 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
         orchestration_input = context.get_input() or {}
         provider_type = orchestration_input.get("provider_type")
         city = orchestration_input.get("city", "charlotte")
+        place_id = orchestration_input.get("place_id", "")
         dry_run = orchestration_input.get("dry_run", True)
         sequential_mode = orchestration_input.get("sequential_mode", False)
         max_places = orchestration_input.get("max_places")
@@ -231,6 +253,7 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
         config_dict = {
             "provider_type": provider_type,
             "city": city,
+            "place_id": place_id,
             "dry_run": dry_run,
             "sequential_mode": sequential_mode,
             "max_places": max_places,
@@ -247,6 +270,13 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
             'get_all_third_places',
             {"config": config_dict}
         )
+
+        all_third_places = filter_places_for_photo_refresh(all_third_places, config_dict)
+        if place_id:
+            logging.info(
+                f"Filtered photo refresh to {len(all_third_places)} place(s) "
+                f"using place_id={place_id}"
+            )
 
         if max_places and max_places > 0:
             all_third_places = all_third_places[:max_places]
