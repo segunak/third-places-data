@@ -8205,10 +8205,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -8217,6 +8213,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[94].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -8253,13 +8257,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwwy9XYlPWUYwNYjl-MU9m9EKAP1xmgFQYcaFONz4IP2oTnl9o3sVUE_Qs0QpqSwpivciXzSe9viz2OLlKwPth8opoxNVNQIjYv5WxWyIIR9Q1TtzP4Oeo8ek0DHoPV9simXx-U=w2048-h2048-k-no",
                 "source_url_sha256": "a07f16590433fc488e12c3304945b2370611f51ed1c60d6343fa4eda7e88cd81",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -8326,7 +8326,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:33.686580+00:00"
+                "failed_at": "2026-05-02T22:27:42.265343+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -8336,13 +8336,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwETeZWOiqhrPDABM6t8UihoCneDN1qJDjDhlVG4SJLiFf58ofIB5aG57u1m1QGvFkLy8-iQXqkcB5j0cQsxIl_EU8wrUT7mLsCNJPWrDQAIAgjLZk1Ya2VJkcH_5NJ75f8xXd-2A=w2048-h2048-k-no",
                 "source_url_sha256": "53582b7ddbecdcf1f18a80402eb6887e0d10bdecde578ef1adf3e9e4abfda5d4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -8409,7 +8405,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:34.029949+00:00"
+                "failed_at": "2026-05-02T22:27:42.631389+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -8419,13 +8415,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwwaG59yPiQXEbY5KfJO02hbMIcTnUbuvf5mDGVfJIK9CkrGtAN4tbm0Bbfi6Y51GwbVAQ2zLpCx6aPVSgVWX72BqGyT6rcPdOy_qyrTEJKNSEcM7lVD4p-tAJH6eutlA53Hu_H=w2048-h2048-k-no",
                 "source_url_sha256": "2c3b09ca4d9cea62bbcbbc3ea796383518aac7cf4bb09aec39cb753be8249c30",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -8492,7 +8484,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:34.355587+00:00"
+                "failed_at": "2026-05-02T22:27:42.960856+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -8502,13 +8494,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz8SqGE58E57nFS0-I5LYULV_95clkroFjzAZHJ9roy30q8_QtJeR0emVSdj181Hoo3JUaHA7NI6C-WyIZq64Gn0VCh1atvt7v1rSKQ7G9c5wnXUK81exMUA1ASSxasgBAJh7QN=w2048-h2048-k-no",
                 "source_url_sha256": "01b7bc08449671d03281760329ee6b382456b99dc655bb08c46095be4bbcc97c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -8575,7 +8563,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:34.702266+00:00"
+                "failed_at": "2026-05-02T22:27:43.289680+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -8585,13 +8573,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwPFY8tEorVljusY8EPmUubSpxhFxU7TvEBzwBcQ7x_7oHxx5cocZxsMj0g80wqt8Yla5n7rP93YsSNlhncEpit6-T889PKAYK_LoVbi1w6ONxGwMgQvwrRzJ_LJ02e1k_lkXM0=w2048-h2048-k-no",
                 "source_url_sha256": "5b21825c299c1d11f5f2ad0c3376869c493e4e21325e2c47c66a351d57574c3c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -8658,7 +8642,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:35.027587+00:00"
+                "failed_at": "2026-05-02T22:27:43.629618+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -8668,13 +8652,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxzr3-T7IF9mko_xhSUumnJVuX-VDM8o8giPyC2zP1SBF16BPw5_M7gYWL0QiFHZ-9DB7QPGj03qRTXHNFUUqct5LTjc6NG_l3j71XO9KR4q_Q8tcG4YqWoNtwDEGqDsZDxAGukVA=w2048-h2048-k-no",
                 "source_url_sha256": "26d44a608dee42b8cea3d4a98ba7fcf68028d59c32c0b4651fc4d8dea3242ef6",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -8741,7 +8721,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:35.357118+00:00"
+                "failed_at": "2026-05-02T22:27:43.929704+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -8751,13 +8731,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxHaVdIlyDurEZEw6GDZ8j03FUD3ln83twdNgl1oMQ3FSMpwHQ1i6Xo5ckUscVvKOasT32hQSLZtmU6Xtt-assD_dzXnxTFsoDsz3cShtI2xhzJPJ1J2Jn7mPm464ahs6SRl68n=w2048-h2048-k-no",
                 "source_url_sha256": "aea895d654277e47d22615499d4feeaa3b941edd258907a4024f97193f6b9640",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -8824,7 +8800,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:35.666813+00:00"
+                "failed_at": "2026-05-02T22:27:44.204827+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -8834,13 +8810,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzjPtdM8VfVF18ah1TSDzlwhXPAlmIRBSg4iLy5KQIqCXXOwWO8lNyKYQySQh5CeRauy-M9kjTuKb1fR16yGCRxAThJw1EHk0J3LvEaA8Z_ifwBSgO46Fe64uixUIlzj8rWDucoPQ=w2048-h2048-k-no",
                 "source_url_sha256": "a6a962d713c71bcd0cfec8d9fea77a8af060b26695ac344a80b2b9e3ff2301f2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -8907,7 +8879,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:36.032436+00:00"
+                "failed_at": "2026-05-02T22:27:44.500740+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -8917,13 +8889,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzUmH2lQesYigZ89WIDK8nXN84VyWv7YmDmcpQre-9qLRqqPdluu1aXbvJ0-Up1-xVgjncNxWe0Ez-LPHbrLEwedtGU3myN3bCgnzoHgOKNMvODbwwW53YQuq1003olQ3v55yn6=w2048-h2048-k-no",
                 "source_url_sha256": "1c48ac36d90da28681c5fcfeadf3f3ee24b70b38f2a3c787e94f70636c29c637",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -8990,7 +8958,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:36.374110+00:00"
+                "failed_at": "2026-05-02T22:27:44.804113+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9000,13 +8968,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyTRtLBr2xFAJhrgVOY8ZmUQRvwSrtwTm_XBW0KJ3jJjB3Fel065_o_Bv0rQ8ZMjVNr_yWrANqZhvMMHplUtMXjl5Vksth6X4bM4YvSLRKXQUENQWgBSO22X6Qe8t1rCKlejJDu=w2048-h2048-k-no",
                 "source_url_sha256": "b42393ffa2f977b212539b514fc27cbc23da9d8a235f04ad4b4d2132f957196d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -9073,7 +9037,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:36.710387+00:00"
+                "failed_at": "2026-05-02T22:27:45.077518+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9083,13 +9047,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyu77xbFwtMrEkEQ2i6c_O9l6rO_DJM-rXLfX23XZdtRy1dZGyb5TT63xEjKkvUB2Dm4T95onLoKWdeNhP3oLrK-a6S0mZRPAyNXb0zR9RBAmJukgZteMfxVKEUnzzx0qhJk_-V=w2048-h2048-k-no",
                 "source_url_sha256": "01aed68a6ff1f81cb2ddf8c6b253f7dc2335ddab436bc6498979716012e26fe2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -9156,7 +9116,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:37.042400+00:00"
+                "failed_at": "2026-05-02T22:27:45.352687+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9166,13 +9126,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSywNTf8z990dQbRt2DPxX5ylkHyQFbB7QrEwtjUWFvd_HvM3yL7jEDPKQObxX17FXz1XbkeeS8q7x1hywSlP3KUN6N42IVbak2_9yJt-2LQPhO3WHRuJEG7Ufg00YiINKqFO8LI=w2048-h2048-k-no",
                 "source_url_sha256": "3b71ab8da7651f0542a400994a8f79566410701c11409fe4bd159a4ef6bc7eee",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -9239,7 +9195,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:37.369546+00:00"
+                "failed_at": "2026-05-02T22:27:45.631190+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9249,13 +9205,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyhCJkfGw7hWzcIPUAsNFtdKBbs6UaWf_mWC2KpOGBdZLu8LJofK3GQqpUzKSlnd0ZTPHs18rxOst32-8AwxpZ8c5jkHKcu11ldOOvivFBZ5aeDiyUgMPMFfCNfVOew6wWv2ot0=w2048-h2048-k-no",
                 "source_url_sha256": "12376cae31ef8bd84d8c59e48eeec412f93e097147e8d7f8d4f639b8903bffe4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -9322,7 +9274,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:37.711629+00:00"
+                "failed_at": "2026-05-02T22:27:45.918281+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9332,13 +9284,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz3JQLdMX1av4gVPLEqbLW-e092w3lnPaTa9XO4KX5tmIyqIeNLuXAzLMDb9sVaP6IoUM-_hdu_jjDWgFiR9Bg6gdvjKy0h9g7S8e8CZUagSsRmdq-iKW9Cik58taryWirtVFqe1gC2eVI=w2048-h2048-k-no",
                 "source_url_sha256": "0cef74a5c2f2fcb55bfcf50cd852e70f2601aefe44447ad970148d88bbfad71d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -9405,7 +9353,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:38.023144+00:00"
+                "failed_at": "2026-05-02T22:27:46.195283+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9415,13 +9363,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxxZ7UCvvrxGA6jzK31gcehjhLYnjFj83NQc68qtZCmB2bzGBLZaoZKZ7pRCaNbSGHdRsyRnzw-3CGjFrgTZUGXUKHj-TFemruvifM-qqTpogw_cKkl1K1tt7X-_AVpUuE6Jrjk5NXB8ROj=w2048-h2048-k-no",
                 "source_url_sha256": "36b2d0680571826a3550f7feaf4d895ef2f753836c0e3a7ec6bfef1d75eb0f22",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -9488,7 +9432,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:38.376171+00:00"
+                "failed_at": "2026-05-02T22:27:46.472160+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9498,13 +9442,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyULFBx35yCi3BY3tNwJxQC_3oGdzjIEYV4mvuqdXjw-yPc_jhTsxcasHVWw525PkieRttMs6EaPL9LeDblBSvfv-tMnlju4g0cbowhpKwpvlMP5WjxGBC4J8O4eHUEVRFdoDBUl3EUhH2n=w2048-h2048-k-no",
                 "source_url_sha256": "83750e3fa30af6dc31bf2fb7e4c6b6c69e65c8492bea04e6a7a27411fbfee6ae",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -9571,7 +9511,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:38.713998+00:00"
+                "failed_at": "2026-05-02T22:27:46.780804+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9581,13 +9521,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzwz5m3C303G_rvoQ3TyuPMPG0GYX6kPzeLHHsoo8Pn8E9jKiT0RYbbMugS5CaYSj1KO8hkbzVldXrCm5_Juejl5v_bp1mExasVpwKXDuetzhcFLFcBhNOnpB8WyTY2CaII-9FvSVztynmD=w2048-h2048-k-no",
                 "source_url_sha256": "c25c97c3bd30a547a8a33ffd36a9bd006944707b80f866573ae51b222251cead",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -9654,7 +9590,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:39.025205+00:00"
+                "failed_at": "2026-05-02T22:27:47.052139+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9664,13 +9600,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyQRWMvUPBDV0iReke51mNRLWti_gRij76yDRQt7wHikbEndhkA8n0R1UfyNywXUV3E93mJ_t9FZdzdXIiAvx87ju6743bU0C-Q8REui8hBt4vLqFixOCLKDE30X4RiMYi_Hsuc=w2048-h2048-k-no",
                 "source_url_sha256": "eea1b716a0ac38c6a0916b2475ea35ae15606d4eb54067b3fb9390a72e17e779",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -9737,7 +9669,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:39.361469+00:00"
+                "failed_at": "2026-05-02T22:27:47.394540+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9747,13 +9679,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyhnjMdQnyzRsUzDSAR5GEZN2jsXuLAcS7VDF-9HO-p4Ez0z8Y7JWca27Ilr7JkIz1HE3UR3m1f5skwRNdBJxec_vvWcCV2rOpPMuCnYgRcQHA0EFHyj0NG_KIxI2zH9Nrk-cU=w2048-h2048-k-no",
                 "source_url_sha256": "57c6f9f19cb3074190c3e1b16043d146630b606463c9a31ae68800b3f143fed2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -9820,7 +9748,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:39.691723+00:00"
+                "failed_at": "2026-05-02T22:27:47.781650+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9830,13 +9758,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwRCze-018LzKx4VilnR_U0I-yjf6meMtNQA3m1xpXd9fSGJJpLJ8946HbLc26YJ4xP1R_MzpGyMep0aMfUiko4NSQO4RjAQm_V_2jilcYQKPcwMrWusdUs4VCZsCGYDYZyofjKcQ=w2048-h2048-k-no",
                 "source_url_sha256": "283aa718869b22a43cf2e425b2d39f8c88cdda043b437437197e9d62f6421fe3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -9903,7 +9827,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:40.012207+00:00"
+                "failed_at": "2026-05-02T22:27:48.132684+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9913,13 +9837,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyqFR-_9Qr_yRh8B-mkOCTLrGf3XCsi8TuLyVixKHZXxJTpsP551XWKBR4vHauJvwlImGbcl07vMlh9eR4Os6oRp4yCWl2nwV7x1gM9MAyVNkpgeZ6Mk95hgtMurxfUB-XNn1zGcw=w2048-h2048-k-no",
                 "source_url_sha256": "96785ae33cb69016de34c91063c09f2cb414f0d35eb75861c0a63a2e47b5be52",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -9986,7 +9906,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:40.350912+00:00"
+                "failed_at": "2026-05-02T22:27:48.452217+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -9996,13 +9916,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvdhZOedf1uKLDRmG2WGVy-LTfunUY35Rc1yjR3ikrd6HQr3HmIopKdIVJGqtRxQt_g4cj4QpdFDOEEDrAzrod_zq19Hy93EJYgoJdqKlFZgYr1JjAU96SACaf5-wdhxnKnyk=w2048-h2048-k-no",
                 "source_url_sha256": "558c5930bf8ec128a7659a71c57b596adabb48ce6dd94870b69ee0fcca2e4a2a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -10069,7 +9985,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:40.674240+00:00"
+                "failed_at": "2026-05-02T22:27:48.781720+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10079,13 +9995,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx0SaIMBiajtjE-HVcSrOGSltqhLA4XgQBr90lqAs1faR8HexNUVw96G0KBCQf9BRhzdV2_f3KacLJT7lGOjHzKyMe1fWfkwgryRwGZ-IRGZNg0BA29A8Fl82tU0UetriROjV3e=w2048-h2048-k-no",
                 "source_url_sha256": "a687118e2dd968d3e54c7c9901b84efb765f5dc8c4dcdbb68b575c2ea4b36415",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -10152,7 +10064,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:41.011661+00:00"
+                "failed_at": "2026-05-02T22:27:49.133277+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10162,13 +10074,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxNqIYEkisi5EwCAkzxgu-3Zv5fYNrXPQbZGvMG2voqatkWGtgwI2gv84gxRETPtQqxm-PR-GZbaT_73gLCdjVlYrfnPkNxWFFb7QV7PqnuNeDvcXZmI5-ETQ_ZIOPKiJTFlMLl=w2048-h2048-k-no",
                 "source_url_sha256": "23efc1e823508fefc673ee8722e1e66a092de1d65172d16b7fa1e0d834810e95",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -10235,7 +10143,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:41.357970+00:00"
+                "failed_at": "2026-05-02T22:27:49.507619+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10245,13 +10153,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwUmiUJ98HCat9nf_gLsNglsSAcE7ETdBYwvjjsXSMpEZixhkuEoAF2-MzQlu160deWZ6QivoohIar-lOiuCCWuz-Xl28En49AlB-QkYdWW70_Ep6nIwYzlGm8VIQislBo1C7JF=w2048-h2048-k-no",
                 "source_url_sha256": "0c05922eb4bbee1b2b28423413760efc6131da63a49d893d284da8e68a9adba7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -10318,7 +10222,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:41.715882+00:00"
+                "failed_at": "2026-05-02T22:27:49.876182+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10328,13 +10232,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy1wJ_9P7FYOPKZHngAOc1a3za59qjuJcOiG89Lv_mVmPc4A_1Tumbak0AQpgUm6EA5hioQ-aljwhttv5a1sEgx7_QoA1SNeVrRCvDpbTqRj-fUpKww8PZ4-h-ysQO7dplWhMUYQw=w2048-h2048-k-no",
                 "source_url_sha256": "b197224d7b10e728e1ba4fc7be574598f7249623c04cb1c96b703824bea22a8e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -10401,7 +10301,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:42.098895+00:00"
+                "failed_at": "2026-05-02T22:27:50.248221+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10411,13 +10311,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwds2YBUk8pEy0j9t3crnSPs1Yc0XSu2HjflQyri9MDQYAJECtlQGcxBdz9CpiOMNyMYgvbW5LgGB2RI_LtgvPWw2ZiXTx6cZ2aAO_F6UyJefrpy0ckMXgDMnvDcnTv3I7N4LAYsw=w2048-h2048-k-no",
                 "source_url_sha256": "b5603aae2f3afb01d1892334dbeab451354fdcf51f7ef90cd74460b2d8c07754",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -10484,7 +10380,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:42.441932+00:00"
+                "failed_at": "2026-05-02T22:27:50.584678+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10494,13 +10390,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzhvxUmdkuXyZGKZGOGEFBQbe7ch7FOdRVO0Ky1H-T1O1XT4KoIsi8LuPWL02TTEs3SigwuYHF_EuoFXBryBn60S98u-M1sP1xS8NdI-9uGqjmBPF5A6ZPnk_PxSFpIZPuYrDap=w2048-h2048-k-no",
                 "source_url_sha256": "2de6a92e51232d43d7ae26755fadbd63a445e383e8e568f0bb804e3bbc178372",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -10567,7 +10459,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:42.995295+00:00"
+                "failed_at": "2026-05-02T22:27:50.911488+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10577,13 +10469,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzgmxmXfPvLYNVyuedCQjeFTJEfq0Zsqr4D5dReaIw0cJ7qqO8TNFTZG-3IXrr3zrEuOtTotu0lzFuPcebTwZJ6LE3zJjK8aQ5q6QEBlL8E3JDStr4m64KYtnRcddGhWZpEMZfZmg=w2048-h2048-k-no",
                 "source_url_sha256": "146506ba0cdf86e4c401e7ad07cd8b08272764ea665c39d92435a86796aacb2f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -10650,7 +10538,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:43.478152+00:00"
+                "failed_at": "2026-05-02T22:27:51.244276+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10729,7 +10617,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:43.838677+00:00"
+                "failed_at": "2026-05-02T22:27:51.578297+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10808,7 +10696,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:44.147844+00:00"
+                "failed_at": "2026-05-02T22:27:56.873527+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10887,7 +10775,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:44.516067+00:00"
+                "failed_at": "2026-05-02T22:27:57.154522+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -10966,7 +10854,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:44.856742+00:00"
+                "failed_at": "2026-05-02T22:27:57.461073+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11045,7 +10933,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:45.312293+00:00"
+                "failed_at": "2026-05-02T22:27:57.743288+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11124,7 +11012,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:45.751811+00:00"
+                "failed_at": "2026-05-02T22:27:58.038547+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11203,7 +11091,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:46.093543+00:00"
+                "failed_at": "2026-05-02T22:27:58.347237+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11282,7 +11170,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:46.431002+00:00"
+                "failed_at": "2026-05-02T22:27:58.663317+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11361,7 +11249,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:46.767968+00:00"
+                "failed_at": "2026-05-02T22:27:58.962947+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11440,7 +11328,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:47.091080+00:00"
+                "failed_at": "2026-05-02T22:27:59.278141+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11519,7 +11407,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:47.430111+00:00"
+                "failed_at": "2026-05-02T22:27:59.579802+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11598,7 +11486,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:47.796339+00:00"
+                "failed_at": "2026-05-02T22:27:59.904844+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11677,7 +11565,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:48.136842+00:00"
+                "failed_at": "2026-05-02T22:28:00.249927+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11756,7 +11644,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:48.475149+00:00"
+                "failed_at": "2026-05-02T22:28:00.551312+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11835,7 +11723,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:48.800568+00:00"
+                "failed_at": "2026-05-02T22:28:00.823450+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11914,7 +11802,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:49.141076+00:00"
+                "failed_at": "2026-05-02T22:28:01.127003+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -11993,7 +11881,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:49.462845+00:00"
+                "failed_at": "2026-05-02T22:28:01.424402+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12072,7 +11960,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:49.798584+00:00"
+                "failed_at": "2026-05-02T22:28:01.712120+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12151,7 +12039,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:50.133696+00:00"
+                "failed_at": "2026-05-02T22:28:01.995735+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12230,7 +12118,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:50.460565+00:00"
+                "failed_at": "2026-05-02T22:28:02.275599+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12309,7 +12197,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:50.762751+00:00"
+                "failed_at": "2026-05-02T22:28:02.567708+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12388,7 +12276,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:51.113126+00:00"
+                "failed_at": "2026-05-02T22:28:07.884086+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12467,7 +12355,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:51.431721+00:00"
+                "failed_at": "2026-05-02T22:28:08.174804+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12546,7 +12434,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:51.822824+00:00"
+                "failed_at": "2026-05-02T22:28:08.497478+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12625,7 +12513,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:52.166485+00:00"
+                "failed_at": "2026-05-02T22:28:08.810226+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12704,7 +12592,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:52.556082+00:00"
+                "failed_at": "2026-05-02T22:28:09.128474+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12783,7 +12671,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:52.910991+00:00"
+                "failed_at": "2026-05-02T22:28:09.431023+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12862,7 +12750,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:53.261397+00:00"
+                "failed_at": "2026-05-02T22:28:09.744212+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -12941,7 +12829,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:53.642176+00:00"
+                "failed_at": "2026-05-02T22:28:10.039709+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13020,7 +12908,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:53.991372+00:00"
+                "failed_at": "2026-05-02T22:28:10.388876+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13099,7 +12987,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:54.325006+00:00"
+                "failed_at": "2026-05-02T22:28:15.736214+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13178,7 +13066,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:54.765416+00:00"
+                "failed_at": "2026-05-02T22:28:16.074762+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13257,7 +13145,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:55.165356+00:00"
+                "failed_at": "2026-05-02T22:28:16.387090+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13336,7 +13224,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:55.516318+00:00"
+                "failed_at": "2026-05-02T22:28:16.695780+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13415,7 +13303,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:55.820226+00:00"
+                "failed_at": "2026-05-02T22:28:16.978522+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13494,7 +13382,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:56.158799+00:00"
+                "failed_at": "2026-05-02T22:28:17.289848+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13573,7 +13461,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:56.490179+00:00"
+                "failed_at": "2026-05-02T22:28:17.606544+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13652,7 +13540,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:56.798829+00:00"
+                "failed_at": "2026-05-02T22:28:17.932992+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13731,7 +13619,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:57.106943+00:00"
+                "failed_at": "2026-05-02T22:28:23.251085+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13810,7 +13698,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:57.429657+00:00"
+                "failed_at": "2026-05-02T22:28:23.572384+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13889,7 +13777,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:57.757669+00:00"
+                "failed_at": "2026-05-02T22:28:28.912309+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -13968,7 +13856,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:58.098325+00:00"
+                "failed_at": "2026-05-02T22:28:29.262705+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14047,7 +13935,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:58.406059+00:00"
+                "failed_at": "2026-05-02T22:28:29.608621+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14126,7 +14014,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:59.033633+00:00"
+                "failed_at": "2026-05-02T22:28:29.950457+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14205,7 +14093,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:59.503837+00:00"
+                "failed_at": "2026-05-02T22:28:30.272713+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14284,7 +14172,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:59.887391+00:00"
+                "failed_at": "2026-05-02T22:28:30.599302+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14363,7 +14251,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:00.218507+00:00"
+                "failed_at": "2026-05-02T22:28:30.942557+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14442,7 +14330,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:00.521591+00:00"
+                "failed_at": "2026-05-02T22:28:36.305171+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14521,7 +14409,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:00.888872+00:00"
+                "failed_at": "2026-05-02T22:28:36.666694+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14600,7 +14488,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:01.250128+00:00"
+                "failed_at": "2026-05-02T22:28:37.031368+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14679,7 +14567,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:01.699891+00:00"
+                "failed_at": "2026-05-02T22:28:42.363148+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14758,7 +14646,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:02.379996+00:00"
+                "failed_at": "2026-05-02T22:28:42.671791+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14837,7 +14725,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:02.792919+00:00"
+                "failed_at": "2026-05-02T22:28:42.968705+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14916,7 +14804,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:03.133606+00:00"
+                "failed_at": "2026-05-02T22:28:43.280536+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -14995,7 +14883,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:03.443955+00:00"
+                "failed_at": "2026-05-02T22:28:43.574815+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15074,7 +14962,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:03.780154+00:00"
+                "failed_at": "2026-05-02T22:28:43.861320+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15153,7 +15041,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:04.113905+00:00"
+                "failed_at": "2026-05-02T22:28:44.160952+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15232,7 +15120,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:04.461175+00:00"
+                "failed_at": "2026-05-02T22:28:44.446233+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15311,7 +15199,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:04.773417+00:00"
+                "failed_at": "2026-05-02T22:28:44.726295+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15390,7 +15278,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:05.095947+00:00"
+                "failed_at": "2026-05-02T22:28:45.044690+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15469,7 +15357,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:05.443817+00:00"
+                "failed_at": "2026-05-02T22:28:45.337903+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15548,7 +15436,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:05.764809+00:00"
+                "failed_at": "2026-05-02T22:28:45.645245+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15627,7 +15515,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:06.098578+00:00"
+                "failed_at": "2026-05-02T22:28:45.949502+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15706,7 +15594,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:06.404462+00:00"
+                "failed_at": "2026-05-02T22:28:46.242115+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15785,7 +15673,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:06.724137+00:00"
+                "failed_at": "2026-05-02T22:28:46.537695+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15864,7 +15752,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:07.051373+00:00"
+                "failed_at": "2026-05-02T22:28:46.827587+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -15943,7 +15831,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:07.361181+00:00"
+                "failed_at": "2026-05-02T22:28:47.128571+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16022,7 +15910,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:07.671718+00:00"
+                "failed_at": "2026-05-02T22:28:47.435834+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16101,7 +15989,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:07.965481+00:00"
+                "failed_at": "2026-05-02T22:28:47.717938+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16180,7 +16068,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:08.289931+00:00"
+                "failed_at": "2026-05-02T22:28:48.020542+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16259,7 +16147,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:08.641020+00:00"
+                "failed_at": "2026-05-02T22:28:48.316352+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16338,7 +16226,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:08.990814+00:00"
+                "failed_at": "2026-05-02T22:28:48.620688+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16417,7 +16305,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:09.353379+00:00"
+                "failed_at": "2026-05-02T22:28:48.958000+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16496,7 +16384,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:09.676176+00:00"
+                "failed_at": "2026-05-02T22:28:54.255271+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16575,7 +16463,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:10.034987+00:00"
+                "failed_at": "2026-05-02T22:28:54.534846+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16654,7 +16542,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:10.345324+00:00"
+                "failed_at": "2026-05-02T22:28:54.817239+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16733,7 +16621,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:10.677645+00:00"
+                "failed_at": "2026-05-02T22:28:55.105751+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16812,7 +16700,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:11.014908+00:00"
+                "failed_at": "2026-05-02T22:28:55.398173+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16891,7 +16779,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:11.357292+00:00"
+                "failed_at": "2026-05-02T22:28:55.687395+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -16970,7 +16858,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:11.676284+00:00"
+                "failed_at": "2026-05-02T22:28:55.993499+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17049,7 +16937,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:12.032950+00:00"
+                "failed_at": "2026-05-02T22:28:56.290854+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17128,7 +17016,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:12.374859+00:00"
+                "failed_at": "2026-05-02T22:28:56.600478+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17207,7 +17095,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:12.713628+00:00"
+                "failed_at": "2026-05-02T22:28:56.892435+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17286,7 +17174,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:13.022714+00:00"
+                "failed_at": "2026-05-02T22:28:57.216333+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17365,7 +17253,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:13.414443+00:00"
+                "failed_at": "2026-05-02T22:28:57.521387+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17444,7 +17332,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:13.822243+00:00"
+                "failed_at": "2026-05-02T22:28:57.841770+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17523,7 +17411,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:14.224529+00:00"
+                "failed_at": "2026-05-02T22:28:58.133466+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17602,7 +17490,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:14.574417+00:00"
+                "failed_at": "2026-05-02T22:28:58.410610+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17681,7 +17569,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:14.913890+00:00"
+                "failed_at": "2026-05-02T22:28:58.714863+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17760,7 +17648,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:15.255134+00:00"
+                "failed_at": "2026-05-02T22:28:59.042309+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17839,7 +17727,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:15.582087+00:00"
+                "failed_at": "2026-05-02T22:28:59.352242+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17918,7 +17806,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:15.902707+00:00"
+                "failed_at": "2026-05-02T22:28:59.669373+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -17997,7 +17885,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:16.251805+00:00"
+                "failed_at": "2026-05-02T22:28:59.953310+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -18076,7 +17964,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:16.648130+00:00"
+                "failed_at": "2026-05-02T22:29:05.289090+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -18155,7 +18043,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:17.152457+00:00"
+                "failed_at": "2026-05-02T22:29:05.648719+00:00"
             },
             {
                 "place_name": "Lorem Ipsum Listening Bar",
@@ -18234,27 +18122,27 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:01:17.521604+00:00"
+                "failed_at": "2026-05-02T22:29:05.972693+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 127,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 128,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 97,
             "place_name": "Lorem Ipsum Listening Bar",
             "place_id": "ChIJgzXzC7uhVogRo6XIjRYNojg",
             "record_id": "recT65d0FLGCSuwjN",
-            "generated_at": "2026-05-02T22:01:17.522157+00:00",
+            "generated_at": "2026-05-02T22:29:05.973020+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 125,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
