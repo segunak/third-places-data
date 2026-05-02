@@ -3658,10 +3658,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -3670,6 +3666,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[57].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -3708,10 +3712,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -3720,6 +3720,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -3758,10 +3766,6 @@
                 "source_path": "fields.Photos[3]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
                     }
@@ -3770,6 +3774,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[19].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -3808,10 +3820,6 @@
                 "source_path": "fields.Photos[4]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
                     }
@@ -3820,6 +3828,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[23].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -3858,10 +3874,6 @@
                 "source_path": "fields.Photos[5]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
                     }
@@ -3870,6 +3882,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[17].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -3912,7 +3932,12 @@
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/8e85643e192a3f0b742ab5c9ca022045d97a066c4b9fbd6e9489cf36d3ee34a7.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/8e85643e192a3f0b742ab5c9ca022045d97a066c4b9fbd6e9489cf36d3ee34a7.jpg",
@@ -3937,228 +3962,6 @@
                 "place_name": "The Juice Pod",
                 "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
                 "record_id": "recaRtvUY6RguGJg8",
-                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5TTC3B58ZrDXBviSQaC60BGNuiU_dd44GTADuZhcePER7DYhICOXCkFD4uPD8ebadXSDB2svvr80YulLrIMDT8HnoWv_4XXS-FNHDkKzTw1Cc9FN2im-Ucd2SZPMWHQuDH1uJPVJV7Cy_=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5TTC3B58ZrDXBviSQaC60BGNuiU_dd44GTADuZhcePER7DYhICOXCkFD4uPD8ebadXSDB2svvr80YulLrIMDT8HnoWv_4XXS-FNHDkKzTw1Cc9FN2im-Ucd2SZPMWHQuDH1uJPVJV7Cy_=w2048-h2048-k-no",
-                "source_url_sha256": "d1f2673e1dbde0db2cfda965280372e81eb35509b1d92c7ede824c2bf51db18c",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[2].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[2].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/d1f2673e1dbde0db2cfda965280372e81eb35509b1d92c7ede824c2bf51db18c.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/d1f2673e1dbde0db2cfda965280372e81eb35509b1d92c7ede824c2bf51db18c.jpg",
-                "content_sha256": "f250267ab8f4d838c6b4d86f16d7ad10ac3954a5a51ce1ddc15b9f84f400e03e",
-                "content_type": "image/jpeg",
-                "bytes": 370675,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5TTC3B58ZrDXBviSQaC60BGNuiU_dd44GTADuZhcePER7DYhICOXCkFD4uPD8ebadXSDB2svvr80YulLrIMDT8HnoWv_4XXS-FNHDkKzTw1Cc9FN2im-Ucd2SZPMWHQuDH1uJPVJV7Cy_=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5TTC3B58ZrDXBviSQaC60BGNuiU_dd44GTADuZhcePER7DYhICOXCkFD4uPD8ebadXSDB2svvr80YulLrIMDT8HnoWv_4XXS-FNHDkKzTw1Cc9FN2im-Ucd2SZPMWHQuDH1uJPVJV7Cy_=w2048-h2048-k-no",
-                        "bytes": 370675,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:52:09.720102+00:00"
-            },
-            {
-                "place_name": "The Juice Pod",
-                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
-                "record_id": "recaRtvUY6RguGJg8",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPcZP6aGZa5YHE5LBmzxAvrK0pw0OMovwriNzmv=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPcZP6aGZa5YHE5LBmzxAvrK0pw0OMovwriNzmv=w2048-h2048-k-no",
-                "source_url_sha256": "270281f050a0824f919488a21330209ddfe4513d70f2ba289e222cd9b10e3f74",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[3].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[3].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/270281f050a0824f919488a21330209ddfe4513d70f2ba289e222cd9b10e3f74.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/270281f050a0824f919488a21330209ddfe4513d70f2ba289e222cd9b10e3f74.jpg",
-                "content_sha256": "ab43eab908ba31723e2d6228df7858d31c7ee74a4c90818ae7ee5b69aa7e29aa",
-                "content_type": "image/jpeg",
-                "bytes": 368990,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPcZP6aGZa5YHE5LBmzxAvrK0pw0OMovwriNzmv=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPcZP6aGZa5YHE5LBmzxAvrK0pw0OMovwriNzmv=w2048-h2048-k-no",
-                        "bytes": 368990,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:52:10.542134+00:00"
-            },
-            {
-                "place_name": "The Juice Pod",
-                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
-                "record_id": "recaRtvUY6RguGJg8",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipO3cVd1fgxmbTUvceIp8RGvK7esFvdQg6A-oZ_U=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipO3cVd1fgxmbTUvceIp8RGvK7esFvdQg6A-oZ_U=w2048-h2048-k-no",
-                "source_url_sha256": "b231e84e69f6fde971345b194457b803d3f7989b9969adac3754345a61ee6a74",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[4].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[4].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b231e84e69f6fde971345b194457b803d3f7989b9969adac3754345a61ee6a74.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b231e84e69f6fde971345b194457b803d3f7989b9969adac3754345a61ee6a74.jpg",
-                "content_sha256": "39a6f45dbd1ca2252ed144345f2af23f3a580d15ff3d608e0ff2e4c66ca2d3f6",
-                "content_type": "image/jpeg",
-                "bytes": 184556,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipO3cVd1fgxmbTUvceIp8RGvK7esFvdQg6A-oZ_U=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipO3cVd1fgxmbTUvceIp8RGvK7esFvdQg6A-oZ_U=w2048-h2048-k-no",
-                        "bytes": 184556,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:52:10.996407+00:00"
-            },
-            {
-                "place_name": "The Juice Pod",
-                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
-                "record_id": "recaRtvUY6RguGJg8",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNDSoHDCI6n-ILdYAK5Of_18iel1phxTPhuXR_p=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNDSoHDCI6n-ILdYAK5Of_18iel1phxTPhuXR_p=w2048-h2048-k-no",
-                "source_url_sha256": "f31d88454a22798b993aaf38b79e9df8259d6a6b6618ea7ca5299fd122f841d0",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[7].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[7].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/f31d88454a22798b993aaf38b79e9df8259d6a6b6618ea7ca5299fd122f841d0.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/f31d88454a22798b993aaf38b79e9df8259d6a6b6618ea7ca5299fd122f841d0.jpg",
-                "content_sha256": "aa2de16038aa55033e138b3ae8ce8eb709c7a1d5569d16ae19898df7713e0b6c",
-                "content_type": "image/jpeg",
-                "bytes": 407327,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNDSoHDCI6n-ILdYAK5Of_18iel1phxTPhuXR_p=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNDSoHDCI6n-ILdYAK5Of_18iel1phxTPhuXR_p=w2048-h2048-k-no",
-                        "bytes": 407327,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:52:12.102165+00:00"
-            },
-            {
-                "place_name": "The Juice Pod",
-                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
-                "record_id": "recaRtvUY6RguGJg8",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNEibXmdhrEIr8cJZfvsMs7qiHtZIAIIvZYXWVC=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNEibXmdhrEIr8cJZfvsMs7qiHtZIAIIvZYXWVC=w2048-h2048-k-no",
-                "source_url_sha256": "b688cbc3af1a3c071a3f5da3faecf801174d807a81c1ba56fbf7e79e672bf8d5",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[10].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[10].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b688cbc3af1a3c071a3f5da3faecf801174d807a81c1ba56fbf7e79e672bf8d5.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b688cbc3af1a3c071a3f5da3faecf801174d807a81c1ba56fbf7e79e672bf8d5.jpg",
-                "content_sha256": "3cf0efb97c025329c0f33b8ae1f08385d21a172ecba37ff0ae881e9f584ff8e6",
-                "content_type": "image/jpeg",
-                "bytes": 209799,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNEibXmdhrEIr8cJZfvsMs7qiHtZIAIIvZYXWVC=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNEibXmdhrEIr8cJZfvsMs7qiHtZIAIIvZYXWVC=w2048-h2048-k-no",
-                        "bytes": 209799,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:52:13.249526+00:00"
-            },
-            {
-                "place_name": "The Juice Pod",
-                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
-                "record_id": "recaRtvUY6RguGJg8",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipO0aQOH71YrUqwe2WPZ0zyCuCpeRnGXfk_bF69X=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipO0aQOH71YrUqwe2WPZ0zyCuCpeRnGXfk_bF69X=w2048-h2048-k-no",
-                "source_url_sha256": "b7f6b7ae021301812f2091590f37210242c2d88993ba380750af40b86fe6bc75",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[11].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[11].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b7f6b7ae021301812f2091590f37210242c2d88993ba380750af40b86fe6bc75.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b7f6b7ae021301812f2091590f37210242c2d88993ba380750af40b86fe6bc75.jpg",
-                "content_sha256": "ca5a884ab0c906c10940c252402edf60448780e67d63ba2c1a810fb78442037f",
-                "content_type": "image/jpeg",
-                "bytes": 309444,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipO0aQOH71YrUqwe2WPZ0zyCuCpeRnGXfk_bF69X=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipO0aQOH71YrUqwe2WPZ0zyCuCpeRnGXfk_bF69X=w2048-h2048-k-no",
-                        "bytes": 309444,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:52:13.861319+00:00"
-            },
-            {
-                "place_name": "The Juice Pod",
-                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
-                "record_id": "recaRtvUY6RguGJg8",
                 "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEhd6S5bNPCVH6gWujWsRNrxM3o_DtwtPgVjtkGdR_biGpjUGW73RD9Qh8dL01CVQpwYbsKJZtlQmqc3B_O-K7dZR3V4aNzdRm-3NDLCgwAmWxRVRfbSCZD7-fDdld3qVpxdEYkuKQmqLd8=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEhd6S5bNPCVH6gWujWsRNrxM3o_DtwtPgVjtkGdR_biGpjUGW73RD9Qh8dL01CVQpwYbsKJZtlQmqc3B_O-K7dZR3V4aNzdRm-3NDLCgwAmWxRVRfbSCZD7-fDdld3qVpxdEYkuKQmqLd8=w2048-h2048-k-no",
                 "source_url_sha256": "ff0edfe9e56e63cda9b5fe9c3316a29dde9aa57c885648d6162380e864359d0c",
@@ -4171,7 +3974,12 @@
                         "path": "photos.raw_data.photos_data[12].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[6]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/ff0edfe9e56e63cda9b5fe9c3316a29dde9aa57c885648d6162380e864359d0c.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/ff0edfe9e56e63cda9b5fe9c3316a29dde9aa57c885648d6162380e864359d0c.jpg",
@@ -4208,7 +4016,12 @@
                         "path": "photos.raw_data.photos_data[13].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[7]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/8cfe0f990847f47cf183bc3d2b5d8f0da449c280832f66359a01505d1de24286.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/8cfe0f990847f47cf183bc3d2b5d8f0da449c280832f66359a01505d1de24286.jpg",
@@ -4233,6 +4046,48 @@
                 "place_name": "The Juice Pod",
                 "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
                 "record_id": "recaRtvUY6RguGJg8",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyqdkTK7yICCSp3A9W-eSGIFepSmi8Puxv3UikptL9h4h9BZ4olkZTzf4oLA-JUe51KBWIJfH0zWqQdUofts2dBOh1KvsD1OBsYNaY54jZNmDYYmiLGlNND4EMd7tmIrd-SSXgXNOASKL8=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyqdkTK7yICCSp3A9W-eSGIFepSmi8Puxv3UikptL9h4h9BZ4olkZTzf4oLA-JUe51KBWIJfH0zWqQdUofts2dBOh1KvsD1OBsYNaY54jZNmDYYmiLGlNND4EMd7tmIrd-SSXgXNOASKL8=w2048-h2048-k-no",
+                "source_url_sha256": "3f24649fca0cdc3fbba1d5a8866b54deee30e59a53b05dbb311024fb01b49a0f",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[40].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[40].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[8]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/3f24649fca0cdc3fbba1d5a8866b54deee30e59a53b05dbb311024fb01b49a0f.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/3f24649fca0cdc3fbba1d5a8866b54deee30e59a53b05dbb311024fb01b49a0f.jpg",
+                "content_sha256": "680c891569078eb335430cd749d188b70f4d4ab1dfa5e45b9f5385f580471711",
+                "content_type": "image/jpeg",
+                "bytes": 224185,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyqdkTK7yICCSp3A9W-eSGIFepSmi8Puxv3UikptL9h4h9BZ4olkZTzf4oLA-JUe51KBWIJfH0zWqQdUofts2dBOh1KvsD1OBsYNaY54jZNmDYYmiLGlNND4EMd7tmIrd-SSXgXNOASKL8=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyqdkTK7yICCSp3A9W-eSGIFepSmi8Puxv3UikptL9h4h9BZ4olkZTzf4oLA-JUe51KBWIJfH0zWqQdUofts2dBOh1KvsD1OBsYNaY54jZNmDYYmiLGlNND4EMd7tmIrd-SSXgXNOASKL8=w2048-h2048-k-no",
+                        "bytes": 224185,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:52:23.963160+00:00"
+            },
+            {
+                "place_name": "The Juice Pod",
+                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
+                "record_id": "recaRtvUY6RguGJg8",
                 "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAELe-uk3Go2J3xHzC0HeL9iMLyIKpNhXBAMTfmYJBc0D6Vq6Uqme3hw54eHFuOO_w-5CHna_f7YSw9EdJwwiQ9K0vbxW5keMYlx-Le5UxgtKvwA4ampI0kVRPip_aCzfdB_Rc_P3DPB_qad=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAELe-uk3Go2J3xHzC0HeL9iMLyIKpNhXBAMTfmYJBc0D6Vq6Uqme3hw54eHFuOO_w-5CHna_f7YSw9EdJwwiQ9K0vbxW5keMYlx-Le5UxgtKvwA4ampI0kVRPip_aCzfdB_Rc_P3DPB_qad=w2048-h2048-k-no",
                 "source_url_sha256": "ea6fef0f3c4636f936d1062084cb29e47dfa579fa580ebd43b80a040b0d26232",
@@ -4245,7 +4100,12 @@
                         "path": "photos.raw_data.photos_data[14].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[9]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/ea6fef0f3c4636f936d1062084cb29e47dfa579fa580ebd43b80a040b0d26232.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/ea6fef0f3c4636f936d1062084cb29e47dfa579fa580ebd43b80a040b0d26232.jpg",
@@ -4270,75 +4130,43 @@
                 "place_name": "The Juice Pod",
                 "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
                 "record_id": "recaRtvUY6RguGJg8",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNpCWkAgDotUsbR2ilghN-gpc7feT3992OzjFnL=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNpCWkAgDotUsbR2ilghN-gpc7feT3992OzjFnL=w2048-h2048-k-no",
-                "source_url_sha256": "8aa965e9e8569e8170ec09cdcd9c884bd1d94b87cc7702242cb66971c683d9ab",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5TTC3B58ZrDXBviSQaC60BGNuiU_dd44GTADuZhcePER7DYhICOXCkFD4uPD8ebadXSDB2svvr80YulLrIMDT8HnoWv_4XXS-FNHDkKzTw1Cc9FN2im-Ucd2SZPMWHQuDH1uJPVJV7Cy_=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5TTC3B58ZrDXBviSQaC60BGNuiU_dd44GTADuZhcePER7DYhICOXCkFD4uPD8ebadXSDB2svvr80YulLrIMDT8HnoWv_4XXS-FNHDkKzTw1Cc9FN2im-Ucd2SZPMWHQuDH1uJPVJV7Cy_=w2048-h2048-k-no",
+                "source_url_sha256": "d1f2673e1dbde0db2cfda965280372e81eb35509b1d92c7ede824c2bf51db18c",
                 "source_host": "lh3.googleusercontent.com",
                 "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[20].photo_url_big",
+                "source_path": "photos.raw_data.photos_data[2].photo_url_big",
                 "provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[20].photo_url_big"
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/8aa965e9e8569e8170ec09cdcd9c884bd1d94b87cc7702242cb66971c683d9ab.jpg",
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[10]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/d1f2673e1dbde0db2cfda965280372e81eb35509b1d92c7ede824c2bf51db18c.jpg",
                 "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/8aa965e9e8569e8170ec09cdcd9c884bd1d94b87cc7702242cb66971c683d9ab.jpg",
-                "content_sha256": "7607de38a7712c147206e9f024fbbca7cf291b426b3b99378d6d9322074b77aa",
+                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/d1f2673e1dbde0db2cfda965280372e81eb35509b1d92c7ede824c2bf51db18c.jpg",
+                "content_sha256": "f250267ab8f4d838c6b4d86f16d7ad10ac3954a5a51ce1ddc15b9f84f400e03e",
                 "content_type": "image/jpeg",
-                "bytes": 227027,
+                "bytes": 370675,
                 "status": "uploaded",
                 "selected_for_airtable": true,
                 "attempts": [
                     {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNpCWkAgDotUsbR2ilghN-gpc7feT3992OzjFnL=w2048-h2048-k-no",
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5TTC3B58ZrDXBviSQaC60BGNuiU_dd44GTADuZhcePER7DYhICOXCkFD4uPD8ebadXSDB2svvr80YulLrIMDT8HnoWv_4XXS-FNHDkKzTw1Cc9FN2im-Ucd2SZPMWHQuDH1uJPVJV7Cy_=w2048-h2048-k-no",
                         "status_code": 200,
                         "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNpCWkAgDotUsbR2ilghN-gpc7feT3992OzjFnL=w2048-h2048-k-no",
-                        "bytes": 227027,
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5TTC3B58ZrDXBviSQaC60BGNuiU_dd44GTADuZhcePER7DYhICOXCkFD4uPD8ebadXSDB2svvr80YulLrIMDT8HnoWv_4XXS-FNHDkKzTw1Cc9FN2im-Ucd2SZPMWHQuDH1uJPVJV7Cy_=w2048-h2048-k-no",
+                        "bytes": 370675,
                         "error": null
                     }
                 ],
-                "uploaded_at": "2026-05-02T21:52:17.361931+00:00"
-            },
-            {
-                "place_name": "The Juice Pod",
-                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
-                "record_id": "recaRtvUY6RguGJg8",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNXCVo-6EckId32EIx5llE0aMsMuiP1AW9M9rRp=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNXCVo-6EckId32EIx5llE0aMsMuiP1AW9M9rRp=w2048-h2048-k-no",
-                "source_url_sha256": "ba8d2aacc1d600c43ae832f5b1fdde8db2df4b54b2c58c1c4c018d0290081b89",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[21].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[21].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/ba8d2aacc1d600c43ae832f5b1fdde8db2df4b54b2c58c1c4c018d0290081b89.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/ba8d2aacc1d600c43ae832f5b1fdde8db2df4b54b2c58c1c4c018d0290081b89.jpg",
-                "content_sha256": "3c2d04d9c0ec4cb58fe85e6ae65c5b9fa9f7b0794f1593c4b1a63f17365754c3",
-                "content_type": "image/jpeg",
-                "bytes": 292637,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNXCVo-6EckId32EIx5llE0aMsMuiP1AW9M9rRp=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNXCVo-6EckId32EIx5llE0aMsMuiP1AW9M9rRp=w2048-h2048-k-no",
-                        "bytes": 292637,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:52:18.062801+00:00"
+                "uploaded_at": "2026-05-02T21:52:09.720102+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -4356,7 +4184,12 @@
                         "path": "photos.raw_data.photos_data[28].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[11]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/89ab73565e641faa6f7aa67f60de8a39d89bca40ee296e7db439ae84e34e83d5.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/89ab73565e641faa6f7aa67f60de8a39d89bca40ee296e7db439ae84e34e83d5.jpg",
@@ -4381,6 +4214,300 @@
                 "place_name": "The Juice Pod",
                 "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
                 "record_id": "recaRtvUY6RguGJg8",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNXCVo-6EckId32EIx5llE0aMsMuiP1AW9M9rRp=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNXCVo-6EckId32EIx5llE0aMsMuiP1AW9M9rRp=w2048-h2048-k-no",
+                "source_url_sha256": "ba8d2aacc1d600c43ae832f5b1fdde8db2df4b54b2c58c1c4c018d0290081b89",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[21].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[21].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[12]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/ba8d2aacc1d600c43ae832f5b1fdde8db2df4b54b2c58c1c4c018d0290081b89.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/ba8d2aacc1d600c43ae832f5b1fdde8db2df4b54b2c58c1c4c018d0290081b89.jpg",
+                "content_sha256": "3c2d04d9c0ec4cb58fe85e6ae65c5b9fa9f7b0794f1593c4b1a63f17365754c3",
+                "content_type": "image/jpeg",
+                "bytes": 292637,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNXCVo-6EckId32EIx5llE0aMsMuiP1AW9M9rRp=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNXCVo-6EckId32EIx5llE0aMsMuiP1AW9M9rRp=w2048-h2048-k-no",
+                        "bytes": 292637,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:52:18.062801+00:00"
+            },
+            {
+                "place_name": "The Juice Pod",
+                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
+                "record_id": "recaRtvUY6RguGJg8",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPcZP6aGZa5YHE5LBmzxAvrK0pw0OMovwriNzmv=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPcZP6aGZa5YHE5LBmzxAvrK0pw0OMovwriNzmv=w2048-h2048-k-no",
+                "source_url_sha256": "270281f050a0824f919488a21330209ddfe4513d70f2ba289e222cd9b10e3f74",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[3].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[13]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/270281f050a0824f919488a21330209ddfe4513d70f2ba289e222cd9b10e3f74.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/270281f050a0824f919488a21330209ddfe4513d70f2ba289e222cd9b10e3f74.jpg",
+                "content_sha256": "ab43eab908ba31723e2d6228df7858d31c7ee74a4c90818ae7ee5b69aa7e29aa",
+                "content_type": "image/jpeg",
+                "bytes": 368990,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPcZP6aGZa5YHE5LBmzxAvrK0pw0OMovwriNzmv=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPcZP6aGZa5YHE5LBmzxAvrK0pw0OMovwriNzmv=w2048-h2048-k-no",
+                        "bytes": 368990,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:52:10.542134+00:00"
+            },
+            {
+                "place_name": "The Juice Pod",
+                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
+                "record_id": "recaRtvUY6RguGJg8",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipO3cVd1fgxmbTUvceIp8RGvK7esFvdQg6A-oZ_U=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipO3cVd1fgxmbTUvceIp8RGvK7esFvdQg6A-oZ_U=w2048-h2048-k-no",
+                "source_url_sha256": "b231e84e69f6fde971345b194457b803d3f7989b9969adac3754345a61ee6a74",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[4].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[4].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[14]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b231e84e69f6fde971345b194457b803d3f7989b9969adac3754345a61ee6a74.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b231e84e69f6fde971345b194457b803d3f7989b9969adac3754345a61ee6a74.jpg",
+                "content_sha256": "39a6f45dbd1ca2252ed144345f2af23f3a580d15ff3d608e0ff2e4c66ca2d3f6",
+                "content_type": "image/jpeg",
+                "bytes": 184556,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipO3cVd1fgxmbTUvceIp8RGvK7esFvdQg6A-oZ_U=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipO3cVd1fgxmbTUvceIp8RGvK7esFvdQg6A-oZ_U=w2048-h2048-k-no",
+                        "bytes": 184556,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:52:10.996407+00:00"
+            },
+            {
+                "place_name": "The Juice Pod",
+                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
+                "record_id": "recaRtvUY6RguGJg8",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNDSoHDCI6n-ILdYAK5Of_18iel1phxTPhuXR_p=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNDSoHDCI6n-ILdYAK5Of_18iel1phxTPhuXR_p=w2048-h2048-k-no",
+                "source_url_sha256": "f31d88454a22798b993aaf38b79e9df8259d6a6b6618ea7ca5299fd122f841d0",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[7].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[7].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[15]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/f31d88454a22798b993aaf38b79e9df8259d6a6b6618ea7ca5299fd122f841d0.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/f31d88454a22798b993aaf38b79e9df8259d6a6b6618ea7ca5299fd122f841d0.jpg",
+                "content_sha256": "aa2de16038aa55033e138b3ae8ce8eb709c7a1d5569d16ae19898df7713e0b6c",
+                "content_type": "image/jpeg",
+                "bytes": 407327,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNDSoHDCI6n-ILdYAK5Of_18iel1phxTPhuXR_p=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNDSoHDCI6n-ILdYAK5Of_18iel1phxTPhuXR_p=w2048-h2048-k-no",
+                        "bytes": 407327,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:52:12.102165+00:00"
+            },
+            {
+                "place_name": "The Juice Pod",
+                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
+                "record_id": "recaRtvUY6RguGJg8",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNEibXmdhrEIr8cJZfvsMs7qiHtZIAIIvZYXWVC=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNEibXmdhrEIr8cJZfvsMs7qiHtZIAIIvZYXWVC=w2048-h2048-k-no",
+                "source_url_sha256": "b688cbc3af1a3c071a3f5da3faecf801174d807a81c1ba56fbf7e79e672bf8d5",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[10].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[10].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[16]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b688cbc3af1a3c071a3f5da3faecf801174d807a81c1ba56fbf7e79e672bf8d5.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b688cbc3af1a3c071a3f5da3faecf801174d807a81c1ba56fbf7e79e672bf8d5.jpg",
+                "content_sha256": "3cf0efb97c025329c0f33b8ae1f08385d21a172ecba37ff0ae881e9f584ff8e6",
+                "content_type": "image/jpeg",
+                "bytes": 209799,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNEibXmdhrEIr8cJZfvsMs7qiHtZIAIIvZYXWVC=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNEibXmdhrEIr8cJZfvsMs7qiHtZIAIIvZYXWVC=w2048-h2048-k-no",
+                        "bytes": 209799,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:52:13.249526+00:00"
+            },
+            {
+                "place_name": "The Juice Pod",
+                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
+                "record_id": "recaRtvUY6RguGJg8",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipO0aQOH71YrUqwe2WPZ0zyCuCpeRnGXfk_bF69X=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipO0aQOH71YrUqwe2WPZ0zyCuCpeRnGXfk_bF69X=w2048-h2048-k-no",
+                "source_url_sha256": "b7f6b7ae021301812f2091590f37210242c2d88993ba380750af40b86fe6bc75",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[11].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[11].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[17]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b7f6b7ae021301812f2091590f37210242c2d88993ba380750af40b86fe6bc75.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/b7f6b7ae021301812f2091590f37210242c2d88993ba380750af40b86fe6bc75.jpg",
+                "content_sha256": "ca5a884ab0c906c10940c252402edf60448780e67d63ba2c1a810fb78442037f",
+                "content_type": "image/jpeg",
+                "bytes": 309444,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipO0aQOH71YrUqwe2WPZ0zyCuCpeRnGXfk_bF69X=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipO0aQOH71YrUqwe2WPZ0zyCuCpeRnGXfk_bF69X=w2048-h2048-k-no",
+                        "bytes": 309444,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:52:13.861319+00:00"
+            },
+            {
+                "place_name": "The Juice Pod",
+                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
+                "record_id": "recaRtvUY6RguGJg8",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNpCWkAgDotUsbR2ilghN-gpc7feT3992OzjFnL=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNpCWkAgDotUsbR2ilghN-gpc7feT3992OzjFnL=w2048-h2048-k-no",
+                "source_url_sha256": "8aa965e9e8569e8170ec09cdcd9c884bd1d94b87cc7702242cb66971c683d9ab",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[20].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[20].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[18]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/8aa965e9e8569e8170ec09cdcd9c884bd1d94b87cc7702242cb66971c683d9ab.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/8aa965e9e8569e8170ec09cdcd9c884bd1d94b87cc7702242cb66971c683d9ab.jpg",
+                "content_sha256": "7607de38a7712c147206e9f024fbbca7cf291b426b3b99378d6d9322074b77aa",
+                "content_type": "image/jpeg",
+                "bytes": 227027,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNpCWkAgDotUsbR2ilghN-gpc7feT3992OzjFnL=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNpCWkAgDotUsbR2ilghN-gpc7feT3992OzjFnL=w2048-h2048-k-no",
+                        "bytes": 227027,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:52:17.361931+00:00"
+            },
+            {
+                "place_name": "The Juice Pod",
+                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
+                "record_id": "recaRtvUY6RguGJg8",
                 "source_url": "https://lh3.googleusercontent.com/p/AF1QipONoRHSlMCx0uUXY6FvBFUBQ1kMmehL4mgcaKeU=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipONoRHSlMCx0uUXY6FvBFUBQ1kMmehL4mgcaKeU=w2048-h2048-k-no",
                 "source_url_sha256": "3e4d65fed0ec83ffd74973c53d1c546d23dc4e6a387cc0fc703621f17f42e397",
@@ -4393,7 +4520,12 @@
                         "path": "photos.raw_data.photos_data[34].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[19]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/3e4d65fed0ec83ffd74973c53d1c546d23dc4e6a387cc0fc703621f17f42e397.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/3e4d65fed0ec83ffd74973c53d1c546d23dc4e6a387cc0fc703621f17f42e397.jpg",
@@ -4413,43 +4545,6 @@
                     }
                 ],
                 "uploaded_at": "2026-05-02T21:52:22.060557+00:00"
-            },
-            {
-                "place_name": "The Juice Pod",
-                "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
-                "record_id": "recaRtvUY6RguGJg8",
-                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyqdkTK7yICCSp3A9W-eSGIFepSmi8Puxv3UikptL9h4h9BZ4olkZTzf4oLA-JUe51KBWIJfH0zWqQdUofts2dBOh1KvsD1OBsYNaY54jZNmDYYmiLGlNND4EMd7tmIrd-SSXgXNOASKL8=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyqdkTK7yICCSp3A9W-eSGIFepSmi8Puxv3UikptL9h4h9BZ4olkZTzf4oLA-JUe51KBWIJfH0zWqQdUofts2dBOh1KvsD1OBsYNaY54jZNmDYYmiLGlNND4EMd7tmIrd-SSXgXNOASKL8=w2048-h2048-k-no",
-                "source_url_sha256": "3f24649fca0cdc3fbba1d5a8866b54deee30e59a53b05dbb311024fb01b49a0f",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[40].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[40].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/3f24649fca0cdc3fbba1d5a8866b54deee30e59a53b05dbb311024fb01b49a0f.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJ_67H1rWfVogRhfUewLapDXo/3f24649fca0cdc3fbba1d5a8866b54deee30e59a53b05dbb311024fb01b49a0f.jpg",
-                "content_sha256": "680c891569078eb335430cd749d188b70f4d4ab1dfa5e45b9f5385f580471711",
-                "content_type": "image/jpeg",
-                "bytes": 224185,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyqdkTK7yICCSp3A9W-eSGIFepSmi8Puxv3UikptL9h4h9BZ4olkZTzf4oLA-JUe51KBWIJfH0zWqQdUofts2dBOh1KvsD1OBsYNaY54jZNmDYYmiLGlNND4EMd7tmIrd-SSXgXNOASKL8=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyqdkTK7yICCSp3A9W-eSGIFepSmi8Puxv3UikptL9h4h9BZ4olkZTzf4oLA-JUe51KBWIJfH0zWqQdUofts2dBOh1KvsD1OBsYNaY54jZNmDYYmiLGlNND4EMd7tmIrd-SSXgXNOASKL8=w2048-h2048-k-no",
-                        "bytes": 224185,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:52:23.963160+00:00"
             }
         ],
         "azure_asset_failures": [
@@ -4461,13 +4556,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhF455dqHB99j66PP6hIqq8iZ3pPfytnLN2plPY0VtiOh4LayTr98TRvSuiR7UlSoOiytL2l7EH67yqr1MiGoAbayUAihlRIogGGI57fgQSzEIiWMngv8U9CZvOOX-iFd9xDyWTfNVj-b-KMIyiswTxlJACLCS4z-G7QjbIRRHb0JLLbT4n4KYAD=w2048-h2048-k-no",
                 "source_url_sha256": "83bda19d62e58b036f628eac48e7aedb9f1740f3c616b5aaa5cb3acf193b38e2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -4534,7 +4625,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:00.034541+00:00"
+                "failed_at": "2026-05-02T22:12:32.994325+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -4544,13 +4635,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhG1by1Wg4jo8guGvU04Vao5AlRLhGZZRpPtdMEWSDfz_xkCvntJm2Z2ijOp-ip5mKRmH3ACFV4Tn4O5ILb9dfZFqoFEcRK3ExaZjSLXfLFB2MAMt4N2IE3uo3C5TOpdYmIvvMHW7EczxG-EiwWbWgUpMIyVFEWuyaJg4FAIBqlBHYsDGq1tMkP8=w2048-h2048-k-no",
                 "source_url_sha256": "b612e504d67c7dae02f30704a87a75d16062bc2c5ce2aa32cf67fa48ad269994",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -4617,7 +4704,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:01.770755+00:00"
+                "failed_at": "2026-05-02T22:12:33.315415+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -4627,13 +4714,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFQT_XqPQQa4AbwVe2wH7UgAj41RA561AweF2QxHtmRjOvGtB3B8F5B1SQa4fudNHQIwhTbSuK8jGhVN8bqQpaKbbVvI1Bj5KA1ySRjHdqAbFMrxe_wmyznTptuZ8hHzNobmNF2bsq_LHKDu-d1dfxxYxZNkNFcoiQg-9ZQwDmH-AL8-6-BgRk=w2048-h2048-k-no",
                 "source_url_sha256": "03da6c36870f1f9bff241c7aa90e6b423e5d2e718125e730c9ce5b5caa17cda8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -4700,7 +4783,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:02.060776+00:00"
+                "failed_at": "2026-05-02T22:12:33.640518+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -4710,13 +4793,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFh2TKqeeKjeH_4Bx0PdvGqBKe8OHHhnlmVoJtbcFakUlt8_GxkoMwNa3SvgF-VgAEJAaDG2c4_sL_fDbnK0RgjgW6Gd15FBOFuEVc0EaVK2m8b_x-38r_rq44z1FiVStBH9CC8Ul3qU99cCK5ptOyKjU64RrcoADrH98bOWgkFPoYIrquRyfO8=w2048-h2048-k-no",
                 "source_url_sha256": "502c01d4f22e273be70351b4d4850469c5fe0adcc78fa7e6519c9858b2332c26",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -4783,7 +4862,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:02.365097+00:00"
+                "failed_at": "2026-05-02T22:12:33.936431+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -4793,13 +4872,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEC9No_wWg8JK2EWevhFqtAaVfIXlFVAs_Y8W3Y6AgUAW-QW_1BPg2uiClsNrCGqyMalqPcLSzITj8pXOfcD1VVIEBCaE1SDrOglijb_3SGK1alO_vbDwnLoSRNdAwrwoD-oA7Y8ZtUHaD0EbH52PBoPEEO9sdXTK9vT8o64DM5uXrgzpQgm9c=w2048-h2048-k-no",
                 "source_url_sha256": "33b702d40ea1db103be7d905fae532854568ceb6a2c1c13f47066710d3d67b33",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -4866,7 +4941,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:02.651306+00:00"
+                "failed_at": "2026-05-02T22:12:34.246468+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -4876,13 +4951,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEQs-ty70K3LY4X8TBpK6hE0XQR4KAMbabpQJRohkdysxkJEFTR8naFmS3q0CFphksNf7xqCcsHsPRk2w7E-OSouJXaszzOJTF1i1TVZb1SVdokbHuKGV-m_FZ-ofUDSNJsj5KN_bRD7jWh810YtGESbd-Ra7Zmcn-dAurA8omyB7M_6qCyru_SyQ=w2048-h2048-k-no",
                 "source_url_sha256": "2a332a3dc41b53966bb0022dd6d3844d06830da79346caee2db1bbd76ce7f24d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -4949,7 +5020,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:02.937433+00:00"
+                "failed_at": "2026-05-02T22:12:34.611397+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -4959,13 +5030,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEkCSLTfqtRuEpKn-JPMxo6C1Lzcn87DCxM_LdpJvGfbuKbFW9IxqufpsjBPf7ziBXkoGN3hq3YoWJN5zy2M8b-NQYUvL_FOnFOEEz0ZKyPZArFW4jtMdBC4bQDokhsV_SQU2awyEnZMIi-Qc4achu0sq2WjymWX2CId81jrPYmFX1mOTKntHut=w2048-h2048-k-no",
                 "source_url_sha256": "4e027066aba2d0b6c492562a43ebb56ede9320b49f6ccecbb2b3493c3ca2c076",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -5032,7 +5099,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:03.219569+00:00"
+                "failed_at": "2026-05-02T22:12:35.110995+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5042,13 +5109,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFSitxgSIjePT0OeK2OgucoA4elVgDgqQcCdlc-Ek2cIwVSrvnoyG-yP-N80j13sV4wekMYxibjqDUpR2Or6sZ5BPVfA8ZVgcSsTfsbJTWetfrLGs1YmvMETIrvEpfaf8OciFsidJfxYPlqgi0awQ6wsa-EqCP1gU00GhV3tWfTW9fyeRPeVAgu2Q=w2048-h2048-k-no",
                 "source_url_sha256": "4562ace01fa094dcb4f452d16042152b173221e8c824c9843f5950ff21f997c3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -5115,7 +5178,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:03.515867+00:00"
+                "failed_at": "2026-05-02T22:12:35.454704+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5125,13 +5188,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFUkmc9NcBEjC6jwjHwnUZxq57bSlyxV4vno8ztNHozXQ_ZocGBGMO_m7bcD4yTD_I545SCvfG0doddzAvmacMrRJJ2GpyHAB5MEbUWcOofOE4wFR0n1dNS0bBd8XaDZ87gT0wDnSFk4zfAZ9z2doGCeXyhqlXl0MgWGA7hS4ddFXFI24PeasJh=w2048-h2048-k-no",
                 "source_url_sha256": "eb47eaaa9814414d36a08b804e1b6238e1c0871f1d11001114af77913fef87d1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -5198,7 +5257,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:03.843563+00:00"
+                "failed_at": "2026-05-02T22:12:35.768647+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5208,13 +5267,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHdhZAEmYbWeU3_0su7YvR7avf_n7prnkkXuvj9mVVXTm2eO_gyR7NPQqxH0sTHNv9dHvREvNvj181CIZJ_1ricQcbIkPZj2RhvxLMNGwYZJNuoBVFStxtF7WiCjzx2mHmWdGbwa9Do1YnjZWkFrDO2HboaYaOSlTXG7PnxtC7NVevWgxO0LaRo=w2048-h2048-k-no",
                 "source_url_sha256": "cbe0e8734d79c5cf05209bbdc528511d8e0aed7b0e6a27cefcb13ea2fd4f7e57",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -5281,7 +5336,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:04.166963+00:00"
+                "failed_at": "2026-05-02T22:12:36.198350+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5291,13 +5346,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGGe465OKbhTnAHGGBPk71pplFPbGM6RFcTrYaH9uBHs85Pi2uluptviRCFoTCX5881IzvQ_CyjbTiaMdIhyxAv7qPDYk21M8hlMyUtU8_NMtlsYd9db74dT3xBuC-jArwAls4yIdUgLwPtHBAp-XAYmrDv-wXBSmUgDBcfz60iVbBppTT64QAOhA=w2048-h2048-k-no",
                 "source_url_sha256": "034251e3c1740685638f0d8fba33546498491e1e034b52464023c282a2322e1a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -5364,7 +5415,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:04.447948+00:00"
+                "failed_at": "2026-05-02T22:12:36.849108+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5374,13 +5425,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhF33iZSZ_cSiRbmD2MYv9dBYH6-yvAjnvmBukXTckwTwP28u0l8vDRCjEpfv1kUGXKbIhtrZ6DfmW7eNTXD8VruTMLCDzMbgvqJa-9w4C67si3Sxz4LHctDjbCfG685DUa3JJ7xCfWHN14glNVDQKndB2GJPmj9vQD1wHK1onM8yNFrFopkcoHW-Q=w2048-h2048-k-no",
                 "source_url_sha256": "a784b65f226f019861ce608b8babea7cc11d33a556f2e398392c268fb660c2c3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -5447,7 +5494,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:04.760659+00:00"
+                "failed_at": "2026-05-02T22:12:37.735659+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5457,13 +5504,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGLA4zWicbzqxi4dhvF-HZu_7lvULAQy_58C6KjpPOFE3HvVx_De_a4ItFuDhmdBmKPKJaibH00DINI3IQkLwmHAmkKCsI7l4L-7vyi6XIWPMGT0cVh_e3AtklQ8n75Ru2XR4ZjpirvPtbjFWB0793rGJiMzlBBzmEP6EKU15EAlh4XmSR3Nq0=w2048-h2048-k-no",
                 "source_url_sha256": "db218c7596a89e06990bc3c38ee362b0eb7d8957ded29cca8e4e2b48ddae8be3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -5530,7 +5573,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:05.032853+00:00"
+                "failed_at": "2026-05-02T22:12:38.377193+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5540,13 +5583,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEgyMGRZZQV06wPX4wk5MpUQmlC5oaBayCQ22COO6vWl_vJPWzo2zuxUutHg5ZOW-olQjETVnG0VKLtBrGLQ2UqDMN2K9a02VDNgq1d8WzC-jpkYYV79rnrVCiZetC_ZPchF1NjJV26Dc6wU-kFYQ5qqg8G_0ZhZklQfOW9RnenchOqfiXbIJcBIQ=w2048-h2048-k-no",
                 "source_url_sha256": "675e1eb068b56f48b7e21595ba82ba53bbf77c9d662c68c9e5c94348398fdae4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -5613,7 +5652,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:05.303894+00:00"
+                "failed_at": "2026-05-02T22:12:38.954998+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5623,13 +5662,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGPsfj9FS5Rt9K3_nbkzQO9DFUTWHXl5nxqDMiJmYVEGJXnrbPrVogohxAwxeP-Di8Pev0x-Cywe9G54lQFN79P2rY7XEoL6WX5HQ2fzE0W1TZAO2jMuvR6eDoIu6YCq7WuC8-LA_Gh8nXb26h4UGHtdFRm7Lj3GmBkY0atl9YSqubUzjrRUAs=w2048-h2048-k-no",
                 "source_url_sha256": "6e981b849e5d7d322af46371adb48daf91013a23fa2bb4a060ce48eb8768be70",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -5696,7 +5731,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:05.603540+00:00"
+                "failed_at": "2026-05-02T22:12:39.354974+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5706,13 +5741,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHwXqA95QOZx98fD2SDVQ6BntBz6yZMeTu7CDTiY1az7lO6z3N4TkkQE017WqW-lD0vECvSuvdz1DKepAJvxp6eCQ9q82CVOVfF8ZoX3VoQfYboTUqnlkjgysOO_k7LvxwGrzyaEbg9HiQKGOtFg_IheTwDcmRf3slcJHD4wCrbp-OgfPW70NX1=w2048-h2048-k-no",
                 "source_url_sha256": "68bb8e7d7825d54b4798099bfc20992cad77192b9f04427d1725ba36efe9fc39",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -5779,7 +5810,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:05.878614+00:00"
+                "failed_at": "2026-05-02T22:12:39.720306+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5789,13 +5820,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFEkSTsTCnD5a6n8Nl7y2o96sYiQcwkIrPxTNOmu-TdMZ-gJjN4LTqk3JbwrR_k784wJVzB7boiqX8qSygcChGITbFhSVX-_jMMo0QyVsaEnoOjohDPVzuz_ebiCskycuRfODiJ1wJfYrqxs465IftgPLSuwRYf2QAZ8byRnmmercMFUOsJ4wpA=w2048-h2048-k-no",
                 "source_url_sha256": "5b5bbd2f69d2e750fa7ecc1c3ee25ad204404bf9c4307a883aea55b5b1d81cd2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -5862,7 +5889,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:06.173479+00:00"
+                "failed_at": "2026-05-02T22:12:40.074575+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5872,13 +5899,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHoFJQcWIm6PyDCONCVak2LJokgxygHbdIxTgmtPh_X_l-c_bG1TQusIuwwcETWgDoViGWKSgqZSJmX_0NFrPLgxykv17hp_27lIVJq-fBVsfLOaO6KqTBoZjCSfNCOaXVZLoFrhYkncItseHcmhyWO3BzaCASYclDfzcwfewmdSitrrRDlh_C1=w2048-h2048-k-no",
                 "source_url_sha256": "a18596f9e23ac2ac851aa08dd29b84cbb1425d3786325d3da90e7eaa3e8882f5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -5945,7 +5968,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:06.454250+00:00"
+                "failed_at": "2026-05-02T22:12:40.507639+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -5955,13 +5978,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhErI4uuCo2AgFbqJwjhGxeHZmRJJTqml6QPShF5zd4Tz8X27Z0vCrXlzXZq6dSDsMbbdKhVk1TqlahG_i8j1GhExCMPdyZ5Ehb8k2Wi9mfO8SIqXkbgtOesFGLgXK0OGOBxXa853x0AdduBmjxu0N3bDU3d6ZHJVS6nqWpbwby_H5OOvMwQ-v3J=w2048-h2048-k-no",
                 "source_url_sha256": "0bb78d7232d111716b0cd22a29e7f5cba32bfa497aa7ed605c59174427b08678",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -6028,7 +6047,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:06.738450+00:00"
+                "failed_at": "2026-05-02T22:12:41.133633+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6038,13 +6057,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHpYHHyHVxiqQRkDJh2kSkE7Hej2_fh4PaaqDhpeqBk7LA3HFpvChJfcLVaMOtcOXUyu72N_8OfYUof584biTkKvFeAb-HHat_YBscHVChSulQo5xV2WosDnDTYYwc_nQ0ZmDqWS1aFsqH5irhXgBUS1ZOX7OTGOq_z-NM9e0fq86lKWCNZvUIoMg=w2048-h2048-k-no",
                 "source_url_sha256": "d0e6e2fafabd0a543ab0bcbb529bb3b6618c927348d07f4fede6eb0c0a8ffe0a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -6111,7 +6126,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:07.010064+00:00"
+                "failed_at": "2026-05-02T22:12:41.713239+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6121,13 +6136,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHLGbt46gtAztZ-6evmEfCLhckqSkj77xpOZx0_qk2YXjetZortuBnOBVu27cu8LwvAh9Zanpd2ZwW1WkFg1ReGpnh9XJXC22WcCTJb9TgwZNCLPfZYt_B4Ivser-UG0uI57R8mTU5GFcaRDAtMDzL9qB0jg8nrSdQhFDB9pnJ_kE6Gj3V2aMBZcQ=w2048-h2048-k-no",
                 "source_url_sha256": "0a42d65e30081d9dc9ee410ac6a79d329bee120cbd5adfbed3822b17f6891bc2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -6194,7 +6205,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:07.284775+00:00"
+                "failed_at": "2026-05-02T22:12:42.214313+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6204,13 +6215,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFxE49vmtuMNHxmDTDYYmlfVZXVXUi-9EKQB6DuqWsl3oTURNUQ3cRXIOer7HglJkCxlaq1O1G3lSAUAAg60TpW7nAvRpgOslHLbKZTr3L2z6TwVB1WXM1uvzfojQ8Fw4yKlniDNyEXYA1-vUjsVPob4HdcsWx_ZByJFIe1XJNmejmEhrjhXhk2=w2048-h2048-k-no",
                 "source_url_sha256": "78a2197d96582b6d639a06b2afba48cab41fd4e6eea89a8c4bd14e56ff55f631",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -6277,7 +6284,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:07.557825+00:00"
+                "failed_at": "2026-05-02T22:12:42.664113+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6287,13 +6294,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFxZXqoInuhiC2H4KvO0xFQb0GyoKdwvtoIwXLWjm5WY2GSOKgrepEr_sWzEZCmMSw7urxK_TD3pa6eqnV6_iY7TQ8HskBN0j1b8VmcyfVqVTUJZLhXr1zrVP9b3EQ8vRH8C4XTnzjqipCCqzUNabKTZrH16KbOBJsl3gtkdGGhJa_O4GmI1cgaPA=w2048-h2048-k-no",
                 "source_url_sha256": "4b8c21dbd6963faec23e2a881d138130d4ac11348674d3ab9cc05a91dfb57f43",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -6360,7 +6363,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:07.853957+00:00"
+                "failed_at": "2026-05-02T22:12:43.116373+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6370,13 +6373,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHYlWdiXXE3y2hg27epPiRM-jAm1u3M6YbD0YQ2QNsm83FINRHJRJRG0b-8MczDidAFLYv5nzOd5MsjlJmJizsf6hDb4oYY2FQTlDuut3yu9xMbyYHjVyXNmK6vHZx5tLPnThuw0mNsUM6plS90XBGw-Sa3uGG-AyASqWxZuZ18RLUyIMzV3b-sWw=w2048-h2048-k-no",
                 "source_url_sha256": "d874a95b82c8fd3d26745f4fa2a3ba6c44386f61eeec333fe025cce7241c7401",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -6443,7 +6442,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:08.137533+00:00"
+                "failed_at": "2026-05-02T22:12:43.772284+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6453,13 +6452,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHKQkaPaburIqsR5R5HrLGOhI1azHaTSsVezYzH7u43kTgRIpagPQu6WLkjWOaaV2LVR9r37wBcQElSoCQogllmcYj58jpkhLHPP30zfBNVsHdwb0lPH0_-0ploCv6_kS83OWvJxxT-qC6wjbs7rl31Tk5JTDGckpTHaWuf87YQnLwBNdd2y5LBRw=w2048-h2048-k-no",
                 "source_url_sha256": "39618314ecd49cb778fec19191d7dd410caf23aa51cf9345dff79e6d9b6fad79",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -6526,7 +6521,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:08.430810+00:00"
+                "failed_at": "2026-05-02T22:12:44.344192+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6605,7 +6600,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:11.291218+00:00"
+                "failed_at": "2026-05-02T22:12:44.905363+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6684,7 +6679,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:11.576171+00:00"
+                "failed_at": "2026-05-02T22:12:45.633380+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6763,7 +6758,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:12.391928+00:00"
+                "failed_at": "2026-05-02T22:12:46.326382+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6842,7 +6837,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:12.662292+00:00"
+                "failed_at": "2026-05-02T22:12:46.846597+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -6921,7 +6916,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:15.706313+00:00"
+                "failed_at": "2026-05-02T22:12:47.350728+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7000,7 +6995,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:15.979809+00:00"
+                "failed_at": "2026-05-02T22:12:47.905702+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7079,7 +7074,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:16.502242+00:00"
+                "failed_at": "2026-05-02T22:12:48.537459+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7158,7 +7153,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:18.350725+00:00"
+                "failed_at": "2026-05-02T22:12:49.134344+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7237,7 +7232,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:18.816643+00:00"
+                "failed_at": "2026-05-02T22:12:49.775729+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7316,7 +7311,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:19.082858+00:00"
+                "failed_at": "2026-05-02T22:12:50.436717+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7395,7 +7390,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:19.415151+00:00"
+                "failed_at": "2026-05-02T22:12:51.170311+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7474,7 +7469,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:19.687974+00:00"
+                "failed_at": "2026-05-02T22:12:51.785790+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7553,7 +7548,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:20.424542+00:00"
+                "failed_at": "2026-05-02T22:12:52.382348+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7632,7 +7627,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:20.709844+00:00"
+                "failed_at": "2026-05-02T22:12:52.933210+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7711,7 +7706,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:21.030702+00:00"
+                "failed_at": "2026-05-02T22:12:53.573428+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7790,7 +7785,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:21.306868+00:00"
+                "failed_at": "2026-05-02T22:12:54.239964+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7869,7 +7864,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:21.598544+00:00"
+                "failed_at": "2026-05-02T22:12:57.133227+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -7948,7 +7943,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:22.347723+00:00"
+                "failed_at": "2026-05-02T22:12:57.838625+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8027,7 +8022,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:22.619660+00:00"
+                "failed_at": "2026-05-02T22:12:58.540613+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8106,7 +8101,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:22.887332+00:00"
+                "failed_at": "2026-05-02T22:12:59.170766+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8185,7 +8180,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:23.169465+00:00"
+                "failed_at": "2026-05-02T22:12:59.780420+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8264,7 +8259,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:23.479026+00:00"
+                "failed_at": "2026-05-02T22:13:00.442767+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8343,7 +8338,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:24.276731+00:00"
+                "failed_at": "2026-05-02T22:13:01.105980+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8422,7 +8417,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:24.588496+00:00"
+                "failed_at": "2026-05-02T22:13:01.874759+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8501,7 +8496,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:24.885825+00:00"
+                "failed_at": "2026-05-02T22:13:02.674826+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8580,7 +8575,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:25.149556+00:00"
+                "failed_at": "2026-05-02T22:13:03.569620+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8659,7 +8654,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:25.443893+00:00"
+                "failed_at": "2026-05-02T22:13:04.018896+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8738,7 +8733,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:25.754433+00:00"
+                "failed_at": "2026-05-02T22:13:04.582957+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8817,7 +8812,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:26.072068+00:00"
+                "failed_at": "2026-05-02T22:13:05.242764+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8896,7 +8891,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:26.391816+00:00"
+                "failed_at": "2026-05-02T22:13:05.976188+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -8975,7 +8970,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:26.702830+00:00"
+                "failed_at": "2026-05-02T22:13:06.512156+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9054,7 +9049,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:32.030662+00:00"
+                "failed_at": "2026-05-02T22:13:06.998531+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9133,7 +9128,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:32.369228+00:00"
+                "failed_at": "2026-05-02T22:13:07.578620+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9212,7 +9207,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:32.690127+00:00"
+                "failed_at": "2026-05-02T22:13:08.209657+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9291,7 +9286,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:33.001335+00:00"
+                "failed_at": "2026-05-02T22:13:08.896064+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9370,7 +9365,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:33.309666+00:00"
+                "failed_at": "2026-05-02T22:13:09.602650+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9449,7 +9444,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:38.608118+00:00"
+                "failed_at": "2026-05-02T22:13:10.295819+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9528,7 +9523,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:38.889748+00:00"
+                "failed_at": "2026-05-02T22:13:10.976286+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9607,7 +9602,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:39.435989+00:00"
+                "failed_at": "2026-05-02T22:13:11.612229+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9686,7 +9681,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:39.759966+00:00"
+                "failed_at": "2026-05-02T22:13:12.212945+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9765,7 +9760,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:40.074297+00:00"
+                "failed_at": "2026-05-02T22:13:13.502900+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9844,7 +9839,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:40.445550+00:00"
+                "failed_at": "2026-05-02T22:13:14.490396+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -9923,7 +9918,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:40.819373+00:00"
+                "failed_at": "2026-05-02T22:13:15.295774+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -10002,7 +9997,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:41.132172+00:00"
+                "failed_at": "2026-05-02T22:13:15.937704+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -10081,7 +10076,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:41.426663+00:00"
+                "failed_at": "2026-05-02T22:13:16.523085+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -10160,7 +10155,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:41.742950+00:00"
+                "failed_at": "2026-05-02T22:13:17.074539+00:00"
             },
             {
                 "place_name": "The Juice Pod",
@@ -10239,27 +10234,27 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:52:42.058071+00:00"
+                "failed_at": "2026-05-02T22:13:17.705967+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 97,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 117,
+            "duplicate_count": 0,
+            "airtable_photos_count": 20,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 67,
             "place_name": "The Juice Pod",
             "place_id": "ChIJ_67H1rWfVogRhfUewLapDXo",
             "record_id": "recaRtvUY6RguGJg8",
-            "generated_at": "2026-05-02T21:52:42.058740+00:00",
+            "generated_at": "2026-05-02T22:13:17.706783+00:00",
             "azure_assets_count": 20,
             "failed_upload_count": 72,
             "pending_upload_count": 0,
             "selected_airtable_count": 20,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
