@@ -1619,7 +1619,242 @@
                 }
             ]
         },
-        "last_refreshed": "2026-02-16T02:42:30.276592"
+        "last_refreshed": "2026-02-16T02:42:30.276592",
+        "azure_assets": [
+            {
+                "place_name": "Heart 2 Heart Bakery & Cafe",
+                "place_id": "ChIJHY64qJmpVogRng7cIsBr6nc",
+                "record_id": "rec8DfNHGoONUS3Tv",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=YXzCR9vYyKLCziz1KszZRw&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=158.88979&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=YXzCR9vYyKLCziz1KszZRw&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=158.88979&pitch=0&thumbfov=100",
+                "source_url_sha256": "15b7ffad738c4f48fa03b00dfbbe475198bcec6392f331e9250003be4f22b598",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHY64qJmpVogRng7cIsBr6nc/15b7ffad738c4f48fa03b00dfbbe475198bcec6392f331e9250003be4f22b598.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJHY64qJmpVogRng7cIsBr6nc/15b7ffad738c4f48fa03b00dfbbe475198bcec6392f331e9250003be4f22b598.jpg",
+                "content_sha256": "3cb34c9e59bba72928651ebc94ef7535ea42227a11642438a3945da3ec318009",
+                "content_type": "image/jpeg",
+                "bytes": 202116,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=YXzCR9vYyKLCziz1KszZRw&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=158.88979&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=YXzCR9vYyKLCziz1KszZRw&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=158.88979&pitch=0&thumbfov=100",
+                        "bytes": 202116,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T22:05:49.734055+00:00"
+            }
+        ],
+        "azure_asset_failures": [
+            {
+                "place_name": "Heart 2 Heart Bakery & Cafe",
+                "place_id": "ChIJHY64qJmpVogRng7cIsBr6nc",
+                "record_id": "rec8DfNHGoONUS3Tv",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
+                "source_url_sha256": "bc9a4b42133cc9b48c636b7e2a13af047dbd116c181096a5985aeb89d96649d3",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:05:50.057859+00:00"
+            },
+            {
+                "place_name": "Heart 2 Heart Bakery & Cafe",
+                "place_id": "ChIJHY64qJmpVogRng7cIsBr6nc",
+                "record_id": "rec8DfNHGoONUS3Tv",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
+                "source_url_sha256": "bc9a4b42133cc9b48c636b7e2a13af047dbd116c181096a5985aeb89d96649d3",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[0].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-02T22:05:50.393018+00:00"
+            }
+        ],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 4,
+            "duplicate_count": 2,
+            "airtable_photos_count": 2,
+            "airtable_photos_google_count": 2,
+            "data_file_photo_urls_count": 2,
+            "provider_raw_photo_url_big_count": 2,
+            "place_name": "Heart 2 Heart Bakery & Cafe",
+            "place_id": "ChIJHY64qJmpVogRng7cIsBr6nc",
+            "record_id": "rec8DfNHGoONUS3Tv",
+            "generated_at": "2026-05-02T22:05:50.740189+00:00",
+            "azure_assets_count": 1,
+            "failed_upload_count": 2,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 1,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 2
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-25T15:24:43.412614"
