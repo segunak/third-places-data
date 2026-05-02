@@ -391,7 +391,179 @@
             },
             "working_hours_csv_compatible": "Monday,7AM,6PM|Tuesday,7AM,6PM|Wednesday,7AM,6PM|Thursday,7AM,6PM|Friday,7AM,6PM|Saturday,7AM,6PM"
         },
-        "last_refreshed": "2026-02-16T02:41:17.857831"
+        "last_refreshed": "2026-02-16T02:41:17.857831",
+        "azure_assets": [
+            {
+                "place_name": "Gotcha Matcha & Espresso | 401 S Tryon",
+                "place_id": "ChIJuUKQtOihVogRQY4wLZ6V410",
+                "record_id": "recU6SCNkbuHpOQVS",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=JNajUHYPOfa7vbwNe5yw8A&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=143.7995&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=JNajUHYPOfa7vbwNe5yw8A&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=143.7995&pitch=0&thumbfov=100",
+                "source_url_sha256": "d70a877e1d61f984ee95b62ad41e6dc611d6d043362ba2179801712870cf6283",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJuUKQtOihVogRQY4wLZ6V410/d70a877e1d61f984ee95b62ad41e6dc611d6d043362ba2179801712870cf6283.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJuUKQtOihVogRQY4wLZ6V410/d70a877e1d61f984ee95b62ad41e6dc611d6d043362ba2179801712870cf6283.jpg",
+                "content_sha256": "d092c6eb866a553e35700bdec4643faf04f997d7dc3a43e867d2471dbba63bdc",
+                "content_type": "image/jpeg",
+                "bytes": 157002,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=JNajUHYPOfa7vbwNe5yw8A&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=143.7995&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=JNajUHYPOfa7vbwNe5yw8A&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=143.7995&pitch=0&thumbfov=100",
+                        "bytes": 157002,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:57:51.208311+00:00"
+            },
+            {
+                "place_name": "Gotcha Matcha & Espresso | 401 S Tryon",
+                "place_id": "ChIJuUKQtOihVogRQY4wLZ6V410",
+                "record_id": "recU6SCNkbuHpOQVS",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNKzhmfEN0ojqRw6y-HJIDgyiPcI3nglue4rlNn=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNKzhmfEN0ojqRw6y-HJIDgyiPcI3nglue4rlNn=w2048-h2048-k-no",
+                "source_url_sha256": "32a33ebc10dde9e5e997a8d9a494f9fb33da3a29fc4093cf28a4b50803172b37",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJuUKQtOihVogRQY4wLZ6V410/32a33ebc10dde9e5e997a8d9a494f9fb33da3a29fc4093cf28a4b50803172b37.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJuUKQtOihVogRQY4wLZ6V410/32a33ebc10dde9e5e997a8d9a494f9fb33da3a29fc4093cf28a4b50803172b37.jpg",
+                "content_sha256": "b00c9c397f55ca5452e43d9bd04aaa386405fe9dd6ba7daa6b1671a0e4941c14",
+                "content_type": "image/jpeg",
+                "bytes": 562221,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNKzhmfEN0ojqRw6y-HJIDgyiPcI3nglue4rlNn=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNKzhmfEN0ojqRw6y-HJIDgyiPcI3nglue4rlNn=w2048-h2048-k-no",
+                        "bytes": 562221,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:57:51.830906+00:00"
+            },
+            {
+                "place_name": "Gotcha Matcha & Espresso | 401 S Tryon",
+                "place_id": "ChIJuUKQtOihVogRQY4wLZ6V410",
+                "record_id": "recU6SCNkbuHpOQVS",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNlnqpyuga1MnS1eDfFAsEOtOezEAZ-aPlsJvnh=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNlnqpyuga1MnS1eDfFAsEOtOezEAZ-aPlsJvnh=w2048-h2048-k-no",
+                "source_url_sha256": "8723c46f67e8f629b97ba94db2a1a74c4fb5e0368ea2f90c643bffa002f50746",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJuUKQtOihVogRQY4wLZ6V410/8723c46f67e8f629b97ba94db2a1a74c4fb5e0368ea2f90c643bffa002f50746.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJuUKQtOihVogRQY4wLZ6V410/8723c46f67e8f629b97ba94db2a1a74c4fb5e0368ea2f90c643bffa002f50746.jpg",
+                "content_sha256": "ee6dbb9a4f57275311397292cfac7d9affc301d8e4ee9c662fe028fee29763c0",
+                "content_type": "image/jpeg",
+                "bytes": 681189,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNlnqpyuga1MnS1eDfFAsEOtOezEAZ-aPlsJvnh=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNlnqpyuga1MnS1eDfFAsEOtOezEAZ-aPlsJvnh=w2048-h2048-k-no",
+                        "bytes": 681189,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:57:52.185889+00:00"
+            }
+        ],
+        "azure_asset_failures": [],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 6,
+            "duplicate_count": 3,
+            "airtable_photos_count": 3,
+            "airtable_photos_google_count": 3,
+            "data_file_photo_urls_count": 3,
+            "provider_raw_photo_url_big_count": 3,
+            "place_name": "Gotcha Matcha & Espresso | 401 S Tryon",
+            "place_id": "ChIJuUKQtOihVogRQY4wLZ6V410",
+            "record_id": "recU6SCNkbuHpOQVS",
+            "generated_at": "2026-05-02T21:57:53.332612+00:00",
+            "azure_assets_count": 3,
+            "failed_upload_count": 0,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 3,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 3
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2026-01-27T18:42:10.347273"
