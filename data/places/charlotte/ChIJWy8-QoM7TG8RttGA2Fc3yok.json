@@ -4848,14 +4848,22 @@
                 "source_path": "photos.photo_urls[0]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[0]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/7ef54e4bb9fc36f9610a90f350134de45739b7e5e30f111f4c0f9f1cb33742a4.jpg",
@@ -4890,14 +4898,18 @@
                 "source_path": "photos.photo_urls[1]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[1]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[40].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[40].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/d6b7424a5b8ec672931fdae8b1ce43aca5a270705233b9f3bfedadef68c3fd37.jpg",
@@ -4932,14 +4944,18 @@
                 "source_path": "photos.photo_urls[2]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[2]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[97].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[97].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/b3c036ddc595023318305e788169b609de64f6fcb718259d6de1a93d54b368cf.jpg",
@@ -4974,14 +4990,18 @@
                 "source_path": "photos.photo_urls[3]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[3]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[80].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[80].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/e4250571cb5245ddd83efd60a45be871dac5ae751ac848950d228aed4828b0a4.jpg",
@@ -5016,14 +5036,18 @@
                 "source_path": "photos.photo_urls[4]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[4]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[94].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[94].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/9765f919fac52c8123627cd9c7dda452d450618e194ea760bb80b1deed953967.jpg",
@@ -5058,14 +5082,18 @@
                 "source_path": "photos.photo_urls[5]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[5]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[88].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[88].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/8b2928358bcfa5d84345b6e57ef1c2fb1bb117ec7a5e841f1d346d8062f55bdc.jpg",
@@ -5100,14 +5128,18 @@
                 "source_path": "photos.photo_urls[6]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[6]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[15].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[15].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/84677c76124cbd32d903357048879185481e58c13f56c1c5935239c4ccedc39c.jpg",
@@ -5142,14 +5174,18 @@
                 "source_path": "photos.photo_urls[7]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[7]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[51].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[51].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/8024f6de9e44d9e2367a7b6e8c43c24bbdf233ef53fa7dd5bd1da95a596641e3.jpg",
@@ -5184,14 +5220,18 @@
                 "source_path": "photos.photo_urls[8]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[8]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[14].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[14].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/dd3031b19014719dbb32a403755a994eb4d15ad4d217e50ac51dceb4dbd18eb5.jpg",
@@ -5226,14 +5266,18 @@
                 "source_path": "photos.photo_urls[9]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[9]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[34].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[34].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[9]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/96e462e1d4f0abd366914b25f030d4f4721a35fde03e2afb8948a442bafecd69.jpg",
@@ -5268,14 +5312,18 @@
                 "source_path": "photos.photo_urls[10]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[10]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[13].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[13].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[10]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/e7d109ff41db8c90e1f5162d9c1eb508ae2ad0cce03e0852f07648bb7f8782f1.jpg",
@@ -5310,14 +5358,18 @@
                 "source_path": "photos.photo_urls[11]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[11]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[50].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[50].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[11]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/47b7fb83d1b385fcac8d6327d4070457daf063f9d5db6e361badde7f7739dca6.jpg",
@@ -5352,14 +5404,18 @@
                 "source_path": "photos.photo_urls[12]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[12]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[20].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[20].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[12]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/5670f4e115f1e200901105043f81a6d7d8323e4b22478fe29250a9e0808f2de2.jpg",
@@ -5394,14 +5450,18 @@
                 "source_path": "photos.photo_urls[13]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[13]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[13]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/927b3585dabb614970f9356f62481bdd68989d6306ae2eb301ee3fbce24a02d9.jpg",
@@ -5436,14 +5496,18 @@
                 "source_path": "photos.photo_urls[14]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[14]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[22].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[22].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[14]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/40a281db6b6730921e81bc3806f608e2c128937ec3be4f838fdcecaf868277d2.jpg",
@@ -5478,14 +5542,18 @@
                 "source_path": "photos.photo_urls[15]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[15]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[5].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[5].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[15]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/242d483ef76792e7a791aca94a1fcac1f93465bb7b201aec69bca11fda403242.jpg",
@@ -5520,14 +5588,18 @@
                 "source_path": "photos.photo_urls[16]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[16]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[24].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[24].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[16]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/e844c16e4b77c07a1d5b0f868915dc529a8e27668cc6cbe08227414f2620a5a4.jpg",
@@ -5562,14 +5634,18 @@
                 "source_path": "photos.photo_urls[17]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[17]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[42].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[42].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[17]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/2fe754d47ae69b3f0b8089ccfdacc750041afd75587a7d31d73addda5fb90161.jpg",
@@ -5604,14 +5680,18 @@
                 "source_path": "photos.photo_urls[18]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[18]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[47].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[47].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[18]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/2e20b6d1786dd72c1a84c1d5dc3cf9db7c1d1f288571714c91d0bcf14a0d6cee.jpg",
@@ -5646,14 +5726,18 @@
                 "source_path": "photos.photo_urls[19]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[19]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[93].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[93].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[19]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/8d6b25106a4cf36cc9ac392fcb0b644e50dbfa21e447f9a1c7b8b853cee2d542.jpg",
@@ -5688,14 +5772,18 @@
                 "source_path": "photos.photo_urls[20]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[20]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[17].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[17].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[20]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/529284a6ea59c8ba39aab0f0096db350699fff3a7944494da229013c28984a8c.jpg",
@@ -5730,14 +5818,18 @@
                 "source_path": "photos.photo_urls[21]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[21]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[38].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[38].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[21]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/232cbc09d7e048a60f96c22b013e61bad7a31d126bd17fb84b07c6df841d572b.jpg",
@@ -5772,14 +5864,18 @@
                 "source_path": "photos.photo_urls[22]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[22]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[85].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[85].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[22]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/e25bc53247d9a0806a93df9bf8f8b50e8fa6126c15296cd5ec19e8830185f9d9.jpg",
@@ -5814,14 +5910,18 @@
                 "source_path": "photos.photo_urls[23]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[23]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[64].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[64].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[23]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/bbeead70448a30ad840edee86309f6a75acc12d07f0975ced358a8262909c8df.jpg",
@@ -5856,14 +5956,18 @@
                 "source_path": "photos.photo_urls[24]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[24]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[24]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/a9bbf6f004e0078b1b586bfe71de4e5daefc02442aeef1430bfaf8553d5a106e.jpg",
@@ -5898,14 +6002,18 @@
                 "source_path": "photos.photo_urls[25]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[25]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[37].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[37].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[25]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/4062685ef70097d5abf9b72a41b76102eac49ebe455086dbf5f84c8c3a3df3be.jpg",
@@ -5940,14 +6048,18 @@
                 "source_path": "photos.photo_urls[26]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[26]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[53].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[53].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[26]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/29f5605e973aa3bf18745f7742df153fd83f04a6fcf39a9516bc9abe7cbc6200.jpg",
@@ -5982,14 +6094,18 @@
                 "source_path": "photos.photo_urls[27]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[27]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[55].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[55].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[27]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/c4a401b8df4195d37d100f78976953650894924c8304efaf1b26e64438ffd9e4.jpg",
@@ -6024,14 +6140,18 @@
                 "source_path": "photos.photo_urls[28]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[28]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[67].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[67].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[28]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/510a8208f207d51088a15d347355757d04b44118fcf06162bf23264b4b4daaf7.jpg",
@@ -6066,14 +6186,18 @@
                 "source_path": "photos.photo_urls[29]",
                 "provenance": [
                     {
-                        "field": "photos.photo_urls",
-                        "path": "photos.photo_urls[29]"
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[87].photo_url_big"
                     }
                 ],
                 "duplicate_provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[87].photo_url_big"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[29]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJWy8-QoM7TG8RttGA2Fc3yok/69a549836a3b7610fecc75f635e7303544e608ababb48a8de83473ff29be1594.jpg",
@@ -8691,15 +8815,15 @@
         "azure_asset_summary": {
             "city": "charlotte",
             "candidate_count": 130,
-            "duplicate_count": 0,
-            "airtable_photos_count": 0,
+            "duplicate_count": 1,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 0,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 100,
             "place_name": "CHNO Coffee Co",
             "place_id": "ChIJWy8-QoM7TG8RttGA2Fc3yok",
             "record_id": "recky0WwioIJwoKKz",
-            "generated_at": "2026-05-02T21:38:16.784352+00:00",
+            "generated_at": "2026-05-02T21:53:03.846092+00:00",
             "azure_assets_count": 100,
             "failed_upload_count": 0,
             "pending_upload_count": 0,
