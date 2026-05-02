@@ -17001,10 +17001,6 @@
                 "source_path": "fields.Photos[2]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
                     }
@@ -17013,6 +17009,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -17051,10 +17055,6 @@
                 "source_path": "fields.Photos[4]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
                     }
@@ -17063,6 +17063,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[40].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -17093,43 +17101,6 @@
                 "place_name": "Milk Cha-Cha | Rock Hill",
                 "place_id": "ChIJBzph3miPVogRQe4ybS0Jydo",
                 "record_id": "recBczJHh8PqsyeVX",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOUaWtrI51WCXzCHAEHcXYkCmxALJYs_8SnjK_Q=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOUaWtrI51WCXzCHAEHcXYkCmxALJYs_8SnjK_Q=w2048-h2048-k-no",
-                "source_url_sha256": "5d2e207aec289aa0aabf2e31e652fd86abcbe053c9d1d6426bdf02a79bb6b8a8",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[1].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[1].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/5d2e207aec289aa0aabf2e31e652fd86abcbe053c9d1d6426bdf02a79bb6b8a8.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/5d2e207aec289aa0aabf2e31e652fd86abcbe053c9d1d6426bdf02a79bb6b8a8.jpg",
-                "content_sha256": "9efa8607629d98260a5385933ad6e0d9c89d9bd9d5cd7d8900b2dcd322ebd272",
-                "content_type": "image/jpeg",
-                "bytes": 203300,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipOUaWtrI51WCXzCHAEHcXYkCmxALJYs_8SnjK_Q=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOUaWtrI51WCXzCHAEHcXYkCmxALJYs_8SnjK_Q=w2048-h2048-k-no",
-                        "bytes": 203300,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:02.885304+00:00"
-            },
-            {
-                "place_name": "Milk Cha-Cha | Rock Hill",
-                "place_id": "ChIJBzph3miPVogRQe4ybS0Jydo",
-                "record_id": "recBczJHh8PqsyeVX",
                 "source_url": "https://lh3.googleusercontent.com/p/AF1QipOCPh0yd643jUfTaCURYYk278hA_on2uydJQwY2=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOCPh0yd643jUfTaCURYYk278hA_on2uydJQwY2=w2048-h2048-k-no",
                 "source_url_sha256": "80afb760e2313be409557f0e9e411a7b75ffb57fdac62b6ec89926f4d802ac1c",
@@ -17142,7 +17113,12 @@
                         "path": "photos.raw_data.photos_data[20].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/80afb760e2313be409557f0e9e411a7b75ffb57fdac62b6ec89926f4d802ac1c.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/80afb760e2313be409557f0e9e411a7b75ffb57fdac62b6ec89926f4d802ac1c.jpg",
@@ -17167,6 +17143,48 @@
                 "place_name": "Milk Cha-Cha | Rock Hill",
                 "place_id": "ChIJBzph3miPVogRQe4ybS0Jydo",
                 "record_id": "recBczJHh8PqsyeVX",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOQh3lVSqjJNz1qTQvvJKwZfocKF9MLC7zXK4NC=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOQh3lVSqjJNz1qTQvvJKwZfocKF9MLC7zXK4NC=w2048-h2048-k-no",
+                "source_url_sha256": "30440ccaa2c1dcabdc0c9b3084cec42e36a9a2b3c2bd385b0a8f4c2144f53c90",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[89].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[89].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/30440ccaa2c1dcabdc0c9b3084cec42e36a9a2b3c2bd385b0a8f4c2144f53c90.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/30440ccaa2c1dcabdc0c9b3084cec42e36a9a2b3c2bd385b0a8f4c2144f53c90.jpg",
+                "content_sha256": "82450dd768897de3a42848d3ac7ff10a2bf168b67ede1740d2ffc7cef6640e74",
+                "content_type": "image/jpeg",
+                "bytes": 230877,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOQh3lVSqjJNz1qTQvvJKwZfocKF9MLC7zXK4NC=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOQh3lVSqjJNz1qTQvvJKwZfocKF9MLC7zXK4NC=w2048-h2048-k-no",
+                        "bytes": 230877,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:48.085636+00:00"
+            },
+            {
+                "place_name": "Milk Cha-Cha | Rock Hill",
+                "place_id": "ChIJBzph3miPVogRQe4ybS0Jydo",
+                "record_id": "recBczJHh8PqsyeVX",
                 "source_url": "https://lh3.googleusercontent.com/p/AF1QipNlB9v-7EdX5DOJyNXIRyFEb7SB7O5NLBPuN1bV=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNlB9v-7EdX5DOJyNXIRyFEb7SB7O5NLBPuN1bV=w2048-h2048-k-no",
                 "source_url_sha256": "f9c0142f41e538b05d07fe28fdd189c032b314764d8f1c8d079af40b00007903",
@@ -17179,7 +17197,12 @@
                         "path": "photos.raw_data.photos_data[21].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/f9c0142f41e538b05d07fe28fdd189c032b314764d8f1c8d079af40b00007903.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/f9c0142f41e538b05d07fe28fdd189c032b314764d8f1c8d079af40b00007903.jpg",
@@ -17216,7 +17239,12 @@
                         "path": "photos.raw_data.photos_data[73].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/84e5a7bddb97fda2af79730f19ff2e023bf30e86118293072f0eab0914d3276e.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/84e5a7bddb97fda2af79730f19ff2e023bf30e86118293072f0eab0914d3276e.jpg",
@@ -17241,38 +17269,43 @@
                 "place_name": "Milk Cha-Cha | Rock Hill",
                 "place_id": "ChIJBzph3miPVogRQe4ybS0Jydo",
                 "record_id": "recBczJHh8PqsyeVX",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOQh3lVSqjJNz1qTQvvJKwZfocKF9MLC7zXK4NC=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOQh3lVSqjJNz1qTQvvJKwZfocKF9MLC7zXK4NC=w2048-h2048-k-no",
-                "source_url_sha256": "30440ccaa2c1dcabdc0c9b3084cec42e36a9a2b3c2bd385b0a8f4c2144f53c90",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOUaWtrI51WCXzCHAEHcXYkCmxALJYs_8SnjK_Q=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOUaWtrI51WCXzCHAEHcXYkCmxALJYs_8SnjK_Q=w2048-h2048-k-no",
+                "source_url_sha256": "5d2e207aec289aa0aabf2e31e652fd86abcbe053c9d1d6426bdf02a79bb6b8a8",
                 "source_host": "lh3.googleusercontent.com",
                 "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[89].photo_url_big",
+                "source_path": "photos.raw_data.photos_data[1].photo_url_big",
                 "provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[89].photo_url_big"
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/30440ccaa2c1dcabdc0c9b3084cec42e36a9a2b3c2bd385b0a8f4c2144f53c90.jpg",
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[6]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/5d2e207aec289aa0aabf2e31e652fd86abcbe053c9d1d6426bdf02a79bb6b8a8.jpg",
                 "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/30440ccaa2c1dcabdc0c9b3084cec42e36a9a2b3c2bd385b0a8f4c2144f53c90.jpg",
-                "content_sha256": "82450dd768897de3a42848d3ac7ff10a2bf168b67ede1740d2ffc7cef6640e74",
+                "blob_path": "charlotte/ChIJBzph3miPVogRQe4ybS0Jydo/5d2e207aec289aa0aabf2e31e652fd86abcbe053c9d1d6426bdf02a79bb6b8a8.jpg",
+                "content_sha256": "9efa8607629d98260a5385933ad6e0d9c89d9bd9d5cd7d8900b2dcd322ebd272",
                 "content_type": "image/jpeg",
-                "bytes": 230877,
+                "bytes": 203300,
                 "status": "uploaded",
                 "selected_for_airtable": true,
                 "attempts": [
                     {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipOQh3lVSqjJNz1qTQvvJKwZfocKF9MLC7zXK4NC=w2048-h2048-k-no",
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOUaWtrI51WCXzCHAEHcXYkCmxALJYs_8SnjK_Q=w2048-h2048-k-no",
                         "status_code": 200,
                         "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOQh3lVSqjJNz1qTQvvJKwZfocKF9MLC7zXK4NC=w2048-h2048-k-no",
-                        "bytes": 230877,
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOUaWtrI51WCXzCHAEHcXYkCmxALJYs_8SnjK_Q=w2048-h2048-k-no",
+                        "bytes": 203300,
                         "error": null
                     }
                 ],
-                "uploaded_at": "2026-05-02T21:56:48.085636+00:00"
+                "uploaded_at": "2026-05-02T21:56:02.885304+00:00"
             }
         ],
         "azure_asset_failures": [
@@ -17284,13 +17317,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq-e_zxIJWmWRaELZMptiwcRHZsaoWEWtL0swUvGhZdO6GBMSiCNF3SXfohr26eIF3xfvHnItxu-en8l3WXMEhFxhmoMiaL_hvSkFV_QuNs4-tJLcoeRb82TehD_hS8pPMymmOP=w2048-h2048-k-no",
                 "source_url_sha256": "79f1c60ab98721366ef4acafc77cf3e6cd6c58e9525435ff4a617984ba91e5c3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[0]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[0]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
@@ -17357,7 +17386,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:31.691363+00:00"
+                "failed_at": "2026-05-02T22:19:47.616346+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -17367,13 +17396,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwersXNaDNc79e21HDVAOgW6RpV1FBTx4R8y7nlAQektRwlPJaEb4_JSvxk-UTXAv4gaG9KjApxtL7VbUUn1Xt46pGhrdUZUbjT29ZhNFXdZLFGpDFMc-B9vQhL-_dXGfHMM_PDxNgg=w2048-h2048-k-no",
                 "source_url_sha256": "bea07532994fd93e22fa8c969c33f8c040d857c903b2a3125dde28304fb60a1a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -17440,7 +17465,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:32.062532+00:00"
+                "failed_at": "2026-05-02T22:19:47.982894+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -17450,13 +17475,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoUvSJ3jVswDhA96vMEO2GPv7ELMkPs0Qnbhqqwhtn4g4QFwWLX__8rB4gCm0JZ9r-WK3LdNCgGen0Orr107BH1aXW_F1bOwSCQn0en8kgeqAxrw_d3PCch2L3xFloH4-J5UOZw=w2048-h2048-k-no",
                 "source_url_sha256": "6e527f8494f6d506956eb383f9f2dc806b2d1868a614943791d485436fc940c4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -17523,7 +17544,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:32.843710+00:00"
+                "failed_at": "2026-05-02T22:19:48.341400+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -17533,13 +17554,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepeuYb6TLFWJj-GJztEO8mTsRpV8qPmjVmiilCMEbtI7IqN4mFMnosvvMh9iCfyAzrr0AHmMcMOqcimLBdXCH6SsUn1oSfR0q2HKBDUd7kkwEBEGtwhERpfu0RkY9fs_0C2YzpttFp7Z96J=w2048-h2048-k-no",
                 "source_url_sha256": "57f6e815d85714e7bc9228ba222856b88a9f143715cbdc87f70a57fc9177cea1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -17606,7 +17623,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:38.655272+00:00"
+                "failed_at": "2026-05-02T22:19:48.717198+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -17616,13 +17633,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq7cCZ_H4nGQ4umPxWRZ54nqfAh--3WFb6JlnbLMwM9sT2npPFgLXPEN_CISayPiQGBcdmhPvSQzlzP4UKOFtSuWClu6RIw7DVL9V_txn4cgNwLv8c6aDcvLOuBHyaMB6GtOd_1bVOR0a9r=w2048-h2048-k-no",
                 "source_url_sha256": "5470d9518fa685a13a364c86ca2ac20bfd3ab37838df386522bcaff5c53a8c49",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -17689,7 +17702,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:39.032501+00:00"
+                "failed_at": "2026-05-02T22:19:49.091857+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -17699,13 +17712,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoJXo8kUZgTTiHq_OLCO0EZUWJ3oj2rf6bXW36IpKehbmKyBcwZvnC5qlmkxNxKfzeQQruaYQ1vwLycsaOCho_BqBqLuzU89yVQe1EwpGr9HBA5DPdPupyoEwQhhZrI0g5V0OskUV6wjqxA=w2048-h2048-k-no",
                 "source_url_sha256": "f902c1be1d56286beb2a938163f5b1ec8306cf308a6bb31f4d5f64a2e81a1565",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -17772,7 +17781,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:39.372009+00:00"
+                "failed_at": "2026-05-02T22:19:49.497638+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -17782,13 +17791,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqY6I7QmFbnRY685CgZoFZcxMcQQI0zEJ2bSijc4XqJCSgEJV986eciiq3guPcuXF7dHLlhleZL9nHCC-bWAhR4z8WMyQLU_h8ngqFu3qKSRRrVwp8zGPq2uCqTmNRDB4T7p3fqcV0IllIi=w2048-h2048-k-no",
                 "source_url_sha256": "ce1778507c786e2ab443035fab71c31a55905f92529d9307843d6a04934502e6",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -17855,7 +17860,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:39.660404+00:00"
+                "failed_at": "2026-05-02T22:19:49.843401+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -17865,13 +17870,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepfUv3SnN3bNBTcJO_z7AjeksNU1qDZLY7NdwLKUsccxc_F6tySmup5KMLyB-fuNKQ7CEGGafmzYKDr8C10SraIhcSH12m5Odk7elRKyB6Fjk6dSI2QmQnHVBor4ZIypDCEme6j0nT3KtS_=w2048-h2048-k-no",
                 "source_url_sha256": "6f63eb19beaf470c9bb8a69fac6c1971f8bca61cd19ab7ed857bba95da7acf78",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -17938,7 +17939,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:39.970513+00:00"
+                "failed_at": "2026-05-02T22:19:50.192685+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -17948,13 +17949,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerG-tlJt9rNlnFCWdHiUqaBnRGQAOzd04r6QfbJ5Z86ISwxnRujFLdDEAt3wfYtvbS06DDG_KunShr7jTHLB-pIhpJhgOmc9haqHOf2QX3Tdk4-qyqOVDwk8VdaYBY7niSDe8g7=w2048-h2048-k-no",
                 "source_url_sha256": "45d67e187238e51bdb357e2af340cf36c3717d329f9f4bcee6d5e8ed98ea4d9f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -18021,7 +18018,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:40.254178+00:00"
+                "failed_at": "2026-05-02T22:19:55.581470+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18031,13 +18028,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep1KP81X1YRtfONSnyRxvzxpLWOdaFceIXNNYmePyLwuqlgkG5Ken_e_TKFqC70MBw9Iia4EQUuUsoX_1UMQuIqCYSh3CbETJVS_S-UT9qUhR51BkEPhVpJ_b7tKhVscNT5pws=w2048-h2048-k-no",
                 "source_url_sha256": "d0cb3bc53adab9990dd548489390d013bdf6b711e6c73029bf823efbdd70dd82",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -18104,7 +18097,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:40.556589+00:00"
+                "failed_at": "2026-05-02T22:19:55.878293+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18114,13 +18107,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweo_BHFHFOHbfG0p2QyYTHVHp1jEoHK4F5G2ixRZRxC3ByX0EaF-CvCbiggOgBYMazggVKAv0jfobJ0GhZmwv2nzZmA4lc7IPhCt_wlmbZrdQ_WSer9e46gwWP7CFrsi2Zw8eZQ=w2048-h2048-k-no",
                 "source_url_sha256": "53843bd691b17926303f18400da9b55cf4116877ba8e01a0c57f357dcbb3ae77",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -18187,7 +18176,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:40.853228+00:00"
+                "failed_at": "2026-05-02T22:19:56.220616+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18197,13 +18186,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepp7Shd47QvzVPveKjJc9QUeNZRmdyyepCk0EcXIL5S5L90BfvYqlDMVKY85LfJJ05QtcID5MT9UMQwYyY3JMNTpOHjuKQXoIy9ncT4VPGSxKvyV1KxnWFcp009WsnBEFDVpw5Ahw=w2048-h2048-k-no",
                 "source_url_sha256": "df2d24105b490c8f681644415867c012318c9a13d1cc7e79e92b47d1c574ab91",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -18270,7 +18255,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:41.146533+00:00"
+                "failed_at": "2026-05-02T22:19:56.557246+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18280,13 +18265,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqekAsuQ2jRG-6a5qdY5pUveCUxcOpXXJ5AjIT6MNxqs_fvEBgu59lZoe8LuXdEv4qCaT-PusKn2kAa9VKq0aWZ6HeKjDzowZhi85pr6WJhTX7fTKdGtccG6MqbIzKu1a_C4lA=w2048-h2048-k-no",
                 "source_url_sha256": "481ce99e5acbf05eaa8c67ca1d3187715b35f509f25d4ec163149ede2c82dbb2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -18353,7 +18334,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:41.450159+00:00"
+                "failed_at": "2026-05-02T22:19:56.887012+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18363,13 +18344,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweopxbty_LqQCWH95y9WFSTx0sxKz6fZh53tnsz6tGjoC5T8-p--EOUkAYbpF3nep14vC7MspvgVNnUBRTeuzdVL-hRFRDLTS-BH7mbzTFLcvab4KQmNRdf-Zwgruxvxo7X9_piYjx_B9Zlp=w2048-h2048-k-no",
                 "source_url_sha256": "693bc1e1377b8b96c8b20a744b7f521e0d49363763fa658f0b57fdceeb918757",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -18436,7 +18413,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:41.747089+00:00"
+                "failed_at": "2026-05-02T22:19:57.230901+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18446,13 +18423,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepKXplPv5WW9y_GgfLclZh4r-RwK3OCHa5U6rLkaj89Is7lAILWZ3KEAocoYiRsFbvRhSnimx7tBRvJ87FL9-r-aIdAKLZ3TLQt7z6HOJtnxb-86WVUNQnJZtrVZzm9ZTJhsxbvCQ=w2048-h2048-k-no",
                 "source_url_sha256": "cc6c726dfb13b39c639adf4ff8bf1dc2d0fcee937583cd23faef83f0069a9c57",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -18519,7 +18492,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:47.095951+00:00"
+                "failed_at": "2026-05-02T22:19:57.647257+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18529,13 +18502,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepVca9p6SY44Ll0xzyjsBIEeZfM_C60RnGICD3QpfeNOjuHXVK1C_CgPrG5oYJVv7Pj08tzEB8pJgLeOg9UyT4ycz5jMB9d4poDJcicDx3wFBFyRRZLlACHNutrCYzD3zThRzeY-e4bJbM=w2048-h2048-k-no",
                 "source_url_sha256": "c0343e2ccf446af4d6322fa26e79d7cb62b1b32fdc73031357cf252883e204c0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -18602,7 +18571,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:47.439826+00:00"
+                "failed_at": "2026-05-02T22:19:58.035253+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18612,13 +18581,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepff5M62R6j7dHI591JG_PjUPew1ZP9edkaZcVs-QdZkpx4qEt5_QTyu9XngcpPBM7Vt82uD_up9moQSK8FikHJEo565QvUi7qYREulSo1l4WaTP0grexUWkjp4KrzI3AR1xcCr6CTuH2vO=w2048-h2048-k-no",
                 "source_url_sha256": "33320280d295b81dc6310424f72c798738b546d7da9e5712f725ee6a999bdd3a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -18685,7 +18650,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:47.777111+00:00"
+                "failed_at": "2026-05-02T22:19:58.469683+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18695,13 +18660,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFXC1Spx52nxdrWmzUTdr4MF2yeJvbQlZweenQqCy_it-mWZngnnZaB-4LJ78g0STmPyZp0FFLZX5LJcwFd84bG7AKGUovMJgGecLfgMy-zTNqTLafqDOG3KMr_KTaTmLb5PpiliE8QvXlwSMYyT5H-C_mtJuX2nm-bgqeswPMTKocjtG9BL05-=w2048-h2048-k-no",
                 "source_url_sha256": "85b8b5cdd070291f8e21a44ee88375cb590e3c74b10c0849f8588c6cbb5e21dd",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -18768,7 +18729,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:48.117066+00:00"
+                "failed_at": "2026-05-02T22:20:03.937241+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18778,13 +18739,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhElTSVKmrHBwOlts-Qz2UPHIvguzMvsge_QbM3EEihqeZBqCwWLJsMxWDmLeVTotZnk9K89dU0OvGZl2eMQhCrMhkCq1USIMSN82Oc1E4iXFvpYkKz0GiFdHBmfyUwykyNaFgiPzNsCKsD7Byq7kSPoXFobBZjOZG8RG49iIb13QO-F0RWZN9Mf=w2048-h2048-k-no",
                 "source_url_sha256": "d22020b3a215a1f9ce761ab4434031cc3e92400c978a4ca3ee268cc2c4493eea",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -18851,7 +18808,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:48.433144+00:00"
+                "failed_at": "2026-05-02T22:20:04.364947+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18861,13 +18818,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHj21d3SqCyKOYlcooxT5HyUGECwYyi_MHUYVl25Ge_gXIapC6u9A1UJ5bpMV16362OM3xDOnlsCNva_lqOx0RcskWKQB6nxklJs2x7ruzoOqOIQXknREzlr9kaeVgS_PQzGORgD5UQ_mKYPrTnFqjxJo39f-B3KrllmJbrqRPvkyNXdVFVZWU=w2048-h2048-k-no",
                 "source_url_sha256": "41878ecfe8b8234b1e45264dee0a47ccddab0074680597e1e60beb28e36aa824",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -18934,7 +18887,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:48.709535+00:00"
+                "failed_at": "2026-05-02T22:20:04.759940+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -18944,13 +18897,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqDApzLZPY_g2v9O59LUSJ6oJ0em7gt3BJoiaKeucgTtsy3jrq9iJXFeOWZNp_SGeni36jqCdIhOCk43PTYpxtLLyTk8Ous5x0wWFSxNyCffFggZw7po1OvMN5o0Lx203W8vUrKN6V1K0xt=w2048-h2048-k-no",
                 "source_url_sha256": "81d827faea30631be0225fb1300e9b2b3879b77b2e5fa9410b68726c5163717a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -19017,7 +18966,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:49.001647+00:00"
+                "failed_at": "2026-05-02T22:20:05.212906+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19027,13 +18976,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqbF0jwBPdYUM7_-M6cWTw3SW8c_mc1v5wZFLHi2OO8rD7AYW6NUz9JlJbjxZXBsTniN_taI9i0yxAmHwT2INSX1F9T53jrudLgUOj_K38EJEGVxZl470RV1thoz2Yi2qiQ8z_wZbpX1ViK=w2048-h2048-k-no",
                 "source_url_sha256": "2beb8b3b60aefcc814e38b1ec483e435d21e9618b0641e17c993d9bb22d0016e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -19100,7 +19045,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:49.292002+00:00"
+                "failed_at": "2026-05-02T22:20:05.652964+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19110,13 +19055,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerAParj-kfHH5GUNT6XLYqGh-X5ZdmTVgDIAD6jIVEFc0jfp1nEUxasOhaXkZjxclOstrHDkqGZ8vDKPZpZwYW8euK29PWyBUQCBY2B2HOirwOIh3Rar67CFnUFHvcKLC_7KDbLe--86_0=w2048-h2048-k-no",
                 "source_url_sha256": "be410016bbc02a9534da8433d74e4e9a0cbf3565fd414d6e4129f2b0c5b7e326",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -19183,7 +19124,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:49.580175+00:00"
+                "failed_at": "2026-05-02T22:20:06.049191+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19193,13 +19134,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep65nnzllfedTMQ0oosSFfJ6lKf4GkWrhNN9H1hy9B3BsgoCHWOrzSrB0rDS1td1YWhA-EeTkcRrHur9rlwJ8-U2woAgMDesVbplqkQn7hHf_3h9ar1EKhqah91dOmwE4KwSPS6K2CUOCs=w2048-h2048-k-no",
                 "source_url_sha256": "42fa262c7fedd2025184e76dc9807624b5d06aa36b2ec7796919d9bdf0a22dbc",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -19266,7 +19203,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:49.903482+00:00"
+                "failed_at": "2026-05-02T22:20:06.367299+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19276,13 +19213,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoW5ovG477gggfrgYiTb89qrSu6pt0UNXeSKIhdcz9Rf9npFfUCe4apNQM8FSSUti2-L7fib7MhxPf6Iaj2o3L5El4lzgEi9bW1xIEpSGyxYcnnPAboero41x19EiJBeOzAEch7_84yUZ3n=w2048-h2048-k-no",
                 "source_url_sha256": "997e133b5cde280a8993cbd4242d4c27b2955482daf395f0d64de7d0ead221da",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -19349,7 +19282,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:51.250785+00:00"
+                "failed_at": "2026-05-02T22:20:06.747214+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19359,13 +19292,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepJS3rFvI1S4QZCpZIXPbcd5TwNAmb5l6sEt1CCupZHDSMgZKApkHWsklwFHEy3kGx4UaiGWLi1zUDIjOvbt3gV5O2pOl5I4r6fMIYO8IB6DsuSf5pZjD9VlZ4bJw302-6rapQjoUIEpNMi=w2048-h2048-k-no",
                 "source_url_sha256": "03a0d0a11e231b1336f1d711667f190c51dc2d9b4ed562f307061220a5e14d73",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -19432,7 +19361,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:51.554728+00:00"
+                "failed_at": "2026-05-02T22:20:07.151954+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19442,13 +19371,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwero28Z1XzhevDl5NHHBq8pmz5tMS0vEYy2c9T2gp8R1HIJlOXWzGb7_H0hAcxU2vmJVOuEYZcZR29TkCIJlIcxVg9Rj61b27QIsANtvKkdGXZg2geXznKTLuxeCKKUJMt4-4QX-ivClFM2p=w2048-h2048-k-no",
                 "source_url_sha256": "fa46235e38c0aff5fe2922a68ff3a5567392ccc91839b410be0a765de75b270d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -19515,7 +19440,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:56.872276+00:00"
+                "failed_at": "2026-05-02T22:20:07.498863+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19525,13 +19450,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoor86cB0XwBnMADWTrJhGxkHiAkJpT--zgxUCphvgMKN8_cyceQCSnDsxBOIjb_M4OJ3_NBBUhOvM-OJXBDJx114hkQi9dQnY4cRbYOiliS3Czdijdcs_rNFtkC0iCxzk2Y4K53PgwBga0=w2048-h2048-k-no",
                 "source_url_sha256": "d4d2a8e5245221d377ec1695be518ffce27811fe0faf5d198d193a6074fdad97",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -19598,7 +19519,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:02.165517+00:00"
+                "failed_at": "2026-05-02T22:20:07.850144+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19677,7 +19598,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:03.262141+00:00"
+                "failed_at": "2026-05-02T22:20:08.226528+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19756,7 +19677,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:03.607950+00:00"
+                "failed_at": "2026-05-02T22:20:08.558723+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19835,7 +19756,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:03.945525+00:00"
+                "failed_at": "2026-05-02T22:20:08.898731+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19914,7 +19835,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:04.255318+00:00"
+                "failed_at": "2026-05-02T22:20:09.248550+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -19993,7 +19914,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:04.540466+00:00"
+                "failed_at": "2026-05-02T22:20:09.600628+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20072,7 +19993,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:04.837161+00:00"
+                "failed_at": "2026-05-02T22:20:09.945672+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20151,7 +20072,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:05.130687+00:00"
+                "failed_at": "2026-05-02T22:20:10.289173+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20230,7 +20151,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:05.444718+00:00"
+                "failed_at": "2026-05-02T22:20:10.673311+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20309,7 +20230,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:05.745481+00:00"
+                "failed_at": "2026-05-02T22:20:11.046322+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20388,7 +20309,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:06.035089+00:00"
+                "failed_at": "2026-05-02T22:20:11.454892+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20467,7 +20388,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:06.327396+00:00"
+                "failed_at": "2026-05-02T22:20:11.868582+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20546,7 +20467,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:06.647805+00:00"
+                "failed_at": "2026-05-02T22:20:12.253158+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20625,7 +20546,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:06.967386+00:00"
+                "failed_at": "2026-05-02T22:20:12.669556+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20704,7 +20625,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:07.281081+00:00"
+                "failed_at": "2026-05-02T22:20:13.086787+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20783,7 +20704,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:07.626284+00:00"
+                "failed_at": "2026-05-02T22:20:13.534854+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20862,7 +20783,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:07.911364+00:00"
+                "failed_at": "2026-05-02T22:20:14.012105+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -20941,7 +20862,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:08.271258+00:00"
+                "failed_at": "2026-05-02T22:20:14.405462+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21020,7 +20941,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:08.689019+00:00"
+                "failed_at": "2026-05-02T22:20:14.849411+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21099,7 +21020,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:09.976182+00:00"
+                "failed_at": "2026-05-02T22:20:15.293353+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21178,7 +21099,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:10.335148+00:00"
+                "failed_at": "2026-05-02T22:20:15.712434+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21257,7 +21178,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:10.657546+00:00"
+                "failed_at": "2026-05-02T22:20:16.171280+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21336,7 +21257,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:15.970216+00:00"
+                "failed_at": "2026-05-02T22:20:16.600841+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21415,7 +21336,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:16.362636+00:00"
+                "failed_at": "2026-05-02T22:20:17.025738+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21494,7 +21415,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:16.717872+00:00"
+                "failed_at": "2026-05-02T22:20:17.470054+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21573,7 +21494,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:17.043892+00:00"
+                "failed_at": "2026-05-02T22:20:17.830334+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21652,7 +21573,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:17.427144+00:00"
+                "failed_at": "2026-05-02T22:20:18.173861+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21731,7 +21652,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:17.802909+00:00"
+                "failed_at": "2026-05-02T22:20:18.610672+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21810,7 +21731,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:18.174752+00:00"
+                "failed_at": "2026-05-02T22:20:19.036862+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21889,7 +21810,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:18.545892+00:00"
+                "failed_at": "2026-05-02T22:20:19.429450+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -21968,7 +21889,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:18.917371+00:00"
+                "failed_at": "2026-05-02T22:20:19.777426+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22047,7 +21968,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:19.305324+00:00"
+                "failed_at": "2026-05-02T22:20:20.141316+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22126,7 +22047,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:19.696733+00:00"
+                "failed_at": "2026-05-02T22:20:20.581099+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22205,7 +22126,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:20.039309+00:00"
+                "failed_at": "2026-05-02T22:20:20.907267+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22284,7 +22205,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:20.341003+00:00"
+                "failed_at": "2026-05-02T22:20:21.288618+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22363,7 +22284,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:20.663495+00:00"
+                "failed_at": "2026-05-02T22:20:21.754496+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22442,7 +22363,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:20.997574+00:00"
+                "failed_at": "2026-05-02T22:20:22.156478+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22521,7 +22442,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:21.751586+00:00"
+                "failed_at": "2026-05-02T22:20:22.534121+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22600,7 +22521,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:22.059870+00:00"
+                "failed_at": "2026-05-02T22:20:22.937629+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22679,7 +22600,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:22.381546+00:00"
+                "failed_at": "2026-05-02T22:20:28.369479+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22758,7 +22679,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:22.692274+00:00"
+                "failed_at": "2026-05-02T22:20:28.793986+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22837,7 +22758,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:22.982393+00:00"
+                "failed_at": "2026-05-02T22:20:29.237023+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22916,7 +22837,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:23.292094+00:00"
+                "failed_at": "2026-05-02T22:20:29.694192+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -22995,7 +22916,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:23.600961+00:00"
+                "failed_at": "2026-05-02T22:20:30.143703+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23074,7 +22995,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:23.890279+00:00"
+                "failed_at": "2026-05-02T22:20:30.495697+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23153,7 +23074,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:24.220906+00:00"
+                "failed_at": "2026-05-02T22:20:30.893661+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23232,7 +23153,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:24.515394+00:00"
+                "failed_at": "2026-05-02T22:20:31.275955+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23311,7 +23232,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:24.854412+00:00"
+                "failed_at": "2026-05-02T22:20:36.695674+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23390,7 +23311,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:25.179885+00:00"
+                "failed_at": "2026-05-02T22:20:37.103203+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23469,7 +23390,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:25.524325+00:00"
+                "failed_at": "2026-05-02T22:20:37.497800+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23548,7 +23469,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:25.896514+00:00"
+                "failed_at": "2026-05-02T22:20:37.867121+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23627,7 +23548,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:26.253021+00:00"
+                "failed_at": "2026-05-02T22:20:38.237293+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23706,7 +23627,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:26.578359+00:00"
+                "failed_at": "2026-05-02T22:20:38.608710+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23785,7 +23706,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:26.899469+00:00"
+                "failed_at": "2026-05-02T22:20:38.955734+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23864,7 +23785,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:27.235555+00:00"
+                "failed_at": "2026-05-02T22:20:39.292980+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -23943,7 +23864,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:27.583178+00:00"
+                "failed_at": "2026-05-02T22:20:39.665343+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24022,7 +23943,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:27.927697+00:00"
+                "failed_at": "2026-05-02T22:20:40.083429+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24101,7 +24022,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:28.295360+00:00"
+                "failed_at": "2026-05-02T22:20:40.469750+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24180,7 +24101,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:28.635654+00:00"
+                "failed_at": "2026-05-02T22:20:45.850248+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24259,7 +24180,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:28.971650+00:00"
+                "failed_at": "2026-05-02T22:20:46.242347+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24338,7 +24259,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:29.320426+00:00"
+                "failed_at": "2026-05-02T22:20:46.595016+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24417,7 +24338,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:29.634311+00:00"
+                "failed_at": "2026-05-02T22:20:46.946284+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24496,7 +24417,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:29.977584+00:00"
+                "failed_at": "2026-05-02T22:20:47.291817+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24575,7 +24496,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:30.325994+00:00"
+                "failed_at": "2026-05-02T22:20:47.647063+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24654,7 +24575,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:30.663212+00:00"
+                "failed_at": "2026-05-02T22:20:48.000410+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24733,7 +24654,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:31.014739+00:00"
+                "failed_at": "2026-05-02T22:20:53.340824+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24812,7 +24733,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:31.360291+00:00"
+                "failed_at": "2026-05-02T22:20:53.652494+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24891,7 +24812,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:31.709506+00:00"
+                "failed_at": "2026-05-02T22:20:59.016170+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -24970,7 +24891,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:32.045817+00:00"
+                "failed_at": "2026-05-02T22:20:59.476989+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25049,7 +24970,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:32.910864+00:00"
+                "failed_at": "2026-05-02T22:21:00.166505+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25128,7 +25049,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:33.241385+00:00"
+                "failed_at": "2026-05-02T22:21:00.615477+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25207,7 +25128,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:33.577395+00:00"
+                "failed_at": "2026-05-02T22:21:00.925969+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25286,7 +25207,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:33.872975+00:00"
+                "failed_at": "2026-05-02T22:21:01.265976+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25365,7 +25286,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:34.194402+00:00"
+                "failed_at": "2026-05-02T22:21:01.547001+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25444,7 +25365,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:34.517723+00:00"
+                "failed_at": "2026-05-02T22:21:01.860357+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25523,7 +25444,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:39.856948+00:00"
+                "failed_at": "2026-05-02T22:21:02.183776+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25602,7 +25523,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:40.214395+00:00"
+                "failed_at": "2026-05-02T22:21:07.583996+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25681,7 +25602,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:45.526468+00:00"
+                "failed_at": "2026-05-02T22:21:08.269728+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25760,7 +25681,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:45.831873+00:00"
+                "failed_at": "2026-05-02T22:21:08.585261+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25839,7 +25760,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:46.170293+00:00"
+                "failed_at": "2026-05-02T22:21:08.976848+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25918,7 +25839,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:46.522707+00:00"
+                "failed_at": "2026-05-02T22:21:09.379447+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -25997,7 +25918,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:46.862076+00:00"
+                "failed_at": "2026-05-02T22:21:14.799874+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26076,7 +25997,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:47.214589+00:00"
+                "failed_at": "2026-05-02T22:21:15.235358+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26155,7 +26076,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:47.563237+00:00"
+                "failed_at": "2026-05-02T22:21:15.636555+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26234,7 +26155,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:48.436694+00:00"
+                "failed_at": "2026-05-02T22:21:16.133341+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26313,7 +26234,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:48.856624+00:00"
+                "failed_at": "2026-05-02T22:21:16.591495+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26392,7 +26313,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:49.214217+00:00"
+                "failed_at": "2026-05-02T22:21:16.961823+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26471,7 +26392,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:49.613399+00:00"
+                "failed_at": "2026-05-02T22:21:17.437467+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26550,7 +26471,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:49.990405+00:00"
+                "failed_at": "2026-05-02T22:21:17.896609+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26629,7 +26550,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:50.304013+00:00"
+                "failed_at": "2026-05-02T22:21:18.356213+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26708,7 +26629,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:50.614842+00:00"
+                "failed_at": "2026-05-02T22:21:18.785739+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26787,7 +26708,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:50.931793+00:00"
+                "failed_at": "2026-05-02T22:21:24.256417+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26866,7 +26787,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:51.244205+00:00"
+                "failed_at": "2026-05-02T22:21:24.688802+00:00"
             },
             {
                 "place_name": "Milk Cha-Cha | Rock Hill",
@@ -26945,27 +26866,27 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:51.569579+00:00"
+                "failed_at": "2026-05-02T22:21:25.159071+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 130,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 137,
+            "duplicate_count": 0,
+            "airtable_photos_count": 7,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 100,
             "place_name": "Milk Cha-Cha | Rock Hill",
             "place_id": "ChIJBzph3miPVogRQe4ybS0Jydo",
             "record_id": "recBczJHh8PqsyeVX",
-            "generated_at": "2026-05-02T21:56:51.570075+00:00",
+            "generated_at": "2026-05-02T22:21:25.159629+00:00",
             "azure_assets_count": 7,
             "failed_upload_count": 121,
             "pending_upload_count": 0,
             "selected_airtable_count": 7,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
