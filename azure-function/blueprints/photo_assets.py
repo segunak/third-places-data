@@ -179,7 +179,20 @@ def migrate_single_place_photo_assets(activityInput):
         place_id = fields.get("Google Maps Place Id", "")
         city = config.get("city", "charlotte")
         if not place_id:
-            return {"status": "skipped", "message": "No Google Maps Place Id", "place_name": place_name, "summary": {}}
+            message = "Skipped: no Google Maps Place Id; Azure photo blobs require a place_id in their path."
+            logging.info(
+                "Skipping photo asset migration for %s (record_id=%s): missing Google Maps Place Id.",
+                place_name,
+                place.get("id", ""),
+            )
+            return {
+                "status": "skipped",
+                "skip_reason": "missing_google_maps_place_id",
+                "message": message,
+                "place_name": place_name,
+                "record_id": place.get("id", ""),
+                "summary": {},
+            }
 
         data_file_path = f"data/places/{city}/{place_id}.json"
         fetch_success, place_data, fetch_message = fetch_data_github(data_file_path)
@@ -193,9 +206,43 @@ def migrate_single_place_photo_assets(activityInput):
         selected_urls = asset_result["selected_airtable_urls"]
         dry_run = bool(config.get("dry_run", True))
         write_airtable = bool(config.get("write_airtable", False))
+        candidate_count = asset_result["summary"].get("candidate_count", 0)
+
+        if candidate_count == 0:
+            summary = asset_result["summary"]
+            message = (
+                "Skipped: no migratable photo URLs found after checking Airtable Photos, "
+                "data file photos.photo_urls, and raw provider photo_url_big sources."
+            )
+            logging.info(
+                "Skipping photo asset migration for %s (%s, record_id=%s): no migratable photo URLs found. "
+                "candidate_count=%s airtable_photos_count=%s data_file_photo_urls_count=%s "
+                "provider_raw_photo_url_big_count=%s warnings=%s",
+                place_name,
+                place_id,
+                place.get("id", ""),
+                summary.get("candidate_count", 0),
+                summary.get("airtable_photos_count", 0),
+                summary.get("data_file_photo_urls_count", 0),
+                summary.get("provider_raw_photo_url_big_count", 0),
+                warnings,
+            )
+            return {
+                "status": "skipped",
+                "skip_reason": "no_migratable_photo_urls",
+                "message": message,
+                "warnings": warnings,
+                "place_name": place_name,
+                "place_id": place_id,
+                "record_id": place.get("id", ""),
+                "summary": summary,
+                "selected_airtable_urls": selected_urls,
+                "assets": asset_result["assets"],
+                "failures": asset_result["failures"],
+            }
 
         status = "would_update" if dry_run else "updated"
-        message = f"Processed {asset_result['summary'].get('candidate_count', 0)} candidates"
+        message = f"Processed {candidate_count} candidates"
 
         if not dry_run:
             updated_json = json.dumps(asset_result["place_data"], indent=4)

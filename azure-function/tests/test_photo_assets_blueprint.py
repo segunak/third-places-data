@@ -1,3 +1,4 @@
+import logging
 import json
 
 from blueprints import photo_assets
@@ -56,6 +57,123 @@ def test_filter_places_rejects_mismatched_record_and_place_id():
         assert "different Airtable records" in str(exc)
     else:
         raise AssertionError("Expected ValueError")
+
+
+def test_migrate_single_place_uses_data_file_sources_when_airtable_photos_empty(monkeypatch):
+    monkeypatch.setattr(
+        photo_assets,
+        "fetch_data_github",
+        lambda path: (
+            True,
+            {
+                "photos": {
+                    "photo_urls": ["https://example.com/cached.jpg"],
+                    "raw_data": {"photos_data": [{"photo_url_big": "https://example.com/raw.jpg"}]},
+                }
+            },
+            "ok",
+        ),
+    )
+
+    result = photo_assets.migrate_single_place_photo_assets({
+        "place": {
+            "id": "rec-data-file-sources",
+            "fields": {
+                "Place": "Data File Sources Place",
+                "Google Maps Place Id": "ChIJ123",
+                "Photos": "",
+            },
+        },
+        "config": {"city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "would_update"
+    assert result["message"] == "Processed 2 candidates"
+    assert result["summary"]["airtable_photos_count"] == 0
+    assert result["summary"]["data_file_photo_urls_count"] == 1
+    assert result["summary"]["provider_raw_photo_url_big_count"] == 1
+
+
+def test_migrate_single_place_skip_message_explains_missing_place_id(caplog):
+    caplog.set_level(logging.INFO)
+
+    result = photo_assets.migrate_single_place_photo_assets({
+        "place": {
+            "id": "rec-no-place-id",
+            "fields": {
+                "Place": "No Place Id Place",
+                "Photos": json.dumps(["https://example.com/photo.jpg"]),
+            },
+        },
+        "config": {"city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "skipped"
+    assert result["skip_reason"] == "missing_google_maps_place_id"
+    assert result["message"] == "Skipped: no Google Maps Place Id; Azure photo blobs require a place_id in their path."
+    assert "missing Google Maps Place Id" in caplog.text
+
+
+def test_migrate_single_place_skips_when_all_photo_sources_empty(monkeypatch, caplog):
+    caplog.set_level(logging.INFO)
+    monkeypatch.setattr(photo_assets, "fetch_data_github", lambda path: (True, {"photos": {"photo_urls": []}}, "ok"))
+
+    result = photo_assets.migrate_single_place_photo_assets({
+        "place": {
+            "id": "rec-empty",
+            "fields": {
+                "Place": "Empty Sources Place",
+                "Google Maps Place Id": "ChIJ123",
+                "Photos": json.dumps(["", "not-a-url"]),
+            },
+        },
+        "config": {"city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "skipped"
+    assert result["skip_reason"] == "no_migratable_photo_urls"
+    assert result["message"] == (
+        "Skipped: no migratable photo URLs found after checking Airtable Photos, "
+        "data file photos.photo_urls, and raw provider photo_url_big sources."
+    )
+    assert result["summary"]["candidate_count"] == 0
+    assert "candidate_count=0" in caplog.text
+    assert "airtable_photos_count=0" in caplog.text
+    assert "data_file_photo_urls_count=0" in caplog.text
+    assert "provider_raw_photo_url_big_count=0" in caplog.text
+
+
+def test_migrate_single_place_skips_zero_candidate_result(monkeypatch):
+    class DummyPhotoAssetService:
+        def process_place(self, place, place_data, config):
+            return {
+                "selected_airtable_urls": [],
+                "summary": {"candidate_count": 0, "airtable_photos_count": 1},
+                "assets": [],
+                "failures": [],
+            }
+
+    monkeypatch.setattr(photo_assets, "PhotoAssetService", DummyPhotoAssetService)
+    monkeypatch.setattr(photo_assets, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
+
+    result = photo_assets.migrate_single_place_photo_assets({
+        "place": {
+            "id": "rec-zero",
+            "fields": {
+                "Place": "Zero Candidate Place",
+                "Google Maps Place Id": "ChIJ123",
+                "Photos": json.dumps(["https://example.com/photo.jpg"]),
+            },
+        },
+        "config": {"city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "skipped"
+    assert result["skip_reason"] == "no_migratable_photo_urls"
+    assert result["message"] == (
+        "Skipped: no migratable photo URLs found after checking Airtable Photos, "
+        "data file photos.photo_urls, and raw provider photo_url_big sources."
+    )
 
 
 def test_photo_health_check_reports_counts(monkeypatch):
