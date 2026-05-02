@@ -11561,10 +11561,6 @@
                 "source_path": "fields.Photos[26]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
                     }
@@ -11573,6 +11569,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[17].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -11611,10 +11615,6 @@
                 "source_path": "fields.Photos[27]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
                     }
@@ -11623,6 +11623,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[18].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -11661,10 +11669,6 @@
                 "source_path": "fields.Photos[28]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
                     }
@@ -11673,6 +11677,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[19].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -11709,13 +11721,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepWTnz8fKmps4OlwksWe39pPyy9xmQYsXXNJsVO4aUUCMWMyXuYG6MkD0Ji2BCcD-xD44rASTJdneSvoftTVCypQZf9c99gWH1swo5d64Ywi9U4WzmpX0eHQ6XfMv_oOnnIN0cVX4vmrwq1=w2048-h2048-k-no",
                 "source_url_sha256": "3544fccc1c7fb6613d52ea7863e444fb5560c5c4111ab86ce78419131c6a0cff",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[0]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[0]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
@@ -11782,7 +11790,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:46.970974+00:00"
+                "failed_at": "2026-05-02T22:19:47.675654+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -11792,13 +11800,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoxkKbMFS6GR6z82pVn5kBNkfEs_rQ3UGJiSi8aNy6TC4hzKFGfOuv27XsQhBadhUhVWLtk5SNwFvTG7bUwFpgbueZ1EICaJbUwNYDAEdcgavtyFMuhBcMDXlwYn0sEXLLMWKxR=w2048-h2048-k-no",
                 "source_url_sha256": "a9138bae4c9848345612d31d3abdfc53d05577c4ad82f841f96fba0deae62c95",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -11865,7 +11869,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:47.333733+00:00"
+                "failed_at": "2026-05-02T22:19:48.069681+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -11875,13 +11879,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep6SD5mgHiWrBniv1gTUYmi5fa_AwPEnDzfXbajc468iyIJPl-XmyHBBCEK0i-84P3zx1_Jp-pvdg1OZ0beC3dc7LKkNY7ao-ylr7FugOCT7nPHukjq6DRg8gpGGWHKwXmkxnOEVg=w2048-h2048-k-no",
                 "source_url_sha256": "ec6a648d22f4d40fb6749a13b1a8fbdd9433a2b7a843b42d30f0d204865e0d14",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -11948,7 +11948,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:47.687336+00:00"
+                "failed_at": "2026-05-02T22:19:48.405917+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -11958,13 +11958,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweptp_Fn-gBd8g_yeLGDTxm6Z3WgpgGQBVHoyoN7ksR9vBgtj-_R8xuPzm1ziexpvHucpJHj92hwg4d6UPg5t0QYyEjqcwYr_iLwDlV4W4WCe6hQVyakDngn7Ux4kUHztU9a3Ilh=w2048-h2048-k-no",
                 "source_url_sha256": "d78946a801941c5fd3250d242682a2274a1d18e43aa461879f131da0bc4f09a9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -12031,7 +12027,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:47.995294+00:00"
+                "failed_at": "2026-05-02T22:19:53.733457+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12041,13 +12037,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq2cXoJO4prBWfzyXvVtKoFATCH8bt6dxFNLYSgvlU41nMe-hJaiZZbECAa6JlPL-7-mBncYVlwKZuyiPQBI1uizCbhYyweopFy3xxf7-xeXZf7UEq4WfK8cMGtlzoDSItqXq4KOQ=w2048-h2048-k-no",
                 "source_url_sha256": "d0773ba681c6d756b5104b85e0b187c138922ad2bddc7d07a67bb13dcbed5f6e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -12114,7 +12106,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:48.370082+00:00"
+                "failed_at": "2026-05-02T22:19:54.034622+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12124,13 +12116,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoWVOvdAl3UkirF5lQoTfmOUY9PTqEVAuTtODjpTnLj3Gx9_Q8wOcmHqArnOfTdqnBeJu2pbIvbRhNloeRd3oMrepKep9A8x1uuJ3kuJ4fYS-S0ctM0DgayZsF-nHLxSPOf5dc=w2048-h2048-k-no",
                 "source_url_sha256": "54f5cee16fbc9cd380e8434c2503d27656d268aa5945fb68bf069c7bf57409a6",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -12197,7 +12185,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:48.776683+00:00"
+                "failed_at": "2026-05-02T22:19:54.358755+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12207,13 +12195,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepTadAvDeGuSN-3Wd-M8m3utv_PLAftyK_G7t3-HjqF0uXBBM84CdF97RmCsoDtlP4cr8o0SZsMhkHxvth4HC2-9dSpopdxP7Jn8E15MFv8EBRFchRkE8rB_2gDU00T-se4tqCd=w2048-h2048-k-no",
                 "source_url_sha256": "1ec2101765c7cbd353506f71d127f07edcf9d9153d17e430ecb8ddfa8db2a41a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -12280,7 +12264,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:49.144653+00:00"
+                "failed_at": "2026-05-02T22:19:54.665116+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12290,13 +12274,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep-bKC76Pe57FHeDdvwsjx2nQBCDiHH8lYW71jSpqwL1DOQXGmIMxGPgEZg3wEbKjU9nwmHWUXat9LeymHD25EU-lZoitBCrej9X_SJflbc19dK-86dqbnusylG8qwhzej2izI4=w2048-h2048-k-no",
                 "source_url_sha256": "d5cde7b1dfdf7fb0371055103e435bdcacef71a76ffb2353249ab1ef1a5a1c7b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -12363,7 +12343,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:49.541556+00:00"
+                "failed_at": "2026-05-02T22:20:00.010441+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12373,13 +12353,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerMvQsOW_Q7owNiU-gUrXTUUunjNSR0eawiJHAwZj4VtSAJZo8p5VhnvkJPUUmoNX2jAzCCmlyvw40qwEJjVmiQSbZLenDxyxwEfJwX6Oxvzd8r22wicpWdU3wdlNks2eB92UXolA=w2048-h2048-k-no",
                 "source_url_sha256": "46f62bd5a026139ddb023692aa5b652460ab11f31505c2a15c63398b34e8f81e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -12446,7 +12422,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:49.935022+00:00"
+                "failed_at": "2026-05-02T22:20:00.327059+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12456,13 +12432,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweofVbHi2l-2RNCr1ISbfvOj7wECVoWxZqux9yj69gPD6-HXs2QozwP4Yn53a11qydPJ23ykL_Fa0LGNBa0c81GaU6PMFOEXfJ7hFVz3nFCvbyOiWEyIQjQrssvPJ_Zzc450SfnZvEjgZ_Fy=w2048-h2048-k-no",
                 "source_url_sha256": "3563e239cb6c4a5f252a345bf2dce6bfe84c902cd888294eb12b0eb99680ccf7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -12529,7 +12501,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:50.273685+00:00"
+                "failed_at": "2026-05-02T22:20:00.626262+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12539,13 +12511,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoIskp_FaiHbC8ZND3Sn4ADg1Psb8PbzmamSOfaqXDGduKbwVJY63glebVy8TKrPY5FZstzL932iAeWn7vnb1vZy2CxL2x0BOgDuPFT417-VTCx6al4iAvW0DTe2DatGxc-jaR0=w2048-h2048-k-no",
                 "source_url_sha256": "da54a96ef105a937bb86cf0e4ab0521dbd4a7724b5670dddee7e7017409c0f27",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -12612,7 +12580,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:50.572317+00:00"
+                "failed_at": "2026-05-02T22:20:00.922669+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12622,13 +12590,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoGziy5Kz5LED8Pao6g1-ozBaaNor4GNdKYrn78CERdoBJFWf711_FyvSVkMIasNsJBT3GDNA9HGZRyQeLDBhk5QiRkVsKP8GMLPomVKHE83cMr8ZV_h8kbPC4UtNey0zRE_03o=w2048-h2048-k-no",
                 "source_url_sha256": "3889872d6bf8bcecb737c9c4031d6abb590d84640417891dc524851e084817ca",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -12695,7 +12659,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:50.874174+00:00"
+                "failed_at": "2026-05-02T22:20:01.223384+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12705,13 +12669,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerbgBa9uQH9o_o2x63aERFY1sApVGHXzjs5ZipSlFilGILMYWlBFzk2FrjMJ998VUCCcTxGYIBNshBVfyf6DV5ard9go4TXP9YtvZ5MdKkko0vLfAZ58bBD6BQSiv1xEn7MFjGxyw=w2048-h2048-k-no",
                 "source_url_sha256": "f4ae58385956a494b6ca7cac8a00c2dd60db108dab653a362b7a2f20e7b650f8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -12778,7 +12738,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:51.193309+00:00"
+                "failed_at": "2026-05-02T22:20:01.535156+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12788,13 +12748,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepu0kRKmNO9qgBR0X-eOb5UqmF5wA5PlvHqbHE9V7W89ZEeznA-y7L1hlFpfqluN3Sg4hb_bvj9MXVHvUwRttaJXNYKQdbTg0E9rTDE9E5pWWCrJbyQghnjuyjer-fcpIRHCZ6NqA=w2048-h2048-k-no",
                 "source_url_sha256": "11cc5d757f2fe3bce8844db95ba05fc82fe84527bb3afb6c180e4690dcc14ef9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -12861,7 +12817,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:51.519391+00:00"
+                "failed_at": "2026-05-02T22:20:01.864083+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12871,13 +12827,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoOJL9OXTGMco6U9cjtiqSpEzYqDzECnnrFK7JV2lmR2KXeraa8ZvK91QyvwSHU7SKwGpukVGraZbB-4rEx2vL2vv9tlPMlR5cQLKRXUYCLTGA4SlPsjxHOeErUeEBw_EG5pna27kY8inFu=w2048-h2048-k-no",
                 "source_url_sha256": "308596ecdcad4f892a891267a73afc0d063bb9be87f5dbdefb32c61a4740a48b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -12944,7 +12896,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:51.851608+00:00"
+                "failed_at": "2026-05-02T22:20:02.386271+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -12954,13 +12906,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerOeukZg2by4b9Z1_wwtME9oAJdJvW9HW0ytBzIHCOy-5oPH448sLJ8hYiUy9QhnhRuGQkzEQuC2t1nAypg00UQGaEJM0LXyx_TjLhrHOVPKj1qxPrcGYYeo0DzrocPUDqlKP22-0drDSBa=w2048-h2048-k-no",
                 "source_url_sha256": "b32a71222189b02e4bbdd86a9d38a89e043f5ff7866d96b52a30506658a18f52",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -13027,7 +12975,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:52.122880+00:00"
+                "failed_at": "2026-05-02T22:20:02.704274+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13037,13 +12985,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwer8rXZ4MNYsYpB1o-18OH18hXfQ-bmo1ovgfdXS9rZ-O9BRig81auKC5jPvakgWwNw6uIfbHjTI6BKyUYENZp6LIMdz_IqaaADI450E8IXGmJWrhW-x_uTfMupb7sOMr6gQt5Ju=w2048-h2048-k-no",
                 "source_url_sha256": "5d791555d4f8fd8564b46b656cd2e1db7fbd1ccef2bd7ffca62ee473e5537c82",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -13110,7 +13054,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:52.406972+00:00"
+                "failed_at": "2026-05-02T22:20:02.998608+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13120,13 +13064,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepJeQ0MFf3Vs9KA2cmRRoOs_PNGAnBfMAzJ3o64WhYJR8bK36BgXHerfnsOqZUDNK7Cs-5srRWaY98Q8iENcmvTOBGKKLrj69C1c-zzCXPHVHrIakmgtie53IyIFkzPSo53e55r=w2048-h2048-k-no",
                 "source_url_sha256": "5e6021a2f22407ac85562840719beb04ac699bb72258009f951e0b5761fe53f7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -13193,7 +13133,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:52.701058+00:00"
+                "failed_at": "2026-05-02T22:20:03.298153+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13203,13 +13143,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwervCnX-o30rFsLsG64VvjLB5Tn_8OeDF60azY7CwAA3M2wJZqOn2qw-6Ba-TbHcBxEdF2kw39bdt0Bs120qTLgeony3L8JIWbpQDMaO3PcTarcYpkFzLDfI08RD7IlFOiRAEUlp9Q=w2048-h2048-k-no",
                 "source_url_sha256": "884371d839df9cd7321161c8df3eef087e9c6154e204da7ded1485d9753dde34",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -13276,7 +13212,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:53.022063+00:00"
+                "failed_at": "2026-05-02T22:20:03.599898+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13286,13 +13222,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep9Isk80iK-GvlxFaBQDA5Cz_T-m7WBMTIS9p0_0QP23_xSDBvzxkTjcOYXAsx5ZU8GNiYTwxOoTs_hqj2Dkq9LMDoteSBE9OimQWXt2QKFzSi_SpDlHtF8kVOcz7w9bc8fl6I=w2048-h2048-k-no",
                 "source_url_sha256": "9b4bf89a7cbd9affa52c8218c0b91c4890d203582b6781d69448a82e853db5c0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -13359,7 +13291,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:53.335970+00:00"
+                "failed_at": "2026-05-02T22:20:03.927759+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13369,13 +13301,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqdbm3O4m3UE-RqlVRtWjv56ItSLk2pDq6OJMrSWIan4EYSb2IHtRpvSIOxeHeOc3lq4Y44dmNpyQ51WnuuAJXsx0TtAvA2_Wv79rcQtToLMy5vPAXzTmkEeVOIpJqREneSlecx=w2048-h2048-k-no",
                 "source_url_sha256": "bdd8a05f08be3b77f155732db3dfd42039d7e69676e0a2b81566ac88fbe58c1b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -13442,7 +13370,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:53.674096+00:00"
+                "failed_at": "2026-05-02T22:20:04.386233+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13452,13 +13380,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerjWNod0JNCF7SjE8HEnIrpsrVFrc-qIS_VsulNXY4j7W3qxjLbZ38xKDolxnjitTQh4lo-cWzVkaSQW3BZjWd7ts-hMH8rkejtiX8zkEnTZYJ3n-d5jTJFu19xi9_xyhy8Fw7Bdw=w2048-h2048-k-no",
                 "source_url_sha256": "3447f9222003d566afe8e6d5afb3dbf2fe1a0a212d343ac468e80b4b032b7a9b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -13525,7 +13449,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:53.983444+00:00"
+                "failed_at": "2026-05-02T22:20:04.842375+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13535,13 +13459,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerwxi89m2DTEPQHF2Cb33QfuJGVUDN_23_2N4Nv2PWQ77A-YNQblSpobfmXuf0wzISw0lOeNMvjxeupEukOe3jKYuEKV0QY7pDWFJatTFW0dW-PSlpmNEu0CukAOT-egYlYM74=w2048-h2048-k-no",
                 "source_url_sha256": "36cd0f021b092f00bf11f9f844636077b106b4894df4473eca69d6a1b50c3d6d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -13608,7 +13528,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:54.304940+00:00"
+                "failed_at": "2026-05-02T22:20:05.301650+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13618,13 +13538,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqmG1EKlb9DvqOXUkTAzYynwxWlVfETEAsasinyfJKv-o-rXMIC9-tLcVF-RnMmsAG4zeQoJomiYPOb1yJCUQhNSBHRaONzxMBazVs-kdGSsDugDO8y8m9g7uwlxfhSTS0E-dAfVA=w2048-h2048-k-no",
                 "source_url_sha256": "196256b2e5be16db116d7a7dd88e60ef912c685b2b674d495eba3ef0a1f8a04e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -13691,7 +13607,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:54.629382+00:00"
+                "failed_at": "2026-05-02T22:20:05.727950+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13701,13 +13617,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqCcajOgqp2FoH3PVintggE1J3bbG8pZTbO-TN9qVZxR-ExgyxU08Jka4Nrq3egIAdrD2B0Mm9T3Cw3IOsJvsb98jI8W_kbE9L2bPpkOsExHUj_fn9XBhn8KOPaYywD9Gk_oLNGcw=w2048-h2048-k-no",
                 "source_url_sha256": "66560d1ba4484c7974a9ba40315a6a0912ee52504f86f3caf4cecc0bd6ca7e0e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -13774,7 +13686,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:54.954902+00:00"
+                "failed_at": "2026-05-02T22:20:06.106127+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13784,13 +13696,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoRe40R1PKd2-vnqUhLf3Fc3Ex3U_HVAhClvebjNDbLln7OvnhNEpBpVQDBbS1C6b1o4UDyxEnzwUjGfBwxvAnqkHfbVt4GhOyaAnUTWz3zgNNMx0aKlnTWXhWZ0vjmnha3dBLdVg=w2048-h2048-k-no",
                 "source_url_sha256": "1210eeac93afe5ef37103d9eb6a415f1c43616562ad61a0d5c77cdd62e3e05f2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -13857,7 +13765,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:55.299935+00:00"
+                "failed_at": "2026-05-02T22:20:06.437842+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -13867,13 +13775,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqpRACcvXDvXwe-qolXe4yy9quRYinCDA5JJZ5CusF18i_I8CAhuEtNhlMa897gW1DD5HLFLOX-jpCb2iRQCYoA_Q95hSn7XT_VGI4yXFPDxolK2F-1GlGbLzLIEYt2BgETNhAU3PFCZfo=w2048-h2048-k-no",
                 "source_url_sha256": "a888de6f66e5a8853f962aafe4feba8b228b563c36951af6ef11fbebe4f22008",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -13940,7 +13844,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:57.400935+00:00"
+                "failed_at": "2026-05-02T22:20:06.809182+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14019,7 +13923,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:57.766366+00:00"
+                "failed_at": "2026-05-02T22:20:07.171941+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14098,7 +14002,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:58.101788+00:00"
+                "failed_at": "2026-05-02T22:20:07.494345+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14177,7 +14081,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:58.428365+00:00"
+                "failed_at": "2026-05-02T22:20:07.848359+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14256,7 +14160,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:58.742573+00:00"
+                "failed_at": "2026-05-02T22:20:08.232078+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14335,7 +14239,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:59.078381+00:00"
+                "failed_at": "2026-05-02T22:20:13.694737+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14414,7 +14318,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:59.396083+00:00"
+                "failed_at": "2026-05-02T22:20:14.112530+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14493,7 +14397,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:59.723088+00:00"
+                "failed_at": "2026-05-02T22:20:14.556196+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14572,7 +14476,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:00.047549+00:00"
+                "failed_at": "2026-05-02T22:20:15.002422+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14651,7 +14555,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:00.379295+00:00"
+                "failed_at": "2026-05-02T22:20:15.435934+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14730,7 +14634,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:00.762747+00:00"
+                "failed_at": "2026-05-02T22:20:15.876849+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14809,7 +14713,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:01.338082+00:00"
+                "failed_at": "2026-05-02T22:20:16.319637+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14888,7 +14792,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:01.736359+00:00"
+                "failed_at": "2026-05-02T22:20:16.728697+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -14967,7 +14871,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:02.115482+00:00"
+                "failed_at": "2026-05-02T22:20:17.174174+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15046,7 +14950,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:02.583932+00:00"
+                "failed_at": "2026-05-02T22:20:22.600628+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15125,7 +15029,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:02.940149+00:00"
+                "failed_at": "2026-05-02T22:20:23.006421+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15204,7 +15108,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:03.301194+00:00"
+                "failed_at": "2026-05-02T22:20:23.360116+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15283,7 +15187,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:03.633323+00:00"
+                "failed_at": "2026-05-02T22:20:23.714409+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15362,7 +15266,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:05.428148+00:00"
+                "failed_at": "2026-05-02T22:20:24.091919+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15441,7 +15345,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:05.782902+00:00"
+                "failed_at": "2026-05-02T22:20:24.412602+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15520,7 +15424,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:06.125600+00:00"
+                "failed_at": "2026-05-02T22:20:24.786249+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15599,7 +15503,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:06.494459+00:00"
+                "failed_at": "2026-05-02T22:20:25.297927+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15678,7 +15582,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:06.886883+00:00"
+                "failed_at": "2026-05-02T22:20:25.795899+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15757,7 +15661,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:07.264890+00:00"
+                "failed_at": "2026-05-02T22:20:26.213464+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15836,7 +15740,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:12.608078+00:00"
+                "failed_at": "2026-05-02T22:20:26.629806+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15915,7 +15819,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:12.938625+00:00"
+                "failed_at": "2026-05-02T22:20:27.049479+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -15994,7 +15898,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:13.285496+00:00"
+                "failed_at": "2026-05-02T22:20:27.458081+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16073,7 +15977,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:13.648258+00:00"
+                "failed_at": "2026-05-02T22:20:27.899128+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16152,7 +16056,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:13.985787+00:00"
+                "failed_at": "2026-05-02T22:20:28.287449+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16231,7 +16135,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:14.357973+00:00"
+                "failed_at": "2026-05-02T22:20:28.722149+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16310,7 +16214,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:14.702911+00:00"
+                "failed_at": "2026-05-02T22:20:29.164577+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16389,7 +16293,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:14.998533+00:00"
+                "failed_at": "2026-05-02T22:20:29.547935+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16468,7 +16372,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:15.318691+00:00"
+                "failed_at": "2026-05-02T22:20:30.001922+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16547,7 +16451,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:15.624193+00:00"
+                "failed_at": "2026-05-02T22:20:35.404984+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16626,7 +16530,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:15.957388+00:00"
+                "failed_at": "2026-05-02T22:20:40.800874+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16705,7 +16609,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:16.268129+00:00"
+                "failed_at": "2026-05-02T22:20:41.135555+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16784,7 +16688,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:16.592515+00:00"
+                "failed_at": "2026-05-02T22:20:41.441845+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16863,7 +16767,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:16.921357+00:00"
+                "failed_at": "2026-05-02T22:20:46.815576+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -16942,7 +16846,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:17.302006+00:00"
+                "failed_at": "2026-05-02T22:20:47.180115+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17021,7 +16925,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:17.661976+00:00"
+                "failed_at": "2026-05-02T22:20:47.527720+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17100,7 +17004,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:18.007567+00:00"
+                "failed_at": "2026-05-02T22:20:47.883412+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17179,7 +17083,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:18.375540+00:00"
+                "failed_at": "2026-05-02T22:20:48.220991+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17258,7 +17162,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:23.735586+00:00"
+                "failed_at": "2026-05-02T22:20:48.554754+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17337,7 +17241,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:24.078361+00:00"
+                "failed_at": "2026-05-02T22:20:48.900135+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17416,7 +17320,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:24.421828+00:00"
+                "failed_at": "2026-05-02T22:20:49.304631+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17495,7 +17399,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:24.767794+00:00"
+                "failed_at": "2026-05-02T22:20:49.711968+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17574,7 +17478,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:25.082959+00:00"
+                "failed_at": "2026-05-02T22:20:55.118336+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17653,7 +17557,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:25.380294+00:00"
+                "failed_at": "2026-05-02T22:20:55.669500+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17732,7 +17636,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:25.687066+00:00"
+                "failed_at": "2026-05-02T22:20:56.044917+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17811,7 +17715,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:26.011857+00:00"
+                "failed_at": "2026-05-02T22:20:56.349908+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17890,7 +17794,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:26.382101+00:00"
+                "failed_at": "2026-05-02T22:20:56.671283+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -17969,7 +17873,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:26.775316+00:00"
+                "failed_at": "2026-05-02T22:20:56.977572+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18048,7 +17952,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:27.200447+00:00"
+                "failed_at": "2026-05-02T22:20:57.281552+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18127,7 +18031,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:27.544312+00:00"
+                "failed_at": "2026-05-02T22:21:02.632653+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18206,7 +18110,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:27.915394+00:00"
+                "failed_at": "2026-05-02T22:21:02.999336+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18285,7 +18189,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:33.272825+00:00"
+                "failed_at": "2026-05-02T22:21:03.365694+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18364,7 +18268,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:33.635241+00:00"
+                "failed_at": "2026-05-02T22:21:08.754444+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18443,7 +18347,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:34.006187+00:00"
+                "failed_at": "2026-05-02T22:21:09.112938+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18522,7 +18426,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:34.335992+00:00"
+                "failed_at": "2026-05-02T22:21:09.475378+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18601,7 +18505,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:34.672265+00:00"
+                "failed_at": "2026-05-02T22:21:14.858147+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18680,7 +18584,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:34.997413+00:00"
+                "failed_at": "2026-05-02T22:21:15.335143+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18759,7 +18663,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:35.319597+00:00"
+                "failed_at": "2026-05-02T22:21:15.779652+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18838,7 +18742,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:35.652705+00:00"
+                "failed_at": "2026-05-02T22:21:21.273026+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18917,7 +18821,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:35.977002+00:00"
+                "failed_at": "2026-05-02T22:21:21.735823+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -18996,7 +18900,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:36.319319+00:00"
+                "failed_at": "2026-05-02T22:21:22.263321+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19075,7 +18979,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:36.635789+00:00"
+                "failed_at": "2026-05-02T22:21:22.705933+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19154,7 +19058,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:37.002941+00:00"
+                "failed_at": "2026-05-02T22:21:23.155692+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19233,7 +19137,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:37.357813+00:00"
+                "failed_at": "2026-05-02T22:21:23.569734+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19312,7 +19216,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:37.721369+00:00"
+                "failed_at": "2026-05-02T22:21:23.974944+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19391,7 +19295,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:38.086983+00:00"
+                "failed_at": "2026-05-02T22:21:29.468561+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19470,7 +19374,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:38.413002+00:00"
+                "failed_at": "2026-05-02T22:21:34.791620+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19549,7 +19453,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:38.727966+00:00"
+                "failed_at": "2026-05-02T22:21:35.114626+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19628,7 +19532,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:39.017604+00:00"
+                "failed_at": "2026-05-02T22:21:35.440279+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19707,7 +19611,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:39.326342+00:00"
+                "failed_at": "2026-05-02T22:21:35.776273+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19786,7 +19690,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:39.669359+00:00"
+                "failed_at": "2026-05-02T22:21:41.069137+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19865,7 +19769,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:40.015211+00:00"
+                "failed_at": "2026-05-02T22:21:41.355900+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -19944,7 +19848,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:40.348584+00:00"
+                "failed_at": "2026-05-02T22:21:41.657085+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20023,7 +19927,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:40.693359+00:00"
+                "failed_at": "2026-05-02T22:21:41.943542+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20102,7 +20006,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:41.083280+00:00"
+                "failed_at": "2026-05-02T22:21:42.253867+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20181,7 +20085,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:41.425129+00:00"
+                "failed_at": "2026-05-02T22:21:42.554215+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20260,7 +20164,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:41.779326+00:00"
+                "failed_at": "2026-05-02T22:21:42.874066+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20339,7 +20243,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:42.154882+00:00"
+                "failed_at": "2026-05-02T22:21:43.329768+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20418,7 +20322,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:42.492955+00:00"
+                "failed_at": "2026-05-02T22:21:48.724945+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20497,7 +20401,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:42.856596+00:00"
+                "failed_at": "2026-05-02T22:21:49.024799+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20576,7 +20480,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:43.215834+00:00"
+                "failed_at": "2026-05-02T22:21:49.340015+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20655,7 +20559,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:43.553991+00:00"
+                "failed_at": "2026-05-02T22:21:49.650714+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20734,7 +20638,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:43.887621+00:00"
+                "failed_at": "2026-05-02T22:21:49.964588+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20813,7 +20717,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:44.241441+00:00"
+                "failed_at": "2026-05-02T22:21:50.269603+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20892,7 +20796,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:44.581708+00:00"
+                "failed_at": "2026-05-02T22:21:50.549992+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -20971,7 +20875,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:44.892395+00:00"
+                "failed_at": "2026-05-02T22:21:50.850675+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -21050,7 +20954,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:45.205271+00:00"
+                "failed_at": "2026-05-02T22:21:51.174464+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -21129,7 +21033,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:45.513627+00:00"
+                "failed_at": "2026-05-02T22:21:51.479681+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -21208,7 +21112,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:45.849994+00:00"
+                "failed_at": "2026-05-02T22:21:51.814205+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -21287,7 +21191,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:46.180405+00:00"
+                "failed_at": "2026-05-02T22:21:52.131008+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -21366,7 +21270,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:46.471407+00:00"
+                "failed_at": "2026-05-02T22:21:52.480421+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -21445,7 +21349,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:46.788025+00:00"
+                "failed_at": "2026-05-02T22:21:52.784966+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -21524,7 +21428,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:47.124339+00:00"
+                "failed_at": "2026-05-02T22:21:53.125908+00:00"
             },
             {
                 "place_name": "HopFly Brewing",
@@ -21603,27 +21507,27 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:57:47.448265+00:00"
+                "failed_at": "2026-05-02T22:21:53.430930+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 130,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 133,
+            "duplicate_count": 0,
+            "airtable_photos_count": 3,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 100,
             "place_name": "HopFly Brewing",
             "place_id": "ChIJE0lpmtChVogRPIoaMalta0c",
             "record_id": "recLMfDnHvY82kOvg",
-            "generated_at": "2026-05-02T21:57:47.448789+00:00",
+            "generated_at": "2026-05-02T22:21:53.431356+00:00",
             "azure_assets_count": 3,
             "failed_upload_count": 124,
             "pending_upload_count": 0,
             "selected_airtable_count": 3,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
