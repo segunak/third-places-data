@@ -12615,10 +12615,6 @@
                 "source_path": "fields.Photos[4]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
                     }
@@ -12627,6 +12623,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[13].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -12657,6 +12661,90 @@
                 "place_name": "Boba Caf\u00e9",
                 "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
                 "record_id": "recU8xP11GzYJR6vU",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNBcIC2DtyIPhnDEDhtJn1_XrvDGrzMhvr8DxIp=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNBcIC2DtyIPhnDEDhtJn1_XrvDGrzMhvr8DxIp=w2048-h2048-k-no",
+                "source_url_sha256": "e4ed31f1335bf597ee8b149751facaa23102d1647e876c39eaab4dcacba4454c",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[0].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/e4ed31f1335bf597ee8b149751facaa23102d1647e876c39eaab4dcacba4454c.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/e4ed31f1335bf597ee8b149751facaa23102d1647e876c39eaab4dcacba4454c.jpg",
+                "content_sha256": "b943b77330e9cc46e70f10cecf8b0065c7cff157d1b67b839d9c71e0c3cb016e",
+                "content_type": "image/jpeg",
+                "bytes": 922443,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNBcIC2DtyIPhnDEDhtJn1_XrvDGrzMhvr8DxIp=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNBcIC2DtyIPhnDEDhtJn1_XrvDGrzMhvr8DxIp=w2048-h2048-k-no",
+                        "bytes": 922443,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:01.624298+00:00"
+            },
+            {
+                "place_name": "Boba Caf\u00e9",
+                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
+                "record_id": "recU8xP11GzYJR6vU",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOaPsJtxwxanOIvy5o0CTwqq9zKfvLCS6ro3J9p=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOaPsJtxwxanOIvy5o0CTwqq9zKfvLCS6ro3J9p=w2048-h2048-k-no",
+                "source_url_sha256": "ede982b7ee2c0c1b80a7cf2b40f75985ac68c87c27e292c4c12c59be402453be",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[20].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[20].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/ede982b7ee2c0c1b80a7cf2b40f75985ac68c87c27e292c4c12c59be402453be.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/ede982b7ee2c0c1b80a7cf2b40f75985ac68c87c27e292c4c12c59be402453be.jpg",
+                "content_sha256": "8977ac7e81a8f9618c6ca47c6674bf52b7d2a4749f302ebb52bfbc69462cf874",
+                "content_type": "image/jpeg",
+                "bytes": 924754,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOaPsJtxwxanOIvy5o0CTwqq9zKfvLCS6ro3J9p=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOaPsJtxwxanOIvy5o0CTwqq9zKfvLCS6ro3J9p=w2048-h2048-k-no",
+                        "bytes": 924754,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:14.688010+00:00"
+            },
+            {
+                "place_name": "Boba Caf\u00e9",
+                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
+                "record_id": "recU8xP11GzYJR6vU",
                 "source_url": "https://lh3.googleusercontent.com/p/AF1QipPksLa6rkemf6MiE2dHdiJ5jTI119Xnuz7WAGxs=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPksLa6rkemf6MiE2dHdiJ5jTI119Xnuz7WAGxs=w2048-h2048-k-no",
                 "source_url_sha256": "92b5cb81487e9a9a05bf41f439959d1a660197aa3360be9809822b5403ba9d9c",
@@ -12664,10 +12752,6 @@
                 "source_field": "Airtable Photos",
                 "source_path": "fields.Photos[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -12677,6 +12761,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[15].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -12707,154 +12799,6 @@
                 "place_name": "Boba Caf\u00e9",
                 "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
                 "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNBcIC2DtyIPhnDEDhtJn1_XrvDGrzMhvr8DxIp=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNBcIC2DtyIPhnDEDhtJn1_XrvDGrzMhvr8DxIp=w2048-h2048-k-no",
-                "source_url_sha256": "e4ed31f1335bf597ee8b149751facaa23102d1647e876c39eaab4dcacba4454c",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[0].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[0].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/e4ed31f1335bf597ee8b149751facaa23102d1647e876c39eaab4dcacba4454c.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/e4ed31f1335bf597ee8b149751facaa23102d1647e876c39eaab4dcacba4454c.jpg",
-                "content_sha256": "b943b77330e9cc46e70f10cecf8b0065c7cff157d1b67b839d9c71e0c3cb016e",
-                "content_type": "image/jpeg",
-                "bytes": 922443,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNBcIC2DtyIPhnDEDhtJn1_XrvDGrzMhvr8DxIp=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNBcIC2DtyIPhnDEDhtJn1_XrvDGrzMhvr8DxIp=w2048-h2048-k-no",
-                        "bytes": 922443,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:01.624298+00:00"
-            },
-            {
-                "place_name": "Boba Caf\u00e9",
-                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
-                "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOmWUhWUOlPfwmc_iCe5gOMYkfX4dPG7Bq814Tz=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOmWUhWUOlPfwmc_iCe5gOMYkfX4dPG7Bq814Tz=w2048-h2048-k-no",
-                "source_url_sha256": "b2aa9cb120be9ecd7616783ba53fbb8bf82e853e96617ab064f1da69a05a44b1",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[1].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[1].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/b2aa9cb120be9ecd7616783ba53fbb8bf82e853e96617ab064f1da69a05a44b1.png",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/b2aa9cb120be9ecd7616783ba53fbb8bf82e853e96617ab064f1da69a05a44b1.png",
-                "content_sha256": "11b38475f6005996452013956652776e9e5f1c41bff424cbe0f235eb52a2af24",
-                "content_type": "image/png",
-                "bytes": 423649,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipOmWUhWUOlPfwmc_iCe5gOMYkfX4dPG7Bq814Tz=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOmWUhWUOlPfwmc_iCe5gOMYkfX4dPG7Bq814Tz=w2048-h2048-k-no",
-                        "bytes": 423649,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:02.381519+00:00"
-            },
-            {
-                "place_name": "Boba Caf\u00e9",
-                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
-                "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNhTyRGFpoqO-nKQdnS7Cpag_VhRDordPhlWnjG=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNhTyRGFpoqO-nKQdnS7Cpag_VhRDordPhlWnjG=w2048-h2048-k-no",
-                "source_url_sha256": "4dfd29e2147331d52ebf0eb81c37a7560f2f1e263c105c9dd7f11bf2eb00ecea",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[10].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[10].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/4dfd29e2147331d52ebf0eb81c37a7560f2f1e263c105c9dd7f11bf2eb00ecea.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/4dfd29e2147331d52ebf0eb81c37a7560f2f1e263c105c9dd7f11bf2eb00ecea.jpg",
-                "content_sha256": "9e36c93c153e1d198ff03252683107274e43f656cd00f89b518331642d482a42",
-                "content_type": "image/jpeg",
-                "bytes": 766393,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNhTyRGFpoqO-nKQdnS7Cpag_VhRDordPhlWnjG=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNhTyRGFpoqO-nKQdnS7Cpag_VhRDordPhlWnjG=w2048-h2048-k-no",
-                        "bytes": 766393,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:10.441545+00:00"
-            },
-            {
-                "place_name": "Boba Caf\u00e9",
-                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
-                "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOcSrdkb2gzro8Fo7U4gUfU2AVbza2udW_-qN8w=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOcSrdkb2gzro8Fo7U4gUfU2AVbza2udW_-qN8w=w2048-h2048-k-no",
-                "source_url_sha256": "3398b7fc423f508363b33dd88c8b66ef5dea0f9606929ccac1ed8b274b2f28c8",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[11].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[11].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/3398b7fc423f508363b33dd88c8b66ef5dea0f9606929ccac1ed8b274b2f28c8.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/3398b7fc423f508363b33dd88c8b66ef5dea0f9606929ccac1ed8b274b2f28c8.jpg",
-                "content_sha256": "3294e47bd35f3e754b74f759ea3fa5549f66622222c231f3d20e2fc3d545652c",
-                "content_type": "image/jpeg",
-                "bytes": 716700,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipOcSrdkb2gzro8Fo7U4gUfU2AVbza2udW_-qN8w=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOcSrdkb2gzro8Fo7U4gUfU2AVbza2udW_-qN8w=w2048-h2048-k-no",
-                        "bytes": 716700,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:11.275509+00:00"
-            },
-            {
-                "place_name": "Boba Caf\u00e9",
-                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
-                "record_id": "recU8xP11GzYJR6vU",
                 "source_url": "https://lh3.googleusercontent.com/p/AF1QipPijo8A9u-VmNHdkNGp1iAJkY-CElPm7UkMs2LK=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPijo8A9u-VmNHdkNGp1iAJkY-CElPm7UkMs2LK=w2048-h2048-k-no",
                 "source_url_sha256": "245fd035c5ab0b973e868b1f38b54764b30c0ce8160c4defca9bbdd792cb9aec",
@@ -12867,7 +12811,12 @@
                         "path": "photos.raw_data.photos_data[17].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/245fd035c5ab0b973e868b1f38b54764b30c0ce8160c4defca9bbdd792cb9aec.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/245fd035c5ab0b973e868b1f38b54764b30c0ce8160c4defca9bbdd792cb9aec.jpg",
@@ -12892,38 +12841,85 @@
                 "place_name": "Boba Caf\u00e9",
                 "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
                 "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOaPsJtxwxanOIvy5o0CTwqq9zKfvLCS6ro3J9p=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOaPsJtxwxanOIvy5o0CTwqq9zKfvLCS6ro3J9p=w2048-h2048-k-no",
-                "source_url_sha256": "ede982b7ee2c0c1b80a7cf2b40f75985ac68c87c27e292c4c12c59be402453be",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMs6hQ0MrjnqYel7iAYXnuxoWkW1e3UIeNhOs8N=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMs6hQ0MrjnqYel7iAYXnuxoWkW1e3UIeNhOs8N=w2048-h2048-k-no",
+                "source_url_sha256": "5b0eda6b1db88e7f5b35e75600b6e963d7f8f3599ab0a7b6b4c3748888c1399d",
                 "source_host": "lh3.googleusercontent.com",
                 "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[20].photo_url_big",
+                "source_path": "photos.raw_data.photos_data[72].photo_url_big",
                 "provenance": [
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[20].photo_url_big"
+                        "path": "photos.raw_data.photos_data[72].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/ede982b7ee2c0c1b80a7cf2b40f75985ac68c87c27e292c4c12c59be402453be.jpg",
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/5b0eda6b1db88e7f5b35e75600b6e963d7f8f3599ab0a7b6b4c3748888c1399d.jpg",
                 "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/ede982b7ee2c0c1b80a7cf2b40f75985ac68c87c27e292c4c12c59be402453be.jpg",
-                "content_sha256": "8977ac7e81a8f9618c6ca47c6674bf52b7d2a4749f302ebb52bfbc69462cf874",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/5b0eda6b1db88e7f5b35e75600b6e963d7f8f3599ab0a7b6b4c3748888c1399d.jpg",
+                "content_sha256": "03d9fe74b90d3f34dcbf476ef42869a419c9eb9ac0035fe1024cdd0f6d4734b2",
                 "content_type": "image/jpeg",
-                "bytes": 924754,
+                "bytes": 196345,
                 "status": "uploaded",
                 "selected_for_airtable": true,
                 "attempts": [
                     {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipOaPsJtxwxanOIvy5o0CTwqq9zKfvLCS6ro3J9p=w2048-h2048-k-no",
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMs6hQ0MrjnqYel7iAYXnuxoWkW1e3UIeNhOs8N=w2048-h2048-k-no",
                         "status_code": 200,
                         "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOaPsJtxwxanOIvy5o0CTwqq9zKfvLCS6ro3J9p=w2048-h2048-k-no",
-                        "bytes": 924754,
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMs6hQ0MrjnqYel7iAYXnuxoWkW1e3UIeNhOs8N=w2048-h2048-k-no",
+                        "bytes": 196345,
                         "error": null
                     }
                 ],
-                "uploaded_at": "2026-05-02T21:56:14.688010+00:00"
+                "uploaded_at": "2026-05-02T21:56:39.621923+00:00"
+            },
+            {
+                "place_name": "Boba Caf\u00e9",
+                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
+                "record_id": "recU8xP11GzYJR6vU",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOVBYzTM2xb-pC-ZNHNfT8BqszLVsBzH6la25KQ=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOVBYzTM2xb-pC-ZNHNfT8BqszLVsBzH6la25KQ=w2048-h2048-k-no",
+                "source_url_sha256": "8e5ebe642ddae73ec27058350c4cff8300955d09efded252489809198c288627",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[62].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[62].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[6]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/8e5ebe642ddae73ec27058350c4cff8300955d09efded252489809198c288627.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/8e5ebe642ddae73ec27058350c4cff8300955d09efded252489809198c288627.jpg",
+                "content_sha256": "0fca89e3e073801035dd323a9bc009d667316ba2e1bb75a8ddbcb94ec6a11c58",
+                "content_type": "image/jpeg",
+                "bytes": 208587,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOVBYzTM2xb-pC-ZNHNfT8BqszLVsBzH6la25KQ=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOVBYzTM2xb-pC-ZNHNfT8BqszLVsBzH6la25KQ=w2048-h2048-k-no",
+                        "bytes": 208587,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:35.939658+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -12941,7 +12937,12 @@
                         "path": "photos.raw_data.photos_data[21].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[7]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/03eec2b357a8093dc07192443e253d878444a9ff9743ed807551947164aa29bd.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/03eec2b357a8093dc07192443e253d878444a9ff9743ed807551947164aa29bd.jpg",
@@ -12978,7 +12979,12 @@
                         "path": "photos.raw_data.photos_data[40].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[8]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/ccf26571b487696e0ef69eb51230c93875a53975bc281b04ed1397c7b364fd0b.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/ccf26571b487696e0ef69eb51230c93875a53975bc281b04ed1397c7b364fd0b.jpg",
@@ -13015,7 +13021,12 @@
                         "path": "photos.raw_data.photos_data[41].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[9]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/cbefd01cc8220ca3030573c89df96b92e36bb35f7b73e1bcd49a6a217bd79879.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/cbefd01cc8220ca3030573c89df96b92e36bb35f7b73e1bcd49a6a217bd79879.jpg",
@@ -13040,43 +13051,6 @@
                 "place_name": "Boba Caf\u00e9",
                 "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
                 "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPhKEJ_O1ZknNXCy2vARauRiP9Lnt04aVdttkzr=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPhKEJ_O1ZknNXCy2vARauRiP9Lnt04aVdttkzr=w2048-h2048-k-no",
-                "source_url_sha256": "7aa5767fcbacbd8c99f83d51a5b6ef308fb21237f05e59cfb0d31854a37e0b38",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[56].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[56].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/7aa5767fcbacbd8c99f83d51a5b6ef308fb21237f05e59cfb0d31854a37e0b38.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/7aa5767fcbacbd8c99f83d51a5b6ef308fb21237f05e59cfb0d31854a37e0b38.jpg",
-                "content_sha256": "86dbd06b5978d42864e0342a7fe4738054ab5ce5f89499d8941bbbf4d93b1bdf",
-                "content_type": "image/jpeg",
-                "bytes": 830114,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPhKEJ_O1ZknNXCy2vARauRiP9Lnt04aVdttkzr=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPhKEJ_O1ZknNXCy2vARauRiP9Lnt04aVdttkzr=w2048-h2048-k-no",
-                        "bytes": 830114,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:32.593667+00:00"
-            },
-            {
-                "place_name": "Boba Caf\u00e9",
-                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
-                "record_id": "recU8xP11GzYJR6vU",
                 "source_url": "https://lh3.googleusercontent.com/p/AF1QipPwLSKnWn85h9GmFomhZm3YDGZeHA7skR3YB1x_=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPwLSKnWn85h9GmFomhZm3YDGZeHA7skR3YB1x_=w2048-h2048-k-no",
                 "source_url_sha256": "df9189809ee06cf11cacf9304c5736940ae0e42f2a1ea7e3dc2377c41a686357",
@@ -13089,7 +13063,12 @@
                         "path": "photos.raw_data.photos_data[60].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[10]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/df9189809ee06cf11cacf9304c5736940ae0e42f2a1ea7e3dc2377c41a686357.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/df9189809ee06cf11cacf9304c5736940ae0e42f2a1ea7e3dc2377c41a686357.jpg",
@@ -13114,154 +13093,6 @@
                 "place_name": "Boba Caf\u00e9",
                 "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
                 "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPCmTngILTLBfX5Nt6iG7ESwqHB4k2Mv0nSpFvk=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPCmTngILTLBfX5Nt6iG7ESwqHB4k2Mv0nSpFvk=w2048-h2048-k-no",
-                "source_url_sha256": "29b63d74032a8315eeeabbeaa88e27cf15991970253223ca879a7331b01bca2a",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[61].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[61].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/29b63d74032a8315eeeabbeaa88e27cf15991970253223ca879a7331b01bca2a.png",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/29b63d74032a8315eeeabbeaa88e27cf15991970253223ca879a7331b01bca2a.png",
-                "content_sha256": "fe2d090318e0bfdddebcd058a9328a0c03f923844456a9735e43bbf486cb6311",
-                "content_type": "image/png",
-                "bytes": 2251038,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPCmTngILTLBfX5Nt6iG7ESwqHB4k2Mv0nSpFvk=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPCmTngILTLBfX5Nt6iG7ESwqHB4k2Mv0nSpFvk=w2048-h2048-k-no",
-                        "bytes": 2251038,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:35.434423+00:00"
-            },
-            {
-                "place_name": "Boba Caf\u00e9",
-                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
-                "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOVBYzTM2xb-pC-ZNHNfT8BqszLVsBzH6la25KQ=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOVBYzTM2xb-pC-ZNHNfT8BqszLVsBzH6la25KQ=w2048-h2048-k-no",
-                "source_url_sha256": "8e5ebe642ddae73ec27058350c4cff8300955d09efded252489809198c288627",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[62].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[62].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/8e5ebe642ddae73ec27058350c4cff8300955d09efded252489809198c288627.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/8e5ebe642ddae73ec27058350c4cff8300955d09efded252489809198c288627.jpg",
-                "content_sha256": "0fca89e3e073801035dd323a9bc009d667316ba2e1bb75a8ddbcb94ec6a11c58",
-                "content_type": "image/jpeg",
-                "bytes": 208587,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipOVBYzTM2xb-pC-ZNHNfT8BqszLVsBzH6la25KQ=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOVBYzTM2xb-pC-ZNHNfT8BqszLVsBzH6la25KQ=w2048-h2048-k-no",
-                        "bytes": 208587,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:35.939658+00:00"
-            },
-            {
-                "place_name": "Boba Caf\u00e9",
-                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
-                "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMs6hQ0MrjnqYel7iAYXnuxoWkW1e3UIeNhOs8N=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMs6hQ0MrjnqYel7iAYXnuxoWkW1e3UIeNhOs8N=w2048-h2048-k-no",
-                "source_url_sha256": "5b0eda6b1db88e7f5b35e75600b6e963d7f8f3599ab0a7b6b4c3748888c1399d",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[72].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[72].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/5b0eda6b1db88e7f5b35e75600b6e963d7f8f3599ab0a7b6b4c3748888c1399d.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/5b0eda6b1db88e7f5b35e75600b6e963d7f8f3599ab0a7b6b4c3748888c1399d.jpg",
-                "content_sha256": "03d9fe74b90d3f34dcbf476ef42869a419c9eb9ac0035fe1024cdd0f6d4734b2",
-                "content_type": "image/jpeg",
-                "bytes": 196345,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipMs6hQ0MrjnqYel7iAYXnuxoWkW1e3UIeNhOs8N=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMs6hQ0MrjnqYel7iAYXnuxoWkW1e3UIeNhOs8N=w2048-h2048-k-no",
-                        "bytes": 196345,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:39.621923+00:00"
-            },
-            {
-                "place_name": "Boba Caf\u00e9",
-                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
-                "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOAn8ilE6uC-g27hExroA1uMtV-9d3di8xhCQRo=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOAn8ilE6uC-g27hExroA1uMtV-9d3di8xhCQRo=w2048-h2048-k-no",
-                "source_url_sha256": "0203fdae46c829e2f9a2fd7a62e9aa5c3fe32e883bb434b89c2ef6e035b96082",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[77].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[77].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/0203fdae46c829e2f9a2fd7a62e9aa5c3fe32e883bb434b89c2ef6e035b96082.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/0203fdae46c829e2f9a2fd7a62e9aa5c3fe32e883bb434b89c2ef6e035b96082.jpg",
-                "content_sha256": "a4839d3bda167e13b8b8bbabae332e8f12925d9395e10c75408360110fbddb61",
-                "content_type": "image/jpeg",
-                "bytes": 748161,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipOAn8ilE6uC-g27hExroA1uMtV-9d3di8xhCQRo=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOAn8ilE6uC-g27hExroA1uMtV-9d3di8xhCQRo=w2048-h2048-k-no",
-                        "bytes": 748161,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:41.661211+00:00"
-            },
-            {
-                "place_name": "Boba Caf\u00e9",
-                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
-                "record_id": "recU8xP11GzYJR6vU",
                 "source_url": "https://lh3.googleusercontent.com/p/AF1QipNahGG8oCoeR3KaGhKJBBPGj3uatmBQskqqM_g8=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNahGG8oCoeR3KaGhKJBBPGj3uatmBQskqqM_g8=w2048-h2048-k-no",
                 "source_url_sha256": "9ffe0453b6d99ad7217fc3f2b6e86a74c7ce61c5445556dd7c5fc9c8f025d4a3",
@@ -13274,7 +13105,12 @@
                         "path": "photos.raw_data.photos_data[79].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[11]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/9ffe0453b6d99ad7217fc3f2b6e86a74c7ce61c5445556dd7c5fc9c8f025d4a3.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/9ffe0453b6d99ad7217fc3f2b6e86a74c7ce61c5445556dd7c5fc9c8f025d4a3.jpg",
@@ -13299,43 +13135,6 @@
                 "place_name": "Boba Caf\u00e9",
                 "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
                 "record_id": "recU8xP11GzYJR6vU",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOD_DMyst3z6PmCCuZKAkz3sdbhGsheLXvHqDXB=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOD_DMyst3z6PmCCuZKAkz3sdbhGsheLXvHqDXB=w2048-h2048-k-no",
-                "source_url_sha256": "d64adfbfb845b91ea5d1ad23c96c7b37df5ad7c07783bd044168c9999eb3f8f8",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "photos.raw_data.photos_data.photo_url_big",
-                "source_path": "photos.raw_data.photos_data[80].photo_url_big",
-                "provenance": [
-                    {
-                        "field": "photos.raw_data.photos_data.photo_url_big",
-                        "path": "photos.raw_data.photos_data[80].photo_url_big"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/d64adfbfb845b91ea5d1ad23c96c7b37df5ad7c07783bd044168c9999eb3f8f8.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/d64adfbfb845b91ea5d1ad23c96c7b37df5ad7c07783bd044168c9999eb3f8f8.jpg",
-                "content_sha256": "3bfe0802b1b25590c3e5638ed3ea4995571709a7bbef175ac61b802f24584744",
-                "content_type": "image/jpeg",
-                "bytes": 778789,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipOD_DMyst3z6PmCCuZKAkz3sdbhGsheLXvHqDXB=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOD_DMyst3z6PmCCuZKAkz3sdbhGsheLXvHqDXB=w2048-h2048-k-no",
-                        "bytes": 778789,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T21:56:42.964833+00:00"
-            },
-            {
-                "place_name": "Boba Caf\u00e9",
-                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
-                "record_id": "recU8xP11GzYJR6vU",
                 "source_url": "https://lh3.googleusercontent.com/p/AF1QipM4T7-9tm-6juSYw9JSSgw3EkdnyCHb-IvgxzNx=w2048-h2048-k-no",
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipM4T7-9tm-6juSYw9JSSgw3EkdnyCHb-IvgxzNx=w2048-h2048-k-no",
                 "source_url_sha256": "fd1dad5d6402e68d5d5cea508fdd7bc672988d5255c87c65d5b1d31b638cf099",
@@ -13348,7 +13147,12 @@
                         "path": "photos.raw_data.photos_data[81].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[12]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/fd1dad5d6402e68d5d5cea508fdd7bc672988d5255c87c65d5b1d31b638cf099.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/fd1dad5d6402e68d5d5cea508fdd7bc672988d5255c87c65d5b1d31b638cf099.jpg",
@@ -13385,7 +13189,12 @@
                         "path": "photos.raw_data.photos_data[92].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[13]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/6420607a2c191dc965fa67e8f00e73ba58dca382b4810470d1d11fbd3ac3c42b.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/6420607a2c191dc965fa67e8f00e73ba58dca382b4810470d1d11fbd3ac3c42b.jpg",
@@ -13422,7 +13231,12 @@
                         "path": "photos.raw_data.photos_data[94].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[14]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/cdd9cc4d307765e82b38c8929bf0490b6ea10184df285c170464912ecf9efbcf.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/cdd9cc4d307765e82b38c8929bf0490b6ea10184df285c170464912ecf9efbcf.jpg",
@@ -13459,7 +13273,12 @@
                         "path": "photos.raw_data.photos_data[95].photo_url_big"
                     }
                 ],
-                "duplicate_provenance": [],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[15]"
+                    }
+                ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/82b92d2dbe0935663218f8425978f545988149e52c41ca39df716a47e6f59481.png",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/82b92d2dbe0935663218f8425978f545988149e52c41ca39df716a47e6f59481.png",
@@ -13479,6 +13298,300 @@
                     }
                 ],
                 "uploaded_at": "2026-05-02T21:56:48.552181+00:00"
+            },
+            {
+                "place_name": "Boba Caf\u00e9",
+                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
+                "record_id": "recU8xP11GzYJR6vU",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOmWUhWUOlPfwmc_iCe5gOMYkfX4dPG7Bq814Tz=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOmWUhWUOlPfwmc_iCe5gOMYkfX4dPG7Bq814Tz=w2048-h2048-k-no",
+                "source_url_sha256": "b2aa9cb120be9ecd7616783ba53fbb8bf82e853e96617ab064f1da69a05a44b1",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[1].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[16]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/b2aa9cb120be9ecd7616783ba53fbb8bf82e853e96617ab064f1da69a05a44b1.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/b2aa9cb120be9ecd7616783ba53fbb8bf82e853e96617ab064f1da69a05a44b1.png",
+                "content_sha256": "11b38475f6005996452013956652776e9e5f1c41bff424cbe0f235eb52a2af24",
+                "content_type": "image/png",
+                "bytes": 423649,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOmWUhWUOlPfwmc_iCe5gOMYkfX4dPG7Bq814Tz=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOmWUhWUOlPfwmc_iCe5gOMYkfX4dPG7Bq814Tz=w2048-h2048-k-no",
+                        "bytes": 423649,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:02.381519+00:00"
+            },
+            {
+                "place_name": "Boba Caf\u00e9",
+                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
+                "record_id": "recU8xP11GzYJR6vU",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPCmTngILTLBfX5Nt6iG7ESwqHB4k2Mv0nSpFvk=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPCmTngILTLBfX5Nt6iG7ESwqHB4k2Mv0nSpFvk=w2048-h2048-k-no",
+                "source_url_sha256": "29b63d74032a8315eeeabbeaa88e27cf15991970253223ca879a7331b01bca2a",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[61].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[61].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[17]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/29b63d74032a8315eeeabbeaa88e27cf15991970253223ca879a7331b01bca2a.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/29b63d74032a8315eeeabbeaa88e27cf15991970253223ca879a7331b01bca2a.png",
+                "content_sha256": "fe2d090318e0bfdddebcd058a9328a0c03f923844456a9735e43bbf486cb6311",
+                "content_type": "image/png",
+                "bytes": 2251038,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPCmTngILTLBfX5Nt6iG7ESwqHB4k2Mv0nSpFvk=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPCmTngILTLBfX5Nt6iG7ESwqHB4k2Mv0nSpFvk=w2048-h2048-k-no",
+                        "bytes": 2251038,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:35.434423+00:00"
+            },
+            {
+                "place_name": "Boba Caf\u00e9",
+                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
+                "record_id": "recU8xP11GzYJR6vU",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNhTyRGFpoqO-nKQdnS7Cpag_VhRDordPhlWnjG=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNhTyRGFpoqO-nKQdnS7Cpag_VhRDordPhlWnjG=w2048-h2048-k-no",
+                "source_url_sha256": "4dfd29e2147331d52ebf0eb81c37a7560f2f1e263c105c9dd7f11bf2eb00ecea",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[10].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[10].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[18]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/4dfd29e2147331d52ebf0eb81c37a7560f2f1e263c105c9dd7f11bf2eb00ecea.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/4dfd29e2147331d52ebf0eb81c37a7560f2f1e263c105c9dd7f11bf2eb00ecea.jpg",
+                "content_sha256": "9e36c93c153e1d198ff03252683107274e43f656cd00f89b518331642d482a42",
+                "content_type": "image/jpeg",
+                "bytes": 766393,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNhTyRGFpoqO-nKQdnS7Cpag_VhRDordPhlWnjG=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNhTyRGFpoqO-nKQdnS7Cpag_VhRDordPhlWnjG=w2048-h2048-k-no",
+                        "bytes": 766393,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:10.441545+00:00"
+            },
+            {
+                "place_name": "Boba Caf\u00e9",
+                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
+                "record_id": "recU8xP11GzYJR6vU",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOcSrdkb2gzro8Fo7U4gUfU2AVbza2udW_-qN8w=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOcSrdkb2gzro8Fo7U4gUfU2AVbza2udW_-qN8w=w2048-h2048-k-no",
+                "source_url_sha256": "3398b7fc423f508363b33dd88c8b66ef5dea0f9606929ccac1ed8b274b2f28c8",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[11].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[11].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[19]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/3398b7fc423f508363b33dd88c8b66ef5dea0f9606929ccac1ed8b274b2f28c8.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/3398b7fc423f508363b33dd88c8b66ef5dea0f9606929ccac1ed8b274b2f28c8.jpg",
+                "content_sha256": "3294e47bd35f3e754b74f759ea3fa5549f66622222c231f3d20e2fc3d545652c",
+                "content_type": "image/jpeg",
+                "bytes": 716700,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOcSrdkb2gzro8Fo7U4gUfU2AVbza2udW_-qN8w=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOcSrdkb2gzro8Fo7U4gUfU2AVbza2udW_-qN8w=w2048-h2048-k-no",
+                        "bytes": 716700,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:11.275509+00:00"
+            },
+            {
+                "place_name": "Boba Caf\u00e9",
+                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
+                "record_id": "recU8xP11GzYJR6vU",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPhKEJ_O1ZknNXCy2vARauRiP9Lnt04aVdttkzr=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPhKEJ_O1ZknNXCy2vARauRiP9Lnt04aVdttkzr=w2048-h2048-k-no",
+                "source_url_sha256": "7aa5767fcbacbd8c99f83d51a5b6ef308fb21237f05e59cfb0d31854a37e0b38",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[56].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[56].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[20]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/7aa5767fcbacbd8c99f83d51a5b6ef308fb21237f05e59cfb0d31854a37e0b38.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/7aa5767fcbacbd8c99f83d51a5b6ef308fb21237f05e59cfb0d31854a37e0b38.jpg",
+                "content_sha256": "86dbd06b5978d42864e0342a7fe4738054ab5ce5f89499d8941bbbf4d93b1bdf",
+                "content_type": "image/jpeg",
+                "bytes": 830114,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPhKEJ_O1ZknNXCy2vARauRiP9Lnt04aVdttkzr=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPhKEJ_O1ZknNXCy2vARauRiP9Lnt04aVdttkzr=w2048-h2048-k-no",
+                        "bytes": 830114,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:32.593667+00:00"
+            },
+            {
+                "place_name": "Boba Caf\u00e9",
+                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
+                "record_id": "recU8xP11GzYJR6vU",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOAn8ilE6uC-g27hExroA1uMtV-9d3di8xhCQRo=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOAn8ilE6uC-g27hExroA1uMtV-9d3di8xhCQRo=w2048-h2048-k-no",
+                "source_url_sha256": "0203fdae46c829e2f9a2fd7a62e9aa5c3fe32e883bb434b89c2ef6e035b96082",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[77].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[77].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[21]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/0203fdae46c829e2f9a2fd7a62e9aa5c3fe32e883bb434b89c2ef6e035b96082.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/0203fdae46c829e2f9a2fd7a62e9aa5c3fe32e883bb434b89c2ef6e035b96082.jpg",
+                "content_sha256": "a4839d3bda167e13b8b8bbabae332e8f12925d9395e10c75408360110fbddb61",
+                "content_type": "image/jpeg",
+                "bytes": 748161,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOAn8ilE6uC-g27hExroA1uMtV-9d3di8xhCQRo=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOAn8ilE6uC-g27hExroA1uMtV-9d3di8xhCQRo=w2048-h2048-k-no",
+                        "bytes": 748161,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:41.661211+00:00"
+            },
+            {
+                "place_name": "Boba Caf\u00e9",
+                "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
+                "record_id": "recU8xP11GzYJR6vU",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOD_DMyst3z6PmCCuZKAkz3sdbhGsheLXvHqDXB=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOD_DMyst3z6PmCCuZKAkz3sdbhGsheLXvHqDXB=w2048-h2048-k-no",
+                "source_url_sha256": "d64adfbfb845b91ea5d1ad23c96c7b37df5ad7c07783bd044168c9999eb3f8f8",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[80].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[80].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[22]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/d64adfbfb845b91ea5d1ad23c96c7b37df5ad7c07783bd044168c9999eb3f8f8.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJFeAl50AjVIgRPmKqEvYDVgI/d64adfbfb845b91ea5d1ad23c96c7b37df5ad7c07783bd044168c9999eb3f8f8.jpg",
+                "content_sha256": "3bfe0802b1b25590c3e5638ed3ea4995571709a7bbef175ac61b802f24584744",
+                "content_type": "image/jpeg",
+                "bytes": 778789,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOD_DMyst3z6PmCCuZKAkz3sdbhGsheLXvHqDXB=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOD_DMyst3z6PmCCuZKAkz3sdbhGsheLXvHqDXB=w2048-h2048-k-no",
+                        "bytes": 778789,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-02T21:56:42.964833+00:00"
             }
         ],
         "azure_asset_failures": [
@@ -13490,13 +13603,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerGsIVrST86ccxabKV0g7cgCxgw1a9IvGInRJVkFqMO3xkdE4oIMf7_ZUGkCgCjCxgfLXz0SW6zxaySSYUcXXsOjuehgbW1fhwa_hNtps-aQgM3dB-GloWVucPU1LskwxRluK_jKg=w2048-h2048-k-no",
                 "source_url_sha256": "66953f9a7982bfe021ee94595aead95ac30b7bd857d38259596e2baadebb0aa8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[0]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[0]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
@@ -13563,7 +13672,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:31.609081+00:00"
+                "failed_at": "2026-05-02T22:19:52.614360+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -13573,13 +13682,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep8Fv3ngjcZDRLO_yEdt2V_HQz8USSy-x7xeg6YDPPUWZlKET3OD2WH1bJQce1f6v1OfnG0BhQDgF_qVjrefCvbi8phio282vcA0QiLS8IA0tjHRpAA69e9SiMqg8WOGl1ceaae=w2048-h2048-k-no",
                 "source_url_sha256": "5e6b816d67ec556d4ad33cf3f512c9293987459809444c92a2a6d15fe01f9e7c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -13646,7 +13751,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:31.952234+00:00"
+                "failed_at": "2026-05-02T22:19:52.989588+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -13656,13 +13761,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq7j4j-AyX2YpG0bSrImH4_O4dA08SLQTaRf6_sNEq5QNnJ72s13cp6F7-SBhSRk64NyMSxc_qUaS6k8f0-MvhYw_L5vFAVZMwx-I6CsVfUp8mCflitNYi3RX4UUoWXv5sikfz8qA=w2048-h2048-k-no",
                 "source_url_sha256": "1630227b6254f93cfce686c8ec48fe5c91a15bbc4eb6114157909ff5985aa162",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -13729,7 +13830,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:37.259746+00:00"
+                "failed_at": "2026-05-02T22:19:53.318572+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -13739,13 +13840,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerXy5NHtc44gOfdO-MgcNHIgZ-eHkykMJdWZDT13GgRlUv4IANk4mO-EHcY39kzqoqj4_R3062708wj0siX8PPta2T7k5gId0V1QOzx1qVvEMPAMHDA6eclBpcfXcGas53Lg7lW=w2048-h2048-k-no",
                 "source_url_sha256": "795aa1ef4b6fd9f064784b29e2ba35b3abf7f093e4a94ce003858f0b58ec5538",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -13812,7 +13909,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:37.545064+00:00"
+                "failed_at": "2026-05-02T22:19:53.638683+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -13822,13 +13919,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqH25agznFognJHtREULSg2vlYQTtyEpPWB1cSThWpk1tqvgR3nGj5mr9Y-m_aYpDKzucuOFpN_-A2QUeaIP8lE5wEVFFWhtMUOJCRUWkvIDQUoK0QepnxsPbE9jBpxar_YxpTFpA=w2048-h2048-k-no",
                 "source_url_sha256": "99367d20a53a449c0c0c4d957f4cf983dab3e9fe74533bb8a3fa7279a327b8aa",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -13895,7 +13988,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:38.445211+00:00"
+                "failed_at": "2026-05-02T22:19:53.942710+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -13905,13 +13998,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwersuhTr27FvgqXY98fQjsUua_zV0I4bwNqYiaqxqkdNCtEpnQ0peIbZqXvTHJphA6SZLGCX2k2FETQgHstIv40Hl85byHuRpHVZg0pjIkka7JcFnExb500CdBTdZNRDJ0J5pSXj=w2048-h2048-k-no",
                 "source_url_sha256": "1fdff7b3c44d8c2bcba28e6b1df56d0eec7788e08f000fde95cee73fa941abec",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -13978,7 +14067,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:38.785513+00:00"
+                "failed_at": "2026-05-02T22:19:54.252614+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -13988,13 +14077,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq9NP3tsDJEJXmvkXD2eSuIRWLq2jUoFeaGiEZ4J2AOvXkJMnpdJ6Gtyh59aKw-8kOYxgtpKaIPWR6ZuQeY0I8kxjWp5tLUf0pmv7ZbZXvdTMeoXeCtOprXKJVlODr7jVwk_DWYOw=w2048-h2048-k-no",
                 "source_url_sha256": "a6cf50af560e043a9661858d7c28465ae1caa38df1b6e4f675019d9a25b15f11",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -14061,7 +14146,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:39.143784+00:00"
+                "failed_at": "2026-05-02T22:19:54.594818+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14071,13 +14156,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqiOPjwNuyOFsRA-v8bQd02hiqYtJmMhEtXFr0h325U43Kku0UMhZzQxvqNOiGw2YJwfhBGfC9JfDwkczKnNaFJhoYyrbhgirdEYqHLywjsdKerwVl6odZTOoIYfnonhc7I2__3=w2048-h2048-k-no",
                 "source_url_sha256": "cb024f3b51071825d3a83d76cf539c7fb1e757195cc0058253417453e7be58b2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -14144,7 +14225,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:44.482948+00:00"
+                "failed_at": "2026-05-02T22:19:54.901720+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14154,13 +14235,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqcu3yM_YZMPsOnRgzm6x7Q-Vk1GQJz1Z8FZK0_Nkb0f75_z-0YMND7MVgYt2hCR4aIViemng8YPG6BJu2cM8j0mc_gU5uMLEqdGAGk5gP7oYoKWlufvm0OqvEgKrXGesZbPNg_=w2048-h2048-k-no",
                 "source_url_sha256": "68434665b4383e0fc53767151e3b07c86917164e20a66ec6394710e9701edb7c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -14227,7 +14304,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:44.802535+00:00"
+                "failed_at": "2026-05-02T22:19:55.184243+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14237,13 +14314,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepo-YHXkVyj9LgyJldOHkoygdJz0eDLhK5Xwzzqzmj52FSBfRug8uJ4yqo-BvlW2B1LKHUiA5G_eeQDClAkdes_oj8VUju7izW8Zd9E0WQDOsZ4pLxEtAe6tiW03hFzVShS6lFhgw=w2048-h2048-k-no",
                 "source_url_sha256": "122606e7f164e58caef0bd9dad2727c06e6863776550870516f147a1f1feb963",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -14310,7 +14383,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:50.116184+00:00"
+                "failed_at": "2026-05-02T22:19:55.491997+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14320,13 +14393,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepY5IONte3T078xtEn9ql0Y0fRiBNxEFd1sAzlwpCf_l3C0ZjA--HUXLX_aIXdtDURVV6IZcl0R9DpTKv46Gxnsd_cnr-iqtyxTgB-vnoeSPUQH0rLcAU1ZjRgb7P1EKUJEZMM=w2048-h2048-k-no",
                 "source_url_sha256": "e7cfb18ef333601ed2b28d5267a611bfdc51c52e3c662388189c66b0698df6d8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -14393,7 +14462,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:50.825004+00:00"
+                "failed_at": "2026-05-02T22:19:55.824784+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14403,13 +14472,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwercorBRkkPHPIVA0rPqYvz472A6urN8NmjnXqsOtHNjun-o0l6HXYvONily9bPzXx23cE6gtTU1itV3LmWLAuq7wr1Ceimr_t8i5qxNT4EzVvacKRglsg-SrscmRsEXpkgHNGg=w2048-h2048-k-no",
                 "source_url_sha256": "b1e183b3b7537870900fea083ddb075140686fc16ba23d083cfe5860b3e8cea8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -14476,7 +14541,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:51.120866+00:00"
+                "failed_at": "2026-05-02T22:19:56.159651+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14486,13 +14551,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweogIglstdua2RUkKlfGMxzAOBF7N8uNOxzMuT9Le68akowLof4SSOSIFM0Okmd0rE9JRDT3Q05cQJoO7GtYNVW566NxH1S4a1MJSeeSnRy1jc5OeXdVIXQwMZRLT-MMMVsxyyl1WA=w2048-h2048-k-no",
                 "source_url_sha256": "a686a6ac6fdd39b5eb2b3a40552bbc3fabf0fc309d127f0198fe441bfaaf6631",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -14559,7 +14620,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:51.414202+00:00"
+                "failed_at": "2026-05-02T22:19:56.526267+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14569,13 +14630,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqh9zK99egwpU_0nV7XqdGtwVf-eiXIfY0SNudVibFm_3NQGsMiKGvxlR7T4ktqLb0KU-UnPByrxipAzYPikf65QrTxvmbO8mcgOOS_9FVnsRDvumI5O9ab_z7GQNJiPZQsMXND=w2048-h2048-k-no",
                 "source_url_sha256": "a52c1dcb93c6f832b8cd8912c8e692e1e425bb60063ea06ecc121a0d7172e01b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -14642,7 +14699,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:51.716479+00:00"
+                "failed_at": "2026-05-02T22:19:56.847577+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14652,13 +14709,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqVBsZMaY5h_WlkbcKAYFRU9QmxlNzd6jWqp_8UlBwPbsrEfA40N13EsCJvn-w5tZKH766jQHBPosljXTzFQMZzbEPcPbDfzc9vtj3KRHrcqFG5Vgg_CzfUmi6ULUHZkBUTi2jBCRASYeQ=w2048-h2048-k-no",
                 "source_url_sha256": "65800dabf568ac6d4c67e029cb43c5f7122b3dbaf944fa77a7a066848d1c1b90",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -14725,7 +14778,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:52.013958+00:00"
+                "failed_at": "2026-05-02T22:19:57.170991+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14735,13 +14788,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq0pCbpViKSDHsA6e5T-Tmf1tKXiN3lq7lNooDIX407ASnoxmTx18XR_ebkjrjf334vvb2PkGirlKVmdcPmvugTxV1Ft7h06acpLfLg8buhK24Ps0IICEZPwEtfa0_Y1N3NT8jwm_g3GKls=w2048-h2048-k-no",
                 "source_url_sha256": "ff36791be786a78ebd60a6a8518db63d37f333816695a2772372660e9e0d2a01",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -14808,7 +14857,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:52.310271+00:00"
+                "failed_at": "2026-05-02T22:19:57.574197+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14818,13 +14867,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepfCpHXGJWHzkhHL-NHbqgcXJNG5kqKrdgVVotsXhM0B4OiNl5sSBC6zoR2X5Pc1JN_D-5DqC8V5warPLvRttFggCeDw1DuCOIDfWTnQKpq3Ozc1xtIW2B0HnHluufMcKoYzebj=w2048-h2048-k-no",
                 "source_url_sha256": "4248ebd5b792bf5e2baed499e22761e290e104537d8942c7163a35b2ed4e0645",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -14891,7 +14936,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:52.614133+00:00"
+                "failed_at": "2026-05-02T22:19:57.966768+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14901,13 +14946,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq0n8rlHCBCECfzrhYiNE-moOBRCpDtz81UkDKKv9G75VakABmrIl8mQukjhHCUqar_9LB9V7nYbsQiKxzj8CWW274eBvICONK4jgkAI0scgag5I2QRvjNiEcUk5irk8MhSXsOHpQ=w2048-h2048-k-no",
                 "source_url_sha256": "565341ae428e37e7d676cdfd426ebacfd91d573edb1c688b476a6d6b8a5e99d6",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -14974,7 +15015,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:52.914565+00:00"
+                "failed_at": "2026-05-02T22:19:58.403854+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -14984,13 +15025,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweqhekV4p-LETeU1iRz59bjgTV1yz1adSZeH44r_jK-oqM9xwPFTkktqNklQA4f_ejSTdY8egZnJWfaFVq10Qtj8Uab1StDuRwfS92zyw0nsaKgivcTx4XsLOhEeKPPS9JhgqJwVDA=w2048-h2048-k-no",
                 "source_url_sha256": "c0745f04615e45e4e63a165566c843def909507439af3f19fd614ea442ed9a46",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -15057,7 +15094,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:53.233451+00:00"
+                "failed_at": "2026-05-02T22:19:58.842666+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15067,13 +15104,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep3vo-t01aBBiJ4HrkBZ5jo_zW1TgwRMlGuz2LdpP_qUI0VmFYPEzUR0dh_e5xOoQeN59I_VFeVFDmp61srA29YpG5pAhABiK1jqYoUKYTHP8XNErKhSbPKk9NX3foMVTLtvMHr=w2048-h2048-k-no",
                 "source_url_sha256": "beaeb4382d346863a5a55a23a00e6edaf3f04b1c0ff334fe12b555055a141534",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -15140,7 +15173,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:58.582009+00:00"
+                "failed_at": "2026-05-02T22:20:04.312289+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15150,13 +15183,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwershuWqsiJNN5HAttBluW1NYV_bSyAQgXnbE75nnYkmp85q7NxbfXRkg8bgxTe-KSOKhGalsCPdLOOvqNm9419y3S3VA5KcNTPksGHsfWgPv5MKzb_3uoObycefT10OpNHrFw9G7jK8nfIp=w2048-h2048-k-no",
                 "source_url_sha256": "c2ba60ceee75e6dabec327f2076f35d9d3b8a61ed65e627f5f9481fc851d3057",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -15223,7 +15252,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:58.897114+00:00"
+                "failed_at": "2026-05-02T22:20:04.738466+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15233,13 +15262,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweprLlQMkLERwnNaGv2zveGRikDz5pFaYqeBNXCgqQIMuDzYvhFnUbXgvo0_ssPbnzcBgqAoY3EUy7gXgxoz4RXecazWVX7sVtYpx96hnbmY1FFvUiKfp50LPkhMIVV9cfpk482egw=w2048-h2048-k-no",
                 "source_url_sha256": "4f1ccdf91a636658e496704dbc40301e2399af99c4bf370b78533bdc63964432",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -15306,7 +15331,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:59.211266+00:00"
+                "failed_at": "2026-05-02T22:20:05.208350+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15316,13 +15341,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwer2cWy7xzuX2rNPrYg4wCboQEOh6aePOjW9VBMEJUG5HBin9lnuEmC418GR35Kl-kJkdjZ_3kAW1bcN4WtABlzUp8i-_vpx3hymS6HwN-2R70TPEwR18hnv-IsEc5Wbw8qBwuHgbQ=w2048-h2048-k-no",
                 "source_url_sha256": "3877290ac7c9f468e9be5d166d460f0fbb03c5cc4b0d466ffee671b6fc767412",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -15389,7 +15410,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:59.521715+00:00"
+                "failed_at": "2026-05-02T22:20:05.655287+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15399,13 +15420,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwerNZVisSDHf_CBWEWCsbCaFrtE1AoHTdpaT1UsPnA20ft80C1hh7PfdU1o95vI8ieJXz2SX36ZqW7-1c8hfY_ArCoAxEy_PBJcXQILn0P0G0iHMCtcuLCdbQhJl3eCvaXz34U9WiQ=w2048-h2048-k-no",
                 "source_url_sha256": "4640c7213f459755a5517a018cc454c8946bbf60afad1f3b3a775deaa3775e8e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -15472,7 +15489,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:55:59.835725+00:00"
+                "failed_at": "2026-05-02T22:20:11.054286+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15482,13 +15499,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweppTRhZjIwC7YUimmjcYmbrNLL3zP5tf95VRIhejgS0Ee7XS60qkUD0aD6Wbofulnla1h_NiYWKfJ0c5uvsMRDRRgwHE36JBCBa-Xj0dNef-zOxytuaqcuu8iP5z8CIdJ5gArGh=w2048-h2048-k-no",
                 "source_url_sha256": "780381d82a5d23116582a60fbe89844941c080b8def50a6760e167accdd89ef0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -15555,7 +15568,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:00.123601+00:00"
+                "failed_at": "2026-05-02T22:20:11.465500+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15565,13 +15578,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq3V51aDPwzhN0SzczA6fswGtuKjhArGBGrpLtCBwEv8ByIIxjHsz3ko9TSv8pOqV5cFeI3VoR9NQ7UF4uTQBswEzY7RBh_x7oKnpbYZtj6o1_SSiqeq3eewG1U-cOngHBtWsdZ=w2048-h2048-k-no",
                 "source_url_sha256": "c1ffd29b34f7b533e66f231049faa906300bcf383d04ac65dac6909b2b26dfd4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -15638,7 +15647,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:00.477431+00:00"
+                "failed_at": "2026-05-02T22:20:11.877266+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15648,13 +15657,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepfp4tsObKRtU80uH__VeFQSCxjgE3qyACXwq1ECb8feQgXisAQ1bayIv13K78EuNm1cOmfl3t05-LJuhsBWRZGwadPQZp7szSnBzE0wre6W6mLzE9jjIk1E7NgAprKkTXOz3Za=w2048-h2048-k-no",
                 "source_url_sha256": "659d77ea106f9ab6510946f30edc1734f41616c3c5da879be4eeeb3a9710bafb",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -15721,7 +15726,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:00.780882+00:00"
+                "failed_at": "2026-05-02T22:20:12.254365+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15731,13 +15736,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweot18dfZ_QZDyprYK_WWfZ-J86DadG113FU8F27jLUM815DPpbiA1DtoeNeIMT8jJb6mfvG41edFvQaJSu8B5dy8UfjJJju-JTIGWA71o_orUKx1SpSn2MQMBWxYo8xw2oevakPMg=w2048-h2048-k-no",
                 "source_url_sha256": "3ff4fd39bb7767517950ddc1b9f11ee68396563b6d2e992ceae91593586fc7d4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -15804,7 +15805,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:01.094668+00:00"
+                "failed_at": "2026-05-02T22:20:12.655186+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15883,7 +15884,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:02.704316+00:00"
+                "failed_at": "2026-05-02T22:20:13.085405+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -15962,7 +15963,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:03.020269+00:00"
+                "failed_at": "2026-05-02T22:20:13.548091+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16041,7 +16042,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:03.380453+00:00"
+                "failed_at": "2026-05-02T22:20:14.009182+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16120,7 +16121,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:03.709271+00:00"
+                "failed_at": "2026-05-02T22:20:14.482780+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16199,7 +16200,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:09.069820+00:00"
+                "failed_at": "2026-05-02T22:20:14.927150+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16278,7 +16279,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:09.375635+00:00"
+                "failed_at": "2026-05-02T22:20:15.363956+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16357,7 +16358,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:09.679452+00:00"
+                "failed_at": "2026-05-02T22:20:15.796390+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16436,7 +16437,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:10.038264+00:00"
+                "failed_at": "2026-05-02T22:20:16.244818+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16515,7 +16516,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:11.608277+00:00"
+                "failed_at": "2026-05-02T22:20:21.643569+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16594,7 +16595,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:12.176614+00:00"
+                "failed_at": "2026-05-02T22:20:22.097575+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16673,7 +16674,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:12.659828+00:00"
+                "failed_at": "2026-05-02T22:20:22.461143+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16752,7 +16753,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:13.746240+00:00"
+                "failed_at": "2026-05-02T22:20:22.879160+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16831,7 +16832,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:14.096643+00:00"
+                "failed_at": "2026-05-02T22:20:23.257759+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16910,7 +16911,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:15.533019+00:00"
+                "failed_at": "2026-05-02T22:20:23.597428+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -16989,7 +16990,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:15.835361+00:00"
+                "failed_at": "2026-05-02T22:20:23.961465+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17068,7 +17069,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:16.155603+00:00"
+                "failed_at": "2026-05-02T22:20:24.342233+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17147,7 +17148,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:16.540872+00:00"
+                "failed_at": "2026-05-02T22:20:24.730070+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17226,7 +17227,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:16.870183+00:00"
+                "failed_at": "2026-05-02T22:20:25.213610+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17305,7 +17306,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:17.238300+00:00"
+                "failed_at": "2026-05-02T22:20:25.723406+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17384,7 +17385,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:17.614748+00:00"
+                "failed_at": "2026-05-02T22:20:26.162886+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17463,7 +17464,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:17.979140+00:00"
+                "failed_at": "2026-05-02T22:20:26.560956+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17542,7 +17543,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:18.363012+00:00"
+                "failed_at": "2026-05-02T22:20:26.982121+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17621,7 +17622,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:18.726104+00:00"
+                "failed_at": "2026-05-02T22:20:27.400458+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17700,7 +17701,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:19.060912+00:00"
+                "failed_at": "2026-05-02T22:20:27.825947+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17779,7 +17780,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:19.438920+00:00"
+                "failed_at": "2026-05-02T22:20:28.282533+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17858,7 +17859,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:19.817253+00:00"
+                "failed_at": "2026-05-02T22:20:28.716349+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -17937,7 +17938,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:20.136976+00:00"
+                "failed_at": "2026-05-02T22:20:29.176107+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18016,7 +18017,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:20.452120+00:00"
+                "failed_at": "2026-05-02T22:20:29.626236+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18095,7 +18096,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:20.775556+00:00"
+                "failed_at": "2026-05-02T22:20:30.088877+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18174,7 +18175,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:21.104637+00:00"
+                "failed_at": "2026-05-02T22:20:35.481168+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18253,7 +18254,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:21.419313+00:00"
+                "failed_at": "2026-05-02T22:20:35.899141+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18332,7 +18333,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:22.605287+00:00"
+                "failed_at": "2026-05-02T22:20:36.326747+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18411,7 +18412,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:27.931621+00:00"
+                "failed_at": "2026-05-02T22:20:36.773833+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18490,7 +18491,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:28.286289+00:00"
+                "failed_at": "2026-05-02T22:20:37.178208+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18569,7 +18570,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:28.629958+00:00"
+                "failed_at": "2026-05-02T22:20:37.578939+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18648,7 +18649,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:28.969898+00:00"
+                "failed_at": "2026-05-02T22:20:42.954742+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18727,7 +18728,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:29.311691+00:00"
+                "failed_at": "2026-05-02T22:20:43.298495+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18806,7 +18807,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:29.633305+00:00"
+                "failed_at": "2026-05-02T22:20:43.642223+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18885,7 +18886,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:29.980861+00:00"
+                "failed_at": "2026-05-02T22:20:44.040948+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -18964,7 +18965,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:30.337589+00:00"
+                "failed_at": "2026-05-02T22:20:44.466808+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19043,7 +19044,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:30.657941+00:00"
+                "failed_at": "2026-05-02T22:20:45.061390+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19122,7 +19123,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:30.984807+00:00"
+                "failed_at": "2026-05-02T22:20:45.520452+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19201,7 +19202,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:31.347221+00:00"
+                "failed_at": "2026-05-02T22:20:45.898754+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19280,7 +19281,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:31.698267+00:00"
+                "failed_at": "2026-05-02T22:20:46.257872+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19359,7 +19360,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:32.050515+00:00"
+                "failed_at": "2026-05-02T22:20:46.596899+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19438,7 +19439,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:32.909860+00:00"
+                "failed_at": "2026-05-02T22:20:46.960262+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19517,7 +19518,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:33.251851+00:00"
+                "failed_at": "2026-05-02T22:20:47.295660+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19596,7 +19597,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:33.544784+00:00"
+                "failed_at": "2026-05-02T22:20:47.652981+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19675,7 +19676,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:36.254408+00:00"
+                "failed_at": "2026-05-02T22:20:48.009529+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19754,7 +19755,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:36.603978+00:00"
+                "failed_at": "2026-05-02T22:20:48.351679+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19833,7 +19834,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:36.954219+00:00"
+                "failed_at": "2026-05-02T22:20:48.712456+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19912,7 +19913,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:37.301770+00:00"
+                "failed_at": "2026-05-02T22:20:49.113820+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -19991,7 +19992,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:37.739991+00:00"
+                "failed_at": "2026-05-02T22:20:49.495147+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20070,7 +20071,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:38.100529+00:00"
+                "failed_at": "2026-05-02T22:20:49.907416+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20149,7 +20150,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:38.487463+00:00"
+                "failed_at": "2026-05-02T22:20:50.272134+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20228,7 +20229,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:38.850425+00:00"
+                "failed_at": "2026-05-02T22:20:50.631656+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20307,7 +20308,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:39.206384+00:00"
+                "failed_at": "2026-05-02T22:20:56.096165+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20386,7 +20387,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:39.990321+00:00"
+                "failed_at": "2026-05-02T22:20:56.432542+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20465,7 +20466,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:40.329895+00:00"
+                "failed_at": "2026-05-02T22:20:56.771337+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20544,7 +20545,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:40.665744+00:00"
+                "failed_at": "2026-05-02T22:20:57.100884+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20623,7 +20624,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:41.009800+00:00"
+                "failed_at": "2026-05-02T22:20:57.451810+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20702,7 +20703,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:42.008258+00:00"
+                "failed_at": "2026-05-02T22:20:57.899504+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20781,7 +20782,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:43.639358+00:00"
+                "failed_at": "2026-05-02T22:20:58.417985+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20860,7 +20861,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:43.921974+00:00"
+                "failed_at": "2026-05-02T22:20:58.856803+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -20939,7 +20940,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:44.218478+00:00"
+                "failed_at": "2026-05-02T22:20:59.275291+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21018,7 +21019,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:44.504093+00:00"
+                "failed_at": "2026-05-02T22:20:59.710489+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21097,7 +21098,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:44.798464+00:00"
+                "failed_at": "2026-05-02T22:21:00.433423+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21176,7 +21177,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:45.087163+00:00"
+                "failed_at": "2026-05-02T22:21:05.899544+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21255,7 +21256,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:45.397636+00:00"
+                "failed_at": "2026-05-02T22:21:06.324742+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21334,7 +21335,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:45.688545+00:00"
+                "failed_at": "2026-05-02T22:21:06.698895+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21413,7 +21414,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:45.997224+00:00"
+                "failed_at": "2026-05-02T22:21:07.082121+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21492,7 +21493,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:46.330952+00:00"
+                "failed_at": "2026-05-02T22:21:07.506521+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21571,7 +21572,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:47.196642+00:00"
+                "failed_at": "2026-05-02T22:21:08.169926+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21650,7 +21651,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:48.913407+00:00"
+                "failed_at": "2026-05-02T22:21:08.528057+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21729,7 +21730,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:49.279639+00:00"
+                "failed_at": "2026-05-02T22:21:08.903620+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21808,7 +21809,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:49.679024+00:00"
+                "failed_at": "2026-05-02T22:21:09.304319+00:00"
             },
             {
                 "place_name": "Boba Caf\u00e9",
@@ -21887,27 +21888,27 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:56:55.035879+00:00"
+                "failed_at": "2026-05-02T22:21:09.717824+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 130,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 153,
+            "duplicate_count": 0,
+            "airtable_photos_count": 23,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 100,
             "place_name": "Boba Caf\u00e9",
             "place_id": "ChIJFeAl50AjVIgRPmKqEvYDVgI",
             "record_id": "recU8xP11GzYJR6vU",
-            "generated_at": "2026-05-02T21:56:55.036605+00:00",
+            "generated_at": "2026-05-02T22:21:09.718961+00:00",
             "azure_assets_count": 23,
             "failed_upload_count": 105,
             "pending_upload_count": 0,
             "selected_airtable_count": 23,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
