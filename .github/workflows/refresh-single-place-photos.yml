@@ -20,7 +20,7 @@ on:
       dry_run:
         description: 'If true, only reports what would change without uploading or writing Airtable'
         required: false
-        default: 'true'
+        default: 'false'
         type: string
   workflow_dispatch:
     inputs:
@@ -41,7 +41,7 @@ on:
       dry_run:
         description: 'If true, only reports what would change without uploading or writing Airtable'
         required: false
-        default: 'true'
+        default: 'false'
         type: string
 
 concurrency:
