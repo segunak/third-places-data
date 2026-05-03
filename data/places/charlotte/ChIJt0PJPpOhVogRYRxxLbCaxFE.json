@@ -598,6 +598,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJt0PJPpOhVogRYRxxLbCaxFE/bdf480d0e9185aacdc56286953fa74be2eeff06cc73e9839bfa8052654ede6d6.jpg",
@@ -699,7 +707,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:54.741446+00:00"
+                "failed_at": "2026-05-03T06:07:38.153206+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -778,7 +786,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:55.204114+00:00"
+                "failed_at": "2026-05-03T06:07:38.512290+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -857,7 +865,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:55.821780+00:00"
+                "failed_at": "2026-05-03T06:07:38.897669+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -936,7 +944,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:56.431178+00:00"
+                "failed_at": "2026-05-03T06:07:39.254084+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1015,7 +1023,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:57.477866+00:00"
+                "failed_at": "2026-05-03T06:07:39.596682+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1094,7 +1102,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:58.251184+00:00"
+                "failed_at": "2026-05-03T06:07:39.975056+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1173,7 +1181,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:58.877514+00:00"
+                "failed_at": "2026-05-03T06:07:40.346264+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1252,7 +1260,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:59.474418+00:00"
+                "failed_at": "2026-05-03T06:07:40.690743+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -1266,7 +1274,7 @@
             "place_name": "Sugar & Sip Coffee and Workshop",
             "place_id": "ChIJt0PJPpOhVogRYRxxLbCaxFE",
             "record_id": "recSj3hFBGB3vtUyR",
-            "generated_at": "2026-05-03T02:52:59.474756+00:00",
+            "generated_at": "2026-05-03T06:07:40.691102+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 8,
             "pending_upload_count": 0,
@@ -1280,7 +1288,15 @@
             "preserved_curator_airtable_photos_count": 3,
             "selected_curator_airtable_photos_count": 3,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 0
+            "non_azure_airtable_photos_count": 0,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
         }
     },
     "data_source": "OutscraperProvider",
