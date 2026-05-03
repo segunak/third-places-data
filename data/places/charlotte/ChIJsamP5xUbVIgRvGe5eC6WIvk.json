@@ -5921,10 +5921,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -5933,6 +5929,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[41].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -5969,13 +5973,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nop761cGzCwQf7mWruogAd9wbTVnN-mK7DIDRNyf4BuB4cYNXXLux4R0r52Nc8TbUAiX0l0teVs4ckhEJ7HvkBpEKjbo9my2nLlGe5RpktK6iwD6qtmqUHY7jtOgKuNUjn-MgOW2Q=w2048-h2048-k-no",
                 "source_url_sha256": "c7731c9dc258626fa8475430c0ed5ba7d7bf209f55c16f7b21e1e8b558376b8f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -6042,7 +6042,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:02.489481+00:00"
+                "failed_at": "2026-05-03T01:20:21.115640+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6052,13 +6052,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noV2vzsZkBfhZh6RAov7ZrKuyzek2t9iAaOhCnXHYPAUZch40QtGVVWlMdVEuHiFKT5Y1yDm0n_Pjhu2wbcB2yTKZ9k8CTggp4u-bGvdRVEbMqcLzR0Jqtf4bDTNm9PEYCWvhhL=w2048-h2048-k-no",
                 "source_url_sha256": "73cca058b32622066d0d0a526c07ae75bf3bc8f019d77ae937576e2ed8944da2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -6125,7 +6121,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:03.143651+00:00"
+                "failed_at": "2026-05-03T01:20:21.662580+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6135,13 +6131,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhH31CigIfHsqoZ7qeDZoPaVNDixylAkRYXdar_ZZaRe7nS8zI6M0hlSAY46Y35tvTnljXFSOHZWuJYBAlwY5lxcxgk8P0fHDwWeNyOWyDBnO00Ap2L0K-mM842zXyFK_u4j_ctpNOW8ozKOujaPOSVymNYdvKCgbNNNdCNgMVe_Va-YScRV9hEZ=w2048-h2048-k-no",
                 "source_url_sha256": "4980e0be2e398459d3a39f603a6e90896881b7725e3ceba7a2768c749cc6c465",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -6208,7 +6200,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:03.871687+00:00"
+                "failed_at": "2026-05-03T01:20:22.210388+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6218,13 +6210,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noqB_-xG4TbBFbJCkjvhxk7t-pnubM-EiIpdhh30HQy2gI7jIR3GmkcVj0_L8L8R5rr1LP8AM7ZUGCMp357LXTArKoXSTdIbXuudZQTj6lLYGfM6R8coWeBpDgTCEBVisZ_dBvkZGX8O0E=w2048-h2048-k-no",
                 "source_url_sha256": "95990347be0f5b65fe743f33a74c9419481f78079302b2353dc62f4b395936a8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -6291,7 +6279,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:04.639485+00:00"
+                "failed_at": "2026-05-03T01:20:23.168198+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6301,13 +6289,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr4iIifkzZb0hqDmPItqIPz-oB2rnPqXEbvzoK98WB2HuS9XlyeoBCP9tpB5ff7_CqlMt6Ch7XUnBNNndSd8nbxXhaILUZEpHjNebQyOI6xNFhfs8hlRnGkGdzef1LJRyZ69kxswiNMsfE=w2048-h2048-k-no",
                 "source_url_sha256": "d74017a23723c3efef5c39e431670f96ed8c2a1945547c997d218f4734053838",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -6374,7 +6358,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:05.311860+00:00"
+                "failed_at": "2026-05-03T01:20:23.627805+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6384,13 +6368,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no1CYHKdRZ4uLkoM645O1saGx97A5xG9P5zw6VdSqF43lxPuw-uvI8WSIwpEDarMz1oJQO1djjkbsHjOZja-Xof1EayiNx95G47GraP3k-ETYxHJGBTmhCdnLarasOYkXYwKWxQg2GLT2Q=w2048-h2048-k-no",
                 "source_url_sha256": "d1ced9ac80a2c29d12f4693fd67c8bd3e5d5d00e793a1aad11b3d5ce5bab6ab0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -6457,7 +6437,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:05.994172+00:00"
+                "failed_at": "2026-05-03T01:20:24.114123+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6467,13 +6447,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEkBcOxi92_S37PtKDul54Axgd9qIVoXsTtWJIr2Nk_sN630Xlz69HJqo4TyyKzaYmXq7071JoNY_7E6U3_MnD7kfvvIkmLWyXsMPis4TMdarD_bGtpCpAX9yHyG7QOsV3Xvmj_AvfkPHWg072iBDy9yNPVAsR69Xr1_j28EDqVi_uq9ktpCwc=w2048-h2048-k-no",
                 "source_url_sha256": "5e7fa5b35199d436d13f7ee11132a5e5f996e551f2328d7732afc75781f29b6a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -6540,7 +6516,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:06.670053+00:00"
+                "failed_at": "2026-05-03T01:20:24.546175+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6550,13 +6526,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFvzOQeN7Ro2AJA8qJ7PnrQDFDdRzNgL8zJG39NRuKFiTB-6fIy4VNyDTlJ8O0wY54dcYNj9AB1ijh8dnEvN_gR78id-hR0wdxOJ_tZX7_Ux1DyNxqqb1rukdtLOwFm5vC9TlKPfUcOKq2g8ocSbimUBYDcdgd3XRUVkQCSwG2OT4zpHYguKjH2=w2048-h2048-k-no",
                 "source_url_sha256": "f629803ffcd7fcb627f0c1b6c6f798d20cc6711823d6b4cb3edcaa97013cee5f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -6623,7 +6595,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:07.389459+00:00"
+                "failed_at": "2026-05-03T01:20:24.919014+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6633,13 +6605,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFOnupPuoLl0te9i5pnRATx9SPZ7VRWiwtd2Xc5R9pBL6GZBbVr7CHW30rkzz1mYDNGS8OzjfyFiwn80cz2i0QLfWJuP6eCMBAY02z4dRhtQelOq5hKaSyZ6hZRh3MU9ScSCDQnUsb79qGax0pEYgmLM8QF23SElKvk-PJKDJFxlYFmeBkYynY7=w2048-h2048-k-no",
                 "source_url_sha256": "67daa334a048da14f3ba61d56f4d3926e570fc29e6d00cc9d9be41c912099cf5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -6706,7 +6674,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:07.938026+00:00"
+                "failed_at": "2026-05-03T01:20:25.279743+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6716,13 +6684,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGbdEdDqUMZATyUGLS5wO-PEKX07kFKQ0jIGHNKN77cG-FjM95OpQkMc3WpoFHmve9LQKlPK2TAmvIS-sWKpHo4q4Peuj4C1LazUPs4t1m0EtLeiVJnyFwoJEyetmZWMJT4ITf2vOWbwChdYDrUWNV2lcI8qowEBYsy1S_VcW_7o87suyrEhlQ=w2048-h2048-k-no",
                 "source_url_sha256": "5cac98d5379b913c9d682034fe109876cce9abda679e37a228b6989c004acaed",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -6789,7 +6753,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:08.554636+00:00"
+                "failed_at": "2026-05-03T01:20:25.637928+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6799,13 +6763,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEmJH8wc7WpbrmGrHegEI6e-H0bGghPxyYxQmfJSKA3ZeHwkNFiQLdfL_QyG8TR8MAtVeI4FWbVATD6ECcTN47C5Hmi-4S5jLWiokUzWy4by6dgm9KNghrrNsmjRHXKFMTMRA08aWAFpGqZHlb2Re7j-43nyKIC2DuFcvs_vPIE8umWrnEwUEw3=w2048-h2048-k-no",
                 "source_url_sha256": "5fdea4421eab93dd4395bafe3503bfaa3a22848b128319be94bbc79cdced9e58",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -6872,7 +6832,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:09.100763+00:00"
+                "failed_at": "2026-05-03T01:20:25.995200+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6882,13 +6842,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhE9Vsge7vQ3JWbARlKYQa2UvegOtaYkszjaauHPda0t0roo4laFlKVENG-VqoiDDXpuBpyoUIIJsuYqSV59oaQgMvMMaq1T18w-50TsU1A2uZ_qvBwATi8pKTdturiYiLvbNuNFc4Hsng-30Wd2Eceaat39zC7SxoxclFElHyQwpbkgA_E-286U=w2048-h2048-k-no",
                 "source_url_sha256": "2d6dbbfd5aeb4816b25a7bdd0d8803977b0a97d6df9e99540ac860865323396c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -6955,7 +6911,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:09.669657+00:00"
+                "failed_at": "2026-05-03T01:20:26.432159+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -6965,13 +6921,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEvLdE7l_XhFs7FEfx-LQIgaDekfMpH197-K6IVGLvoViC6UzpaX-2ZNI-dSJXRwmnPOvBbqLanEEeL5w1gcTJVWViqveAcawCI0D1DkWx8h2Fhw-0Ui4uqFH6SvrIRbD0lZZtUC9rg37CSlC1bgU_CmfTLgWW3GkebuT0JM2stWgU17OOOWDU-0Q=w2048-h2048-k-no",
                 "source_url_sha256": "840ac296d33d34cc2419aecd15e188a87f6a7de010c51ce2e4b8b20863e450a7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -7038,7 +6990,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:10.259155+00:00"
+                "failed_at": "2026-05-03T01:20:26.863523+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7048,13 +7000,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHK080Zb6ETtbIloKswo-DxZZY5EyjCh5-gFZMc_Y6jni6aBgWAYir7RjhCWVB8Erp4DrPiYJV1y4uTPR2Zo7EC77lXLBGDNXmhDc7DzsXQULnjJhUDB9NhtOwaQIkDjCJSVqtAHJqkER-Qvs0dhBET_5EsAZJlK3QgOw0pObc_PuGPxIvm_UmHRA=w2048-h2048-k-no",
                 "source_url_sha256": "0e115e6621ba9595da603ad4d7de2e17ebf7aa15cdd9be157a6bef714d1980ef",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -7121,7 +7069,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:10.795425+00:00"
+                "failed_at": "2026-05-03T01:20:27.385065+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7131,13 +7079,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHjCN_eFc3KA8NKcTxLlEayvV7mj1Ic_LuhFKiPo5ZtxQbYmQ3oX5oPO-TNWCRcBvWnlcezM3tcCX0oHh4YLv8zo4R9dlcizCue05Bonm49omWbEO3Wp-LCJXF9D8YNyJf8f_UqZ6SuaWK1wmW6gjasvwCdkViLQvUKfuuwU8W02tY-kPKpbSWl=w2048-h2048-k-no",
                 "source_url_sha256": "5af3934d07c7bbd590a01e61dc986c01b6d731650b62d4be979e8e019fc55e02",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -7204,7 +7148,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:11.379586+00:00"
+                "failed_at": "2026-05-03T01:20:27.896122+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7214,13 +7158,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFIPGqz-xbJt525pqlKDH6Y5-dSs3XzY3tS6IMPVyuLNOVw5knpKlluWq-i-T9b7YC4YpxaDju13DXLi5zdZP19DE0JtW3Q4thDMlcSE-Jj10m7hzGMT8Z0uyDx_NuQ7mJqEAZOCqgNz9Z71Usw02OzKgW1gzdR_hh_PWN47uKAhm9xC0HGBnIH=w2048-h2048-k-no",
                 "source_url_sha256": "db984965a033e89853f72e904937957178c14eba824789648c6463f65e122b2d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -7287,7 +7227,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:12.076286+00:00"
+                "failed_at": "2026-05-03T01:20:28.423793+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7297,13 +7237,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhG-UbKmRiWddWOwyIp3F_NefHQywLtHG0EdNmU_Q1WUQPu7788IuQKKD26MUcNyxchRRbPFEZqoSTX_8EjkU9NqqZo8GOJ75V4YTuHFaQnAlUUrTUhgKLomow3yjiRtKNkGAsbV8nlRdvqtoX46NGOqan43UTU0c78dUATYKiKWtTXf_Gki8f49=w2048-h2048-k-no",
                 "source_url_sha256": "f839974bd106f6e7f25fdceb6475cccb64e76998c78bb66b61881bc2e413c48c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -7370,7 +7306,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:12.842167+00:00"
+                "failed_at": "2026-05-03T01:20:28.907302+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7380,13 +7316,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFpJhBOSA0HImpUn02okS25I19j6LexjdTctDtv6y2pFJJT25pzHD3G3nzJ4SjvRNBHmS8ywFNK1Nbt62yflvFFvY9hJNVBTKBzY5KKBji5JhebFeuoMLSP-Ebb6Pp3dxq4aurDPHksolbmUOww9kGH9vvSl6KcM-hsr1GpxB106P-XteJ0jbgZ=w2048-h2048-k-no",
                 "source_url_sha256": "f708d53dcc24aa3c52c1dd1b7778dd1b15519850816587fb15cb34992b2256d9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -7453,7 +7385,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:13.481989+00:00"
+                "failed_at": "2026-05-03T01:20:29.415778+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7463,13 +7395,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEHvhdgpj2CWyOxfkkGHj5RF95qr9Co8YCU5Q93BY2lNH-juH9honS8RZu6oIGPI2FK9-27H-Cfb_ie5PNmph-V8MI8jG8N_ScOUjDTAcGe72SGRtWuqIR0Dke0-DRfHB69XgtSEogoF9XS7IJQvjJgkuTQer4lMdmdUde1DpINuc5-jeycSyjE=w2048-h2048-k-no",
                 "source_url_sha256": "7976ccf7c93184dd2a8924ac4cd1241473da0cf2643b5523467dfb01ec79e61f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -7536,7 +7464,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:14.145589+00:00"
+                "failed_at": "2026-05-03T01:20:29.799356+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7546,13 +7474,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHMJZ-P-UBt50YkcsPCStH6MsFEmYBcB6sLo_VjA-L6rEbVjkD9C5zgDooEi6x_J_zmv3mmd8tmBNrhA83byUcDcvtrYeHV4zDOMDNzWodZEDace7pSPd83jZGGqLmlLAMCOFEiXGxRWJBSdUKbFW3TAmjs01rt6IpYNEtmoKhyHEc7no6Eyoa5=w2048-h2048-k-no",
                 "source_url_sha256": "38625c849309c02411a883eae547c02deb285ff4504fe7fcf358e79d96626cd0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -7619,7 +7543,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:14.746616+00:00"
+                "failed_at": "2026-05-03T01:20:30.159849+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7629,13 +7553,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEBRr0A6vOnfzJQjG_9gqBPoXGDpePxc20GP7Gnz_ciHfoP3bMVvHvl4_i4sVUFVIHXQb0LGALNi9WKjfn75WxChCUvrMpxho6LB-BHdUao6pzKYnNYVDOgASxLKtxs4IGEB3WQl1iJ6QL2ILqgGj2UGYkiIPJl5xSgmWEPF9QfKEP8ZAcXgZQGFA=w2048-h2048-k-no",
                 "source_url_sha256": "9090ed15907013e85e29b3970df8816d1548514a530c2eeb9837d446a0ed12de",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -7702,7 +7622,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:15.436508+00:00"
+                "failed_at": "2026-05-03T01:20:30.488554+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7712,13 +7632,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFPwCoVT-ySr6bdoaFqfIbf3XZTQgLgjon3zWB_0YBa8dMsM_qxcVbCJsE2Apdq4wbjoY2lDJv-7kTLcb9Q9pMc8Ve4nIsixZpc9AlTH7Ym85_OfZd3OuCJZm7DX0_8lQzKqwMhzEe2aHwLqvAmHE5OM50O2FOjt1ebn44BEmtuvzE77ndsnOR8=w2048-h2048-k-no",
                 "source_url_sha256": "bd6e700c155fefdbfb7b25aab54b8b6c67a07d3c70c2f0efd888b1fcdca6eaf6",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -7785,7 +7701,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:16.103226+00:00"
+                "failed_at": "2026-05-03T01:20:30.799297+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7795,13 +7711,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHrdYmXfrVVYuJOy4vAGBjfrUAXDVYMkL_qX5CrZeCzqCEsih85MoQTVa3IlACbxqIF0GRDTkX5pFlQKMDi6fW14i9YwmTjPV12uFAopscamDn2tDG4k9Q2J-UFisSW_MgYMegX4q_ZeYj63rYvtht-UJ-RtdP-uFlOZEVTPdKYf2QUBRLStJNyHQ=w2048-h2048-k-no",
                 "source_url_sha256": "e2772abda3bb5b781aeda74dd8eb1c36a21232269cbb6200df78e84809c9799d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -7868,7 +7780,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:16.976308+00:00"
+                "failed_at": "2026-05-03T01:20:31.122955+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7878,13 +7790,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhE_mpSCjcKmgPgkBGiX4udUphgL1HFvi5EmcvY8CKTsfQl7rGgwRe7YJSecSehuHOsY2b9nJbGte80GBvmrE8zBryeJa1iwHfmWO45ODzqgPKJGpbWYEQgxvuWcjFj8y6uEBGomS8oOzjN34CZazZBweVUkTc8PEpkBvU3BL85xfiKcSvJsPObtpA=w2048-h2048-k-no",
                 "source_url_sha256": "209cf9385c0dd850fcdb6dd346655a45fd12088d3732379a39940703728224e0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -7951,7 +7859,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:17.937780+00:00"
+                "failed_at": "2026-05-03T01:20:31.444965+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -7961,13 +7869,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq_Z7uSz1lSN-kChdbAmvnoGL4U-gSYH3v12KuQtxgdMtkK8tgXeZQVAUkBZSkgmLVfsktEjN8DHhlGa2OMdHrQEt3tH0TpBs_0bHn4XnFKQLkYdjCzI8i0cuL2fwtV817M8slH=w2048-h2048-k-no",
                 "source_url_sha256": "98390b7af9033332ca9a22ff433775b8bdeb00aa12028e053e231f42b98f67fc",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -8034,7 +7938,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:18.637025+00:00"
+                "failed_at": "2026-05-03T01:20:31.770108+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8044,13 +7948,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqTVco4uynoYSfQUp13oH2CeGJU9iioKMNLRz_2JuKLrR5oIUpyqWYEB1ivJfSPfvJMAJ4Rfjamihsddto0x470wGwhkh54GoBzpzNCXpzWDqUodU2rB55m8OSxax-SQA622N4=w2048-h2048-k-no",
                 "source_url_sha256": "49a313ba7ce2a4efcbff892c907044f8468e7929198516e7be3867fa8027aff0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -8117,7 +8017,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:19.287163+00:00"
+                "failed_at": "2026-05-03T01:20:32.105771+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8127,13 +8027,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqinmJ-CLXZIvNXNytn9RqUzGDbvswhZDCAk-uzNlHuUnGbYG1Z_yXoP5GVGXWfc3y1r3e9CjjsUt4cq8dKy6vcBKX101uRZC60P9ej2NyIWSw7g-cWd_8TSsouePXMLl0xXcAY=w2048-h2048-k-no",
                 "source_url_sha256": "6832402c9f1f64c96cdb5218c724d668ec75e0f3f309945a6ed4cb15d199029a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -8200,7 +8096,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:20.679139+00:00"
+                "failed_at": "2026-05-03T01:20:32.395259+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8210,13 +8106,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqpQS8mmpxRmVWOUD8tqo0fDTwrkirsS98zK4jCQ2OGnGklsdbXEPCkp441yj0X7K45KFwT4sycrdlwyCY4UaPKY87N3rY9DmSVLXu--n3FECLJN3sGE1gVKEyPOwxQzBcr7NI=w2048-h2048-k-no",
                 "source_url_sha256": "a266dcab3bba48d8786923ecc9015dca716996ee5daa0b6a5cf66ee6046cc283",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -8283,7 +8175,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:21.742158+00:00"
+                "failed_at": "2026-05-03T01:20:32.685883+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8293,13 +8185,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrpo30F6QNeApIzDJtxHy34SofAPgwR6d9xiM7dAzc1uzUxKOAHetg5dQ2SlCL97tnY9UKtuknr55ajwzW2PhbUHUndXNZwtzyXFegtScEHfFJJMpbHtOpAC4TtL6z29vgRE2fY=w2048-h2048-k-no",
                 "source_url_sha256": "65e362da73e62349a7fed3438814e8fb7c2ea222b1d1e2dfda354122c99b0d95",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -8366,7 +8254,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:22.506287+00:00"
+                "failed_at": "2026-05-03T01:20:32.976041+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8445,7 +8333,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:23.134285+00:00"
+                "failed_at": "2026-05-03T01:20:33.258307+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8524,7 +8412,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:23.742248+00:00"
+                "failed_at": "2026-05-03T01:20:33.544701+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8603,7 +8491,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:24.366444+00:00"
+                "failed_at": "2026-05-03T01:20:33.855308+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8682,7 +8570,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:25.042076+00:00"
+                "failed_at": "2026-05-03T01:20:34.170045+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8761,7 +8649,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:25.739280+00:00"
+                "failed_at": "2026-05-03T01:20:39.654430+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8840,7 +8728,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:26.411817+00:00"
+                "failed_at": "2026-05-03T01:20:40.090875+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8919,7 +8807,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:26.962893+00:00"
+                "failed_at": "2026-05-03T01:20:40.499034+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -8998,7 +8886,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:27.534182+00:00"
+                "failed_at": "2026-05-03T01:20:40.909288+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9077,7 +8965,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:28.113465+00:00"
+                "failed_at": "2026-05-03T01:20:41.305059+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9156,7 +9044,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:28.737278+00:00"
+                "failed_at": "2026-05-03T01:20:41.724959+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9235,7 +9123,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:29.248514+00:00"
+                "failed_at": "2026-05-03T01:20:42.153346+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9314,7 +9202,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:29.901134+00:00"
+                "failed_at": "2026-05-03T01:20:42.605414+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9393,7 +9281,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:30.683298+00:00"
+                "failed_at": "2026-05-03T01:20:43.329139+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9472,7 +9360,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:31.313325+00:00"
+                "failed_at": "2026-05-03T01:20:43.757785+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9551,7 +9439,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:31.933561+00:00"
+                "failed_at": "2026-05-03T01:20:44.141123+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9630,7 +9518,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:32.491530+00:00"
+                "failed_at": "2026-05-03T01:20:44.523320+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9709,7 +9597,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:33.038089+00:00"
+                "failed_at": "2026-05-03T01:20:44.946158+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9788,7 +9676,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:33.604545+00:00"
+                "failed_at": "2026-05-03T01:20:45.380240+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9867,7 +9755,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:34.193181+00:00"
+                "failed_at": "2026-05-03T01:20:45.819346+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -9946,7 +9834,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:34.783445+00:00"
+                "failed_at": "2026-05-03T01:20:46.269013+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10025,7 +9913,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:35.449590+00:00"
+                "failed_at": "2026-05-03T01:20:46.694016+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10104,7 +9992,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:36.021214+00:00"
+                "failed_at": "2026-05-03T01:20:47.044946+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10183,7 +10071,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:36.639407+00:00"
+                "failed_at": "2026-05-03T01:20:47.386794+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10262,7 +10150,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:37.310616+00:00"
+                "failed_at": "2026-05-03T01:20:47.736335+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10341,7 +10229,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:37.853096+00:00"
+                "failed_at": "2026-05-03T01:20:53.129594+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10420,7 +10308,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:38.401496+00:00"
+                "failed_at": "2026-05-03T01:20:53.522840+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10499,7 +10387,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:38.947714+00:00"
+                "failed_at": "2026-05-03T01:20:58.929813+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10578,7 +10466,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:39.480132+00:00"
+                "failed_at": "2026-05-03T01:21:04.391371+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10657,7 +10545,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:39.925465+00:00"
+                "failed_at": "2026-05-03T01:21:05.005380+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10736,7 +10624,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:40.343470+00:00"
+                "failed_at": "2026-05-03T01:21:05.441344+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10815,7 +10703,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:40.733430+00:00"
+                "failed_at": "2026-05-03T01:21:05.849304+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10894,7 +10782,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:41.112839+00:00"
+                "failed_at": "2026-05-03T01:21:11.478415+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -10973,7 +10861,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:41.502886+00:00"
+                "failed_at": "2026-05-03T01:21:12.041165+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -11052,7 +10940,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:41.886392+00:00"
+                "failed_at": "2026-05-03T01:21:12.600038+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -11131,7 +11019,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:42.226222+00:00"
+                "failed_at": "2026-05-03T01:21:13.036190+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -11210,7 +11098,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:42.540754+00:00"
+                "failed_at": "2026-05-03T01:21:13.421440+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -11289,7 +11177,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:42.961477+00:00"
+                "failed_at": "2026-05-03T01:21:18.802473+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -11368,7 +11256,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:43.303759+00:00"
+                "failed_at": "2026-05-03T01:21:19.193325+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -11447,7 +11335,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:43.653569+00:00"
+                "failed_at": "2026-05-03T01:21:19.574316+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -11526,7 +11414,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:43.959861+00:00"
+                "failed_at": "2026-05-03T01:21:19.936614+00:00"
             },
             {
                 "place_name": "Coffee Bar & Cones Inc.",
@@ -11605,27 +11493,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:44.252862+00:00"
+                "failed_at": "2026-05-03T01:21:25.305648+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 72,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 73,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 42,
             "place_name": "Coffee Bar & Cones Inc.",
             "place_id": "ChIJsamP5xUbVIgRvGe5eC6WIvk",
             "record_id": "recn11Gl8LpMUbBqs",
-            "generated_at": "2026-05-02T22:08:44.497250+00:00",
+            "generated_at": "2026-05-03T01:21:25.306045+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 70,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
