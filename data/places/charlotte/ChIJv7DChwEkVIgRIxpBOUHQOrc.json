@@ -17606,10 +17606,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -17626,6 +17622,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -17664,10 +17668,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -17684,6 +17684,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[16].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[16].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -17722,10 +17730,6 @@
                 "source_path": "fields.Photos[2]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
                     }
@@ -17742,6 +17746,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[17].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[17].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -17780,10 +17792,6 @@
                 "source_path": "fields.Photos[3]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
                     }
@@ -17800,6 +17808,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[62].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[62].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -17836,13 +17852,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noWW9OHEpuDYDCYqDjFrp9A_o75f2iCfgHBngOx4XZLwfV4u8RS8FUhTtkasXZc-7jzsbAWSJpbRh3aWkBzu_rV-7HvmtUFphn4gqfuYIvKrtkIVtWBun_NLV57d526nnlu3Eq1yKI-Tnz-=w2048-h2048-k-no",
                 "source_url_sha256": "56d428ec53943fe76a5574369d404a3c9bfe32dfe434c2cd4ff9f0a734ae1ed1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -17909,7 +17921,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:09.284781+00:00"
+                "failed_at": "2026-05-03T02:52:40.277858+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -17919,13 +17931,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqR0wa1DsrwiVz_VwwaRIOj0zjqDElMiWDR-v85y92LPmc1b7lOQu4FT37bQC-ctXV_zC-2Um0aq-CFgJzne64yz2CaDzrp9_NJx7SVjZj6Ad1w-X9ZlVydWIlh9OnTKzyXAsd9f6JCsF8=w2048-h2048-k-no",
                 "source_url_sha256": "17d4fe7d63a3ebd4123c96eea02821d89acb17bc59399b5f4d94c7316ccf4919",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -17992,7 +18000,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:09.775681+00:00"
+                "failed_at": "2026-05-03T02:52:40.804497+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18002,13 +18010,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq1zwUoW6nAvPptyRdx4ooY4lTDExKNjcEVNgJUb28NohAZmRUzH-u4d4DcfgLSi4tbtFZcl-o5Q_jvt7HVkvKusMsPqx2xLaZmVONHmAw3Jm-rfbwc2EcI1q33d2TqfrDzZczN=w2048-h2048-k-no",
                 "source_url_sha256": "db0d79bd5894e75f273db6f13384bbd7c5a53392e171a96f8e436e84f3335d33",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -18075,7 +18079,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:10.288896+00:00"
+                "failed_at": "2026-05-03T02:52:41.348608+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18085,13 +18089,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqNCb0_00H1z5QIRnvEqtCd6mt5FdGnJksvn6GJG4_9FBSJx3uZmulC1H0vvv4rjrDU55HHcArOp53yAwgGdw60ovUe33YZ3L9YC_I2zV6uIdMGj1RYa2bXCdEbapwT2lcu7D5u=w2048-h2048-k-no",
                 "source_url_sha256": "b102659ff20051e419b462060d965e1116f0a3bdeef70995843352d68326ab59",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -18158,7 +18158,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:10.776532+00:00"
+                "failed_at": "2026-05-03T02:52:41.854394+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18168,13 +18168,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqRzL4IbDvSLMgjqvomkbeERqah6fItAyHBajkFQWR1xbA4oUnVzHcZP7AqSYrq-ED11kVTXPWQEatgAO1dJcLMQONxKM7L84JkKvUd8EK3z0tBfeyW0WSL7XIqmzoRipN0_zWkRJz8WkKH=w2048-h2048-k-no",
                 "source_url_sha256": "0291c8d091ed22cdedbdfd886a2d26b767ae3246da07984dedbb54582f2fa403",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -18241,7 +18237,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:11.238680+00:00"
+                "failed_at": "2026-05-03T02:52:42.377055+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18251,13 +18247,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrCsZF4lb2U2pWUUL2DaVs_5P0_wIfxwYvMocKxDUlK_ylTkZr-q_iABMBPirJI_nkpEQEfDCIR7_yIeBR_UwPTbaUd1pujIT6Z3hgBAuSlkk7Pd7MwLhSEE4rdZxZxXVxoRx1TVsiCxCvw=w2048-h2048-k-no",
                 "source_url_sha256": "c4adcfcddb8eb44cf1d03ed8d3e71291f6cdf306bb8d6635973f9f76a7803735",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -18324,7 +18316,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:11.663893+00:00"
+                "failed_at": "2026-05-03T02:52:42.749356+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18334,13 +18326,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np4Z6vvQgJDSocwn77cHQMvVOUJJl_27wPfUlyq33jRu--tOdiBSGSOVBwkqqBGFepEtrOmnAxpcLvCgMmGBSE-cJ97ADY-s8pVWSySuYyMJGcb8_v0sgxKFOJkrMqINplyK39Qow=w2048-h2048-k-no",
                 "source_url_sha256": "ab0ae7af262f1deb04689e89e3c8441d815ce4907607f4d1fe2801cddca714ba",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -18407,7 +18395,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:12.082073+00:00"
+                "failed_at": "2026-05-03T02:52:43.135720+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18417,13 +18405,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrwKPoRPZTca1F5zXSQAB9wE7oS8WPoZPO4gd4dzRlbqs9seVf12wyyKCG-k_D8uQ6lsKlyPVbfuyhJSl8UVriv_2iT-RxikybblEzpU-TFyeEc3wb6p_TkcawagoPsS0hKE-lh=w2048-h2048-k-no",
                 "source_url_sha256": "153a387135788e5ace89bf39e2cdcd433f61a86fe1d91fee3a1bfe358001d9da",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -18490,7 +18474,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:12.525203+00:00"
+                "failed_at": "2026-05-03T02:52:43.523871+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18500,13 +18484,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqwZgsRWITit_QcYFgGa8NQhnQUPd9aqHuhkpB7EKiR0_O6riBdklFBw9BbedFhVBmGP96nA7QNqvDFi4PQeeM4Cxt13k4dghc2ilg-6tgUtxvxEOlxVziSPgiTU1NNzDV-hVLBKg=w2048-h2048-k-no",
                 "source_url_sha256": "67e718c31843db6843ea54696537da70ca490257f86c44098a749b999f311095",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -18573,7 +18553,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:13.012245+00:00"
+                "failed_at": "2026-05-03T02:52:43.939711+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18583,13 +18563,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npGSeY4wFTpXQ5w-PLZT8XL0zzkoIZJZmbBES9cDQFLUk1y145aR2_Me-_C6LEKfC8rOj00MQpo_KHdbb_iXT09SxDrtzlZkT_imD751fX137EidbaqjZpLlLwKQ70nH0ffqCIX=w2048-h2048-k-no",
                 "source_url_sha256": "6e5dcdfe1ce781b8ee6f1a7d94851646c4435b7ff328471de898bc44b0f26748",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -18656,7 +18632,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:13.537734+00:00"
+                "failed_at": "2026-05-03T02:52:44.362016+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18666,13 +18642,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noig1iVvPLTR2Ka6MlSM1xfiQOenU_5uwZvGJA1x1l59Cj1IyntpFTb5YJFpC6wGbjzlh73B8nGHKk56QPwCXi8CiwJs4EOM8RNUE_RK8RdkmU68EvpFq2jqy-FB-OsjTb0waQ=w2048-h2048-k-no",
                 "source_url_sha256": "fbfa6f4fbdb071548cbeac2492a499ce98e26422f08fee6f4cf8580a6f81cf7b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -18739,7 +18711,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:14.180635+00:00"
+                "failed_at": "2026-05-03T02:52:44.788273+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18749,13 +18721,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHaLT_IyhVHCEtSXuw3EEYXZNr-N4S2u4H45k2a5A7yz-JQ_sRwnm3vTwbbKIzg0qRnEHQ0IdRXDrio9AaMIPeKvFD8X7Y7Ze4eccD5tKXi5rq3-begr9680CFcoPoxdubgmOK=w2048-h2048-k-no",
                 "source_url_sha256": "a9d5abc48ac3d95d44ace0bd552dfca189515bb07765df2a436b0bea9e7fe83b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -18822,7 +18790,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:14.714459+00:00"
+                "failed_at": "2026-05-03T02:52:45.299687+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18832,13 +18800,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrYKjVZMm38W--K6vpl412dDollH3iCMiF7pV3l72qcKmwHwqOniSL03gucYReniJzTA-OCfuwKazPA6l-3HDkGmSKqI5vqsIwpjt6z49UEjmxHh1qb4wIsbKlaHBzsuDak4CuRZw=w2048-h2048-k-no",
                 "source_url_sha256": "6384fde5ac64b263ad07b3158a77928d05941a4697636253fe1c54d93bea4583",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -18905,7 +18869,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:15.487295+00:00"
+                "failed_at": "2026-05-03T02:52:45.764045+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18915,13 +18879,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npSj9-gkM91bL0pQSE8mH00t9LvRv2og4KJ8jH1HqdyzF7cg9VJeFOAcY8pCn47INkVtBO7R2Kht0nmhNDHhHnwyvCITUKAErbdyab0j3vZieXT84ytXrxXmglAZyZMC-pIT2tF=w2048-h2048-k-no",
                 "source_url_sha256": "6ba8cfa137c9ff1a95ecc244d98329bed0637ec262a0f322e474fbc2b8deceeb",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -18988,7 +18948,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:16.108298+00:00"
+                "failed_at": "2026-05-03T02:52:46.348404+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -18998,13 +18958,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npEYB9yj7swqWiKUXZQZ5dI_1wSTKoZIBTKQJ9AiZu45zoKqGi6pYofC_sG0VP7bxyrg30XrZhZ7nx11Ls5uFHhQc7JnGK8VJxy4yvQQJCTY6ZrdDRoBMW1Ov4aMJ0nR4r_M_PDbA=w2048-h2048-k-no",
                 "source_url_sha256": "1da66f0f7b5a05c2f9b5800e4c2923700244d599b137bf57775085eee7beb2a7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -19071,7 +19027,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:16.634252+00:00"
+                "failed_at": "2026-05-03T02:52:46.835713+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19081,13 +19037,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nosLjQ6vB8NND_fB1P_mQrnZJaN66XWcbK4JK8KQ0rl74-cr6Xd74P2DLG0C5RQk8u8y2L2yQd-bB8Uwehmm-Mauk314X6xXKA69KG3m3wtL4ok0ZgTgoISjzV9yoX1LghQq1bE=w2048-h2048-k-no",
                 "source_url_sha256": "fb643f72d1bf1415f64635be8793cc561e49034311a25f2c00a72af394a52f81",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -19154,7 +19106,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:17.169386+00:00"
+                "failed_at": "2026-05-03T02:52:47.334274+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19164,13 +19116,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npXLqwTKYx1uwTyuIvTRlVRPeykfLVYyhtxO7BW1RhmtLoRnfNctBqJKd05EQUjy0_Ppl51_g_kgMJDNfWz1o5w5ZUJIOIvH81LguhvCxBycznoNWn-XPga2rPNB5tvQQzc0DUy=w2048-h2048-k-no",
                 "source_url_sha256": "703423ddec0f431f6fa97bb1f963cbee8ebfa091852bdbae54f901d6145a60c7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -19237,7 +19185,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:17.714314+00:00"
+                "failed_at": "2026-05-03T02:52:47.944742+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19247,13 +19195,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrxKw1YjpyuOohDcZWzfKiQWw8Oe2eplTdCdQnuZ6QQDezL3Ljx3VZ09kGXcHfx3ui6a60BNzO373GnRgs2tThU766Cm659rtprhh3YVmMlBvtO9Mbkr3e2zSBkRV7KNTVVzqU=w2048-h2048-k-no",
                 "source_url_sha256": "fce48de081127734f5954030932696648bd88e6eb91db137ca968ae839dcd10b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -19320,7 +19264,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:18.255953+00:00"
+                "failed_at": "2026-05-03T02:52:48.622502+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19330,13 +19274,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nprzfa6g-l4TEBK8jyOEeti3qGr2mVtrjasZhleITOkATKHwXn6-Quag5Sbo-Mh8XSe62bnprUH6H-6RF3sX1Z16VhVSFQUGFac-APjjV3THKNKFHTYeZ2wTsIltRG3BTB7jIFCxA=w2048-h2048-k-no",
                 "source_url_sha256": "d4f7350c27881138c99157f1ecd1a39829d7de2d6977659565098959fa3ff69f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -19403,7 +19343,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:18.765315+00:00"
+                "failed_at": "2026-05-03T02:52:49.771587+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19413,13 +19353,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqKgewYuGbG7yVLyRfrVT_cegKd43isl9PfbuC5HFQTYqkyvM0uFbABNDp8O1mc_beAdmz0PbjfGTZwr0u2KNmwUkGBG091kEFDNjQ4Vek40UgBtTDWK1y7D5psh_tt6GYnf6q97Q=w2048-h2048-k-no",
                 "source_url_sha256": "cb1d5d55ed92b23aa8bd448b641498d79bcd7df7edc6038cf740e33ac4d63876",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -19486,7 +19422,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:19.339098+00:00"
+                "failed_at": "2026-05-03T02:52:50.522004+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19496,13 +19432,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no_u-jfKSfKGWxxGzBmG-jfva_xYtpiHrvf9gHllp7FUzzgHoqPhHJrLGJYjMjSMBLyolS3V_M7kEpwN_9EpHAnwvent3euUKGdoZmWVSoNvgbq1VZ-dRDfpDkyTSHlAr8oCi8=w2048-h2048-k-no",
                 "source_url_sha256": "c0a73cd80f7f83e5bf11a19041cc0d88ac6eed1c07ff150902a7504873749340",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -19569,7 +19501,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:19.912289+00:00"
+                "failed_at": "2026-05-03T02:52:51.025855+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19579,13 +19511,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npOwVVxTa3I-m0dDxvl9_OuEoew2G8cSeo-y21ghEo2vuU8SFDeoyEIZa6oHS7j8aCSki2Id3uyp2z0qxtyPPCkdvFc_wYMyCJy4zKYoLoaBSv730_SF63AsRMS_qkOF0g6O2T9Kw=w2048-h2048-k-no",
                 "source_url_sha256": "74e3ae543614b6a235f9febc8d217a07f382e37e3d0937d78de07fcb39fdb4ec",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -19652,7 +19580,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:20.444963+00:00"
+                "failed_at": "2026-05-03T02:52:51.688341+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19662,13 +19590,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noNUOuZDFJHCD8kFNlqzGFw5Gk2Bcs3MkjzEvNbBnEHG1YCrCGCEKI3eNajPj6a6oUnKU4vjNRhEjsio1aHi8T2l4HfGww1FnJXYTNgM3mGfAIUR3bMOLDJ2fz4UwmO8iclheo=w2048-h2048-k-no",
                 "source_url_sha256": "56745618b03e344f8c04bc99a2538a52f1fe6b427d2cb1f818c8138d486e1886",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -19735,7 +19659,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:20.961945+00:00"
+                "failed_at": "2026-05-03T02:52:52.227850+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19745,13 +19669,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npqgGOQDK1HrcY3abK__HQcREYJOuu_cpk_-oGkjVUoqgPbRCngjuxko4wP4-FAyIcHqzCtTTBBZurLfnChFkZAoZ1kOAp2PXm1SOPgQMeDkI7Qz1Z_qe0gONq2FSuQmeWaV2eZhevdoo8z=w2048-h2048-k-no",
                 "source_url_sha256": "ab814ab91ce62fa0b4dd36f4b54b92c9262a8af19802620bba9a6a7ccab5ca2d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -19818,7 +19738,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:21.466512+00:00"
+                "failed_at": "2026-05-03T02:52:52.712685+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19828,13 +19748,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npd_2lNhuABHpZYj1gR1qpPOeVgROc-DWnyRek4WxUsv84oEQ6C-UF8KgdhScx6Byy3C7gCyOzZxcnxtYRImQFa1ZhSY4pjiiV4DIwIqvMDlOjGpwxi0H0BQxWSfkWojoBCtvlsDaQsTd4=w2048-h2048-k-no",
                 "source_url_sha256": "01aa61474853e9678aba1078f1c6ab08a1d1b2b8c369a79b9cc6592c58cdc00e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -19901,7 +19817,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:22.085233+00:00"
+                "failed_at": "2026-05-03T02:52:53.163429+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -19911,13 +19827,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npuQRzdl0-GDLgQwBuVr36Wqg0Rfm_S2nYTxqvtqvdhSrRjQneMOhBZRhdZijbcZMyEkx0WrmqENnUZItaUFxXMesFquwaN3DnO9dErMMTFJ2Dzvt-eprKrwAoPVAMfnXCtkaP4WELsRmL3=w2048-h2048-k-no",
                 "source_url_sha256": "9bf449845b39b4ef5425c8565c9a8a6ad5d3739322df4cdcb4cfee46863d265d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -19984,7 +19896,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:22.675917+00:00"
+                "failed_at": "2026-05-03T02:52:53.673979+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20063,7 +19975,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:23.245730+00:00"
+                "failed_at": "2026-05-03T02:52:54.242826+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20142,7 +20054,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:23.793515+00:00"
+                "failed_at": "2026-05-03T02:52:54.748028+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20221,7 +20133,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:24.343376+00:00"
+                "failed_at": "2026-05-03T02:52:55.307089+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20300,7 +20212,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:24.864773+00:00"
+                "failed_at": "2026-05-03T02:52:55.918481+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20379,7 +20291,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:25.367236+00:00"
+                "failed_at": "2026-05-03T02:52:56.426339+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20458,7 +20370,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:25.858941+00:00"
+                "failed_at": "2026-05-03T02:52:57.600809+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20537,7 +20449,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:26.392077+00:00"
+                "failed_at": "2026-05-03T02:52:58.253308+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20616,7 +20528,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:26.880831+00:00"
+                "failed_at": "2026-05-03T02:52:58.873817+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20695,7 +20607,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:27.354786+00:00"
+                "failed_at": "2026-05-03T02:52:59.478031+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20774,7 +20686,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:27.887443+00:00"
+                "failed_at": "2026-05-03T02:53:00.121357+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20853,7 +20765,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:28.407568+00:00"
+                "failed_at": "2026-05-03T02:53:00.786259+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -20932,7 +20844,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:28.913613+00:00"
+                "failed_at": "2026-05-03T02:53:06.583191+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21011,7 +20923,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:29.428800+00:00"
+                "failed_at": "2026-05-03T02:53:07.017760+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21090,7 +21002,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:29.922811+00:00"
+                "failed_at": "2026-05-03T02:53:07.484663+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21169,7 +21081,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:30.412876+00:00"
+                "failed_at": "2026-05-03T02:53:07.942288+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21248,7 +21160,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:30.892518+00:00"
+                "failed_at": "2026-05-03T02:53:08.399448+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21327,7 +21239,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:31.371756+00:00"
+                "failed_at": "2026-05-03T02:53:08.831529+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21406,7 +21318,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:31.877145+00:00"
+                "failed_at": "2026-05-03T02:53:09.374667+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21485,7 +21397,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:32.482293+00:00"
+                "failed_at": "2026-05-03T02:53:10.051377+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21564,7 +21476,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:33.077991+00:00"
+                "failed_at": "2026-05-03T02:53:10.775831+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21643,7 +21555,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:33.638175+00:00"
+                "failed_at": "2026-05-03T02:53:11.375140+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21722,7 +21634,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:34.145600+00:00"
+                "failed_at": "2026-05-03T02:53:11.901994+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21801,7 +21713,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:34.657094+00:00"
+                "failed_at": "2026-05-03T02:53:12.391106+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21880,7 +21792,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:35.089611+00:00"
+                "failed_at": "2026-05-03T02:53:12.917858+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -21959,7 +21871,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:35.475924+00:00"
+                "failed_at": "2026-05-03T02:53:13.374652+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22038,7 +21950,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:35.860119+00:00"
+                "failed_at": "2026-05-03T02:53:13.793298+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22117,7 +22029,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:36.247579+00:00"
+                "failed_at": "2026-05-03T02:53:19.328306+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22196,7 +22108,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:36.631939+00:00"
+                "failed_at": "2026-05-03T02:53:19.950839+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22275,7 +22187,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:36.989507+00:00"
+                "failed_at": "2026-05-03T02:53:20.478914+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22354,7 +22266,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:37.329612+00:00"
+                "failed_at": "2026-05-03T02:53:21.051085+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22433,7 +22345,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:42.660758+00:00"
+                "failed_at": "2026-05-03T02:53:21.701722+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22512,7 +22424,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:42.980562+00:00"
+                "failed_at": "2026-05-03T02:53:22.220496+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22591,7 +22503,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:43.315357+00:00"
+                "failed_at": "2026-05-03T02:53:22.724340+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22670,7 +22582,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:43.624332+00:00"
+                "failed_at": "2026-05-03T02:53:23.192148+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22749,7 +22661,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:43.958555+00:00"
+                "failed_at": "2026-05-03T02:53:23.675772+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22828,7 +22740,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:44.275800+00:00"
+                "failed_at": "2026-05-03T02:53:24.121242+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22907,7 +22819,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:44.606604+00:00"
+                "failed_at": "2026-05-03T02:53:24.619470+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -22986,7 +22898,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:44.927686+00:00"
+                "failed_at": "2026-05-03T02:53:30.197200+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23065,7 +22977,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:55.236314+00:00"
+                "failed_at": "2026-05-03T02:53:30.517187+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23144,7 +23056,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:55.587441+00:00"
+                "failed_at": "2026-05-03T02:53:30.846186+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23223,7 +23135,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:55.913119+00:00"
+                "failed_at": "2026-05-03T02:53:31.199883+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23302,7 +23214,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:56.209359+00:00"
+                "failed_at": "2026-05-03T02:53:31.500214+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23381,7 +23293,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:56.527531+00:00"
+                "failed_at": "2026-05-03T02:53:31.785283+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23460,7 +23372,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:56.844873+00:00"
+                "failed_at": "2026-05-03T02:53:32.107117+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23539,7 +23451,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:02.225192+00:00"
+                "failed_at": "2026-05-03T02:53:32.419015+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23618,7 +23530,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:07.763187+00:00"
+                "failed_at": "2026-05-03T02:53:32.762654+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23697,7 +23609,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:08.097398+00:00"
+                "failed_at": "2026-05-03T02:53:33.073145+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23776,7 +23688,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:08.425074+00:00"
+                "failed_at": "2026-05-03T02:53:33.383815+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23855,7 +23767,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:08.729740+00:00"
+                "failed_at": "2026-05-03T02:53:33.696162+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -23934,7 +23846,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:09.009515+00:00"
+                "failed_at": "2026-05-03T02:53:34.021086+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24013,7 +23925,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:09.330735+00:00"
+                "failed_at": "2026-05-03T02:53:34.366887+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24092,7 +24004,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:09.622878+00:00"
+                "failed_at": "2026-05-03T02:53:34.703972+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24171,7 +24083,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:14.913455+00:00"
+                "failed_at": "2026-05-03T02:53:35.062583+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24250,7 +24162,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:15.205067+00:00"
+                "failed_at": "2026-05-03T02:53:35.492585+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24329,7 +24241,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:15.483113+00:00"
+                "failed_at": "2026-05-03T02:53:35.910593+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24408,7 +24320,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:15.784962+00:00"
+                "failed_at": "2026-05-03T02:53:36.373565+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24487,7 +24399,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:16.252831+00:00"
+                "failed_at": "2026-05-03T02:53:41.822258+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24566,7 +24478,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:16.528487+00:00"
+                "failed_at": "2026-05-03T02:53:42.137786+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24645,7 +24557,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:16.801094+00:00"
+                "failed_at": "2026-05-03T02:53:42.494288+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24724,7 +24636,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:17.074482+00:00"
+                "failed_at": "2026-05-03T02:53:47.816016+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24803,7 +24715,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:17.380150+00:00"
+                "failed_at": "2026-05-03T02:53:53.131185+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24882,7 +24794,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:17.678472+00:00"
+                "failed_at": "2026-05-03T02:53:53.435102+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -24961,7 +24873,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:22.989984+00:00"
+                "failed_at": "2026-05-03T02:53:53.749848+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25040,7 +24952,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:23.294117+00:00"
+                "failed_at": "2026-05-03T02:53:54.067505+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25119,7 +25031,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:23.611201+00:00"
+                "failed_at": "2026-05-03T02:53:54.390433+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25198,7 +25110,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:28.890006+00:00"
+                "failed_at": "2026-05-03T02:53:54.785146+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25277,7 +25189,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:34.177014+00:00"
+                "failed_at": "2026-05-03T02:53:55.127561+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25356,7 +25268,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:34.452890+00:00"
+                "failed_at": "2026-05-03T02:53:55.540578+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25435,7 +25347,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:34.736734+00:00"
+                "failed_at": "2026-05-03T02:53:55.930586+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25514,7 +25426,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:35.015169+00:00"
+                "failed_at": "2026-05-03T02:53:56.353465+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25593,7 +25505,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:35.307712+00:00"
+                "failed_at": "2026-05-03T02:53:56.701404+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25672,7 +25584,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:35.606246+00:00"
+                "failed_at": "2026-05-03T02:53:57.051039+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25751,7 +25663,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:35.877907+00:00"
+                "failed_at": "2026-05-03T02:53:57.415541+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25830,7 +25742,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:36.165053+00:00"
+                "failed_at": "2026-05-03T02:53:57.793554+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25909,7 +25821,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:36.463885+00:00"
+                "failed_at": "2026-05-03T02:53:58.148083+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -25988,7 +25900,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:36.745381+00:00"
+                "failed_at": "2026-05-03T02:53:58.492517+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26067,7 +25979,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:37.022178+00:00"
+                "failed_at": "2026-05-03T02:53:58.809484+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26146,7 +26058,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:37.295327+00:00"
+                "failed_at": "2026-05-03T02:53:59.164945+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26225,7 +26137,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:37.627827+00:00"
+                "failed_at": "2026-05-03T02:53:59.577009+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26304,7 +26216,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:43.278554+00:00"
+                "failed_at": "2026-05-03T02:53:59.931375+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26383,7 +26295,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:43.802847+00:00"
+                "failed_at": "2026-05-03T02:54:00.280189+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26462,7 +26374,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:44.164977+00:00"
+                "failed_at": "2026-05-03T02:54:00.604752+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26541,7 +26453,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:44.636249+00:00"
+                "failed_at": "2026-05-03T02:54:00.943087+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26620,7 +26532,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:45.234211+00:00"
+                "failed_at": "2026-05-03T02:54:01.262676+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26699,7 +26611,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:45.611736+00:00"
+                "failed_at": "2026-05-03T02:54:01.625562+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26778,7 +26690,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:45.989244+00:00"
+                "failed_at": "2026-05-03T02:54:01.960695+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26857,7 +26769,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:46.348494+00:00"
+                "failed_at": "2026-05-03T02:54:02.294414+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -26936,7 +26848,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:46.668287+00:00"
+                "failed_at": "2026-05-03T02:54:02.651500+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -27015,7 +26927,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:47.002119+00:00"
+                "failed_at": "2026-05-03T02:54:02.985788+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -27094,7 +27006,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:47.315945+00:00"
+                "failed_at": "2026-05-03T02:54:03.305559+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -27173,7 +27085,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:47.626924+00:00"
+                "failed_at": "2026-05-03T02:54:03.640173+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -27252,7 +27164,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:47.979184+00:00"
+                "failed_at": "2026-05-03T02:54:03.967510+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -27331,7 +27243,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:48.337144+00:00"
+                "failed_at": "2026-05-03T02:54:04.278804+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -27410,7 +27322,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:48.723697+00:00"
+                "failed_at": "2026-05-03T02:54:04.606297+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -27489,7 +27401,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:49.086010+00:00"
+                "failed_at": "2026-05-03T02:54:04.956428+00:00"
             },
             {
                 "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
@@ -27568,27 +27480,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:49.502224+00:00"
+                "failed_at": "2026-05-03T02:54:05.285082+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 130,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 134,
+            "duplicate_count": 0,
+            "airtable_photos_count": 4,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 100,
             "place_name": "Carolina Beer Temple & the Ames Street Marketplace",
             "place_id": "ChIJv7DChwEkVIgRIxpBOUHQOrc",
             "record_id": "recOLkmPo76SIw1Dr",
-            "generated_at": "2026-05-02T22:19:49.502643+00:00",
+            "generated_at": "2026-05-03T02:54:05.285507+00:00",
             "azure_assets_count": 4,
             "failed_upload_count": 122,
             "pending_upload_count": 0,
             "selected_airtable_count": 4,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
