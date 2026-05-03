@@ -5421,6 +5421,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[48].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[48].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBxVPufifVogRRM9D2TD90fQ/4a3c9804870c7fbb608c9f7cbd14cfcadcd27f40446d9c408a3ca932d478c3c0.jpg",
@@ -5463,6 +5471,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[35].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -5592,7 +5608,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:03.036194+00:00"
+                "failed_at": "2026-05-03T06:01:10.787950+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -5671,7 +5687,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:03.416312+00:00"
+                "failed_at": "2026-05-03T06:01:11.152473+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -5750,7 +5766,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:08.770414+00:00"
+                "failed_at": "2026-05-03T06:01:11.512195+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -5829,7 +5845,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:09.142312+00:00"
+                "failed_at": "2026-05-03T06:01:11.873293+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -5908,7 +5924,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:09.507964+00:00"
+                "failed_at": "2026-05-03T06:01:12.251019+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -5987,7 +6003,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:09.864498+00:00"
+                "failed_at": "2026-05-03T06:01:12.603517+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6066,7 +6082,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:10.238225+00:00"
+                "failed_at": "2026-05-03T06:01:12.974946+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6145,7 +6161,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:10.598876+00:00"
+                "failed_at": "2026-05-03T06:01:13.343370+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6224,7 +6240,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:11.015140+00:00"
+                "failed_at": "2026-05-03T06:01:13.653969+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6303,7 +6319,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:11.383402+00:00"
+                "failed_at": "2026-05-03T06:01:19.015061+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6382,7 +6398,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:11.753457+00:00"
+                "failed_at": "2026-05-03T06:01:19.316937+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6461,7 +6477,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:12.170125+00:00"
+                "failed_at": "2026-05-03T06:01:19.677832+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6540,7 +6556,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:12.710294+00:00"
+                "failed_at": "2026-05-03T06:01:20.053027+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6619,7 +6635,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:18.073037+00:00"
+                "failed_at": "2026-05-03T06:01:20.424552+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6698,7 +6714,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:18.373290+00:00"
+                "failed_at": "2026-05-03T06:01:20.778497+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6777,7 +6793,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:18.690398+00:00"
+                "failed_at": "2026-05-03T06:01:21.185822+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6856,7 +6872,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:19.043314+00:00"
+                "failed_at": "2026-05-03T06:01:21.586875+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -6935,7 +6951,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:19.416841+00:00"
+                "failed_at": "2026-05-03T06:01:21.989865+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7014,7 +7030,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:19.771402+00:00"
+                "failed_at": "2026-05-03T06:01:22.350990+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7093,7 +7109,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:20.139179+00:00"
+                "failed_at": "2026-05-03T06:01:22.711758+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7172,7 +7188,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:20.480126+00:00"
+                "failed_at": "2026-05-03T06:01:23.079758+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7251,7 +7267,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:20.828058+00:00"
+                "failed_at": "2026-05-03T06:01:28.458767+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7330,7 +7346,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:21.206541+00:00"
+                "failed_at": "2026-05-03T06:01:28.779251+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7409,7 +7425,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:21.583836+00:00"
+                "failed_at": "2026-05-03T06:01:29.130611+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7488,7 +7504,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:21.897298+00:00"
+                "failed_at": "2026-05-03T06:01:29.435902+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7567,7 +7583,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:22.227258+00:00"
+                "failed_at": "2026-05-03T06:01:29.779391+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7646,7 +7662,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:22.556218+00:00"
+                "failed_at": "2026-05-03T06:01:30.112332+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7725,7 +7741,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:22.886224+00:00"
+                "failed_at": "2026-05-03T06:01:30.451409+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7804,7 +7820,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:23.291912+00:00"
+                "failed_at": "2026-05-03T06:01:30.752852+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7883,7 +7899,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:23.641158+00:00"
+                "failed_at": "2026-05-03T06:01:31.172153+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -7962,7 +7978,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:23.972047+00:00"
+                "failed_at": "2026-05-03T06:01:31.899313+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8041,7 +8057,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:24.300134+00:00"
+                "failed_at": "2026-05-03T06:01:32.272548+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8120,7 +8136,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:24.622741+00:00"
+                "failed_at": "2026-05-03T06:01:32.656746+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8199,7 +8215,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:24.978594+00:00"
+                "failed_at": "2026-05-03T06:01:33.036850+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8278,7 +8294,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:25.301694+00:00"
+                "failed_at": "2026-05-03T06:01:33.458968+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8357,7 +8373,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:25.652613+00:00"
+                "failed_at": "2026-05-03T06:01:33.983080+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8436,7 +8452,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:25.999598+00:00"
+                "failed_at": "2026-05-03T06:01:34.352175+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8515,7 +8531,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:26.338820+00:00"
+                "failed_at": "2026-05-03T06:01:34.710368+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8594,7 +8610,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:26.671297+00:00"
+                "failed_at": "2026-05-03T06:01:35.097059+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8673,7 +8689,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:27.057276+00:00"
+                "failed_at": "2026-05-03T06:01:35.460984+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8752,7 +8768,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:27.454777+00:00"
+                "failed_at": "2026-05-03T06:01:35.825238+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8831,7 +8847,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:27.845696+00:00"
+                "failed_at": "2026-05-03T06:01:36.229955+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8910,7 +8926,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:28.199510+00:00"
+                "failed_at": "2026-05-03T06:01:36.575460+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -8989,7 +9005,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:28.568456+00:00"
+                "failed_at": "2026-05-03T06:01:36.920662+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9068,7 +9084,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:28.897433+00:00"
+                "failed_at": "2026-05-03T06:01:37.296540+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9147,7 +9163,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:29.346765+00:00"
+                "failed_at": "2026-05-03T06:01:37.686962+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9226,7 +9242,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:29.690103+00:00"
+                "failed_at": "2026-05-03T06:01:38.067488+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9305,7 +9321,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:30.066623+00:00"
+                "failed_at": "2026-05-03T06:01:43.444698+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9384,7 +9400,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:30.420414+00:00"
+                "failed_at": "2026-05-03T06:01:43.793489+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9463,7 +9479,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:30.799444+00:00"
+                "failed_at": "2026-05-03T06:01:44.120387+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9542,7 +9558,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:31.177515+00:00"
+                "failed_at": "2026-05-03T06:01:44.428232+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9621,7 +9637,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:31.545572+00:00"
+                "failed_at": "2026-05-03T06:01:44.782864+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9700,7 +9716,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:31.937310+00:00"
+                "failed_at": "2026-05-03T06:01:45.140185+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9779,7 +9795,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:32.324283+00:00"
+                "failed_at": "2026-05-03T06:01:45.479358+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9858,7 +9874,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:32.693382+00:00"
+                "failed_at": "2026-05-03T06:01:45.806037+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -9937,7 +9953,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:33.060177+00:00"
+                "failed_at": "2026-05-03T06:01:46.118360+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10016,7 +10032,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:33.451184+00:00"
+                "failed_at": "2026-05-03T06:01:46.425012+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10095,7 +10111,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:33.818345+00:00"
+                "failed_at": "2026-05-03T06:01:46.778384+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10174,7 +10190,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:34.214614+00:00"
+                "failed_at": "2026-05-03T06:01:47.135943+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10253,7 +10269,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:34.575930+00:00"
+                "failed_at": "2026-05-03T06:01:47.490058+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10332,7 +10348,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:34.919527+00:00"
+                "failed_at": "2026-05-03T06:01:47.850744+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10411,7 +10427,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:35.284222+00:00"
+                "failed_at": "2026-05-03T06:01:48.173661+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10490,7 +10506,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:35.605177+00:00"
+                "failed_at": "2026-05-03T06:01:48.522482+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10569,7 +10585,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:35.954576+00:00"
+                "failed_at": "2026-05-03T06:01:48.883078+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10648,7 +10664,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:36.296801+00:00"
+                "failed_at": "2026-05-03T06:01:49.233685+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10727,7 +10743,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:36.609211+00:00"
+                "failed_at": "2026-05-03T06:01:49.572184+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10806,7 +10822,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:36.929918+00:00"
+                "failed_at": "2026-05-03T06:01:49.944217+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10885,7 +10901,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:37.286642+00:00"
+                "failed_at": "2026-05-03T06:01:50.330099+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -10964,7 +10980,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:37.634758+00:00"
+                "failed_at": "2026-05-03T06:01:50.718194+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11043,7 +11059,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:37.991717+00:00"
+                "failed_at": "2026-05-03T06:01:51.097363+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11122,7 +11138,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:38.384539+00:00"
+                "failed_at": "2026-05-03T06:01:51.485432+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11201,7 +11217,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:38.775891+00:00"
+                "failed_at": "2026-05-03T06:01:51.858487+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11280,7 +11296,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:39.145685+00:00"
+                "failed_at": "2026-05-03T06:01:52.204177+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11359,7 +11375,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:39.542070+00:00"
+                "failed_at": "2026-05-03T06:01:52.544212+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11438,7 +11454,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:39.872911+00:00"
+                "failed_at": "2026-05-03T06:01:52.913497+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11517,7 +11533,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:40.252266+00:00"
+                "failed_at": "2026-05-03T06:01:53.331663+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11596,7 +11612,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:40.638473+00:00"
+                "failed_at": "2026-05-03T06:01:53.700599+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11675,7 +11691,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:40.985429+00:00"
+                "failed_at": "2026-05-03T06:01:54.038347+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11754,7 +11770,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:41.559115+00:00"
+                "failed_at": "2026-05-03T06:01:54.427398+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11833,7 +11849,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:41.997169+00:00"
+                "failed_at": "2026-05-03T06:01:54.762397+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11912,7 +11928,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:42.411307+00:00"
+                "failed_at": "2026-05-03T06:01:55.128405+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -11991,7 +12007,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:42.807940+00:00"
+                "failed_at": "2026-05-03T06:01:55.485989+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -12070,7 +12086,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:43.178588+00:00"
+                "failed_at": "2026-05-03T06:01:55.851524+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -12149,7 +12165,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:43.561939+00:00"
+                "failed_at": "2026-05-03T06:01:56.214899+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -12228,7 +12244,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:43.928049+00:00"
+                "failed_at": "2026-05-03T06:01:56.566565+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -12307,7 +12323,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:44.321804+00:00"
+                "failed_at": "2026-05-03T06:02:01.929560+00:00"
             },
             {
                 "place_name": "Savi Provisions",
@@ -12386,7 +12402,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:31:44.829437+00:00"
+                "failed_at": "2026-05-03T06:02:02.320630+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -12400,7 +12416,7 @@
             "place_name": "Savi Provisions",
             "place_id": "ChIJBxVPufifVogRRM9D2TD90fQ",
             "record_id": "rec3qtVGwemCsG3ld",
-            "generated_at": "2026-05-03T03:31:44.829946+00:00",
+            "generated_at": "2026-05-03T06:02:02.321085+00:00",
             "azure_assets_count": 2,
             "failed_upload_count": 87,
             "pending_upload_count": 0,
