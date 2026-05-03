@@ -5549,6 +5549,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJhTWHCN0dVIgRvVjPstiLeKQ/a71b9e974b884bb50ea0e6d1a8873e9abccf525f9e7fdf74aba142e4350f7c24.jpg",
@@ -5591,6 +5599,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[32].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -5720,7 +5736,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:05.505129+00:00"
+                "failed_at": "2026-05-03T06:00:02.019843+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -5799,7 +5815,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:05.881748+00:00"
+                "failed_at": "2026-05-03T06:00:02.443059+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -5878,7 +5894,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:06.393341+00:00"
+                "failed_at": "2026-05-03T06:00:03.088881+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -5957,7 +5973,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:06.733928+00:00"
+                "failed_at": "2026-05-03T06:00:03.482823+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6036,7 +6052,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:07.120221+00:00"
+                "failed_at": "2026-05-03T06:00:03.831161+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6115,7 +6131,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:07.453489+00:00"
+                "failed_at": "2026-05-03T06:00:04.178203+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6194,7 +6210,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:07.778800+00:00"
+                "failed_at": "2026-05-03T06:00:04.557121+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6273,7 +6289,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:08.088313+00:00"
+                "failed_at": "2026-05-03T06:00:04.886236+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6352,7 +6368,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:08.408089+00:00"
+                "failed_at": "2026-05-03T06:00:05.234850+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6431,7 +6447,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:08.747495+00:00"
+                "failed_at": "2026-05-03T06:00:05.614691+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6510,7 +6526,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:09.126951+00:00"
+                "failed_at": "2026-05-03T06:00:05.996546+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6589,7 +6605,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:09.506910+00:00"
+                "failed_at": "2026-05-03T06:00:06.376701+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6668,7 +6684,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:09.873842+00:00"
+                "failed_at": "2026-05-03T06:00:06.718562+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6747,7 +6763,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:10.241913+00:00"
+                "failed_at": "2026-05-03T06:00:07.047408+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6826,7 +6842,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:10.644308+00:00"
+                "failed_at": "2026-05-03T06:00:12.390011+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6905,7 +6921,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:11.039255+00:00"
+                "failed_at": "2026-05-03T06:00:12.740625+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6984,7 +7000,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:11.419189+00:00"
+                "failed_at": "2026-05-03T06:00:13.146048+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7063,7 +7079,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:11.723867+00:00"
+                "failed_at": "2026-05-03T06:00:13.481180+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7142,7 +7158,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:12.058137+00:00"
+                "failed_at": "2026-05-03T06:00:13.820890+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7221,7 +7237,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:12.445238+00:00"
+                "failed_at": "2026-05-03T06:00:14.178365+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7300,7 +7316,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:12.804080+00:00"
+                "failed_at": "2026-05-03T06:00:14.550249+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7379,7 +7395,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:18.234454+00:00"
+                "failed_at": "2026-05-03T06:00:14.862582+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7458,7 +7474,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:18.607860+00:00"
+                "failed_at": "2026-05-03T06:00:15.186791+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7537,7 +7553,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:18.922667+00:00"
+                "failed_at": "2026-05-03T06:00:15.546095+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7616,7 +7632,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:19.213871+00:00"
+                "failed_at": "2026-05-03T06:00:15.888980+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7695,7 +7711,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:19.542935+00:00"
+                "failed_at": "2026-05-03T06:00:16.223387+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7774,7 +7790,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:19.880144+00:00"
+                "failed_at": "2026-05-03T06:00:16.530779+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7853,7 +7869,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:20.286104+00:00"
+                "failed_at": "2026-05-03T06:00:16.849890+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7932,7 +7948,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:20.630537+00:00"
+                "failed_at": "2026-05-03T06:00:17.164665+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8011,7 +8027,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:21.045152+00:00"
+                "failed_at": "2026-05-03T06:00:17.495312+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8090,7 +8106,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:21.344775+00:00"
+                "failed_at": "2026-05-03T06:00:17.810845+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8169,7 +8185,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:21.626249+00:00"
+                "failed_at": "2026-05-03T06:00:18.123244+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8248,7 +8264,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:21.922563+00:00"
+                "failed_at": "2026-05-03T06:00:18.483933+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8327,7 +8343,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:22.226550+00:00"
+                "failed_at": "2026-05-03T06:00:18.822323+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8406,7 +8422,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:22.553979+00:00"
+                "failed_at": "2026-05-03T06:00:19.169681+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8485,7 +8501,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:22.849903+00:00"
+                "failed_at": "2026-05-03T06:00:19.511396+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8564,7 +8580,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:23.170574+00:00"
+                "failed_at": "2026-05-03T06:00:19.858224+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8643,7 +8659,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:23.452989+00:00"
+                "failed_at": "2026-05-03T06:00:20.159281+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8722,7 +8738,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:23.823295+00:00"
+                "failed_at": "2026-05-03T06:00:20.480197+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8801,7 +8817,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:24.222754+00:00"
+                "failed_at": "2026-05-03T06:00:20.835341+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8880,7 +8896,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:24.613191+00:00"
+                "failed_at": "2026-05-03T06:00:21.197575+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8959,7 +8975,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:24.989441+00:00"
+                "failed_at": "2026-05-03T06:00:21.556477+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9038,7 +9054,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:25.362953+00:00"
+                "failed_at": "2026-05-03T06:00:21.902792+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9117,7 +9133,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:25.715408+00:00"
+                "failed_at": "2026-05-03T06:00:22.277994+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9196,7 +9212,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:26.087701+00:00"
+                "failed_at": "2026-05-03T06:00:22.610548+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9275,7 +9291,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:26.494829+00:00"
+                "failed_at": "2026-05-03T06:00:22.952353+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9354,7 +9370,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:31.884971+00:00"
+                "failed_at": "2026-05-03T06:00:23.292305+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9433,7 +9449,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:32.275312+00:00"
+                "failed_at": "2026-05-03T06:00:23.629800+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9512,7 +9528,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:32.653196+00:00"
+                "failed_at": "2026-05-03T06:00:23.959752+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9591,7 +9607,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:33.054872+00:00"
+                "failed_at": "2026-05-03T06:00:24.342910+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9670,7 +9686,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:33.468725+00:00"
+                "failed_at": "2026-05-03T06:00:24.797785+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9749,7 +9765,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:33.849951+00:00"
+                "failed_at": "2026-05-03T06:00:25.157374+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9828,7 +9844,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:44.243411+00:00"
+                "failed_at": "2026-05-03T06:00:25.490895+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9907,7 +9923,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:44.673897+00:00"
+                "failed_at": "2026-05-03T06:00:25.833381+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9986,7 +10002,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:45.068805+00:00"
+                "failed_at": "2026-05-03T06:00:26.192890+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10065,7 +10081,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:45.486266+00:00"
+                "failed_at": "2026-05-03T06:00:26.540296+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10144,7 +10160,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:45.869894+00:00"
+                "failed_at": "2026-05-03T06:00:26.908257+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10223,7 +10239,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:46.319373+00:00"
+                "failed_at": "2026-05-03T06:00:27.243672+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10302,7 +10318,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:46.819262+00:00"
+                "failed_at": "2026-05-03T06:00:27.572393+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10381,7 +10397,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:47.238782+00:00"
+                "failed_at": "2026-05-03T06:00:27.915419+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10460,7 +10476,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:47.631136+00:00"
+                "failed_at": "2026-05-03T06:00:28.260811+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10539,7 +10555,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:30:48.014818+00:00"
+                "failed_at": "2026-05-03T06:00:28.606275+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -10553,7 +10569,7 @@
             "place_name": "Haraz Coffee House | University City",
             "place_id": "ChIJhTWHCN0dVIgRvVjPstiLeKQ",
             "record_id": "recYUpWg2MLQnkI6h",
-            "generated_at": "2026-05-03T03:30:48.015176+00:00",
+            "generated_at": "2026-05-03T06:00:28.606616+00:00",
             "azure_assets_count": 2,
             "failed_upload_count": 62,
             "pending_upload_count": 0,
