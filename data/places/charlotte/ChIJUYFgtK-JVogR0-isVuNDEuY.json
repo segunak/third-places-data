@@ -1658,7 +1658,489 @@
     "photos": {
         "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
         "message": "Photos retrieval skipped.",
-        "photo_urls": []
+        "photo_urls": [],
+        "azure_assets": [
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=uONAPtLA7458BfZIx7Hu0Q&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=130.18622&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=uONAPtLA7458BfZIx7Hu0Q&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=130.18622&pitch=0&thumbfov=100",
+                "source_url_sha256": "930a63479b906766577ddfaf3b1e5ba999d9e16cb221b9618604abc0f0dd198b",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/930a63479b906766577ddfaf3b1e5ba999d9e16cb221b9618604abc0f0dd198b.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/930a63479b906766577ddfaf3b1e5ba999d9e16cb221b9618604abc0f0dd198b.jpg",
+                "content_sha256": "16875e256ce6a577ebf606bdc5dd571cc5ded29cfc9815a1b3ad30d6dd847e05",
+                "content_type": "image/jpeg",
+                "bytes": 164607,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=uONAPtLA7458BfZIx7Hu0Q&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=130.18622&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=uONAPtLA7458BfZIx7Hu0Q&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=130.18622&pitch=0&thumbfov=100",
+                        "bytes": 164607,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:20.192415+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNHlX4Nn8r9JwNcIJVyn7oSEam7Fdb_nn442qWs=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNHlX4Nn8r9JwNcIJVyn7oSEam7Fdb_nn442qWs=w2048-h2048-k-no",
+                "source_url_sha256": "6b987ec05dd72c2880335addb9aee4546ed09604700719333cb72d733446161c",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/6b987ec05dd72c2880335addb9aee4546ed09604700719333cb72d733446161c.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/6b987ec05dd72c2880335addb9aee4546ed09604700719333cb72d733446161c.jpg",
+                "content_sha256": "0990bd523b97acb51ba473f54ae67d043e5dbaf577eac67c1c09373adb35b75e",
+                "content_type": "image/jpeg",
+                "bytes": 575563,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNHlX4Nn8r9JwNcIJVyn7oSEam7Fdb_nn442qWs=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNHlX4Nn8r9JwNcIJVyn7oSEam7Fdb_nn442qWs=w2048-h2048-k-no",
+                        "bytes": 575563,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:20.977565+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNWxY0td9ZF1IUCa3t78eiJBTpy86jalwAzsr9q=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNWxY0td9ZF1IUCa3t78eiJBTpy86jalwAzsr9q=w2048-h2048-k-no",
+                "source_url_sha256": "d9d160522cb37daa89a31e9d7f8e628c94b6e84575cac4e9718d4799dc651d37",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/d9d160522cb37daa89a31e9d7f8e628c94b6e84575cac4e9718d4799dc651d37.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/d9d160522cb37daa89a31e9d7f8e628c94b6e84575cac4e9718d4799dc651d37.jpg",
+                "content_sha256": "f12a72c8bc1afe400717c47272413cfae4b9d9ec42c1842998185bab43fab1eb",
+                "content_type": "image/jpeg",
+                "bytes": 850948,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNWxY0td9ZF1IUCa3t78eiJBTpy86jalwAzsr9q=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNWxY0td9ZF1IUCa3t78eiJBTpy86jalwAzsr9q=w2048-h2048-k-no",
+                        "bytes": 850948,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:21.683105+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNTOoNzieuUJsOXljCms040ZembUttDD8LjDDF2=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNTOoNzieuUJsOXljCms040ZembUttDD8LjDDF2=w2048-h2048-k-no",
+                "source_url_sha256": "0627055ac6cc5cfffb1809342501220783b150a4c9a4be1903609d1a7de9dfe6",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[3]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/0627055ac6cc5cfffb1809342501220783b150a4c9a4be1903609d1a7de9dfe6.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/0627055ac6cc5cfffb1809342501220783b150a4c9a4be1903609d1a7de9dfe6.jpg",
+                "content_sha256": "d21d20db725199c189441a9917cb4e8748cb63d9870b72e7b27f0189f7c24022",
+                "content_type": "image/jpeg",
+                "bytes": 700009,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNTOoNzieuUJsOXljCms040ZembUttDD8LjDDF2=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNTOoNzieuUJsOXljCms040ZembUttDD8LjDDF2=w2048-h2048-k-no",
+                        "bytes": 700009,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:22.420150+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipN1632DX4U5docolX-jW9x0ZVhKhzdYMhJsUBKs=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipN1632DX4U5docolX-jW9x0ZVhKhzdYMhJsUBKs=w2048-h2048-k-no",
+                "source_url_sha256": "5cd1eb5a216753717baf7ac84fbead990ff040a7c692b020c8c42a322a9dbc62",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[4]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/5cd1eb5a216753717baf7ac84fbead990ff040a7c692b020c8c42a322a9dbc62.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/5cd1eb5a216753717baf7ac84fbead990ff040a7c692b020c8c42a322a9dbc62.jpg",
+                "content_sha256": "e6fa3e481a9b1f88130c1a402fe0399d2ec2e72789e06c4fd8205343a953dab9",
+                "content_type": "image/jpeg",
+                "bytes": 614192,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipN1632DX4U5docolX-jW9x0ZVhKhzdYMhJsUBKs=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipN1632DX4U5docolX-jW9x0ZVhKhzdYMhJsUBKs=w2048-h2048-k-no",
+                        "bytes": 614192,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:23.250159+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOKZTh8EYB9qUdO4ndM7y_QeVM9f6ZhnX-Av0A5=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOKZTh8EYB9qUdO4ndM7y_QeVM9f6ZhnX-Av0A5=w2048-h2048-k-no",
+                "source_url_sha256": "ba08aae8a7d0d209727d69cc4f4c9e491fee3b36998c79b1ef003764e1c3319b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[5]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/ba08aae8a7d0d209727d69cc4f4c9e491fee3b36998c79b1ef003764e1c3319b.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/ba08aae8a7d0d209727d69cc4f4c9e491fee3b36998c79b1ef003764e1c3319b.jpg",
+                "content_sha256": "fde8702fd37a2fe4991094411d7fa1a0fd41edd8768c794b4b49b4c3999eca55",
+                "content_type": "image/jpeg",
+                "bytes": 694507,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOKZTh8EYB9qUdO4ndM7y_QeVM9f6ZhnX-Av0A5=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOKZTh8EYB9qUdO4ndM7y_QeVM9f6ZhnX-Av0A5=w2048-h2048-k-no",
+                        "bytes": 694507,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:23.903894+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNvsfXa8Bq7XiRbLGMOqxO31rDIfUgLn9nNry5r=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNvsfXa8Bq7XiRbLGMOqxO31rDIfUgLn9nNry5r=w2048-h2048-k-no",
+                "source_url_sha256": "808f5cddc030b349f880cdd9b73fc50124cdbfb280a275306fb2bb30ae41bb3a",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[6]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[6]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/808f5cddc030b349f880cdd9b73fc50124cdbfb280a275306fb2bb30ae41bb3a.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/808f5cddc030b349f880cdd9b73fc50124cdbfb280a275306fb2bb30ae41bb3a.jpg",
+                "content_sha256": "9cd007ae5cf6fd9670ad51032e6448999fb07505e3b8973eb2607518462d8345",
+                "content_type": "image/jpeg",
+                "bytes": 716493,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNvsfXa8Bq7XiRbLGMOqxO31rDIfUgLn9nNry5r=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNvsfXa8Bq7XiRbLGMOqxO31rDIfUgLn9nNry5r=w2048-h2048-k-no",
+                        "bytes": 716493,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:24.857012+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNZPy3D2b0yCu1wdk26F18B0voGYVrTR_yVxFU_=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNZPy3D2b0yCu1wdk26F18B0voGYVrTR_yVxFU_=w2048-h2048-k-no",
+                "source_url_sha256": "d9292f13dd13f706a3d445e7471b5b40ec87244aef8ee180501646af6f303b06",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[7]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[7]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/d9292f13dd13f706a3d445e7471b5b40ec87244aef8ee180501646af6f303b06.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/d9292f13dd13f706a3d445e7471b5b40ec87244aef8ee180501646af6f303b06.jpg",
+                "content_sha256": "fd89904b0008719e4ffff0d6fa4cb63d0b7c044f1a98f50f7d49a1eab31225b3",
+                "content_type": "image/jpeg",
+                "bytes": 898769,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNZPy3D2b0yCu1wdk26F18B0voGYVrTR_yVxFU_=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNZPy3D2b0yCu1wdk26F18B0voGYVrTR_yVxFU_=w2048-h2048-k-no",
+                        "bytes": 898769,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:25.690533+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOsETteqX4dlkh3p89s44c0I8rdZ7ZBOAb5f1c7=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOsETteqX4dlkh3p89s44c0I8rdZ7ZBOAb5f1c7=w2048-h2048-k-no",
+                "source_url_sha256": "4a65bd008d92dc10fe91c10bd9559f2df7e241311e599c27027c88e32eac0c6b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[8]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[8]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/4a65bd008d92dc10fe91c10bd9559f2df7e241311e599c27027c88e32eac0c6b.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/4a65bd008d92dc10fe91c10bd9559f2df7e241311e599c27027c88e32eac0c6b.jpg",
+                "content_sha256": "9fe2b4da31bb182e6d1ae32620a73358612d25d9e5353c674919259e5a318e4d",
+                "content_type": "image/jpeg",
+                "bytes": 433201,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOsETteqX4dlkh3p89s44c0I8rdZ7ZBOAb5f1c7=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOsETteqX4dlkh3p89s44c0I8rdZ7ZBOAb5f1c7=w2048-h2048-k-no",
+                        "bytes": 433201,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:26.207573+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNHGluvVlPn0RjKwzDc_EaMFZdOyFsnuiqCG0q_=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNHGluvVlPn0RjKwzDc_EaMFZdOyFsnuiqCG0q_=w2048-h2048-k-no",
+                "source_url_sha256": "8ce248f97db135505be612154d258590d15fc8829a9db01cb11a38367353e320",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[9]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[9]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/8ce248f97db135505be612154d258590d15fc8829a9db01cb11a38367353e320.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/8ce248f97db135505be612154d258590d15fc8829a9db01cb11a38367353e320.jpg",
+                "content_sha256": "2a40ee06ec9c9b6a8294488a0d9b49a6980d0552c805a8dcf06712a71a77a7b6",
+                "content_type": "image/jpeg",
+                "bytes": 491142,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNHGluvVlPn0RjKwzDc_EaMFZdOyFsnuiqCG0q_=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNHGluvVlPn0RjKwzDc_EaMFZdOyFsnuiqCG0q_=w2048-h2048-k-no",
+                        "bytes": 491142,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:26.931173+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMMfxfJFxP1Lc8_KQKG2GyxLfxBy05vJQBMam86=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMMfxfJFxP1Lc8_KQKG2GyxLfxBy05vJQBMam86=w2048-h2048-k-no",
+                "source_url_sha256": "661fdc12cff59ddbf072b5f4b0fcee01a7e61060c531b59ad5bfa95b9a7f6bf5",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[10]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[10]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/661fdc12cff59ddbf072b5f4b0fcee01a7e61060c531b59ad5bfa95b9a7f6bf5.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/661fdc12cff59ddbf072b5f4b0fcee01a7e61060c531b59ad5bfa95b9a7f6bf5.jpg",
+                "content_sha256": "920018549cd09cf08a1f9b39b9b79fc0a19b97ced3b8e712f4ac5fc675c6cd46",
+                "content_type": "image/jpeg",
+                "bytes": 959360,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMMfxfJFxP1Lc8_KQKG2GyxLfxBy05vJQBMam86=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMMfxfJFxP1Lc8_KQKG2GyxLfxBy05vJQBMam86=w2048-h2048-k-no",
+                        "bytes": 959360,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:27.709206+00:00"
+            },
+            {
+                "place_name": "Techno Caf\u00e9",
+                "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+                "record_id": "recCdycMiVgKwJYa9",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPIa26FiRflNvHYiUTIt3PCndT4uRI0y5fXfXw4=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPIa26FiRflNvHYiUTIt3PCndT4uRI0y5fXfXw4=w2048-h2048-k-no",
+                "source_url_sha256": "114d0852f2e651e394ffffc8e27aa19d6e1d322493469234eeb611153040ed13",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[11]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[11]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/114d0852f2e651e394ffffc8e27aa19d6e1d322493469234eeb611153040ed13.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJUYFgtK-JVogR0-isVuNDEuY/114d0852f2e651e394ffffc8e27aa19d6e1d322493469234eeb611153040ed13.jpg",
+                "content_sha256": "125580f51e7246af13f78d7be90a89603a74c2c5d9ac24276b927d791f11589b",
+                "content_type": "image/jpeg",
+                "bytes": 778317,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPIa26FiRflNvHYiUTIt3PCndT4uRI0y5fXfXw4=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPIa26FiRflNvHYiUTIt3PCndT4uRI0y5fXfXw4=w2048-h2048-k-no",
+                        "bytes": 778317,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:28.358973+00:00"
+            }
+        ],
+        "azure_asset_failures": [],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 12,
+            "duplicate_count": 0,
+            "airtable_photos_count": 12,
+            "airtable_photos_google_count": 12,
+            "data_file_photo_urls_count": 0,
+            "provider_raw_photo_url_big_count": 0,
+            "place_name": "Techno Caf\u00e9",
+            "place_id": "ChIJUYFgtK-JVogR0-isVuNDEuY",
+            "record_id": "recCdycMiVgKwJYa9",
+            "generated_at": "2026-05-03T07:03:28.359071+00:00",
+            "azure_assets_count": 12,
+            "failed_upload_count": 0,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 12,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 12,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-22T12:39:49.658325"
