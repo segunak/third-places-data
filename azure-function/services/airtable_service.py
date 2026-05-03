@@ -9,6 +9,7 @@ from collections import Counter
 from urllib.parse import urlparse
 from constants import SearchField, MAX_THREAD_WORKERS
 from services import utils as helpers
+from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, is_photo_ready_place
 from services.place_data_service import PlaceDataProviderFactory
 from typing import Dict, Any, List
 from pyairtable.formulas import match
@@ -364,6 +365,25 @@ class AirtableService:
             description = details.get('description', '')
             google_maps_url = details.get('google_maps_url', '')
             photos_list = place_data.get('photos', {}).get('photo_urls', [])
+            photo_publish_summary = {}
+            if photos_list and is_photo_ready_place(third_place.get('fields', {})):
+                photo_asset_service = PhotoAssetService()
+                photo_asset_result = photo_asset_service.process_place(
+                    third_place,
+                    place_data,
+                    PhotoAssetConfig(
+                        city=city,
+                        dry_run=False,
+                        upload=True,
+                        try_url_variants=True,
+                    ),
+                )
+                photos_list = photo_asset_result.get('selected_airtable_urls', [])
+                photo_publish_summary = photo_asset_result.get('summary', {})
+            elif photos_list:
+                photos_list = []
+                photo_publish_summary = {"skip_reason": "ignored_missing_place_id"}
+            result['photo_publish_summary'] = photo_publish_summary
 
             # Extract operating hours from raw_data based on provider
             raw_data = details.get('raw_data', {})
@@ -383,7 +403,7 @@ class AirtableService:
                 'Description': (description, False),
                 'Purchase Required': (purchase_required, False),
                 'Parking': (parking, False),
-                'Photos': (str(photos_list), True) if photos_list else (None, False),
+                'Photos': (json.dumps(photos_list), True) if photos_list else (None, False),
                 'Latitude': (str(latitude), True) if latitude else (None, False),
                 'Longitude': (str(longitude), True) if longitude else (None, False),
                 'Operating Hours': (operating_hours_json, True) if operating_hours_json else (None, False),

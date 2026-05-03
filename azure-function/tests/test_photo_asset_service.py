@@ -1,19 +1,33 @@
 import json
 from unittest import mock
 
+import pytest
 from azure.core.exceptions import ResourceNotFoundError
 
 from services import utils
+from services.image_conversion_service import validated_content_type
 from services.photo_asset_service import (
     PhotoAssetConfig,
     PhotoAssetService,
     build_display_photo_urls,
     build_place_photo_inventory,
+    classify_azure_photo_url,
     is_curator_photo_azure_url,
-    is_valid_existing_place_photo_azure_url,
     sha256_hex,
-    validated_content_type,
 )
+
+
+@pytest.fixture(autouse=True)
+def no_legacy_blob_listing(monkeypatch):
+    monkeypatch.setattr("services.photo_asset_service.list_blobs_in_container", lambda *args, **kwargs: [])
+
+
+def _standard_photo_url(place_id="ChIJ123", digest=None, extension=".jpg"):
+    return f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/{digest or ('a' * 64)}{extension}"
+
+
+def _curator_photo_url(place_id="ChIJ123", name="curator-attA-front.webp"):
+    return f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/{name}"
 
 
 def _place_record(photos="", photos_google="", curator_photo_urls=""):
@@ -74,44 +88,48 @@ def test_inventory_includes_only_in_scope_sources_and_dedupes():
 
 
 def test_existing_place_photo_azure_url_validation():
-    valid_url = "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123/" + ("a" * 64) + ".jpg"
-    invalid_url = "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/photo.jpg"
+    valid_url = _standard_photo_url()
+    invalid_url = "https://thirdplacesdata.blob.core.windows.net/other-container/rec123/photo.jpg"
 
-    assert is_valid_existing_place_photo_azure_url(valid_url, "charlotte", "ChIJ123")[0] is True
-    is_valid, _, reason = is_valid_existing_place_photo_azure_url(invalid_url, "charlotte", "ChIJ123")
-    assert is_valid is False
-    assert reason == "invalid_container"
+    assert classify_azure_photo_url(valid_url, "charlotte", "ChIJ123") == {
+        "category": "new_standard",
+        "blob_path": "ChIJ123/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg",
+        "reason": "valid",
+    }
+    assert classify_azure_photo_url(invalid_url, "charlotte", "ChIJ123")["reason"] == "invalid_container"
 
-    is_valid, _, reason = is_valid_existing_place_photo_azure_url(
-        "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123/not-a-hash.jpg",
+    classification = classify_azure_photo_url(
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/not-a-hash.jpg",
         "charlotte",
         "ChIJ123",
     )
-    assert is_valid is False
-    assert reason == "invalid_blob_name"
+    assert classification["category"] == "invalid"
+    assert classification["reason"] == "invalid_blob_name"
 
-    is_valid, _, reason = is_valid_existing_place_photo_azure_url(
-        "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123/" + ("a" * 64) + ".gif",
+    classification = classify_azure_photo_url(
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/" + ("a" * 64) + ".gif",
         "charlotte",
         "ChIJ123",
     )
-    assert is_valid is False
-    assert reason == "invalid_blob_extension"
+    assert classification["category"] == "invalid"
+    assert classification["reason"] == "invalid_blob_extension"
 
 
 def test_curator_photo_azure_url_validation():
     assert is_curator_photo_azure_url("https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/photo.jpg") is True
     assert is_curator_photo_azure_url("https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123/photo.jpg") is False
+    assert is_curator_photo_azure_url(_curator_photo_url()) is True
+    assert is_curator_photo_azure_url(_standard_photo_url()) is False
 
 
 def test_build_display_photo_urls_puts_curator_urls_first_and_dedupes():
     curator_urls = [
-        "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/attA_front.jpg",
-        "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/attB_interior.jpg",
+        _curator_photo_url(name="curator-attA-front.webp"),
+        _curator_photo_url(name="curator-attB-interior.webp"),
     ]
     provider_urls = [
         curator_urls[0],
-        "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123/photo.jpg",
+        _standard_photo_url(),
     ]
 
     assert build_display_photo_urls(curator_urls, provider_urls) == [
@@ -122,7 +140,7 @@ def test_build_display_photo_urls_puts_curator_urls_first_and_dedupes():
 
 
 def test_inventory_skips_curator_photo_urls_from_airtable_photos():
-    curator_url = "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/attA_front.jpg"
+    curator_url = _curator_photo_url()
     provider_url = "https://example.com/provider.jpg"
 
     inventory, summary = build_place_photo_inventory(
@@ -164,7 +182,7 @@ def test_process_place_uploads_successful_assets_and_selects_azure_urls(monkeypa
 
     service = PhotoAssetService()
     monkeypatch.setattr(
-        service,
+        service.publisher,
         "download_image_asset",
         lambda source_url, try_url_variants=True: {
             "success": True,
@@ -177,7 +195,7 @@ def test_process_place_uploads_successful_assets_and_selects_azure_urls(monkeypa
         },
     )
     monkeypatch.setattr(
-        "services.photo_asset_service.upload_blob_to_container",
+        "services.photo_publisher_service.upload_blob_to_container",
         lambda container, blob_path, data, content_type, metadata, cache_control, public_access, overwrite: (
             f"https://thirdplacesdata.blob.core.windows.net/{container}/{blob_path}"
         ),
@@ -186,13 +204,13 @@ def test_process_place_uploads_successful_assets_and_selects_azure_urls(monkeypa
     result = service.process_place(
         _place_record(),
         place_data,
-        PhotoAssetConfig(dry_run=False, upload=True, write_airtable=True),
+        PhotoAssetConfig(dry_run=False, upload=True),
     )
 
     assert result["summary"]["azure_assets_count"] == 2
     assert len(result["selected_airtable_urls"]) == 2
-    assert all("thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123" in url for url in result["selected_airtable_urls"])
-    assert result["place_data"]["photos"]["azure_assets"]
+    assert all("thirdplacesdata.blob.core.windows.net/photos/ChIJ123/" in url for url in result["selected_airtable_urls"])
+    assert "place_data" not in result
 
 
 def test_process_place_records_invalid_existing_azure_url_failure():
@@ -210,8 +228,8 @@ def test_process_place_records_invalid_existing_azure_url_failure():
 
 def test_process_place_preserves_curator_photo_urls_at_front(monkeypatch):
     curator_urls = [
-        "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/attA_front.jpg",
-        "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/attB_interior.jpg",
+        _curator_photo_url(name="curator-attA-front.webp"),
+        _curator_photo_url(name="curator-attB-interior.webp"),
     ]
     place_data = {
         "photos": {
@@ -247,9 +265,9 @@ def test_process_place_preserves_curator_photo_urls_at_front(monkeypatch):
             "bytes": 8,
         }
 
-    monkeypatch.setattr(service, "download_image_asset", mock_download)
+    monkeypatch.setattr(service.publisher, "download_image_asset", mock_download)
     monkeypatch.setattr(
-        "services.photo_asset_service.upload_blob_to_container",
+        "services.photo_publisher_service.upload_blob_to_container",
         lambda container, blob_path, data, content_type, metadata, cache_control, public_access, overwrite: (
             f"https://thirdplacesdata.blob.core.windows.net/{container}/{blob_path}"
         ),
@@ -258,7 +276,7 @@ def test_process_place_preserves_curator_photo_urls_at_front(monkeypatch):
     result = service.process_place(
         _place_record(curator_photo_urls=json.dumps(curator_urls)),
         place_data,
-        PhotoAssetConfig(dry_run=False, upload=True, write_airtable=True),
+        PhotoAssetConfig(dry_run=False, upload=True),
     )
 
     assert result["selected_airtable_urls"][:2] == curator_urls
@@ -272,7 +290,7 @@ def test_process_place_preserves_curator_photo_urls_at_front(monkeypatch):
 
 
 def test_process_place_preserves_curator_photo_urls_from_photos_field():
-    curator_url = "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/attA_front.jpg"
+    curator_url = _curator_photo_url()
 
     result = PhotoAssetService().process_place(
         _place_record(photos=json.dumps([curator_url])),
@@ -303,7 +321,7 @@ def test_process_place_reports_uncopied_curator_photo_urls_field_values():
     assert result["summary"]["unselected_curator_photo_urls_field_urls"] == [legacy_field_url]
 
 
-def test_process_place_dry_run_selected_sources_use_photo_priority():
+def test_process_place_dry_run_selected_sources_use_source_order():
     place_data = {
         "photos": {
             "raw_data": {
@@ -330,30 +348,19 @@ def test_process_place_dry_run_selected_sources_use_photo_priority():
     )
 
     assert result["selected_source_urls"] == [
-        "https://example.com/vibe-old.jpg",
         "https://example.com/front-new.jpg",
+        "https://example.com/vibe-old.jpg",
     ]
 
 
-def test_process_place_dedupes_existing_azure_display_url_against_manifest_asset():
-    source_url = "https://example.com/source.jpg"
-    source_hash = sha256_hex(source_url)
-    azure_url = f"https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123/{source_hash}.jpg"
+def test_process_place_accepts_existing_canonical_url_and_ignores_retired_manifest():
+    azure_url = _standard_photo_url(digest=sha256_hex("canonical-source"))
     place_data = {
         "photos": {
-            "raw_data": {"photos_data": [{"photo_url_big": source_url, "photo_tags": ["vibe"]}]},
             "azure_assets": [
                 {
-                    "source_url_sha256": source_hash,
-                    "source_url": source_url,
-                    "canonical_source_url": source_url,
-                    "source_host": "example.com",
-                    "source_field": "photos.raw_data.photos_data.photo_url_big",
-                    "source_path": "photos.raw_data.photos_data[0].photo_url_big",
+                    "source_url_sha256": "retired-manifest-entry",
                     "azure_url": azure_url,
-                    "blob_path": f"charlotte/ChIJ123/{source_hash}.jpg",
-                    "status": "uploaded",
-                    "selected_for_airtable": True,
                 }
             ],
         }
@@ -368,6 +375,7 @@ def test_process_place_dedupes_existing_azure_display_url_against_manifest_asset
     assert len(result["assets"]) == 1
     assert result["assets"][0]["azure_url"] == azure_url
     assert result["summary"]["azure_assets_count"] == 1
+    assert "place_data" not in result
 
 
 def test_ensure_container_exists_creates_missing_container(monkeypatch):
@@ -377,18 +385,18 @@ def test_ensure_container_exists_creates_missing_container(monkeypatch):
     blob_service_client.get_container_client.return_value = container_client
     monkeypatch.setattr(utils, "_get_blob_service_client", lambda: blob_service_client)
 
-    utils.ensure_container_exists("place-photos", public_access="blob")
+    utils.ensure_container_exists("photos", public_access="blob")
 
     container_client.create_container.assert_called_once()
 
 
 def test_ensure_container_exists_uses_existing_container(monkeypatch):
     container_client = mock.MagicMock()
-    container_client.get_container_properties.return_value = {"name": "place-photos"}
+    container_client.get_container_properties.return_value = {"name": "photos"}
     blob_service_client = mock.MagicMock()
     blob_service_client.get_container_client.return_value = container_client
     monkeypatch.setattr(utils, "_get_blob_service_client", lambda: blob_service_client)
 
-    utils.ensure_container_exists("place-photos", public_access="blob")
+    utils.ensure_container_exists("photos", public_access="blob")
 
     container_client.create_container.assert_not_called()

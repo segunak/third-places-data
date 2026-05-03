@@ -9,17 +9,24 @@ import azure.durable_functions as df
 
 from services.airtable_service import AirtableService
 from services.photo_asset_service import (
+    AZURE_ACCOUNT_HOST,
     PhotoAssetConfig,
     PhotoAssetService,
-    curator_photo_urls_field_from_airtable,
+    classify_azure_photo_url,
+    is_photo_ready_place,
     parse_url_list,
+)
+from services.image_conversion_service import webp_encoder_available
+from services.photo_publisher_service import (
+    LEGACY_CURATOR_PHOTOS_CONTAINER,
+    LEGACY_PLACE_PHOTOS_CONTAINER,
+    PHOTOS_CONTAINER,
 )
 from services.utils import (
     delete_blob_from_container,
-    delete_container,
     ensure_container_exists,
     fetch_data_github,
-    save_data_github,
+    list_blobs_in_container,
     upload_blob_to_container,
 )
 
@@ -44,18 +51,16 @@ def _parse_int(value: Optional[str], default: int) -> int:
 
 
 def _base_config_from_params(params) -> Dict[str, Any]:
+    dry_run = _parse_bool(params.get("dry_run"), True)
     return {
         "provider_type": params.get("provider_type", DEFAULT_PROVIDER_TYPE),
         "city": params.get("city", "charlotte"),
         "record_id": params.get("record_id", ""),
         "place_id": params.get("place_id", ""),
         "max_places": _parse_int(params.get("max_places"), 0),
-        "dry_run": _parse_bool(params.get("dry_run"), True),
-        "upload": _parse_bool(params.get("upload"), False),
-        "write_airtable": _parse_bool(params.get("write_airtable"), False),
-        "overwrite": _parse_bool(params.get("overwrite"), False),
-        "retry_failures": _parse_bool(params.get("retry_failures"), False),
-        "failure_ttl_hours": _parse_int(params.get("failure_ttl_hours"), 168),
+        "dry_run": dry_run,
+        "upload": _parse_bool(params.get("upload"), not dry_run),
+        "write_airtable": _parse_bool(params.get("write_airtable"), not dry_run),
         "try_url_variants": _parse_bool(params.get("try_url_variants"), True),
     }
 
@@ -69,10 +74,6 @@ def _photo_asset_config(config: Dict[str, Any]) -> PhotoAssetConfig:
         city=config.get("city", "charlotte"),
         dry_run=bool(config.get("dry_run", True)),
         upload=bool(config.get("upload", False)),
-        write_airtable=bool(config.get("write_airtable", False)),
-        overwrite=bool(config.get("overwrite", False)),
-        retry_failures=bool(config.get("retry_failures", False)),
-        failure_ttl_hours=int(config.get("failure_ttl_hours", 168)),
         try_url_variants=bool(config.get("try_url_variants", True)),
     )
 
@@ -133,6 +134,42 @@ def _aggregate_results(results: List[Dict[str, Any]], dry_run: bool) -> Dict[str
     }
     totals["success"] = totals["errors"] == 0
     return totals
+
+
+def _aggregate_curator_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
+    errors = len([result for result in results if result.get("status") in {"failed", "error"}])
+    return {
+        "total_places": len(results),
+        "updated": len([result for result in results if result.get("status") in {"updated", "would_update"}]),
+        "skipped": len([result for result in results if result.get("status") == "skipped"]),
+        "no_change": len([result for result in results if result.get("status") == "no_change"]),
+        "errors": errors,
+        "photos_synced": sum(int(result.get("photos_synced", 0) or 0) for result in results),
+        "photos_failed": sum(int(result.get("photos_failed", 0) or 0) for result in results),
+        "success": errors == 0,
+    }
+
+
+def _aggregate_audit_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
+    mappable_legacy_left = sum(int(result.get("mappable_legacy_blob_count", 0) or 0) for result in results)
+    legacy_urls_left = sum(int(result.get("legacy_airtable_url_count", 0) or 0) for result in results)
+    non_azure_urls_left = sum(int(result.get("non_azure_airtable_url_count", 0) or 0) for result in results)
+    errors = len([result for result in results if result.get("status") == "error"])
+    return {
+        "total_places": len(results),
+        "ignored_missing_place_id": len([result for result in results if result.get("status") == "skipped" and result.get("skip_reason") == "ignored_missing_place_id"]),
+        "canonical_photo_url_count": sum(int(result.get("canonical_photo_url_count", 0) or 0) for result in results),
+        "canonical_curator_url_count": sum(int(result.get("canonical_curator_url_count", 0) or 0) for result in results),
+        "canonical_standard_url_count": sum(int(result.get("canonical_standard_url_count", 0) or 0) for result in results),
+        "legacy_airtable_url_count": legacy_urls_left,
+        "non_azure_airtable_url_count": non_azure_urls_left,
+        "mappable_legacy_blob_count": mappable_legacy_left,
+        "unmappable_legacy_blob_count": sum(int(result.get("unmappable_legacy_blob_count", 0) or 0) for result in results),
+        "new_container_blob_count": sum(int(result.get("new_container_blob_count", 0) or 0) for result in results),
+        "unserved_blob_count": sum(int(result.get("unserved_blob_count", 0) or 0) for result in results),
+        "errors": errors,
+        "success": errors == 0 and mappable_legacy_left == 0 and legacy_urls_left == 0 and non_azure_urls_left == 0,
+    }
 
 
 def _count_by_key(items: List[Dict[str, Any]], key: str) -> Dict[str, int]:
@@ -356,7 +393,40 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
                 results,
             )
 
+        curator_results = []
+        for batch_index, index in enumerate(range(0, len(filtered_places), concurrency_limit), start=1):
+            batch = filtered_places[index:index + concurrency_limit]
+            tasks = [
+                context.call_activity("sync_single_place_curator_photos", {"place": place, "config": config})
+                for place in batch
+            ]
+            batch_results = yield context.task_all(tasks)
+            curator_results.extend(batch_results)
+            _set_migration_progress_status(
+                context,
+                config,
+                "curator_batch_completed",
+                len(curator_results),
+                len(filtered_places),
+                batch_index,
+                total_batches,
+                results,
+            )
+
+        audit_results = []
+        for batch_index, index in enumerate(range(0, len(filtered_places), concurrency_limit), start=1):
+            batch = filtered_places[index:index + concurrency_limit]
+            tasks = [
+                context.call_activity("audit_single_place_photo_assets", {"place": place, "config": config})
+                for place in batch
+            ]
+            batch_results = yield context.task_all(tasks)
+            audit_results.extend(batch_results)
+
         totals = _aggregate_results(results, bool(config.get("dry_run", True)))
+        audit_totals = _aggregate_audit_results(audit_results)
+        curator_errors = len([result for result in curator_results if result.get("status") in {"failed", "error"}])
+        migration_success = totals["success"] and curator_errors == 0 and audit_totals["success"]
         compact_results = [_compact_place_result(result) for result in results]
         _set_migration_progress_status(
             context,
@@ -369,10 +439,17 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
             results,
         )
         return {
-            "success": totals["success"],
-            "message": "Photo asset migration completed" if totals["success"] else "Photo asset migration completed with errors",
-            "data": {"totals": totals, "place_results": compact_results},
-            "error": None if totals["success"] else f"{totals['errors']} places failed",
+            "success": migration_success,
+            "message": "Photo asset migration completed" if migration_success else "Photo asset migration completed with errors or audit findings",
+            "data": {
+                "totals": totals,
+                "curator_totals": _aggregate_curator_results(curator_results),
+                "audit_totals": audit_totals,
+                "place_results": compact_results,
+                "curator_results": curator_results,
+                "audit_results": audit_results,
+            },
+            "error": None if migration_success else "Migration errors, curator errors, or final audit findings remain",
         }
     except Exception as exc:
         logging.error(f"Critical error in photo asset migration: {exc}", exc_info=True)
@@ -392,40 +469,8 @@ def migrate_single_place_photo_assets(activityInput):
         place_name = fields.get("Place", "Unknown")
         place_id = fields.get("Google Maps Place Id", "")
         city = config.get("city", "charlotte")
-        if not place_id:
-            curator_photo_urls_field_urls = curator_photo_urls_field_from_airtable(fields)
-            existing_photos = parse_url_list(fields.get("Photos"))
-            uncopied_curator_urls = [
-                url for url in curator_photo_urls_field_urls
-                if url not in existing_photos
-            ]
-            if uncopied_curator_urls:
-                message = (
-                    "Migration cannot prove Curator Photo URLs are safe to delete: "
-                    "record is missing Google Maps Place Id and has Curator Photo URLs "
-                    "that are not present in Photos."
-                )
-                logging.error(
-                    "%s place=%s record_id=%s uncopied_curator_photo_urls=%s",
-                    message,
-                    place_name,
-                    place.get("id", ""),
-                    uncopied_curator_urls,
-                )
-                return {
-                    "status": "error",
-                    "error_reason": "curator_photo_urls_not_copied_missing_place_id",
-                    "message": message,
-                    "place_name": place_name,
-                    "record_id": place.get("id", ""),
-                    "summary": {
-                        "curator_photo_urls_field_count": len(curator_photo_urls_field_urls),
-                        "unselected_curator_photo_urls_field_count": len(uncopied_curator_urls),
-                        "unselected_curator_photo_urls_field_urls": uncopied_curator_urls,
-                    },
-                }
-
-            message = "Skipped: no Google Maps Place Id; Azure photo blobs require a place_id in their path."
+        if not is_photo_ready_place(fields):
+            message = "Skipped: no Google Maps Place Id; photo paths ignore non-photo-ready records."
             logging.info(
                 "Skipping photo asset migration for %s (record_id=%s): missing Google Maps Place Id.",
                 place_name,
@@ -433,11 +478,11 @@ def migrate_single_place_photo_assets(activityInput):
             )
             return {
                 "status": "skipped",
-                "skip_reason": "missing_google_maps_place_id",
+                "skip_reason": "ignored_missing_place_id",
                 "message": message,
                 "place_name": place_name,
                 "record_id": place.get("id", ""),
-                "summary": {},
+                "summary": {"ignored_missing_place_id": True},
             }
 
         data_file_path = f"data/places/{city}/{place_id}.json"
@@ -453,7 +498,6 @@ def migrate_single_place_photo_assets(activityInput):
         dry_run = bool(config.get("dry_run", True))
         write_airtable = bool(config.get("write_airtable", False))
         candidate_count = asset_result["summary"].get("candidate_count", 0)
-        uncopied_curator_urls_count = asset_result["summary"].get("unselected_curator_photo_urls_field_count", 0)
         asset_result["summary"].update({
             "github_data_file_save_attempted": False,
             "github_data_file_saved": False,
@@ -464,35 +508,6 @@ def migrate_single_place_photo_assets(activityInput):
             "airtable_update_skipped_no_change": False,
             "airtable_update_failed": False,
         })
-
-        if uncopied_curator_urls_count:
-            summary = asset_result["summary"]
-            message = (
-                "Migration cannot prove Curator Photo URLs are safe to delete: "
-                "one or more Curator Photo URLs would not be present in Photos."
-            )
-            logging.error(
-                "%s place=%s place_id=%s record_id=%s uncopied_count=%s uncopied_urls=%s",
-                message,
-                place_name,
-                place_id,
-                place.get("id", ""),
-                uncopied_curator_urls_count,
-                summary.get("unselected_curator_photo_urls_field_urls", []),
-            )
-            return {
-                "status": "error",
-                "error_reason": "curator_photo_urls_not_copied",
-                "message": message,
-                "warnings": warnings,
-                "place_name": place_name,
-                "place_id": place_id,
-                "record_id": place.get("id", ""),
-                "summary": summary,
-                "selected_airtable_urls": selected_urls,
-                "assets": asset_result["assets"],
-                "failures": asset_result["failures"],
-            }
 
         if candidate_count == 0 and not selected_urls:
             summary = asset_result["summary"]
@@ -593,21 +608,6 @@ def migrate_single_place_photo_assets(activityInput):
         message = f"Processed {candidate_count} candidates"
 
         if not dry_run:
-            updated_json = json.dumps(asset_result["place_data"], indent=4)
-            asset_result["summary"]["github_data_file_save_attempted"] = True
-            save_success, save_message = save_data_github(updated_json, data_file_path)
-            if not save_success:
-                asset_result["summary"]["github_data_file_save_failed"] = True
-                return {
-                    "status": "error",
-                    "message": f"GitHub save failed: {save_message}",
-                    "place_name": place_name,
-                    "place_id": place_id,
-                    "record_id": place.get("id", ""),
-                    "summary": asset_result["summary"],
-                }
-            asset_result["summary"]["github_data_file_saved"] = True
-
             if write_airtable:
                 airtable_service = AirtableService(config.get("provider_type", DEFAULT_PROVIDER_TYPE))
                 asset_result["summary"]["airtable_write_attempted"] = True
@@ -655,6 +655,148 @@ def migrate_single_place_photo_assets(activityInput):
         return {"status": "error", "message": str(exc), "summary": {}}
 
 
+@bp.function_name(name="PhotoAssetsAudit")
+@bp.route(route="photo-assets/audit")
+@bp.durable_client_input(client_name="client")
+async def photo_assets_audit(req: func.HttpRequest, client) -> func.HttpResponse:
+    try:
+        config = _base_config_from_params(req.params)
+        config["dry_run"] = True
+        config["upload"] = False
+        config["write_airtable"] = False
+        instance_id = await client.start_new("photo_assets_audit_orchestrator", client_input=config)
+        return client.create_check_status_response(req, instance_id)
+    except ValueError as exc:
+        return _json_response({"success": False, "message": "Invalid request parameter", "error": str(exc)}, 400)
+    except Exception as exc:
+        logging.error(f"Failed to start photo asset audit: {exc}", exc_info=True)
+        return _json_response({"success": False, "message": "Failed to start audit", "error": str(exc)}, 500)
+
+
+@bp.orchestration_trigger(context_name="context")
+def photo_assets_audit_orchestrator(context: df.DurableOrchestrationContext):
+    try:
+        config = context.get_input() or {}
+        all_places = yield context.call_activity("get_all_third_places", {"config": config})
+        filtered_places = _filter_places(all_places, config)
+        results = []
+        concurrency_limit = 20
+        for index in range(0, len(filtered_places), concurrency_limit):
+            batch = filtered_places[index:index + concurrency_limit]
+            tasks = [
+                context.call_activity("audit_single_place_photo_assets", {"place": place, "config": config})
+                for place in batch
+            ]
+            batch_results = yield context.task_all(tasks)
+            results.extend(batch_results)
+
+        totals = _aggregate_audit_results(results)
+        return {
+            "success": totals["success"],
+            "message": "Photo asset audit completed" if totals["success"] else "Photo asset audit found migration leftovers",
+            "data": {"totals": totals, "place_results": results},
+            "error": None if totals["success"] else "Mappable legacy blobs or legacy/non-Azure Airtable Photos remain",
+        }
+    except Exception as exc:
+        logging.error(f"Critical error in photo asset audit: {exc}", exc_info=True)
+        return {"success": False, "message": "Photo asset audit failed", "data": None, "error": str(exc)}
+
+
+@bp.activity_trigger(input_name="activityInput")
+@bp.function_name("audit_single_place_photo_assets")
+def audit_single_place_photo_assets(activityInput):
+    place = activityInput.get("place")
+    config = activityInput.get("config", {})
+    try:
+        if not place or "fields" not in place:
+            return {"status": "error", "message": "Invalid place record"}
+        fields = place["fields"]
+        city = config.get("city", "charlotte")
+        place_name = fields.get("Place", "Unknown")
+        place_id = str(fields.get("Google Maps Place Id") or "").strip()
+        record_id = place.get("id", "")
+        if not is_photo_ready_place(fields):
+            return {
+                "status": "skipped",
+                "skip_reason": "ignored_missing_place_id",
+                "place_name": place_name,
+                "record_id": record_id,
+            }
+
+        airtable_urls = parse_url_list(fields.get("Photos"))
+        canonical_photo_urls = []
+        canonical_curator_urls = []
+        canonical_standard_urls = []
+        legacy_urls = []
+        non_azure_urls = []
+        for url in airtable_urls:
+            classification = classify_azure_photo_url(url, city, place_id)
+            category = classification["category"]
+            if category in {"new_curator", "new_standard"} and classification["reason"] == "valid":
+                canonical_photo_urls.append(url)
+                if category == "new_curator":
+                    canonical_curator_urls.append(url)
+                else:
+                    canonical_standard_urls.append(url)
+            elif category in {"legacy_curator", "legacy_place_photo"}:
+                legacy_urls.append(url)
+            elif urlparse(url).netloc.lower() != AZURE_ACCOUNT_HOST:
+                non_azure_urls.append(url)
+
+        new_blobs = []
+        legacy_place_blobs = []
+        legacy_curator_blobs = []
+        blob_warnings = []
+        try:
+            new_blobs = list_blobs_in_container(PHOTOS_CONTAINER, prefix=f"{place_id}/")
+        except Exception as exc:
+            blob_warnings.append(f"new_container_list_failed: {exc}")
+        try:
+            legacy_place_blobs = list_blobs_in_container(LEGACY_PLACE_PHOTOS_CONTAINER, prefix=f"{city}/{place_id}/")
+        except Exception as exc:
+            blob_warnings.append(f"legacy_place_list_failed: {exc}")
+        try:
+            legacy_curator_blobs = list_blobs_in_container(LEGACY_CURATOR_PHOTOS_CONTAINER, prefix=f"{record_id}/") if record_id else []
+        except Exception as exc:
+            blob_warnings.append(f"legacy_curator_list_failed: {exc}")
+
+        airtable_url_set = set(canonical_photo_urls)
+        blob_url_set = {f"https://{AZURE_ACCOUNT_HOST}/{PHOTOS_CONTAINER}/{blob}" for blob in new_blobs}
+        missing_blob_urls = sorted(airtable_url_set - blob_url_set)
+        unserved_blobs = sorted(blob_url_set - airtable_url_set)
+        curator_blob_count = len([blob for blob in new_blobs if blob.split("/", 1)[-1].startswith("curator-")])
+        standard_blob_count = len(new_blobs) - curator_blob_count
+        webp_count = len([blob for blob in new_blobs if blob.lower().endswith(".webp")])
+
+        return {
+            "status": "ok" if not missing_blob_urls else "error",
+            "place_name": place_name,
+            "place_id": place_id,
+            "record_id": record_id,
+            "airtable_photo_url_count": len(airtable_urls),
+            "canonical_photo_url_count": len(canonical_photo_urls),
+            "canonical_curator_url_count": len(canonical_curator_urls),
+            "canonical_standard_url_count": len(canonical_standard_urls),
+            "legacy_airtable_url_count": len(legacy_urls),
+            "non_azure_airtable_url_count": len(non_azure_urls),
+            "new_container_blob_count": len(new_blobs),
+            "new_container_curator_blob_count": curator_blob_count,
+            "new_container_standard_blob_count": standard_blob_count,
+            "new_container_webp_blob_count": webp_count,
+            "new_container_non_webp_blob_count": len(new_blobs) - webp_count,
+            "mappable_legacy_blob_count": len(legacy_place_blobs) + len(legacy_curator_blobs),
+            "unmappable_legacy_blob_count": 0,
+            "missing_blob_reference_count": len(missing_blob_urls),
+            "missing_blob_reference_samples": missing_blob_urls[:3],
+            "unserved_blob_count": len(unserved_blobs),
+            "unserved_blob_samples": unserved_blobs[:3],
+            "warnings": blob_warnings,
+        }
+    except Exception as exc:
+        logging.error(f"Failed to audit photo assets for place: {exc}", exc_info=True)
+        return {"status": "error", "message": str(exc)}
+
+
 @bp.function_name(name="PhotoAssetsReport")
 @bp.route(route="photo-assets/report")
 @bp.durable_client_input(client_name="client")
@@ -664,7 +806,7 @@ async def photo_assets_report(req: func.HttpRequest, client) -> func.HttpRespons
         config["dry_run"] = True
         config["upload"] = False
         config["write_airtable"] = False
-        instance_id = await client.start_new("photo_assets_migration_orchestrator", client_input=config)
+        instance_id = await client.start_new("photo_assets_audit_orchestrator", client_input=config)
         return client.create_check_status_response(req, instance_id)
     except ValueError as exc:
         return _json_response({"success": False, "message": "Invalid request parameter", "error": str(exc)}, 400)
@@ -691,12 +833,7 @@ def photo_health_check(req: func.HttpRequest) -> func.HttpResponse:
             return _json_response({"success": False, "message": f"Place not found for place_id {place_id}"}, 404)
 
         place = matches[0]
-        fetch_success, place_data, fetch_message = fetch_data_github(f"data/places/{city}/{place_id}.json")
-        if not fetch_success:
-            place_data = {"place_id": place_id, "photos": {}}
-
-        report = PhotoAssetService().build_health_report(place, place_data, city)
-        report["warnings"] = [] if fetch_success else [f"data_file_missing: {fetch_message}"]
+        report = audit_single_place_photo_assets({"place": place, "config": {"city": city}})
         return _json_response({"success": True, "message": "Photo health check completed", "data": report})
     except Exception as exc:
         logging.error(f"Photo health check failed: {exc}", exc_info=True)
@@ -707,31 +844,28 @@ def photo_health_check(req: func.HttpRequest) -> func.HttpResponse:
 @bp.route(route="photo-assets/canary", methods=["POST", "GET"], auth_level=func.AuthLevel.FUNCTION)
 def photo_assets_canary(req: func.HttpRequest) -> func.HttpResponse:
     run_id = uuid.uuid4().hex[:12]
-    temp_container = f"photo-canary-{run_id}"
-    test_blob_path = "canary/test.txt"
+    test_blob_path = f"canary/{run_id}.webp"
     try:
-        ensure_container_exists(temp_container, public_access="blob")
+        ensure_container_exists(PHOTOS_CONTAINER, public_access="blob")
         test_url = upload_blob_to_container(
-            temp_container,
+            PHOTOS_CONTAINER,
             test_blob_path,
-            b"photo asset canary",
-            content_type="text/plain",
+            b"RIFF\x1a\x00\x00\x00WEBPVP8 \x0e\x00\x00\x00\x10\x01\x00\x9d\x01*\x01\x00\x01\x00\x01@&%\xa4\x00\x03p\x00\xfe\xfb\xfdP\x00",
+            content_type="image/webp",
             public_access="blob",
             overwrite=True,
         )
-        deleted_blob = delete_blob_from_container(temp_container, test_blob_path)
-        deleted_container = delete_container(temp_container)
-        ensure_container_exists("place-photos", public_access="blob")
+        deleted_blob = delete_blob_from_container(PHOTOS_CONTAINER, test_blob_path)
         return _json_response({
             "success": True,
             "message": "Photo asset canary completed",
             "data": {
                 "run_id": run_id,
-                "temp_container": temp_container,
+                "container": PHOTOS_CONTAINER,
                 "test_blob_url": test_url,
                 "deleted_blob": deleted_blob,
-                "deleted_container": deleted_container,
-                "place_photos_container_ready": True,
+                "photos_container_ready": True,
+                "webp_encoder_available": webp_encoder_available(),
                 "checked_at": datetime.now(timezone.utc).isoformat(),
             },
         })

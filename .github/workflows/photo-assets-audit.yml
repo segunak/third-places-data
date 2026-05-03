@@ -1,10 +1,10 @@
-name: Photo Assets Report
+name: Photo Assets Audit
 
 on:
   workflow_call:
     inputs:
       city:
-        description: 'City to report'
+        description: 'City to audit'
         required: false
         default: 'charlotte'
         type: string
@@ -26,7 +26,7 @@ on:
   workflow_dispatch:
     inputs:
       city:
-        description: 'City to report'
+        description: 'City to audit'
         required: false
         default: 'charlotte'
         type: string
@@ -47,17 +47,17 @@ on:
         type: string
 
 concurrency:
-  group: photo-assets-report
+  group: photo-assets-audit
   cancel-in-progress: true
 
 jobs:
-  photo-assets-report:
+  photo-assets-audit:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Run photo assets report
+      - name: Run photo assets audit
         working-directory: ./scripts
         shell: pwsh
         env:
@@ -68,10 +68,17 @@ jobs:
           $recordId = [uri]::EscapeDataString("${{ inputs.record_id }}")
           $placeId = [uri]::EscapeDataString("${{ inputs.place_id }}")
 
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/photo-assets/report?city=$city&max_places=$maxPlaces&record_id=$recordId&place_id=$placeId"
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/photo-assets/audit?city=$city&max_places=$maxPlaces&record_id=$recordId&place_id=$placeId"
           Write-Host "Using function URL: $FunctionUrl"
 
-          ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey "$Env:AZURE_FUNCTION_KEY" -TimeoutSeconds 1800
+          ./Invoke-AzureDurableFunction.ps1 `
+            -FunctionUrl $FunctionUrl `
+            -FunctionKey "$Env:AZURE_FUNCTION_KEY" `
+            -TimeoutSeconds 18000 `
+            -MaxStatusPollFailures 12 `
+            -PrintOutputSummary `
+            -PrintOrchestrationId `
+            -FinalOutputJsonDepth 100
           if ($LASTEXITCODE -ne 0) {
             exit $LASTEXITCODE
           }

@@ -428,10 +428,10 @@ def test_refresh_single_place_photos_falls_back_to_airtable_photos_without_raw_d
 
 def test_refresh_single_place_photos_counts_existing_airtable_azure_photos_before(monkeypatch):
     existing_azure_urls = [
-        "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ-azure/"
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-azure/"
         + ("a" * 64)
         + ".jpg",
-        "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ-azure/"
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-azure/"
         + ("b" * 64)
         + ".webp",
     ]
@@ -565,11 +565,11 @@ def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_s
         "https://lh5.googleusercontent.com/gps-cs-s/provider-photo-1",
         "https://lh5.googleusercontent.com/p/provider-photo-2",
     ]
-    curator_url = "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/att1_photo.jpg"
+    curator_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/curator-att1-photo.webp"
     provider_azure_url = (
-        "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123/"
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/"
         + ("a" * 64)
-        + ".jpg"
+        + ".webp"
     )
     saved_payload = {}
     airtable_updates = []

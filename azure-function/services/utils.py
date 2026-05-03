@@ -214,9 +214,6 @@ def save_reviews_azure(json_data, review_file_name):
 # Azure Blob Storage Helpers
 # =============================================================================
 
-CURATOR_PHOTOS_CONTAINER = "curator-photos"
-
-
 def _get_blob_service_client() -> BlobServiceClient:
     connection_string = os.environ['AzureWebJobsStorage']
     return BlobServiceClient.from_connection_string(connection_string)
@@ -301,36 +298,6 @@ def delete_container(container_name: str) -> bool:
     except Exception as e:
         logging.warning(f"Failed to delete blob container {container_name}: {e}")
         return False
-
-
-def upload_blob(blob_path: str, data: bytes, content_type: str = "image/jpeg") -> str:
-    """
-    Upload binary data to Azure Blob Storage and return the public URL.
-
-    Args:
-        blob_path: The path within the container (e.g., "recXYZ/attABC_photo.jpg").
-        data: The raw image bytes.
-        content_type: MIME type for the blob.
-
-    Returns:
-        The public URL of the uploaded blob.
-    """
-    return upload_blob_to_container(
-        CURATOR_PHOTOS_CONTAINER,
-        blob_path,
-        data,
-        content_type=content_type,
-    )
-
-
-def delete_blob(blob_path: str) -> bool:
-    """Delete a blob from the curator-photos container. Returns True if deleted."""
-    return delete_blob_from_container(CURATOR_PHOTOS_CONTAINER, blob_path)
-
-
-def list_blobs(prefix: str) -> list:
-    """List blob names under a prefix in the curator-photos container."""
-    return list_blobs_in_container(CURATOR_PHOTOS_CONTAINER, prefix)
 
 
 def download_image(url: str) -> Tuple[bytes, str]:

@@ -19,9 +19,8 @@ class DummyAirtableService:
                     "Place": "Daily Ritual Coffee",
                     "Google Maps Place Id": "ChIJ5YHD3oOhVogRAV83qWzHmgg",
                     "Photos": json.dumps([
-                        "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ5YHD3oOhVogRAV83qWzHmgg/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg"
+                        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ5YHD3oOhVogRAV83qWzHmgg/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg"
                     ]),
-                    "Photos Google": json.dumps(["https://example.com/google.jpg"]),
                 },
             }
         ]
@@ -34,7 +33,7 @@ def test_base_config_defaults():
     assert config["dry_run"] is True
     assert config["upload"] is False
     assert config["write_airtable"] is False
-    assert config["failure_ttl_hours"] == 168
+    assert config["try_url_variants"] is True
 
 
 def test_base_config_rejects_invalid_int():
@@ -136,13 +135,13 @@ def test_migrate_single_place_skip_message_explains_missing_place_id(caplog):
     })
 
     assert result["status"] == "skipped"
-    assert result["skip_reason"] == "missing_google_maps_place_id"
-    assert result["message"] == "Skipped: no Google Maps Place Id; Azure photo blobs require a place_id in their path."
+    assert result["skip_reason"] == "ignored_missing_place_id"
+    assert result["message"] == "Skipped: no Google Maps Place Id; photo paths ignore non-photo-ready records."
     assert "missing Google Maps Place Id" in caplog.text
 
 
-def test_migrate_single_place_errors_when_missing_place_id_has_uncopied_curator_photo_urls(caplog):
-    caplog.set_level(logging.ERROR)
+def test_migrate_single_place_ignores_missing_place_id_with_legacy_curator_photo_urls(caplog):
+    caplog.set_level(logging.INFO)
     curator_url = "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec-no-place-id/photo.jpg"
 
     result = photo_assets.migrate_single_place_photo_assets({
@@ -157,10 +156,10 @@ def test_migrate_single_place_errors_when_missing_place_id_has_uncopied_curator_
         "config": {"city": "charlotte", "dry_run": True},
     })
 
-    assert result["status"] == "error"
-    assert result["error_reason"] == "curator_photo_urls_not_copied_missing_place_id"
-    assert result["summary"]["unselected_curator_photo_urls_field_count"] == 1
-    assert curator_url in caplog.text
+    assert result["status"] == "skipped"
+    assert result["skip_reason"] == "ignored_missing_place_id"
+    assert result["summary"]["ignored_missing_place_id"] is True
+    assert "missing Google Maps Place Id" in caplog.text
 
 
 def test_migrate_single_place_skips_missing_place_id_when_curator_photo_urls_already_in_photos(caplog):
@@ -180,7 +179,7 @@ def test_migrate_single_place_skips_missing_place_id_when_curator_photo_urls_alr
     })
 
     assert result["status"] == "skipped"
-    assert result["skip_reason"] == "missing_google_maps_place_id"
+    assert result["skip_reason"] == "ignored_missing_place_id"
     assert "missing Google Maps Place Id" in caplog.text
 
 
@@ -278,7 +277,7 @@ def test_migrate_single_place_processes_preserved_urls_without_candidates(monkey
     assert result["summary"]["candidate_count"] == 0
 
 
-def test_migrate_single_place_errors_when_curator_photo_urls_field_would_not_be_copied(monkeypatch):
+def test_migrate_single_place_skips_when_only_unsupported_legacy_curator_url_exists(monkeypatch):
     uncopied_url = "https://legacy.example.com/curator-photo.jpg"
 
     class DummyPhotoAssetService:
@@ -310,8 +309,8 @@ def test_migrate_single_place_errors_when_curator_photo_urls_field_would_not_be_
         "config": {"city": "charlotte", "dry_run": True},
     })
 
-    assert result["status"] == "error"
-    assert result["error_reason"] == "curator_photo_urls_not_copied"
+    assert result["status"] == "skipped"
+    assert result["skip_reason"] == "no_migratable_photo_urls"
     assert result["summary"]["unselected_curator_photo_urls_field_urls"] == [uncopied_url]
 
 
@@ -336,13 +335,9 @@ def test_migrate_single_place_skips_when_all_photo_downloads_fail(monkeypatch):
         def update_place_record(self, *args, **kwargs):
             raise AssertionError("Airtable should not be updated with an empty Photos list")
 
-    def fail_save(*args, **kwargs):
-        raise AssertionError("Data file should not be saved when no Azure URLs were selected")
-
     monkeypatch.setattr(photo_assets, "PhotoAssetService", DummyPhotoAssetService)
     monkeypatch.setattr(photo_assets, "AirtableService", FailingAirtableService)
     monkeypatch.setattr(photo_assets, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
-    monkeypatch.setattr(photo_assets, "save_data_github", fail_save)
 
     result = photo_assets.migrate_single_place_photo_assets({
         "place": {
@@ -390,13 +385,9 @@ def test_migrate_single_place_refuses_unexplained_empty_airtable_photos_update(m
         def update_place_record(self, *args, **kwargs):
             raise AssertionError("Airtable should not be updated with an empty Photos list")
 
-    def fail_save(*args, **kwargs):
-        raise AssertionError("Data file should not be saved when zero Azure URLs were selected unexpectedly")
-
     monkeypatch.setattr(photo_assets, "PhotoAssetService", DummyPhotoAssetService)
     monkeypatch.setattr(photo_assets, "AirtableService", FailingAirtableService)
     monkeypatch.setattr(photo_assets, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
-    monkeypatch.setattr(photo_assets, "save_data_github", fail_save)
 
     result = photo_assets.migrate_single_place_photo_assets({
         "place": {
@@ -424,7 +415,7 @@ def test_migrate_single_place_refuses_unexplained_empty_airtable_photos_update(m
 
 
 def test_migrate_single_place_reports_airtable_update_applied(monkeypatch):
-    selected_url = "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123/photo.jpg"
+    selected_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/" + ("a" * 64) + ".webp"
 
     class DummyPhotoAssetService:
         def process_place(self, place, place_data, config):
@@ -433,7 +424,6 @@ def test_migrate_single_place_reports_airtable_update_applied(monkeypatch):
                 "summary": {"candidate_count": 1, "selected_airtable_count": 1},
                 "assets": [],
                 "failures": [],
-                "place_data": {"photos": {}},
             }
 
     class UpdatingAirtableService:
@@ -450,7 +440,6 @@ def test_migrate_single_place_reports_airtable_update_applied(monkeypatch):
     monkeypatch.setattr(photo_assets, "PhotoAssetService", DummyPhotoAssetService)
     monkeypatch.setattr(photo_assets, "AirtableService", UpdatingAirtableService)
     monkeypatch.setattr(photo_assets, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
-    monkeypatch.setattr(photo_assets, "save_data_github", lambda json_data, path: (True, "ok"))
 
     result = photo_assets.migrate_single_place_photo_assets({
         "place": {
@@ -471,7 +460,8 @@ def test_migrate_single_place_reports_airtable_update_applied(monkeypatch):
     })
 
     assert result["status"] == "updated"
-    assert result["summary"]["github_data_file_saved"] is True
+    assert result["summary"]["github_data_file_save_attempted"] is False
+    assert result["summary"]["github_data_file_saved"] is False
     assert result["summary"]["airtable_write_attempted"] is True
     assert result["summary"]["airtable_update_applied"] is True
     assert result["summary"]["airtable_update_skipped_no_change"] is False
@@ -479,7 +469,7 @@ def test_migrate_single_place_reports_airtable_update_applied(monkeypatch):
 
 
 def test_migrate_single_place_reports_airtable_no_change(monkeypatch):
-    selected_url = "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123/photo.jpg"
+    selected_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/" + ("a" * 64) + ".webp"
     selected_json = json.dumps([selected_url])
 
     class DummyPhotoAssetService:
@@ -489,7 +479,6 @@ def test_migrate_single_place_reports_airtable_no_change(monkeypatch):
                 "summary": {"candidate_count": 1, "selected_airtable_count": 1},
                 "assets": [],
                 "failures": [],
-                "place_data": {"photos": {}},
             }
 
     class NoChangeAirtableService:
@@ -506,7 +495,6 @@ def test_migrate_single_place_reports_airtable_no_change(monkeypatch):
     monkeypatch.setattr(photo_assets, "PhotoAssetService", DummyPhotoAssetService)
     monkeypatch.setattr(photo_assets, "AirtableService", NoChangeAirtableService)
     monkeypatch.setattr(photo_assets, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
-    monkeypatch.setattr(photo_assets, "save_data_github", lambda json_data, path: (True, "ok"))
 
     result = photo_assets.migrate_single_place_photo_assets({
         "place": {
@@ -527,7 +515,8 @@ def test_migrate_single_place_reports_airtable_no_change(monkeypatch):
     })
 
     assert result["status"] == "updated"
-    assert result["summary"]["github_data_file_saved"] is True
+    assert result["summary"]["github_data_file_save_attempted"] is False
+    assert result["summary"]["github_data_file_saved"] is False
     assert result["summary"]["airtable_write_attempted"] is True
     assert result["summary"]["airtable_update_applied"] is False
     assert result["summary"]["airtable_update_skipped_no_change"] is True
@@ -571,19 +560,10 @@ def test_photo_health_check_reports_counts(monkeypatch):
     monkeypatch.setattr(photo_assets, "AirtableService", DummyAirtableService)
     monkeypatch.setattr(
         photo_assets,
-        "fetch_data_github",
-        lambda path: (
-            True,
-            {
-                "photos": {
-                    "photo_urls": ["https://example.com/source.jpg"],
-                    "raw_data": {"photos_data": [{"photo_url_big": "https://example.com/raw.jpg"}]},
-                    "azure_assets": [{"azure_url": "https://example.com/asset.jpg", "selected_for_airtable": False}],
-                    "azure_asset_failures": [{"reason": "download_failed"}],
-                }
-            },
-            "ok",
-        ),
+        "list_blobs_in_container",
+        lambda container, prefix="": [
+            f"{prefix}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg"
+        ] if container == photo_assets.PHOTOS_CONTAINER else [],
     )
 
     response = photo_assets.photo_health_check(
@@ -593,8 +573,8 @@ def test_photo_health_check_reports_counts(monkeypatch):
 
     assert response.status_code == 200
     assert body["success"] is True
-    assert body["data"]["airtable_photos_count"] == 1
-    assert body["data"]["airtable_photos_google_count"] == 1
-    assert body["data"]["provider_raw_photo_url_big_count"] == 1
-    assert body["data"]["azure_assets_count"] == 1
-    assert body["data"]["failed_upload_count"] == 1
+    assert body["data"]["airtable_photo_url_count"] == 1
+    assert body["data"]["canonical_standard_url_count"] == 1
+    assert body["data"]["legacy_airtable_url_count"] == 0
+    assert body["data"]["non_azure_airtable_url_count"] == 0
+    assert body["data"]["new_container_blob_count"] == 1

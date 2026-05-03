@@ -4,7 +4,7 @@ import azure.functions as func
 import azure.durable_functions as df
 from datetime import datetime
 from services.airtable_service import AirtableService
-from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, build_display_photo_urls, parse_url_list
+from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, parse_url_list, remove_photo_manifest_fields
 from services.place_data_service import PlaceDataProviderFactory
 from services.utils import fetch_data_github, save_data_github
 
@@ -18,10 +18,7 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
     dry_run = req.params.get('dry_run', 'true').lower() == 'true'
     upload = req.params.get('upload', 'true').lower() == 'true'
     write_airtable = req.params.get('write_airtable', 'true').lower() == 'true'
-    overwrite = req.params.get('overwrite', 'false').lower() == 'true'
-    retry_failures = req.params.get('retry_failures', 'false').lower() == 'true'
     try_url_variants = req.params.get('try_url_variants', 'true').lower() == 'true'
-    failure_ttl_hours_param = req.params.get('failure_ttl_hours', '168')
     sequential_mode = req.params.get('sequential_mode', 'false').lower() == 'true'
     max_places_param = req.params.get('max_places')
     photo_source_mode = req.params.get('photo_source_mode', 'refresh_from_data_file_raw_data')
@@ -41,7 +38,7 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
             }),
             status_code=400,
             mimetype="application/json"
-        )
+            )
 
     if provider_type not in ['google', 'outscraper']:
         return None, func.HttpResponse(
@@ -73,7 +70,6 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
         )
 
     max_places = None
-    failure_ttl_hours = 168
     if max_places_param:
         try:
             max_places = int(max_places_param)
@@ -100,31 +96,6 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
                 mimetype="application/json"
             )
 
-    try:
-        failure_ttl_hours = int(failure_ttl_hours_param)
-        if failure_ttl_hours < 0:
-            return None, func.HttpResponse(
-                json.dumps({
-                    "success": False,
-                    "message": "Invalid failure_ttl_hours value",
-                    "data": None,
-                    "error": "failure_ttl_hours must be a non-negative integer"
-                }),
-                status_code=400,
-                mimetype="application/json"
-            )
-    except ValueError:
-        return None, func.HttpResponse(
-            json.dumps({
-                "success": False,
-                "message": "Invalid failure_ttl_hours value",
-                "data": None,
-                "error": "failure_ttl_hours must be a valid integer"
-            }),
-            status_code=400,
-            mimetype="application/json"
-        )
-
     parsed = {
         "provider_type": provider_type,
         "city": city,
@@ -132,9 +103,6 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
         "dry_run": dry_run,
         "upload": upload,
         "write_airtable": write_airtable,
-        "overwrite": overwrite,
-        "retry_failures": retry_failures,
-        "failure_ttl_hours": failure_ttl_hours,
         "try_url_variants": try_url_variants,
         "sequential_mode": sequential_mode,
         "max_places": max_places,
@@ -180,9 +148,6 @@ async def refresh_all_photos(req: func.HttpRequest, client) -> func.HttpResponse
         photo_source_mode = parsed_request["photo_source_mode"]
         upload = parsed_request["upload"]
         write_airtable = parsed_request["write_airtable"]
-        overwrite = parsed_request["overwrite"]
-        retry_failures = parsed_request["retry_failures"]
-        failure_ttl_hours = parsed_request["failure_ttl_hours"]
         try_url_variants = parsed_request["try_url_variants"]
 
         logging.info(f"Starting administrative photo refresh with parameters: "
@@ -198,9 +163,6 @@ async def refresh_all_photos(req: func.HttpRequest, client) -> func.HttpResponse
             "dry_run": dry_run,
             "upload": upload,
             "write_airtable": write_airtable,
-            "overwrite": overwrite,
-            "retry_failures": retry_failures,
-            "failure_ttl_hours": failure_ttl_hours,
             "try_url_variants": try_url_variants,
             "sequential_mode": sequential_mode,
             "max_places": max_places,
@@ -242,9 +204,6 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
         photo_source_mode = orchestration_input.get("photo_source_mode", "refresh_from_data_file_raw_data")
         upload = orchestration_input.get("upload", not dry_run)
         write_airtable = orchestration_input.get("write_airtable", not dry_run)
-        overwrite = orchestration_input.get("overwrite", False)
-        retry_failures = orchestration_input.get("retry_failures", False)
-        failure_ttl_hours = orchestration_input.get("failure_ttl_hours", 168)
         try_url_variants = orchestration_input.get("try_url_variants", True)
 
         if not provider_type:
@@ -260,9 +219,6 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
             "photo_source_mode": photo_source_mode,
             "upload": upload,
             "write_airtable": write_airtable,
-            "overwrite": overwrite,
-            "retry_failures": retry_failures,
-            "failure_ttl_hours": failure_ttl_hours,
             "try_url_variants": try_url_variants,
         }
 
@@ -364,9 +320,6 @@ def refresh_single_place_photos(activityInput):
         dry_run = config.get("dry_run", True)
         upload = config.get("upload", not dry_run)
         write_airtable = config.get("write_airtable", not dry_run)
-        overwrite = config.get("overwrite", False)
-        retry_failures = config.get("retry_failures", False)
-        failure_ttl_hours = config.get("failure_ttl_hours", 168)
         try_url_variants = config.get("try_url_variants", True)
         photo_source_mode = config.get("photo_source_mode", "refresh_from_data_file_raw_data")
 
@@ -397,7 +350,8 @@ def refresh_single_place_photos(activityInput):
 
         if not place_id:
             place_result["status"] = "skipped"
-            place_result["message"] = "No Google Maps Place Id"
+            place_result["skip_reason"] = "ignored_missing_place_id"
+            place_result["message"] = "No Google Maps Place Id; photo refresh ignored."
             return place_result
 
         try:
@@ -481,25 +435,14 @@ def refresh_single_place_photos(activityInput):
                 city=city,
                 dry_run=dry_run,
                 upload=upload,
-                write_airtable=write_airtable,
-                overwrite=overwrite,
-                retry_failures=retry_failures,
-                failure_ttl_hours=failure_ttl_hours,
                 try_url_variants=try_url_variants,
             )
             asset_result = asset_service.process_place(place, place_data, asset_config)
-            place_result["azure_asset_summary"] = asset_result.get("summary", {})
+            place_result["photo_asset_summary"] = asset_result.get("summary", {})
             place_result["failed_uploads"] = len(asset_result.get("failures", []))
-            place_result["azure_assets"] = len(asset_result.get("assets", []))
+            place_result["canonical_assets"] = len(asset_result.get("assets", []))
 
-            if dry_run:
-                selected_display_photo_urls = build_display_photo_urls(
-                    asset_result.get("selected_airtable_urls", []),
-                    asset_result.get("selected_source_urls", []),
-                )
-            else:
-                selected_display_photo_urls = asset_result.get("selected_airtable_urls", [])
-                place_data = asset_result.get("place_data", place_data)
+            selected_display_photo_urls = asset_result.get("selected_airtable_urls", [])
 
             place_result["photos_after"] = len(selected_display_photo_urls)
             if not selected_display_photo_urls:
@@ -517,6 +460,7 @@ def refresh_single_place_photos(activityInput):
 
         if not dry_run:
             try:
+                place_data = remove_photo_manifest_fields(place_data)
                 photos_section_for_save = place_data.setdefault('photos', {})
                 if selected_source_photo_urls:
                     photos_section_for_save['photo_urls'] = selected_source_photo_urls

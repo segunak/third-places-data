@@ -43,6 +43,7 @@ concurrency:
 jobs:
   migrate-photos-to-azure:
     runs-on: windows-latest
+    timeout-minutes: 330
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -81,7 +82,7 @@ jobs:
           ./Invoke-AzureDurableFunction.ps1 `
             -FunctionUrl $FunctionUrl `
             -FunctionKey "$Env:AZURE_FUNCTION_KEY" `
-            -TimeoutSeconds 1800 `
+            -TimeoutSeconds 18000 `
             -MaxStatusPollFailures 12 `
             -StatusOutputPath $statusOutputPath `
             -PrintCustomStatus `
