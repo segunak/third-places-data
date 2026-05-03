@@ -3646,10 +3646,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -3658,6 +3654,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -3694,13 +3698,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npMi9rmW8x0t1-fzdw5GKkdwrLkbop9bYL1lMO_A_LUOIMJx-ndmUqGk-wcTumkFgbTpovPF9Z6NBN0Eht4nfiz2Ky5GzSjxj5K80NiM82IfpvhLXWIbDHSc4nOHuzZQf9bz-AuwqgFPF2l=w2048-h2048-k-no",
                 "source_url_sha256": "550bb03e8017cf2db1326694f5c427aa1fbba7c13ba62f2061af59f381fae3b0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -3767,7 +3767,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:02.685663+00:00"
+                "failed_at": "2026-05-03T02:52:45.759275+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -3777,13 +3777,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noLCndybHD64xdxEkvmOPMfKp73cosC_2ivRsjDHEQY3r6W5NAEJzv6TVOaWdttbGDeeHgwy__7lMFEE57jOetxJtkpedwWzXKmI4yX3gNqQBJ3jef0uJFMBbF8t7IeqO6osC2DEuvE_os=w2048-h2048-k-no",
                 "source_url_sha256": "5870b38d1032a9d4336b52af61fcbd20bb2cc56bbabc4ee23b2b4f59ee446a24",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -3850,7 +3846,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:03.334371+00:00"
+                "failed_at": "2026-05-03T02:52:46.344848+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -3860,13 +3856,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no6QZnszkMzPdGYjwL6yWHyIzqjsSRH33ZAVmrUzImE_u9lXMhecp-vzY3RAA-l2yORmyhr0tl7qq4_xVCmXBk_aoWgeMKlZG1G_cSyTXOag-z6wWxzIwfweX7WE7hLrVn8Tor8O-tUjgoG=w2048-h2048-k-no",
                 "source_url_sha256": "7016323745d4693049f31243667d0eb40bf6e7cd0cbb5c7cc6b16e29c0104fcc",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -3933,7 +3925,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:03.994205+00:00"
+                "failed_at": "2026-05-03T02:52:46.850278+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -3943,13 +3935,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npG9q8fpM26YgUiHbrS0PAsD7_G5-kTyFxzbpSIumdmXRa5156-_W2TbSrIqLx78etWdxJbPIPhE6qIpAhBUX60G9CUHr_MrazMagW2ReKxi4qbK71296cO0cFP1Ib_hwkAmNT_GHEbaM9L=w2048-h2048-k-no",
                 "source_url_sha256": "f28d38e533ad968181c508eb8b2baf535b3360e5f4717876bd808e0581baa821",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -4016,7 +4004,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:04.677354+00:00"
+                "failed_at": "2026-05-03T02:52:47.412760+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4026,13 +4014,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrJEri-xpNGMPwd6vd95yJ-M1c51-UNW-MU7PQ-3EnFeWCJi04HInNXpAfL5zIUtQFV9o3ARS7Cro8YKf8nmyBItuLr1vEQgAMf4MTdwgguSXUiWos8BE1cLmhfklYnAULYT29Y0M5TO1Y=w2048-h2048-k-no",
                 "source_url_sha256": "0c16784fbb12f9bc6e4eaf739063f5616ab8ecd452b654784ed7df674478d4dc",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -4099,7 +4083,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:05.313147+00:00"
+                "failed_at": "2026-05-03T02:52:48.072361+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4109,13 +4093,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no2vGgZTCD8iftJvkvE2wCIm7i8GZPIrPPgsp2JmJ-9hZrzWRumfyvJRjkmPF1pW56Cjk7KKo-zIbi3r86wksgB446DrVheEucIRNHwL3VLvX0gwIbKo90Bk9WA_lOY-sJJFf8EAYt_tn8=w2048-h2048-k-no",
                 "source_url_sha256": "71559fb465fbe955f6813a70b85a251f76703e732fa62bcb98e7c21e0b9c30c2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -4182,7 +4162,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:06.013525+00:00"
+                "failed_at": "2026-05-03T02:52:48.739941+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4192,13 +4172,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqNM6ZhDGR-yTy7pzJSLZMSUdNKbCw846HfjhZT1gk2QbK0DuzWEyMF0UOwaZJ1VRj6hRsprviTQjWYQUXyiJ2l4py4ybz3UHiE97YX4yp7A32Bvx5ehLx49I_NjsZzDDh7ESe1pB1Zn3CB=w2048-h2048-k-no",
                 "source_url_sha256": "d8f5f50309ba0fed7b0a355a1f55b9a78a3bebf4f882a30de066cd520f6c9115",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -4265,7 +4241,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:06.657118+00:00"
+                "failed_at": "2026-05-03T02:52:54.310587+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4275,13 +4251,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np7o3qPAUDVjRirIUHoRe48TkXxvFltCyLJguzkPOtXZ9uksXNF7vzipANwMrTVa7t7RQn4lL4q_FJkU1QP3Qqd1er34EyIxm47B8gT1qB1eVGSX9cxcZgkeHbY0VE2Z_LPWzoYCLME3YFu=w2048-h2048-k-no",
                 "source_url_sha256": "990f778c63309da2b273543006a6ede125df8ab8aaf975615bbbe2ae8340092f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -4348,7 +4320,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:07.380489+00:00"
+                "failed_at": "2026-05-03T02:52:54.844720+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4358,13 +4330,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr0yaGUOY5FoA7dnQu0oMbE2fjqaz9GyhnCUHFjmTjLbBNo21UkyRic_m_glQMxaGmcmtqAtEQfNbbztcGTbUBiyVMnAuf9UPq2PQS_ioetfnTHkKXKHzYaBISeEpucozCJyDCd5LVmEwY=w2048-h2048-k-no",
                 "source_url_sha256": "47af416d797eced9a75b24c1a1b29384114178546e72e77c0ec06f430112d906",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -4431,7 +4399,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:08.001966+00:00"
+                "failed_at": "2026-05-03T02:53:00.552225+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4441,13 +4409,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npymIL5wmA9k8fI7GoIbTA75QpF393tlGrdqDZ4ZvKExPFZpLZiLcaDhmHoHlAj-pWWBSZxkZmYXcu6wcZ3RG8PQ47ipUlMQwF0jAZoOUPFT0hj9PC32OIbdRn5w3hYc2f1JK91ez5847c=w2048-h2048-k-no",
                 "source_url_sha256": "291c825a455fb533e785d9b984f67b8991a73b0c3420ba670388a01edc8c8f5e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -4514,7 +4478,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:08.646852+00:00"
+                "failed_at": "2026-05-03T02:53:01.160761+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4524,13 +4488,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrkbXSbCJTqnKmxxtQsmjbWPgcXsWCoRaiD2q8Hqns55h9bKYCm_Mx5J1CDjPnra-ieTH9VyZeufCxFqgNGc0ZcF1gZTfrc1DtXjViGLnT7OtwjoBcwK9ETGZLq1PewmfSFAMql5dNCsKUr=w2048-h2048-k-no",
                 "source_url_sha256": "aeb14e3ff9b708c20c1ca709601df6cacb2185ebb18c66b2e55f5bfa2d2fd2d9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -4597,7 +4557,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:09.184180+00:00"
+                "failed_at": "2026-05-03T02:53:01.711673+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4607,13 +4567,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqTjr8_I4VOCYekXKA27pPa3K3Ov4Vh8VPIFui8fvFiKmIwynbKdEXzT7SIIrqLDQiOmVknQcdK6ofNP94C4dSZQu8MCQG-ugKUy7qZTcPwAjZyeqZhnfXwZQf6vsC89Eb9lMKbFfByNimM=w2048-h2048-k-no",
                 "source_url_sha256": "a3c9874119b9097cec37097e2331fab0622408d8f3baab163f7d5dd2735012bf",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -4680,7 +4636,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:09.780383+00:00"
+                "failed_at": "2026-05-03T02:53:02.336790+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4690,13 +4646,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqPL8IKYUZyKhB1_wo3tT-T3v6zetxxSLVQMldEHP4B45q6axaHcYCmAgc8zaMefkBPuBU7Btgw2gBaronVRtu60zZvM5In03O2syRwJCoFQlWR_KAPzFwsAiABT3KDbnMiHZ0W1ePIaWo=w2048-h2048-k-no",
                 "source_url_sha256": "6a3aca2f6835f3a2043b1b9d7e9f8c30a522afcf566e7f951b93b3426b815751",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -4763,7 +4715,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:10.373571+00:00"
+                "failed_at": "2026-05-03T02:53:02.927029+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4773,13 +4725,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noaQlKoxTxpOSWu6i0SeQJ1cqwO92napaJsuNKSchFEn3c5tt2e-3cz-wuHqaLwYeXmcnTMXvQLCZqRVrf6lX9wIzAUgVXucPsx0fFMc-Wgumbw34-F2RaEhJk359puKfJmgYhp55a1i4dM=w2048-h2048-k-no",
                 "source_url_sha256": "81d33988a54f9f52cb4a9d8caf710bf5d50fcd034debf14065e7c7dc70495325",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -4846,7 +4794,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:10.890825+00:00"
+                "failed_at": "2026-05-03T02:53:03.708579+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4856,13 +4804,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrk8lkCjmr0LTPvPcMWx9tBc3xvvz7pTHKaPBpwf2V3gO7GiFGMKf4NoxWw6B6kygFkQXkaUNI185rTRn5Z5tXZdmBSYzjnqpcdYU8bQGU1PI0XskTRrRmojZeZ8t5L4OvAfmsh9hSs3-8z=w2048-h2048-k-no",
                 "source_url_sha256": "ce610f491573cd5dc36dbae1f631ddf25cf8b17ee1e401b711da8ae3d032da21",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -4929,7 +4873,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:11.479295+00:00"
+                "failed_at": "2026-05-03T02:53:09.346179+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -4939,13 +4883,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr3_c0soQM5K-VydBfxO89Tn96YNTQ_Fxr2-_c9pocTJYohCpXJ_5LKnv6spNOKI8_92oH-dFfNsf_fA0rz_aE1VFYaBDsvGiJfOJMOlU7wme0NzRfEEhnoPrLhE7Pl11798OIZQSxBGQBr=w2048-h2048-k-no",
                 "source_url_sha256": "9d57cb902e2ab45b2fec91133cb1229e92f1b32a7ed4b584fa0dc7bcf6c06597",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -5012,7 +4952,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:12.207383+00:00"
+                "failed_at": "2026-05-03T02:53:10.073180+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5022,13 +4962,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqcp066GMa1RQozz4ShhyRs3K-JcJiQriicPMdhX4E58puj-VCMFegIVlXWCWeG7QZpz6y4HRsKp8PESQeAwUe7qi20EOl4oTywCf9YaUXbEYY_LlhL-v3xw8z8R5Op-anaPnoD23PimoBY=w2048-h2048-k-no",
                 "source_url_sha256": "30421869ddb51002f715b1ebb35641803af97254fb58acf60908a5406ef9490b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -5095,7 +5031,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:12.933194+00:00"
+                "failed_at": "2026-05-03T02:53:10.778523+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5105,13 +5041,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np0Pic8ItffikBNr99Om1TE2o69jI59RCNJNwZ1u-tBZrElJbqnhRHrnaN9lOGAC3iF5dyJ-noaHBZ6Al81_OwZcRWEDGYpMYzRppPKfpOt9_m-_QFKOvHEAkZ73_tNfPMn0MkzjUbku_1F=w2048-h2048-k-no",
                 "source_url_sha256": "cdacba1969085db6360782b52317ddc254524e35ef916267c693477ae0255ed5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -5178,7 +5110,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:13.558712+00:00"
+                "failed_at": "2026-05-03T02:53:11.377456+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5188,13 +5120,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nra4W5XKtgQ2gqyh262eRMM48WBL6bNGFBdXIBAOtgL1IrzP1yLOFGXnnRixxV9EVWl44dtGwYP2lx6nkl8tQ3Cigc6sKgGJ9yYBAHfP7EyU218ULRmS5R_qpROw-59TMlkAtbpS0Kz2wc3=w2048-h2048-k-no",
                 "source_url_sha256": "6dd71bd721125dad7f7c6c0b6575e5778321f1c1aecdae06cd35b4d8ad6d0655",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -5261,7 +5189,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:14.237813+00:00"
+                "failed_at": "2026-05-03T02:53:11.906655+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5271,13 +5199,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqrgxmH-8RHbl9cwnlyGxLGDoIAeRnDNXicyL4aaJ4auRl3CmSheTCmLrgluam_ZnPqWhSLMyNk9YDeIhyefdApyYxRDGmkGuWJ-Ir0ZK6j2NCJ325iHvQ9I4sNEvu8fYbBSXFpM1r13n82=w2048-h2048-k-no",
                 "source_url_sha256": "6ea644b284834ba9f373672740aea4941c7bf25d00a3dccb9796d84ef4f76d01",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -5344,7 +5268,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:14.880235+00:00"
+                "failed_at": "2026-05-03T02:53:12.399483+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5354,13 +5278,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np6q3ENA82CuqrDalx3My2t2cZVtJkEyhTanO0f2tPzoGhSgVSGQUySrvwcwIHNxmBZkjf_YVavOVbif3ck8Y_NEDK3k30_NSvpOPQdi05AbZekHJdarwc2sLlfAZ8bJWhmvhLHOYpHHfYJ=w2048-h2048-k-no",
                 "source_url_sha256": "e231974437bf7c887b783f777f5865ab6622a393226092531013039664c1c655",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -5427,7 +5347,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:15.555514+00:00"
+                "failed_at": "2026-05-03T02:53:12.912361+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5437,13 +5357,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrirgOdIml-Mh0LMt3JQujUKjCk7p9-jz2B7NQJng8Y6755BaVbEIhkgdKG7hnIlaV6BAlrILxztdhr95wMxHB9aAzMC6FDljHNC9YbbKlOLXGdFbaPWmwFWcAJTsaMPn3ZCEY0qZO8tT4=w2048-h2048-k-no",
                 "source_url_sha256": "f3e4a6fb31b55e9e8509bd6282dff87455af6aa51426eea15be691cbf5beb094",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -5510,7 +5426,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:16.200944+00:00"
+                "failed_at": "2026-05-03T02:53:18.411700+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5520,13 +5436,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq2bHAYc3t9a6iRxts0ta9o43n3yYru_GwrVmhsd-a0XwB1_niM2QMm0lCXECdYk3xngjeKTTyzsJFPKo3Qq-DGrvKTe3YG2xF1rWlc2_JuIZFWEZeQhbmrZ-9vp2cYjT08erQS0JAgFmK9=w2048-h2048-k-no",
                 "source_url_sha256": "5046ff24c6a3d3eb7ff78a74a5de0cff7faa8a7e7bf2c5f663711d9affbe3d82",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -5593,7 +5505,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:17.256768+00:00"
+                "failed_at": "2026-05-03T02:53:18.929169+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5603,13 +5515,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqw0jQxt3EP68lmEYBqiRuIQkJmUvTh8eu04swg2F9LPeX_HDT9PZWvemEjhirbZc1NY_LF9TG1AyxYig3djuCsR8ZFK-xacrPAIqbNs3BeNRVfoXIn_C-up2qylg1BbMLzmpz4CORxaOY=w2048-h2048-k-no",
                 "source_url_sha256": "3172367a4b2c731cbc0204807a2829144bf4074760991abfc66cc2fcaab9a000",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -5676,7 +5584,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:18.062056+00:00"
+                "failed_at": "2026-05-03T02:53:19.531209+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5686,13 +5594,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nork0GXYhwHMkVIk_iJDJ7dUz1biiSE-F8iNoAu3W7lvsX-u0q_yXmShQuhBzcD-Qn3OTEXBjhHWf12563cKwER0LV1rdB_f6VV0GZJPnGKy8ZIHd4BWGu9EdJsfAeYPqmIfC8_SM9yjxM=w2048-h2048-k-no",
                 "source_url_sha256": "2696fd7bb3d075720e8a9198f1480b27bc830aad87eb90507ed299302315c28f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -5759,7 +5663,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:18.780229+00:00"
+                "failed_at": "2026-05-03T02:53:20.151483+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5769,13 +5673,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrlUeYRu3v2YmA4nLprZ6Hz4poDOEtv0b2GqQE5RuHWCOPwJp-hj8SOLWxQ-kzXa6RU4tWYy1Sbhwwb-ipIdOCxGwIr6-7beKs8F162og_U8lkb32whawqqLDUcoPHSinNp7JdoBMpqWYM=w2048-h2048-k-no",
                 "source_url_sha256": "9728b1b09e531e7799e04243aa76882169ab26a1a7cf2e9f98ad562a771b96fd",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -5842,7 +5742,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:19.442855+00:00"
+                "failed_at": "2026-05-03T02:53:20.774355+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5852,13 +5752,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqODkIUapjtmKN0tnJpaitxmggl0I_73pGnZ2YXteo5jT8kolnfteXSJsIhKNL9ytmL3IsFyYb3nM4Lf3MYlNXZEqFoN2C3Sitzd8KCfOkGQnAayCzDW2y-FePWw1mFSb9Lvi_8MXNm0GZD=w2048-h2048-k-no",
                 "source_url_sha256": "7fab45e9a5b4e98a7ecb1440df33b6f337572f7b323eb22f13fddcd356efdcba",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -5925,7 +5821,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:20.843366+00:00"
+                "failed_at": "2026-05-03T02:53:21.374422+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -5935,13 +5831,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqkI3uDhjJGK8-dN3h_uJem77a9gl9MoM4qAumMSWcr87InzLc0rbdYfrbydPDcPM3j-v94ekuS-YgkfWe4CJwapLwkC8x4vbzGC9t17v6L1fiV67ETgqle-UUF3Obvx9dkkiaSNsV9g47t=w2048-h2048-k-no",
                 "source_url_sha256": "beaebbbfacf0a41469114369c2b0ce8755bafbf1196bdb3dc9510155867c9720",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -6008,7 +5900,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:21.936011+00:00"
+                "failed_at": "2026-05-03T02:53:21.939925+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6018,13 +5910,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqMmCoeZuoHqYypr9-iXpyMcSLOjGUuc-5rw9rH8rp8vy1AC-HWlPeB1Ar5XTj_sAJf_pgz58Nc-yFivTDQyEe-51yxtSlusbGsvfa0aACALMIhCCY_Plqi7ZnzdB2O3xYtoMYc8SvP5OTx=w2048-h2048-k-no",
                 "source_url_sha256": "36540be45ff9bf23f8c9f37c4483a8b0b23a1ee6edd38a8b313187df8464cb1a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -6091,7 +5979,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:22.637582+00:00"
+                "failed_at": "2026-05-03T02:53:27.447088+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6170,7 +6058,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:23.639620+00:00"
+                "failed_at": "2026-05-03T02:53:28.040235+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6249,7 +6137,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:24.251025+00:00"
+                "failed_at": "2026-05-03T02:53:28.552994+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6328,7 +6216,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:24.935379+00:00"
+                "failed_at": "2026-05-03T02:53:33.917007+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6407,7 +6295,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:25.637544+00:00"
+                "failed_at": "2026-05-03T02:53:34.270052+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6486,7 +6374,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:26.275639+00:00"
+                "failed_at": "2026-05-03T02:53:34.602586+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6565,7 +6453,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:26.878877+00:00"
+                "failed_at": "2026-05-03T02:53:34.943749+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6644,7 +6532,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:27.474875+00:00"
+                "failed_at": "2026-05-03T02:53:35.366890+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6723,7 +6611,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:27.995528+00:00"
+                "failed_at": "2026-05-03T02:53:35.759413+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6802,7 +6690,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:28.633246+00:00"
+                "failed_at": "2026-05-03T02:53:36.203748+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6881,7 +6769,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:29.166518+00:00"
+                "failed_at": "2026-05-03T02:53:36.686225+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -6960,7 +6848,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:29.903927+00:00"
+                "failed_at": "2026-05-03T02:53:37.102694+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7039,7 +6927,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:30.701758+00:00"
+                "failed_at": "2026-05-03T02:53:37.560000+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7118,7 +7006,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:31.314647+00:00"
+                "failed_at": "2026-05-03T02:53:42.985599+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7197,7 +7085,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:31.913417+00:00"
+                "failed_at": "2026-05-03T02:53:43.424056+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7276,7 +7164,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:32.495800+00:00"
+                "failed_at": "2026-05-03T02:53:48.855069+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7355,7 +7243,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:33.035992+00:00"
+                "failed_at": "2026-05-03T02:53:49.229885+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7434,7 +7322,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:33.605848+00:00"
+                "failed_at": "2026-05-03T02:53:54.628639+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7513,7 +7401,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:34.188851+00:00"
+                "failed_at": "2026-05-03T02:53:55.043855+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7592,7 +7480,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:34.781609+00:00"
+                "failed_at": "2026-05-03T02:54:00.391011+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7671,7 +7559,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:35.447904+00:00"
+                "failed_at": "2026-05-03T02:54:00.707755+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7750,7 +7638,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:36.022444+00:00"
+                "failed_at": "2026-05-03T02:54:01.066162+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7829,7 +7717,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:36.664120+00:00"
+                "failed_at": "2026-05-03T02:54:01.387191+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7908,7 +7796,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:37.272922+00:00"
+                "failed_at": "2026-05-03T02:54:01.742280+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -7987,7 +7875,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:37.887405+00:00"
+                "failed_at": "2026-05-03T02:54:02.081678+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8066,7 +7954,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:38.394957+00:00"
+                "failed_at": "2026-05-03T02:54:07.423918+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8145,7 +8033,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:38.950513+00:00"
+                "failed_at": "2026-05-03T02:54:07.766978+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8224,7 +8112,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:39.406799+00:00"
+                "failed_at": "2026-05-03T02:54:08.109810+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8303,7 +8191,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:39.898877+00:00"
+                "failed_at": "2026-05-03T02:54:08.422354+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8382,7 +8270,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:40.339740+00:00"
+                "failed_at": "2026-05-03T02:54:13.723522+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8461,7 +8349,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:40.729851+00:00"
+                "failed_at": "2026-05-03T02:54:14.021361+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8540,7 +8428,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:41.104400+00:00"
+                "failed_at": "2026-05-03T02:54:14.315559+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8619,7 +8507,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:41.504691+00:00"
+                "failed_at": "2026-05-03T02:54:14.627494+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8698,7 +8586,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:41.890881+00:00"
+                "failed_at": "2026-05-03T02:54:19.948083+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8777,7 +8665,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:42.233242+00:00"
+                "failed_at": "2026-05-03T02:54:20.244681+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8856,7 +8744,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:42.543654+00:00"
+                "failed_at": "2026-05-03T02:54:20.538601+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -8935,7 +8823,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:47.965188+00:00"
+                "failed_at": "2026-05-03T02:54:20.843400+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9014,7 +8902,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:48.306929+00:00"
+                "failed_at": "2026-05-03T02:54:21.168103+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9093,7 +8981,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:48.647663+00:00"
+                "failed_at": "2026-05-03T02:54:21.495272+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9172,7 +9060,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:49.022537+00:00"
+                "failed_at": "2026-05-03T02:54:21.828000+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9251,7 +9139,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:49.420619+00:00"
+                "failed_at": "2026-05-03T02:54:22.120340+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9330,7 +9218,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:49.776627+00:00"
+                "failed_at": "2026-05-03T02:54:22.432137+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9409,7 +9297,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:50.171735+00:00"
+                "failed_at": "2026-05-03T02:54:22.760284+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9488,7 +9376,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:50.533609+00:00"
+                "failed_at": "2026-05-03T02:54:23.104574+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9567,7 +9455,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:50.982330+00:00"
+                "failed_at": "2026-05-03T02:54:23.435175+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9646,7 +9534,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:51.404260+00:00"
+                "failed_at": "2026-05-03T02:54:23.777230+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9725,7 +9613,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:51.794973+00:00"
+                "failed_at": "2026-05-03T02:54:24.121721+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9804,7 +9692,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:52.946307+00:00"
+                "failed_at": "2026-05-03T02:54:24.483483+00:00"
             },
             {
                 "place_name": "Innescas Sweets of Europe",
@@ -9883,27 +9771,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:53.335292+00:00"
+                "failed_at": "2026-05-03T02:54:24.822490+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 79,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 80,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 49,
             "place_name": "Innescas Sweets of Europe",
             "place_id": "ChIJiQwy9G8nVIgRdIFdB1D3Ih0",
             "record_id": "recQAev7xBojUWJ7q",
-            "generated_at": "2026-05-02T22:08:53.335584+00:00",
+            "generated_at": "2026-05-03T02:54:24.822926+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 77,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
