@@ -570,10 +570,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -582,6 +578,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -618,13 +622,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noJme17FOA_pO28wc4t4Lnto7D2RB8disWFZrghw4AFrI5oIXi9I5lQDWAU7iGhDLIVMtRhnFQ3fD_-tqy9pYDI9pVr5Fh3USrhDTsahUsT3wuwHxITd9pTSQJEpCrN0EQohZ5giBTC6jA=w2048-h2048-k-no",
                 "source_url_sha256": "cf35ea201d3d85e605605aa1067f1f3cce367b73e1858604b36ae44f57b77a05",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -691,7 +691,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:02.490615+00:00"
+                "failed_at": "2026-05-03T01:20:13.387672+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -701,13 +701,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npbdcCEDVW6ZKnEs633Xne3-zDZXLvDaF5dy2A-3Sk5-oF1weKssCxyjjFQeK1Nw66UwmnY6oNYpLEndprcFb5QOzb3jhZcAZs9JrldQs2dwSqXhdQVZddA1xcTxu48kv1MVWWH_NDUll6i=w2048-h2048-k-no",
                 "source_url_sha256": "ea1cb6c19ac3a24531a5c2ba8d9a64b3a288fc3362dc171da3be3fc6834d67b3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -774,7 +770,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:03.137054+00:00"
+                "failed_at": "2026-05-03T01:20:13.780417+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -784,13 +780,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4novmXC0vSvVB3YggWkVKTzK9eouDcGRkbiyT-9A9fnwLwbbj0j_NDdutIb4EwfSEtAEj2KE-1H4hukl1ZfiVm55WlOKhbIdGLfHfUJTSUprOEdrUu3wmzNuyPjaEFVGLcfX8AtHAmnQRM7t=w2048-h2048-k-no",
                 "source_url_sha256": "ff5f2766b10db6a7e27d730ccdfdb4ebd054d1dfe507d0aab750668efd57b24c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -857,7 +849,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:03.791858+00:00"
+                "failed_at": "2026-05-03T01:20:14.291587+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -867,13 +859,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqx0F909QioOpijihERPp-c1EON-K5Y_NNiQRO3FM7yYRBQDAcUXIJwWgZgEUvrzO3NCXxSEju-PTgnV3IeGVNEPmNdg1UC4aJCDblIgN43oJ08olfcbumrIZ8XO9NqLhvrvtFaI0lb09E=w2048-h2048-k-no",
                 "source_url_sha256": "ad66b269dd74d896da217c3adff03078a0cdd143ac3422aad33886f10e637adb",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -940,7 +928,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:04.537834+00:00"
+                "failed_at": "2026-05-03T01:20:14.719406+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1019,7 +1007,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:05.794664+00:00"
+                "failed_at": "2026-05-03T01:20:15.724999+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1098,7 +1086,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:06.440287+00:00"
+                "failed_at": "2026-05-03T01:20:16.189736+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1177,7 +1165,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:07.133809+00:00"
+                "failed_at": "2026-05-03T01:20:16.625488+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1256,27 +1244,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:07.805686+00:00"
+                "failed_at": "2026-05-03T01:20:17.078566+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 10,
-            "duplicate_count": 5,
-            "airtable_photos_count": 5,
+            "candidate_count": 11,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 5,
             "data_file_photo_urls_count": 5,
             "provider_raw_photo_url_big_count": 5,
             "place_name": "Sugar & Sip Coffee and Workshop",
             "place_id": "ChIJt0PJPpOhVogRYRxxLbCaxFE",
             "record_id": "recSj3hFBGB3vtUyR",
-            "generated_at": "2026-05-02T22:08:07.808403+00:00",
+            "generated_at": "2026-05-03T01:20:17.079110+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 8,
             "pending_upload_count": 0,
-            "selected_airtable_count": 1,
+            "selected_airtable_count": 4,
+            "curator_photo_urls_field_count": 3,
+            "selected_curator_photo_urls_field_count": 3,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 3,
+            "selected_curator_airtable_photos_count": 3,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 5
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
