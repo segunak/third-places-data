@@ -504,6 +504,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[5].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[5].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJP_7REwAPVIgRBRZgAqjFjlk/5f096fc1d8420ffe683c7d5a367e63470bf05fadf76f8081588a450124056b14.jpg",
@@ -605,7 +613,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:44:41.819611+00:00"
+                "failed_at": "2026-05-03T03:33:41.306745+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -684,7 +692,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:44:42.220873+00:00"
+                "failed_at": "2026-05-03T03:33:41.638435+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -763,7 +771,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:44:42.632590+00:00"
+                "failed_at": "2026-05-03T03:33:41.991409+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -842,7 +850,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:44:43.034052+00:00"
+                "failed_at": "2026-05-03T03:33:42.350311+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -921,7 +929,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:44:43.434037+00:00"
+                "failed_at": "2026-05-03T03:33:42.768979+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -1000,7 +1008,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:44:48.803827+00:00"
+                "failed_at": "2026-05-03T03:33:43.157949+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -1079,7 +1087,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:44:49.268770+00:00"
+                "failed_at": "2026-05-03T03:33:43.540352+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -1158,7 +1166,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:44:49.678662+00:00"
+                "failed_at": "2026-05-03T03:33:43.961367+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -1237,7 +1245,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:44:50.051073+00:00"
+                "failed_at": "2026-05-03T03:33:44.367944+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -1316,7 +1324,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:44:50.413040+00:00"
+                "failed_at": "2026-05-03T03:33:44.750492+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -1330,7 +1338,7 @@
             "place_name": "The District Exchange",
             "place_id": "ChIJP_7REwAPVIgRBRZgAqjFjlk",
             "record_id": "recdpQlLGC5TXdstE",
-            "generated_at": "2026-05-03T02:44:50.413346+00:00",
+            "generated_at": "2026-05-03T03:33:44.750918+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 10,
             "pending_upload_count": 0,
@@ -1344,7 +1352,15 @@
             "preserved_curator_airtable_photos_count": 0,
             "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 0
+            "non_azure_airtable_photos_count": 0,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
         }
     },
     "data_source": "OutscraperProvider",
