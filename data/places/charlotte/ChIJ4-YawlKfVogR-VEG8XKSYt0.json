@@ -350,6 +350,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ4-YawlKfVogR-VEG8XKSYt0/db413cbfdcd1e40d28e9ad14351ef356fc3a1502efe51dd46b7db3fdc7aec0d8.jpg",
@@ -385,7 +393,7 @@
             "place_name": "Caffeena Coffee House",
             "place_id": "ChIJ4-YawlKfVogR-VEG8XKSYt0",
             "record_id": "rec4Hur5HXwgbpZXA",
-            "generated_at": "2026-05-03T02:40:59.576555+00:00",
+            "generated_at": "2026-05-03T03:29:27.389132+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 0,
             "pending_upload_count": 0,
@@ -399,7 +407,15 @@
             "preserved_curator_airtable_photos_count": 0,
             "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 0
+            "non_azure_airtable_photos_count": 0,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
         }
     },
     "data_source": "OutscraperProvider",

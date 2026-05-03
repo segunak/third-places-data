@@ -1661,6 +1661,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHY64qJmpVogRng7cIsBr6nc/15b7ffad738c4f48fa03b00dfbbe475198bcec6392f331e9250003be4f22b598.jpg",
@@ -1762,7 +1770,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:46:29.467860+00:00"
+                "failed_at": "2026-05-03T03:35:24.919844+00:00"
             },
             {
                 "place_name": "Heart 2 Heart Bakery & Cafe",
@@ -1841,7 +1849,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:46:29.790314+00:00"
+                "failed_at": "2026-05-03T03:35:25.551096+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -1855,7 +1863,7 @@
             "place_name": "Heart 2 Heart Bakery & Cafe",
             "place_id": "ChIJHY64qJmpVogRng7cIsBr6nc",
             "record_id": "rec8DfNHGoONUS3Tv",
-            "generated_at": "2026-05-03T02:46:29.790594+00:00",
+            "generated_at": "2026-05-03T03:35:25.551377+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 2,
             "pending_upload_count": 0,
@@ -1869,7 +1877,15 @@
             "preserved_curator_airtable_photos_count": 0,
             "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 0
+            "non_azure_airtable_photos_count": 0,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
         }
     },
     "data_source": "OutscraperProvider",
