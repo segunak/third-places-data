@@ -3016,6 +3016,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJtxldoSyrVogRiAdHonJ5SHc/6bd78688fbc7cd5720de3f62f791370795fb3c6e0feabe2a6eb77d8097576bd5.jpg",
@@ -3086,6 +3094,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[50].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[50].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJtxldoSyrVogRiAdHonJ5SHc/4fb15843322f8031ed918e00c10a4339ceac87224af8b1330eb03db6b8bb1401.jpg",
@@ -3128,6 +3144,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -3257,7 +3281,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:35.694608+00:00"
+                "failed_at": "2026-05-03T06:05:09.753176+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -3336,7 +3360,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:36.110885+00:00"
+                "failed_at": "2026-05-03T06:05:10.127301+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -3415,7 +3439,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:36.517388+00:00"
+                "failed_at": "2026-05-03T06:05:10.662539+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -3494,7 +3518,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:36.925249+00:00"
+                "failed_at": "2026-05-03T06:05:11.135849+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -3573,7 +3597,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:37.413179+00:00"
+                "failed_at": "2026-05-03T06:05:11.519579+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -3652,7 +3676,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:37.842722+00:00"
+                "failed_at": "2026-05-03T06:05:11.897367+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -3731,7 +3755,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:38.208210+00:00"
+                "failed_at": "2026-05-03T06:05:12.271369+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -3810,7 +3834,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:38.595345+00:00"
+                "failed_at": "2026-05-03T06:05:12.675903+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -3889,7 +3913,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:38.987098+00:00"
+                "failed_at": "2026-05-03T06:05:13.035409+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -3968,7 +3992,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:39.389379+00:00"
+                "failed_at": "2026-05-03T06:05:13.408226+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4047,7 +4071,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:39.829914+00:00"
+                "failed_at": "2026-05-03T06:05:13.763818+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4126,7 +4150,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:40.349824+00:00"
+                "failed_at": "2026-05-03T06:05:14.163745+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4205,7 +4229,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:40.780551+00:00"
+                "failed_at": "2026-05-03T06:05:14.561765+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4284,7 +4308,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:41.153931+00:00"
+                "failed_at": "2026-05-03T06:05:14.957651+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4363,7 +4387,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:41.572433+00:00"
+                "failed_at": "2026-05-03T06:05:15.345070+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4442,7 +4466,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:41.961441+00:00"
+                "failed_at": "2026-05-03T06:05:15.729514+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4521,7 +4545,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:42.313427+00:00"
+                "failed_at": "2026-05-03T06:05:16.144009+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4600,7 +4624,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:42.685620+00:00"
+                "failed_at": "2026-05-03T06:05:16.533756+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4679,7 +4703,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:43.080763+00:00"
+                "failed_at": "2026-05-03T06:05:16.901453+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4758,7 +4782,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:43.451607+00:00"
+                "failed_at": "2026-05-03T06:05:17.284754+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4837,7 +4861,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:43.909177+00:00"
+                "failed_at": "2026-05-03T06:05:17.735162+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4916,7 +4940,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:44.354098+00:00"
+                "failed_at": "2026-05-03T06:05:18.175937+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -4995,7 +5019,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:44.800990+00:00"
+                "failed_at": "2026-05-03T06:05:18.584030+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5074,7 +5098,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:45.243642+00:00"
+                "failed_at": "2026-05-03T06:05:18.957039+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5153,7 +5177,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:45.591394+00:00"
+                "failed_at": "2026-05-03T06:05:19.367607+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5232,7 +5256,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:46.033231+00:00"
+                "failed_at": "2026-05-03T06:05:19.801669+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5311,7 +5335,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:46.451845+00:00"
+                "failed_at": "2026-05-03T06:05:20.184461+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5390,7 +5414,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:46.892232+00:00"
+                "failed_at": "2026-05-03T06:05:20.507377+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5469,7 +5493,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:47.267841+00:00"
+                "failed_at": "2026-05-03T06:05:20.885932+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5548,7 +5572,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:47.635696+00:00"
+                "failed_at": "2026-05-03T06:05:21.278450+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5627,7 +5651,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:48.075521+00:00"
+                "failed_at": "2026-05-03T06:05:21.695823+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5706,7 +5730,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:48.478535+00:00"
+                "failed_at": "2026-05-03T06:05:22.107047+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5785,7 +5809,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:48.866711+00:00"
+                "failed_at": "2026-05-03T06:05:22.511693+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5864,7 +5888,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:49.234559+00:00"
+                "failed_at": "2026-05-03T06:05:22.910328+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -5943,7 +5967,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:49.539729+00:00"
+                "failed_at": "2026-05-03T06:05:23.338753+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6022,7 +6046,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:49.870504+00:00"
+                "failed_at": "2026-05-03T06:05:23.725615+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6101,7 +6125,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:50.238696+00:00"
+                "failed_at": "2026-05-03T06:05:24.139879+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6180,7 +6204,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:50.594308+00:00"
+                "failed_at": "2026-05-03T06:05:24.530794+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6259,7 +6283,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:50.933246+00:00"
+                "failed_at": "2026-05-03T06:05:24.952556+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6338,7 +6362,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:51.304229+00:00"
+                "failed_at": "2026-05-03T06:05:25.340991+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6417,7 +6441,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:51.660350+00:00"
+                "failed_at": "2026-05-03T06:05:25.699296+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6496,7 +6520,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:52.020652+00:00"
+                "failed_at": "2026-05-03T06:05:26.049529+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6575,7 +6599,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:52.362400+00:00"
+                "failed_at": "2026-05-03T06:05:26.445016+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6654,7 +6678,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:52.704973+00:00"
+                "failed_at": "2026-05-03T06:05:26.821822+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6733,7 +6757,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:53.076861+00:00"
+                "failed_at": "2026-05-03T06:05:27.167060+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6812,7 +6836,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:53.394713+00:00"
+                "failed_at": "2026-05-03T06:05:27.538234+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6891,7 +6915,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:53.787593+00:00"
+                "failed_at": "2026-05-03T06:05:28.041261+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -6970,7 +6994,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:54.146959+00:00"
+                "failed_at": "2026-05-03T06:05:28.561860+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7049,7 +7073,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:54.613467+00:00"
+                "failed_at": "2026-05-03T06:05:33.918975+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7128,7 +7152,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:55.037091+00:00"
+                "failed_at": "2026-05-03T06:05:34.306210+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7207,7 +7231,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:55.495219+00:00"
+                "failed_at": "2026-05-03T06:05:34.680968+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7286,7 +7310,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:55.937456+00:00"
+                "failed_at": "2026-05-03T06:05:35.088610+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7365,7 +7389,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:56.361359+00:00"
+                "failed_at": "2026-05-03T06:05:35.506347+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7444,7 +7468,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:56.801141+00:00"
+                "failed_at": "2026-05-03T06:05:35.885448+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7523,7 +7547,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:57.217619+00:00"
+                "failed_at": "2026-05-03T06:05:36.219574+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7602,7 +7626,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:57.624550+00:00"
+                "failed_at": "2026-05-03T06:05:36.773086+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7681,7 +7705,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:58.022671+00:00"
+                "failed_at": "2026-05-03T06:05:37.221388+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7760,7 +7784,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:58.480853+00:00"
+                "failed_at": "2026-05-03T06:05:37.600956+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7839,7 +7863,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:59.073264+00:00"
+                "failed_at": "2026-05-03T06:05:37.974907+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7918,7 +7942,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:59.498434+00:00"
+                "failed_at": "2026-05-03T06:05:38.374925+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -7997,7 +8021,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:35:59.854259+00:00"
+                "failed_at": "2026-05-03T06:05:38.753583+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8076,7 +8100,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:00.223134+00:00"
+                "failed_at": "2026-05-03T06:05:39.161477+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8155,7 +8179,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:00.587846+00:00"
+                "failed_at": "2026-05-03T06:05:44.544603+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8234,7 +8258,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:00.969204+00:00"
+                "failed_at": "2026-05-03T06:05:44.944626+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8313,7 +8337,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:01.329992+00:00"
+                "failed_at": "2026-05-03T06:05:45.321749+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8392,7 +8416,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:01.653636+00:00"
+                "failed_at": "2026-05-03T06:05:45.704038+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8471,7 +8495,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:02.022955+00:00"
+                "failed_at": "2026-05-03T06:05:46.072323+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8550,7 +8574,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:02.374740+00:00"
+                "failed_at": "2026-05-03T06:05:46.486783+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8629,7 +8653,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:02.768403+00:00"
+                "failed_at": "2026-05-03T06:05:46.878235+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8708,7 +8732,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:03.162693+00:00"
+                "failed_at": "2026-05-03T06:05:47.310225+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8787,7 +8811,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:03.550916+00:00"
+                "failed_at": "2026-05-03T06:05:47.712633+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8866,7 +8890,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:03.927049+00:00"
+                "failed_at": "2026-05-03T06:05:48.124081+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -8945,7 +8969,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:04.295113+00:00"
+                "failed_at": "2026-05-03T06:05:48.489916+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9024,7 +9048,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:04.676797+00:00"
+                "failed_at": "2026-05-03T06:05:48.816664+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9103,7 +9127,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:05.117430+00:00"
+                "failed_at": "2026-05-03T06:05:49.185622+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9182,7 +9206,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:05.498445+00:00"
+                "failed_at": "2026-05-03T06:05:49.546078+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9261,7 +9285,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:05.855540+00:00"
+                "failed_at": "2026-05-03T06:05:49.901770+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9340,7 +9364,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:06.199316+00:00"
+                "failed_at": "2026-05-03T06:05:50.630586+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9419,7 +9443,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:06.583306+00:00"
+                "failed_at": "2026-05-03T06:05:51.101701+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9498,7 +9522,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:06.981731+00:00"
+                "failed_at": "2026-05-03T06:05:51.568389+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9577,7 +9601,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:07.369160+00:00"
+                "failed_at": "2026-05-03T06:05:51.939731+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9656,7 +9680,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:07.783524+00:00"
+                "failed_at": "2026-05-03T06:05:52.342595+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9735,7 +9759,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:08.204177+00:00"
+                "failed_at": "2026-05-03T06:05:52.680177+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9814,7 +9838,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:13.622089+00:00"
+                "failed_at": "2026-05-03T06:05:53.025784+00:00"
             },
             {
                 "place_name": "Sharetea | Mooresville",
@@ -9893,7 +9917,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:36:13.967515+00:00"
+                "failed_at": "2026-05-03T06:05:53.360857+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -9907,7 +9931,7 @@
             "place_name": "Sharetea | Mooresville",
             "place_id": "ChIJtxldoSyrVogRiAdHonJ5SHc",
             "record_id": "recjp9BsoPBjJ38x6",
-            "generated_at": "2026-05-03T03:36:13.967911+00:00",
+            "generated_at": "2026-05-03T06:05:53.361276+00:00",
             "azure_assets_count": 3,
             "failed_upload_count": 85,
             "pending_upload_count": 0,
