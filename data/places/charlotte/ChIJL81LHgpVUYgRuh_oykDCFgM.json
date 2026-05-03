@@ -7936,7 +7936,7 @@
                 "status": "existing_azure",
                 "selected_for_airtable": true,
                 "attempts": [],
-                "uploaded_at": "2026-05-03T02:52:46.210714+00:00"
+                "uploaded_at": "2026-05-03T06:07:26.587200+00:00"
             },
             {
                 "place_name": "Caribou Coffee | Mooresville",
@@ -7964,7 +7964,7 @@
                 "status": "existing_azure",
                 "selected_for_airtable": true,
                 "attempts": [],
-                "uploaded_at": "2026-05-03T02:52:46.210737+00:00"
+                "uploaded_at": "2026-05-03T06:07:26.587225+00:00"
             }
         ],
         "azure_asset_failures": [],
@@ -7979,7 +7979,7 @@
             "place_name": "Caribou Coffee | Mooresville",
             "place_id": "ChIJL81LHgpVUYgRuh_oykDCFgM",
             "record_id": "recPit7LC00kctj04",
-            "generated_at": "2026-05-03T02:52:46.210775+00:00",
+            "generated_at": "2026-05-03T06:07:26.587264+00:00",
             "azure_assets_count": 2,
             "failed_upload_count": 0,
             "pending_upload_count": 0,
@@ -7993,7 +7993,15 @@
             "preserved_curator_airtable_photos_count": 0,
             "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 0
+            "non_azure_airtable_photos_count": 0,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
         }
     },
     "data_source": "OutscraperProvider",
