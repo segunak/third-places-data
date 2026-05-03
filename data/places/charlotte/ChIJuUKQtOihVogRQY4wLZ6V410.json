@@ -425,6 +425,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJuUKQtOihVogRQY4wLZ6V410/d70a877e1d61f984ee95b62ad41e6dc611d6d043362ba2179801712870cf6283.jpg",
@@ -467,6 +475,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -533,6 +549,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJuUKQtOihVogRQY4wLZ6V410/8723c46f67e8f629b97ba94db2a1a74c4fb5e0368ea2f90c643bffa002f50746.jpg",
@@ -568,11 +592,19 @@
             "place_name": "Gotcha Matcha & Espresso | 401 S Tryon",
             "place_id": "ChIJuUKQtOihVogRQY4wLZ6V410",
             "record_id": "recU6SCNkbuHpOQVS",
-            "generated_at": "2026-05-02T22:20:54.951901+00:00",
+            "generated_at": "2026-05-03T01:02:10.853682+00:00",
             "azure_assets_count": 3,
             "failed_upload_count": 0,
             "pending_upload_count": 0,
-            "selected_airtable_count": 3,
+            "selected_airtable_count": 4,
+            "curator_photo_urls_field_count": 1,
+            "selected_curator_photo_urls_field_count": 1,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 1,
+            "selected_curator_airtable_photos_count": 1,
             "successful_but_unserved_count": 0,
             "non_azure_airtable_photos_count": 0
         }
