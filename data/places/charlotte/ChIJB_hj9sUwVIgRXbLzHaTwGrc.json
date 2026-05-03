@@ -6052,10 +6052,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -6064,6 +6060,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[96].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -6102,10 +6106,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -6114,6 +6114,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -6150,13 +6158,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no1EXfb3HuiFbWDEY8q8Y6cNEji-8IRMvwPjosK6Ee6STP8FOnA2aIRZJ7oiZwkFlLVRBPIKNaWljFPoxE-oHao2TDrxb8Oa2_Wi5LeU3tPzkWwhA-ILMFsYvEP7kqig3U1A0Y=w2048-h2048-k-no",
                 "source_url_sha256": "6cd0a2eb162bd9506768ae88d5fd3f58422d5fad7b406c76e25daf9c2af6c76d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -6223,7 +6227,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:03.182657+00:00"
+                "failed_at": "2026-05-03T02:53:03.231229+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -6233,13 +6237,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqaLRw6Szu3f1Rm2DJaA_Idk_viJ73t_xzMhrbJimRnX3enqSCBpnukChm9cdd86oThcIdbcDWABpL5jHB5t2pcn5QTyHmDH9F4XI18TmjdyiG7fGd2AZT0qmBGV4K0dqTpj6i2aw=w2048-h2048-k-no",
                 "source_url_sha256": "0096f4acaa2c901ce6fd69480d71d638bbe663d121ecc03fb7f910cf7ea0ce15",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -6306,7 +6306,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:03.883669+00:00"
+                "failed_at": "2026-05-03T02:53:04.028927+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -6316,13 +6316,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrfPuQvWZwHHNsiTHxYwJJKyCnAG26SwvVEQ5jfvnwB9e7JhBFnGLXhozLZ3tfP3MGFgF3Ai4XctwxPicI3ZhdGEADISYzIJmsZ_EZfTI7sXADBpS7uxAjFr4vNggQsO3_xq7RX8eaYcYHc=w2048-h2048-k-no",
                 "source_url_sha256": "d1194b0db3401d06dee2a0963630efe86fb3f3de22f8131c33f6a610b1493771",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -6389,7 +6385,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:04.641998+00:00"
+                "failed_at": "2026-05-03T02:53:09.699196+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -6399,13 +6395,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqmfkoVnzBKgMamntCcjO73ZCEdlhgUqKMruMUVu_JYbW7iGPLWSY6zcXLAmBIHEYLU8q4vIXOTb6IXrzVmyLZHRiB7OuUI7WWNpomscy65Y5a1jW4KdJa-UjZHYQpdxdFSdEw6X_1y-kWu=w2048-h2048-k-no",
                 "source_url_sha256": "fec3cb07f8d1729e99eb7454d8c1878bca622ffdb167c4dd8faff4ab54ad328e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -6472,7 +6464,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:05.296636+00:00"
+                "failed_at": "2026-05-03T02:53:10.421303+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -6482,13 +6474,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npPy5w2ouNZF_2QF9fDcNbt3yCAtVYkjVCWZrhnS7csShVhj4UgGyYk-JF5NSiRoA85SWr_aQv1CN3kNpBI4xRgqOBQL5AeF9cZsDmKg8Vc5XAFxVESfYt3xQ3i-KtH_3OeK1xoxSrEptA=w2048-h2048-k-no",
                 "source_url_sha256": "5bfbf80b61a036caba279817a3e7e2487984e95fca203ae4c40209eea2bc6111",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -6555,7 +6543,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:05.990847+00:00"
+                "failed_at": "2026-05-03T02:53:11.073200+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -6565,13 +6553,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npdogYz1SWEyHc9hNuQQKJuaG8oejZK5FPkraGnn7CQ8mg3kDPm9jf9QHhFHW41brdAi9bCMmyDr8JHlselvzyL4AJmaH0I7ECIh-jpmnBEltNkHS0ubTuQ9XUAR2fMzDx7nAZhPpLpTmU=w2048-h2048-k-no",
                 "source_url_sha256": "555fc47efc713e59625a473c440b023d1b612620a29b87ba6a601ab441833f6b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -6638,7 +6622,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:06.642091+00:00"
+                "failed_at": "2026-05-03T02:53:11.645346+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -6648,13 +6632,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npm9tl4oyTwhES1Y3JWZRq_5sbriidRFoWB7WqTJvGZsyXH9Ax1SN8OggI6pq2xHmQjcfJ8zq_3vePr-_wSshVm636j5_NCrM3BF5c3I1enGV1wx7zAmB0QE7v0NmFtWkfY0uVDd9RR2pJr=w2048-h2048-k-no",
                 "source_url_sha256": "6a3ab69ed6649b9f33a77bd14a099cf829a4e88447400eb6750451d4a7d53d3b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -6721,7 +6701,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:07.385252+00:00"
+                "failed_at": "2026-05-03T02:53:12.151083+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -6731,13 +6711,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noZttzdWlZOS8uc2gjM7OcoZPZn84bryvl9AlB93lfnBaTdVFofGEYuLZqi84KZUDNbwiqYMFfaO7CbxsEhMIbnhpL7cSlpqPcy8DavxvbWuQLfSzw3ihZSHIZzmj8rfgNO3PzYo4eaTvtz=w2048-h2048-k-no",
                 "source_url_sha256": "ec26d40385be6e65c8490ff7ff1da378d7b981e65714ca041660ad7515bfdb3a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -6804,7 +6780,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:07.978660+00:00"
+                "failed_at": "2026-05-03T02:53:17.671726+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -6814,13 +6790,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nphNSZ84z7JA6LnHLP-HsO9BKhybp7P77vNdvSHt4PPgZlsMw1WZ6ykZxsJgs5NZomf6FiZPUbFZasKYfutCtyl9rd1dPFHEkTvuNIEP_mJOdB3swym8JmP-kh1t1N7StlDNHKmBpToDm8T=w2048-h2048-k-no",
                 "source_url_sha256": "c2affad117a436ff6adb788bd8ca3dce37de64e9d23b9e0358c75c21d357eca7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -6887,7 +6859,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:08.640155+00:00"
+                "failed_at": "2026-05-03T02:53:18.185225+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -6897,13 +6869,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noZKx_hGU0rrHo7rmdrtnUQ94KkSLiiwBVDoYcA5rj9ST47yOGZ_kXDFXBKfFk3-dkmMlJF8EX-PvmheB_mhJQlay0hRMG6RJDzF2ns2VNCIc-gpjrlQAV6p_PoNgl03rHsEam8fYPY3rHH=w2048-h2048-k-no",
                 "source_url_sha256": "d28ad69dae15e74786e6f432c5cdcc5bdb91ef7eff4d17394b30dd247e8283f6",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -6970,7 +6938,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:09.209450+00:00"
+                "failed_at": "2026-05-03T02:53:18.651876+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -6980,13 +6948,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no6SI0YLGDenzD4QyE7B7OaPouk3Ib0I75mIcXPXMVgzWPidrQw9ikzG688yI7LS4e7-gYf6MdB32fvAYaLmQNtjhk4gqWPPFGeiB2_-zXJZZROFxXGBmZ75OE295zatqwFazPhFoA9_KB3=w2048-h2048-k-no",
                 "source_url_sha256": "46a29e5c7e03eec64fd2ba29ed5772f111a3529f1c5acdcedba177340a786d14",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -7053,7 +7017,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:09.784699+00:00"
+                "failed_at": "2026-05-03T02:53:24.216029+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7063,13 +7027,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqF9iN3AVD7574hDqw-feIQyvU-OKrdcQD-pskU1rCaHW_FzNjZCH9yy4Tzu66CDyksPoP2IcWSiw9Zy9VCpXChoCS7agShFhjI2WMQCf8paVJ_IAww0jkUQtcXuG9MLZ7_62nAn9R0ygQ=w2048-h2048-k-no",
                 "source_url_sha256": "b41983f07fc08006acefda93ae011019a2463d064acc74c264d31272a6e88bae",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -7136,7 +7096,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:10.367886+00:00"
+                "failed_at": "2026-05-03T02:53:24.705841+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7146,13 +7106,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr-c5sHQissXXdo-pT2S749fXoXseuKpDsNtuu53rHOVL7wGcgUyxIKnm-TqmXBsynNdjVPA47oaLqOSF45cevpNtWIpnGcdVxmfg2r6lGYFTOXbdU1LqsHYnjC02GBRKXqVB6q3Lg6P1w=w2048-h2048-k-no",
                 "source_url_sha256": "ac420dcb12af1574bfb4c0b8a1236a8cdbbbf7e278acd3282967987aa61766cc",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -7219,7 +7175,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:10.867323+00:00"
+                "failed_at": "2026-05-03T02:53:25.140969+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7229,13 +7185,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nozF7KNDb2CH8zxX8MZkytxvt7R4TmObHGA90ejA71UzWhkpnfyO6wuwTay500LHWLzwlFYoqms3N0dl9_c9paLSqqnC06gRM_4z9cifgZK2xRht5FhCn6WHofSbn9DeCYejmrXM5WVZpc=w2048-h2048-k-no",
                 "source_url_sha256": "91f7bc6d7ac1d4e3d5697ba2cfe7fea4fd9c71ceeaeb77fa22a3043d0916d854",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -7302,7 +7254,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:11.406383+00:00"
+                "failed_at": "2026-05-03T02:53:25.602852+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7312,13 +7264,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npJExRMmQVXCOOOv9ZBrjQL_79VAhoc8qXD3DzofXeyULgayKKa32YiqLtdRtu2v5si_avXx-Y04Tme1fjm1FgEG5OGnpecI7S7M4I2sXuMe-ZUfnNWV3rlmOe8qgrl0y8-1yU8GUL9EXVw=w2048-h2048-k-no",
                 "source_url_sha256": "b6850029b5769201576a11efa4d67d5d84edcba17e668947ff8ce3fec0f37217",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -7385,7 +7333,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:12.073595+00:00"
+                "failed_at": "2026-05-03T02:53:26.048384+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7395,13 +7343,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np_48AptBeqmrvcPbffH64QB5JrAQF3Ueh2HTR00crqjfevUsGYAAFsB_Zx0joVL5FdRedS78VJ5VQ8C7_Z2YBc8N4nhB6rjICkr8eGVUDY2olJqa-TzBEEoJBnF24rLje5NGx4RMfXM4ew=w2048-h2048-k-no",
                 "source_url_sha256": "df2f446023df0867c67cb77dafcd7d356e631fbf79f37f2bf7545bed1769b5ab",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -7468,7 +7412,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:12.834759+00:00"
+                "failed_at": "2026-05-03T02:53:26.475410+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7478,13 +7422,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr5l87l4IhAzVSTRWkZBTz5W8TPtBQpAQeg31e55AWs3F4IL8kCNTZ6Ff-n8UWkQCfsxCThUpZ6G9LK5KfktgPO-yJ4lmmTOjSe88A-1hUsMZBXRFXziPJ9dAL5YVfyttsRkE-0uBpcPQFg=w2048-h2048-k-no",
                 "source_url_sha256": "1770d3e50e4602563a3538077baa40dcee86688949104dc1965b1b102178d7c9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -7551,7 +7491,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:13.435163+00:00"
+                "failed_at": "2026-05-03T02:53:26.921546+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7561,13 +7501,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no-MZKtcu0OowOHj5PTxi-YZ4Q-kfOFjfd7y7KHp7IDpspjR9WZ_07JHgaYiE_pZObBZKye38EdkEGjk6dxZfe5tgwPJzykg3IUnTqsJEMEd78JI-47A-H81CNubx3OaWJrDKMxENRV8_s=w2048-h2048-k-no",
                 "source_url_sha256": "85af56f28af2aec292a16adba4fb3b9dc8502a546a4a819b3ac50e0ef656af6a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -7634,7 +7570,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:14.068875+00:00"
+                "failed_at": "2026-05-03T02:53:27.373053+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7644,13 +7580,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqixIXAykFTnnqLECbSHcnZIQ0nHA40XgyUtyiQiWRzhcf_lNm0wwKga9NN1Mhxa4IgCrDIV2CSfLWxJLbl5mXaogHQ9Ish_XwdIv0O4k4u--nEdajwYocF_EyNT4YcdQazKnlfoRPnHyeR=w2048-h2048-k-no",
                 "source_url_sha256": "2053cb4c5cdf08d85b10a39cba077fd7f835db2f1d1aa36a3e7d64b1f69f94a1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -7717,7 +7649,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:14.636318+00:00"
+                "failed_at": "2026-05-03T02:53:27.975552+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7727,13 +7659,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npW0mw3FTg73RMHXIbP2YjHVTSSU--5kWnQ-lXvTWOkMQs4L3_DLPMDNnGhjXho0r5kGRhQdMdFB7Tv_B6lixgSIUXDjccxWrbxtqLjTzZuKvjvmOSjqJCCFyKvj1hQdWmdLT1kC-hCXmc=w2048-h2048-k-no",
                 "source_url_sha256": "39b1b65f78f203c7bdda79fa93d9ff8f7a23234840f498a9230bee12e6ec892c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -7800,7 +7728,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:15.336791+00:00"
+                "failed_at": "2026-05-03T02:53:28.476832+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7810,13 +7738,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npItk_H6b7OL0G3OoA49ksDVhcZxkZNm3bBi181l90N8ohJZXZAYb8Q_ePSSsz6YYC1l2fHrIG0AH7Th85NyNRobvXDCoZb2KnybjfXdPj6BNFNCnycA5lOuQVhRwEcGQKFMExzB4MZtCJL=w2048-h2048-k-no",
                 "source_url_sha256": "4624fd22568a5b1c60a56e0fadb5bb9dee4e036baeb97110a8f9eedad6358bd8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -7883,7 +7807,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:15.972014+00:00"
+                "failed_at": "2026-05-03T02:53:29.103838+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7893,13 +7817,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npdL_6p0FooiNhUQgz9BT-wVJl1JkJMrtan5xz09ylKh_MFFC0c-TQ5ZQV6LWfrpZuyj5ZryIs7N8P7LzoQIIauibJaQ3L8R0uNPxO8uW_JYLaCERz0F1IX9yaF_FeUojvHftXgvfMDYLZ7=w2048-h2048-k-no",
                 "source_url_sha256": "0622c9a682f86a9514e4af984fde5ca6107e3d66f55167a6ea34073955ed1ac7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -7966,7 +7886,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:16.671757+00:00"
+                "failed_at": "2026-05-03T02:53:29.817875+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -7976,13 +7896,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np0tL7JFUlOk8PUWO9ZxBZ5qUzHHvnlQS6c1AVZuAzyMcMiIY-XKDaHw8mDKjYmDdjplS8__fhgYWw56rOikFqwG2re8W4nywc7PHEq7qrpqg0leX-IyJitXBX1n_mNt1095W2L6fnDc6tu=w2048-h2048-k-no",
                 "source_url_sha256": "bb6045965b48fe3b18d05f4f60a2a0d90d9dfda3a85d0cd1a4d7cd93d0c4a8c0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -8049,7 +7965,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:17.690715+00:00"
+                "failed_at": "2026-05-03T02:53:30.258180+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8059,13 +7975,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq1B5fAMGcbASYlGYWxt-nVGpZ0qDtH_wwQBsW15wor9tKDtbOKv3ddZYL3nIR0TGkGVQC93nALR1kDZiVaqjeVEZAms1RMItrBaicX5PFKLyXJaTQAwq8gQ1vNEs2SfSO0wVx2aDGnwuQ=w2048-h2048-k-no",
                 "source_url_sha256": "eb7eb045c66a013d321806cdf55e76f339601a5b7c95d5eeb3449a0180379cf8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -8132,7 +8044,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:18.409576+00:00"
+                "failed_at": "2026-05-03T02:53:30.570372+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8142,13 +8054,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noAnbNHruxCRjloSPw7rHiKt4Z7RG7VYDtwYhUWIJr9i1XuqUW4X_2-3VVGvZr6tH0L7SObyRA13-lAsJPdfx1J9GnVwF4TKvB1G6A4wx3jndLZmOFn90w53pKY7kpyT5_q6QeY40YNFymF=w2048-h2048-k-no",
                 "source_url_sha256": "5af3665c6b4b766a8e0c052f63f58025d1d7251cf7f9dc6dfc573d1be0487be5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -8215,7 +8123,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:19.136857+00:00"
+                "failed_at": "2026-05-03T02:53:30.902872+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8225,13 +8133,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nokKmd23NGY_PVu6QLxyXlFfX3e4L5zt7hc3Pq0CTORX_4ewZ0l_Em0t8jq7A295iAHB_FJDobBttO_5hGi5yXNpbV0D2rE8-zURXifw9uoMlYEbUnoORhi2V7nZu1lSznOjKe5foJ7Zag=w2048-h2048-k-no",
                 "source_url_sha256": "14bfc2801f5d320f3232ae731973b02bf5fd6bd4d12a7c3e9fc4f193df5c45ee",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -8298,7 +8202,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:19.782181+00:00"
+                "failed_at": "2026-05-03T02:53:31.248751+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8308,13 +8212,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqkSTNT73XeOlA2QLmY2KhNwdAIKGQlAbrxFkWOjMP4BHCbBqEDJ1C2BbwhtTFGWN61ly9BFLvxSEfiRrRk3BMPFj5GBTTt3KWhDcr5f_ed_zi_JFaRfocbJmWd3_cpqBo1gBL9kSZhShsO=w2048-h2048-k-no",
                 "source_url_sha256": "be4e7f97028766970a5503379d96f089cc6b10260f851ccb3b2e710780937215",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -8381,7 +8281,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:21.496170+00:00"
+                "failed_at": "2026-05-03T02:53:31.557697+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8391,13 +8291,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIAgsB8Wi7EHh7FS0jYHtYzTGpdQqSx9UprF2r5C_5MfTDYxaGzfcdXARu0sQifVZU7pNkgq5LcButByYOEAY4WKX8Ssj2hynm1favNUFDD22RLSQWgq8WHf_NporvRKQ9GPNy-7m9KZ_O=w2048-h2048-k-no",
                 "source_url_sha256": "0290c22a4d673d084db7524ade90a0c495f7ab8e9eb5e705fbd70db585ff86b5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -8464,7 +8360,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:22.293793+00:00"
+                "failed_at": "2026-05-03T02:53:31.888100+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8543,7 +8439,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:23.237728+00:00"
+                "failed_at": "2026-05-03T02:53:32.189952+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8622,7 +8518,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:23.855741+00:00"
+                "failed_at": "2026-05-03T02:53:32.499123+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8701,7 +8597,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:24.614010+00:00"
+                "failed_at": "2026-05-03T02:53:32.813438+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8780,7 +8676,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:25.288090+00:00"
+                "failed_at": "2026-05-03T02:53:33.123592+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8859,7 +8755,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:25.963592+00:00"
+                "failed_at": "2026-05-03T02:53:33.420201+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -8938,7 +8834,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:26.607461+00:00"
+                "failed_at": "2026-05-03T02:53:33.711036+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9017,7 +8913,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:27.138995+00:00"
+                "failed_at": "2026-05-03T02:53:34.031105+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9096,7 +8992,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:27.736704+00:00"
+                "failed_at": "2026-05-03T02:53:34.398413+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9175,7 +9071,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:28.344848+00:00"
+                "failed_at": "2026-05-03T02:53:34.766738+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9254,7 +9150,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:28.904506+00:00"
+                "failed_at": "2026-05-03T02:53:35.112006+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9333,7 +9229,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:29.410527+00:00"
+                "failed_at": "2026-05-03T02:53:35.540434+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9412,7 +9308,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:30.136813+00:00"
+                "failed_at": "2026-05-03T02:53:35.975841+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9491,7 +9387,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:30.890984+00:00"
+                "failed_at": "2026-05-03T02:53:36.444371+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9570,7 +9466,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:31.516268+00:00"
+                "failed_at": "2026-05-03T02:53:36.898809+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9649,7 +9545,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:32.103893+00:00"
+                "failed_at": "2026-05-03T02:53:37.327142+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9728,7 +9624,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:32.684355+00:00"
+                "failed_at": "2026-05-03T02:53:37.777257+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9807,7 +9703,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:33.240364+00:00"
+                "failed_at": "2026-05-03T02:53:38.136298+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9886,7 +9782,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:33.807648+00:00"
+                "failed_at": "2026-05-03T02:53:38.500176+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -9965,7 +9861,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:34.319224+00:00"
+                "failed_at": "2026-05-03T02:53:38.877781+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10044,7 +9940,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:34.918003+00:00"
+                "failed_at": "2026-05-03T02:53:39.164793+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10123,7 +10019,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:35.544578+00:00"
+                "failed_at": "2026-05-03T02:53:39.453880+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10202,7 +10098,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:36.105161+00:00"
+                "failed_at": "2026-05-03T02:53:39.783390+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10281,7 +10177,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:36.768412+00:00"
+                "failed_at": "2026-05-03T02:53:40.110874+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10360,7 +10256,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:37.368757+00:00"
+                "failed_at": "2026-05-03T02:53:45.447594+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10439,7 +10335,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:37.946019+00:00"
+                "failed_at": "2026-05-03T02:53:45.840961+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10518,7 +10414,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:38.483756+00:00"
+                "failed_at": "2026-05-03T02:53:46.171692+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10597,7 +10493,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:39.034525+00:00"
+                "failed_at": "2026-05-03T02:53:46.488531+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10676,7 +10572,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:39.604590+00:00"
+                "failed_at": "2026-05-03T02:53:46.786747+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10755,7 +10651,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:40.045389+00:00"
+                "failed_at": "2026-05-03T02:53:47.090510+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10834,7 +10730,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:40.475376+00:00"
+                "failed_at": "2026-05-03T02:53:47.385979+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10913,7 +10809,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:40.850784+00:00"
+                "failed_at": "2026-05-03T02:53:47.693579+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -10992,7 +10888,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:41.244278+00:00"
+                "failed_at": "2026-05-03T02:53:48.023725+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11071,7 +10967,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:41.624678+00:00"
+                "failed_at": "2026-05-03T02:53:48.336862+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11150,7 +11046,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:42.014937+00:00"
+                "failed_at": "2026-05-03T02:53:48.639870+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11229,7 +11125,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:42.346357+00:00"
+                "failed_at": "2026-05-03T02:53:48.990563+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11308,7 +11204,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:42.672518+00:00"
+                "failed_at": "2026-05-03T02:53:54.367173+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11387,7 +11283,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:48.073987+00:00"
+                "failed_at": "2026-05-03T02:53:54.781069+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11466,7 +11362,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:48.432909+00:00"
+                "failed_at": "2026-05-03T02:53:55.154526+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11545,7 +11441,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:48.797003+00:00"
+                "failed_at": "2026-05-03T02:53:55.620731+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11624,7 +11520,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:49.207195+00:00"
+                "failed_at": "2026-05-03T02:53:56.007666+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11703,7 +11599,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:49.601261+00:00"
+                "failed_at": "2026-05-03T02:54:01.383201+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11782,7 +11678,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:49.973997+00:00"
+                "failed_at": "2026-05-03T02:54:01.728425+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11861,7 +11757,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:50.348629+00:00"
+                "failed_at": "2026-05-03T02:54:02.054570+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -11940,7 +11836,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:50.775022+00:00"
+                "failed_at": "2026-05-03T02:54:02.381581+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12019,7 +11915,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:56.180843+00:00"
+                "failed_at": "2026-05-03T02:54:02.699331+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12098,7 +11994,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:56.526703+00:00"
+                "failed_at": "2026-05-03T02:54:03.031029+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12177,7 +12073,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:56.925669+00:00"
+                "failed_at": "2026-05-03T02:54:03.345239+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12256,7 +12152,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:57.332626+00:00"
+                "failed_at": "2026-05-03T02:54:03.694940+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12335,7 +12231,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:57.739840+00:00"
+                "failed_at": "2026-05-03T02:54:04.006825+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12414,7 +12310,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:58.132836+00:00"
+                "failed_at": "2026-05-03T02:54:04.322740+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12493,7 +12389,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:03.532408+00:00"
+                "failed_at": "2026-05-03T02:54:04.661520+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12572,7 +12468,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:03.967253+00:00"
+                "failed_at": "2026-05-03T02:54:05.008163+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12651,7 +12547,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:04.399898+00:00"
+                "failed_at": "2026-05-03T02:54:05.340326+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12730,7 +12626,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:04.799236+00:00"
+                "failed_at": "2026-05-03T02:54:05.648166+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12809,7 +12705,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:05.335598+00:00"
+                "failed_at": "2026-05-03T02:54:05.950240+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12888,7 +12784,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:05.797564+00:00"
+                "failed_at": "2026-05-03T02:54:06.262648+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -12967,7 +12863,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:06.636413+00:00"
+                "failed_at": "2026-05-03T02:54:06.564316+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13046,7 +12942,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:07.431714+00:00"
+                "failed_at": "2026-05-03T02:54:11.854603+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13125,7 +13021,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:07.812614+00:00"
+                "failed_at": "2026-05-03T02:54:17.134562+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13204,7 +13100,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:08.190023+00:00"
+                "failed_at": "2026-05-03T02:54:17.448913+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13283,7 +13179,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:08.592110+00:00"
+                "failed_at": "2026-05-03T02:54:17.734598+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13362,7 +13258,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:09.204608+00:00"
+                "failed_at": "2026-05-03T02:54:18.029314+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13441,7 +13337,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:09.674726+00:00"
+                "failed_at": "2026-05-03T02:54:18.339508+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13520,7 +13416,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:10.099160+00:00"
+                "failed_at": "2026-05-03T02:54:18.642499+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13599,7 +13495,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:10.581716+00:00"
+                "failed_at": "2026-05-03T02:54:18.956593+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13678,7 +13574,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:11.049573+00:00"
+                "failed_at": "2026-05-03T02:54:19.266020+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13757,7 +13653,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:11.394881+00:00"
+                "failed_at": "2026-05-03T02:54:19.544281+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13836,7 +13732,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:11.778353+00:00"
+                "failed_at": "2026-05-03T02:54:19.819525+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13915,7 +13811,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:12.190820+00:00"
+                "failed_at": "2026-05-03T02:54:20.098140+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -13994,7 +13890,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:12.541001+00:00"
+                "failed_at": "2026-05-03T02:54:20.403582+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14073,7 +13969,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:12.874856+00:00"
+                "failed_at": "2026-05-03T02:54:20.696188+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14152,7 +14048,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:13.207135+00:00"
+                "failed_at": "2026-05-03T02:54:20.995012+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14231,7 +14127,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:13.589947+00:00"
+                "failed_at": "2026-05-03T02:54:21.310860+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14310,7 +14206,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:13.905011+00:00"
+                "failed_at": "2026-05-03T02:54:21.642742+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14389,7 +14285,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:14.285821+00:00"
+                "failed_at": "2026-05-03T02:54:21.943267+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14468,7 +14364,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:14.675124+00:00"
+                "failed_at": "2026-05-03T02:54:22.244563+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14547,7 +14443,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:15.108712+00:00"
+                "failed_at": "2026-05-03T02:54:22.551862+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14626,7 +14522,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:15.571925+00:00"
+                "failed_at": "2026-05-03T02:54:22.869580+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14705,7 +14601,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:16.002328+00:00"
+                "failed_at": "2026-05-03T02:54:23.188331+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14784,7 +14680,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:16.447939+00:00"
+                "failed_at": "2026-05-03T02:54:23.497729+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14863,7 +14759,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:16.858011+00:00"
+                "failed_at": "2026-05-03T02:54:23.825700+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -14942,7 +14838,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:17.309459+00:00"
+                "failed_at": "2026-05-03T02:54:24.182769+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15021,7 +14917,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:17.789602+00:00"
+                "failed_at": "2026-05-03T02:54:24.516835+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15100,7 +14996,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:18.183587+00:00"
+                "failed_at": "2026-05-03T02:54:24.851774+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15179,7 +15075,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:18.595991+00:00"
+                "failed_at": "2026-05-03T02:54:25.226197+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15258,7 +15154,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:19.086540+00:00"
+                "failed_at": "2026-05-03T02:54:25.561666+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15337,7 +15233,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:19.497567+00:00"
+                "failed_at": "2026-05-03T02:54:25.881679+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15416,7 +15312,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:19.935962+00:00"
+                "failed_at": "2026-05-03T02:54:26.173093+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15495,7 +15391,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:20.332961+00:00"
+                "failed_at": "2026-05-03T02:54:26.475928+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15574,7 +15470,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:20.736877+00:00"
+                "failed_at": "2026-05-03T02:54:26.786858+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15653,7 +15549,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:21.177735+00:00"
+                "failed_at": "2026-05-03T02:54:27.104093+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15732,7 +15628,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:21.590217+00:00"
+                "failed_at": "2026-05-03T02:54:27.381916+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15811,7 +15707,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:21.960563+00:00"
+                "failed_at": "2026-05-03T02:54:27.674218+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15890,7 +15786,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:22.362497+00:00"
+                "failed_at": "2026-05-03T02:54:27.980490+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -15969,7 +15865,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:22.759608+00:00"
+                "failed_at": "2026-05-03T02:54:28.294208+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -16048,7 +15944,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:23.571819+00:00"
+                "failed_at": "2026-05-03T02:54:28.611546+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -16127,7 +16023,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:24.056757+00:00"
+                "failed_at": "2026-05-03T02:54:28.934834+00:00"
             },
             {
                 "place_name": "August Lily Florist",
@@ -16206,27 +16102,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:24.533188+00:00"
+                "failed_at": "2026-05-03T02:54:29.212004+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 130,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 132,
+            "duplicate_count": 0,
+            "airtable_photos_count": 2,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 100,
             "place_name": "August Lily Florist",
             "place_id": "ChIJB_hj9sUwVIgRXbLzHaTwGrc",
             "record_id": "recOORKmSVlGenP6O",
-            "generated_at": "2026-05-02T22:09:24.533623+00:00",
+            "generated_at": "2026-05-03T02:54:29.212423+00:00",
             "azure_assets_count": 2,
             "failed_upload_count": 126,
             "pending_upload_count": 0,
             "selected_airtable_count": 2,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
