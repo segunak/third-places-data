@@ -1532,10 +1532,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -1544,6 +1540,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[16].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1582,10 +1586,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -1594,6 +1594,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1632,10 +1640,6 @@
                 "source_path": "fields.Photos[2]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
                     }
@@ -1644,6 +1648,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1682,10 +1694,6 @@
                 "source_path": "fields.Photos[5]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
                     }
@@ -1694,6 +1702,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[12].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1732,10 +1748,6 @@
                 "source_path": "fields.Photos[6]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
                     }
@@ -1744,6 +1756,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[14].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1782,10 +1802,6 @@
                 "source_path": "fields.Photos[7]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
                     }
@@ -1794,6 +1810,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[15].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1830,13 +1854,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPkQtukJcAdeT9AxWTqv-zYNBtVx8Enjv20kuoM=w2048-h2048-k-no",
                 "source_url_sha256": "61c8b4f5c6ce5006397ebd72d6b3fdee547baa6436ae9b729a5a1ee72dda9a94",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -1903,7 +1923,7 @@
                 ],
                 "error": "HTTP 404",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:51.437202+00:00"
+                "failed_at": "2026-05-03T01:07:21.381194+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -1913,13 +1933,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPr-PlXRk8nctVHEZA119LgxcgEBHgTZbH_8ESD=w2048-h2048-k-no",
                 "source_url_sha256": "6d80ff84228c05e97370b1f3d11516f6e0646d47bb5e7d74bb98a5e271237aa7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -1986,7 +2002,7 @@
                 ],
                 "error": "HTTP 404",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:52.185713+00:00"
+                "failed_at": "2026-05-03T01:07:22.131649+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -1996,13 +2012,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPGbfwFS_8WJDCpwO7FvLjmV6qGtD8YwwRW0VeN=w2048-h2048-k-no",
                 "source_url_sha256": "74b583760ad88bc046678a48f9f0ae0be893537ede3dc1bff9e5fce554d45f74",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -2069,7 +2081,7 @@
                 ],
                 "error": "HTTP 404",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:55.440472+00:00"
+                "failed_at": "2026-05-03T01:07:22.928521+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2079,13 +2091,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nosJspUNaYWV8Oz-m5VLPz-phjTb3_Vc-1nS_enNW4ZeDMyn6uuWF_fbLEFS66ST2QpEQH-X9Uza5FgPAiG7qdzXSygNmmVhIzpzn0Cs8ieZuw9cDZnI2BkthRblgqSctx3A3iNgnpfu0A9=w2048-h2048-k-no",
                 "source_url_sha256": "a8630afc339fdcf177ad32f74a3ba2a48d3d1ae115c2f16c7a4d0bf356b46674",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -2152,7 +2160,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:55.794624+00:00"
+                "failed_at": "2026-05-03T01:07:23.320531+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2162,13 +2170,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqYAeh5_bqRaRukHP9ltVdU0rMP5oQw-mqhcQw3WBFv3GVOhTlhAcnL-_8UyK5keCQCXyei-vQ9djuo3l1-B2z_9jX7y5vTkpVZMQnK-Kj1UqS1PpF1ACLwKp-NsAfFFPeuWqQKmRalFRk=w2048-h2048-k-no",
                 "source_url_sha256": "354ef793a6c13010e754e1c7f653a9e5d3cf92a5c92297c3b579e3f534063ed7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -2235,7 +2239,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:56.087065+00:00"
+                "failed_at": "2026-05-03T01:07:23.685683+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2245,13 +2249,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEtwQcOT9lBrPLt1zBFFlQ5HPW4k3ZWjIdrJs0Uk5FFho5FIE9-0OlGHSHhk41YsmSZ1UcFECU-a7VbkLwRo2Qcl2AqoVZKPg1n5F8SYTOlmzTKo1Pi7x3hy83KWvqOT7KlwhsFv9kMRYnqtmJIMu9yymhV7iRKG6p4Awxv73tupEXxNJYmS0Cl=w2048-h2048-k-no",
                 "source_url_sha256": "0b9e401073ae3282b44fbc273a7e1f4391f40b58e3eedad00718967b463135fe",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -2318,7 +2318,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:56.410077+00:00"
+                "failed_at": "2026-05-03T01:07:24.137055+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2328,13 +2328,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFq7Nl4aSgL5V3eCRJN-3xo4ZwgPsYVYUbojVlPCMoyhCSeQdHh2JKMqi8_nF6s-ayUmfC9WysNm2-t_kZcuG7yxQPPFcOERzLsQiHtVYDW9PPWNeLsZbUhsiLRJM1iIbEO0kuANZwJ2L7OUbZqpNkH9EhFzxgER_cC9wn8uvyj10ReMgOAN7H7=w2048-h2048-k-no",
                 "source_url_sha256": "f5e339bc04ebe07cfe3bbe4af5f940142a258736fc25f0f762cd702a7cd11869",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -2401,7 +2397,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:56.774444+00:00"
+                "failed_at": "2026-05-03T01:07:24.764948+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2411,13 +2407,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhErJcU8-JOL7-HVlM4q76_MrCc10HXNPYaJvUUKF2ofjzIAFWDQtfdGbvBksX4YDxXT2Lr5cakfdOcgSA-fdtFMLvyCr-IPmF-1Vs9G1rmh-YoI3NW-rHaVHPiwN8puSC2iNjWrTQGo3O_NplvIxWCQbakeBChk3ka8M6QkCMdEUyjgkfQCDmiebw=w2048-h2048-k-no",
                 "source_url_sha256": "4f1cb517c02cce6d0bbd567642bd37a88a058f09abb4842a8ef117005f1a1d4a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -2484,7 +2476,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:57.144444+00:00"
+                "failed_at": "2026-05-03T01:07:25.166490+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2494,13 +2486,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGGzBF9zCh4qNcqcevLHY86glmltMwjkzLxKRcYfccBhsbR20OBD9ywG1oEZ1_nUYD_-rFAO4oMxUUgFXVjwTbo0JY3eVEz-v7Oyy3dnyPBiDo8G_lJP96TEUOp3Itr7QdsgVE1-pIhoC5VQfzZxSAEfs26lqoeymwyDfHi4V0_U8e1fwqhib9s=w2048-h2048-k-no",
                 "source_url_sha256": "8e1450faa5e2983a8752bc7bcd531685b676840d7ee6d513885876ad6ff86e6a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -2567,7 +2555,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:57.458560+00:00"
+                "failed_at": "2026-05-03T01:07:25.534138+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2577,13 +2565,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhF1i6t52VvY82xDs024aVRCyeFSUSNDmBYd_B2AdFAFgXXgjTMXFYeiN3v4OSWzRPhmQcu4L04SVbQOU5mlMrDd6ssw9BbvR2stEV4aopJbYaiJ1rn4PH8sI3r2h8VxS4G_WxwgULMxelPnlEJIWjKKo215RWPNg3fVH0yWAYNTsu2xbOuP-ok7=w2048-h2048-k-no",
                 "source_url_sha256": "067906f64d56ee42c92e19da3fe9c096f3f14c4608c889d604e60dacca4c7efb",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -2650,7 +2634,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:57.810684+00:00"
+                "failed_at": "2026-05-03T01:07:25.880429+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2660,13 +2644,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqYEHlcTKMzhPzhbp9JGvJ_xEUH1lROobmAgSyf9Jj-Gub1nCY-EJr3oM8ucVwgkxdnPRrBmF2PHizx3rxTL8lls7g32i1xbn_ARwrl_QUdNyUQCxEx1TjG4Ho_aiM3uMza--wXSJIo8-o=w2048-h2048-k-no",
                 "source_url_sha256": "04fc8702122b78817d39513d27ad7aeed598bbaf2a1ebf29b016459adf391420",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -2733,7 +2713,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:58.133184+00:00"
+                "failed_at": "2026-05-03T01:07:26.227711+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2743,13 +2723,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrvh-8JE17RNl7hDpdeFP5zNPCW_lutGcSJXnr6e5NFJA1Xzvsh1VLPmMdZWkM8HuWFJyV_-wq3faNFhm3he7LI865WneBPvz0eyCV-qI83j1E3BeKuuoEPdgjQMT8c02-DA-tWP4iN8n0n=w2048-h2048-k-no",
                 "source_url_sha256": "efe5a859c50a92eb890e4f740804b96cfed3d0f062302a6684b3a8c7c4b6d2ee",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -2816,7 +2792,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:58.465139+00:00"
+                "failed_at": "2026-05-03T01:07:26.580875+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2826,13 +2802,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npgxwC96IoXlK3oYGRmZC-tymM1b1R03YgN6tElhnyCxsXW-xT9ClXU5PzQzQkoavLgj4VmYB29WdG_-zGyl1t870o6uqGkf0-skj3X2Ur-yZAbIbI7_dmO_IGkOGvFeXkq-nFxcTjZ0O4K=w2048-h2048-k-no",
                 "source_url_sha256": "d4d8d370dd216090e126cd24a7970987f8d1a5c144101f5e8f089ea050497de8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -2899,7 +2871,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:58.809017+00:00"
+                "failed_at": "2026-05-03T01:07:26.929606+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2909,13 +2881,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrOfomU9B2vA6zSaLRHng21wpagqXYGQiHUR25wqk3MYjuHxOelRJ_41C847kjdppYwzG3Jshtd6kGomSYeIDhPioJ16H4LYx036RyWa59kZKWZfjCK4VGuIoIu3j7QCrouibXYg21EBMjB=w2048-h2048-k-no",
                 "source_url_sha256": "e2e3df78228703aed07e6c099eb3a43ea84eff61e1d7f9611d1de7283c02a9af",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -2982,7 +2950,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:59.139139+00:00"
+                "failed_at": "2026-05-03T01:07:27.308586+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -2992,13 +2960,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no73PdGd8auZosDWWbfyS2sh_X80vyFxnhsIbGrPYJ5E6DyC9STSILIlLmFZ6rPX32CRKxGqQutiuMA50d3G2wQ5-aM1bQuTlZXlNHgFyNB0Ih69X687EZwZA6nu45ZJN-BECAwaGqRTNjB=w2048-h2048-k-no",
                 "source_url_sha256": "49c2cd4ff5c3cb495aed76746180a0239cc71bab6a078c36bd3cec3740e913aa",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -3065,7 +3029,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:59.450189+00:00"
+                "failed_at": "2026-05-03T01:07:27.704178+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3075,13 +3039,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqenepbaf9Uwh1YJ16ykPQeLrox3Rpz8U5kt0JScSc_6hDlQoxu1r1S6nxAxOYKJajuOEmiYAvVTFgB9DdQLFtFuiH2ECBOqNzTm_ElQ8hONBZo0V69F4g9sW0bUWpsaYliFQl7nylLjZtg=w2048-h2048-k-no",
                 "source_url_sha256": "6df54524e20d0adece9fd93c110390d969f394519a5fbe893ec575ad1951235d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -3148,7 +3108,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:59.796320+00:00"
+                "failed_at": "2026-05-03T01:07:28.075221+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3158,13 +3118,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqS_n9arBkeagt0NeeenLFDe-KiIy7GmcUgG2ABQYqsZG79fvZy_3YnLYPDBbHRtSAXegjmDy2IXlS38CaUEE38bSqA30-9HiKFVqO1L-ftWAJsFRJs45J9Nll9YX3gREGNT3m1BjSNcz3H=w2048-h2048-k-no",
                 "source_url_sha256": "a840f8817f9a5f25cb22438c87dd2d2c41299122823e81e2f3c0e34804208de3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -3231,7 +3187,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:00.124775+00:00"
+                "failed_at": "2026-05-03T01:07:28.475137+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3310,7 +3266,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:00.688276+00:00"
+                "failed_at": "2026-05-03T01:07:28.843980+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3389,7 +3345,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:01.258712+00:00"
+                "failed_at": "2026-05-03T01:07:29.279129+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3468,7 +3424,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:01.602807+00:00"
+                "failed_at": "2026-05-03T01:07:29.663457+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3547,7 +3503,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:01.939883+00:00"
+                "failed_at": "2026-05-03T01:07:30.038468+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3626,7 +3582,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:02.291764+00:00"
+                "failed_at": "2026-05-03T01:07:30.460498+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3705,7 +3661,7 @@
                 ],
                 "error": "HTTP 404",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:03.004504+00:00"
+                "failed_at": "2026-05-03T01:07:31.186811+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3784,7 +3740,7 @@
                 ],
                 "error": "HTTP 404",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:03.731965+00:00"
+                "failed_at": "2026-05-03T01:07:31.968088+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3863,7 +3819,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:04.084220+00:00"
+                "failed_at": "2026-05-03T01:07:32.333948+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -3942,7 +3898,7 @@
                 ],
                 "error": "HTTP 404",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:04.791261+00:00"
+                "failed_at": "2026-05-03T01:07:33.072455+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -4021,7 +3977,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:05.123783+00:00"
+                "failed_at": "2026-05-03T01:07:33.398419+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -4100,7 +4056,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:05.795089+00:00"
+                "failed_at": "2026-05-03T01:07:33.795125+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -4179,7 +4135,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:06.640767+00:00"
+                "failed_at": "2026-05-03T01:07:34.111738+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -4258,7 +4214,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:06.961128+00:00"
+                "failed_at": "2026-05-03T01:07:34.455733+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -4337,7 +4293,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:07.282015+00:00"
+                "failed_at": "2026-05-03T01:07:34.815278+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -4416,7 +4372,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:07.612553+00:00"
+                "failed_at": "2026-05-03T01:07:35.155583+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -4495,7 +4451,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:07.940518+00:00"
+                "failed_at": "2026-05-03T01:07:35.480196+00:00"
             },
             {
                 "place_name": "Marketplace Coffee",
@@ -4574,27 +4530,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:08.264360+00:00"
+                "failed_at": "2026-05-03T01:07:35.845048+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 46,
-            "duplicate_count": 23,
-            "airtable_photos_count": 23,
+            "candidate_count": 52,
+            "duplicate_count": 0,
+            "airtable_photos_count": 6,
             "airtable_photos_google_count": 23,
             "data_file_photo_urls_count": 23,
             "provider_raw_photo_url_big_count": 23,
             "place_name": "Marketplace Coffee",
             "place_id": "ChIJVWYUICVVUYgRp2Qle_WdTZ8",
             "record_id": "receZpHN14MYj28Px",
-            "generated_at": "2026-05-02T22:05:08.264784+00:00",
+            "generated_at": "2026-05-03T01:07:35.845449+00:00",
             "azure_assets_count": 6,
             "failed_upload_count": 34,
             "pending_upload_count": 0,
             "selected_airtable_count": 6,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 23
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
