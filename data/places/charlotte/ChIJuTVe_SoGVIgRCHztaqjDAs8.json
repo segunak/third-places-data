@@ -4665,6 +4665,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJuTVe_SoGVIgRCHztaqjDAs8/ee780fdc59c0f605d2fb96bbc83386a27812d36d5862886ebdcbd020f9a7ee25.jpg",
@@ -4766,7 +4774,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:02.440461+00:00"
+                "failed_at": "2026-05-03T02:52:39.834818+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Kannapolis",
@@ -4845,7 +4853,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:02.901688+00:00"
+                "failed_at": "2026-05-03T02:52:40.454849+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -4859,7 +4867,7 @@
             "place_name": "Cabarrus County Library | Kannapolis",
             "place_id": "ChIJuTVe_SoGVIgRCHztaqjDAs8",
             "record_id": "reciWZow9BXR6kmjx",
-            "generated_at": "2026-05-03T01:20:02.901991+00:00",
+            "generated_at": "2026-05-03T02:52:40.455502+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 2,
             "pending_upload_count": 0,
