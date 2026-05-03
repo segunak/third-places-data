@@ -1553,7 +1553,1662 @@
                 }
             ]
         },
-        "last_refreshed": "2026-02-16T02:43:16.157440"
+        "last_refreshed": "2026-02-16T02:43:16.157440",
+        "azure_assets": [
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMEI1FwqS7c4x7Ck-ZOHTFQIJW-nJjnbEnItijo=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMEI1FwqS7c4x7Ck-ZOHTFQIJW-nJjnbEnItijo=w2048-h2048-k-no",
+                "source_url_sha256": "5b09c8d9e5f0ab46a9b731f9a8a20d45aed5e620a26af375e3e94671bd9e749d",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[12].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/5b09c8d9e5f0ab46a9b731f9a8a20d45aed5e620a26af375e3e94671bd9e749d.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/5b09c8d9e5f0ab46a9b731f9a8a20d45aed5e620a26af375e3e94671bd9e749d.jpg",
+                "content_sha256": "0450dade45c3404c73aeffb0fd61d57165b194620641b25b7a49160a78f72a92",
+                "content_type": "image/jpeg",
+                "bytes": 645567,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMEI1FwqS7c4x7Ck-ZOHTFQIJW-nJjnbEnItijo=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMEI1FwqS7c4x7Ck-ZOHTFQIJW-nJjnbEnItijo=w2048-h2048-k-no",
+                        "bytes": 645567,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:40.198455+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMi6N_xMwIEq1q0RF6P-UK31w4OVSwZU_b4xU4m=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMi6N_xMwIEq1q0RF6P-UK31w4OVSwZU_b4xU4m=w2048-h2048-k-no",
+                "source_url_sha256": "630afb4db2f57744dc5fe4bf440777a59987ac98491c71eebd49cc1ff9c53019",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[13].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/630afb4db2f57744dc5fe4bf440777a59987ac98491c71eebd49cc1ff9c53019.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/630afb4db2f57744dc5fe4bf440777a59987ac98491c71eebd49cc1ff9c53019.jpg",
+                "content_sha256": "c23772532a97b782dba6ca6f899bed7184e8e412d539506d70533182a776d621",
+                "content_type": "image/jpeg",
+                "bytes": 99558,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMi6N_xMwIEq1q0RF6P-UK31w4OVSwZU_b4xU4m=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMi6N_xMwIEq1q0RF6P-UK31w4OVSwZU_b4xU4m=w2048-h2048-k-no",
+                        "bytes": 99558,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:40.569318+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMRFxUfHC5kuRvGeFNqyw5h1raJdHXM9klC4am3=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMRFxUfHC5kuRvGeFNqyw5h1raJdHXM9klC4am3=w2048-h2048-k-no",
+                "source_url_sha256": "f50a565a9989bb8b608b3e8553eb5698f08a29f61bcd1e899b852563f356095e",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[16].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/f50a565a9989bb8b608b3e8553eb5698f08a29f61bcd1e899b852563f356095e.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/f50a565a9989bb8b608b3e8553eb5698f08a29f61bcd1e899b852563f356095e.jpg",
+                "content_sha256": "8be619cc64f015a79f2cfcb1ce4c1035e465c91e926757f68af45183b0ffe7a4",
+                "content_type": "image/jpeg",
+                "bytes": 368874,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMRFxUfHC5kuRvGeFNqyw5h1raJdHXM9klC4am3=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMRFxUfHC5kuRvGeFNqyw5h1raJdHXM9klC4am3=w2048-h2048-k-no",
+                        "bytes": 368874,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:41.094217+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNGvqI5qdmVp6NrRxXmzPcSdtU-dBom8A_g6U_t=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNGvqI5qdmVp6NrRxXmzPcSdtU-dBom8A_g6U_t=w2048-h2048-k-no",
+                "source_url_sha256": "63b3ce66d12a018200310ab645e3099fb03b4326a92f818053e58d6bf71a264f",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[3]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/63b3ce66d12a018200310ab645e3099fb03b4326a92f818053e58d6bf71a264f.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/63b3ce66d12a018200310ab645e3099fb03b4326a92f818053e58d6bf71a264f.png",
+                "content_sha256": "c8a5a8dada540cc5c29bb916cef0dbc0c450b8f6b55743ddcc222cc2d1ee03a0",
+                "content_type": "image/png",
+                "bytes": 6222731,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNGvqI5qdmVp6NrRxXmzPcSdtU-dBom8A_g6U_t=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNGvqI5qdmVp6NrRxXmzPcSdtU-dBom8A_g6U_t=w2048-h2048-k-no",
+                        "bytes": 6222731,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:43.656521+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMXCpYu-SjdSKtn9xUCr7Eo7ne5OaJuYYMe9Zeh=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMXCpYu-SjdSKtn9xUCr7Eo7ne5OaJuYYMe9Zeh=w2048-h2048-k-no",
+                "source_url_sha256": "375efcb93e47b8f9e46bdcf261491c867edafb81fe883be21be36eb4c685d41d",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[4]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[15].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/375efcb93e47b8f9e46bdcf261491c867edafb81fe883be21be36eb4c685d41d.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/375efcb93e47b8f9e46bdcf261491c867edafb81fe883be21be36eb4c685d41d.jpg",
+                "content_sha256": "17c515eceb614c26cb819f64a96308d19133a08b7dcf19fd5b8cb985c09fdddb",
+                "content_type": "image/jpeg",
+                "bytes": 577666,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMXCpYu-SjdSKtn9xUCr7Eo7ne5OaJuYYMe9Zeh=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMXCpYu-SjdSKtn9xUCr7Eo7ne5OaJuYYMe9Zeh=w2048-h2048-k-no",
+                        "bytes": 577666,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:44.086329+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=_AJ81q6wWAxizKrhwHIs9g&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=0.32946935&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=_AJ81q6wWAxizKrhwHIs9g&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=0.32946935&pitch=0&thumbfov=100",
+                "source_url_sha256": "cc5b77cde2c6c21468a8326a23c10a3032a894929735ac67a1007839ea424dbf",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[5]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[30].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/cc5b77cde2c6c21468a8326a23c10a3032a894929735ac67a1007839ea424dbf.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/cc5b77cde2c6c21468a8326a23c10a3032a894929735ac67a1007839ea424dbf.jpg",
+                "content_sha256": "a94cd50b0d02a662d1b913e7b2253cbfa2aa63b9335924fabeeab353b7f87cd8",
+                "content_type": "image/jpeg",
+                "bytes": 147612,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=_AJ81q6wWAxizKrhwHIs9g&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=0.32946935&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=_AJ81q6wWAxizKrhwHIs9g&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=0.32946935&pitch=0&thumbfov=100",
+                        "bytes": 147612,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:49.417116+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNpbr0aobO2lZjYfz2FOsqnSh8aRwBMfIfzqmiy=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNpbr0aobO2lZjYfz2FOsqnSh8aRwBMfIfzqmiy=w2048-h2048-k-no",
+                "source_url_sha256": "a3b2f1d945d968ccf7a9ee724fb1fbac208942eeebf61e23b816c9d8b8a0b561",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[6]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[6]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/a3b2f1d945d968ccf7a9ee724fb1fbac208942eeebf61e23b816c9d8b8a0b561.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/a3b2f1d945d968ccf7a9ee724fb1fbac208942eeebf61e23b816c9d8b8a0b561.jpg",
+                "content_sha256": "9a0cab776a8e52c3456cd4debf408fbd6a058421a939b090301efaf03bfe43a1",
+                "content_type": "image/jpeg",
+                "bytes": 147847,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNpbr0aobO2lZjYfz2FOsqnSh8aRwBMfIfzqmiy=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNpbr0aobO2lZjYfz2FOsqnSh8aRwBMfIfzqmiy=w2048-h2048-k-no",
+                        "bytes": 147847,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:49.770544+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOnQf5pAlnhKn2hz2aa7GfGWFhBMpwoeQNHbiED=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOnQf5pAlnhKn2hz2aa7GfGWFhBMpwoeQNHbiED=w2048-h2048-k-no",
+                "source_url_sha256": "69d47754802c67eeed87512254d6b0b4b515e402e8f3256b35474c6408606f49",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[7]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[7]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[4].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/69d47754802c67eeed87512254d6b0b4b515e402e8f3256b35474c6408606f49.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/69d47754802c67eeed87512254d6b0b4b515e402e8f3256b35474c6408606f49.jpg",
+                "content_sha256": "94d84bdb85246748c6239ba5017aa8b81dec941b91d267ea07446e0f5879ee7d",
+                "content_type": "image/jpeg",
+                "bytes": 129837,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOnQf5pAlnhKn2hz2aa7GfGWFhBMpwoeQNHbiED=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOnQf5pAlnhKn2hz2aa7GfGWFhBMpwoeQNHbiED=w2048-h2048-k-no",
+                        "bytes": 129837,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:50.303655+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNzF5qspZ9UvWCoQUvV9cmeblSpG5EnMAOnNqHN=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNzF5qspZ9UvWCoQUvV9cmeblSpG5EnMAOnNqHN=w2048-h2048-k-no",
+                "source_url_sha256": "8e2803f8a24a1d1dbcdd19517877b3a8079156513cbbe2dccd6f144f21c77000",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[8]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[8]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[5].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/8e2803f8a24a1d1dbcdd19517877b3a8079156513cbbe2dccd6f144f21c77000.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/8e2803f8a24a1d1dbcdd19517877b3a8079156513cbbe2dccd6f144f21c77000.jpg",
+                "content_sha256": "603e62b47f73e6bb242a8870e73a82fb44e5a731869e022ad56aa49f3c978ef4",
+                "content_type": "image/jpeg",
+                "bytes": 127688,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNzF5qspZ9UvWCoQUvV9cmeblSpG5EnMAOnNqHN=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNzF5qspZ9UvWCoQUvV9cmeblSpG5EnMAOnNqHN=w2048-h2048-k-no",
+                        "bytes": 127688,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:50.734954+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOAZ8MMri_dgXIWFijm4V1Zv0YJaXq_zNJx_ZkQ=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOAZ8MMri_dgXIWFijm4V1Zv0YJaXq_zNJx_ZkQ=w2048-h2048-k-no",
+                "source_url_sha256": "2286a5801f5ed870e7911de9a85e37cdab8e2b43e7116f0589689c8e2b759009",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[9]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[9]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[9]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[9]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[7].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/2286a5801f5ed870e7911de9a85e37cdab8e2b43e7116f0589689c8e2b759009.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/2286a5801f5ed870e7911de9a85e37cdab8e2b43e7116f0589689c8e2b759009.jpg",
+                "content_sha256": "2a01a004dd71a81777c7baacf12cf108e1f402d62d55dd8ff72b5aeca811f715",
+                "content_type": "image/jpeg",
+                "bytes": 110493,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOAZ8MMri_dgXIWFijm4V1Zv0YJaXq_zNJx_ZkQ=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOAZ8MMri_dgXIWFijm4V1Zv0YJaXq_zNJx_ZkQ=w2048-h2048-k-no",
+                        "bytes": 110493,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:51.104512+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOnwiJJ8Rxbg8mSeAfDsFM8WlfYkLoQRVKo8DOr=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOnwiJJ8Rxbg8mSeAfDsFM8WlfYkLoQRVKo8DOr=w2048-h2048-k-no",
+                "source_url_sha256": "ee97b0b28f729d3c4b6969e78e689795de38096f25d8862e3822f2a51154b0ef",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[10]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[10]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[10]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[10]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[22].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/ee97b0b28f729d3c4b6969e78e689795de38096f25d8862e3822f2a51154b0ef.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/ee97b0b28f729d3c4b6969e78e689795de38096f25d8862e3822f2a51154b0ef.jpg",
+                "content_sha256": "df9d4ea6454352a267fb4b130c1010ff0ba3aa01978377e801f0e168a95638f7",
+                "content_type": "image/jpeg",
+                "bytes": 106233,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOnwiJJ8Rxbg8mSeAfDsFM8WlfYkLoQRVKo8DOr=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOnwiJJ8Rxbg8mSeAfDsFM8WlfYkLoQRVKo8DOr=w2048-h2048-k-no",
+                        "bytes": 106233,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:51.434484+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNXVlOvmonyw65rmj5P1oZD7WP1Q10tgI2Hn3pt=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNXVlOvmonyw65rmj5P1oZD7WP1Q10tgI2Hn3pt=w2048-h2048-k-no",
+                "source_url_sha256": "9861cb85b375d59ffc03988ee8d2d72ed57b257510f06c2c2699beefda209df7",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[11]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[11]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[11]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[11]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[24].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/9861cb85b375d59ffc03988ee8d2d72ed57b257510f06c2c2699beefda209df7.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/9861cb85b375d59ffc03988ee8d2d72ed57b257510f06c2c2699beefda209df7.jpg",
+                "content_sha256": "f00a01fe7b3aa369bf5c9cb40a3f6d1f12d5945f628d058098d711a61b23a25c",
+                "content_type": "image/jpeg",
+                "bytes": 63562,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNXVlOvmonyw65rmj5P1oZD7WP1Q10tgI2Hn3pt=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNXVlOvmonyw65rmj5P1oZD7WP1Q10tgI2Hn3pt=w2048-h2048-k-no",
+                        "bytes": 63562,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:51.818230+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipONCP5X0_KzE9xCLD9NsqXg5duci7L1Z5TuRIuD=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipONCP5X0_KzE9xCLD9NsqXg5duci7L1Z5TuRIuD=w2048-h2048-k-no",
+                "source_url_sha256": "a747a27f77653df55f27f6113baa3a6d7375342309431685ae431164c1f8cbd2",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[12]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[12]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[12]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[12]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[29].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/a747a27f77653df55f27f6113baa3a6d7375342309431685ae431164c1f8cbd2.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/a747a27f77653df55f27f6113baa3a6d7375342309431685ae431164c1f8cbd2.jpg",
+                "content_sha256": "c0c2bae742a5fa91431bd3aab5bd6fbe349dceb5818f899bb59571ba45369531",
+                "content_type": "image/jpeg",
+                "bytes": 130205,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipONCP5X0_KzE9xCLD9NsqXg5duci7L1Z5TuRIuD=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipONCP5X0_KzE9xCLD9NsqXg5duci7L1Z5TuRIuD=w2048-h2048-k-no",
+                        "bytes": 130205,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:52.257639+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMdqWc7OWI8ZEHSVwUsftRWu_WRrGbOCoSBBz4-=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMdqWc7OWI8ZEHSVwUsftRWu_WRrGbOCoSBBz4-=w2048-h2048-k-no",
+                "source_url_sha256": "69b86112b359e7ce26bf6c6bbc1102701f566993352095088b4452290bef6e44",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[13]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[13]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[13]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[13]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[27].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/69b86112b359e7ce26bf6c6bbc1102701f566993352095088b4452290bef6e44.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/69b86112b359e7ce26bf6c6bbc1102701f566993352095088b4452290bef6e44.jpg",
+                "content_sha256": "6c3ecc49c2027ae390c1c9b7b5ea75b929c9299deb2a35aea48074d92baaca37",
+                "content_type": "image/jpeg",
+                "bytes": 238444,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMdqWc7OWI8ZEHSVwUsftRWu_WRrGbOCoSBBz4-=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMdqWc7OWI8ZEHSVwUsftRWu_WRrGbOCoSBBz4-=w2048-h2048-k-no",
+                        "bytes": 238444,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:52.993566+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMQK8QcSf7AP4ppdZPSYuogSGUKjekpsXXsFwAh=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMQK8QcSf7AP4ppdZPSYuogSGUKjekpsXXsFwAh=w2048-h2048-k-no",
+                "source_url_sha256": "98e361af13ff3bbb195175a6849bf547b2d321dca1038ad261131195e2bf0785",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[14]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[14]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[14]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[14]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[25].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/98e361af13ff3bbb195175a6849bf547b2d321dca1038ad261131195e2bf0785.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/98e361af13ff3bbb195175a6849bf547b2d321dca1038ad261131195e2bf0785.jpg",
+                "content_sha256": "cf0d42e1a5aeb7f97b03c427fddcb9d02532c1407f7fd6cf182a07f4be017973",
+                "content_type": "image/jpeg",
+                "bytes": 122758,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMQK8QcSf7AP4ppdZPSYuogSGUKjekpsXXsFwAh=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMQK8QcSf7AP4ppdZPSYuogSGUKjekpsXXsFwAh=w2048-h2048-k-no",
+                        "bytes": 122758,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:53.494769+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPEenmjYGLn79kHSnNwQ8obHjsGJ6bOmjoY8zsF=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPEenmjYGLn79kHSnNwQ8obHjsGJ6bOmjoY8zsF=w2048-h2048-k-no",
+                "source_url_sha256": "7933c9f28b83743dcc5376bf4b5e16037e17fe7826b5197665a29340557e227e",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[15]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[15]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[15]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[15]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/7933c9f28b83743dcc5376bf4b5e16037e17fe7826b5197665a29340557e227e.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/7933c9f28b83743dcc5376bf4b5e16037e17fe7826b5197665a29340557e227e.jpg",
+                "content_sha256": "22c518eccc56df5709cb1ecffc8a5a69a2e3671cdd62324e73e75b5b42ec3294",
+                "content_type": "image/jpeg",
+                "bytes": 214677,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPEenmjYGLn79kHSnNwQ8obHjsGJ6bOmjoY8zsF=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPEenmjYGLn79kHSnNwQ8obHjsGJ6bOmjoY8zsF=w2048-h2048-k-no",
+                        "bytes": 214677,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:53.829244+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPhvEM31om1vfpEYDgM0v7atJIu4A_Mi0-DPN3p=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPhvEM31om1vfpEYDgM0v7atJIu4A_Mi0-DPN3p=w2048-h2048-k-no",
+                "source_url_sha256": "a96754cd9b6dfb70c8ea5b8b720d95a0400cbb45808adf9055a8cab197dceb1d",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[16]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[16]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[16]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[16]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[6].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/a96754cd9b6dfb70c8ea5b8b720d95a0400cbb45808adf9055a8cab197dceb1d.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/a96754cd9b6dfb70c8ea5b8b720d95a0400cbb45808adf9055a8cab197dceb1d.jpg",
+                "content_sha256": "b399f2cc53b222be10012fd8e5657691846bd75a65c7fe1bc6e45c1aeda3f55e",
+                "content_type": "image/jpeg",
+                "bytes": 618211,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPhvEM31om1vfpEYDgM0v7atJIu4A_Mi0-DPN3p=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPhvEM31om1vfpEYDgM0v7atJIu4A_Mi0-DPN3p=w2048-h2048-k-no",
+                        "bytes": 618211,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:54.474660+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNjL1kclkyfZjaiQfHXUJmMZgZ_xN7dvwsbRLUL=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNjL1kclkyfZjaiQfHXUJmMZgZ_xN7dvwsbRLUL=w2048-h2048-k-no",
+                "source_url_sha256": "e074222105964ccaa77f0876fca0bb3dc802f0ca6735cd8bc2099b576527b2ad",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[17]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[17]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[17]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[17]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[8].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/e074222105964ccaa77f0876fca0bb3dc802f0ca6735cd8bc2099b576527b2ad.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/e074222105964ccaa77f0876fca0bb3dc802f0ca6735cd8bc2099b576527b2ad.jpg",
+                "content_sha256": "f28e9310d732a8ed88b084809b0cca7e8d3a13870c0895b29a58a9fb33841d76",
+                "content_type": "image/jpeg",
+                "bytes": 1009789,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNjL1kclkyfZjaiQfHXUJmMZgZ_xN7dvwsbRLUL=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNjL1kclkyfZjaiQfHXUJmMZgZ_xN7dvwsbRLUL=w2048-h2048-k-no",
+                        "bytes": 1009789,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:55.190839+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMgEYR9Y_n2QD3Y8URdLapxE3wuw9yAH83S-fXk=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMgEYR9Y_n2QD3Y8URdLapxE3wuw9yAH83S-fXk=w2048-h2048-k-no",
+                "source_url_sha256": "0a615af882277af71caa99ae68d05dd140c1b1deca3e1d0d1e69006d455fd856",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[18]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[18]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[18]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[18]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[9].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/0a615af882277af71caa99ae68d05dd140c1b1deca3e1d0d1e69006d455fd856.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/0a615af882277af71caa99ae68d05dd140c1b1deca3e1d0d1e69006d455fd856.jpg",
+                "content_sha256": "3ae6bcd399d10e4961479717875064e61b5e78f356b35688fc24b772b420d206",
+                "content_type": "image/jpeg",
+                "bytes": 546598,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMgEYR9Y_n2QD3Y8URdLapxE3wuw9yAH83S-fXk=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMgEYR9Y_n2QD3Y8URdLapxE3wuw9yAH83S-fXk=w2048-h2048-k-no",
+                        "bytes": 546598,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:55.662672+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPVbO7sBpPwHSrs2SqRE29dazvuZZ2JeKbL8ERo=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPVbO7sBpPwHSrs2SqRE29dazvuZZ2JeKbL8ERo=w2048-h2048-k-no",
+                "source_url_sha256": "19941f08acd5e99c17475d3d075cf207902fc5dd4f31ea61b574d8ffe8f02b9a",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[19]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[19]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[19]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[19]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[10].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/19941f08acd5e99c17475d3d075cf207902fc5dd4f31ea61b574d8ffe8f02b9a.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/19941f08acd5e99c17475d3d075cf207902fc5dd4f31ea61b574d8ffe8f02b9a.jpg",
+                "content_sha256": "bcee923d78ab9544b04a70f98fa38a942bfd0ea9b0ff920e7d75565ba0fc5aff",
+                "content_type": "image/jpeg",
+                "bytes": 615913,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPVbO7sBpPwHSrs2SqRE29dazvuZZ2JeKbL8ERo=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPVbO7sBpPwHSrs2SqRE29dazvuZZ2JeKbL8ERo=w2048-h2048-k-no",
+                        "bytes": 615913,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:56.079616+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPpFbNK0QcENVATILbU4xDWNCrQbAnELqh45i--=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPpFbNK0QcENVATILbU4xDWNCrQbAnELqh45i--=w2048-h2048-k-no",
+                "source_url_sha256": "cc6d8b22ed86501439ab9e55e10aed0cea5ae605d5fe5427f27ebea36bf9dc53",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[20]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[20]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[20]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[20]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[14].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/cc6d8b22ed86501439ab9e55e10aed0cea5ae605d5fe5427f27ebea36bf9dc53.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/cc6d8b22ed86501439ab9e55e10aed0cea5ae605d5fe5427f27ebea36bf9dc53.jpg",
+                "content_sha256": "93cf251ad9b5c16a34b36e9a8547dbd0e9c9ce8809abb57829425e25e7eaa4ba",
+                "content_type": "image/jpeg",
+                "bytes": 612333,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPpFbNK0QcENVATILbU4xDWNCrQbAnELqh45i--=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPpFbNK0QcENVATILbU4xDWNCrQbAnELqh45i--=w2048-h2048-k-no",
+                        "bytes": 612333,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:56.562760+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNQhoAuxNZYD8wKtrIAMVCED2-xpszE1LcA_RiF=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNQhoAuxNZYD8wKtrIAMVCED2-xpszE1LcA_RiF=w2048-h2048-k-no",
+                "source_url_sha256": "dcb5a2b16b8d75894726b02ca534299168cff5d994519a6c517af1ce09328a74",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[21]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[21]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[21]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[21]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[17].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/dcb5a2b16b8d75894726b02ca534299168cff5d994519a6c517af1ce09328a74.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/dcb5a2b16b8d75894726b02ca534299168cff5d994519a6c517af1ce09328a74.jpg",
+                "content_sha256": "63af2abe4ed721cd98ff4ae0738d8360e07493afdcafc36079da5823488a0621",
+                "content_type": "image/jpeg",
+                "bytes": 473603,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNQhoAuxNZYD8wKtrIAMVCED2-xpszE1LcA_RiF=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNQhoAuxNZYD8wKtrIAMVCED2-xpszE1LcA_RiF=w2048-h2048-k-no",
+                        "bytes": 473603,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:57.202418+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPeDI2Nk-uong5xxoI8StzhB8JeVV_wEKhdxPO1=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPeDI2Nk-uong5xxoI8StzhB8JeVV_wEKhdxPO1=w2048-h2048-k-no",
+                "source_url_sha256": "edd21eae5590e2dbbc4eb87d432e76eb816b434209ada28a62cefe8b92172ddf",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[22]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[22]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[22]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[22]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[20].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/edd21eae5590e2dbbc4eb87d432e76eb816b434209ada28a62cefe8b92172ddf.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/edd21eae5590e2dbbc4eb87d432e76eb816b434209ada28a62cefe8b92172ddf.jpg",
+                "content_sha256": "e2b85d27efae36ab7c586885779e6847a2fadb128b24c2208f41818e6b041e11",
+                "content_type": "image/jpeg",
+                "bytes": 531783,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPeDI2Nk-uong5xxoI8StzhB8JeVV_wEKhdxPO1=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPeDI2Nk-uong5xxoI8StzhB8JeVV_wEKhdxPO1=w2048-h2048-k-no",
+                        "bytes": 531783,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:57.597855+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipN7YtKf-LAQKB3VgLNuq6Fct3qAuoiwOgFdZSCM=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipN7YtKf-LAQKB3VgLNuq6Fct3qAuoiwOgFdZSCM=w2048-h2048-k-no",
+                "source_url_sha256": "ae46a631a909daf6740965f792325124aa205f27f4d7b543d19c71f3de4aa3c4",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[23]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[23]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[23]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[23]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[21].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/ae46a631a909daf6740965f792325124aa205f27f4d7b543d19c71f3de4aa3c4.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/ae46a631a909daf6740965f792325124aa205f27f4d7b543d19c71f3de4aa3c4.jpg",
+                "content_sha256": "25d45ffe7953e4b366e8e44bfb8a62609baae995f71b94800822721e2c864e1b",
+                "content_type": "image/jpeg",
+                "bytes": 422455,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipN7YtKf-LAQKB3VgLNuq6Fct3qAuoiwOgFdZSCM=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipN7YtKf-LAQKB3VgLNuq6Fct3qAuoiwOgFdZSCM=w2048-h2048-k-no",
+                        "bytes": 422455,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:57.994848+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipML0rx2yIl3Bc7Fy19iLeb0Eqfww1zYFWoHDoav=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipML0rx2yIl3Bc7Fy19iLeb0Eqfww1zYFWoHDoav=w2048-h2048-k-no",
+                "source_url_sha256": "70b4bbf5727123ea6b3397ec122bde4ae4e6f4205f4eb810c1c62301d385e3f5",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[24]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[24]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[24]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[24]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[23].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/70b4bbf5727123ea6b3397ec122bde4ae4e6f4205f4eb810c1c62301d385e3f5.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/70b4bbf5727123ea6b3397ec122bde4ae4e6f4205f4eb810c1c62301d385e3f5.jpg",
+                "content_sha256": "3ae57a52b7cd457393805410eee35635d9809ee1e1b4b2cbe06c2bde0e83d5d1",
+                "content_type": "image/jpeg",
+                "bytes": 1017905,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipML0rx2yIl3Bc7Fy19iLeb0Eqfww1zYFWoHDoav=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipML0rx2yIl3Bc7Fy19iLeb0Eqfww1zYFWoHDoav=w2048-h2048-k-no",
+                        "bytes": 1017905,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:58.446591+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMNN5QSggHZolY12qLDcuU8InDbrFtn9oj8aJkr=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMNN5QSggHZolY12qLDcuU8InDbrFtn9oj8aJkr=w2048-h2048-k-no",
+                "source_url_sha256": "aa462b9b347254274b9ea235229c8495cb74c910f4deeb7d063f22287cef65be",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[25]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[25]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[25]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[25]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[26].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/aa462b9b347254274b9ea235229c8495cb74c910f4deeb7d063f22287cef65be.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/aa462b9b347254274b9ea235229c8495cb74c910f4deeb7d063f22287cef65be.jpg",
+                "content_sha256": "4578a157e5694048a41e8a083996b8d001fe62e7ca6eb1cdbfdeabe9956878dc",
+                "content_type": "image/jpeg",
+                "bytes": 480265,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMNN5QSggHZolY12qLDcuU8InDbrFtn9oj8aJkr=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMNN5QSggHZolY12qLDcuU8InDbrFtn9oj8aJkr=w2048-h2048-k-no",
+                        "bytes": 480265,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:58.949947+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipO1iAGGbtjaNMAvTBczc6q52KUvLUkl_iURRcqy=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipO1iAGGbtjaNMAvTBczc6q52KUvLUkl_iURRcqy=w2048-h2048-k-no",
+                "source_url_sha256": "ba85635af08cbb4ae47b6e0972fcaf00223a99894b1230bd26135e77dc61e3f8",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[26]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[26]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[26]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[26]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[28].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/ba85635af08cbb4ae47b6e0972fcaf00223a99894b1230bd26135e77dc61e3f8.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/ba85635af08cbb4ae47b6e0972fcaf00223a99894b1230bd26135e77dc61e3f8.jpg",
+                "content_sha256": "70766917bd2dce9c983916e7dcc1977420e90d751875ef7fa60c0d9f9482ab2f",
+                "content_type": "image/jpeg",
+                "bytes": 313939,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipO1iAGGbtjaNMAvTBczc6q52KUvLUkl_iURRcqy=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipO1iAGGbtjaNMAvTBczc6q52KUvLUkl_iURRcqy=w2048-h2048-k-no",
+                        "bytes": 313939,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:59.620216+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNioKYk6YoVYEgS8D2WrXAtCeAcrZJXogZ_vOxa=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNioKYk6YoVYEgS8D2WrXAtCeAcrZJXogZ_vOxa=w2048-h2048-k-no",
+                "source_url_sha256": "7f6474e7f44a06935320626b03dfa59c095822e79ff68f38a166a5d83671e3a0",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[27]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[27]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[27]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[27]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[31].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/7f6474e7f44a06935320626b03dfa59c095822e79ff68f38a166a5d83671e3a0.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/7f6474e7f44a06935320626b03dfa59c095822e79ff68f38a166a5d83671e3a0.jpg",
+                "content_sha256": "afa40128040522a39329fce3508da13819f54b69a72645b5fd0e819c2c517e32",
+                "content_type": "image/jpeg",
+                "bytes": 634398,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNioKYk6YoVYEgS8D2WrXAtCeAcrZJXogZ_vOxa=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNioKYk6YoVYEgS8D2WrXAtCeAcrZJXogZ_vOxa=w2048-h2048-k-no",
+                        "bytes": 634398,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:38:00.108873+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMn7CkDfTat9cK8_wx4kgFmXt_vNmaRWdZfvrYf=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMn7CkDfTat9cK8_wx4kgFmXt_vNmaRWdZfvrYf=w2048-h2048-k-no",
+                "source_url_sha256": "7f921208ba4d8c57300020c86d8395fc959c5f7713c3273c0fbe330482719a03",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[28]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[28]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[28]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[28]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/7f921208ba4d8c57300020c86d8395fc959c5f7713c3273c0fbe330482719a03.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/7f921208ba4d8c57300020c86d8395fc959c5f7713c3273c0fbe330482719a03.jpg",
+                "content_sha256": "e5f389af5e81dd5061625d1961f4144c48858808aea90ae7d01f8a01ea24ed08",
+                "content_type": "image/jpeg",
+                "bytes": 146789,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMn7CkDfTat9cK8_wx4kgFmXt_vNmaRWdZfvrYf=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMn7CkDfTat9cK8_wx4kgFmXt_vNmaRWdZfvrYf=w2048-h2048-k-no",
+                        "bytes": 146789,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:38:00.581019+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipO_fAMnnDa_Xr8fTKj-tbT2HgvElGM8diZz1rqa=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipO_fAMnnDa_Xr8fTKj-tbT2HgvElGM8diZz1rqa=w2048-h2048-k-no",
+                "source_url_sha256": "796b4e8ffc6b76e79d461c47a32fd31373bab993bf7247c502f389f3a9e2e34b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[29]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[29]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[29]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[29]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[11].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/796b4e8ffc6b76e79d461c47a32fd31373bab993bf7247c502f389f3a9e2e34b.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/796b4e8ffc6b76e79d461c47a32fd31373bab993bf7247c502f389f3a9e2e34b.jpg",
+                "content_sha256": "ea1e9ea3e31de89aec960be05a3a50a1d3373bdbd65f07ae5e9c9ee1cfb3afc2",
+                "content_type": "image/jpeg",
+                "bytes": 690918,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipO_fAMnnDa_Xr8fTKj-tbT2HgvElGM8diZz1rqa=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipO_fAMnnDa_Xr8fTKj-tbT2HgvElGM8diZz1rqa=w2048-h2048-k-no",
+                        "bytes": 690918,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:38:01.505574+00:00"
+            },
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMYptjtdji6wdr1VbOWGjYLL-u-XWMwVtnu2go0=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMYptjtdji6wdr1VbOWGjYLL-u-XWMwVtnu2go0=w2048-h2048-k-no",
+                "source_url_sha256": "bee2fcacbd18b8a864655c220618a39233900c51347201a172604c96d39c0d41",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[18].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[18].photo_url_big"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/bee2fcacbd18b8a864655c220618a39233900c51347201a172604c96d39c0d41.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJfzqI_nAPVIgR1LWTzEy73Dk/bee2fcacbd18b8a864655c220618a39233900c51347201a172604c96d39c0d41.jpg",
+                "content_sha256": "f9c4d43bff39bc5a1adf07e78b713d37b167600e5e8b2d2a7070092ea281151f",
+                "content_type": "image/jpeg",
+                "bytes": 119321,
+                "status": "uploaded",
+                "selected_for_airtable": false,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMYptjtdji6wdr1VbOWGjYLL-u-XWMwVtnu2go0=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMYptjtdji6wdr1VbOWGjYLL-u-XWMwVtnu2go0=w2048-h2048-k-no",
+                        "bytes": 119321,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:38:07.231015+00:00"
+            }
+        ],
+        "azure_asset_failures": [
+            {
+                "place_name": "The Percantile at The Nook",
+                "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+                "record_id": "rec2H5wjDKej7OQWr",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w2048-h2048-k-no",
+                "source_url_sha256": "24d6212e65d7ab639f70d6515e59420e514c1bfec3971b863291f5420736bc29",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[19].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[19].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqWj5Mt2SM9k8Xa6Z01bxwmTKZvu4arx45cigyeYkMk9WinxUNReWWKBa43xxkeDfAAr1noNJroJMQzoDCjjbImi69huyfZfDFGbq8RkBLR1v8cd1YeZTG6Dx2kbSwosJRvz3L=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-03T06:38:07.576532+00:00"
+            }
+        ],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 62,
+            "duplicate_count": 30,
+            "airtable_photos_count": 30,
+            "airtable_photos_google_count": 30,
+            "data_file_photo_urls_count": 30,
+            "provider_raw_photo_url_big_count": 32,
+            "place_name": "The Percantile at The Nook",
+            "place_id": "ChIJfzqI_nAPVIgR1LWTzEy73Dk",
+            "record_id": "rec2H5wjDKej7OQWr",
+            "generated_at": "2026-05-03T06:38:11.244065+00:00",
+            "azure_assets_count": 31,
+            "failed_upload_count": 1,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 30,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
+            "successful_but_unserved_count": 1,
+            "non_azure_airtable_photos_count": 30,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-07-27T13:27:14.350549"
