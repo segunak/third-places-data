@@ -141,6 +141,49 @@ def test_migrate_single_place_skip_message_explains_missing_place_id(caplog):
     assert "missing Google Maps Place Id" in caplog.text
 
 
+def test_migrate_single_place_errors_when_missing_place_id_has_uncopied_curator_photo_urls(caplog):
+    caplog.set_level(logging.ERROR)
+    curator_url = "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec-no-place-id/photo.jpg"
+
+    result = photo_assets.migrate_single_place_photo_assets({
+        "place": {
+            "id": "rec-no-place-id",
+            "fields": {
+                "Place": "No Place Id Place",
+                "Curator Photo URLs": json.dumps([curator_url]),
+                "Photos": json.dumps([]),
+            },
+        },
+        "config": {"city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "error"
+    assert result["error_reason"] == "curator_photo_urls_not_copied_missing_place_id"
+    assert result["summary"]["unselected_curator_photo_urls_field_count"] == 1
+    assert curator_url in caplog.text
+
+
+def test_migrate_single_place_skips_missing_place_id_when_curator_photo_urls_already_in_photos(caplog):
+    caplog.set_level(logging.INFO)
+    curator_url = "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec-no-place-id/photo.jpg"
+
+    result = photo_assets.migrate_single_place_photo_assets({
+        "place": {
+            "id": "rec-no-place-id",
+            "fields": {
+                "Place": "No Place Id Place",
+                "Curator Photo URLs": json.dumps([curator_url]),
+                "Photos": json.dumps([curator_url]),
+            },
+        },
+        "config": {"city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "skipped"
+    assert result["skip_reason"] == "missing_google_maps_place_id"
+    assert "missing Google Maps Place Id" in caplog.text
+
+
 def test_migrate_single_place_skips_when_all_photo_sources_empty(monkeypatch, caplog):
     caplog.set_level(logging.INFO)
     monkeypatch.setattr(photo_assets, "fetch_data_github", lambda path: (True, {"photos": {"photo_urls": []}}, "ok"))
@@ -201,6 +244,75 @@ def test_migrate_single_place_skips_zero_candidate_result(monkeypatch):
         "Skipped: no migratable photo URLs found after checking Airtable Photos, "
         "data file photos.photo_urls, and raw provider photo_url_big sources."
     )
+
+
+def test_migrate_single_place_processes_preserved_urls_without_candidates(monkeypatch):
+    curator_url = "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/photo.jpg"
+
+    class DummyPhotoAssetService:
+        def process_place(self, place, place_data, config):
+            return {
+                "selected_airtable_urls": [curator_url],
+                "summary": {"candidate_count": 0, "selected_airtable_count": 1},
+                "assets": [],
+                "failures": [],
+            }
+
+    monkeypatch.setattr(photo_assets, "PhotoAssetService", DummyPhotoAssetService)
+    monkeypatch.setattr(photo_assets, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
+
+    result = photo_assets.migrate_single_place_photo_assets({
+        "place": {
+            "id": "rec-curator-only",
+            "fields": {
+                "Place": "Curator Only Place",
+                "Google Maps Place Id": "ChIJ123",
+                "Curator Photo URLs": json.dumps([curator_url]),
+            },
+        },
+        "config": {"city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "would_update"
+    assert result["selected_airtable_urls"] == [curator_url]
+    assert result["summary"]["candidate_count"] == 0
+
+
+def test_migrate_single_place_errors_when_curator_photo_urls_field_would_not_be_copied(monkeypatch):
+    uncopied_url = "https://legacy.example.com/curator-photo.jpg"
+
+    class DummyPhotoAssetService:
+        def process_place(self, place, place_data, config):
+            return {
+                "selected_airtable_urls": [],
+                "summary": {
+                    "candidate_count": 0,
+                    "curator_photo_urls_field_count": 1,
+                    "unselected_curator_photo_urls_field_count": 1,
+                    "unselected_curator_photo_urls_field_urls": [uncopied_url],
+                },
+                "assets": [],
+                "failures": [],
+            }
+
+    monkeypatch.setattr(photo_assets, "PhotoAssetService", DummyPhotoAssetService)
+    monkeypatch.setattr(photo_assets, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
+
+    result = photo_assets.migrate_single_place_photo_assets({
+        "place": {
+            "id": "rec-uncopied-curator-url",
+            "fields": {
+                "Place": "Uncopied Curator URL Place",
+                "Google Maps Place Id": "ChIJ123",
+                "Curator Photo URLs": json.dumps([uncopied_url]),
+            },
+        },
+        "config": {"city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "error"
+    assert result["error_reason"] == "curator_photo_urls_not_copied"
+    assert result["summary"]["unselected_curator_photo_urls_field_urls"] == [uncopied_url]
 
 
 def test_migrate_single_place_refuses_empty_airtable_photos_update(monkeypatch):

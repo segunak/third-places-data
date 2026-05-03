@@ -11,7 +11,7 @@ from tests.conftest import load_fixture
 # =============================================================================
 
 def _make_place(record_id="recABC123", place_name="Test Coffee Shop",
-                curator_attachments=None, curator_photo_urls=""):
+                curator_attachments=None, curator_photo_urls="", photos=""):
     """Build a minimal Airtable place record dict for activity input."""
     fields = {
         "Place": place_name,
@@ -21,7 +21,16 @@ def _make_place(record_id="recABC123", place_name="Test Coffee Shop",
         fields["Curator Photos"] = curator_attachments
     if curator_photo_urls:
         fields["Curator Photo URLs"] = curator_photo_urls
+    if photos:
+        fields["Photos"] = photos
     return {"id": record_id, "fields": fields}
+
+
+def _expected_curator_urls(record_id="recABC123"):
+    return [
+        f"https://thirdplacesdata.blob.core.windows.net/curator-photos/{record_id}/attABC123_cafe-interior.jpg",
+        f"https://thirdplacesdata.blob.core.windows.net/curator-photos/{record_id}/attDEF456_patio_seating.png",
+    ]
 
 
 class DummyRequest:
@@ -75,7 +84,13 @@ class TestSyncSinglePlaceCuratorPhotos:
         assert result["status"] == "error"
 
     def test_already_synced_returns_no_change(self, monkeypatch, airtable_attachment_objects):
-        place = _make_place(curator_attachments=airtable_attachment_objects)
+        curator_urls = _expected_curator_urls()
+        place_photo_url = "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJtest123/photo.jpg"
+        place = _make_place(
+            curator_attachments=airtable_attachment_objects,
+            curator_photo_urls=json.dumps(curator_urls),
+            photos=json.dumps([*curator_urls, place_photo_url]),
+        )
 
         # Simulate that both blobs already exist
         expected_blobs = [
@@ -86,11 +101,91 @@ class TestSyncSinglePlaceCuratorPhotos:
             curator_photos, "list_blobs",
             lambda prefix: expected_blobs
         )
+        monkeypatch.setattr(
+            "blueprints.curator_photos.AirtableApi",
+            lambda token: (_ for _ in ()).throw(AssertionError("Airtable should not be updated"))
+        )
 
         activity_input = {"place": place, "config": {}}
         result = curator_photos.sync_single_place_curator_photos(activity_input)
 
         assert result["status"] == "no_change"
+
+    def test_already_synced_repairs_photos_field_without_reupload(self, monkeypatch, airtable_attachment_objects):
+        curator_urls = _expected_curator_urls()
+        place_photo_url = "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJtest123/photo.jpg"
+        place = _make_place(
+            curator_attachments=airtable_attachment_objects,
+            curator_photo_urls=json.dumps(curator_urls),
+            photos=json.dumps([place_photo_url]),
+        )
+
+        monkeypatch.setattr(
+            curator_photos,
+            "list_blobs",
+            lambda prefix: [
+                "recABC123/attABC123_cafe-interior.jpg",
+                "recABC123/attDEF456_patio_seating.png",
+            ],
+        )
+        monkeypatch.setattr(
+            curator_photos,
+            "download_image",
+            lambda url: (_ for _ in ()).throw(AssertionError("already-synced photos should not be downloaded")),
+        )
+
+        mock_table = mock.MagicMock()
+        mock_api = mock.MagicMock()
+        mock_api.table.return_value = mock_table
+        monkeypatch.setattr("blueprints.curator_photos.AirtableApi", lambda token: mock_api)
+
+        activity_input = {"place": place, "config": {}}
+        result = curator_photos.sync_single_place_curator_photos(activity_input)
+
+        assert result["status"] == "updated"
+        assert result["photos_synced"] == 0
+        assert result["airtable_fields_updated"] == ["Photos"]
+        mock_table.update.assert_called_once()
+        written_fields = mock_table.update.call_args[0][1]
+        assert "Curator Photo URLs" not in written_fields
+        written_photos = json.loads(written_fields["Photos"])
+        assert written_photos == [*curator_urls, place_photo_url]
+
+    def test_removed_curator_attachments_clears_curator_urls_from_photos(self, monkeypatch):
+        curator_url = "https://thirdplacesdata.blob.core.windows.net/curator-photos/recABC123/attOLD_old-photo.jpg"
+        place_photo_url = "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJtest123/photo.jpg"
+        place = _make_place(
+            curator_attachments=[],
+            curator_photo_urls=json.dumps([curator_url]),
+            photos=json.dumps([curator_url, place_photo_url]),
+        )
+
+        monkeypatch.setattr(
+            curator_photos,
+            "list_blobs",
+            lambda prefix: ["recABC123/attOLD_old-photo.jpg"],
+        )
+        deleted_blobs = []
+        monkeypatch.setattr(
+            curator_photos,
+            "delete_blob",
+            lambda path: (deleted_blobs.append(path), True)[1],
+        )
+
+        mock_table = mock.MagicMock()
+        mock_api = mock.MagicMock()
+        mock_api.table.return_value = mock_table
+        monkeypatch.setattr("blueprints.curator_photos.AirtableApi", lambda token: mock_api)
+
+        result = curator_photos.sync_single_place_curator_photos({"place": place, "config": {}})
+
+        assert result["status"] == "updated"
+        assert result["photos_deleted"] == 1
+        assert deleted_blobs == ["recABC123/attOLD_old-photo.jpg"]
+        assert result["airtable_fields_updated"] == ["Curator Photo URLs", "Photos"]
+        written_fields = mock_table.update.call_args[0][1]
+        assert json.loads(written_fields["Curator Photo URLs"]) == []
+        assert json.loads(written_fields["Photos"]) == [place_photo_url]
 
     def test_new_attachments_upload(self, monkeypatch, airtable_attachment_objects):
         place = _make_place(curator_attachments=airtable_attachment_objects)
@@ -135,7 +230,9 @@ class TestSyncSinglePlaceCuratorPhotos:
         update_args = mock_table.update.call_args
         assert update_args[0][0] == "recABC123"
         written_urls = json.loads(update_args[0][1]["Curator Photo URLs"])
+        written_photos = json.loads(update_args[0][1]["Photos"])
         assert len(written_urls) == 2
+        assert written_photos[:2] == written_urls
         assert all("thirdplacesdata.blob.core.windows.net" in url for url in written_urls)
 
     def test_orphaned_blobs_deleted(self, monkeypatch, airtable_attachment_objects):
@@ -194,6 +291,8 @@ class TestSyncSinglePlaceCuratorPhotos:
         # Should still succeed (updated) but with 0 photos synced due to download failures
         assert result["status"] == "updated"
         assert result["photos_synced"] == 0
+        assert result["photos_failed"] == 2
+        mock_table.update.assert_not_called()
 
 
 # =============================================================================

@@ -4,7 +4,7 @@ import azure.functions as func
 import azure.durable_functions as df
 from datetime import datetime
 from services.airtable_service import AirtableService
-from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, parse_url_list
+from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, build_display_photo_urls, parse_url_list
 from services.place_data_service import PlaceDataProviderFactory
 from services.utils import fetch_data_github, save_data_github
 
@@ -423,7 +423,8 @@ def refresh_single_place_photos(activityInput):
         place_result["photos_before"] = len(parse_url_list(fields.get('Photos')))
         place_result["cached_photo_urls_before"] = len(current_photos)
 
-        selected_photo_urls = []
+        selected_source_photo_urls = []
+        selected_display_photo_urls = []
 
         try:
             if photo_source_mode == "refresh_from_data_provider":
@@ -433,13 +434,13 @@ def refresh_single_place_photos(activityInput):
                 if provider_raw_data:
                     place_data.setdefault('photos', {})['raw_data'] = provider_raw_data
 
-                selected_photo_urls = provider_photos.get('photo_urls', [])
-                place_data.setdefault('photos', {})['photo_urls'] = selected_photo_urls
-                logging.info(f"Fetched {len(selected_photo_urls)} provider photos for {place_name}")
+                selected_source_photo_urls = provider_photos.get('photo_urls', [])
+                place_data.setdefault('photos', {})['photo_urls'] = selected_source_photo_urls
+                logging.info(f"Fetched {len(selected_source_photo_urls)} provider photos for {place_name}")
 
             elif photo_source_mode == "refresh_from_data_file_photo_urls":
-                selected_photo_urls = current_photos if isinstance(current_photos, list) else []
-                logging.info(f"Using {len(selected_photo_urls)} existing cached photo_urls for {place_name}")
+                selected_source_photo_urls = current_photos if isinstance(current_photos, list) else []
+                logging.info(f"Using {len(selected_source_photo_urls)} existing cached photo_urls for {place_name}")
 
             else:
                 raw_data = photos_section.get('raw_data', [])
@@ -472,8 +473,8 @@ def refresh_single_place_photos(activityInput):
                             if data_provider._is_valid_photo_url(photo_url):
                                 valid_photos.append(photo)
 
-                        selected_photo_urls = photo_selector(valid_photos, max_photos=30)
-                        logging.info(f"Selected {len(selected_photo_urls)} photos from cached raw_data for {place_name}")
+                        selected_source_photo_urls = photo_selector(valid_photos, max_photos=30)
+                        logging.info(f"Selected {len(selected_source_photo_urls)} photos from cached raw_data for {place_name}")
 
             asset_service = PhotoAssetService()
             asset_config = PhotoAssetConfig(
@@ -492,13 +493,16 @@ def refresh_single_place_photos(activityInput):
             place_result["azure_assets"] = len(asset_result.get("assets", []))
 
             if dry_run:
-                selected_photo_urls = asset_result.get("selected_source_urls", [])
+                selected_display_photo_urls = build_display_photo_urls(
+                    asset_result.get("selected_airtable_urls", []),
+                    asset_result.get("selected_source_urls", []),
+                )
             else:
-                selected_photo_urls = asset_result.get("selected_airtable_urls", [])
+                selected_display_photo_urls = asset_result.get("selected_airtable_urls", [])
                 place_data = asset_result.get("place_data", place_data)
 
-            place_result["photos_after"] = len(selected_photo_urls)
-            if not selected_photo_urls:
+            place_result["photos_after"] = len(selected_display_photo_urls)
+            if not selected_display_photo_urls:
                 place_result["status"] = "skipped"
                 if photo_source_mode == "refresh_from_data_file_photo_urls":
                     place_result["message"] = "No cached photo_urls found"
@@ -513,12 +517,14 @@ def refresh_single_place_photos(activityInput):
 
         if not dry_run:
             try:
-                place_data['photos']['photo_urls'] = selected_photo_urls
-                place_data['photos']['message'] = (
+                photos_section_for_save = place_data.setdefault('photos', {})
+                if selected_source_photo_urls:
+                    photos_section_for_save['photo_urls'] = selected_source_photo_urls
+                photos_section_for_save['message'] = (
                     f"Photos refreshed to Azure by admin function using {provider_type} "
                     f"and mode {photo_source_mode}"
                 )
-                place_data['photos']['last_refreshed'] = datetime.now().isoformat()
+                photos_section_for_save['last_refreshed'] = datetime.now().isoformat()
 
                 updated_json = json.dumps(place_data, indent=4)
                 save_success, save_message = save_data_github(updated_json, data_file_path)
@@ -528,7 +534,7 @@ def refresh_single_place_photos(activityInput):
                     return place_result
 
                 if write_airtable:
-                    photos_json = json.dumps(selected_photo_urls)
+                    photos_json = json.dumps(selected_display_photo_urls)
                     update_result = airtable_client.update_place_record(
                         record_id=place['id'],
                         field_to_update='Photos',
@@ -547,10 +553,10 @@ def refresh_single_place_photos(activityInput):
                     else:
                         logging.info(f"Airtable was updated for {place_name}")
                         place_result["status"] = "updated"
-                        place_result["message"] = f"Successfully updated with {len(selected_photo_urls)} Azure photos"
+                        place_result["message"] = f"Successfully updated with {len(selected_display_photo_urls)} Azure photos"
                 else:
                     place_result["status"] = "updated"
-                    place_result["message"] = f"Successfully updated data file with {len(selected_photo_urls)} Azure photos"
+                    place_result["message"] = f"Successfully updated data file with {len(selected_display_photo_urls)} display photos"
 
             except Exception as e:
                 place_result["status"] = "error"
@@ -558,7 +564,7 @@ def refresh_single_place_photos(activityInput):
                 return place_result
         else:
             place_result["status"] = "would_update"
-            place_result["message"] = f"Would update with {len(selected_photo_urls)} photos"
+            place_result["message"] = f"Would update with {len(selected_display_photo_urls)} photos"
 
         logging.info(f"Completed photo refresh for {place_name}: {place_result['status']} - {place_result['message']}")
         return place_result

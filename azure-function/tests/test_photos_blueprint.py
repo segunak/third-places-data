@@ -558,3 +558,94 @@ def test_refresh_single_place_photos_cached_photo_urls_missing_is_skipped(monkey
 
     assert result["status"] == "skipped"
     assert result["message"] == "No cached photo_urls found"
+
+
+def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_source_cache(monkeypatch):
+    provider_urls = [
+        "https://lh5.googleusercontent.com/gps-cs-s/provider-photo-1",
+        "https://lh5.googleusercontent.com/p/provider-photo-2",
+    ]
+    curator_url = "https://thirdplacesdata.blob.core.windows.net/curator-photos/rec123/att1_photo.jpg"
+    provider_azure_url = (
+        "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ123/"
+        + ("a" * 64)
+        + ".jpg"
+    )
+    saved_payload = {}
+    airtable_updates = []
+
+    class CaptureAirtableService:
+        def __init__(self, provider_type):
+            self.provider_type = provider_type
+
+        def update_place_record(self, record_id, field_to_update, update_value, overwrite):
+            airtable_updates.append({
+                "record_id": record_id,
+                "field_to_update": field_to_update,
+                "update_value": update_value,
+                "overwrite": overwrite,
+            })
+            return {"updated": True}
+
+    class DummyPhotoAssetService:
+        def process_place(self, place, place_data, config):
+            assert place_data["photos"]["photo_urls"] == provider_urls
+            return {
+                "summary": {"selected_airtable_count": 2},
+                "failures": [],
+                "assets": [],
+                "selected_source_urls": provider_urls,
+                "selected_airtable_urls": [curator_url, provider_azure_url],
+                "place_data": place_data,
+            }
+
+    def save_data(updated_json, path):
+        saved_payload["path"] = path
+        saved_payload["json"] = json.loads(updated_json)
+        return True, "ok"
+
+    monkeypatch.setattr(photos, "AirtableService", CaptureAirtableService)
+    monkeypatch.setattr(photos, "PhotoAssetService", DummyPhotoAssetService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: DummyProvider(provider_photos={"photo_urls": provider_urls, "raw_data": {"photos_data": []}})),
+    )
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, {"photos": {"photo_urls": ["https://old.example/cache.jpg"]}}, "ok"),
+    )
+    monkeypatch.setattr(photos, "save_data_github", save_data)
+
+    activity_input = {
+        "place": {
+            "id": "rec123",
+            "fields": {
+                "Place": "Test Place",
+                "Google Maps Place Id": "ChIJ123",
+                "Photos": json.dumps([curator_url]),
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": False,
+            "upload": True,
+            "write_airtable": True,
+            "photo_source_mode": "refresh_from_data_provider",
+        },
+    }
+
+    result = photos.refresh_single_place_photos(activity_input)
+
+    assert result["status"] == "updated"
+    assert result["photos_after"] == 2
+    assert saved_payload["path"] == "data/places/charlotte/ChIJ123.json"
+    assert saved_payload["json"]["photos"]["photo_urls"] == provider_urls
+    assert airtable_updates == [{
+        "record_id": "rec123",
+        "field_to_update": "Photos",
+        "update_value": json.dumps([curator_url, provider_azure_url]),
+        "overwrite": True,
+    }]

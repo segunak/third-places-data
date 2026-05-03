@@ -8,7 +8,12 @@ import azure.functions as func
 import azure.durable_functions as df
 
 from services.airtable_service import AirtableService
-from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService
+from services.photo_asset_service import (
+    PhotoAssetConfig,
+    PhotoAssetService,
+    curator_photo_urls_field_from_airtable,
+    parse_url_list,
+)
 from services.utils import (
     delete_blob_from_container,
     delete_container,
@@ -107,6 +112,8 @@ def _aggregate_results(results: List[Dict[str, Any]], dry_run: bool) -> Dict[str
         "data_file_source_urls": sum(result.get("summary", {}).get("candidate_count", 0) for result in results),
         "azure_available_assets": sum(result.get("summary", {}).get("azure_assets_count", 0) for result in results),
         "selected_airtable_urls": sum(result.get("summary", {}).get("selected_airtable_count", 0) for result in results),
+        "curator_photo_urls_field_urls": sum(result.get("summary", {}).get("curator_photo_urls_field_count", 0) for result in results),
+        "uncopied_curator_photo_urls_field_urls": sum(result.get("summary", {}).get("unselected_curator_photo_urls_field_count", 0) for result in results),
         "failed_uploads": sum(result.get("summary", {}).get("failed_upload_count", 0) for result in results),
         "successful_but_unserved": sum(result.get("summary", {}).get("successful_but_unserved_count", 0) for result in results),
         "duplicate_hashes": sum(result.get("summary", {}).get("duplicate_count", 0) for result in results),
@@ -221,6 +228,38 @@ def migrate_single_place_photo_assets(activityInput):
         place_id = fields.get("Google Maps Place Id", "")
         city = config.get("city", "charlotte")
         if not place_id:
+            curator_photo_urls_field_urls = curator_photo_urls_field_from_airtable(fields)
+            existing_photos = parse_url_list(fields.get("Photos"))
+            uncopied_curator_urls = [
+                url for url in curator_photo_urls_field_urls
+                if url not in existing_photos
+            ]
+            if uncopied_curator_urls:
+                message = (
+                    "Migration cannot prove Curator Photo URLs are safe to delete: "
+                    "record is missing Google Maps Place Id and has Curator Photo URLs "
+                    "that are not present in Photos."
+                )
+                logging.error(
+                    "%s place=%s record_id=%s uncopied_curator_photo_urls=%s",
+                    message,
+                    place_name,
+                    place.get("id", ""),
+                    uncopied_curator_urls,
+                )
+                return {
+                    "status": "error",
+                    "error_reason": "curator_photo_urls_not_copied_missing_place_id",
+                    "message": message,
+                    "place_name": place_name,
+                    "record_id": place.get("id", ""),
+                    "summary": {
+                        "curator_photo_urls_field_count": len(curator_photo_urls_field_urls),
+                        "unselected_curator_photo_urls_field_count": len(uncopied_curator_urls),
+                        "unselected_curator_photo_urls_field_urls": uncopied_curator_urls,
+                    },
+                }
+
             message = "Skipped: no Google Maps Place Id; Azure photo blobs require a place_id in their path."
             logging.info(
                 "Skipping photo asset migration for %s (record_id=%s): missing Google Maps Place Id.",
@@ -249,8 +288,38 @@ def migrate_single_place_photo_assets(activityInput):
         dry_run = bool(config.get("dry_run", True))
         write_airtable = bool(config.get("write_airtable", False))
         candidate_count = asset_result["summary"].get("candidate_count", 0)
+        uncopied_curator_urls_count = asset_result["summary"].get("unselected_curator_photo_urls_field_count", 0)
 
-        if candidate_count == 0:
+        if uncopied_curator_urls_count:
+            summary = asset_result["summary"]
+            message = (
+                "Migration cannot prove Curator Photo URLs are safe to delete: "
+                "one or more Curator Photo URLs would not be present in Photos."
+            )
+            logging.error(
+                "%s place=%s place_id=%s record_id=%s uncopied_count=%s uncopied_urls=%s",
+                message,
+                place_name,
+                place_id,
+                place.get("id", ""),
+                uncopied_curator_urls_count,
+                summary.get("unselected_curator_photo_urls_field_urls", []),
+            )
+            return {
+                "status": "error",
+                "error_reason": "curator_photo_urls_not_copied",
+                "message": message,
+                "warnings": warnings,
+                "place_name": place_name,
+                "place_id": place_id,
+                "record_id": place.get("id", ""),
+                "summary": summary,
+                "selected_airtable_urls": selected_urls,
+                "assets": asset_result["assets"],
+                "failures": asset_result["failures"],
+            }
+
+        if candidate_count == 0 and not selected_urls:
             summary = asset_result["summary"]
             message = (
                 "Skipped: no migratable photo URLs found after checking Airtable Photos, "

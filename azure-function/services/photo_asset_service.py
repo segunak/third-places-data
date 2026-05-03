@@ -17,6 +17,8 @@ from services.utils import upload_blob_to_container
 
 
 PLACE_PHOTOS_CONTAINER = "place-photos"
+CURATOR_PHOTOS_CONTAINER = "curator-photos"
+CURATOR_PHOTO_URLS_FIELD = "Curator Photo URLs"
 AZURE_ACCOUNT_HOST = "thirdplacesdata.blob.core.windows.net"
 REQUEST_HEADERS = {
     "User-Agent": (
@@ -183,6 +185,65 @@ def is_valid_existing_place_photo_azure_url(url: str, city: str, place_id: str) 
     return True, blob_path, "valid"
 
 
+def is_curator_photo_azure_url(url: str) -> bool:
+    parsed = urlparse(url)
+    if parsed.scheme != "https" or parsed.netloc.lower() != AZURE_ACCOUNT_HOST:
+        return False
+    path_parts = parsed.path.lstrip("/").split("/", 1)
+    return len(path_parts) == 2 and path_parts[0] == CURATOR_PHOTOS_CONTAINER and bool(path_parts[1])
+
+
+def curator_photo_urls_field_from_airtable(fields: Dict[str, Any]) -> List[str]:
+    urls: List[str] = []
+    seen_urls: set[str] = set()
+    for url in parse_url_list(fields.get(CURATOR_PHOTO_URLS_FIELD)):
+        canonical_url = canonicalize_url(url)
+        if not canonical_url or canonical_url in seen_urls:
+            continue
+        seen_urls.add(canonical_url)
+        urls.append(canonical_url)
+    return urls
+
+
+def preserved_curator_photo_urls_from_airtable(fields: Dict[str, Any]) -> List[str]:
+    urls: List[str] = []
+    seen_urls: set[str] = set()
+    for source_value in (fields.get("Photos"), fields.get(CURATOR_PHOTO_URLS_FIELD)):
+        for url in parse_url_list(source_value):
+            canonical_url = canonicalize_url(url)
+            if canonical_url in seen_urls or not is_curator_photo_azure_url(canonical_url):
+                continue
+            seen_urls.add(canonical_url)
+            urls.append(canonical_url)
+    return urls
+
+
+def build_display_photo_urls(
+    curator_urls: List[str],
+    provider_urls: List[str],
+    max_photos: int = 30,
+) -> List[str]:
+    merged_urls: List[str] = []
+    seen_urls: set[str] = set()
+    for url in [*curator_urls, *provider_urls]:
+        canonical_url = canonicalize_url(url)
+        if not canonical_url or canonical_url in seen_urls:
+            continue
+        seen_urls.add(canonical_url)
+        merged_urls.append(canonical_url)
+        if len(merged_urls) >= max_photos:
+            break
+    return merged_urls
+
+
+def merge_preserved_photo_urls(
+    preserved_urls: List[str],
+    selected_asset_urls: List[str],
+    max_photos: int = 30,
+) -> List[str]:
+    return build_display_photo_urls(preserved_urls, selected_asset_urls, max_photos=max_photos)
+
+
 def raw_photos_data(photos_section: Dict[str, Any]) -> List[Dict[str, Any]]:
     raw_data = photos_section.get("raw_data", []) if isinstance(photos_section, dict) else []
     if isinstance(raw_data, list):
@@ -252,6 +313,8 @@ def build_place_photo_inventory(
             candidate_map[key] = candidate
 
     for index, url in enumerate(parse_url_list(fields.get("Photos"))):
+        if is_curator_photo_azure_url(canonicalize_url(url)):
+            continue
         add_candidate(build_candidate(url, "Airtable Photos", f"fields.Photos[{index}]", None))
 
     photo_urls = photos_section.get("photo_urls", []) if isinstance(photos_section, dict) else []
@@ -437,6 +500,9 @@ class PhotoAssetService:
         working_place_data = place_data if isinstance(place_data, dict) else {"photos": {}}
         photos_section = working_place_data.setdefault("photos", {})
         inventory, inventory_summary = build_place_photo_inventory(airtable_record, working_place_data, config.city)
+        curator_photo_urls_field_urls = curator_photo_urls_field_from_airtable(fields)
+        preserved_curator_urls = preserved_curator_photo_urls_from_airtable(fields)
+        preserved_curator_url_set = set(preserved_curator_urls)
         existing_assets = {
             asset.get("source_url_sha256"): asset
             for asset in photos_section.get("azure_assets", [])
@@ -455,6 +521,9 @@ class PhotoAssetService:
         for candidate in inventory:
             source_hash = candidate["source_url_sha256"]
             source_url = candidate["canonical_source_url"]
+            if candidate.get("source_field") == "Airtable Photos" and source_url in preserved_curator_url_set:
+                continue
+
             if urlparse(source_url).netloc.lower() == AZURE_ACCOUNT_HOST:
                 is_valid, blob_path, reason = is_valid_existing_place_photo_azure_url(source_url, config.city, place_id)
                 if is_valid:
@@ -535,8 +604,17 @@ class PhotoAssetService:
 
         success_assets = self._dedupe_assets_by_azure_url(success_assets)
         selected_records = self._selection_records(success_assets, inventory)
-        selected_urls = [record["photo_url_big"] for record in select_prioritized_photo_records(selected_records, max_photos=30)]
+        selected_asset_urls = [record["photo_url_big"] for record in select_prioritized_photo_records(selected_records, max_photos=30)]
+        selected_urls = merge_preserved_photo_urls(preserved_curator_urls, selected_asset_urls, max_photos=30)
         selected_url_set = set(selected_urls)
+        unselected_curator_photo_urls_field_urls = [
+            url for url in curator_photo_urls_field_urls
+            if url not in selected_url_set
+        ]
+        unsupported_curator_photo_urls_field_urls = [
+            url for url in curator_photo_urls_field_urls
+            if not is_curator_photo_azure_url(url)
+        ]
         for asset in success_assets:
             asset["selected_for_airtable"] = asset.get("azure_url") in selected_url_set
 
@@ -552,6 +630,17 @@ class PhotoAssetService:
             "failed_upload_count": len(kept_failures),
             "pending_upload_count": len(pending),
             "selected_airtable_count": len(selected_urls),
+            "curator_photo_urls_field_count": len(curator_photo_urls_field_urls),
+            "selected_curator_photo_urls_field_count": len([
+                url for url in curator_photo_urls_field_urls
+                if url in selected_url_set
+            ]),
+            "unselected_curator_photo_urls_field_count": len(unselected_curator_photo_urls_field_urls),
+            "unselected_curator_photo_urls_field_urls": unselected_curator_photo_urls_field_urls,
+            "unsupported_curator_photo_urls_field_count": len(unsupported_curator_photo_urls_field_urls),
+            "unsupported_curator_photo_urls_field_urls": unsupported_curator_photo_urls_field_urls,
+            "preserved_curator_airtable_photos_count": len(preserved_curator_urls),
+            "selected_curator_airtable_photos_count": len([url for url in preserved_curator_urls if url in selected_url_set]),
             "successful_but_unserved_count": len([asset for asset in success_assets if not asset.get("selected_for_airtable")]),
             "non_azure_airtable_photos_count": len([
                 url for url in parse_url_list(fields.get("Photos"))
@@ -585,6 +674,7 @@ class PhotoAssetService:
         inventory, inventory_summary = build_place_photo_inventory(airtable_record, place_data, city)
         airtable_photos = parse_url_list(fields.get("Photos"))
         non_azure_airtable = [url for url in airtable_photos if urlparse(url).netloc.lower() != AZURE_ACCOUNT_HOST]
+        curator_airtable = [url for url in airtable_photos if is_curator_photo_azure_url(url)]
         azure_assets = photos_section.get("azure_assets", []) if isinstance(photos_section, dict) else []
         failures = photos_section.get("azure_asset_failures", []) if isinstance(photos_section, dict) else []
         selected_azure = [url for url in airtable_photos if is_valid_existing_place_photo_azure_url(url, city, place_id)[0]]
@@ -596,6 +686,7 @@ class PhotoAssetService:
             "data_file_source_total": len(inventory),
             "airtable_photos_count": len(airtable_photos),
             "airtable_photos_google_count": len(parse_url_list(fields.get("Photos Google"))),
+            "curator_airtable_photos_count": len(curator_airtable),
             "provider_raw_photo_url_big_count": inventory_summary["provider_raw_photo_url_big_count"],
             "azure_assets_count": len([asset for asset in azure_assets if isinstance(asset, dict)]),
             "selected_azure_display_urls_count": len(selected_azure),

@@ -3,12 +3,21 @@ import logging
 import azure.functions as func
 import azure.durable_functions as df
 from pyairtable import Api as AirtableApi
+from services.photo_asset_service import (
+    AZURE_ACCOUNT_HOST,
+    CURATOR_PHOTOS_CONTAINER,
+    CURATOR_PHOTO_URLS_FIELD,
+    build_display_photo_urls,
+    is_curator_photo_azure_url,
+    parse_url_list,
+)
 from services.utils import upload_blob, delete_blob, list_blobs, download_image
 
 bp = df.Blueprint()
 
 CURATOR_PHOTOS_FIELD = "Curator Photos"
-CURATOR_PHOTO_URLS_FIELD = "Curator Photo URLs"
+PHOTOS_FIELD = "Photos"
+MAX_PHOTOS_FIELD_URLS = 30
 
 
 def validate_sync_curator_photos_request(req: func.HttpRequest):
@@ -138,6 +147,15 @@ def _build_blob_path(record_id: str, attachment_id: str, filename: str) -> str:
     return f"{record_id}/{attachment_id}_{safe_filename}"
 
 
+def _curator_blob_url(blob_path: str) -> str:
+    return f"https://{AZURE_ACCOUNT_HOST}/{CURATOR_PHOTOS_CONTAINER}/{blob_path}"
+
+
+def _merge_curator_urls_into_photos(curator_urls: list[str], existing_photo_urls: list[str]) -> list[str]:
+    non_curator_photo_urls = [url for url in existing_photo_urls if not is_curator_photo_azure_url(url)]
+    return build_display_photo_urls(curator_urls, non_curator_photo_urls, max_photos=MAX_PHOTOS_FIELD_URLS)
+
+
 @bp.activity_trigger(input_name="activityInput")
 @bp.function_name("sync_single_place_curator_photos")
 def sync_single_place_curator_photos(activityInput):
@@ -154,6 +172,10 @@ def sync_single_place_curator_photos(activityInput):
             "message": "",
             "photos_synced": 0,
             "photos_deleted": 0,
+            "photos_failed": 0,
+            "curator_photo_urls_count": 0,
+            "photos_field_count": 0,
+            "airtable_fields_updated": [],
         }
 
         if not place or 'fields' not in place:
@@ -167,24 +189,15 @@ def sync_single_place_curator_photos(activityInput):
 
         place_result["place_name"] = place_name
 
-        # Read the Curator Photos attachment field (list of attachment objects)
         curator_attachments = fields.get(CURATOR_PHOTOS_FIELD) or []
+        existing_curator_urls = parse_url_list(fields.get(CURATOR_PHOTO_URLS_FIELD))
+        existing_photo_urls = parse_url_list(fields.get(PHOTOS_FIELD))
+        existing_display_curator_urls = [url for url in existing_photo_urls if is_curator_photo_azure_url(url)]
 
-        if not curator_attachments:
+        if not curator_attachments and not existing_curator_urls and not existing_display_curator_urls:
             place_result["status"] = "skipped"
             place_result["message"] = "No curator photos"
             return place_result
-
-        # Read existing Curator Photo URLs to determine what's already synced
-        existing_urls_raw = fields.get(CURATOR_PHOTO_URLS_FIELD) or ""
-        existing_urls = []
-        if existing_urls_raw:
-            try:
-                parsed = json.loads(existing_urls_raw)
-                if isinstance(parsed, list):
-                    existing_urls = parsed
-            except (json.JSONDecodeError, TypeError):
-                existing_urls = []
 
         # Build expected blob paths from current attachments
         expected_blob_paths = {}
@@ -207,24 +220,24 @@ def sync_single_place_curator_photos(activityInput):
         expected_paths_set = set(expected_blob_paths.keys())
         orphaned_blobs = existing_blobs - expected_paths_set
 
-        if not new_attachments and not orphaned_blobs:
-            place_result["status"] = "no_change"
-            place_result["message"] = "All curator photos already synced"
-            return place_result
-
         # Upload new attachments
         uploaded_count = 0
+        failed_count = 0
+        uploaded_paths = set()
         for blob_path, att in new_attachments.items():
             att_url = att.get("url", "")
             if not att_url:
                 logging.warning(f"No URL for attachment {att.get('id')} on {place_name}")
+                failed_count += 1
                 continue
             try:
                 image_data, content_type = download_image(att_url)
                 upload_blob(blob_path, image_data, content_type)
                 uploaded_count += 1
+                uploaded_paths.add(blob_path)
             except Exception as e:
                 logging.error(f"Failed to download/upload curator photo for {place_name}: {e}")
+                failed_count += 1
 
         # Delete orphaned blobs
         deleted_count = 0
@@ -232,22 +245,41 @@ def sync_single_place_curator_photos(activityInput):
             if delete_blob(orphan_path):
                 deleted_count += 1
 
-        # Build the complete list of permanent URLs from all expected blob paths
+        # Build the complete list of permanent URLs for blobs that are actually present
+        available_blob_paths = (existing_blobs & expected_paths_set) | uploaded_paths
         all_blob_urls = []
         for blob_path in expected_blob_paths.keys():
-            url = f"https://thirdplacesdata.blob.core.windows.net/curator-photos/{blob_path}"
-            all_blob_urls.append(url)
+            if blob_path in available_blob_paths:
+                all_blob_urls.append(_curator_blob_url(blob_path))
 
-        # Write the URLs back to Airtable
-        url_json = json.dumps(all_blob_urls)
-        api = AirtableApi(os.environ['AIRTABLE_PERSONAL_ACCESS_TOKEN'])
-        table = api.table(os.environ['AIRTABLE_BASE_ID'], "Charlotte Third Places")
-        table.update(record_id, {CURATOR_PHOTO_URLS_FIELD: url_json})
+        merged_photo_urls = _merge_curator_urls_into_photos(all_blob_urls, existing_photo_urls)
 
-        place_result["status"] = "updated"
-        place_result["message"] = f"Uploaded {uploaded_count} new, deleted {deleted_count} orphaned, total {len(all_blob_urls)} curator photo URLs"
+        airtable_updates = {}
+        if existing_curator_urls != all_blob_urls:
+            airtable_updates[CURATOR_PHOTO_URLS_FIELD] = json.dumps(all_blob_urls)
+        if existing_photo_urls != merged_photo_urls:
+            airtable_updates[PHOTOS_FIELD] = json.dumps(merged_photo_urls)
+
+        if airtable_updates:
+            api = AirtableApi(os.environ['AIRTABLE_PERSONAL_ACCESS_TOKEN'])
+            table = api.table(os.environ['AIRTABLE_BASE_ID'], "Charlotte Third Places")
+            table.update(record_id, airtable_updates)
+
+        if not airtable_updates and uploaded_count == 0 and deleted_count == 0 and failed_count == 0:
+            place_result["status"] = "no_change"
+            place_result["message"] = "All curator photos already synced"
+        else:
+            place_result["status"] = "updated"
+            place_result["message"] = (
+                f"Uploaded {uploaded_count} new, deleted {deleted_count} orphaned, "
+                f"failed {failed_count}, total {len(all_blob_urls)} curator photo URLs"
+            )
         place_result["photos_synced"] = uploaded_count
         place_result["photos_deleted"] = deleted_count
+        place_result["photos_failed"] = failed_count
+        place_result["curator_photo_urls_count"] = len(all_blob_urls)
+        place_result["photos_field_count"] = len(merged_photo_urls)
+        place_result["airtable_fields_updated"] = list(airtable_updates.keys())
         return place_result
 
     except Exception as ex:
@@ -259,4 +291,5 @@ def sync_single_place_curator_photos(activityInput):
             "message": str(ex),
             "photos_synced": 0,
             "photos_deleted": 0,
+            "photos_failed": 0,
         }
