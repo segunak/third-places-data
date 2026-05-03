@@ -940,7 +940,230 @@
     "photos": {
         "place_id": "ChIJBfDviOqhVogRLlGpl-uCOdU",
         "message": "Photos retrieval skipped.",
-        "photo_urls": []
+        "photo_urls": [],
+        "azure_assets": [
+            {
+                "place_name": "Knowledge Perk Coffee Company | Uptown",
+                "place_id": "ChIJBfDviOqhVogRLlGpl-uCOdU",
+                "record_id": "reckQ95tv7LVZ86tK",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=eNk7EJcL3_MJWCJVXz39IQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=319.4741&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=eNk7EJcL3_MJWCJVXz39IQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=319.4741&pitch=0&thumbfov=100",
+                "source_url_sha256": "5b55595929964726203ef1a1979610948c83803b21f6b9f9f35f71497b3db89b",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBfDviOqhVogRLlGpl-uCOdU/5b55595929964726203ef1a1979610948c83803b21f6b9f9f35f71497b3db89b.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJBfDviOqhVogRLlGpl-uCOdU/5b55595929964726203ef1a1979610948c83803b21f6b9f9f35f71497b3db89b.jpg",
+                "content_sha256": "ac3724836dea785c0a28ddfef182163657a1fdb3ed87ef4b7be92fcd4df325e9",
+                "content_type": "image/jpeg",
+                "bytes": 229957,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=eNk7EJcL3_MJWCJVXz39IQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=319.4741&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=eNk7EJcL3_MJWCJVXz39IQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=319.4741&pitch=0&thumbfov=100",
+                        "bytes": 229957,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:20.277395+00:00"
+            },
+            {
+                "place_name": "Knowledge Perk Coffee Company | Uptown",
+                "place_id": "ChIJBfDviOqhVogRLlGpl-uCOdU",
+                "record_id": "reckQ95tv7LVZ86tK",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOQzau1HmqonRvqGyU6sHUqp5OLNBArkTTdizyB=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOQzau1HmqonRvqGyU6sHUqp5OLNBArkTTdizyB=w2048-h2048-k-no",
+                "source_url_sha256": "2d13a9358f2f4b537e9d8788c30135add6bff9a2ee61b5f0fc947c5df66208eb",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBfDviOqhVogRLlGpl-uCOdU/2d13a9358f2f4b537e9d8788c30135add6bff9a2ee61b5f0fc947c5df66208eb.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJBfDviOqhVogRLlGpl-uCOdU/2d13a9358f2f4b537e9d8788c30135add6bff9a2ee61b5f0fc947c5df66208eb.png",
+                "content_sha256": "96e998da3ff4950b586c466a2401336525fdb1d8b31803f3634a012fd6441571",
+                "content_type": "image/png",
+                "bytes": 2673894,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOQzau1HmqonRvqGyU6sHUqp5OLNBArkTTdizyB=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOQzau1HmqonRvqGyU6sHUqp5OLNBArkTTdizyB=w2048-h2048-k-no",
+                        "bytes": 2673894,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:22.172506+00:00"
+            },
+            {
+                "place_name": "Knowledge Perk Coffee Company | Uptown",
+                "place_id": "ChIJBfDviOqhVogRLlGpl-uCOdU",
+                "record_id": "reckQ95tv7LVZ86tK",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNny9A7OWqVoZ79zuQ8taErhiqrXWoO8NeanRzK=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNny9A7OWqVoZ79zuQ8taErhiqrXWoO8NeanRzK=w2048-h2048-k-no",
+                "source_url_sha256": "3e6eae1b77552d2335f9030bb87769d21f9ae6598a6c5dc664859ca76b1d6912",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBfDviOqhVogRLlGpl-uCOdU/3e6eae1b77552d2335f9030bb87769d21f9ae6598a6c5dc664859ca76b1d6912.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJBfDviOqhVogRLlGpl-uCOdU/3e6eae1b77552d2335f9030bb87769d21f9ae6598a6c5dc664859ca76b1d6912.png",
+                "content_sha256": "26c79bd616ee5243b105e099b1877a7d697b919e41fba9aef7ea7964eb385450",
+                "content_type": "image/png",
+                "bytes": 4346228,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNny9A7OWqVoZ79zuQ8taErhiqrXWoO8NeanRzK=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNny9A7OWqVoZ79zuQ8taErhiqrXWoO8NeanRzK=w2048-h2048-k-no",
+                        "bytes": 4346228,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:24.958764+00:00"
+            },
+            {
+                "place_name": "Knowledge Perk Coffee Company | Uptown",
+                "place_id": "ChIJBfDviOqhVogRLlGpl-uCOdU",
+                "record_id": "reckQ95tv7LVZ86tK",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipM4gBNm5mA1XRsGFHxkmCg7F_kq9-kNEohHROpD=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipM4gBNm5mA1XRsGFHxkmCg7F_kq9-kNEohHROpD=w2048-h2048-k-no",
+                "source_url_sha256": "757acba4894807e343f4a3ba3afdb70ee009165642e7c0cbd75962a2c693030d",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[3]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBfDviOqhVogRLlGpl-uCOdU/757acba4894807e343f4a3ba3afdb70ee009165642e7c0cbd75962a2c693030d.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJBfDviOqhVogRLlGpl-uCOdU/757acba4894807e343f4a3ba3afdb70ee009165642e7c0cbd75962a2c693030d.png",
+                "content_sha256": "16980e232e2520443a39cf94334dddb91bf2735a09320fcf55297e4c9af145e3",
+                "content_type": "image/png",
+                "bytes": 3354224,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipM4gBNm5mA1XRsGFHxkmCg7F_kq9-kNEohHROpD=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipM4gBNm5mA1XRsGFHxkmCg7F_kq9-kNEohHROpD=w2048-h2048-k-no",
+                        "bytes": 3354224,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:26.808464+00:00"
+            },
+            {
+                "place_name": "Knowledge Perk Coffee Company | Uptown",
+                "place_id": "ChIJBfDviOqhVogRLlGpl-uCOdU",
+                "record_id": "reckQ95tv7LVZ86tK",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipN3OSTMS6u8k0vTqm5CRif2tpY73SdFDycejy9P=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipN3OSTMS6u8k0vTqm5CRif2tpY73SdFDycejy9P=w2048-h2048-k-no",
+                "source_url_sha256": "00050b0f01d57bd519ad454c741ea515d1b1f333ca144e105486d9f8c50fe644",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[4]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJBfDviOqhVogRLlGpl-uCOdU/00050b0f01d57bd519ad454c741ea515d1b1f333ca144e105486d9f8c50fe644.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJBfDviOqhVogRLlGpl-uCOdU/00050b0f01d57bd519ad454c741ea515d1b1f333ca144e105486d9f8c50fe644.png",
+                "content_sha256": "1759784df065a6c861a6e5f7e1eed4c68d3a53285b820c5be0be1adc91eac556",
+                "content_type": "image/png",
+                "bytes": 5112827,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipN3OSTMS6u8k0vTqm5CRif2tpY73SdFDycejy9P=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipN3OSTMS6u8k0vTqm5CRif2tpY73SdFDycejy9P=w2048-h2048-k-no",
+                        "bytes": 5112827,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T07:03:30.059195+00:00"
+            }
+        ],
+        "azure_asset_failures": [],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 5,
+            "duplicate_count": 0,
+            "airtable_photos_count": 5,
+            "airtable_photos_google_count": 5,
+            "data_file_photo_urls_count": 0,
+            "provider_raw_photo_url_big_count": 0,
+            "place_name": "Knowledge Perk Coffee Company | Uptown",
+            "place_id": "ChIJBfDviOqhVogRLlGpl-uCOdU",
+            "record_id": "reckQ95tv7LVZ86tK",
+            "generated_at": "2026-05-03T07:03:30.059270+00:00",
+            "azure_assets_count": 5,
+            "failed_upload_count": 0,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 5,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 5,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-22T12:39:53.775452"
