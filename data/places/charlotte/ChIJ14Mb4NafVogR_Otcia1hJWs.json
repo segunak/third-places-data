@@ -16089,7 +16089,91 @@
         "message": "Retrieved from Airtable",
         "photo_urls": [
             "https://lh3.googleusercontent.com/p/AF1QipMOYTctA00Mb93A6pMJC1oOKG13INRGIUf-_Tk=w2048-h2048-k-no"
-        ]
+        ],
+        "azure_assets": [
+            {
+                "place_name": "Vicente",
+                "place_id": "ChIJ14Mb4NafVogR_Otcia1hJWs",
+                "record_id": "recI2egF4QACl6AyC",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMOYTctA00Mb93A6pMJC1oOKG13INRGIUf-_Tk=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMOYTctA00Mb93A6pMJC1oOKG13INRGIUf-_Tk=w2048-h2048-k-no",
+                "source_url_sha256": "f6dfdf75387cf0556b4e8ed9bc20e351b5c45e9fca85b1965ca9a6dfe3a5a592",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ14Mb4NafVogR_Otcia1hJWs/f6dfdf75387cf0556b4e8ed9bc20e351b5c45e9fca85b1965ca9a6dfe3a5a592.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJ14Mb4NafVogR_Otcia1hJWs/f6dfdf75387cf0556b4e8ed9bc20e351b5c45e9fca85b1965ca9a6dfe3a5a592.jpg",
+                "content_sha256": "b9b824fc7733e061b5230c4c2c229ddd7578f8f94b299f3e38f97ca1a9d97872",
+                "content_type": "image/jpeg",
+                "bytes": 60449,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMOYTctA00Mb93A6pMJC1oOKG13INRGIUf-_Tk=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMOYTctA00Mb93A6pMJC1oOKG13INRGIUf-_Tk=w2048-h2048-k-no",
+                        "bytes": 60449,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:13.787755+00:00"
+            }
+        ],
+        "azure_asset_failures": [],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 1,
+            "duplicate_count": 1,
+            "airtable_photos_count": 1,
+            "airtable_photos_google_count": 1,
+            "data_file_photo_urls_count": 1,
+            "provider_raw_photo_url_big_count": 0,
+            "place_name": "Vicente",
+            "place_id": "ChIJ14Mb4NafVogR_Otcia1hJWs",
+            "record_id": "recI2egF4QACl6AyC",
+            "generated_at": "2026-05-03T06:58:13.787833+00:00",
+            "azure_assets_count": 1,
+            "failed_upload_count": 0,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 1,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-01T20:27:37.699687"
