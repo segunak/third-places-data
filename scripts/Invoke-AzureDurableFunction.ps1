@@ -51,6 +51,9 @@ $statusResponse = $null
 $status = $null
 $consecutiveStatusPollFailures = 0
 $lastCustomStatusJson = ""
+$lastNonEmptyCustomStatus = $null
+$lastNonEmptyCustomStatusRuntimeStatus = $null
+$lastNonEmptyCustomStatusLastUpdatedTime = $null
 
 function Save-StatusSnapshot {
     param([Parameter(Mandatory = $true)]$Status)
@@ -64,7 +67,23 @@ function Save-StatusSnapshot {
         New-Item -ItemType Directory -Path $parentDirectory -Force | Out-Null
     }
 
-    $Status | ConvertTo-Json -Depth 100 | Set-Content -Path $StatusOutputPath -Encoding utf8
+    if ($null -ne $Status.customStatus) {
+        $script:lastNonEmptyCustomStatus = $Status.customStatus
+        $script:lastNonEmptyCustomStatusRuntimeStatus = $Status.runtimeStatus
+        $script:lastNonEmptyCustomStatusLastUpdatedTime = $Status.lastUpdatedTime
+    }
+
+    $snapshot = [ordered]@{}
+    foreach ($property in $Status.PSObject.Properties) {
+        $snapshot[$property.Name] = $property.Value
+    }
+    if ($null -ne $script:lastNonEmptyCustomStatus) {
+        $snapshot["lastNonEmptyCustomStatus"] = $script:lastNonEmptyCustomStatus
+        $snapshot["lastNonEmptyCustomStatusRuntimeStatus"] = $script:lastNonEmptyCustomStatusRuntimeStatus
+        $snapshot["lastNonEmptyCustomStatusLastUpdatedTime"] = $script:lastNonEmptyCustomStatusLastUpdatedTime
+    }
+
+    $snapshot | ConvertTo-Json -Depth 100 | Set-Content -Path $StatusOutputPath -Encoding utf8
 }
 
 function Get-ErrorDetails {

@@ -122,6 +122,14 @@ def _aggregate_results(results: List[Dict[str, Any]], dry_run: bool) -> Dict[str
             result for result in results
             if 0 < result.get("summary", {}).get("selected_airtable_count", 0) < 30
         ]),
+        "github_data_file_save_attempts": sum(1 for result in results if result.get("summary", {}).get("github_data_file_save_attempted")),
+        "github_data_files_saved": sum(1 for result in results if result.get("summary", {}).get("github_data_file_saved")),
+        "github_data_file_save_failures": sum(1 for result in results if result.get("summary", {}).get("github_data_file_save_failed")),
+        "airtable_write_requested": sum(1 for result in results if result.get("summary", {}).get("airtable_write_requested")),
+        "airtable_write_attempts": sum(1 for result in results if result.get("summary", {}).get("airtable_write_attempted")),
+        "airtable_updates_applied": sum(1 for result in results if result.get("summary", {}).get("airtable_update_applied")),
+        "airtable_updates_skipped_no_change": sum(1 for result in results if result.get("summary", {}).get("airtable_update_skipped_no_change")),
+        "airtable_update_failures": sum(1 for result in results if result.get("summary", {}).get("airtable_update_failed")),
     }
     totals["success"] = totals["errors"] == 0
     return totals
@@ -146,6 +154,14 @@ def _diagnostic_summary(summary: Dict[str, Any]) -> Dict[str, Any]:
         "unselected_curator_photo_urls_field_count",
         "unsupported_curator_photo_urls_field_count",
         "non_azure_airtable_photos_count",
+        "github_data_file_save_attempted",
+        "github_data_file_saved",
+        "github_data_file_save_failed",
+        "airtable_write_requested",
+        "airtable_write_attempted",
+        "airtable_update_applied",
+        "airtable_update_skipped_no_change",
+        "airtable_update_failed",
     ]
     diagnostic = {key: summary.get(key) for key in keys if key in summary}
 
@@ -179,6 +195,14 @@ def _diagnostic_place_result(result: Dict[str, Any]) -> Dict[str, Any]:
         diagnostic["failure_error_samples"] = [failure.get("error") for failure in failures[:3]]
 
     return {key: value for key, value in diagnostic.items() if value not in (None, {}, [])}
+
+
+def _all_candidate_downloads_failed(summary: Dict[str, Any], failures: List[Dict[str, Any]]) -> bool:
+    candidate_count = int(summary.get("candidate_count", 0) or 0)
+    failed_upload_count = int(summary.get("failed_upload_count", 0) or 0)
+    if candidate_count <= 0 or failed_upload_count < candidate_count or not failures:
+        return False
+    return all(failure.get("reason") == "download_failed" for failure in failures if isinstance(failure, dict))
 
 
 def _migration_progress_status(
@@ -406,6 +430,16 @@ def migrate_single_place_photo_assets(activityInput):
         write_airtable = bool(config.get("write_airtable", False))
         candidate_count = asset_result["summary"].get("candidate_count", 0)
         uncopied_curator_urls_count = asset_result["summary"].get("unselected_curator_photo_urls_field_count", 0)
+        asset_result["summary"].update({
+            "github_data_file_save_attempted": False,
+            "github_data_file_saved": False,
+            "github_data_file_save_failed": False,
+            "airtable_write_requested": write_airtable,
+            "airtable_write_attempted": False,
+            "airtable_update_applied": False,
+            "airtable_update_skipped_no_change": False,
+            "airtable_update_failed": False,
+        })
 
         if uncopied_curator_urls_count:
             summary = asset_result["summary"]
@@ -471,6 +505,37 @@ def migrate_single_place_photo_assets(activityInput):
 
         if not dry_run and not selected_urls:
             summary = asset_result["summary"]
+            failures = [failure for failure in asset_result.get("failures", []) if isinstance(failure, dict)]
+            if _all_candidate_downloads_failed(summary, failures):
+                source_hosts = sorted({failure.get("source_host", "unknown") for failure in failures})
+                message = (
+                    "Skipped: all photo candidate downloads failed, so Airtable Photos was left unchanged."
+                )
+                logging.warning(
+                    "Skipping photo asset migration for %s (%s, record_id=%s): all candidate downloads failed. "
+                    "candidate_count=%s failed_upload_count=%s source_hosts=%s warnings=%s",
+                    place_name,
+                    place_id,
+                    place.get("id", ""),
+                    summary.get("candidate_count", 0),
+                    summary.get("failed_upload_count", 0),
+                    source_hosts,
+                    warnings,
+                )
+                return {
+                    "status": "skipped",
+                    "skip_reason": "all_photo_downloads_failed",
+                    "message": message,
+                    "warnings": warnings,
+                    "place_name": place_name,
+                    "place_id": place_id,
+                    "record_id": place.get("id", ""),
+                    "summary": summary,
+                    "selected_airtable_urls": selected_urls,
+                    "assets": asset_result["assets"],
+                    "failures": asset_result["failures"],
+                }
+
             message = (
                 "Migration found photo candidates but selected zero Azure Photos URLs; "
                 "refusing to overwrite Airtable Photos with an empty list."
@@ -505,8 +570,10 @@ def migrate_single_place_photo_assets(activityInput):
 
         if not dry_run:
             updated_json = json.dumps(asset_result["place_data"], indent=4)
+            asset_result["summary"]["github_data_file_save_attempted"] = True
             save_success, save_message = save_data_github(updated_json, data_file_path)
             if not save_success:
+                asset_result["summary"]["github_data_file_save_failed"] = True
                 return {
                     "status": "error",
                     "message": f"GitHub save failed: {save_message}",
@@ -515,16 +582,29 @@ def migrate_single_place_photo_assets(activityInput):
                     "record_id": place.get("id", ""),
                     "summary": asset_result["summary"],
                 }
+            asset_result["summary"]["github_data_file_saved"] = True
 
             if write_airtable:
                 airtable_service = AirtableService(config.get("provider_type", DEFAULT_PROVIDER_TYPE))
+                asset_result["summary"]["airtable_write_attempted"] = True
                 update_result = airtable_service.update_place_record(
                     record_id=place["id"],
                     field_to_update="Photos",
                     update_value=json.dumps(selected_urls),
                     overwrite=True,
                 )
-                if not update_result.get("updated", False) and update_result.get("old_value") is None and update_result.get("new_value") is None:
+                airtable_update_failed = (
+                    not update_result.get("updated", False)
+                    and update_result.get("old_value") is None
+                    and update_result.get("new_value") is None
+                )
+                asset_result["summary"]["airtable_update_applied"] = bool(update_result.get("updated", False))
+                asset_result["summary"]["airtable_update_failed"] = airtable_update_failed
+                asset_result["summary"]["airtable_update_skipped_no_change"] = (
+                    not update_result.get("updated", False)
+                    and not airtable_update_failed
+                )
+                if airtable_update_failed:
                     return {
                         "status": "error",
                         "message": "Airtable update failed",
