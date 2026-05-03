@@ -1240,7 +1240,193 @@
     "photos": {
         "place_id": "ChIJy29pBQCfVogReTFaiadBMQ0",
         "message": "Photos retrieval skipped.",
-        "photo_urls": []
+        "photo_urls": [],
+        "azure_assets": [
+            {
+                "place_name": "Higher Grounds by Manolo's",
+                "place_id": "ChIJy29pBQCfVogReTFaiadBMQ0",
+                "record_id": "rec8sCEC2uMWDxZOr",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=7gj6l83-yHN5nf2twx1P1Q&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=326.4151&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=7gj6l83-yHN5nf2twx1P1Q&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=326.4151&pitch=0&thumbfov=100",
+                "source_url_sha256": "9b470d2e4adbe75208bb9e83782d350f337af8679f90fad141bbccb309066095",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJy29pBQCfVogReTFaiadBMQ0/9b470d2e4adbe75208bb9e83782d350f337af8679f90fad141bbccb309066095.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJy29pBQCfVogReTFaiadBMQ0/9b470d2e4adbe75208bb9e83782d350f337af8679f90fad141bbccb309066095.jpg",
+                "content_sha256": "fa93d53f6abd6dff3475aeecf57a5736b13f33a4ca3ae086dd12375288b178b9",
+                "content_type": "image/jpeg",
+                "bytes": 6410,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=7gj6l83-yHN5nf2twx1P1Q&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=326.4151&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=7gj6l83-yHN5nf2twx1P1Q&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=326.4151&pitch=0&thumbfov=100",
+                        "bytes": 6410,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:07.727652+00:00"
+            },
+            {
+                "place_name": "Higher Grounds by Manolo's",
+                "place_id": "ChIJy29pBQCfVogReTFaiadBMQ0",
+                "record_id": "rec8sCEC2uMWDxZOr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMIeeoN1iDvg69wXKkCWrveZ6C86Kfl1qWpoHQM=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMIeeoN1iDvg69wXKkCWrveZ6C86Kfl1qWpoHQM=w2048-h2048-k-no",
+                "source_url_sha256": "b31701b3691d06224d83bcf778008873d5baa06ed21b941169be3bff3734d478",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJy29pBQCfVogReTFaiadBMQ0/b31701b3691d06224d83bcf778008873d5baa06ed21b941169be3bff3734d478.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJy29pBQCfVogReTFaiadBMQ0/b31701b3691d06224d83bcf778008873d5baa06ed21b941169be3bff3734d478.jpg",
+                "content_sha256": "3f2bd5f629add66bf3123ac6abbdc6b42b4504779a023e4f60618fc1346776e0",
+                "content_type": "image/jpeg",
+                "bytes": 636701,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMIeeoN1iDvg69wXKkCWrveZ6C86Kfl1qWpoHQM=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMIeeoN1iDvg69wXKkCWrveZ6C86Kfl1qWpoHQM=w2048-h2048-k-no",
+                        "bytes": 636701,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:08.185117+00:00"
+            },
+            {
+                "place_name": "Higher Grounds by Manolo's",
+                "place_id": "ChIJy29pBQCfVogReTFaiadBMQ0",
+                "record_id": "rec8sCEC2uMWDxZOr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPH1cTgKY88zWg0f82VRc_0VejeiNQcW7jT6qJg=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPH1cTgKY88zWg0f82VRc_0VejeiNQcW7jT6qJg=w2048-h2048-k-no",
+                "source_url_sha256": "84f5add9486d8b467375c552407c45c77dec2b3d579177f35bb0bbc630e4ab50",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJy29pBQCfVogReTFaiadBMQ0/84f5add9486d8b467375c552407c45c77dec2b3d579177f35bb0bbc630e4ab50.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJy29pBQCfVogReTFaiadBMQ0/84f5add9486d8b467375c552407c45c77dec2b3d579177f35bb0bbc630e4ab50.png",
+                "content_sha256": "035e89a8b607925c218d01f05f72d9f6620bb7e853358df6a5ed7693247f2de7",
+                "content_type": "image/png",
+                "bytes": 5980241,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPH1cTgKY88zWg0f82VRc_0VejeiNQcW7jT6qJg=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPH1cTgKY88zWg0f82VRc_0VejeiNQcW7jT6qJg=w2048-h2048-k-no",
+                        "bytes": 5980241,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:10.735784+00:00"
+            },
+            {
+                "place_name": "Higher Grounds by Manolo's",
+                "place_id": "ChIJy29pBQCfVogReTFaiadBMQ0",
+                "record_id": "rec8sCEC2uMWDxZOr",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOlZNqvLUU9z4N5D__uxRbuj-8fBRfsaL2BXT5L=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOlZNqvLUU9z4N5D__uxRbuj-8fBRfsaL2BXT5L=w2048-h2048-k-no",
+                "source_url_sha256": "a1901ad3ffbfbdcec1a2bf42f75d7b642a163722686b3977c8352ceac29c6984",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[3]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJy29pBQCfVogReTFaiadBMQ0/a1901ad3ffbfbdcec1a2bf42f75d7b642a163722686b3977c8352ceac29c6984.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJy29pBQCfVogReTFaiadBMQ0/a1901ad3ffbfbdcec1a2bf42f75d7b642a163722686b3977c8352ceac29c6984.png",
+                "content_sha256": "99c6fde73b55bae514f48707e4b53f5cd8caaa320b26ea83f0e502f0c209dce2",
+                "content_type": "image/png",
+                "bytes": 4230609,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOlZNqvLUU9z4N5D__uxRbuj-8fBRfsaL2BXT5L=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOlZNqvLUU9z4N5D__uxRbuj-8fBRfsaL2BXT5L=w2048-h2048-k-no",
+                        "bytes": 4230609,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:14.395612+00:00"
+            }
+        ],
+        "azure_asset_failures": [],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 4,
+            "duplicate_count": 0,
+            "airtable_photos_count": 4,
+            "airtable_photos_google_count": 4,
+            "data_file_photo_urls_count": 0,
+            "provider_raw_photo_url_big_count": 0,
+            "place_name": "Higher Grounds by Manolo's",
+            "place_id": "ChIJy29pBQCfVogReTFaiadBMQ0",
+            "record_id": "rec8sCEC2uMWDxZOr",
+            "generated_at": "2026-05-03T06:57:14.395673+00:00",
+            "azure_assets_count": 4,
+            "failed_upload_count": 0,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 4,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 4,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-24T23:55:56.565170"
