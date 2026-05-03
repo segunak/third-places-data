@@ -944,6 +944,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[5].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[5].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJbedm724nVIgRE_F3jWjkVV8/1a299a23fb178b1353697d681ed6fc5d89e5e20ba185d4203c3629e53d2fa5e7.jpg",
@@ -986,6 +994,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1115,7 +1131,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:34:55.235616+00:00"
+                "failed_at": "2026-05-03T06:04:31.345975+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1194,7 +1210,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:34:55.614452+00:00"
+                "failed_at": "2026-05-03T06:04:31.745071+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1273,7 +1289,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:34:55.974423+00:00"
+                "failed_at": "2026-05-03T06:04:32.167434+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1352,7 +1368,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:34:56.302888+00:00"
+                "failed_at": "2026-05-03T06:04:32.634382+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1431,7 +1447,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:34:56.643719+00:00"
+                "failed_at": "2026-05-03T06:04:33.117688+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1510,7 +1526,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:34:56.964057+00:00"
+                "failed_at": "2026-05-03T06:04:33.721864+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1589,7 +1605,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:34:57.340349+00:00"
+                "failed_at": "2026-05-03T06:04:34.096014+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1668,7 +1684,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T03:34:57.732467+00:00"
+                "failed_at": "2026-05-03T06:04:34.489319+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -1682,7 +1698,7 @@
             "place_name": "Publix | Arboretum",
             "place_id": "ChIJbedm724nVIgRE_F3jWjkVV8",
             "record_id": "rec7rKn0nRqs0urPD",
-            "generated_at": "2026-05-03T03:34:57.732857+00:00",
+            "generated_at": "2026-05-03T06:04:34.489765+00:00",
             "azure_assets_count": 2,
             "failed_upload_count": 8,
             "pending_upload_count": 0,
