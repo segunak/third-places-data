@@ -542,6 +542,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJwUs4xfudVogRFZzJn2cnzRQ/a6649182fe35c3579864b553cb737dc5f018a523f5e550ef8b8642fb3ddd3428.jpg",
@@ -600,6 +608,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJwUs4xfudVogRFZzJn2cnzRQ/ffd2673174f68e70282c7fbc3f19f2f294100f3494e8181395669b052b3dbc27.png",
@@ -646,6 +662,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -759,7 +783,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:02.567203+00:00"
+                "failed_at": "2026-05-03T02:52:39.952180+00:00"
             },
             {
                 "place_name": "The Gathering Caf\u00e9",
@@ -838,7 +862,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:02.974685+00:00"
+                "failed_at": "2026-05-03T02:52:40.578886+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -852,7 +876,7 @@
             "place_name": "The Gathering Caf\u00e9",
             "place_id": "ChIJwUs4xfudVogRFZzJn2cnzRQ",
             "record_id": "recx2RBQa4C7JtjZr",
-            "generated_at": "2026-05-03T01:20:02.975120+00:00",
+            "generated_at": "2026-05-03T02:52:40.580946+00:00",
             "azure_assets_count": 3,
             "failed_upload_count": 2,
             "pending_upload_count": 0,
