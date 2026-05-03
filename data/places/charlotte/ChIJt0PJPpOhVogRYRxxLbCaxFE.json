@@ -590,6 +590,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJt0PJPpOhVogRYRxxLbCaxFE/bdf480d0e9185aacdc56286953fa74be2eeff06cc73e9839bfa8052654ede6d6.jpg",
@@ -691,7 +699,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:13.387672+00:00"
+                "failed_at": "2026-05-03T02:52:54.741446+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -770,7 +778,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:13.780417+00:00"
+                "failed_at": "2026-05-03T02:52:55.204114+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -849,7 +857,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:14.291587+00:00"
+                "failed_at": "2026-05-03T02:52:55.821780+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -928,7 +936,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:14.719406+00:00"
+                "failed_at": "2026-05-03T02:52:56.431178+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1007,7 +1015,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:15.724999+00:00"
+                "failed_at": "2026-05-03T02:52:57.477866+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1086,7 +1094,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:16.189736+00:00"
+                "failed_at": "2026-05-03T02:52:58.251184+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1165,7 +1173,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:16.625488+00:00"
+                "failed_at": "2026-05-03T02:52:58.877514+00:00"
             },
             {
                 "place_name": "Sugar & Sip Coffee and Workshop",
@@ -1244,21 +1252,21 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:17.078566+00:00"
+                "failed_at": "2026-05-03T02:52:59.474418+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
             "candidate_count": 11,
             "duplicate_count": 0,
-            "airtable_photos_count": 1,
+            "airtable_photos_count": 4,
             "airtable_photos_google_count": 5,
             "data_file_photo_urls_count": 5,
             "provider_raw_photo_url_big_count": 5,
             "place_name": "Sugar & Sip Coffee and Workshop",
             "place_id": "ChIJt0PJPpOhVogRYRxxLbCaxFE",
             "record_id": "recSj3hFBGB3vtUyR",
-            "generated_at": "2026-05-03T01:20:17.079110+00:00",
+            "generated_at": "2026-05-03T02:52:59.474756+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 8,
             "pending_upload_count": 0,
