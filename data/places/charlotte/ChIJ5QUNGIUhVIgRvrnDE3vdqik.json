@@ -1571,6 +1571,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ5QUNGIUhVIgRvrnDE3vdqik/3b5c33de2c5176e019bb8774c5f811de9313dba203b9e41837ba5ce7be547bf5.jpg",
@@ -1672,7 +1680,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:06.448187+00:00"
+                "failed_at": "2026-05-03T02:52:46.691998+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1751,7 +1759,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:06.978569+00:00"
+                "failed_at": "2026-05-03T02:52:47.215036+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1830,7 +1838,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:07.470748+00:00"
+                "failed_at": "2026-05-03T02:52:47.875941+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1909,7 +1917,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:08.075258+00:00"
+                "failed_at": "2026-05-03T02:52:48.504652+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1988,7 +1996,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:13.456715+00:00"
+                "failed_at": "2026-05-03T02:52:49.611813+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -2067,7 +2075,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:13.891984+00:00"
+                "failed_at": "2026-05-03T02:52:50.409948+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -2146,7 +2154,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:14.365068+00:00"
+                "failed_at": "2026-05-03T02:52:50.949946+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -2225,21 +2233,21 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:20:14.764875+00:00"
+                "failed_at": "2026-05-03T02:52:51.577129+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
             "candidate_count": 11,
             "duplicate_count": 0,
-            "airtable_photos_count": 1,
+            "airtable_photos_count": 3,
             "airtable_photos_google_count": 5,
             "data_file_photo_urls_count": 5,
             "provider_raw_photo_url_big_count": 5,
             "place_name": "Platform Coffee",
             "place_id": "ChIJ5QUNGIUhVIgRvrnDE3vdqik",
             "record_id": "recDjtDUmCELLwJHj",
-            "generated_at": "2026-05-03T01:20:14.765230+00:00",
+            "generated_at": "2026-05-03T02:52:51.577449+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 8,
             "pending_upload_count": 0,
