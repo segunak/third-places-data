@@ -14766,10 +14766,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -14786,6 +14782,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -14822,13 +14826,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nokfpeC2qhIXlyKXLbbolvjvT9JXNj9psmfFa8alHWz6l1zwrSGLMKdm2RMalYE4FWEMw8GCmHoMep3WEqKAlIk2yPx9iHQsGzbF0qaBJVMmAqUk_LjNx668Vu0y74MZS5yE7KgQQ=w2048-h2048-k-no",
                 "source_url_sha256": "afb998e44b84bebaac3a5f463d0b6bf273e54e26f433467ea1e51d91641d5f8a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -14895,7 +14895,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:52.349676+00:00"
+                "failed_at": "2026-05-03T02:52:40.048381+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -14905,13 +14905,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVk-0Rf_8_XlRZzwPBpV7_iwH_Qu4BevdaaCepTXM8kb1WWVejOaSiMGDDC1Pv5CLtnvOAQ_Qd1k-f80aEOov2cGwjtHJJBH2oAXKDYnbBctyrwo932LMn-VNkb8mg_S3T0bL8og=w2048-h2048-k-no",
                 "source_url_sha256": "abb553bb2f69c5ef15d073c0e8edd20fbe6074bbb9fef11cc0c28b1da82ce6a7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -14978,7 +14974,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:52.669638+00:00"
+                "failed_at": "2026-05-03T02:52:40.588776+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -14988,13 +14984,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npXaV9nan1uWWq2bbQBPj0RXZI7kl40jZL7Z8mayP3Cb12XH7GepP6DuJj3NTDiIByPVl9VrKI4tTv4GPR3VBq_ctuAVg4n7xa-uEVfrnfsvvC46lUxjPq_O0e3bUoZvb7te48_=w2048-h2048-k-no",
                 "source_url_sha256": "b81fb7b29ecf0be3e6884868b6ee4edc1aa09abaf562147c2fa9b1f5334c342d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -15061,7 +15053,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:52.991023+00:00"
+                "failed_at": "2026-05-03T02:52:41.057231+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15071,13 +15063,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nooZb4IyLoM3voO7svTF2RkHbwr0lg12ek9a2pvBlSUbN42ECJXzxK7lkKyN2K1vjTzYek9seJY3f5qVFx2lJ9aOy6i1zTks8qW-uUODKQBqSYEeYqmOwQzOtNRtROVXE8SdCmnFg=w2048-h2048-k-no",
                 "source_url_sha256": "106dfaa470aaa15fb2fab9ce40ea078125f53d1225f5e7a0aa1278afdd0b190d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -15144,7 +15132,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:53.288984+00:00"
+                "failed_at": "2026-05-03T02:52:41.516004+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15154,13 +15142,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrHR4HbkrGhtM8M5HrzXoIYJTCeyzVRx0Y85ZUqCUXiew-7PsADzYFS6Wb1MgA7y4SLQs-nWUWwbF2tdv3yaSpTxe7NXX1o3xAgM-L3-G6pcvaSvKv-QYchfYdLRrwFTp-nblzrEQ=w2048-h2048-k-no",
                 "source_url_sha256": "1144d9ddfc3e78893611e83de3a3dd4e42e76b69c3e73667847e98062d379fd7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -15227,7 +15211,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:53.623628+00:00"
+                "failed_at": "2026-05-03T02:52:42.018827+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15237,13 +15221,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrxPC6qF3FDaPXVmVX_w6oPkj3qMcri6GFjPbTk6Nm7FmApszeXkyBc_RXzweqrvLH_r2JGoX9eEhJU5yMKlspu2Jkedj4MLA7P9sI7Q6TsBR7aBDF2l4K_71wA4-RTtlq_vKY1LseJmXnC=w2048-h2048-k-no",
                 "source_url_sha256": "67d9d4256dcd8dcc7f109caf319f1316ed0a6ce5084c2e2900348dfdb29e84e5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -15310,7 +15290,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:53.935797+00:00"
+                "failed_at": "2026-05-03T02:52:42.537115+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15320,13 +15300,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr1cgDo8CXc2Mo-EZoQBHZrZfV8ZcCIAh48fCI0_TXqLDpOUOSDHRp8Q7ArKqWhgUlNerMsQQVUBjdjuJboxLMOs5VpBBll1SVREwkPiLBmk-OL447gnBSk2y8vqeofcGcCVFVmaA=w2048-h2048-k-no",
                 "source_url_sha256": "50a8de1057fe6a7eeedd276d1fcf48d6d3db48966011f52619663b7258b0fe36",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -15393,7 +15369,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:54.258025+00:00"
+                "failed_at": "2026-05-03T02:52:42.944663+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15403,13 +15379,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noP7dlTDU7FkbckRVIVKxw6Qng0oqqbTi641n2KS3Ukzt7xqDA7xAbdF9MPC8H8-XnDfAffM426i6MTSYYgwGlpB99OyNgesgrsB6pnZJ4CnTFfBw2DLp77bASzD3Fw0mswEScpPw=w2048-h2048-k-no",
                 "source_url_sha256": "a9d994aad8942feb8ae5c0e012124089cf0d35435597653f813ead45635acaab",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -15476,7 +15448,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:54.565700+00:00"
+                "failed_at": "2026-05-03T02:52:43.360045+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15486,13 +15458,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npKTLdDieDn1inXYsIoeUMsJOfQtwmrjOXOsfvYL6t3pAHLnKDzqWlNwI2q-NgH9ouvk_qAYOTCpknfNCLTgqfiGIYe_ZyN7IvhEQQChBVf9POjCw6IPDT-WNHbJa7DDt-WZNk=w2048-h2048-k-no",
                 "source_url_sha256": "99bb5ee5a235d03cb5f6a7ea84df3afc17115b76b7cd06bf030b179656438307",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -15559,7 +15527,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:54.859851+00:00"
+                "failed_at": "2026-05-03T02:52:43.787135+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15569,13 +15537,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np88E5BA-jgx4eZQbRmviNP_6nNV1XvwihDD-iYIkkov2ijw9d-tLJ6L5LY6rVPxmmYcUgTG3KarBYFfxlOgVebfXzXOzwXeHyz90kNBG4rCDVnjPWbN_a6W1gF1Yohqr3eVZfv=w2048-h2048-k-no",
                 "source_url_sha256": "c33db33b747915cc9c2b398bd538547ab01a0e4a4acac53815a6773c8d8b23bc",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -15642,7 +15606,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:55.143856+00:00"
+                "failed_at": "2026-05-03T02:52:44.229100+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15652,13 +15616,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrIJV4-K0SlSibcaJIjFJJRPbVX4fTOdYBn3G3UK22zd8lynjGyJAm3_dR6QLIatmmhdFUDBqPAlPRhj6G4CiUu6UXtsUquqb7iXsR1gks4ZHiHzeMVH224QeYSIC9Yzm0Snp3B=w2048-h2048-k-no",
                 "source_url_sha256": "dee9034abe9e1af825405a31423eae50a32efa83439907bdc918fe740d4c0621",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -15725,7 +15685,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:55.461209+00:00"
+                "failed_at": "2026-05-03T02:52:44.653006+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15735,13 +15695,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nohymeMbvJ1xF7IxhswQ9yWSVb4FIIajprXtEaoKwFTATYkyELyBZZB8tiEVsR1Fn1Aszgq0GGZRXYVXaGycyN78Dnop1VzvFoFa4PZaCYi35k7j-I036PjuVySBAKN-2M3H3Wf=w2048-h2048-k-no",
                 "source_url_sha256": "cf55dd6934f98ba6055f8fca56e03c278c16ebae485d10d741146d316a95cf8f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -15808,7 +15764,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:55.753275+00:00"
+                "failed_at": "2026-05-03T02:52:45.099027+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15818,13 +15774,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npatNGHnbipkxG4Osedo_zJZL_TNY3mD976x61MFW1SKOMDedmipZKKsoBxQzb-5GfZXOPFDxnMNO1Zp2-b-BXEDrYlUewy3FxHk52qAOAgx3cKu5dT8_zeQtD3ZCq3WIbjXouhHw=w2048-h2048-k-no",
                 "source_url_sha256": "e1db8bf33b4df3bf6015b99ee9e437b3e3849f194696947cc32c66b08eefd7de",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -15891,7 +15843,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:56.047152+00:00"
+                "failed_at": "2026-05-03T02:52:45.610206+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15901,13 +15853,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqgO11O7IhL8f2hav3hUpZJSiwqWwWI6ao-Q7HPxlLLLsiJYiP1u7cQs7ygkW5H8MTVQP5nkSRtOU4NeahH021tnZ009hG3Ff4WpgG7BV9iTfXlKyujYqRGzjmzOn-Ta6qA8U0=w2048-h2048-k-no",
                 "source_url_sha256": "912b923efd8300b9e870dc33bd9a6accd4af39d02dd27485dfea22df9217f67e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -15974,7 +15922,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:56.347965+00:00"
+                "failed_at": "2026-05-03T02:52:46.140246+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -15984,13 +15932,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npLOgAkY-UWYU3OUA5xZKw6NmG0S_u1Fucd4jb_mnPxmhyyugp-BK8380U9U-jWZVQsceHB1-0vCUj2KXzCttkPNcTGn6m3E2sUbTftEu9YiwOfciSFmMkarLZw8pIixBkNFpQUFQ=w2048-h2048-k-no",
                 "source_url_sha256": "1109d958bc9aa55bdfd655c80d7c10b5aed0d5c78128b6fa64f35d342e2dbd57",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -16057,7 +16001,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:56.680751+00:00"
+                "failed_at": "2026-05-03T02:52:46.686328+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16067,13 +16011,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqI8sX-F6fTA2VYbJYPmOnZFdwTuzk1LLnHXN4Ylw7QHIdAdsg-6AHnr62VSoDwg6ZhgK3Hfm9zAgJn87kTcC_bcs1AATIJD5ajidQDmuWi7j4Ly4ANGLD46QscVVAQWzUODOYj=w2048-h2048-k-no",
                 "source_url_sha256": "c0111201599944bd5c10779c135619d4293e9411b184ccb17730c1857a319e63",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -16140,7 +16080,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:56.996887+00:00"
+                "failed_at": "2026-05-03T02:52:47.220650+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16150,13 +16090,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npQRf4LcchHVyZjBvR-JuNdl0atvQ4l-_tsMWFPVgYvmkVgZP6fCFi2LMc29b__0Jv_JppJSVU4t5jmnQB8hoCWbwOYajcqyuzl__MCZZl40RAkC-DDxhXhbzSWDttyi8dSvJzX=w2048-h2048-k-no",
                 "source_url_sha256": "d87f87144ed71baf12b856dbb31dbb4ba9ffd2c4c0d69a239e2327a97161b288",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -16223,7 +16159,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:57.304257+00:00"
+                "failed_at": "2026-05-03T02:52:47.871836+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16233,13 +16169,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npvArNGLHahBkcesOvHKmg-_BsDFVow3KGYiRTOkkssAOIVreXuCwwC6YN6ZWa7PiwbB5aAC7ESsM1Yp1826HBt9u4mForrT6rjP9u7Q9_HnBaksS4rb92jTW6-v5adwW9RbzzRiQ=w2048-h2048-k-no",
                 "source_url_sha256": "cd5a28d4d21c9fe0188f895d19f04019d45871d6fac3507fb0c7415951c7a982",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -16306,7 +16238,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:57.596775+00:00"
+                "failed_at": "2026-05-03T02:52:48.502265+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16316,13 +16248,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noOAK3AONSFOA2hW-zxkvLA_c9NKcD8V5qDVkmXMzUectpLy9Cmf0IAQBGa5v7cdr00Ao3JTi3JH4O9ZoSwHjYaGCKoAjsDuraw6_kaQCOSVHv7tswK0sFGeUBATj6B7kMFh9lB=w2048-h2048-k-no",
                 "source_url_sha256": "c1f05d39585a7d335d4c4f348cc380e66abe90524422d536ecab55f8bbda3ef9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -16389,7 +16317,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:57.914935+00:00"
+                "failed_at": "2026-05-03T02:52:49.613578+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16399,13 +16327,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrXRBKWgFXg9UtRlLqV6tEnHv2qPbSXX3OdGTBe8li4xfvBFqk9kyeY15dg5dE_8JZlSYvNP0jmTI_BHe9ojQr9kyREefMz_3Uimot0oeiQjbLnZPuXtjlWfiz1684O-i5qiF2w=w2048-h2048-k-no",
                 "source_url_sha256": "6a5e2ee56247a95713ea482a9b0820520a4f0813a481136a0b9f5f3576f3b158",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -16472,7 +16396,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:58.226590+00:00"
+                "failed_at": "2026-05-03T02:52:50.420492+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16482,13 +16406,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq0G_KGL5v328V6AkKPNGl114PbMNWLjyNoI3gcD6Facu0ZNAhfbfPscrTYEV48vWix4Aqr_N96FDVPQPbugP1XXjKSgvJHjjYdZb1PVLoTGk_Bu8qgI87thja_TF9Uarr0hv0HPg=w2048-h2048-k-no",
                 "source_url_sha256": "c8d72e2c00e527f8be55e331faf1e44ab0b57477eb4578a853da6f1886e607f8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -16555,7 +16475,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:58.561857+00:00"
+                "failed_at": "2026-05-03T02:52:50.898699+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16565,13 +16485,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npoxvV6k4uNXemx7AVl0pf7anRJ921VbHz_knpV4zNYF0Sc2SagXXFXujC0nxjW9JXFCqGohhMNxwLzuXQ0_Zoaoh1HWd3jxKe6b_zX0BuEFqr1Dgjl4WSOxqso-hcCkv502R8I=w2048-h2048-k-no",
                 "source_url_sha256": "272cc0f7d958319724eeca194568aa5d2a635357f02fe173af6b32b6fc7c7157",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -16638,7 +16554,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:58.895283+00:00"
+                "failed_at": "2026-05-03T02:52:51.452642+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16648,13 +16564,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrINlCbzJuFY9uNAxEGTDF9SeeeNfQr2eC6mUwA__Tzim-D8ZWme5oBuWrkOR410gI3npmM5VkYpXCWekv4FLxxMPfohvR6F679iPemUIkCvoQgypIQg12ByvTCZJR_klnbuVlHbA=w2048-h2048-k-no",
                 "source_url_sha256": "29a1a2ec540a0d1b819a186a42752a4e7ed81af0e862a054d35c3204dfdb9a60",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -16721,7 +16633,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:59.221325+00:00"
+                "failed_at": "2026-05-03T02:52:52.036079+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16731,13 +16643,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqPPAwBz8pfyzru92Otmom1Z_NVFAMXAy3otsRG5iFnOSEgfTJrbEETfDK_1_uIuY1Tvp2pBRwnEjPE5_ze9z8QG2cvfxYCp8YSY6eqBEktNJXE7ckoxXo8epktHojBtmzesR-hKbrn-gM=w2048-h2048-k-no",
                 "source_url_sha256": "fd9a927b365bdb98171a13008c6ea87b169a8b0cd984c3ae4d82021fca555295",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -16804,7 +16712,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:59.551806+00:00"
+                "failed_at": "2026-05-03T02:52:52.599778+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16814,13 +16722,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npC1mBkCyzju14JWfWCs4elSMEnbqhRWLddo-3XAIAhyctTc276ORMfko82XJVevNOvO05UqsNxG-vBRVS31D-zIBzMi3VjvcMCulCHlnRQOW7-cn7ZPpIY50YjzlF3z8vkMwI=w2048-h2048-k-no",
                 "source_url_sha256": "53194c339247ee553ad7ea672e671719e51dff0f43e038952b06dcef23e55baf",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -16887,7 +16791,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:59.880059+00:00"
+                "failed_at": "2026-05-03T02:52:53.083996+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16897,13 +16801,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np7f2Qr3-kXEpELpnnMkem8YUUYakZplMrKduttcdNHdCujx21dQQudGMXng_QxRMj2A_DgY9ux_G2OR5-19YyvsbnzWxW02W3NCFOEuSEI7GxnXhtmqkaUvc3GiwGqD3NnBir1SA=w2048-h2048-k-no",
                 "source_url_sha256": "0881fd7110ae08e7e0073f14b5ed99aba735152d6c5d35fdc079e6163874595c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -16970,7 +16870,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:00.179158+00:00"
+                "failed_at": "2026-05-03T02:52:53.608354+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -16980,13 +16880,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noQGWT8Pzy5_POgnEhpfxqpT8bi9yxJPJ1vxKOr2i-6mp61P5uKvMuZ1Q9-WSR9aFrQeFpMX43gUznDBAeqX3vhhxmQd9HMef1CvW7X22Z1Q5B0ahW_b0qlWx5UJBqJD3W9VbO9gQ=w2048-h2048-k-no",
                 "source_url_sha256": "cd867c7b124ed3ac61cebc1babbdc536618b72d92f642097f837c6a3b7fd9dad",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -17053,7 +16949,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:00.481546+00:00"
+                "failed_at": "2026-05-03T02:52:54.123414+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17063,13 +16959,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nouWf23cRRzNHeFPsbOnrKteIZuheuykr3r3xQPHCTPPN0vxfO2LLlmzFhtUQyP1e4HRcLEqziGNwksmscB839qyp7lXX-DDgJMKts5Zo4yuVEdAXpukXWH13xPFFOgKSI-Pg1hfA=w2048-h2048-k-no",
                 "source_url_sha256": "7a2adcf2b441e5e18013ad58fc03f531fcef7573ea2fe92e31677821024c4265",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -17136,7 +17028,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:00.803999+00:00"
+                "failed_at": "2026-05-03T02:52:59.672002+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17146,13 +17038,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noQ1U3MPwWcv4l_ndIqwVKfLmbP4iJnUn_Y4KcwvEQpDQu6M6vc-vH0W57Wx7bG3oT7pF-SgZKy2OkN6UNpVjTKLJ5T09v5t4_0vb8MnnHfH0Rh-L2ZXaGl1X3Y6kwy9cCNmATn=w2048-h2048-k-no",
                 "source_url_sha256": "0874844e6c3d721c436268de8584b23379a281e2db4f225bd5a1e2bb046e1a3d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -17219,7 +17107,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:01.114509+00:00"
+                "failed_at": "2026-05-03T02:53:00.371810+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17298,7 +17186,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:01.434799+00:00"
+                "failed_at": "2026-05-03T02:53:01.067331+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17377,7 +17265,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:01.755893+00:00"
+                "failed_at": "2026-05-03T02:53:01.620993+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17456,7 +17344,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:02.072685+00:00"
+                "failed_at": "2026-05-03T02:53:02.209113+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17535,7 +17423,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:02.397292+00:00"
+                "failed_at": "2026-05-03T02:53:02.817820+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17614,7 +17502,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:02.694588+00:00"
+                "failed_at": "2026-05-03T02:53:03.604795+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17693,7 +17581,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:02.985731+00:00"
+                "failed_at": "2026-05-03T02:53:04.222340+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17772,7 +17660,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:03.287436+00:00"
+                "failed_at": "2026-05-03T02:53:04.721900+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17851,7 +17739,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:03.571102+00:00"
+                "failed_at": "2026-05-03T02:53:05.877409+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -17930,7 +17818,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:03.894452+00:00"
+                "failed_at": "2026-05-03T02:53:06.665856+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18009,7 +17897,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:04.214844+00:00"
+                "failed_at": "2026-05-03T02:53:07.099125+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18088,7 +17976,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:04.538522+00:00"
+                "failed_at": "2026-05-03T02:53:07.492158+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18167,7 +18055,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:04.904600+00:00"
+                "failed_at": "2026-05-03T02:53:07.944681+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18246,7 +18134,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:05.287287+00:00"
+                "failed_at": "2026-05-03T02:53:08.410834+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18325,7 +18213,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:05.650327+00:00"
+                "failed_at": "2026-05-03T02:53:08.837839+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18404,7 +18292,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:06.041585+00:00"
+                "failed_at": "2026-05-03T02:53:09.379150+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18483,7 +18371,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:06.425200+00:00"
+                "failed_at": "2026-05-03T02:53:10.076609+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18562,7 +18450,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:06.828934+00:00"
+                "failed_at": "2026-05-03T02:53:10.777223+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18641,7 +18529,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:07.219934+00:00"
+                "failed_at": "2026-05-03T02:53:11.406829+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18720,7 +18608,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:07.635625+00:00"
+                "failed_at": "2026-05-03T02:53:11.909667+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18799,7 +18687,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:08.038283+00:00"
+                "failed_at": "2026-05-03T02:53:12.394206+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18878,7 +18766,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:08.460085+00:00"
+                "failed_at": "2026-05-03T02:53:12.916538+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -18957,7 +18845,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:08.961567+00:00"
+                "failed_at": "2026-05-03T02:53:13.442924+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19036,7 +18924,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:09.436876+00:00"
+                "failed_at": "2026-05-03T02:53:13.864900+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19115,7 +19003,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:09.965492+00:00"
+                "failed_at": "2026-05-03T02:53:14.234651+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19194,7 +19082,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:10.441781+00:00"
+                "failed_at": "2026-05-03T02:53:14.602490+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19273,7 +19161,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:10.936601+00:00"
+                "failed_at": "2026-05-03T02:53:14.944865+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19352,7 +19240,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:11.370458+00:00"
+                "failed_at": "2026-05-03T02:53:15.330890+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19431,7 +19319,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:11.795260+00:00"
+                "failed_at": "2026-05-03T02:53:15.824833+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19510,7 +19398,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:12.236379+00:00"
+                "failed_at": "2026-05-03T02:53:16.341579+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19589,7 +19477,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:12.690338+00:00"
+                "failed_at": "2026-05-03T02:53:16.848785+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19668,7 +19556,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:13.188463+00:00"
+                "failed_at": "2026-05-03T02:53:17.418345+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19747,7 +19635,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:13.798393+00:00"
+                "failed_at": "2026-05-03T02:53:17.935369+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19826,7 +19714,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:14.364267+00:00"
+                "failed_at": "2026-05-03T02:53:18.422543+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19905,7 +19793,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:14.964974+00:00"
+                "failed_at": "2026-05-03T02:53:18.925683+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -19984,7 +19872,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:15.849400+00:00"
+                "failed_at": "2026-05-03T02:53:19.527029+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20063,7 +19951,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:16.377870+00:00"
+                "failed_at": "2026-05-03T02:53:20.150131+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20142,7 +20030,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:16.900453+00:00"
+                "failed_at": "2026-05-03T02:53:20.782861+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20221,7 +20109,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:17.441706+00:00"
+                "failed_at": "2026-05-03T02:53:26.322307+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20300,7 +20188,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:17.981970+00:00"
+                "failed_at": "2026-05-03T02:53:26.740975+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20379,7 +20267,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:18.512916+00:00"
+                "failed_at": "2026-05-03T02:53:27.133254+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20458,7 +20346,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:19.035104+00:00"
+                "failed_at": "2026-05-03T02:53:27.625804+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20537,7 +20425,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:19.632744+00:00"
+                "failed_at": "2026-05-03T02:53:28.224761+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20616,7 +20504,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:20.206466+00:00"
+                "failed_at": "2026-05-03T02:53:28.739692+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20695,7 +20583,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:20.699377+00:00"
+                "failed_at": "2026-05-03T02:53:29.524684+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20774,7 +20662,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:21.212693+00:00"
+                "failed_at": "2026-05-03T02:53:35.108493+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20853,7 +20741,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:21.744874+00:00"
+                "failed_at": "2026-05-03T02:53:40.480942+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -20932,7 +20820,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:22.384947+00:00"
+                "failed_at": "2026-05-03T02:53:40.800041+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21011,7 +20899,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:22.975077+00:00"
+                "failed_at": "2026-05-03T02:53:41.097053+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21090,7 +20978,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:23.519020+00:00"
+                "failed_at": "2026-05-03T02:53:41.392806+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21169,7 +21057,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:24.048962+00:00"
+                "failed_at": "2026-05-03T02:53:41.703792+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21248,7 +21136,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:24.615328+00:00"
+                "failed_at": "2026-05-03T02:53:42.010823+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21327,7 +21215,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:25.114962+00:00"
+                "failed_at": "2026-05-03T02:53:42.374463+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21406,7 +21294,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:25.614064+00:00"
+                "failed_at": "2026-05-03T02:53:42.730105+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21485,7 +21373,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:26.106949+00:00"
+                "failed_at": "2026-05-03T02:53:43.129594+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21564,7 +21452,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:26.641880+00:00"
+                "failed_at": "2026-05-03T02:53:43.578336+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21643,7 +21531,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:27.116152+00:00"
+                "failed_at": "2026-05-03T02:53:43.960447+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21722,7 +21610,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:27.627539+00:00"
+                "failed_at": "2026-05-03T02:53:44.303691+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21801,7 +21689,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:28.145852+00:00"
+                "failed_at": "2026-05-03T02:53:44.699250+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21880,7 +21768,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:28.664113+00:00"
+                "failed_at": "2026-05-03T02:53:50.084040+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -21959,7 +21847,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:29.166060+00:00"
+                "failed_at": "2026-05-03T02:53:50.466959+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22038,7 +21926,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:29.680225+00:00"
+                "failed_at": "2026-05-03T02:53:50.823335+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22117,7 +22005,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:30.160702+00:00"
+                "failed_at": "2026-05-03T02:53:51.133194+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22196,7 +22084,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:30.669055+00:00"
+                "failed_at": "2026-05-03T02:53:51.434708+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22275,7 +22163,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:31.134632+00:00"
+                "failed_at": "2026-05-03T02:53:51.786830+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22354,7 +22242,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:31.616346+00:00"
+                "failed_at": "2026-05-03T02:53:52.106299+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22433,7 +22321,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:32.195359+00:00"
+                "failed_at": "2026-05-03T02:53:57.427988+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22512,7 +22400,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:32.812440+00:00"
+                "failed_at": "2026-05-03T02:53:57.766682+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22591,7 +22479,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:33.367508+00:00"
+                "failed_at": "2026-05-03T02:53:58.102477+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22670,7 +22558,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:33.887096+00:00"
+                "failed_at": "2026-05-03T02:54:03.459598+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22749,7 +22637,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:34.403314+00:00"
+                "failed_at": "2026-05-03T02:54:08.794006+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22828,7 +22716,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:39.820131+00:00"
+                "failed_at": "2026-05-03T02:54:09.119244+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22907,7 +22795,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:40.131064+00:00"
+                "failed_at": "2026-05-03T02:54:09.445778+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -22986,7 +22874,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:40.412692+00:00"
+                "failed_at": "2026-05-03T02:54:09.772034+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23065,7 +22953,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:40.775185+00:00"
+                "failed_at": "2026-05-03T02:54:15.086740+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23144,7 +23032,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:41.236943+00:00"
+                "failed_at": "2026-05-03T02:54:15.417986+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23223,7 +23111,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:41.710193+00:00"
+                "failed_at": "2026-05-03T02:54:15.734180+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23302,7 +23190,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:42.074869+00:00"
+                "failed_at": "2026-05-03T02:54:16.040058+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23381,7 +23269,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:47.438217+00:00"
+                "failed_at": "2026-05-03T02:54:16.340035+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23460,7 +23348,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:47.781674+00:00"
+                "failed_at": "2026-05-03T02:54:16.644797+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23539,7 +23427,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:48.126375+00:00"
+                "failed_at": "2026-05-03T02:54:16.962797+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23618,7 +23506,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:53.476293+00:00"
+                "failed_at": "2026-05-03T02:54:17.246103+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23697,7 +23585,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:53.819402+00:00"
+                "failed_at": "2026-05-03T02:54:17.550244+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23776,7 +23664,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:54.183122+00:00"
+                "failed_at": "2026-05-03T02:54:17.830176+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23855,7 +23743,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:54.494929+00:00"
+                "failed_at": "2026-05-03T02:54:18.137222+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -23934,7 +23822,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:54.811468+00:00"
+                "failed_at": "2026-05-03T02:54:18.439587+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24013,7 +23901,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:55.128349+00:00"
+                "failed_at": "2026-05-03T02:54:18.745831+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24092,7 +23980,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:55.441840+00:00"
+                "failed_at": "2026-05-03T02:54:19.037545+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24171,7 +24059,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:55.756621+00:00"
+                "failed_at": "2026-05-03T02:54:24.375515+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24250,7 +24138,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:56.083235+00:00"
+                "failed_at": "2026-05-03T02:54:24.718091+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24329,7 +24217,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:56.400327+00:00"
+                "failed_at": "2026-05-03T02:54:25.051250+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24408,7 +24296,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:56.754526+00:00"
+                "failed_at": "2026-05-03T02:54:25.399722+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24487,7 +24375,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:02.097350+00:00"
+                "failed_at": "2026-05-03T02:54:30.713097+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24566,7 +24454,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:02.609434+00:00"
+                "failed_at": "2026-05-03T02:54:30.988552+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24645,7 +24533,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:02.988388+00:00"
+                "failed_at": "2026-05-03T02:54:31.275210+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24724,7 +24612,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:03.285259+00:00"
+                "failed_at": "2026-05-03T02:54:31.576740+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24803,7 +24691,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:03.568300+00:00"
+                "failed_at": "2026-05-03T02:54:31.872154+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24882,7 +24770,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:03.867559+00:00"
+                "failed_at": "2026-05-03T02:54:32.166425+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -24961,7 +24849,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:04.188355+00:00"
+                "failed_at": "2026-05-03T02:54:32.468257+00:00"
             },
             {
                 "place_name": "Moji Teahouse",
@@ -25040,27 +24928,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:19:04.501188+00:00"
+                "failed_at": "2026-05-03T02:54:32.742696+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 130,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 131,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 100,
             "place_name": "Moji Teahouse",
             "place_id": "ChIJI2RE3kqZVogR7K1tGgNZ6PA",
             "record_id": "rec6R1kKzXKHyWJQA",
-            "generated_at": "2026-05-02T22:19:04.501542+00:00",
+            "generated_at": "2026-05-03T02:54:32.743075+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 128,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
