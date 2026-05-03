@@ -2382,7 +2382,459 @@
             "https://lh3.googleusercontent.com/p/AF1QipO6vm2we80fXnSm2wL1OlpKjzNeIL5d-RvFeePi=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipP6ZfPyNdIyY-Hpy6Aq1w7RV7fvElm0J3kM_6Z4=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipP3yeTxBZPNcAerc04whZz_-ScH7ijCI6VMzUqU=w2048-h2048-k-no"
-        ]
+        ],
+        "azure_assets": [
+            {
+                "place_name": "Change Please Coffee",
+                "place_id": "ChIJHacK4I2hVogRden7F4yAktU",
+                "record_id": "rec3FtoZYwJ7DsqcC",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=DL0mL3kfadzFnn4FEAG0rg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=36.098526&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=DL0mL3kfadzFnn4FEAG0rg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=36.098526&pitch=0&thumbfov=100",
+                "source_url_sha256": "a34b7eac9250f9b801219a4d6452e0c88f719ed1b75d5c087b76b77e41b95df7",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHacK4I2hVogRden7F4yAktU/a34b7eac9250f9b801219a4d6452e0c88f719ed1b75d5c087b76b77e41b95df7.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJHacK4I2hVogRden7F4yAktU/a34b7eac9250f9b801219a4d6452e0c88f719ed1b75d5c087b76b77e41b95df7.jpg",
+                "content_sha256": "35b9742c3d849664de455530558bef79b65733a808b78fb916d7bcc6673e7b7e",
+                "content_type": "image/jpeg",
+                "bytes": 167282,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=DL0mL3kfadzFnn4FEAG0rg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=36.098526&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=DL0mL3kfadzFnn4FEAG0rg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=36.098526&pitch=0&thumbfov=100",
+                        "bytes": 167282,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:57.292010+00:00"
+            },
+            {
+                "place_name": "Change Please Coffee",
+                "place_id": "ChIJHacK4I2hVogRden7F4yAktU",
+                "record_id": "rec3FtoZYwJ7DsqcC",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMWzyB2K0D9T5PveXKvmUHWdutKk88ZyToYln5y=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMWzyB2K0D9T5PveXKvmUHWdutKk88ZyToYln5y=w2048-h2048-k-no",
+                "source_url_sha256": "7d21bc8983420a00d8acaf9ee3c8b10fd539df2143c70674cf668f5017d664aa",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHacK4I2hVogRden7F4yAktU/7d21bc8983420a00d8acaf9ee3c8b10fd539df2143c70674cf668f5017d664aa.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJHacK4I2hVogRden7F4yAktU/7d21bc8983420a00d8acaf9ee3c8b10fd539df2143c70674cf668f5017d664aa.jpg",
+                "content_sha256": "5bb8fa9cb5d04c5288709de214d84d9aeeb5ecd5df8efb535b3be566fceb3280",
+                "content_type": "image/jpeg",
+                "bytes": 853863,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMWzyB2K0D9T5PveXKvmUHWdutKk88ZyToYln5y=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMWzyB2K0D9T5PveXKvmUHWdutKk88ZyToYln5y=w2048-h2048-k-no",
+                        "bytes": 853863,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:57.830113+00:00"
+            },
+            {
+                "place_name": "Change Please Coffee",
+                "place_id": "ChIJHacK4I2hVogRden7F4yAktU",
+                "record_id": "rec3FtoZYwJ7DsqcC",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOZ2y2cJmy44d9esVW4XLLxMoaDrIssASTOdLTF=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOZ2y2cJmy44d9esVW4XLLxMoaDrIssASTOdLTF=w2048-h2048-k-no",
+                "source_url_sha256": "afdf53c82affdd07065eafe25a6e4ec134f2389cf1b7fc38ad3fb847c3697e89",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHacK4I2hVogRden7F4yAktU/afdf53c82affdd07065eafe25a6e4ec134f2389cf1b7fc38ad3fb847c3697e89.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJHacK4I2hVogRden7F4yAktU/afdf53c82affdd07065eafe25a6e4ec134f2389cf1b7fc38ad3fb847c3697e89.jpg",
+                "content_sha256": "726448c0fbfd3b9ea69a889592b1c7d0842564b539d65796537bf186fae42da5",
+                "content_type": "image/jpeg",
+                "bytes": 826780,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOZ2y2cJmy44d9esVW4XLLxMoaDrIssASTOdLTF=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOZ2y2cJmy44d9esVW4XLLxMoaDrIssASTOdLTF=w2048-h2048-k-no",
+                        "bytes": 826780,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:58.505207+00:00"
+            },
+            {
+                "place_name": "Change Please Coffee",
+                "place_id": "ChIJHacK4I2hVogRden7F4yAktU",
+                "record_id": "rec3FtoZYwJ7DsqcC",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipO-TrT2HtppipMiaCoqqoot4p9RlCHYwpeTkvoG=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipO-TrT2HtppipMiaCoqqoot4p9RlCHYwpeTkvoG=w2048-h2048-k-no",
+                "source_url_sha256": "db10624b489277395db5d83aa1c77c6c8576ed4034e7e7c9e1f2713006d9a82b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[3]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHacK4I2hVogRden7F4yAktU/db10624b489277395db5d83aa1c77c6c8576ed4034e7e7c9e1f2713006d9a82b.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJHacK4I2hVogRden7F4yAktU/db10624b489277395db5d83aa1c77c6c8576ed4034e7e7c9e1f2713006d9a82b.jpg",
+                "content_sha256": "1bd20fbcb1afc6bfee76b6f2f3ce2216f497fb2afdb1a4c4ed98175f8ed94c68",
+                "content_type": "image/jpeg",
+                "bytes": 735391,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipO-TrT2HtppipMiaCoqqoot4p9RlCHYwpeTkvoG=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipO-TrT2HtppipMiaCoqqoot4p9RlCHYwpeTkvoG=w2048-h2048-k-no",
+                        "bytes": 735391,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:37:59.546587+00:00"
+            },
+            {
+                "place_name": "Change Please Coffee",
+                "place_id": "ChIJHacK4I2hVogRden7F4yAktU",
+                "record_id": "rec3FtoZYwJ7DsqcC",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOmWc3-oy4d_dMay0xyd2WkwwurG-zcD8kWvrZB=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOmWc3-oy4d_dMay0xyd2WkwwurG-zcD8kWvrZB=w2048-h2048-k-no",
+                "source_url_sha256": "b80d7f0be906d5e1601f94e4dea38b5a43f93e893c4432c88c758476004d8fb4",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[4]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHacK4I2hVogRden7F4yAktU/b80d7f0be906d5e1601f94e4dea38b5a43f93e893c4432c88c758476004d8fb4.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJHacK4I2hVogRden7F4yAktU/b80d7f0be906d5e1601f94e4dea38b5a43f93e893c4432c88c758476004d8fb4.jpg",
+                "content_sha256": "1a53ed1212acc5a33b278279fce554f9e57bdd4cebb4e5c2b21ad7cafc18451f",
+                "content_type": "image/jpeg",
+                "bytes": 357231,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOmWc3-oy4d_dMay0xyd2WkwwurG-zcD8kWvrZB=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOmWc3-oy4d_dMay0xyd2WkwwurG-zcD8kWvrZB=w2048-h2048-k-no",
+                        "bytes": 357231,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:38:00.194274+00:00"
+            },
+            {
+                "place_name": "Change Please Coffee",
+                "place_id": "ChIJHacK4I2hVogRden7F4yAktU",
+                "record_id": "rec3FtoZYwJ7DsqcC",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMTprTSEli8G1wHoFDy-EGlj0xTJko9fnRSPozH=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMTprTSEli8G1wHoFDy-EGlj0xTJko9fnRSPozH=w2048-h2048-k-no",
+                "source_url_sha256": "2af846125f24aebe783f943e0c655ca76db0ce737b93c16426e9e1c1f8d099ab",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[5]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHacK4I2hVogRden7F4yAktU/2af846125f24aebe783f943e0c655ca76db0ce737b93c16426e9e1c1f8d099ab.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJHacK4I2hVogRden7F4yAktU/2af846125f24aebe783f943e0c655ca76db0ce737b93c16426e9e1c1f8d099ab.jpg",
+                "content_sha256": "b6d7c0bb03de83066012c58c62b891bf15f15540c0cf437f45d668562ea5b4b3",
+                "content_type": "image/jpeg",
+                "bytes": 1250357,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMTprTSEli8G1wHoFDy-EGlj0xTJko9fnRSPozH=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMTprTSEli8G1wHoFDy-EGlj0xTJko9fnRSPozH=w2048-h2048-k-no",
+                        "bytes": 1250357,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:38:01.068419+00:00"
+            },
+            {
+                "place_name": "Change Please Coffee",
+                "place_id": "ChIJHacK4I2hVogRden7F4yAktU",
+                "record_id": "rec3FtoZYwJ7DsqcC",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipO6vm2we80fXnSm2wL1OlpKjzNeIL5d-RvFeePi=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipO6vm2we80fXnSm2wL1OlpKjzNeIL5d-RvFeePi=w2048-h2048-k-no",
+                "source_url_sha256": "5199e66cbdd8869c6c3a2f99378f2aa7727392b4c3f3f708539aad349f51885e",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[6]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[6]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHacK4I2hVogRden7F4yAktU/5199e66cbdd8869c6c3a2f99378f2aa7727392b4c3f3f708539aad349f51885e.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJHacK4I2hVogRden7F4yAktU/5199e66cbdd8869c6c3a2f99378f2aa7727392b4c3f3f708539aad349f51885e.jpg",
+                "content_sha256": "e5540c2fcca81ce092a6f3b52952feb8196dea1f747dd9ba299859f49ebfb3d7",
+                "content_type": "image/jpeg",
+                "bytes": 634737,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipO6vm2we80fXnSm2wL1OlpKjzNeIL5d-RvFeePi=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipO6vm2we80fXnSm2wL1OlpKjzNeIL5d-RvFeePi=w2048-h2048-k-no",
+                        "bytes": 634737,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:38:01.725050+00:00"
+            },
+            {
+                "place_name": "Change Please Coffee",
+                "place_id": "ChIJHacK4I2hVogRden7F4yAktU",
+                "record_id": "rec3FtoZYwJ7DsqcC",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipP6ZfPyNdIyY-Hpy6Aq1w7RV7fvElm0J3kM_6Z4=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipP6ZfPyNdIyY-Hpy6Aq1w7RV7fvElm0J3kM_6Z4=w2048-h2048-k-no",
+                "source_url_sha256": "de4cd6b04a6f5f7f1e8660cf1d2b604dc0a6c2ba7f1a263f92ce6f9832a99744",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[7]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[7]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHacK4I2hVogRden7F4yAktU/de4cd6b04a6f5f7f1e8660cf1d2b604dc0a6c2ba7f1a263f92ce6f9832a99744.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJHacK4I2hVogRden7F4yAktU/de4cd6b04a6f5f7f1e8660cf1d2b604dc0a6c2ba7f1a263f92ce6f9832a99744.jpg",
+                "content_sha256": "42e04b92bdea4137728f839608f40e5888b05ba87087fad91df135df827dbbf9",
+                "content_type": "image/jpeg",
+                "bytes": 506722,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipP6ZfPyNdIyY-Hpy6Aq1w7RV7fvElm0J3kM_6Z4=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipP6ZfPyNdIyY-Hpy6Aq1w7RV7fvElm0J3kM_6Z4=w2048-h2048-k-no",
+                        "bytes": 506722,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:38:02.272211+00:00"
+            },
+            {
+                "place_name": "Change Please Coffee",
+                "place_id": "ChIJHacK4I2hVogRden7F4yAktU",
+                "record_id": "rec3FtoZYwJ7DsqcC",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipP3yeTxBZPNcAerc04whZz_-ScH7ijCI6VMzUqU=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipP3yeTxBZPNcAerc04whZz_-ScH7ijCI6VMzUqU=w2048-h2048-k-no",
+                "source_url_sha256": "d8776d1f1c006460f4dbdc59e91473d1ed2d35dd768269e0af103b32d648f800",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[8]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[8]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJHacK4I2hVogRden7F4yAktU/d8776d1f1c006460f4dbdc59e91473d1ed2d35dd768269e0af103b32d648f800.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJHacK4I2hVogRden7F4yAktU/d8776d1f1c006460f4dbdc59e91473d1ed2d35dd768269e0af103b32d648f800.jpg",
+                "content_sha256": "6e5d7e90674102306f1509157170c2cdff73d66ef5c5fe8d1497a4731c7b10d8",
+                "content_type": "image/jpeg",
+                "bytes": 55692,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipP3yeTxBZPNcAerc04whZz_-ScH7ijCI6VMzUqU=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipP3yeTxBZPNcAerc04whZz_-ScH7ijCI6VMzUqU=w2048-h2048-k-no",
+                        "bytes": 55692,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:38:02.639440+00:00"
+            }
+        ],
+        "azure_asset_failures": [],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 9,
+            "duplicate_count": 9,
+            "airtable_photos_count": 9,
+            "airtable_photos_google_count": 9,
+            "data_file_photo_urls_count": 9,
+            "provider_raw_photo_url_big_count": 0,
+            "place_name": "Change Please Coffee",
+            "place_id": "ChIJHacK4I2hVogRden7F4yAktU",
+            "record_id": "rec3FtoZYwJ7DsqcC",
+            "generated_at": "2026-05-03T06:38:02.639538+00:00",
+            "azure_assets_count": 9,
+            "failed_upload_count": 0,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 9,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 9,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-01T20:26:51.645532"
