@@ -14959,10 +14959,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -14971,6 +14967,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[19].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -15009,10 +15013,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -15021,6 +15021,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -15059,10 +15067,6 @@
                 "source_path": "fields.Photos[2]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
                     }
@@ -15071,6 +15075,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[10].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -15109,10 +15121,6 @@
                 "source_path": "fields.Photos[3]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
                     }
@@ -15121,6 +15129,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[95].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -15157,13 +15173,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noi3y9zHZjac-_C8r-RnM7HhXLm5baSA_5fwR4dJAKfVSA5PkkMIewNTP7iJu4OwpDI6c8wVR05eZhrJzfcNM7DT0V1-YISSQBMtdjBFmigENMlZpL6AqK7I1Hz9POOVSnUmHlw=w2048-h2048-k-no",
                 "source_url_sha256": "7f553f6a86060638d41173fe1b84926dc9333d2ebf1ff637f6dfbc1c2715ff89",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -15230,7 +15242,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:05.903611+00:00"
+                "failed_at": "2026-05-03T02:52:52.601549+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -15240,13 +15252,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrDvtDLwPvj_a4_Tr5n23H2O5exCQTVph5bjsLyVye6QPGhBSESeD4Q6s8ZIdqHHbJ9ZNolp_JIhkTN7rzBDIwHNi9oj3MtyswmNtDq2K13_c_MArxRwPe15DTO3iIiZBxqoTY=w2048-h2048-k-no",
                 "source_url_sha256": "1e863e2550d4e96a4efce5a7b38d4e3493395056756ff36945bde89a43980f99",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -15313,7 +15321,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:06.545595+00:00"
+                "failed_at": "2026-05-03T02:52:53.092840+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -15323,13 +15331,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrbJY6_Tc2qWf4Tyc40sqiTg5OWnu4BgO70zkKVV5rM0FUduUqhe6ipauel_CA-8wahfKthDienLS96lyKq29cj0GWCmDp4jc71lldPYc4rJV7jM9e8ZBkxuWsto8DycQ_iEuDb9g=w2048-h2048-k-no",
                 "source_url_sha256": "3c4d5fd473003a14b735ba6cd7b6275b955038992c85a689c14227def25264da",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -15396,7 +15400,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:07.297601+00:00"
+                "failed_at": "2026-05-03T02:52:53.601588+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -15406,13 +15410,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqj1PIwYqNZquJgI7IC51lS3RdfVUyNXIW5SBSTtNm7UIn8cKoelZvMJWw0O4_yGkR-1ZnB5Ev8I9ET10xMZJxygBGmAEwhHugbfN7BRN6intx5m0Gm_qQUY1NPTTTzQrnGRprCJQ=w2048-h2048-k-no",
                 "source_url_sha256": "dbc383607329daa7dbc32995f3c0107f50abea110a5bdeca3ad9d3664eff360a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -15479,7 +15479,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:07.901766+00:00"
+                "failed_at": "2026-05-03T02:52:54.124563+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -15489,13 +15489,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no_X2QLJqTJoH5geilR7v-RNuQMhkTm6PcP0X6uj0fBn39RRYpV6wCOgzcHipxFt0BQ8oXSJQg-CqbMtjQas8WYN5ZJCZMcSiPaguSenhCTvchzRjQHth9v2brbwoGQagYxnQbi_g=w2048-h2048-k-no",
                 "source_url_sha256": "aafbb25a7eb0d4ecd636b7881c1f98c67343f97233b491c5b814d95dfa32cfa8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -15562,7 +15558,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:08.567778+00:00"
+                "failed_at": "2026-05-03T02:52:54.580512+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -15572,13 +15568,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrmYyDK5VW1pf0g6WXtDEcRpaIll5QIo0w5JJplwARNbWF5R0is__MzavG2QoeZvQ9IzzCKB_RK7PnJVuWM8RQMcHojPhT0txxwCX9IxYufJyDYxBlPGxQPvosCWcjkoxDEyAkCRg=w2048-h2048-k-no",
                 "source_url_sha256": "3169d316dd044863a4a326b3859f3ff04b8392cd4d200f4edc43d0e279485c75",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -15645,7 +15637,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:09.106697+00:00"
+                "failed_at": "2026-05-03T02:52:55.114600+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -15655,13 +15647,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noB5xC78shad6PlaxbwmJIj-VBvQ7cOZxIO7EhLMqoWbnBTi0CP3rtqyXBslSlNi4K7sKD08C0QuNLBIEEbvb10m9m5itin-RAr5Q9aCcKl-Wp0PuZ6bzOtd23_L4wfWd_1Itw=w2048-h2048-k-no",
                 "source_url_sha256": "0e3828fad094c81b29875d6a6c67fed9f074b7b06c8300a9eb61591606614f11",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -15728,7 +15716,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:09.687263+00:00"
+                "failed_at": "2026-05-03T02:52:55.722422+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -15738,13 +15726,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noieYKrAFowAxMIT_-8V4nAUo4bV4Eokd-TGemKsI5HZD5dNJEDS8RTDwl_8jtNRwkbFC4MSqW_j1W7UoR0la2b44LdOT_lE5Gxpf_NiZDAODb-Gvz1KL7fo4MwedwNchZbWTWMbQ=w2048-h2048-k-no",
                 "source_url_sha256": "afdfbc6603ec73207fc8148e6daa65ac7010fd833d324395531a4b119c24f13e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -15811,7 +15795,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:10.271612+00:00"
+                "failed_at": "2026-05-03T02:52:56.336462+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -15821,13 +15805,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npYg1EuPS049LQekWHQP75gQ8huR8beveBteJHCxG4lqS036qc4w7xGgWrigr0dEelCeFhQ8q7Bi3Ch1vT9TiRiojVWZ-AhNo8SoTWi_09thU5BdV1OOKPoPsuvgNM4V0vOKAlH-A=w2048-h2048-k-no",
                 "source_url_sha256": "7e7ad7e8b8aca9d866afd6ba5b069f1538c4e417d25bf952ff9fe5b7e1f8cc0d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -15894,7 +15874,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:10.808232+00:00"
+                "failed_at": "2026-05-03T02:52:57.372868+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -15904,13 +15884,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nop5nRGVFHevk31UNvW5dzxNBorpcN6uW9GA59Oif4o8eOPJ_yfHnJPvOjLffxtguKCexPHyozTNG-5JYcNQ8_KDnTyzwKznCBa0-41PVaHbqdTeagF9crSSlCmUSTAkljRTk29xQ=w2048-h2048-k-no",
                 "source_url_sha256": "def31ba23764fd93028df7de37ba009b11202991113c6f568a80aa7ea440ac45",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -15977,7 +15953,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:11.366770+00:00"
+                "failed_at": "2026-05-03T02:52:58.153109+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -15987,13 +15963,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noV9OesYWMwR601MftZ0SAq7C6aq95yOdRqjeSVshWEhOJAp14043w5PiRIW1qX08tef16NRKIVaT3hfFOzKOzNrUDBNQYvR0E5dAVoG-SJ05YzMUyJTZudqPahxVLETLjDwRZ5=w2048-h2048-k-no",
                 "source_url_sha256": "d0b885dd59be9a3a8764dfce572de6e1ff6044b10f81658fa0d45c016e65fff1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -16060,7 +16032,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:12.089970+00:00"
+                "failed_at": "2026-05-03T02:52:58.680329+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16070,13 +16042,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4novymPpiy1K4Sz_OdUyMoqCOos-uMhRZ5CLJfRxEOvsnEMab2MIRPTF3h4f5ha8YlOLd8oYNW8WwHrZIO_YXpN9rfoPrY3dxJIAIf09RVpJ7n5FrzyjFzCdsVtA2_EaNLiP_0SveA=w2048-h2048-k-no",
                 "source_url_sha256": "2f3becdc4c8b2a9ea61314306c8357c7d8b4cf3cf92eefd4e113d5de6b8262a3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -16143,7 +16111,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:12.839217+00:00"
+                "failed_at": "2026-05-03T02:52:59.276506+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16153,13 +16121,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrRlO_bmQ5cAGJzwfX_-sajLlPLU_dZh7OhMTa47gqW840ErcqxpDKC6gciFZ4ILIoO1CV-hque7mqbFKX8ZjNlCCZilTu_kDj48vczUfXmiqEiqi71z6o3EnrR9xQt7yN8igyotA=w2048-h2048-k-no",
                 "source_url_sha256": "75068c1b9e233cfb74e68d88874be8bb9e7f44659865e13f64f06125f22b5bf1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -16226,7 +16190,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:13.489201+00:00"
+                "failed_at": "2026-05-03T02:52:59.877961+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16236,13 +16200,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npALK-a-xZM-Di8ptj6kzm6C9tVQfcNruinuaLQQn5VkHe3iSnA_KXtMERzbxZcjtnONR9NTjquAhix82f5aIJobh5bkNVMHFbJQ9kiF2dvc2RedavIpufm8-tMs6YTrJZQ6yIr=w2048-h2048-k-no",
                 "source_url_sha256": "2ad7c534765631065428791b6ed469e4eb3ccd8eba660ba50a3da90532c44107",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -16309,7 +16269,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:14.149500+00:00"
+                "failed_at": "2026-05-03T02:53:00.580810+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16319,13 +16279,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqH6OvBaZSlisLA1vUHDj9wAvVuAL3m0UE6SFJTStvbmhRvmlJDfChljhQYl3yUwEiUD-Kw38qV0q-JPqvhZq13JxRYsCtvsZNTVXasfu2e_ipql-ae4TpfTmq7EfNuCpfWOLmGNw=w2048-h2048-k-no",
                 "source_url_sha256": "61249e298df9788a31c2d9db77902402434891a80de71c66c47ebdee15c89d5b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -16392,7 +16348,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:14.745166+00:00"
+                "failed_at": "2026-05-03T02:53:01.146288+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16402,13 +16358,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nohoV7QpkM0ArZSd0Hth_SyjZYeZ5ocSY7c9UimetxLhDxal6F0e5McxlWaabzePr1vxHdsJfsHn8-8mHEvOKFljJSabDsQyf9cm9JLP2cTzaPQfqEGn-By5Nnn-DWueeLv_Pc=w2048-h2048-k-no",
                 "source_url_sha256": "be3ef9692f513076879edfc8a569bf6a787b72fbf2b4fc91212be93439790015",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -16475,7 +16427,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:15.439398+00:00"
+                "failed_at": "2026-05-03T02:53:01.710389+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16485,13 +16437,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npxR8bjfbWEPHBvB6p3xKaEcW7_gtF6YPQbuFofFmVBbAIEA1TK00oY4KHVomQEOmrbvHfr7cV0-YyBFs-etue0EgTO3PNJ6-Wo2z-NCWnsXkoebxMk8yKy_YUCtRfBWSzF65Ph=w2048-h2048-k-no",
                 "source_url_sha256": "08c45fcf7aaee126eef34c99c379ef5ef01f330147cd8a953606d3bf63cbc6d0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -16558,7 +16506,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:16.086333+00:00"
+                "failed_at": "2026-05-03T02:53:02.329559+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16568,13 +16516,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nriyCFiLEJ4HPQFooYc3BtRMT1RLOuENtq0ihsLckzCCughZJAbTo0hoX1H7NPtk8CGD7SaZmtdB6iBzc8CGzRQYvyQpAyM4cRrXzPErHtMSqwVPm3dVI8vEhzkCq3JU0A9W-eA9ZwtItQH=w2048-h2048-k-no",
                 "source_url_sha256": "17bc070efa3741f57c8d0cbf105b1bd5dcfaeee2f8020ff43db2dfbaf487eca4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -16641,7 +16585,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:16.938415+00:00"
+                "failed_at": "2026-05-03T02:53:02.920246+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16651,13 +16595,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrFgGUjjT4u7nusRfC0rUIP5vJNUCd_qtQfdkoahtBrbOn40G8ZFpWgTA3H-sElmE-lSYfK8hgWwcbwyef8txaEjNodOzIhSC8rDONnEySqrjDOqS0DURkVV2-A8BntUQDahFcrtQ=w2048-h2048-k-no",
                 "source_url_sha256": "b534a8bc463a7f3c1e607bfff894dcfc2f38da7275071cbf1111f458fd219150",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -16724,7 +16664,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:17.976250+00:00"
+                "failed_at": "2026-05-03T02:53:03.703346+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16734,13 +16674,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noxTdGbv5fvMmB7TmUhMmwq7OClKQLoSVSvLFkAyEsGWKyxvvUSiWpYkFegUTpciCFBp4i9NIRyOdED2EsZ99RpArXvGzyykmbP2bJ_OUvHVy8qfJ6EQayN1JaU4Zs0co19M1d6=w2048-h2048-k-no",
                 "source_url_sha256": "b80a1bd8263b3ff4df31acac4f34bd305894808f90683743e49682fa65a3ad0b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -16807,7 +16743,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:18.657836+00:00"
+                "failed_at": "2026-05-03T02:53:09.316183+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16817,13 +16753,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqtqJxeFea3_ichQTqV39k7OH8ueL4m3cFWYI8c1TBufQ_9DqkiyFLneser7jDL2XrYtvcyKrLpok1BIAAm6hu39ixM1TOibLw8Bg5G9bp2rvTeFO0xFmmRnmU5UBwxyPnnSzg=w2048-h2048-k-no",
                 "source_url_sha256": "823712b8b2f01bde69a46b493de1037d5867c3016adffb302ba1a9cb44d48a4a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -16890,7 +16822,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:19.335247+00:00"
+                "failed_at": "2026-05-03T02:53:10.053134+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16900,13 +16832,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr3Z-P1_gWYDA0gYzzTGHS4gA2tym5DZuoZiF9YlTITtzQViOeRybRY34SA4dQsltJqXez7WbBhPbiO6psnkvkeFM5pzCJw2K_ybPe_i56useXt23IlxBL9YmcNumWYa7Jiw-c=w2048-h2048-k-no",
                 "source_url_sha256": "4befeb6e6c49261cc11173cceb55da37c1e276504d5f1d4f55eb1928ec1b51f2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -16973,7 +16901,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:20.677636+00:00"
+                "failed_at": "2026-05-03T02:53:10.772450+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -16983,13 +16911,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npBwkVb067FbOKkEKJrvld1fSUPI4xAoc2ysdVUpM1GaLSbCO9ygSbmWNRx6-a7pNgFsUxVjG0q9VPJKLFTTkp7NbohPaSDMGPnPHzenOhJlrNswpnY2E_6280t_XczL_JcaYyI0g=w2048-h2048-k-no",
                 "source_url_sha256": "c993255a88ba58a7d2644f594ae625b86782cdca96423cb50244408190f966ef",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -17056,7 +16980,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:21.774862+00:00"
+                "failed_at": "2026-05-03T02:53:11.379491+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17066,13 +16990,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npq_LT8JhziDvE3GSpfH0Dt1a3gdtuJPfIk9hw7aTlQTSJSyiOQTtOgsgB1qCctxPr0C1qAFjtwEDyxeQYmKCpw6aRQodBl8kp_jvM0Nrf7TGzuhk-4Wd1mcACE4ESvlwgmXcxn=w2048-h2048-k-no",
                 "source_url_sha256": "7676127c8cc450a8d8d443fd6ed0e8fe7fdbbbfb1734cdce3566fc7b4a471d1b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -17139,7 +17059,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:22.510621+00:00"
+                "failed_at": "2026-05-03T02:53:11.896738+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17149,13 +17069,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noMLbxoAoCWP9MpcqPxxmbhfX6Pv7eG6gYIEOC2INgZQt80bW9pd5BFnNdBlAN0AoGcSvxYvkQb6b791kwU0eeXZ9VUKHwGdohbcNb2aL6StMjieAQeDzLkk4GdhFsyU15XYVCnOA=w2048-h2048-k-no",
                 "source_url_sha256": "7cadda3110cfa72f83133abacdeac9c2988f6d10c79302aa85a4824761583ba4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -17222,7 +17138,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:23.139424+00:00"
+                "failed_at": "2026-05-03T02:53:12.392514+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17232,13 +17148,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqO0q590LjIFMUhoVylBjlS99dXHu5QXSy207YaB2qT-gCSUHUOPxhk9ma_FVKLDdkWv3ownQX7USgLi6jxBOWsEsk4NVimMTQuXSPGr1ftVS5CXzoXp5QHjGDL-xo2TnGTlotQg=w2048-h2048-k-no",
                 "source_url_sha256": "44157abc8c203953f5a87956b7b1e6e035ea743f30c863417121bb30f63ff3f3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -17305,7 +17217,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:23.734582+00:00"
+                "failed_at": "2026-05-03T02:53:12.914807+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17384,7 +17296,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:24.365149+00:00"
+                "failed_at": "2026-05-03T02:53:13.441546+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17463,7 +17375,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:25.103093+00:00"
+                "failed_at": "2026-05-03T02:53:13.863770+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17542,7 +17454,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:25.745167+00:00"
+                "failed_at": "2026-05-03T02:53:14.232454+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17621,7 +17533,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:26.877873+00:00"
+                "failed_at": "2026-05-03T02:53:14.593522+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17700,7 +17612,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:27.448074+00:00"
+                "failed_at": "2026-05-03T02:53:14.946803+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17779,7 +17691,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:28.008927+00:00"
+                "failed_at": "2026-05-03T02:53:15.338271+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17858,7 +17770,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:28.648971+00:00"
+                "failed_at": "2026-05-03T02:53:15.839780+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -17937,7 +17849,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:29.159108+00:00"
+                "failed_at": "2026-05-03T02:53:16.425214+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18016,7 +17928,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:29.749324+00:00"
+                "failed_at": "2026-05-03T02:53:16.943381+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18095,7 +18007,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:31.074347+00:00"
+                "failed_at": "2026-05-03T02:53:22.474996+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18174,7 +18086,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:31.745198+00:00"
+                "failed_at": "2026-05-03T02:53:22.913720+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18253,7 +18165,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:32.277723+00:00"
+                "failed_at": "2026-05-03T02:53:23.372162+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18332,7 +18244,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:32.873775+00:00"
+                "failed_at": "2026-05-03T02:53:23.819129+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18411,7 +18323,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:33.441377+00:00"
+                "failed_at": "2026-05-03T02:53:24.297200+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18490,7 +18402,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:33.999451+00:00"
+                "failed_at": "2026-05-03T02:53:24.776095+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18569,7 +18481,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:34.590830+00:00"
+                "failed_at": "2026-05-03T02:53:25.235539+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18648,7 +18560,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:35.246717+00:00"
+                "failed_at": "2026-05-03T02:53:25.721803+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18727,7 +18639,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:36.350655+00:00"
+                "failed_at": "2026-05-03T02:53:26.116929+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18806,7 +18718,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:36.971854+00:00"
+                "failed_at": "2026-05-03T02:53:26.535685+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18885,7 +18797,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:37.585168+00:00"
+                "failed_at": "2026-05-03T02:53:26.985601+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -18964,7 +18876,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:38.133474+00:00"
+                "failed_at": "2026-05-03T02:53:27.451692+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19043,7 +18955,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:38.683006+00:00"
+                "failed_at": "2026-05-03T02:53:28.045116+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19122,7 +19034,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:44.020823+00:00"
+                "failed_at": "2026-05-03T02:53:28.625488+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19201,7 +19113,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:44.338476+00:00"
+                "failed_at": "2026-05-03T02:53:29.210282+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19280,7 +19192,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:44.652581+00:00"
+                "failed_at": "2026-05-03T02:53:29.923515+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19359,7 +19271,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:44.973615+00:00"
+                "failed_at": "2026-05-03T02:53:30.354486+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19438,7 +19350,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:45.307777+00:00"
+                "failed_at": "2026-05-03T02:53:30.640519+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19517,7 +19429,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:50.685199+00:00"
+                "failed_at": "2026-05-03T02:53:30.960832+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19596,7 +19508,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:56.106255+00:00"
+                "failed_at": "2026-05-03T02:53:36.346398+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19675,7 +19587,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:56.455663+00:00"
+                "failed_at": "2026-05-03T02:53:36.830812+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19754,7 +19666,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:56.833741+00:00"
+                "failed_at": "2026-05-03T02:53:37.242421+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19833,7 +19745,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:57.194645+00:00"
+                "failed_at": "2026-05-03T02:53:37.701695+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19912,7 +19824,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:57.657993+00:00"
+                "failed_at": "2026-05-03T02:53:43.122664+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -19991,7 +19903,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:58.056007+00:00"
+                "failed_at": "2026-05-03T02:53:43.571552+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20070,7 +19982,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:58.475525+00:00"
+                "failed_at": "2026-05-03T02:53:48.991749+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20149,7 +20061,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:58.891655+00:00"
+                "failed_at": "2026-05-03T02:53:49.354751+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20228,7 +20140,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:59.393926+00:00"
+                "failed_at": "2026-05-03T02:53:49.669073+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20307,7 +20219,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:59.940722+00:00"
+                "failed_at": "2026-05-03T02:53:50.018345+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20386,7 +20298,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:00.433374+00:00"
+                "failed_at": "2026-05-03T02:53:50.397959+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20465,7 +20377,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:01.934644+00:00"
+                "failed_at": "2026-05-03T02:53:50.773429+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20544,7 +20456,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:02.375208+00:00"
+                "failed_at": "2026-05-03T02:53:56.216839+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20623,7 +20535,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:02.786196+00:00"
+                "failed_at": "2026-05-03T02:53:56.570059+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20702,7 +20614,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:03.188802+00:00"
+                "failed_at": "2026-05-03T02:53:56.896105+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20781,7 +20693,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:03.616302+00:00"
+                "failed_at": "2026-05-03T02:53:57.236967+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20860,7 +20772,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:04.044002+00:00"
+                "failed_at": "2026-05-03T02:53:57.565788+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -20939,7 +20851,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:04.468632+00:00"
+                "failed_at": "2026-05-03T02:53:57.911257+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21018,7 +20930,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:04.893446+00:00"
+                "failed_at": "2026-05-03T02:53:58.222344+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21097,7 +21009,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:05.384807+00:00"
+                "failed_at": "2026-05-03T02:53:58.538016+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21176,7 +21088,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:05.879765+00:00"
+                "failed_at": "2026-05-03T02:53:58.854382+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21255,7 +21167,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:06.998287+00:00"
+                "failed_at": "2026-05-03T02:53:59.240797+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21334,7 +21246,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:07.553077+00:00"
+                "failed_at": "2026-05-03T02:54:04.644835+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21413,7 +21325,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:07.929772+00:00"
+                "failed_at": "2026-05-03T02:54:04.950548+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21492,7 +21404,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:08.322989+00:00"
+                "failed_at": "2026-05-03T02:54:05.282856+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21571,7 +21483,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:08.721693+00:00"
+                "failed_at": "2026-05-03T02:54:05.588232+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21650,7 +21562,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:09.321414+00:00"
+                "failed_at": "2026-05-03T02:54:05.899261+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21729,7 +21641,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:09.741171+00:00"
+                "failed_at": "2026-05-03T02:54:06.208752+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21808,7 +21720,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:10.191491+00:00"
+                "failed_at": "2026-05-03T02:54:06.515005+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21887,7 +21799,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:10.679303+00:00"
+                "failed_at": "2026-05-03T02:54:06.812495+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -21966,7 +21878,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:11.119693+00:00"
+                "failed_at": "2026-05-03T02:54:07.092785+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22045,7 +21957,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:11.485408+00:00"
+                "failed_at": "2026-05-03T02:54:07.428155+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22124,7 +22036,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:11.921172+00:00"
+                "failed_at": "2026-05-03T02:54:07.768791+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22203,7 +22115,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:12.278717+00:00"
+                "failed_at": "2026-05-03T02:54:08.112088+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22282,7 +22194,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:12.659349+00:00"
+                "failed_at": "2026-05-03T02:54:08.434945+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22361,7 +22273,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:13.014766+00:00"
+                "failed_at": "2026-05-03T02:54:08.742039+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22440,7 +22352,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:13.335716+00:00"
+                "failed_at": "2026-05-03T02:54:09.067955+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22519,7 +22431,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:13.717930+00:00"
+                "failed_at": "2026-05-03T02:54:09.393810+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22598,7 +22510,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:14.056558+00:00"
+                "failed_at": "2026-05-03T02:54:09.710416+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22677,7 +22589,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:14.413060+00:00"
+                "failed_at": "2026-05-03T02:54:15.035689+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22756,7 +22668,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:14.894328+00:00"
+                "failed_at": "2026-05-03T02:54:15.372602+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22835,7 +22747,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:15.337065+00:00"
+                "failed_at": "2026-05-03T02:54:15.681259+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22914,7 +22826,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:15.868543+00:00"
+                "failed_at": "2026-05-03T02:54:15.998656+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -22993,7 +22905,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:16.308071+00:00"
+                "failed_at": "2026-05-03T02:54:16.302682+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23072,7 +22984,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:16.693587+00:00"
+                "failed_at": "2026-05-03T02:54:16.602606+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23151,7 +23063,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:17.104128+00:00"
+                "failed_at": "2026-05-03T02:54:16.911179+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23230,7 +23142,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:17.566128+00:00"
+                "failed_at": "2026-05-03T02:54:22.230315+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23309,7 +23221,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:18.002014+00:00"
+                "failed_at": "2026-05-03T02:54:22.545739+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23388,7 +23300,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:18.473617+00:00"
+                "failed_at": "2026-05-03T02:54:22.867978+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23467,7 +23379,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:18.936537+00:00"
+                "failed_at": "2026-05-03T02:54:23.208306+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23546,7 +23458,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:19.334471+00:00"
+                "failed_at": "2026-05-03T02:54:23.507038+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23625,7 +23537,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:19.784386+00:00"
+                "failed_at": "2026-05-03T02:54:23.829908+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23704,7 +23616,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:20.199427+00:00"
+                "failed_at": "2026-05-03T02:54:24.186343+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23783,7 +23695,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:20.633554+00:00"
+                "failed_at": "2026-05-03T02:54:24.509729+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23862,7 +23774,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:21.071976+00:00"
+                "failed_at": "2026-05-03T02:54:24.855746+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -23941,7 +23853,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:21.509558+00:00"
+                "failed_at": "2026-05-03T02:54:25.174959+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24020,7 +23932,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:21.895890+00:00"
+                "failed_at": "2026-05-03T02:54:25.508039+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24099,7 +24011,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:22.276360+00:00"
+                "failed_at": "2026-05-03T02:54:25.819803+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24178,7 +24090,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:22.711362+00:00"
+                "failed_at": "2026-05-03T02:54:26.125045+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24257,7 +24169,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:23.100779+00:00"
+                "failed_at": "2026-05-03T02:54:26.419511+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24336,7 +24248,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:23.575465+00:00"
+                "failed_at": "2026-05-03T02:54:26.728469+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24415,7 +24327,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:24.058140+00:00"
+                "failed_at": "2026-05-03T02:54:27.036649+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24494,7 +24406,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:24.565310+00:00"
+                "failed_at": "2026-05-03T02:54:27.322846+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24573,7 +24485,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:24.934973+00:00"
+                "failed_at": "2026-05-03T02:54:27.621208+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24652,7 +24564,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:25.603833+00:00"
+                "failed_at": "2026-05-03T02:54:27.931687+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24731,7 +24643,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:25.898390+00:00"
+                "failed_at": "2026-05-03T02:54:28.239893+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24810,7 +24722,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:26.216146+00:00"
+                "failed_at": "2026-05-03T02:54:28.556669+00:00"
             },
             {
                 "place_name": "Defined Coffee",
@@ -24889,27 +24801,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:09:26.525967+00:00"
+                "failed_at": "2026-05-03T02:54:28.863869+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 130,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 134,
+            "duplicate_count": 0,
+            "airtable_photos_count": 4,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 100,
             "place_name": "Defined Coffee",
             "place_id": "ChIJO1y30F1VUYgRR0bxKqfsI8E",
             "record_id": "recxDT5RsV9symcEc",
-            "generated_at": "2026-05-02T22:09:26.526491+00:00",
+            "generated_at": "2026-05-03T02:54:28.864399+00:00",
             "azure_assets_count": 4,
             "failed_upload_count": 122,
             "pending_upload_count": 0,
             "selected_airtable_count": 4,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
