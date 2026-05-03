@@ -135,6 +135,92 @@ def _count_by_key(items: List[Dict[str, Any]], key: str) -> Dict[str, int]:
     return counts
 
 
+def _diagnostic_summary(summary: Dict[str, Any]) -> Dict[str, Any]:
+    keys = [
+        "candidate_count",
+        "azure_assets_count",
+        "selected_airtable_count",
+        "failed_upload_count",
+        "pending_upload_count",
+        "curator_photo_urls_field_count",
+        "unselected_curator_photo_urls_field_count",
+        "unsupported_curator_photo_urls_field_count",
+        "non_azure_airtable_photos_count",
+    ]
+    diagnostic = {key: summary.get(key) for key in keys if key in summary}
+
+    unselected_curator_urls = summary.get("unselected_curator_photo_urls_field_urls") or []
+    if unselected_curator_urls:
+        diagnostic["unselected_curator_photo_urls_field_url_samples"] = unselected_curator_urls[:3]
+
+    unsupported_curator_urls = summary.get("unsupported_curator_photo_urls_field_urls") or []
+    if unsupported_curator_urls:
+        diagnostic["unsupported_curator_photo_urls_field_url_samples"] = unsupported_curator_urls[:3]
+
+    return diagnostic
+
+
+def _diagnostic_place_result(result: Dict[str, Any]) -> Dict[str, Any]:
+    diagnostic = {
+        "status": result.get("status"),
+        "skip_reason": result.get("skip_reason"),
+        "error_reason": result.get("error_reason"),
+        "message": result.get("message"),
+        "place_name": result.get("place_name"),
+        "place_id": result.get("place_id"),
+        "record_id": result.get("record_id"),
+        "summary": _diagnostic_summary(result.get("summary", {})),
+    }
+
+    failures = [failure for failure in result.get("failures", []) if isinstance(failure, dict)]
+    if failures:
+        diagnostic["failure_count"] = len(failures)
+        diagnostic["failure_reason_counts"] = _count_by_key(failures, "reason")
+        diagnostic["failure_error_samples"] = [failure.get("error") for failure in failures[:3]]
+
+    return {key: value for key, value in diagnostic.items() if value not in (None, {}, [])}
+
+
+def _migration_progress_status(
+    config: Dict[str, Any],
+    phase: str,
+    processed_places: int,
+    total_places: int,
+    batch_index: int,
+    total_batches: int,
+    results: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    dry_run = bool(config.get("dry_run", True))
+    totals = _aggregate_results(results, dry_run)
+    error_results = [result for result in results if result.get("status") == "error"]
+    recent_problem_results = [
+        result for result in results
+        if result.get("status") in {"error", "skipped"}
+    ][-10:]
+
+    status = {
+        "phase": phase,
+        "provider_type": config.get("provider_type", DEFAULT_PROVIDER_TYPE),
+        "city": config.get("city", "charlotte"),
+        "dry_run": dry_run,
+        "upload": bool(config.get("upload", False)),
+        "write_airtable": bool(config.get("write_airtable", False)),
+        "processed_places": processed_places,
+        "total_places": total_places,
+        "batch_index": batch_index,
+        "total_batches": total_batches,
+        "totals_so_far": totals,
+    }
+
+    if error_results:
+        status["error_count"] = len(error_results)
+        status["recent_error_results"] = [_diagnostic_place_result(result) for result in error_results[-10:]]
+    elif recent_problem_results:
+        status["recent_problem_results"] = [_diagnostic_place_result(result) for result in recent_problem_results]
+
+    return status
+
+
 def _compact_place_result(result: Dict[str, Any]) -> Dict[str, Any]:
     compact_keys = [
         "status",
@@ -187,22 +273,53 @@ async def photo_assets_migrate(req: func.HttpRequest, client) -> func.HttpRespon
 def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext):
     try:
         config = context.get_input() or {}
+        context.set_custom_status(_migration_progress_status(config, "loading_places", 0, 0, 0, 0, []))
         all_places = yield context.call_activity("get_all_third_places", {"config": config})
         filtered_places = _filter_places(all_places, config)
 
         results = []
         concurrency_limit = 20
-        for index in range(0, len(filtered_places), concurrency_limit):
+        total_batches = (len(filtered_places) + concurrency_limit - 1) // concurrency_limit if filtered_places else 0
+        context.set_custom_status(_migration_progress_status(config, "places_loaded", 0, len(filtered_places), 0, total_batches, results))
+
+        for batch_index, index in enumerate(range(0, len(filtered_places), concurrency_limit), start=1):
             batch = filtered_places[index:index + concurrency_limit]
+            context.set_custom_status(_migration_progress_status(
+                config,
+                "batch_running",
+                len(results),
+                len(filtered_places),
+                batch_index,
+                total_batches,
+                results,
+            ))
             tasks = [
                 context.call_activity("migrate_single_place_photo_assets", {"place": place, "config": config})
                 for place in batch
             ]
             batch_results = yield context.task_all(tasks)
             results.extend(batch_results)
+            context.set_custom_status(_migration_progress_status(
+                config,
+                "batch_completed",
+                len(results),
+                len(filtered_places),
+                batch_index,
+                total_batches,
+                results,
+            ))
 
         totals = _aggregate_results(results, bool(config.get("dry_run", True)))
         compact_results = [_compact_place_result(result) for result in results]
+        context.set_custom_status(_migration_progress_status(
+            config,
+            "completed",
+            len(results),
+            len(filtered_places),
+            total_batches,
+            total_batches,
+            results,
+        ))
         return {
             "success": totals["success"],
             "message": "Photo asset migration completed" if totals["success"] else "Photo asset migration completed with errors",

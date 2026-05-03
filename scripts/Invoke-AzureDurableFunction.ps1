@@ -6,7 +6,25 @@ param(
     [string]$FunctionKey,
 
     [Parameter(Mandatory = $false)]
-    [int]$TimeoutSeconds = 300
+    [int]$TimeoutSeconds = 300,
+
+    [Parameter(Mandatory = $false)]
+    [int]$MaxStatusPollFailures = 1,
+
+    [Parameter(Mandatory = $false)]
+    [string]$StatusOutputPath,
+
+    [Parameter(Mandatory = $false)]
+    [switch]$PrintCustomStatus,
+
+    [Parameter(Mandatory = $false)]
+    [switch]$PrintOutputSummary,
+
+    [Parameter(Mandatory = $false)]
+    [switch]$PrintOrchestrationId,
+
+    [Parameter(Mandatory = $false)]
+    [int]$FinalOutputJsonDepth = 10
 )
 
 <#
@@ -29,6 +47,71 @@ for more details on what Durable Functions return from their status query URL.
 
 
 $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+$statusResponse = $null
+$status = $null
+$consecutiveStatusPollFailures = 0
+$lastCustomStatusJson = ""
+
+function Save-StatusSnapshot {
+    param([Parameter(Mandatory = $true)]$Status)
+
+    if ([string]::IsNullOrWhiteSpace($StatusOutputPath)) {
+        return
+    }
+
+    $parentDirectory = Split-Path -Parent $StatusOutputPath
+    if (-not [string]::IsNullOrWhiteSpace($parentDirectory) -and -not (Test-Path $parentDirectory)) {
+        New-Item -ItemType Directory -Path $parentDirectory -Force | Out-Null
+    }
+
+    $Status | ConvertTo-Json -Depth 100 | Set-Content -Path $StatusOutputPath -Encoding utf8
+}
+
+function Get-ErrorDetails {
+    param([Parameter(Mandatory = $true)]$ErrorRecord)
+
+    $details = @()
+    if ($ErrorRecord.Exception -and $ErrorRecord.Exception.Message) {
+        $details += $ErrorRecord.Exception.Message
+    }
+    if ($ErrorRecord.Exception -and $ErrorRecord.Exception.Response -and $ErrorRecord.Exception.Response.StatusCode) {
+        $details += "HTTP status: $([int]$ErrorRecord.Exception.Response.StatusCode) $($ErrorRecord.Exception.Response.StatusCode)"
+    }
+    if ($ErrorRecord.ErrorDetails -and $ErrorRecord.ErrorDetails.Message) {
+        $details += $ErrorRecord.ErrorDetails.Message
+    }
+
+    return ($details -join "`n")
+}
+
+function Write-MigrationOutputSummary {
+    param($Output)
+
+    if ($null -eq $Output) {
+        return
+    }
+
+    if ($Output.PSObject.Properties.Name -contains 'data' -and $null -ne $Output.data) {
+        $data = $Output.data
+
+        if ($data.PSObject.Properties.Name -contains 'totals' -and $null -ne $data.totals) {
+            Write-Output "Migration totals:`n$($data.totals | ConvertTo-Json -Depth 20)"
+        }
+
+        if ($data.PSObject.Properties.Name -contains 'place_results' -and $null -ne $data.place_results) {
+            $placeResults = @($data.place_results)
+            $errorResults = @($placeResults | Where-Object { $_.status -eq 'error' })
+            if ($errorResults.Count -gt 0) {
+                Write-Output "Migration error samples ($($errorResults.Count) total):`n$($errorResults | Select-Object -First 20 | ConvertTo-Json -Depth 30)"
+            }
+
+            $skippedResults = @($placeResults | Where-Object { $_.status -eq 'skipped' })
+            if ($skippedResults.Count -gt 0) {
+                Write-Output "Migration skipped samples ($($skippedResults.Count) total):`n$($skippedResults | Select-Object -First 10 | ConvertTo-Json -Depth 20)"
+            }
+        }
+    }
+}
 
 try {
     if ([string]::IsNullOrWhiteSpace($FunctionKey)) {
@@ -44,9 +127,16 @@ try {
         $initialResponse = Invoke-WebRequest -Uri $FunctionUrl -Headers $headers
     }
 
-    $statusUri = ($initialResponse.Content | ConvertFrom-Json).statusQueryGetUri
+    $initialPayload = $initialResponse.Content | ConvertFrom-Json
+    $statusUri = $initialPayload.statusQueryGetUri
 
     Write-Output "Orchestration started. Initial status: $($initialResponse.StatusCode) $($initialResponse.StatusDescription)"
+    if ($PrintOrchestrationId -or $PrintCustomStatus -or -not [string]::IsNullOrWhiteSpace($StatusOutputPath)) {
+        Write-Output "Durable orchestration id: $($initialPayload.id)"
+    }
+    if (-not [string]::IsNullOrWhiteSpace($StatusOutputPath)) {
+        Write-Output "Writing Durable status snapshots to: $StatusOutputPath"
+    }
     Write-Output $initialResponse
 
     while ($true) {
@@ -55,20 +145,58 @@ try {
             break
         }
 
-        $statusResponse = Invoke-WebRequest -Uri $statusUri -UseBasicParsing
-        $status = $statusResponse.Content | ConvertFrom-Json
-        Write-Output "Polling status. Current runtime status: $($status.runtimeStatus)"
-        Start-Sleep -Seconds 5
+        try {
+            $statusResponse = Invoke-WebRequest -Uri $statusUri -UseBasicParsing -ErrorAction Stop
+            $status = $statusResponse.Content | ConvertFrom-Json
+            Save-StatusSnapshot -Status $status
+            $consecutiveStatusPollFailures = 0
 
-        if ($status.runtimeStatus -in ("Completed", "Failed", "Canceled", "Terminated")) { break }
+            Write-Output "Polling status. Current runtime status: $($status.runtimeStatus)"
+
+            if ($PrintCustomStatus -and $null -ne $status.customStatus) {
+                $customStatusJson = $status.customStatus | ConvertTo-Json -Depth 30 -Compress
+                if ($customStatusJson -ne $lastCustomStatusJson) {
+                    Write-Output "Durable custom status:`n$($status.customStatus | ConvertTo-Json -Depth 30)"
+                    $lastCustomStatusJson = $customStatusJson
+                }
+            }
+
+            if ($status.runtimeStatus -in ("Completed", "Failed", "Canceled", "Terminated")) { break }
+        }
+        catch {
+            if ($MaxStatusPollFailures -le 1) {
+                throw
+            }
+
+            $consecutiveStatusPollFailures++
+            Write-Warning "Durable status poll failed ($consecutiveStatusPollFailures/$MaxStatusPollFailures)."
+            Write-Warning (Get-ErrorDetails -ErrorRecord $_)
+
+            if ($consecutiveStatusPollFailures -ge $MaxStatusPollFailures) {
+                throw "Durable status polling failed $consecutiveStatusPollFailures consecutive times for orchestration $($initialPayload.id)."
+            }
+        }
+
+        Start-Sleep -Seconds 5
     }
 
     Write-Output "Job complete. Parsing result."
-    Write-Output "Final HTTP Status: $($statusResponse.StatusCode) $($statusResponse.StatusDescription)"
-    Write-Output "Final Azure Function Output:`n$($status | ConvertTo-Json -Depth 10)"
+    if ($null -ne $statusResponse) {
+        Write-Output "Final HTTP Status: $($statusResponse.StatusCode) $($statusResponse.StatusDescription)"
+    } else {
+        Write-Output "Final HTTP Status: unavailable"
+    }
+    if ($null -ne $status) {
+        Write-Output "Final Azure Function Output:`n$($status | ConvertTo-Json -Depth $FinalOutputJsonDepth)"
+    } else {
+        Write-Output "Final Azure Function Output: unavailable"
+    }
 
-    $runtimeStatus = $status.runtimeStatus
-    $output = $status.output
+    $runtimeStatus = if ($null -ne $status) { $status.runtimeStatus } else { $null }
+    $output = if ($null -ne $status) { $status.output } else { $null }
+    if ($PrintOutputSummary) {
+        Write-MigrationOutputSummary -Output $output
+    }
 
     if ($runtimeStatus -in ('Failed','Canceled','Terminated')) {
         Write-Output "Runtime status indicates failure state: $runtimeStatus. Exiting with failure."
