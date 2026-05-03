@@ -1093,7 +1093,682 @@
                 }
             ]
         },
-        "last_refreshed": "2026-02-16T02:43:25.690399"
+        "last_refreshed": "2026-02-16T02:43:25.690399",
+        "azure_assets": [
+            {
+                "place_name": "Hdmona Cafe",
+                "place_id": "ChIJcQDuDrYjVIgRpcoQbeAHKWE",
+                "record_id": "rec1nkxOzIVy6ybY7",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=c9aFuf51GrdRiMK0wofaqA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=153.12152&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=c9aFuf51GrdRiMK0wofaqA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=153.12152&pitch=0&thumbfov=100",
+                "source_url_sha256": "5c1c9fccbe825072884cb4a4d055b4b6a03fc9286a3c6234f7060d08b12e935b",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[5].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJcQDuDrYjVIgRpcoQbeAHKWE/5c1c9fccbe825072884cb4a4d055b4b6a03fc9286a3c6234f7060d08b12e935b.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJcQDuDrYjVIgRpcoQbeAHKWE/5c1c9fccbe825072884cb4a4d055b4b6a03fc9286a3c6234f7060d08b12e935b.jpg",
+                "content_sha256": "fa93d53f6abd6dff3475aeecf57a5736b13f33a4ca3ae086dd12375288b178b9",
+                "content_type": "image/jpeg",
+                "bytes": 6410,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=c9aFuf51GrdRiMK0wofaqA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=153.12152&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=c9aFuf51GrdRiMK0wofaqA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=153.12152&pitch=0&thumbfov=100",
+                        "bytes": 6410,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:56:55.821510+00:00"
+            },
+            {
+                "place_name": "Hdmona Cafe",
+                "place_id": "ChIJcQDuDrYjVIgRpcoQbeAHKWE",
+                "record_id": "rec1nkxOzIVy6ybY7",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPs0OY5xnVUvOQy4lhyyLofjDZeXTl2Qd3FyeDL=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPs0OY5xnVUvOQy4lhyyLofjDZeXTl2Qd3FyeDL=w2048-h2048-k-no",
+                "source_url_sha256": "33fce4f734d218e0e893b88fef9d485ee7ef9dcd188263436da3745f5a58c2e0",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJcQDuDrYjVIgRpcoQbeAHKWE/33fce4f734d218e0e893b88fef9d485ee7ef9dcd188263436da3745f5a58c2e0.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJcQDuDrYjVIgRpcoQbeAHKWE/33fce4f734d218e0e893b88fef9d485ee7ef9dcd188263436da3745f5a58c2e0.jpg",
+                "content_sha256": "f187d71ee60a8d0eb4935c39f36439b7f1afe5e59353585b0bcfed1397a4541d",
+                "content_type": "image/jpeg",
+                "bytes": 307804,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPs0OY5xnVUvOQy4lhyyLofjDZeXTl2Qd3FyeDL=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPs0OY5xnVUvOQy4lhyyLofjDZeXTl2Qd3FyeDL=w2048-h2048-k-no",
+                        "bytes": 307804,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:56:56.492902+00:00"
+            },
+            {
+                "place_name": "Hdmona Cafe",
+                "place_id": "ChIJcQDuDrYjVIgRpcoQbeAHKWE",
+                "record_id": "rec1nkxOzIVy6ybY7",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOIou__q5FnUEwdZ4rLFqRMlllfrFxSOlZmInKr=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOIou__q5FnUEwdZ4rLFqRMlllfrFxSOlZmInKr=w2048-h2048-k-no",
+                "source_url_sha256": "e867562e00b047f388dd8ca6809f28182320c86d24ee985d64346747b82a681b",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[4].photo_url_big"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJcQDuDrYjVIgRpcoQbeAHKWE/e867562e00b047f388dd8ca6809f28182320c86d24ee985d64346747b82a681b.png",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJcQDuDrYjVIgRpcoQbeAHKWE/e867562e00b047f388dd8ca6809f28182320c86d24ee985d64346747b82a681b.png",
+                "content_sha256": "80fe9d08a707030a67eef0ec996d7b64d060def078549eae68f5cf311d39d3ba",
+                "content_type": "image/png",
+                "bytes": 1491540,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOIou__q5FnUEwdZ4rLFqRMlllfrFxSOlZmInKr=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOIou__q5FnUEwdZ4rLFqRMlllfrFxSOlZmInKr=w2048-h2048-k-no",
+                        "bytes": 1491540,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:56:57.645175+00:00"
+            }
+        ],
+        "azure_asset_failures": [
+            {
+                "place_name": "Hdmona Cafe",
+                "place_id": "ChIJcQDuDrYjVIgRpcoQbeAHKWE",
+                "record_id": "rec1nkxOzIVy6ybY7",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w2048-h2048-k-no",
+                "source_url_sha256": "4c7a12e818b524995e1b90853b2e2840a90a105888baf9fdcf314ce2470493e1",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[3]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-03T06:56:57.969191+00:00"
+            },
+            {
+                "place_name": "Hdmona Cafe",
+                "place_id": "ChIJcQDuDrYjVIgRpcoQbeAHKWE",
+                "record_id": "rec1nkxOzIVy6ybY7",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w2048-h2048-k-no",
+                "source_url_sha256": "a39f76c0b07b1cdf69aa08482c38703b4047ef3e720bd6e4cbf219ba5edebdc5",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[4]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-03T06:56:58.303992+00:00"
+            },
+            {
+                "place_name": "Hdmona Cafe",
+                "place_id": "ChIJcQDuDrYjVIgRpcoQbeAHKWE",
+                "record_id": "rec1nkxOzIVy6ybY7",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w2048-h2048-k-no",
+                "source_url_sha256": "455bbf48be67c8ad08a14c3384cfada2675eb2d918cdedb3345372d8c4996625",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[5]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-03T06:56:58.626171+00:00"
+            },
+            {
+                "place_name": "Hdmona Cafe",
+                "place_id": "ChIJcQDuDrYjVIgRpcoQbeAHKWE",
+                "record_id": "rec1nkxOzIVy6ybY7",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w2048-h2048-k-no",
+                "source_url_sha256": "4c7a12e818b524995e1b90853b2e2840a90a105888baf9fdcf314ce2470493e1",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[1].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noIHGg30ig5AAlahQCf07Q3R8go86zxLlPrzxnGwDUzJyZgTIKV3IE5wi6RY8r9LSFH3um-qipGK_5eTpPRQzkhFkbTamR_Any36rUmQcvsU9RFLtZWNBSD3G3_vR7DYTOzafdl6zXvHf_f=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-03T06:56:59.083765+00:00"
+            },
+            {
+                "place_name": "Hdmona Cafe",
+                "place_id": "ChIJcQDuDrYjVIgRpcoQbeAHKWE",
+                "record_id": "rec1nkxOzIVy6ybY7",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w2048-h2048-k-no",
+                "source_url_sha256": "a39f76c0b07b1cdf69aa08482c38703b4047ef3e720bd6e4cbf219ba5edebdc5",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[2].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqVcuSu5g24F03ZxO26J_0SOpywYRuH43fu8CGhdITubsbN-Lr8vriEryDuJP66XBxXLDSpda3Yzdz2HdsR82HI4x-lYBxWnDgyfyCrTKxqUivtgWOenYOpfqsqANQVlc8kYz68hURXirBf=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-03T06:56:59.377257+00:00"
+            },
+            {
+                "place_name": "Hdmona Cafe",
+                "place_id": "ChIJcQDuDrYjVIgRpcoQbeAHKWE",
+                "record_id": "rec1nkxOzIVy6ybY7",
+                "source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w2048-h2048-k-no",
+                "source_url_sha256": "455bbf48be67c8ad08a14c3384cfada2675eb2d918cdedb3345372d8c4996625",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "photos.raw_data.photos_data.photo_url_big",
+                "source_path": "photos.raw_data.photos_data[3].photo_url_big",
+                "provenance": [
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s0",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s1600",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s0",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s0",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s1600",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w800-h500-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w1600-h1000-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR2jt91TUMagFrh5If_AeU_LcXxMosNQtItO_2Xfj8bhzX4jPlJoP8qerFrtaIa3WmANTgzqSQZx2C5TB1mlUMj63ZGHe-Q0zeWYC21gUFkFlagv4rFUEQYJaz1XhL9o_gd0ii-Z7vA5Z-=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-03T06:56:59.664905+00:00"
+            }
+        ],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 12,
+            "duplicate_count": 6,
+            "airtable_photos_count": 6,
+            "airtable_photos_google_count": 6,
+            "data_file_photo_urls_count": 6,
+            "provider_raw_photo_url_big_count": 6,
+            "place_name": "Hdmona Cafe",
+            "place_id": "ChIJcQDuDrYjVIgRpcoQbeAHKWE",
+            "record_id": "rec1nkxOzIVy6ybY7",
+            "generated_at": "2026-05-03T06:57:00.353994+00:00",
+            "azure_assets_count": 3,
+            "failed_upload_count": 6,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 3,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 6,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-07-07T19:03:19.522048"
