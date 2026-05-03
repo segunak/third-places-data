@@ -245,6 +245,29 @@ def _migration_progress_status(
     return status
 
 
+def _set_migration_progress_status(
+    context: df.DurableOrchestrationContext,
+    config: Dict[str, Any],
+    phase: str,
+    processed_places: int,
+    total_places: int,
+    batch_index: int,
+    total_batches: int,
+    results: List[Dict[str, Any]],
+) -> None:
+    if getattr(context, "is_replaying", False):
+        return
+    context.set_custom_status(_migration_progress_status(
+        config,
+        phase,
+        processed_places,
+        total_places,
+        batch_index,
+        total_batches,
+        results,
+    ))
+
+
 def _compact_place_result(result: Dict[str, Any]) -> Dict[str, Any]:
     compact_keys = [
         "status",
@@ -297,33 +320,33 @@ async def photo_assets_migrate(req: func.HttpRequest, client) -> func.HttpRespon
 def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext):
     try:
         config = context.get_input() or {}
-        context.set_custom_status(_migration_progress_status(config, "loading_places", 0, 0, 0, 0, []))
         all_places = yield context.call_activity("get_all_third_places", {"config": config})
         filtered_places = _filter_places(all_places, config)
 
         results = []
         concurrency_limit = 20
         total_batches = (len(filtered_places) + concurrency_limit - 1) // concurrency_limit if filtered_places else 0
-        context.set_custom_status(_migration_progress_status(config, "places_loaded", 0, len(filtered_places), 0, total_batches, results))
+        _set_migration_progress_status(
+            context,
+            config,
+            "places_loaded",
+            0,
+            len(filtered_places),
+            0,
+            total_batches,
+            results,
+        )
 
         for batch_index, index in enumerate(range(0, len(filtered_places), concurrency_limit), start=1):
             batch = filtered_places[index:index + concurrency_limit]
-            context.set_custom_status(_migration_progress_status(
-                config,
-                "batch_running",
-                len(results),
-                len(filtered_places),
-                batch_index,
-                total_batches,
-                results,
-            ))
             tasks = [
                 context.call_activity("migrate_single_place_photo_assets", {"place": place, "config": config})
                 for place in batch
             ]
             batch_results = yield context.task_all(tasks)
             results.extend(batch_results)
-            context.set_custom_status(_migration_progress_status(
+            _set_migration_progress_status(
+                context,
                 config,
                 "batch_completed",
                 len(results),
@@ -331,11 +354,12 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
                 batch_index,
                 total_batches,
                 results,
-            ))
+            )
 
         totals = _aggregate_results(results, bool(config.get("dry_run", True)))
         compact_results = [_compact_place_result(result) for result in results]
-        context.set_custom_status(_migration_progress_status(
+        _set_migration_progress_status(
+            context,
             config,
             "completed",
             len(results),
@@ -343,7 +367,7 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
             total_batches,
             total_batches,
             results,
-        ))
+        )
         return {
             "success": totals["success"],
             "message": "Photo asset migration completed" if totals["success"] else "Photo asset migration completed with errors",

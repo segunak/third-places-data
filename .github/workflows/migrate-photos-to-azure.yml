@@ -44,29 +44,6 @@ jobs:
   migrate-photos-to-azure:
     runs-on: windows-latest
     steps:
-      - name: Purge Orchestrations Before Migration
-        shell: pwsh
-        env:
-          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
-        continue-on-error: true
-        run: |
-          Write-Host "Cleaning up completed orchestrations before migration..."
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/purge-orchestrations"
-          $headers = @{ "Content-Type" = "application/json" }
-          if (-not [string]::IsNullOrWhiteSpace($Env:AZURE_FUNCTION_KEY)) {
-            $headers["x-functions-key"] = "$Env:AZURE_FUNCTION_KEY"
-          }
-
-          try {
-            $response = Invoke-WebRequest -Uri $FunctionUrl -Method POST -Headers $headers -TimeoutSec 300 -UseBasicParsing
-            Write-Host "Pre-migration orchestration purge completed: $($response.StatusCode) $($response.StatusDescription)"
-            if ($response.Content) {
-              Write-Host $response.Content
-            }
-          } catch {
-            Write-Warning "Pre-migration orchestration purge failed; continuing to migration. $_"
-          }
-
       - name: Checkout repository
         uses: actions/checkout@v6
 
@@ -122,27 +99,3 @@ jobs:
           name: photo-migration-status
           path: ${{ runner.temp }}/photo-migration-status.json
           if-no-files-found: warn
-
-      - name: Purge Orchestrations
-        if: success()
-        shell: pwsh
-        env:
-          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
-        continue-on-error: true
-        run: |
-          Write-Host "Cleaning up completed orchestrations..."
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/purge-orchestrations"
-          $headers = @{ "Content-Type" = "application/json" }
-          if (-not [string]::IsNullOrWhiteSpace($Env:AZURE_FUNCTION_KEY)) {
-            $headers["x-functions-key"] = "$Env:AZURE_FUNCTION_KEY"
-          }
-
-          try {
-            $response = Invoke-WebRequest -Uri $FunctionUrl -Method POST -Headers $headers -TimeoutSec 300 -UseBasicParsing
-            Write-Host "Orchestration purge completed: $($response.StatusCode) $($response.StatusDescription)"
-            if ($response.Content) {
-              Write-Host $response.Content
-            }
-          } catch {
-            Write-Warning "Orchestration purge failed, but this is non-critical. $_"
-          }
