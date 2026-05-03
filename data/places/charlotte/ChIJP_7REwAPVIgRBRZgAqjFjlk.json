@@ -476,10 +476,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -488,6 +484,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[5].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -524,13 +528,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwy2sTpp8uPuxQEJd7vEAbT7p-xH6NcC94FCVRdMlJQ6oquN9JxIa0PTiQa4Y9K_q90ShqlKktAtqxPzp3kEEksEIwaU8J-cl6PJqphScg5cZvN01rn8VDQCsWEmDm_YN9Ny6DhG3KzM-84=w2048-h2048-k-no",
                 "source_url_sha256": "4a8f4b4a62d6055a8c6dea5bccdfe6a6a1f515a634504209100310e9db5d0815",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -597,7 +597,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:00.550420+00:00"
+                "failed_at": "2026-05-03T01:06:08.917040+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -607,13 +607,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyp2PYAxlaM5EGMd2kf2_goxwZZIw0eWYE555uUqmYhR4VzVzQ33p8YCWk_d-fU7VcUQqFNp7g5bL7kNpm8KAvaXMbqbYM7jeTE8yHJRx4fRjZ6mQbS2TVVRo2fdk1sZ-nH6qpLTdlJv04=w2048-h2048-k-no",
                 "source_url_sha256": "eab759d5aafcdedc24fa40e1c34fc84a5dc73c00f70c1de0abf18c53ec5cd5fe",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -680,7 +676,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:00.888289+00:00"
+                "failed_at": "2026-05-03T01:06:09.338086+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -690,13 +686,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSynpiI3JBoed4Pvss4ZO2N6FrCR3-JSqkBw2afnd10zIniBoDkmXjHXAcnCpLzXkLdcgQ0sPyYKdNhvs-IRN8_WOctfVPTTtYy13E0yBogd-95VPDasd_E3aZuqWSalnoazuzI1x69KaAg=w2048-h2048-k-no",
                 "source_url_sha256": "d2e0833f6e2e73fc30e62b7ecf157edf07d45a7f9746f765dc0274c38d0723a0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -763,7 +755,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:01.222495+00:00"
+                "failed_at": "2026-05-03T01:06:09.714118+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -773,13 +765,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw8IFLbj2wQ1Yq3hi39IgfDaWBCZVotKGfLr5kyS1-CFbG1-_o62rX-gYQqUtMe9yEeQ3Kxy_fOZqnR58bjjT-oa17iajnvC8mlVOUluLTFAYV6mtkbojz2fULyATgdnzswznMg_7jvf6hP=w2048-h2048-k-no",
                 "source_url_sha256": "bd4778a14ae26b7387daa4e21d31426e41bf5cc1510b3fb02208143aec418fdf",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -846,7 +834,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:01.552609+00:00"
+                "failed_at": "2026-05-03T01:06:10.104285+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -856,13 +844,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx2CQPycRRSBhCz3dNl4hhPcdc8ZsQIG9_qPOBVvUNyQWfJ-h4wgvoIippHsr8rFBK4m2bUHhXPw3dXX6OSktiWqEFDcJFHBWTvLGG-7rFpLELhviQZOKTbmgWxHgEkmET9FUo-PChGPAye=w2048-h2048-k-no",
                 "source_url_sha256": "5676173d795e2ec9f402535a58326057496eed65b8c5056c8dc51756af4c9ff5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -929,7 +913,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:01.893748+00:00"
+                "failed_at": "2026-05-03T01:06:10.515545+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -1008,7 +992,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:02.215474+00:00"
+                "failed_at": "2026-05-03T01:06:10.951845+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -1087,7 +1071,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:02.527606+00:00"
+                "failed_at": "2026-05-03T01:06:11.336206+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -1166,7 +1150,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:02.845464+00:00"
+                "failed_at": "2026-05-03T01:06:11.700716+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -1245,7 +1229,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:03.170147+00:00"
+                "failed_at": "2026-05-03T01:06:12.017224+00:00"
             },
             {
                 "place_name": "The District Exchange",
@@ -1324,27 +1308,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:03.494824+00:00"
+                "failed_at": "2026-05-03T01:06:12.325482+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 12,
-            "duplicate_count": 6,
-            "airtable_photos_count": 6,
+            "candidate_count": 13,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 6,
             "data_file_photo_urls_count": 6,
             "provider_raw_photo_url_big_count": 6,
             "place_name": "The District Exchange",
             "place_id": "ChIJP_7REwAPVIgRBRZgAqjFjlk",
             "record_id": "recdpQlLGC5TXdstE",
-            "generated_at": "2026-05-02T22:03:03.741977+00:00",
+            "generated_at": "2026-05-03T01:06:12.325830+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 10,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 6
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
