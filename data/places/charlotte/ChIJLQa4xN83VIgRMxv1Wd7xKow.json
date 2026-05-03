@@ -4243,7 +4243,196 @@
     "photos": {
         "place_id": "ChIJLQa4xN83VIgRMxv1Wd7xKow",
         "message": "Photos retrieval skipped.",
-        "photo_urls": []
+        "photo_urls": [],
+        "azure_assets": [
+            {
+                "place_name": "Caribou Coffee | Monroe",
+                "place_id": "ChIJLQa4xN83VIgRMxv1Wd7xKow",
+                "record_id": "recw9X4LYcuiXwhUw",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMb83Z_ObmkHhw8o-xZPi4shs2wPwrySLO7XGCL=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMb83Z_ObmkHhw8o-xZPi4shs2wPwrySLO7XGCL=w2048-h2048-k-no",
+                "source_url_sha256": "220a9d87a0ec986b3f3ef234f5a7a8f49b6a172b7afe210a77fead0146a795cb",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJLQa4xN83VIgRMxv1Wd7xKow/220a9d87a0ec986b3f3ef234f5a7a8f49b6a172b7afe210a77fead0146a795cb.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJLQa4xN83VIgRMxv1Wd7xKow/220a9d87a0ec986b3f3ef234f5a7a8f49b6a172b7afe210a77fead0146a795cb.jpg",
+                "content_sha256": "aa10bbacdc5b4fe7b958c2d3521dec9bb38598b49f8d2d1664052b822c4a88fb",
+                "content_type": "image/jpeg",
+                "bytes": 25878,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMb83Z_ObmkHhw8o-xZPi4shs2wPwrySLO7XGCL=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMb83Z_ObmkHhw8o-xZPi4shs2wPwrySLO7XGCL=w2048-h2048-k-no",
+                        "bytes": 25878,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:38.799189+00:00"
+            }
+        ],
+        "azure_asset_failures": [
+            {
+                "place_name": "Caribou Coffee | Monroe",
+                "place_id": "ChIJLQa4xN83VIgRMxv1Wd7xKow",
+                "record_id": "recw9X4LYcuiXwhUw",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=w2048-h2048-k-no",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=w2048-h2048-k-no",
+                "source_url_sha256": "9c1dc2b8fbc0a377ff2b3ac8726cf5456b0ad1d604965b331aad6d1b655369f1",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    }
+                ],
+                "http_status": 403,
+                "attempted_urls": [
+                    "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=w2048-h2048-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=w2048-h2048-k-no",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 403"
+                    }
+                ],
+                "error": "HTTP 403",
+                "reason": "download_failed",
+                "failed_at": "2026-05-03T06:58:37.313165+00:00"
+            },
+            {
+                "place_name": "Caribou Coffee | Monroe",
+                "place_id": "ChIJLQa4xN83VIgRMxv1Wd7xKow",
+                "record_id": "recw9X4LYcuiXwhUw",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w2048-h2048-k-no",
+                "source_url_sha256": "340bf663a835e51ae40d77974f6ffa64e64ba20ab949dfd2789867373d887ae0",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    }
+                ],
+                "http_status": 404,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X",
+                    "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=s0",
+                    "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=s1600",
+                    "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w2048-h2048-k-no",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=s0",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=s0",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=s1600",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w800-h500-k-no",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w1600-h1000-k-no",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNuuFseDR8jREkbZp58mvPl-GxDVaTZs1txG94X=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    }
+                ],
+                "error": "HTTP 404",
+                "reason": "download_failed",
+                "failed_at": "2026-05-03T06:58:38.418605+00:00"
+            }
+        ],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 3,
+            "duplicate_count": 0,
+            "airtable_photos_count": 3,
+            "airtable_photos_google_count": 3,
+            "data_file_photo_urls_count": 0,
+            "provider_raw_photo_url_big_count": 0,
+            "place_name": "Caribou Coffee | Monroe",
+            "place_id": "ChIJLQa4xN83VIgRMxv1Wd7xKow",
+            "record_id": "recw9X4LYcuiXwhUw",
+            "generated_at": "2026-05-03T06:58:38.799242+00:00",
+            "azure_assets_count": 1,
+            "failed_upload_count": 2,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 3,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-22T12:39:59.558391"
