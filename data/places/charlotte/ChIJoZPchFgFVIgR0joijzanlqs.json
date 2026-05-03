@@ -850,6 +850,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJoZPchFgFVIgR0joijzanlqs/27937340bbc4743c070961f9937e4769611a4e60f8f5f599c75ac645270108d9.jpg",
@@ -885,7 +893,7 @@
             "place_name": "Cosmic Hearth Games",
             "place_id": "ChIJoZPchFgFVIgR0joijzanlqs",
             "record_id": "receMt0vXWErtemWU",
-            "generated_at": "2026-05-03T02:41:01.243878+00:00",
+            "generated_at": "2026-05-03T03:29:33.449601+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 0,
             "pending_upload_count": 0,
@@ -899,7 +907,15 @@
             "preserved_curator_airtable_photos_count": 0,
             "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 0
+            "non_azure_airtable_photos_count": 0,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
         }
     },
     "data_source": "OutscraperProvider",
