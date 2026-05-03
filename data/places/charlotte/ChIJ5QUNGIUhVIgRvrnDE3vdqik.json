@@ -1543,10 +1543,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -1563,6 +1559,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1599,13 +1603,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrZRUjZSzSICh6tviQtd5srTdGsJ7GSePaG3wE4u3He8dK0WE2FpQud5bJ4aGC8R_j15NYCmJIuwk7t5C-Vj067Kc7Zlt38bXcGesDJ0-6vh8LV7Sj3Xydh3vi4ECNO2V92YQLZop1inHA=w2048-h2048-k-no",
                 "source_url_sha256": "8d27ae7ed4db13eeaf17020629985983af3d8029727a13c525a423e6e8d3acb4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -1672,7 +1672,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:13.991469+00:00"
+                "failed_at": "2026-05-03T01:20:06.448187+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1682,13 +1682,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noumyS5fU4hdur9ScYkzWTXw7FeP1KolyNJ3_L7m9mhV74iRWhzZ7__UMNwej0xpyJfghwo8rgaNaWL_06oklHfhQ69C3MGuuGDbIYj8CpNy4CypAt0mZ76pB4O5wWrra89igqmErZsUVs0=w2048-h2048-k-no",
                 "source_url_sha256": "14e7d1a78409006ea03bc43092a5c5f675ed4d74994cd7d6ff99a2420ab91670",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -1755,7 +1751,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:14.541445+00:00"
+                "failed_at": "2026-05-03T01:20:06.978569+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1765,13 +1761,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrwlaQrH7HvIS8Q_iQEd6Z7P2xKoqWquNy-7H3YlqzLNksp9AUqzRLYU4UXHezk_4sYlfg5cXE8nlo1ycx_i2WM2ZCOmhxSC0qqYSN-NPO8qzcXy-zVVUiH7VhsQE5Witbkap4WD1he40Mv=w2048-h2048-k-no",
                 "source_url_sha256": "8b6a2db6751dc3bfbede5ce1efac5643dc4f9705b9f86330ff7b63b3f22cb2f4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -1838,7 +1830,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:15.333601+00:00"
+                "failed_at": "2026-05-03T01:20:07.470748+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1848,13 +1840,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrycGTP2gPmInh_tW95zIJdAXqGDktyhD8CCk86YGl1lh_q3j3Xn4_y7ZeBOmL6WVt8oDxY5v7P-d_jli01qy6slYw6xLYC9zv_iOE86DQygxvOeXO5wQht6Im360kuo4VggEZ9A5o0Efk=w2048-h2048-k-no",
                 "source_url_sha256": "949249f71c7681b14e3c9a3b69eeefbac8d8ff9a244f9ec5a20d0255811d9696",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -1921,7 +1909,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:15.990138+00:00"
+                "failed_at": "2026-05-03T01:20:08.075258+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -2000,7 +1988,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:16.543999+00:00"
+                "failed_at": "2026-05-03T01:20:13.456715+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -2079,7 +2067,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:17.081104+00:00"
+                "failed_at": "2026-05-03T01:20:13.891984+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -2158,7 +2146,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:17.619634+00:00"
+                "failed_at": "2026-05-03T01:20:14.365068+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -2237,27 +2225,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:18.156941+00:00"
+                "failed_at": "2026-05-03T01:20:14.764875+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 10,
-            "duplicate_count": 5,
-            "airtable_photos_count": 5,
+            "candidate_count": 11,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 5,
             "data_file_photo_urls_count": 5,
             "provider_raw_photo_url_big_count": 5,
             "place_name": "Platform Coffee",
             "place_id": "ChIJ5QUNGIUhVIgRvrnDE3vdqik",
             "record_id": "recDjtDUmCELLwJHj",
-            "generated_at": "2026-05-02T22:18:18.157575+00:00",
+            "generated_at": "2026-05-03T01:20:14.765230+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 8,
             "pending_upload_count": 0,
-            "selected_airtable_count": 1,
+            "selected_airtable_count": 3,
+            "curator_photo_urls_field_count": 2,
+            "selected_curator_photo_urls_field_count": 2,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 2,
+            "selected_curator_airtable_photos_count": 2,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 5
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

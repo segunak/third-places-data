@@ -908,10 +908,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -920,6 +916,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[5].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -958,10 +962,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -970,6 +970,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1006,13 +1014,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np-Z8mJna_Ua_xIEVapj4XMnwQ_C2Wu7DXuB1UwMSxqofowciieKt8BhE40_p_-CPm5SY2jHVgo95rxglZXQ_HoYnos47Rjr5QQ8SBWdTq6hf2--2EnOgRIU4btNttfVI88fCJ504VuQaNS=w2048-h2048-k-no",
                 "source_url_sha256": "33fb273791849ea0fa3ab916b3faaf37e364ef325fcfa7fc0c53268d3b9ca494",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -1079,7 +1083,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:12.176187+00:00"
+                "failed_at": "2026-05-03T01:07:31.522008+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1089,13 +1093,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqlMA7YHt2sLLkCt-GmIZdO3LmvGsH1B0bWTaXOMV-JcOx6q6M2acizyM1d17EUOgZwpufneq3vv0ohBqr720WFfDtFCukH1iHGaIvukK3NjH84UQcsyp5XnTHGpUdUROUdSDM-dLyY_MHb=w2048-h2048-k-no",
                 "source_url_sha256": "c666f70405cadff3569ca39f4f05461f772e34bdfea06f9b09c044852a75b205",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -1162,7 +1162,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:12.634377+00:00"
+                "failed_at": "2026-05-03T01:07:31.854518+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1172,13 +1172,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npw1rZTDskW1NDzwvaAdAO0SRRdoznNZB1AyI2-d3jI7nY7tZqbzuNLlF1RqGYYhpRKFqRFywJZderZjSwuBVmu8JhgMJnoOibuykrmXfrud0kU9FcsIHzuG8eFwhFrCRjBuv2Sa6SHzJxa=w2048-h2048-k-no",
                 "source_url_sha256": "883709faa8ad16c83a75724e74cbf35f3523c4ef4eabec6f8831797382434e44",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -1245,7 +1241,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:13.080488+00:00"
+                "failed_at": "2026-05-03T01:07:32.195673+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1255,13 +1251,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noR8hhvzv78yjWZzKdocVeP4ZBvXbjahQeVWJZIw299ya26QDUnx7esqMCRh_e5Hljd5Jir5nEDVjRYJCJLr9tQ0gwas0qWLknPWjqoCbTUDx2PMwLCY87Hwct6dnvTm85yfEZCwvVSUis=w2048-h2048-k-no",
                 "source_url_sha256": "f61d0e5649e57059adb397e944b890e94c6ff500a8c8a640989708245affc2ff",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -1328,7 +1320,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:13.585530+00:00"
+                "failed_at": "2026-05-03T01:07:32.575014+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1407,7 +1399,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:13.951351+00:00"
+                "failed_at": "2026-05-03T01:07:32.912515+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1486,7 +1478,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:14.318861+00:00"
+                "failed_at": "2026-05-03T01:07:33.245570+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1565,7 +1557,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:14.966198+00:00"
+                "failed_at": "2026-05-03T01:07:33.658750+00:00"
             },
             {
                 "place_name": "Publix | Arboretum",
@@ -1644,27 +1636,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:15.411071+00:00"
+                "failed_at": "2026-05-03T01:07:34.036608+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 12,
-            "duplicate_count": 6,
-            "airtable_photos_count": 6,
+            "candidate_count": 14,
+            "duplicate_count": 0,
+            "airtable_photos_count": 2,
             "airtable_photos_google_count": 6,
             "data_file_photo_urls_count": 6,
             "provider_raw_photo_url_big_count": 6,
             "place_name": "Publix | Arboretum",
             "place_id": "ChIJbedm724nVIgRE_F3jWjkVV8",
             "record_id": "rec7rKn0nRqs0urPD",
-            "generated_at": "2026-05-02T22:05:15.649646+00:00",
+            "generated_at": "2026-05-03T01:07:34.036980+00:00",
             "azure_assets_count": 2,
             "failed_upload_count": 8,
             "pending_upload_count": 0,
             "selected_airtable_count": 2,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 6
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

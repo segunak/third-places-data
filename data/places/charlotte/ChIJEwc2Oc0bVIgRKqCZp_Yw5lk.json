@@ -13697,10 +13697,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -13717,6 +13713,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -13755,10 +13759,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -13775,6 +13775,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -13813,10 +13821,6 @@
                 "source_path": "fields.Photos[2]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
                     }
@@ -13833,6 +13837,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -13871,10 +13883,6 @@
                 "source_path": "fields.Photos[3]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
                     }
@@ -13891,6 +13899,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[19].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[19].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -13929,10 +13945,6 @@
                 "source_path": "fields.Photos[4]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
                     }
@@ -13949,6 +13961,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[54].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[54].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -13985,13 +14005,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrCdS9lWZw1k2CGADf38vUG2mRZEj-eTjdwkNHKuTQ83IDFELjnWrU2YdD8z7taA1yrI1Hyjqe1TMpo3PpHmz_c8OMnCsmcS-CSrElJTBPZGnm6WvIPyYa3e5NgZ8kQJnWT7irgIXaOBW9t=w2048-h2048-k-no",
                 "source_url_sha256": "c1f818c7a33ef48497fff24c46625423124353eb600fdd38cd86849f162e55ec",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -14058,7 +14074,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:52.394600+00:00"
+                "failed_at": "2026-05-03T01:20:02.807079+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14068,13 +14084,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqgp51jgUr8T8EFdCP6PSptPC8BBwS5O46Frn3RjZe3g70qQiVj4lgXJQDGhvwr2Yj4Av2GKu7hq7BSOlddLfBxtWVniLnAeM260M04j-a-9KLEfQV5GzYtObeiqyjBYMezS7s=w2048-h2048-k-no",
                 "source_url_sha256": "a4df754669d21333737b3661fc9d8822787d3afb8fa9dcb2c3675f98a3e6c250",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -14141,7 +14153,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:52.722824+00:00"
+                "failed_at": "2026-05-03T01:20:03.240152+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14151,13 +14163,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrjPRdQwvDcZ_6FEXOAe-in-7Dgwyr91Z99r4cN02P5h1UOmf838JnrjVvHYsL08d5C4nHr-pGhBQSeXGJZOXmrmlgojmtJbvrnXlyFYREhHUwQMOYGoTQggG91NlFc4JpsumK_3g=w2048-h2048-k-no",
                 "source_url_sha256": "4a3483bff54390b80a0c99270ffbf72f9dac0f1620c02b231847f6253c30c13b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -14224,7 +14232,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:53.037695+00:00"
+                "failed_at": "2026-05-03T01:20:03.565218+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14234,13 +14242,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npDf50VQmWMujx8cFSDvCqfSUoqu6AExhZVYDIFGDfmYDHSmbpD3odBEWr5RddsfEN4SxxXCkcMYEt_INXWdoIuJ4Ma6R4jdl6o_nRYewJ9YHUKgZA-Es5Qbs2lLHA2S1yVhV1E=w2048-h2048-k-no",
                 "source_url_sha256": "ba9d43b3972d32364cc3e1a391c27626e2765cf1e9906e97a4ab6e79eec02d1e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -14307,7 +14311,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:53.340373+00:00"
+                "failed_at": "2026-05-03T01:20:03.904749+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14317,13 +14321,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npQqPyxSGC3zPKPTSH1xYKQUK1o-OFXWIX1oCBebQFsIK0ttttnpgUlDdgq3sycCdpkFlxHxVoy50q6Y_VR5Ucm3BcWPStJi6igkiWg5d52X0JijWb8akmwSyoe-QKbOG-GV7eVt5Ez8k8=w2048-h2048-k-no",
                 "source_url_sha256": "d64c89cae44dfae01879a6126f89eca5e3b17a5a9d1f3af0a075f67f1c4c7b35",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -14390,7 +14390,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:53.679882+00:00"
+                "failed_at": "2026-05-03T01:20:04.260506+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14400,13 +14400,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr8rOB19IgcJFBJjNxJgpV7B2qkKrbkrfeYOrk836vwudu5v2GZtCMTTJ2ohqlYQ9Exh6Hz2KD79qfho_-aGeU5JUaPhx-_lCM1N4G2yLfupnAhqXwkECgcRyL4zYyLoRcEa8qy=w2048-h2048-k-no",
                 "source_url_sha256": "2cd3937bb9719c9c722c8823eae3113ddea9c1399c35402327fe5d9481ab3598",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -14473,7 +14469,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:53.989870+00:00"
+                "failed_at": "2026-05-03T01:20:04.650594+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14483,13 +14479,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrU_qbi6UNC1wa7SxabiXi2QWKCLDvYlcQGxC0QBw0UZ0zBPi3LSH8X0RAqBcdlvFNfRC92Ok_0CYoqKTFlskbKWploVwFFmTh7XqvTAWksB2ZO7K0q3pGOQCy9ke6h2jns5FgT5w=w2048-h2048-k-no",
                 "source_url_sha256": "63b4e698b08d806c35493c44508e4c00ebb4788aa85f5cac22365cdc58dd0b9c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -14556,7 +14548,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:54.297873+00:00"
+                "failed_at": "2026-05-03T01:20:05.004809+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14566,13 +14558,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqwK1cpMdmN34J3kERFKufx4trlFx0PZcLkpDwkLvjKt8ASBxiZWgs2j58WwaF21LZCcDFWMaJbDHSBiyLmU80HPs3gz34gVRzFKW8hLBzA2Xa-dlAmI-SsmGBYgXOaFp0Y_eb_=w2048-h2048-k-no",
                 "source_url_sha256": "66e4ac44b430f74de03d440ce6b31e807b44dfb9b272274014e0cf68af879f0a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -14639,7 +14627,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:54.618657+00:00"
+                "failed_at": "2026-05-03T01:20:05.336682+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14649,13 +14637,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npgHyUIiV9j3p6ghUAEWV6tua9ARRgRbAFE4QHCkj5TLfK81GcLVZb5L-nTPFSQiS8QJNy7K6Tr9tFtBn5bDsCgtVWfleI3uR7SWoUXbVR922ursdg1wWSunFCN6bBNCPpPyZ7w=w2048-h2048-k-no",
                 "source_url_sha256": "1d965c7bb5b5de2d12e5fa3f98df3658d06d183eee0ee13f8605413bbdbea03f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -14722,7 +14706,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:54.929205+00:00"
+                "failed_at": "2026-05-03T01:20:05.716977+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14732,13 +14716,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noB7gVU_S3vRdv_X0uqAI9519j-vKBpKyFziaLhKO8eyyYBYS6iIgDQsZgIxd224_-79YgJGVAHDHIN29jOS5nSK1DOdgOmqQL5vf40V-aolUfQscJN5YNp4TAk-Ga1hMSAc3C3rmyRNdo=w2048-h2048-k-no",
                 "source_url_sha256": "b160c43d9f656de4f1aab7f8230321a9ac0eccdae61258a8a7a4b0cd966e8700",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -14805,7 +14785,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:55.210082+00:00"
+                "failed_at": "2026-05-03T01:20:06.314994+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14815,13 +14795,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nquPqpLN3wWVboYwNFNHbMlzUcl9NXdxYB7GrOvHn3g9m8Say072AscF5HuYWs7YqsW0j2qLRTqVEN1CCk7ACnERc3De4-ptRnP8IvtOyzXJo4pmR8Ov2_gBMW-VZweN65CxA=w2048-h2048-k-no",
                 "source_url_sha256": "d976169ca2929b47532af4c5daf1ed81512686deb3b1d590559356f5680c19f5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -14888,7 +14864,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:55.499723+00:00"
+                "failed_at": "2026-05-03T01:20:06.788492+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14898,13 +14874,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrJwrIR-lsXLY02XHOQRo-2IAMwb5_m1TJ9dr5q4JvvV4hVV69kAJE0YisiYt5SIvm0GmNLwA2YocVDBMBsejLT2XUWxea_bFykWMj7aGe1PGmxOIniLkc1Smx1UnN7o1rFhGik=w2048-h2048-k-no",
                 "source_url_sha256": "e1193d90d9a915a6b417d332da1bea27c48de8f5c72d3176200101aa0f4ac702",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -14971,7 +14943,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:55.834241+00:00"
+                "failed_at": "2026-05-03T01:20:07.315127+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -14981,13 +14953,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqpzD2FiBoZOPqV-kHXbdvNAdXj4zUlDw_jV2kclIWpGChMiQiMowRIm6C4KDJ785NP4LHgqZMZc-VoarrIaU6kKKC3YR1u-lx8vh2Kg6O8lxRoSG2gMN_R8zLSHO72Gm0dK5m_=w2048-h2048-k-no",
                 "source_url_sha256": "169df9297212b55d2a68d98188ac4a204dcfb5deb2ae521e7a9790a996603f7f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -15054,7 +15022,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:56.145191+00:00"
+                "failed_at": "2026-05-03T01:20:07.844556+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15064,13 +15032,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nofJZ_b1_Fl2gao9DfRLWxFszVBX9kTwm7uLy3xP_n_EhzW7amjgeMj3Xz2zegDOHQpwA1CpSHuYZZCZR_Vp6DnFxHz1zzJkv__BeS1kescT_P2YsPjJJqAZWKX5WIirufx3Inl=w2048-h2048-k-no",
                 "source_url_sha256": "6a91e0738d465c6e82e583642a28083b47b93fcf681304b3c492be44a28fb409",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -15137,7 +15101,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:56.451979+00:00"
+                "failed_at": "2026-05-03T01:20:13.314190+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15147,13 +15111,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqj_uCduvR84duxgLt8A6B6c3Wqcu5ygjAM94NaVLpUUq8t4xx3ZAYjnXgbFWWdi7P3h-uKsKOHA2ocqNwStzRM3iGVpoDwaiLWxBJuB643VKpBU15nqm1NqQNY7H0APGjx3eq30g=w2048-h2048-k-no",
                 "source_url_sha256": "e1305929471b9f9c7444ca4d2a86b53a80f74ee54111d04e9d0382120fd1bfda",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -15220,7 +15180,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:56.788965+00:00"
+                "failed_at": "2026-05-03T01:20:13.731835+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15230,13 +15190,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqUBR6zFsbyYSsMcGOwKESCnYx4bQFHwxfizSwoQ2QFF52YlRknXY7C23NHvEkatDjajxlFstpm0ITfZAmzaOOvlvcMTwIRw3llilot6-TcpxhQGXcpthrnpKUfPB4jjFifUvol=w2048-h2048-k-no",
                 "source_url_sha256": "f9b5db2ffe0189b8999089e095abbdb13099e7e732ace0bfcc343bbcc17c8122",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -15303,7 +15259,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:57.095702+00:00"
+                "failed_at": "2026-05-03T01:20:14.164674+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15313,13 +15269,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npUOG3ZVW20x3JzAMhGL9Nmz-B6KzPjIdAADyOTSPo9Vpw8bR_b-Nqi2aKPwUGIPN8pBn0Lat9Q_0eeKWKXb7Ob--TblDBLDfxmN_hDZGNR0C_7vwxH7rq_xkBeb0ZAQY4PzcJU=w2048-h2048-k-no",
                 "source_url_sha256": "6c6325b1b86cb26e2d98e2f8f95bec14bdc568523b5c79e48c4465a14bdfbef0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -15386,7 +15338,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:57.398299+00:00"
+                "failed_at": "2026-05-03T01:20:14.586845+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15396,13 +15348,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nov0c_KraR6cmwWF4re-X4HNXJ1U0WSX2SA3XaJWx-Citj5KeT7kIadA4mYHmK_fED2pTftIpzqcYu4E9tPdcM_PuzEU0Wu-PUZGcUOGvPQmlP4N0Ib7hdOZYmhrFvvFOIlfYUp=w2048-h2048-k-no",
                 "source_url_sha256": "1400e8c979224bd6e73e2877d6a582bef0a0c6d77cc72707f097e548a5b639e2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -15469,7 +15417,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:57.713201+00:00"
+                "failed_at": "2026-05-03T01:20:15.400851+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15479,13 +15427,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noAxzMTrTYLgfCdf9fOERfqXUQ34wAreyx4le6m0rzLHYvAA0pCP4eukW7EY7L9FPfg3PzMvYFcuP1kbAlxxsn0QuQQmijL7qdJJI4yu2R2ztBKy3FyMxLBPoPUdqwXkbn9pc8=w2048-h2048-k-no",
                 "source_url_sha256": "3dc0776a1d222e2f10dee96869192677ae94a13270e65f3ef091f232c828c114",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -15552,7 +15496,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:58.028413+00:00"
+                "failed_at": "2026-05-03T01:20:15.927032+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15562,13 +15506,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrJgXCVz_HjbzZD0b1m62UROZTL5hpj0cJhbi3QXtJSk_hGT6GQgiAEqSXKdcIrZX4pjFc9sRMli6pObHWBtRqKUbyORf_XJPycWaIyMBEyN7C-2RHM-5EULMqMbz8uJr6EsVY=w2048-h2048-k-no",
                 "source_url_sha256": "d8cf82b2b5f97dd6ece1a522cb9e83112fd10f3a13e0752b5b6e801ee44b773a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -15635,7 +15575,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:58.348810+00:00"
+                "failed_at": "2026-05-03T01:20:16.420850+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15645,13 +15585,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noCrjVzD9SXQQA6MUce4JT7FsdT-aZkLyiKlLHedz-kETp6UPntvjvY6LEr964mt_P3nkzfkGAd6iYuL_MX3Yxq4W84vt8nfE8_jXMzcRS6j0ej0s9QTO-DNjICn0nl5phcy99WLg=w2048-h2048-k-no",
                 "source_url_sha256": "0746667466bd67bf046f911edb5a8d571e1fe3c1dfd196ad9a2e049cd04bce87",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -15718,7 +15654,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:58.674743+00:00"
+                "failed_at": "2026-05-03T01:20:16.871220+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15728,13 +15664,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrgVWycpC5AxVDyDjgKwmjtMCARsfLQcWiBZdsp4k95oZODHs-k4QV8wGe0cg_8GPCVY8n-ARCn7Cnns6harxjpNH68HAc5rBig7KwkFLMeBuf4z6GRew4Adefn7O9lm_2u6S0Y4A=w2048-h2048-k-no",
                 "source_url_sha256": "672ecad120154b72437ed81ba91201151421ad4a6c000425cc261fcfe87f9a31",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -15801,7 +15733,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:59.003520+00:00"
+                "failed_at": "2026-05-03T01:20:17.227818+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15811,13 +15743,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqiWGo45qBwJK7SfGFnAd1elAaHxgrAHHL86fkxjwB_w4EWGZEH_GJLAmb4dhVzz3_JV_C0jJsJslVHyVUDL-syQqUGOiuKOe1w8VtQuxX4zRPywryZ9it2rDBOxRwwfrw3siNLAg=w2048-h2048-k-no",
                 "source_url_sha256": "273798fb81385295149eed390130fadcc149e777905ac7fd81a64887e1773ab7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -15884,7 +15812,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:59.330674+00:00"
+                "failed_at": "2026-05-03T01:20:17.575822+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15894,13 +15822,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq-iDTWLk1b-aSZ7AhWyTCmQeclow6_UzWroBMHKVmWUGNNXr9AR3Oc9jh3zyI9soUNK5_6vQYEc58gbVGxZ8MfIU47m44xOpp52_I535EVUCnRAoamS02XSCPGqwvDIwBFFQod=w2048-h2048-k-no",
                 "source_url_sha256": "27da35eebc586ca82720c74f6a722cfc37368206b37f50cfff9aba79488ae8be",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -15967,7 +15891,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:59.657927+00:00"
+                "failed_at": "2026-05-03T01:20:17.935932+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -15977,13 +15901,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq3jCJ22IR5_viDS5bcnvERHmcahTSGIg1w61d9SHCg9AK6B4eW2qsGOms3N1B0CV3UWtnq143osQRCqI0oyxMCMZWveoCU8apCPB39jvs9wwQOx_R3BmvIauxqp-aN6i1tN9wi0rWYfhMc=w2048-h2048-k-no",
                 "source_url_sha256": "65e098e8a80066c8224810d11db740f2edaedaf9dc9cddbbd09c5dc36b0622a4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -16050,7 +15970,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:59.983253+00:00"
+                "failed_at": "2026-05-03T01:20:18.285800+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16129,7 +16049,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:00.289019+00:00"
+                "failed_at": "2026-05-03T01:20:23.713633+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16208,7 +16128,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:00.596832+00:00"
+                "failed_at": "2026-05-03T01:20:24.193426+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16287,7 +16207,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:00.919736+00:00"
+                "failed_at": "2026-05-03T01:20:24.603099+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16366,7 +16286,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:01.229912+00:00"
+                "failed_at": "2026-05-03T01:20:24.974336+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16445,7 +16365,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:01.546097+00:00"
+                "failed_at": "2026-05-03T01:20:25.337801+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16524,7 +16444,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:01.866003+00:00"
+                "failed_at": "2026-05-03T01:20:25.692890+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16603,7 +16523,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:02.159848+00:00"
+                "failed_at": "2026-05-03T01:20:26.064389+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16682,7 +16602,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:02.462084+00:00"
+                "failed_at": "2026-05-03T01:20:26.499119+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16761,7 +16681,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:02.773927+00:00"
+                "failed_at": "2026-05-03T01:20:26.871562+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16840,7 +16760,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:03.096238+00:00"
+                "failed_at": "2026-05-03T01:20:27.375769+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16919,7 +16839,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:03.404805+00:00"
+                "failed_at": "2026-05-03T01:20:27.897999+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -16998,7 +16918,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:03.735414+00:00"
+                "failed_at": "2026-05-03T01:20:28.418405+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17077,7 +16997,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:04.056097+00:00"
+                "failed_at": "2026-05-03T01:20:28.922357+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17156,7 +17076,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:04.378937+00:00"
+                "failed_at": "2026-05-03T01:20:29.418408+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17235,7 +17155,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:04.728479+00:00"
+                "failed_at": "2026-05-03T01:20:29.798278+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17314,7 +17234,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:05.102541+00:00"
+                "failed_at": "2026-05-03T01:20:30.162580+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17393,7 +17313,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:05.468629+00:00"
+                "failed_at": "2026-05-03T01:20:35.578967+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17472,7 +17392,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:05.866898+00:00"
+                "failed_at": "2026-05-03T01:20:36.027807+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17551,7 +17471,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:06.242173+00:00"
+                "failed_at": "2026-05-03T01:20:36.467597+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17630,7 +17550,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:06.636456+00:00"
+                "failed_at": "2026-05-03T01:20:36.937221+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17709,7 +17629,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:07.033711+00:00"
+                "failed_at": "2026-05-03T01:20:37.389439+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17788,7 +17708,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:07.425549+00:00"
+                "failed_at": "2026-05-03T01:20:37.919707+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17867,7 +17787,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:07.840198+00:00"
+                "failed_at": "2026-05-03T01:20:38.415197+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -17946,7 +17866,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:08.297593+00:00"
+                "failed_at": "2026-05-03T01:20:39.063563+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18025,7 +17945,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:08.789315+00:00"
+                "failed_at": "2026-05-03T01:20:39.650870+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18104,7 +18024,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:09.292659+00:00"
+                "failed_at": "2026-05-03T01:20:45.074964+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18183,7 +18103,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:09.782800+00:00"
+                "failed_at": "2026-05-03T01:20:45.527638+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18262,7 +18182,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:10.303160+00:00"
+                "failed_at": "2026-05-03T01:20:45.970763+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18341,7 +18261,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:10.781987+00:00"
+                "failed_at": "2026-05-03T01:20:51.312662+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18420,7 +18340,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:11.241768+00:00"
+                "failed_at": "2026-05-03T01:20:51.662506+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18499,7 +18419,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:11.660770+00:00"
+                "failed_at": "2026-05-03T01:20:52.007616+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18578,7 +18498,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:12.061871+00:00"
+                "failed_at": "2026-05-03T01:20:52.405778+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18657,7 +18577,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:12.529958+00:00"
+                "failed_at": "2026-05-03T01:20:52.813166+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18736,7 +18656,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:13.023521+00:00"
+                "failed_at": "2026-05-03T01:20:53.207957+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18815,7 +18735,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:13.529312+00:00"
+                "failed_at": "2026-05-03T01:20:53.593950+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18894,7 +18814,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:14.164836+00:00"
+                "failed_at": "2026-05-03T01:20:54.001085+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -18973,7 +18893,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:14.721149+00:00"
+                "failed_at": "2026-05-03T01:20:54.451031+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19052,7 +18972,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:15.641951+00:00"
+                "failed_at": "2026-05-03T01:20:54.900773+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19131,7 +19051,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:16.232117+00:00"
+                "failed_at": "2026-05-03T01:20:55.296889+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19210,7 +19130,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:16.728197+00:00"
+                "failed_at": "2026-05-03T01:20:55.703503+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19289,7 +19209,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:17.271946+00:00"
+                "failed_at": "2026-05-03T01:20:56.080688+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19368,7 +19288,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:17.816221+00:00"
+                "failed_at": "2026-05-03T01:20:56.445347+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19447,7 +19367,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:18.348149+00:00"
+                "failed_at": "2026-05-03T01:20:56.806132+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19526,7 +19446,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:18.851838+00:00"
+                "failed_at": "2026-05-03T01:20:57.219719+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19605,7 +19525,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:19.436598+00:00"
+                "failed_at": "2026-05-03T01:20:57.627230+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19684,7 +19604,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:20.024595+00:00"
+                "failed_at": "2026-05-03T01:20:58.040250+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19763,7 +19683,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:20.540304+00:00"
+                "failed_at": "2026-05-03T01:20:58.447378+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19842,7 +19762,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:21.041831+00:00"
+                "failed_at": "2026-05-03T01:20:58.860747+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -19921,7 +19841,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:21.588095+00:00"
+                "failed_at": "2026-05-03T01:20:59.297212+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20000,7 +19920,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:22.210981+00:00"
+                "failed_at": "2026-05-03T01:21:04.928787+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20079,7 +19999,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:22.769133+00:00"
+                "failed_at": "2026-05-03T01:21:05.366013+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20158,7 +20078,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:23.340670+00:00"
+                "failed_at": "2026-05-03T01:21:05.769877+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20237,7 +20157,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:23.911312+00:00"
+                "failed_at": "2026-05-03T01:21:11.265927+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20316,7 +20236,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:24.482891+00:00"
+                "failed_at": "2026-05-03T01:21:11.966846+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20395,7 +20315,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:24.961905+00:00"
+                "failed_at": "2026-05-03T01:21:12.515556+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20474,7 +20394,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:25.462520+00:00"
+                "failed_at": "2026-05-03T01:21:12.966216+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20553,7 +20473,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:25.955224+00:00"
+                "failed_at": "2026-05-03T01:21:13.355877+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20632,7 +20552,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:26.479941+00:00"
+                "failed_at": "2026-05-03T01:21:13.734943+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20711,7 +20631,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:26.977279+00:00"
+                "failed_at": "2026-05-03T01:21:14.099886+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20790,7 +20710,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:27.467916+00:00"
+                "failed_at": "2026-05-03T01:21:14.446570+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20869,7 +20789,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:27.974216+00:00"
+                "failed_at": "2026-05-03T01:21:14.813233+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -20948,7 +20868,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:28.495425+00:00"
+                "failed_at": "2026-05-03T01:21:15.133359+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21027,7 +20947,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:29.003649+00:00"
+                "failed_at": "2026-05-03T01:21:15.475284+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21106,7 +21026,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:29.506583+00:00"
+                "failed_at": "2026-05-03T01:21:15.817356+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21185,7 +21105,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:30.010513+00:00"
+                "failed_at": "2026-05-03T01:21:16.168890+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21264,7 +21184,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:30.507565+00:00"
+                "failed_at": "2026-05-03T01:21:21.491878+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21343,7 +21263,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:30.985413+00:00"
+                "failed_at": "2026-05-03T01:21:21.839658+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21422,7 +21342,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:31.458416+00:00"
+                "failed_at": "2026-05-03T01:21:22.192848+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21501,7 +21421,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:31.979741+00:00"
+                "failed_at": "2026-05-03T01:21:22.501702+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21580,7 +21500,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:32.613820+00:00"
+                "failed_at": "2026-05-03T01:21:22.880147+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21659,7 +21579,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:33.179666+00:00"
+                "failed_at": "2026-05-03T01:21:23.252584+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21738,7 +21658,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:33.712142+00:00"
+                "failed_at": "2026-05-03T01:21:23.618309+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21817,7 +21737,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:34.230275+00:00"
+                "failed_at": "2026-05-03T01:21:23.929061+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21896,7 +21816,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:34.741267+00:00"
+                "failed_at": "2026-05-03T01:21:24.301710+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -21975,7 +21895,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:35.192547+00:00"
+                "failed_at": "2026-05-03T01:21:24.667527+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -22054,7 +21974,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:35.612575+00:00"
+                "failed_at": "2026-05-03T01:21:25.043462+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -22133,7 +22053,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:35.987355+00:00"
+                "failed_at": "2026-05-03T01:21:25.433473+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -22212,7 +22132,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:36.384324+00:00"
+                "failed_at": "2026-05-03T01:21:25.767429+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -22291,7 +22211,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:36.757649+00:00"
+                "failed_at": "2026-05-03T01:21:26.085596+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -22370,7 +22290,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:37.088216+00:00"
+                "failed_at": "2026-05-03T01:21:26.406588+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -22449,7 +22369,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:37.440974+00:00"
+                "failed_at": "2026-05-03T01:21:26.738093+00:00"
             },
             {
                 "place_name": "Verb Coffee | The Burg Church",
@@ -22528,27 +22448,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:37.764779+00:00"
+                "failed_at": "2026-05-03T01:21:27.075851+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 117,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 122,
+            "duplicate_count": 0,
+            "airtable_photos_count": 5,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 87,
             "place_name": "Verb Coffee | The Burg Church",
             "place_id": "ChIJEwc2Oc0bVIgRKqCZp_Yw5lk",
             "record_id": "receMlCmNpSP1iknh",
-            "generated_at": "2026-05-02T22:18:37.765253+00:00",
+            "generated_at": "2026-05-03T01:21:27.076336+00:00",
             "azure_assets_count": 5,
             "failed_upload_count": 107,
             "pending_upload_count": 0,
             "selected_airtable_count": 5,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

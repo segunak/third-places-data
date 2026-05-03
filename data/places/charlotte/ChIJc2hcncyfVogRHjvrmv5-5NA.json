@@ -715,10 +715,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -727,6 +723,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[8].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -763,13 +767,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX0dZD5MBquCXavKO0rlYQW8ePZPdWg9HWmMc6CO-0CreGj8fxDhD_9PM7-0F4Zr1j6gKyDtK57-WY3Kt6t0lmd5wwqYQW3-PFIgaSPC0iQd2Pr4FIKQaa11wGRDYNsm2-1abN=w2048-h2048-k-no",
                 "source_url_sha256": "38bb2590a21d5bb89feea132b9b29364825d8c5382c18564daf1f53a9a9b9d5c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -836,7 +836,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:25.197334+00:00"
+                "failed_at": "2026-05-03T01:04:14.599237+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -846,13 +846,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypnmgwZBwTHLstASS1NNh0bxYIa3bqWZcdjTVhdgmPiM3occ8Pan05TIvoybN7xBYa6VeIR6rAapO7Tr-B3qeX1L3EcLZNUGTfOvSofycRuthRf1rtiv03lvXOdPOE9BArEGTn=w2048-h2048-k-no",
                 "source_url_sha256": "e655e0ffb5ec87527b68c0ad03b0e821d69cecc3413754f82b7ac21abc814239",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -919,7 +915,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:25.541768+00:00"
+                "failed_at": "2026-05-03T01:04:14.940634+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -929,13 +925,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyytJOw8DHozdXJ7SFUbk9651X4S5qr7NCDJrUMmKHfl8YQ6PR3pp58m5JK_vKHCQsifSSO1svUICnERfGk0iZMP_f_gmNu2sF2p6E5BrguJ4dk7zXVW4u_dkZRThiQoVTa-v3XZdN92nE=w2048-h2048-k-no",
                 "source_url_sha256": "a05a9c4f8cbf1a26b3ebc5b321e35ae2173da36d2db05629fc7b028387477bd3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -1002,7 +994,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:25.890416+00:00"
+                "failed_at": "2026-05-03T01:04:15.295376+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1012,13 +1004,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwj7cL5yF7KgPwABfPg882oJhk5B6KOKAYaOLzV7A6NEL9mZRtJRdWO8Qk8dtq_Mhq_l1L69d1_KRvic9Ce2iQOXmUtbbjQjgAFO2sgDslWU8fu3Xn-frAqT_fev2OU9R0Vu5Hz-0McF9_R=w2048-h2048-k-no",
                 "source_url_sha256": "dd23cd137bb14cd06e35d429c1257b168bdd65ce99c6a829d2c0b89df75dce1b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -1085,7 +1073,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:26.239187+00:00"
+                "failed_at": "2026-05-03T01:04:15.634616+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1095,13 +1083,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweGz0VdHfmiFV2eUabksrw1HnyDecbXWFxAVprdr2ZEMS5cKfk3xVHyYAPMrGW7r0zvJazkaF-Ag7h9LCzlVXewnj8RlzybikY92SibjwvjifCg8R_4NWz6SBFPB5vYoPVscuhoSKFloWc=w2048-h2048-k-no",
                 "source_url_sha256": "426d3f335bd03e2444e474579686187d0381fc9989644680f932a1418093a9df",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -1168,7 +1152,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:26.630250+00:00"
+                "failed_at": "2026-05-03T01:04:16.008247+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1178,13 +1162,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDYvKXlNlJE9w_MprjThhunTSl8h2pHJ_RrRC8_hC0FTMVPN2_6AKIQhP-8XV58Ww1GTLjLOEopgfn3xUqU0MVZbOa93maz9HvJxtXG9vMYVMVnKJ7sk-NKMYoirQEVV3hRn5pri6fJyM9=w2048-h2048-k-no",
                 "source_url_sha256": "3504bf49e9d991a4724027269bef9ae8b1be3d54b282a9f87782c152cf49f3b1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -1251,7 +1231,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:27.022623+00:00"
+                "failed_at": "2026-05-03T01:04:16.380358+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1261,13 +1241,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIpBAbxK-Jjcy0pFmlkWpbCxs_MOuz23-9q1JCItfyIvSL-xlm5momRSxpK2wMPL0UPeSMy5DdEcIbg2nuDtvRwDCMaENtI2w4FMTqjnAK7-8G-tA6_5CLhRY8bnu28nBc86n7=w2048-h2048-k-no",
                 "source_url_sha256": "625e6f30f73b78e255958e28567caf65f180112c4854e35c6a27613e69919172",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -1334,7 +1310,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:27.368216+00:00"
+                "failed_at": "2026-05-03T01:04:16.716969+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1344,13 +1320,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJD6y1gOCL7b9pjthjmA70XgP9c7tJpVL4pQW2pQYOk5HMR8QMh4UyjNkcTv9m1OfAWRuC56ICH7krRrlSZkga5b0raaDEmq_tj8RuU2b9soOi86Dp3R0a-0vxSoi4KQ-tlYyn=w2048-h2048-k-no",
                 "source_url_sha256": "487b2af800cf9841255a54dc143988664a9eca1d1125a97ff492cd7106caa1e1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -1417,7 +1389,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:27.705856+00:00"
+                "failed_at": "2026-05-03T01:04:17.083814+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1496,7 +1468,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:28.041301+00:00"
+                "failed_at": "2026-05-03T01:04:17.462737+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1575,7 +1547,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:28.455231+00:00"
+                "failed_at": "2026-05-03T01:04:17.805412+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1654,7 +1626,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:28.945367+00:00"
+                "failed_at": "2026-05-03T01:04:18.197165+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1733,7 +1705,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:29.341440+00:00"
+                "failed_at": "2026-05-03T01:04:18.613002+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1812,7 +1784,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:29.673203+00:00"
+                "failed_at": "2026-05-03T01:04:19.028881+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1891,7 +1863,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:30.020259+00:00"
+                "failed_at": "2026-05-03T01:04:19.384252+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -1970,7 +1942,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:30.369723+00:00"
+                "failed_at": "2026-05-03T01:04:19.700082+00:00"
             },
             {
                 "place_name": "Night Swim Coffee | Hawkins",
@@ -2049,27 +2021,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:30.728309+00:00"
+                "failed_at": "2026-05-03T01:04:20.036134+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 18,
-            "duplicate_count": 9,
-            "airtable_photos_count": 9,
+            "candidate_count": 19,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 9,
             "data_file_photo_urls_count": 9,
             "provider_raw_photo_url_big_count": 9,
             "place_name": "Night Swim Coffee | Hawkins",
             "place_id": "ChIJc2hcncyfVogRHjvrmv5-5NA",
             "record_id": "rec1m6emIUSOeewEq",
-            "generated_at": "2026-05-02T22:00:30.980755+00:00",
+            "generated_at": "2026-05-03T01:04:20.036445+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 16,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 9
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

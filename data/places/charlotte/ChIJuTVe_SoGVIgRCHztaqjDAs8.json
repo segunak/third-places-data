@@ -4645,10 +4645,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -4657,6 +4653,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -4693,13 +4697,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npizPvuxnXvLUOBGi30xORXYSAhqD6DpFT7vJrsrmOOcq0gtkM_OLDk8hzEWYA95Xj8DVzrq4cQ2uGJM7JaZ73j8tWWndiS5u_AqJWuzYhLB3yQeei2LtAHr5Ej2dCKQoY97RI=w2048-h2048-k-no",
                 "source_url_sha256": "e3ef2c952401f9839defc4b3be42ddc571bd587e76833b9408d5f3416439312f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -4766,7 +4766,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:07:35.575840+00:00"
+                "failed_at": "2026-05-03T01:20:02.440461+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Kannapolis",
@@ -4845,27 +4845,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:07:36.218432+00:00"
+                "failed_at": "2026-05-03T01:20:02.901688+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 4,
-            "duplicate_count": 2,
-            "airtable_photos_count": 2,
+            "candidate_count": 5,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 2,
             "data_file_photo_urls_count": 2,
             "provider_raw_photo_url_big_count": 2,
             "place_name": "Cabarrus County Library | Kannapolis",
             "place_id": "ChIJuTVe_SoGVIgRCHztaqjDAs8",
             "record_id": "reciWZow9BXR6kmjx",
-            "generated_at": "2026-05-02T22:07:36.218519+00:00",
+            "generated_at": "2026-05-03T01:20:02.901991+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 2,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 2
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

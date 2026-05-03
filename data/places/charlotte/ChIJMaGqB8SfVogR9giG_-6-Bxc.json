@@ -4298,10 +4298,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -4310,6 +4306,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[20].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -4348,10 +4352,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -4360,6 +4360,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -4398,10 +4406,6 @@
                 "source_path": "fields.Photos[2]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
                     }
@@ -4410,6 +4414,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[22].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -4448,10 +4460,6 @@
                 "source_path": "fields.Photos[3]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
                     }
@@ -4460,6 +4468,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -4496,13 +4512,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxImqGZgacSSjl_0Ys7xUmCYlrtQm_vaN2tQRmQVF3li14j6klnnF0CTPmhbKm41Ej9h_dHhUMeLnJxEd0acO-CztXOBDsS_mGVLe50uDe1NUtwUAh37Opz6iyF7zW6GW8NEuPg=w2048-h2048-k-no",
                 "source_url_sha256": "9aa1976e678f1c4a4896916bc7857cbc4142dd416a7a903c87469a8a8a0cfe6e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -4569,7 +4581,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:04.884085+00:00"
+                "failed_at": "2026-05-03T01:03:03.281732+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -4579,13 +4591,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxAo_ZRUE7Su5ZBFJ22k6wrTuJhBSH5NE9JQVVNU2ySAjjX_21Vw0OvVZP2V7UOnY4upbUm2x700230WX1gfrlmMDWLNDq_X6pAJPi9j_n4M6tELwqiOZu7OXfMi9rBQRta1--1ZQ=w2048-h2048-k-no",
                 "source_url_sha256": "8dab866cf9aca83cebd4f680935cb612f80132589fba81821ee1cb698a539f51",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -4652,7 +4660,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:05.241109+00:00"
+                "failed_at": "2026-05-03T01:03:03.664366+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -4662,13 +4670,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz8LBUR9WkN4wrSvx6ee-zku2KF6QYcKQsZwaBwibuQUHQv_s14CIAKWwJMAxkRZcjdo1aoRZXEpdI_1XxYXtRAtuhLFEUf1xcDRLWN9S93t9ZazlEwh2rQYs2vq8qH9slB8a59YPB6oxs=w2048-h2048-k-no",
                 "source_url_sha256": "1e5650d4fe050543989c3c0990839677cc53c9aa216e1dff5ac277c0706adb64",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -4735,7 +4739,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:05.584930+00:00"
+                "failed_at": "2026-05-03T01:03:04.127560+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -4745,13 +4749,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwAOxMU9RMIeY8OlM_E8lhdRBbx9gsUjAoIPXFB3KyUlxNod9ikgOxun93y6nBULdqFN0R56Rlioud_bBcvy25443O2t-BjDt6vE3ZmDD9NtZ5vKjOqdgmt7Md5c7usE-kKmIjQK5pNSBY=w2048-h2048-k-no",
                 "source_url_sha256": "44f46bc040b935b4ff47127b53b51c57bb925fa88888f69ca920c2b060796a1a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -4818,7 +4818,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:05.928508+00:00"
+                "failed_at": "2026-05-03T01:03:04.496452+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -4828,13 +4828,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSygGny1drwaFbKtfiU9TJ_-ldIjjwD5v3QQjJucAY0E9-HaEI-Jq1Ki7kdF6k5UFcQvr10dHMmyF0BBp4CcDSTt76XzfMmFlLNnY-8QkOrpgbn5NMSK0rPw7y1VGqPZYOmrp8Rtlw=w2048-h2048-k-no",
                 "source_url_sha256": "e1236c5473637e7214069cc4406e1df0d5f010c1229788078755f7264c034597",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -4901,7 +4897,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:06.292550+00:00"
+                "failed_at": "2026-05-03T01:03:04.852140+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -4911,13 +4907,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyAUfDAWZT_qtVZ4ROcyOwHAvsy-HMJvdhKnOj5-BFp9jTQB5YYsGcoDT2H1nwsKS-nD5sM5-D8EJ-DGAL0K2S5M0jk5aLroiJ9ziBrHZxHI6nd0QKy2USn6_tBpQdn62GDUKXZ=w2048-h2048-k-no",
                 "source_url_sha256": "3d1bbb6f538254c2fe8f3f9c93ace0a9bda46eb298770bbce832df8b1c7fb361",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -4984,7 +4976,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:06.675425+00:00"
+                "failed_at": "2026-05-03T01:03:05.197136+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -4994,13 +4986,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx4Av602EzRH8tfUtWdixFo4WdRLIzmmV95nSZOe9yeYuWkgguXD1Ya_9Kt4gE6PA1PN4f_SfPIBHvABOXz7rpfJ7i-AIvC9PsmFgKiiG0uO76Lt7_Vip7h9p-D-ib8pXgdha4vx1fTrU8Q=w2048-h2048-k-no",
                 "source_url_sha256": "46e26b912339c0ac118ad00360c15e679a5ec1045dad245f6333be935819a6ef",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -5067,7 +5055,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:07.053623+00:00"
+                "failed_at": "2026-05-03T01:03:05.560600+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5077,13 +5065,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyyQlaV_ST2ftXuRxAjcqdhkt4xR4nkNosqBV-fHHEfIJmkUlGtP6IMAIt0cxmtZ21GblFlkYKDpIm5UhlpxyIoxsi3i0BZ370uC3AyVhTaY8hECVYItQeLWZcRfzGLm7tbykkV0PTfQibQ=w2048-h2048-k-no",
                 "source_url_sha256": "f6c92cedb07a67888fd37307bba1d87cd08228bdb658308c40b8fe447c532f4c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -5150,7 +5134,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:07.395553+00:00"
+                "failed_at": "2026-05-03T01:03:05.892262+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5160,13 +5144,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz5baaf6Q62HBIqce9oFki0QXoBFkn83jwQc1B4yeU4K8jy2W3t4Y4GklLcnvvLnZorGI6jVIUqeOPisa2ONz1-4VsFlJxJpLbtd5sebEvjE0ZVw_e8UfWYDB5nUhh6gaZElMTscQ=w2048-h2048-k-no",
                 "source_url_sha256": "277caba2f59a39a807fac7f5316eb74bfb93744ead0e95c107eb4578bed787fd",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -5233,7 +5213,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:07.710066+00:00"
+                "failed_at": "2026-05-03T01:03:06.259198+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5243,13 +5223,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwMhWeA360N-K8Ue_BTUJOomjKWp11pPAoUHQ0QUUxORjKr-gIEUQoSSVXi6Oa4iH2ZpUklVa0Lz21DtEuWS-8Yur7e89mLsnMn5o4SQG5RsgiKWFEqcpec6LRTYS8H3RvI97eF=w2048-h2048-k-no",
                 "source_url_sha256": "e8c07ebac514c3658bc4c0a29cb9cc1478930eb34aa635867dd4b7e1787ba924",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -5316,7 +5292,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:08.035460+00:00"
+                "failed_at": "2026-05-03T01:03:06.650321+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5326,13 +5302,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwFYX-28ygK-6nRNA1ZXGe3wGzkK0j34x2x1n7DSDwlKEnuV131VGl1vALAr8iZ0lyUd5L2Z_xFIvy7SrQrC2BQZUHXQ7tyamxxSu4U1ydOe7gH9JCIL915cH94ZsfHWyp7UoTI=w2048-h2048-k-no",
                 "source_url_sha256": "4532e0bb6aff1ea292a3a0f4e2b8bea5198cd10ce1c55d8f448a3ccb41bef12c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -5399,7 +5371,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:13.337355+00:00"
+                "failed_at": "2026-05-03T01:03:07.065473+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5409,13 +5381,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwur6d4omywpfOpNHb6wmL4fCNaobZCyUaZwIhOgXmbO1cVDn0wjkBO2pZePSNDvXO_FD-QqPycTRB27Jm0YQTGy1t9VkynIumhl1Y3ltEbucmC-As2aHsXs3FpsEbc3AfFUCXJ=w2048-h2048-k-no",
                 "source_url_sha256": "d257f944836954101067fae2f5b459a126b9da05826771848c222934f979c00b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -5482,7 +5450,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:13.661685+00:00"
+                "failed_at": "2026-05-03T01:03:07.485315+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5492,13 +5460,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw3aaIRQY7n4s3yb1CjoOArvvwPcbPtxjYt8wr6M_8oLryf0F6kKadOSUgwp4-FzmYHL8KL1-ZijjCHzYeqFEiSdiVptA2oOkuPACWRupUatmkBsqn2zHbNd57yQE-fmsXjH3en=w2048-h2048-k-no",
                 "source_url_sha256": "0b3d5f447b25f2a5a586e8a615e1eab8f62df90c21174472d0273109a0dc550a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -5565,7 +5529,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:13.972746+00:00"
+                "failed_at": "2026-05-03T01:03:07.904170+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5575,13 +5539,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwzIi1TrWfGyWwZShgZzXEWkjoYp6cfjSzz1TbT1UBsSWuw5uMKkkTBjZLC-TG15fZpkCvCPs0YtRtOE7bLnk4hk7n0uXREqD0oQqaf4P07CuvNVq8935S6VBA5jt2HznOgaw8m=w2048-h2048-k-no",
                 "source_url_sha256": "4c3b0b14712f6e3789940ac6f2d7327315646b26d17ecff24d585dbb43a2bd4f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -5648,7 +5608,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:14.293863+00:00"
+                "failed_at": "2026-05-03T01:03:08.282798+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5658,13 +5618,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwL7QHtCJuYDx7x1Bnl4FF8SPSYDrcsiI1VO9IBvKvR2NrJ-Xsh-UMtJ2q7t0ZeavIHyOp9EqKJBASBfA-xJstOvbkWPx5qnaJ5_qpmZZuDMsSy9RqWJkJPc6BX43LmC6vZf8-_jA=w2048-h2048-k-no",
                 "source_url_sha256": "8383771388131ce460df81ae625017555ba0bc9873e1d7c07c62b3b094dfb431",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -5731,7 +5687,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:14.605322+00:00"
+                "failed_at": "2026-05-03T01:03:08.683971+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5741,13 +5697,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzUs_o2K5k3YhJmVWezJhiJhNl3aRBAvz499lTZN7WM9aXexJrkHXfxiG4eb1nh4EyrrNHLgQP3Z69FpxD4i2bvDMB7UQcINtREnroBKAA4ypscp9GqJ4Wvy_E8v_ZKUZrEBhff=w2048-h2048-k-no",
                 "source_url_sha256": "32cbd7e6d03b1d9634ce8ef6fb2ec0b9702e0dfa3648d20bb8fa3c8a6600fda3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -5814,7 +5766,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:14.962285+00:00"
+                "failed_at": "2026-05-03T01:03:09.052839+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5824,13 +5776,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwJ8LkBjjkdrU7jYGNoGNO-c0omHzj3SHvYzJpS_toyEVHhdQ9mg1Z6N3r5OJWzAZnKZQ2Dq6NOZaPvOCQBKwVTuklCJs1xRzIfGJnkmwf553fsF-cdTZCW4V1zEzpxG-dsncRUt6e0u7w=w2048-h2048-k-no",
                 "source_url_sha256": "06044f1227ec2d2b1624a2e09f112185228c7007ccaf892b3822881d3bce2756",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -5897,7 +5845,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:15.326816+00:00"
+                "failed_at": "2026-05-03T01:03:09.456519+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5907,13 +5855,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwBEnWu1NFSxLsZGVoDEXphMWpEzYxJql27Zn7r68w6_9OySz6Ro09ib1-0ulYz_kE_JPXIY0d0S6CZ8OkLByeppZYiHZ1TuxZCkKNAFfAw5w7pgcuZdMzQBzr2AO7DMADAqeJxw3Vmtfw=w2048-h2048-k-no",
                 "source_url_sha256": "282685b8b80e97ac3a8a6104a9523a3f3840e2ad79ae9c3ec20bb1383aab4417",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -5980,7 +5924,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:15.632175+00:00"
+                "failed_at": "2026-05-03T01:03:09.881249+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -5990,13 +5934,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyDHE39J1fUF9NW3zFXb7DFtF6Lj-C07AMqgavHuUnRzmegcTfbBgvuwdyEAsmwkGVMYJfRYxIUGKq_TbFOGMuDDikLb4V2TbLaDkDYSU7vrLTwh9oUbaeKjdhmpfbgIPzHNJ0Z_T77JgkU=w2048-h2048-k-no",
                 "source_url_sha256": "f0a4b7419a013f454cf5dcd0f7a9f387d9d14cb486cc6f47c0f4ba5264f7b70c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -6063,7 +6003,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:15.949307+00:00"
+                "failed_at": "2026-05-03T01:03:10.292142+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6073,13 +6013,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxIoCofF8bcrOMa9V1gJVFPDq8ALOX7AIUycFSrOXnwbw0Vkhz5Pnq-5145Bvz0CP6gA26WNx4WpFa8GY5eWL0YJswf5YnbHVK3P-F0J75FQKp7-a9_9yuaJE-rMC-tEYAFyUteMCc_uhLP=w2048-h2048-k-no",
                 "source_url_sha256": "c59bbf226420448b66034e4be4ead3f9e68851bef3d990621b1cf508db437efb",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -6146,7 +6082,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:16.264994+00:00"
+                "failed_at": "2026-05-03T01:03:10.696248+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6156,13 +6092,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyr2au5Sg7sOzySc83LxO7_bR-Jb-C1Ic8eWBHK4CKqB97XBgzoUILEVJl7t4e18Z16pjR1n9OV-oAnNI9CIER2izAGdMCwnvGNho6BMZ9DRIVDkSlXu5zto-hWH-MjehM-zyaOwc-MAyik=w2048-h2048-k-no",
                 "source_url_sha256": "d6897c3be7aeb66319a9d83955e5f67e0f4f8878133987802148afbb5814ac76",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -6229,7 +6161,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:16.559281+00:00"
+                "failed_at": "2026-05-03T01:03:11.063793+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6239,13 +6171,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwtiR3aPPf2cg2Kd40xeTd3kf2xJHqmGWPp9wZ1FGzJwSdw2M3QLYwXjFws_OGneEWSfcoT0xo17x8tPQI8SzHgqB_mLQnHxhqZZ4g7wiwQtab1mQVfIi8yNlAaDws2DifriCbeOQzUXgGf=w2048-h2048-k-no",
                 "source_url_sha256": "66035b7e8cead09f75d6cd969c77e7e64878634759fa199a29a8b26a3f3266d9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -6312,7 +6240,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:16.894637+00:00"
+                "failed_at": "2026-05-03T01:03:11.427200+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6322,13 +6250,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwZdF_5oJ5GGVk71j_CXINru-tmVB5g2NQya1sW60jqxJHcJ212CaynT4BAnrHWddKkfp-4rd9-jRHZgYB17zeXrIRutrAXgRV_KtDscnQSMrk7EErJVhW3RnElEbXH2J4n_6BU59Mqj3RR=w2048-h2048-k-no",
                 "source_url_sha256": "ddd957216e659954434cc3f8bc15ca4586f86b5338ef37200de57295283400ee",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -6395,7 +6319,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:17.212074+00:00"
+                "failed_at": "2026-05-03T01:03:11.818819+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6405,13 +6329,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIcaO9Lp81V0bh-VHgNa8zIyXzOw99T7h-SpGGEr9zSVJY3VLtsmNygxK5_zY-Y0WhbBB59wuZK9Ibrb7fbCr6UAnbF8tlERbYNuQF-d9Wj8HwN0yi4OJhWWllu_s62GaOpUto=w2048-h2048-k-no",
                 "source_url_sha256": "0d48cb7676faff1d0ffb815d9d815b2aab665ee9d2b94580475860d331c02e70",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -6478,7 +6398,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:17.540200+00:00"
+                "failed_at": "2026-05-03T01:03:12.223680+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6488,13 +6408,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzGwU3UGuMQZjm8THXNdK693m36bcvE1glqhDphxr5YlUi2Nfqf4wdJwb4tlQW4pUZuCe_1VYqzx1mIpXiMEtJe8n7-1ksya2KenC6yHzrcwGmvKn80uohxoYvi8Ha0V1EgGcTo=w2048-h2048-k-no",
                 "source_url_sha256": "81ed8d4a90d68db90346447692a58326f4377f7b1d0895a3a2dbfe8cb04c8b8a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -6561,7 +6477,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:17.878815+00:00"
+                "failed_at": "2026-05-03T01:03:12.581367+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6571,13 +6487,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwMsc8yGpORD6xI279LJIEF72XiT_Zpjux-6e_QRm8pyYlk5OliISdX5t0goI70NoNGNx2dv4sQPy39vStQgSEGI4wfMzSSCLOEA2oTVkiGuVNusafc_rMmnuLWfbmwVXlKc5phXQ=w2048-h2048-k-no",
                 "source_url_sha256": "eed1444f03858442f33e2dbbf3f80d99bf69ce1b7e3efb06ea9104d14ae5e7bf",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -6644,7 +6556,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:18.239824+00:00"
+                "failed_at": "2026-05-03T01:03:12.966650+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6723,7 +6635,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:18.884838+00:00"
+                "failed_at": "2026-05-03T01:03:13.375438+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6802,7 +6714,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:19.463406+00:00"
+                "failed_at": "2026-05-03T01:03:13.729599+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6881,7 +6793,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:19.828350+00:00"
+                "failed_at": "2026-05-03T01:03:14.098259+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -6960,7 +6872,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:20.175289+00:00"
+                "failed_at": "2026-05-03T01:03:14.455885+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7039,7 +6951,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:20.531514+00:00"
+                "failed_at": "2026-05-03T01:03:14.801816+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7118,7 +7030,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:20.909217+00:00"
+                "failed_at": "2026-05-03T01:03:15.161350+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7197,7 +7109,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:21.289351+00:00"
+                "failed_at": "2026-05-03T01:03:15.532571+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7276,7 +7188,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:21.649070+00:00"
+                "failed_at": "2026-05-03T01:03:16.108546+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7355,7 +7267,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:22.029630+00:00"
+                "failed_at": "2026-05-03T01:03:16.592846+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7434,7 +7346,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:22.393123+00:00"
+                "failed_at": "2026-05-03T01:03:17.099154+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7513,7 +7425,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:22.776476+00:00"
+                "failed_at": "2026-05-03T01:03:17.707221+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7592,7 +7504,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:23.160836+00:00"
+                "failed_at": "2026-05-03T01:03:18.278474+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7671,7 +7583,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:23.520732+00:00"
+                "failed_at": "2026-05-03T01:03:18.816627+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7750,7 +7662,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:23.870356+00:00"
+                "failed_at": "2026-05-03T01:03:19.175637+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7829,7 +7741,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:24.190021+00:00"
+                "failed_at": "2026-05-03T01:03:19.567148+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7908,7 +7820,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:24.539119+00:00"
+                "failed_at": "2026-05-03T01:03:19.981171+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -7987,7 +7899,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:24.898178+00:00"
+                "failed_at": "2026-05-03T01:03:20.445144+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8066,7 +7978,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:25.271256+00:00"
+                "failed_at": "2026-05-03T01:03:20.852780+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8145,7 +8057,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:25.865524+00:00"
+                "failed_at": "2026-05-03T01:03:21.280981+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8224,7 +8136,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:26.537350+00:00"
+                "failed_at": "2026-05-03T01:03:21.666462+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8303,7 +8215,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:26.909863+00:00"
+                "failed_at": "2026-05-03T01:03:22.051414+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8382,7 +8294,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:27.297061+00:00"
+                "failed_at": "2026-05-03T01:03:22.426583+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8461,7 +8373,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:27.665392+00:00"
+                "failed_at": "2026-05-03T01:03:22.844453+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8540,7 +8452,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:28.025211+00:00"
+                "failed_at": "2026-05-03T01:03:23.215766+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8619,7 +8531,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:28.390463+00:00"
+                "failed_at": "2026-05-03T01:03:23.631131+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8698,7 +8610,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:28.751497+00:00"
+                "failed_at": "2026-05-03T01:03:28.972188+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8777,7 +8689,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:29.094674+00:00"
+                "failed_at": "2026-05-03T01:03:29.272684+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8856,7 +8768,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:29.436947+00:00"
+                "failed_at": "2026-05-03T01:03:29.599329+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -8935,7 +8847,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:34.763021+00:00"
+                "failed_at": "2026-05-03T01:03:29.921602+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -9014,7 +8926,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:35.118175+00:00"
+                "failed_at": "2026-05-03T01:03:30.359575+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -9093,7 +9005,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:35.434419+00:00"
+                "failed_at": "2026-05-03T01:03:30.676140+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -9172,7 +9084,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:35.788639+00:00"
+                "failed_at": "2026-05-03T01:03:31.018283+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -9251,7 +9163,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:36.124960+00:00"
+                "failed_at": "2026-05-03T01:03:31.371271+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -9330,7 +9242,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:36.512841+00:00"
+                "failed_at": "2026-05-03T01:03:31.695702+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -9409,7 +9321,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:36.919975+00:00"
+                "failed_at": "2026-05-03T01:03:32.001076+00:00"
             },
             {
                 "place_name": "Rally Pickleball",
@@ -9488,27 +9400,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:37.279970+00:00"
+                "failed_at": "2026-05-03T01:03:32.358703+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 70,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 74,
+            "duplicate_count": 0,
+            "airtable_photos_count": 4,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 40,
             "place_name": "Rally Pickleball",
             "place_id": "ChIJMaGqB8SfVogR9giG_-6-Bxc",
             "record_id": "recUU0U83xpf0oy1q",
-            "generated_at": "2026-05-02T21:59:37.280367+00:00",
+            "generated_at": "2026-05-03T01:03:32.359105+00:00",
             "azure_assets_count": 4,
             "failed_upload_count": 62,
             "pending_upload_count": 0,
             "selected_airtable_count": 4,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

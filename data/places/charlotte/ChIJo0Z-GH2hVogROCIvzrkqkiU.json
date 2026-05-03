@@ -5569,10 +5569,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -5581,6 +5577,10 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJo0Z-GH2hVogROCIvzrkqkiU/b165178bdf0f9103fd5f4e9e7c7eaaaf6b5f31ccb724afb5f3e8aca3d4245750.jpg",
@@ -5615,10 +5615,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -5627,6 +5623,10 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJo0Z-GH2hVogROCIvzrkqkiU/5f63c5a55e0f5d2ea74946d28c0527d91f762c6e227feb8e75279c8451f49191.jpg",
@@ -5661,10 +5661,6 @@
                 "source_path": "fields.Photos[2]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
                     }
@@ -5673,6 +5669,10 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJo0Z-GH2hVogROCIvzrkqkiU/a975c08cbadfddeb4ad33751aa3fe6464e797166180f85e02715b51c5ed30684.jpg",
@@ -5699,8 +5699,8 @@
         "azure_asset_failures": [],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 3,
-            "duplicate_count": 3,
+            "candidate_count": 6,
+            "duplicate_count": 0,
             "airtable_photos_count": 3,
             "airtable_photos_google_count": 3,
             "data_file_photo_urls_count": 3,
@@ -5708,13 +5708,21 @@
             "place_name": "Provided Coffee | NoDa",
             "place_id": "ChIJo0Z-GH2hVogROCIvzrkqkiU",
             "record_id": "rec4SH9RRAxPAikPr",
-            "generated_at": "2026-05-02T22:03:56.797896+00:00",
+            "generated_at": "2026-05-03T01:06:50.098388+00:00",
             "azure_assets_count": 3,
             "failed_upload_count": 0,
             "pending_upload_count": 0,
             "selected_airtable_count": 3,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 3
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

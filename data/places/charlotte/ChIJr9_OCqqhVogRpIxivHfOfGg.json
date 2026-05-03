@@ -6401,10 +6401,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -6413,6 +6409,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[36].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -6449,13 +6453,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx1rnKNXyOUUSFxZT7GTTsxxt-YfUhHhF7QChjMzU1Kql1ZKqmDGyv9I-hpE5uiEDMzfyVG4hScZBV7-407hZmVIBXu8b62VA2EO3gv8mjP328KoeXvcsCCSD_ukJmgr6u0tsnD3-afLgg=w2048-h2048-k-no",
                 "source_url_sha256": "3bf3f288d2edf7373eea3a07943f8177732648f3a4b9d9b81cd173aca8604fd3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -6522,7 +6522,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:00.502619+00:00"
+                "failed_at": "2026-05-03T01:03:03.304819+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -6532,13 +6532,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx6QQPtwMfefa8cC5E3ovr1Z-KawaYqJXlzOIxA7rrn96wyVnAhWO7UTx8xrapfYiPLqahyhaCtfBh7APLY_F4xmlqWDm0KvAlSRh2ZewgDDld5CckD15Puc8Www2d9jkRGhjd_lWARnWw_=w2048-h2048-k-no",
                 "source_url_sha256": "4eaa427b80f2fda3f0c12c708ab39e43b1efadee35bb57ec6089438bb43ac881",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -6605,7 +6601,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:01.003980+00:00"
+                "failed_at": "2026-05-03T01:03:03.708605+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -6615,13 +6611,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzqUGOpeOGLC5DMhI4ai0NMXuyPNC5jy6oz7kDp-_yHCcG498rQ52ZtnXnTJM66GsXTSenAasrfsezaFcVIJ_TAYucK0EYjjvm3HfLMxVANS75XeFgtB4_VycbyyYX5IdCZOo3J=w2048-h2048-k-no",
                 "source_url_sha256": "28b2c6bc77f1be4577a15fcb87a52f779a7faf9410f671109ba887174b87557a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -6688,7 +6680,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:01.317112+00:00"
+                "failed_at": "2026-05-03T01:03:04.185452+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -6698,13 +6690,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwMMUjswvXgldx4iL-b2wY8NhsoFIhYUMYtxDbyHVDeHcaGdG4EIcDeDNHd2V2oUX8-J1zhxZxK9o7DO60suUpV5Z5THuoafeQ0ChEbNTmardSbBtBjLFeTWxEvd1Ss3v_d2BNb=w2048-h2048-k-no",
                 "source_url_sha256": "f7e871639dc51f5e1b3629adc72b21585437296bb8ba2e258ed4631a2556f179",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -6771,7 +6759,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:01.686468+00:00"
+                "failed_at": "2026-05-03T01:03:04.558775+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -6781,13 +6769,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSww158nwVcDJPwL4ph2VeF7juqehEjqWr5i-3V7qi9vJ9podbfzFmYFoJ0ihgnGM9T-_MStVWf2Ng0_oVH52ZcjJL1k6oQx7W1JC3NbMPyFvpO3AiMHbJxAMo8reockJtmh4NJb=w2048-h2048-k-no",
                 "source_url_sha256": "9103e8be34f615f76a1ce5cd89afb68a32b31e79624c8974c721e190f38659ae",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -6854,7 +6838,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:01.987209+00:00"
+                "failed_at": "2026-05-03T01:03:04.902063+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -6864,13 +6848,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzv_fOMvF5jy4fL6NfFI4dh76UFhVDGAHy1htEJIW5us7H_QKSFAsBSUTEsc8DAioM1Y3UwH4SoI6OMADxh_pQISSWsKH36aVJsXzgAkeSr_67BQI6GRMKxl5-iKb2ARLiCadkQYHEs0uay=w2048-h2048-k-no",
                 "source_url_sha256": "8764361835539d9b5a7159557dbf7d07eaaada015fe9c407dbf962d866aa6987",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -6937,7 +6917,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:02.285686+00:00"
+                "failed_at": "2026-05-03T01:03:05.256706+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -6947,13 +6927,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzDDfavTTnUoWPFlUSsU9V0X4w39W4b0WqCyecOJ7jPC8wVMGi-aNKRK_cdRjm5js8ir_9t9XYVbJKpmCGorxa7CE4bsI2Y-7EY7T7i9ZAV_l2G3_rT_iUeh-L0rF67lkNAP7qL7Q=w2048-h2048-k-no",
                 "source_url_sha256": "e1f14094646dd384744ccc8014ca76a158b8c857b1dff42e5f0477382223ebd6",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -7020,7 +6996,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:02.597634+00:00"
+                "failed_at": "2026-05-03T01:03:05.612495+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7030,13 +7006,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzpWSz8aSuqT5P3yV1QApZlQXorF3U7nI4zn06uKKsgoNINZPdqjJmVrBN7tSFbbmhGQ7Fb3pKZmrpdO4HwJ56ahVuAIJnQTWtSCBVunnQaxi_s_OkBsIC_bQTFyaZ7ergIc8ToYmstVBqL=w2048-h2048-k-no",
                 "source_url_sha256": "c83a73926a15e8395d8d2cc79d1b80b4f19a128927cf828c5ce42d93f6da0ee5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -7103,7 +7075,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:02.930843+00:00"
+                "failed_at": "2026-05-03T01:03:05.958197+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7113,13 +7085,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyXr_X2T5FCIKzSDQEF55Y0lFZPjx3xYb49w7Jh7nlk_SaEBe-Z8stfLGYnbBPi2ioYylQSV4YcDTqB8MLQaylRGcj2xv7mGyhJiobmpagVjf-ct7npLnEyK3mgKL3CpmSz4yZvIsMip54H=w2048-h2048-k-no",
                 "source_url_sha256": "6b48f03f954d3929f380ca2ecb302b7d6e70e81112a4e475a1e2bccf899409fe",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -7186,7 +7154,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:03.255427+00:00"
+                "failed_at": "2026-05-03T01:03:06.323867+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7196,13 +7164,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxkTJwVPpUWbEwrb5XPYlp11mdnVP7Oj6tBQkjGGaofBJHtzqh8UvKuPqREPodASPSToKhg4J0PqBStNh-hPyQ8xEFxcyC74x3O-r282vpEgrmlmSKSGOM0UC7Mc05Wlhwa99FttDzTpGpq=w2048-h2048-k-no",
                 "source_url_sha256": "f19cf78c7ea84a8ab601be7b16b5fd4f3a6299045311b59a5d1d67a8d07ad524",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -7269,7 +7233,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:03.578579+00:00"
+                "failed_at": "2026-05-03T01:03:06.710056+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7279,13 +7243,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz4lCzFSJXna4FbOR9xmpAu3NKd-koeO_RQJpDTkd0TSnqW2H_X0x8epBHi2l_--gjQ-lYldl3SmJ-JvMIp1s9mau0gP9GHdzI4fH_FMpHz0I0PG6Ww_ke4WNydEwPoGGCXm1vEcP_URMU=w2048-h2048-k-no",
                 "source_url_sha256": "6602b9b5b7f0f026e1f1fb0c082cc32bd291e008dec5c7c241c20ff179175f49",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -7352,7 +7312,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:03.942600+00:00"
+                "failed_at": "2026-05-03T01:03:07.126367+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7362,13 +7322,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy96NsmNla-KvCu8-azq9NfL_GrfjJ1BcEG4QTUwXCjyxpcsJV0v3cih_ATzY10bXk8-aBnMedKV5MTqnLJdOMJV1uEKBzw50nPgBelcGKplxmPUqQ2fa2QEy9hFKcA366yAfhQdfuYqHyV=w2048-h2048-k-no",
                 "source_url_sha256": "3538ba806acb461b6e745343aca45017ba70a7db55864124e3bab91ea49eef2b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -7435,7 +7391,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:04.326845+00:00"
+                "failed_at": "2026-05-03T01:03:07.558800+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7445,13 +7401,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy8qNO9v5KJ4wf7VFmNsbgBY13Oy6RNVyfCWnqFw0JmPRV-0ZdAC1zB5GWopW3Im_hXoCHi-tj_nQ2Td03fFGBoA8XWeLoxZC0DVblh0AMc4QTfyjbjrs7ev30YTDjhc1RDwHguNDu3u0J5=w2048-h2048-k-no",
                 "source_url_sha256": "5fb93ec67c818e6b9b3a6a503c75b5469589f567745366a29e0ddac39ea384df",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -7518,7 +7470,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:04.660077+00:00"
+                "failed_at": "2026-05-03T01:03:07.957821+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7528,13 +7480,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwShlQZItD5b_bu1c5aqjZrD4bTun4YCTbxQRWW3czadUYtbRJXngBeJpgKEMUX0LUi-FfjoQNGRIJzPJz5qlHHeZigX5k72TiHOjWI7Dv0LpkuLJcX2KFoywtQ9jVacJ4QE2FOunfFsXez=w2048-h2048-k-no",
                 "source_url_sha256": "471eafa0057343b40847a78fc78f3dff84e0b173963db180cf7e6cd300dacec9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -7601,7 +7549,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:05.007175+00:00"
+                "failed_at": "2026-05-03T01:03:08.344606+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7611,13 +7559,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx74U3yGNaEEVAWR8OAduO56snC65dUcggk70hLQP8bLE5VQk9UoYWuAoVr_mm_4_9qTkFAoleM4mcCZPsJ-FqELI8SHq_Ti7g3OQTYY-H5mV6ATBsFWF6L4QowzWDxmjxnl_LF4m68LuS6=w2048-h2048-k-no",
                 "source_url_sha256": "7753ff74a288cd9f33d2944e3c2f26064f851dfa65d1bd2aa95a91256a18cd77",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -7684,7 +7628,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:05.355597+00:00"
+                "failed_at": "2026-05-03T01:03:08.740715+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7694,13 +7638,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSylLmJG07o_CokYj2bzAbl6CIy4JSjDNsZ4IyarPHslINEFCRHSr12UHHGHFBs4UqsTgndZHgyUm22lwfB5zw8i1cslk7PdwBxXZmJw0pTnQIdvdhno7UzxlpPRUb3CeUsTFBNBLRBRtOkQ=w2048-h2048-k-no",
                 "source_url_sha256": "2a8163d51ca835627db21d44cb263883bf7625cedccfc7cfb4e124eaf6913af8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -7767,7 +7707,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:05.682878+00:00"
+                "failed_at": "2026-05-03T01:03:09.113208+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7777,13 +7717,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy1getBwHdk9N9URROnVVaDPE6UMcAvy8BwWw0OsBmRKV5oge7dHORY2mFFghkY9K5BMxUq1phE-lwQ79ZMfusSM-_iLofuV4RzokhehGqtr-64GII7_5ZcaHrDc4h9o9K-n8vTRZ12qY-k=w2048-h2048-k-no",
                 "source_url_sha256": "4608fcd8fdd583f8aa4c6b1f4374d1dcdf739d46124b8712b98e5ed9bd72e422",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -7850,7 +7786,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:06.059013+00:00"
+                "failed_at": "2026-05-03T01:03:09.526849+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7860,13 +7796,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzBsYAmsymhDQ1uveTin58PQcgWTiy2cADeuJYGasEFQKlqJRY8Pq7mY7klhLjjY4z14CdkNOFdfueqROmVAli9qIk2idtoYZ1c9Y1Nd2q6ocgKGXhS6Ah3eh-wU34kvRtQ_PkKpoDFHs4_=w2048-h2048-k-no",
                 "source_url_sha256": "aa32ce407d7c21f7618a8f3d28e3db566837b90a211f09b03ea77a59f15ac4d2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -7933,7 +7865,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:06.423542+00:00"
+                "failed_at": "2026-05-03T01:03:09.952338+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -7943,13 +7875,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw0Nrcvvf-YLxg9wCtOlE2XuIkOC_h1nzWjBztFu5nZrjvYwCK1wDMceo7-RY2SjaOcQV7xMA07-VkmF-jG0M-ipQU5z--YzTek2gzk908eDM-FJyt5TE8hTPgb55YHJgw0q81Zj7I_e88C=w2048-h2048-k-no",
                 "source_url_sha256": "83ee755fe4cfcb2f832f75678905c7ddc92fc4cff6ac7de0e47a167030b18173",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -8016,7 +7944,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:06.794458+00:00"
+                "failed_at": "2026-05-03T01:03:10.370573+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8026,13 +7954,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxk-CPjgGch5qhxdmtHmzZ6PvxkQtXO2SiW8BmGEf7Cm7iuDy-qwBTIFeIlVkfhGxDUR_hkJHw-iJ3-e5jAAT7-MDvZvBucqL_oyVv2KvQdtjBL_u6lbzwY6zDzitUulJWVDipvJFa4r6cb=w2048-h2048-k-no",
                 "source_url_sha256": "34b02e43cac20ab2281c464084127483f6adb7895ac67770ceda2957798fe0f7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -8099,7 +8023,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:07.151913+00:00"
+                "failed_at": "2026-05-03T01:03:10.716854+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8109,13 +8033,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzEt62Yy8Qn5mNMRKjgkd9erKy0T0BXGf8Rz0_fvYrHO0gvR3LOLrvWnMF-SKW4qCLbjAgbtsJxcOVtFOQjja2GF4AFDepey4OOJ_gFEdfaOhlWsvn7v98PnQ5PO1rpvQbojboa=w2048-h2048-k-no",
                 "source_url_sha256": "8c6d06911dda59a5bb0c75099803bbd3e577467e47a8d13f52d6ab567cd5cf51",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -8182,7 +8102,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:07.459536+00:00"
+                "failed_at": "2026-05-03T01:03:11.073742+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8192,13 +8112,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzxAD5UaJHvOjLIWE0L8oNF8-EEGYQoPuQevpmt6z9WXuRvJILzHctICkn2kdzOxexfeWuSGF_JBq-ztndIZcbfnbqBV_C9bkae5RFkHhovwFbJpzpTzxayf-hjToaJiBjf2e03gA=w2048-h2048-k-no",
                 "source_url_sha256": "588ac6b107646b2c43dd58ab965bb7499dc3428553c8635a586b91a25b63d495",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -8265,7 +8181,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:07.788210+00:00"
+                "failed_at": "2026-05-03T01:03:11.429248+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8275,13 +8191,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwjlP0vHZuKalgQuzSoUoJJwzxe4Z_mF5F7SbWq9QGPR8m1pt20e7XwugbhiCXiK0PCrDmZR-FKbg8aRKi_3hTEEZtnHFLXm80UtytYIhXBW0DD1bEOWw6Wa67K3CQlpX6BUNWH=w2048-h2048-k-no",
                 "source_url_sha256": "ff1870da3be7fa89868d02016de89f8c26d4d1020a3b7146522cc11b64cbb3e8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -8348,7 +8260,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:08.110490+00:00"
+                "failed_at": "2026-05-03T01:03:11.822526+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8358,13 +8270,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx5yiSolCdDVUlsVqNZwKcrL8Wadt6jEhbw73p54vl55BrK0JjzYgC6aUegvOBXwrsBif7JxEfRiZpi9IT58gBfzTv1WIUTKWYIpG7dFhLnqYLnQn1WMhS5qNjiT4fm8cjffLA=w2048-h2048-k-no",
                 "source_url_sha256": "f962a0e344d1c7db9067046838a8e2a91dfe2892f9ee7838ffda2890005715ac",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -8431,7 +8339,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:08.413752+00:00"
+                "failed_at": "2026-05-03T01:03:12.221847+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8441,13 +8349,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzqIeX2A5wM26OGj5_EVUghYgYYvluPNv3gIqEGbCfYSMfLoLzTSsAr6i4vSyQZArBICXDTIwJNd4Er1VWHvliBfBJ0PWkYrbOYbJZrmZ0OpIQ3tyVHpKmiXkSVWhKWyiFDr76H=w2048-h2048-k-no",
                 "source_url_sha256": "1d8ac068ab5042346446ab2dd01573feb0db8b1da6effef3daaeb368c8a2dd59",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -8514,7 +8418,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:08.710766+00:00"
+                "failed_at": "2026-05-03T01:03:12.670888+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8524,13 +8428,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzUpM_xUbx88DsQVwE5t9CIJiKGxNkS-g46BwUF633iq8KfYYiNzRRuz-1TAMLKLWvnq4ddh5cFj1qonaFwJ0bF1kBeokwYvbTN-ckV8tbaSF1NMTbCMijRRkgZsWJQo7fJq5Y=w2048-h2048-k-no",
                 "source_url_sha256": "38a102a5de4cce6009a7c1d8f023414e25f79cd72446a22b1c59da243d45fe17",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -8597,7 +8497,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:09.032704+00:00"
+                "failed_at": "2026-05-03T01:03:13.025407+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8607,13 +8507,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxDKVVjgZgWt3hlLOJjNhJOOY_s0ztwj93MzEkGPULPjTsSjhxcoWkO0tQx69i0dwx4r0SL01Pl844Jq1lsiJvlz1SpYND5LuGE2c4a94I2j-uNkLm2yzCYNt6jpuQf_DG6TXdjAA=w2048-h2048-k-no",
                 "source_url_sha256": "338c504d75648765b4f885da560e8c336c5376bad695a6b7d3fffb7fd485f099",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -8680,7 +8576,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:09.353553+00:00"
+                "failed_at": "2026-05-03T01:03:13.406830+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8690,13 +8586,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwwCC3FO9i9Brm5EpzkLjdsEdtrwwJf9eO4Tr6OMKdfkq1PggBGmoAUUpukCPpXKIxGuqRFy0TzBWDONWRJ3dU7Ig7Z2tcgl_0be_Hw-hWpXjy_CuzPhkJei1T3IA8pRl5Xsv_t=w2048-h2048-k-no",
                 "source_url_sha256": "76e7fb4ed76baad6c55bfea1f4246cfc5cb8e9d4d72ae909156d44a8c03dd56e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -8763,7 +8655,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:09.650151+00:00"
+                "failed_at": "2026-05-03T01:03:13.760923+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8773,13 +8665,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwIxmRauIWPZS_Zkypk8IwAaCZBnTQ1bAonXwXRfQh4qDpSGttJvRp9BxNYwlw3zrqo331PE2R_wRhE3n8NvAnlmDIr9D64k386VE6ELQhc7387RZI_mi6Qr1TeV2lSwgW6AzPW9Q=w2048-h2048-k-no",
                 "source_url_sha256": "8a8b15cd80c16bfdd24ffad0677dcf984e3a11c67276d79c1bb50d040b80fc9c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -8846,7 +8734,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:09.971760+00:00"
+                "failed_at": "2026-05-03T01:03:14.111693+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -8925,7 +8813,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:10.282117+00:00"
+                "failed_at": "2026-05-03T01:03:14.494462+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9004,7 +8892,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:10.655804+00:00"
+                "failed_at": "2026-05-03T01:03:14.831386+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9083,7 +8971,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:10.998356+00:00"
+                "failed_at": "2026-05-03T01:03:15.194341+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9162,7 +9050,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:11.355399+00:00"
+                "failed_at": "2026-05-03T01:03:15.638324+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9241,7 +9129,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:11.688478+00:00"
+                "failed_at": "2026-05-03T01:03:16.193523+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9320,7 +9208,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:12.040135+00:00"
+                "failed_at": "2026-05-03T01:03:16.723367+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9399,7 +9287,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:12.372134+00:00"
+                "failed_at": "2026-05-03T01:03:17.263132+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9478,7 +9366,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:17.716571+00:00"
+                "failed_at": "2026-05-03T01:03:17.838955+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9557,7 +9445,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:18.063819+00:00"
+                "failed_at": "2026-05-03T01:03:18.493456+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9636,7 +9524,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:18.408316+00:00"
+                "failed_at": "2026-05-03T01:03:18.948948+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9715,7 +9603,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:18.753538+00:00"
+                "failed_at": "2026-05-03T01:03:19.333761+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9794,7 +9682,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:24.124753+00:00"
+                "failed_at": "2026-05-03T01:03:19.783175+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9873,7 +9761,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:24.448626+00:00"
+                "failed_at": "2026-05-03T01:03:20.233730+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -9952,7 +9840,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:24.774012+00:00"
+                "failed_at": "2026-05-03T01:03:20.628124+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10031,7 +9919,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:25.149666+00:00"
+                "failed_at": "2026-05-03T01:03:21.066851+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10110,7 +9998,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:25.469622+00:00"
+                "failed_at": "2026-05-03T01:03:21.493715+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10189,7 +10077,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:25.811287+00:00"
+                "failed_at": "2026-05-03T01:03:21.882588+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10268,7 +10156,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:26.209794+00:00"
+                "failed_at": "2026-05-03T01:03:22.298845+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10347,7 +10235,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:31.538616+00:00"
+                "failed_at": "2026-05-03T01:03:22.687560+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10426,7 +10314,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:31.847531+00:00"
+                "failed_at": "2026-05-03T01:03:23.077545+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10505,7 +10393,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:32.172376+00:00"
+                "failed_at": "2026-05-03T01:03:23.481506+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10584,7 +10472,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:32.507953+00:00"
+                "failed_at": "2026-05-03T01:03:23.865047+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10663,7 +10551,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:32.821961+00:00"
+                "failed_at": "2026-05-03T01:03:24.223984+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10742,7 +10630,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:33.120823+00:00"
+                "failed_at": "2026-05-03T01:03:24.545344+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10821,7 +10709,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:33.419755+00:00"
+                "failed_at": "2026-05-03T01:03:24.878353+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10900,7 +10788,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:33.717096+00:00"
+                "failed_at": "2026-05-03T01:03:25.193836+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -10979,7 +10867,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:34.048744+00:00"
+                "failed_at": "2026-05-03T01:03:25.531204+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -11058,7 +10946,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:34.370179+00:00"
+                "failed_at": "2026-05-03T01:03:25.850887+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -11137,7 +11025,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:34.690447+00:00"
+                "failed_at": "2026-05-03T01:03:26.180763+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -11216,7 +11104,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:40.029792+00:00"
+                "failed_at": "2026-05-03T01:03:26.486676+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -11295,7 +11183,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:40.385532+00:00"
+                "failed_at": "2026-05-03T01:03:26.833252+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -11374,7 +11262,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:40.695348+00:00"
+                "failed_at": "2026-05-03T01:03:27.195494+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -11453,7 +11341,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:40.987253+00:00"
+                "failed_at": "2026-05-03T01:03:27.580709+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -11532,7 +11420,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:41.307298+00:00"
+                "failed_at": "2026-05-03T01:03:27.904426+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -11611,7 +11499,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:41.676493+00:00"
+                "failed_at": "2026-05-03T01:03:28.212377+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -11690,7 +11578,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:42.004172+00:00"
+                "failed_at": "2026-05-03T01:03:28.519469+00:00"
             },
             {
                 "place_name": "That's Novel Books",
@@ -11769,27 +11657,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:42.669514+00:00"
+                "failed_at": "2026-05-03T01:03:28.856522+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 68,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 69,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 38,
             "place_name": "That's Novel Books",
             "place_id": "ChIJr9_OCqqhVogRpIxivHfOfGg",
             "record_id": "recY9E4bNu6tCsHq5",
-            "generated_at": "2026-05-02T21:59:42.669649+00:00",
+            "generated_at": "2026-05-03T01:03:28.856807+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 66,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

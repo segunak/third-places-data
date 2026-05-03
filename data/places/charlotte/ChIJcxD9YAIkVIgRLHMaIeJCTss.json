@@ -14550,10 +14550,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -14562,6 +14558,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[59].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -14600,10 +14604,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -14612,6 +14612,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -14650,10 +14658,6 @@
                 "source_path": "fields.Photos[2]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
                     }
@@ -14662,6 +14666,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -14700,10 +14712,6 @@
                 "source_path": "fields.Photos[3]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
                     }
@@ -14712,6 +14720,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[7].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -14750,10 +14766,6 @@
                 "source_path": "fields.Photos[4]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
                     }
@@ -14762,6 +14774,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[21].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -14800,10 +14820,6 @@
                 "source_path": "fields.Photos[5]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
                     }
@@ -14812,6 +14828,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[52].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -14848,13 +14872,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyXSFGQ1Trugf0gD3C7SmuqNvNdHS-7h3VAO-QVvr20ksyFKZSFE_U1iDjTgJL0A8hYTfRwekErAEgQCFeR-v5Dl9jplw0Vwdyom-gZT0mTT6POllAncrXDev3DQ1nSHHFoeswRWA=w2048-h2048-k-no",
                 "source_url_sha256": "f7106cb6c63aeac82e38a6d4ce1076a5389cb4aae2c9716ed81caa22dd0d2a54",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -14921,7 +14941,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:44.070238+00:00"
+                "failed_at": "2026-05-03T01:03:30.511514+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -14931,13 +14951,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx8YbsOHNEILdQ3r4u4-B9IglEzYu4BiBxeER3d1JLRvkrgH2GEySCqolGIR1mrQM0_f4gCmaf3lG0iLUuZZOalH93dSovoCC69NSi4iZBvRnHD-jPbSnQHOOOAbj1GuO-a2bM=w2048-h2048-k-no",
                 "source_url_sha256": "f1b1736d7883424769dc9e615e09c068e92599308de87d6273e63a7db190e75b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -15004,7 +15020,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:44.399352+00:00"
+                "failed_at": "2026-05-03T01:03:30.841157+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15014,13 +15030,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz_8YthyZjWag7XNZeo46FPoDPZY_qVJs7O4Dtm6bLMfe7lIWo8YzcPbu3oZOQEIkHzZ6k2KQEOYRjkUp24FRkeafQeSU8SPqLHjWu9BRP81PL5Kq9u50rZXzYzfAea1PLKtS6h=w2048-h2048-k-no",
                 "source_url_sha256": "4445c2418621cd930a674495d935ed365fc4a4440214b1d2c381d81e9207eb9c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -15087,7 +15099,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:44.706747+00:00"
+                "failed_at": "2026-05-03T01:03:31.197887+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15097,13 +15109,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSws1nogUGwZmUpAuNwaaU_bNnHWTz24W6C0Co9YlbdbzqC4xv5-26vo-egNcaNMzAMSoth6nonlMJLTL-vqO8pxY3dtGmNudQRpoAL9S7Wmo7_Ksl4awuqILLLXJ10Nn-b0xXm6=w2048-h2048-k-no",
                 "source_url_sha256": "adcf376214218b312c6730dc81c77019968d567320d3e5f4b0dddc9943b38411",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -15170,7 +15178,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:45.045929+00:00"
+                "failed_at": "2026-05-03T01:03:31.554823+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15180,13 +15188,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxvUVQA2_CW9QiuMwABDxFgsN_Vio9GXHswTZg0R1AVdAOQIV_mtV9nmGcLMT9WtPeCrufHfsPDNXIjsJP1oNM33KZrXPr3OlH_TRZd-983dpAewK_iOl_n08o9rpCxreg8B9pG=w2048-h2048-k-no",
                 "source_url_sha256": "c208ef6b9069a3cf743059b639159c3fdd04e8c0165d89bfa858fd0a908919e5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -15253,7 +15257,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:45.373536+00:00"
+                "failed_at": "2026-05-03T01:03:31.871440+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15263,13 +15267,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzgPjOQzLNRTf0USy17uiBCykbuTGf_hcafUeddgS2AVw2masKmnKuGzNJOKQohnkIBMTtwXTq6MTBucvIX_--9yBGmh5mKuZ3l1jWq6R7C_ra75iNPM8LH4DG_odqhQvd_UriD=w2048-h2048-k-no",
                 "source_url_sha256": "08278231f8962c97e2bf0a1d37147c5f88d21db35f7f4749d9583a43a7f1af8a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -15336,7 +15336,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:45.693603+00:00"
+                "failed_at": "2026-05-03T01:03:32.181711+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15346,13 +15346,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwf0wldqX0aqGA8w2hIBg28yCvOXd_knPWGVOby2kYkRmH3po4x1sD08tn3_Hv-ZKqelD3Eqn5eFR6gV1HcbeyEzync3sPzJR9zo5PmqHUzcethXHOlk1cR952aCndizqwSH8jb=w2048-h2048-k-no",
                 "source_url_sha256": "d67885fc523435dea835f8743e74d493b356c9ffff3cdbb21efb2f6e615edf90",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -15419,7 +15415,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:46.044512+00:00"
+                "failed_at": "2026-05-03T01:03:32.521010+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15429,13 +15425,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzaf0GCyOjButEAbw8DB7RQ1Qen9i3ypZgUCYsPkJQEQimvdpV07liu34iMz0GSQ_MVyh0L9TE5AZh7eQCnqbNUnF-sCd6AaS3QKWJ_OfEcHN10guWdJchiz20-TCOLo2neAdi2=w2048-h2048-k-no",
                 "source_url_sha256": "c24b620af573d6393971a796b45f1ce14477105869b00c60134e7873835e64d0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -15502,7 +15494,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:46.389995+00:00"
+                "failed_at": "2026-05-03T01:03:32.825402+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15512,13 +15504,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy42OBonPzgh3OLxwt35vjEBtXIFuHJJPNI7KI2pJT8n39nnuNOKAXaTeAi5gLkkAu6eoxmbWp89P9c71B10lMp63JNcN-Xdk6z1LcP9Gsepk8RW8t_Ygk8XcjXgPjhD7guqkRe3A=w2048-h2048-k-no",
                 "source_url_sha256": "c2fe1ecca8fef48cb342b616bf774c5b621083717eb071875fc73ce3b333ff06",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -15585,7 +15573,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:46.719019+00:00"
+                "failed_at": "2026-05-03T01:03:33.143385+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15595,13 +15583,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzU8l-Ye1Zjy-2wq2hT9dxsvNpmzK_wr3LdIt6jgggwztRQ1dnDcsZowqZpyqm6DWUkfAdeSiqf8bcqV2PzFXWPyApRMeoKfHzpmlmorllBzih7isTALzHPzRGziwbaVKvtf4HgQA=w2048-h2048-k-no",
                 "source_url_sha256": "c2e8dcfecd4c9097274d2c3cfdfe608da3f9b1ff1a36fa7e58f69637a5609845",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -15668,7 +15652,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:47.134540+00:00"
+                "failed_at": "2026-05-03T01:03:33.491572+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15678,13 +15662,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyxjQH36Q3bxnbGKLK6o-AOyHxpzRw6xmCKLlasmGb1-RHugo1mlYSZlvh-xMTbjkGMzXu4vA5hJcLSxssxHgm8GOyqWNoQGkWEHuQTy3CDRbA_8d7M7oMtcIVcu4LLB0vyvLjp9g=w2048-h2048-k-no",
                 "source_url_sha256": "ad7b17727d049a7a752ff801e5cb00e925aef04ee5ff293faccb7c6fd4a739ff",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -15751,7 +15731,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:47.734749+00:00"
+                "failed_at": "2026-05-03T01:03:38.870643+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15761,13 +15741,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxXwBBndYBGDsOCxj48EK-J746JIdVDoB6KPjHex4g2eZNQ5HZIoT2UTOC0QpMnBIhOn4mUm5AlOs85r2VbzUjjqPTLZrhgia3aJKgRPOdKUEu4PnXwIDFWYEJiXDnJmQFGtduD=w2048-h2048-k-no",
                 "source_url_sha256": "eed3f9e72c79ff25d540bc13805037b280250d3e28254927a08cdd7171ab8a60",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -15834,7 +15810,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:48.109443+00:00"
+                "failed_at": "2026-05-03T01:03:39.309811+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15844,13 +15820,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzOY7174fGBfjINdG0TT27kXlkaZz0W2BzPNyQRpHrVpbgCTy_dYIr_FCWVMUTzJ1CF-jrnYHmMelnKrstgb2iDDTMGi2i-03OGjGgBf7jF4K0IVff1R_ngn2SuV8_-3HtL6Bxx=w2048-h2048-k-no",
                 "source_url_sha256": "7b8bc1681182425a2ce931a98ac28e454feef37f2261781be1aca57e50f06ad8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -15917,7 +15889,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:48.494648+00:00"
+                "failed_at": "2026-05-03T01:03:39.831998+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -15927,13 +15899,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxiwGgYhf7c4hW8PjfQIFbmd1a-QbDchP7fgPeu3RhSc596cQfetT0IIcBN1hF0FPmQ7DoLbbWVRJ2HliR5CtmW4z0nheR-jk7AqfObjJGH87ELS5RjxdLPV_M-le6IlRSIQkEr=w2048-h2048-k-no",
                 "source_url_sha256": "fbe49399567e9c23eb060eb76afa446f6ec8c054b2a00f76a2d3bc642f504673",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -16000,7 +15968,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:48.988317+00:00"
+                "failed_at": "2026-05-03T01:03:40.175835+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16010,13 +15978,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx7pM9ItaQdCKDFpIdIKX5hDcVdhKW7TLbvEmMDDdfoj1ULK1ICFaoSqEMm5ed9n0C8Feqehrn-r9wS2apIbdMaKWwif7yQP-7bxVXvpD_lOSjP94MNelsnGBcsYmAkVNziiu7eOA=w2048-h2048-k-no",
                 "source_url_sha256": "dcdd4c06c4a2b28bfc6016e9a1c4882f0ee25211c7c86acdf150c60b358a8ef8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -16083,7 +16047,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:49.339076+00:00"
+                "failed_at": "2026-05-03T01:03:40.485756+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16093,13 +16057,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzdALUlDeTsaRTRVDZLpvdliyZop64D3CeJNFVImE0p484OQhcplLgXYc8WFuu27brki2QKa-ksRLFCfMhvMINu_GlhR9F_Fi0Np1mM7hyg8ICe7916rTaqCDDLJK_UBky11D40=w2048-h2048-k-no",
                 "source_url_sha256": "98a24a490617ada0d32c5ec22e7785bc7473400cbb79490e867d35e75a673cc1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -16166,7 +16126,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:49.654444+00:00"
+                "failed_at": "2026-05-03T01:03:40.810519+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16176,13 +16136,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxRnVm_JPpCH-Rix6Tagx0JgMbfZJAl4eDiJ-CXvolnFn0KwWzjGHxGqzcrXSbUSD0NsOyGIWBbuKKBIlQmzVfUHoxjEp4wilgAVFmNxczxwsGwqAlfBdhA5BBfODhbe3IwOlb-=w2048-h2048-k-no",
                 "source_url_sha256": "90e18f4aa4519917da993a9bbea5ec247163a345d6b0007f03671c953048758d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -16249,7 +16205,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:49.973267+00:00"
+                "failed_at": "2026-05-03T01:03:41.160165+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16259,13 +16215,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw6s2Qb8tZx6KGrd-usd5TPZINU7nhVtTmN_YgrOyY--A1rvVovaXZHjhs0T_HeC1RmCm4A9KGJymo-2hf7jqSy3CU6-H6YTXQOSytItM4P81JxRYzWAsVIepaQkUTVp7tjaA9w=w2048-h2048-k-no",
                 "source_url_sha256": "c087ea48db9ca84ef3a18aad4de054288f2aff4e39129ea333c4a972e1686684",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -16332,7 +16284,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:50.329437+00:00"
+                "failed_at": "2026-05-03T01:03:41.513827+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16342,13 +16294,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz7m1zOIWvi77GBcwXdYeoPhBirgri50_UlY9OTgwfcahueAszYqf-uAX94zLLeot64K6P4U5HzOh6HoJpuKGnqmRukUvcBzn7LNz5Ruur9rp5_7N8MEYIna4pcTbhstfAcvX398w=w2048-h2048-k-no",
                 "source_url_sha256": "f08be2333df8d4a47a647e221a18bf88224a67e9d767ec3ff926ef71f63010c0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -16415,7 +16363,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:50.695845+00:00"
+                "failed_at": "2026-05-03T01:03:41.875386+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16425,13 +16373,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwthrD4cAaGZW-Gq8lR_zDmKpd-Ijgv85dzdOdtVQKqVuI-5IDkJWk8PeOOqa3dPE7JUZzWfAk4ynMk1G_tFttCLOrWP9dw6EoMFle2NzS7xQ5RiWbcZEvJrM6cL8fjP5RKc3ml=w2048-h2048-k-no",
                 "source_url_sha256": "14afd4b5556e75364d92293847e597f8a2c78676f12dd3075d266d727fe673bc",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -16498,7 +16442,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:51.025569+00:00"
+                "failed_at": "2026-05-03T01:03:42.251275+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16508,13 +16452,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwKfNKcG4JoeBy4ikfER_BvV5qMC_OjIf0xtjyJ8U4hT23q1ehq7-yDg4QznCHQkVkKaAGgc5DUlzC4Cf9PL4DpvLm6u2d_X4soL8bNv2a2AjKRl941k8QG9go25Bcl1x8se4Dk=w2048-h2048-k-no",
                 "source_url_sha256": "e8011fc9a08e431e4a3ffe34d9769ba38564d41cf81224262f59cc2557dba871",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -16581,7 +16521,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:51.389460+00:00"
+                "failed_at": "2026-05-03T01:03:42.627769+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16591,13 +16531,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxf4mW-06zZMT-UHwrLfRb7OAVIphLfxy2wCHhyWjpE34dArfolLX9C7vUh3XNXCE_iLj6_PP7olWL98NggUFTX49frldGiJHsx-JTFcx9iAtoDrRZICkj669nzZHB2dWuX54n4=w2048-h2048-k-no",
                 "source_url_sha256": "bd54fcfc146d96f7234527daa595b180d8c532217331afe2abde631866a6b1b0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -16664,7 +16600,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:51.712089+00:00"
+                "failed_at": "2026-05-03T01:03:47.981872+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16674,13 +16610,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSybNAKKiFuClTnT3-2-5qbiI9xUw2ZhpgZAHxvN4-gXE4fYQyB9yfmCoj8pfOgiHPv0rDvAgak-pMJwGhmrD56GsUAsufgfxUssGei3s9A35Y3SOC4qNgGbEQQXZkgcGFwLs3AF=w2048-h2048-k-no",
                 "source_url_sha256": "79946b19d58956aaec0ffa113a02e292ff43fd772125021ed9783ea134a52aa4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -16747,7 +16679,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:52.063787+00:00"
+                "failed_at": "2026-05-03T01:03:48.299461+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16757,13 +16689,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyN8CQSF_Gs6A9XotoYO_qjmsa-cJMDh1VPMnq6Z24qB3acRVOR6-POkiEU4pVLZsyQiNSmpnZUkFe8nxCSgL3Zt_AVm1T7d0uznS-pyqb7-xSvBErDxG3qUNtaIEfOmUDAHXlO=w2048-h2048-k-no",
                 "source_url_sha256": "8d787ff328f098a8110470117eaec8a8f6401a66056b961e114022a5a9ba7e9c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -16830,7 +16758,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:52.426533+00:00"
+                "failed_at": "2026-05-03T01:03:53.641818+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16909,7 +16837,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:52.745556+00:00"
+                "failed_at": "2026-05-03T01:03:53.983534+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -16988,7 +16916,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:53.629730+00:00"
+                "failed_at": "2026-05-03T01:03:54.323303+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17067,7 +16995,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:53.951200+00:00"
+                "failed_at": "2026-05-03T01:03:54.679357+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17146,7 +17074,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:54.289439+00:00"
+                "failed_at": "2026-05-03T01:03:55.045235+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17225,7 +17153,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:54.618406+00:00"
+                "failed_at": "2026-05-03T01:03:55.400083+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17304,7 +17232,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:55.226770+00:00"
+                "failed_at": "2026-05-03T01:03:55.758537+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17383,7 +17311,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:55.555421+00:00"
+                "failed_at": "2026-05-03T01:03:56.088500+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17462,7 +17390,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:55.892371+00:00"
+                "failed_at": "2026-05-03T01:03:56.404949+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17541,7 +17469,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:56.254666+00:00"
+                "failed_at": "2026-05-03T01:03:56.698056+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17620,7 +17548,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:56.594953+00:00"
+                "failed_at": "2026-05-03T01:03:56.996479+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17699,7 +17627,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:56.932222+00:00"
+                "failed_at": "2026-05-03T01:03:57.324798+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17778,7 +17706,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:02.338303+00:00"
+                "failed_at": "2026-05-03T01:03:57.649605+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17857,7 +17785,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:02.999558+00:00"
+                "failed_at": "2026-05-03T01:03:57.971809+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -17936,7 +17864,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:03.478685+00:00"
+                "failed_at": "2026-05-03T01:03:58.298369+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18015,7 +17943,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:03.822232+00:00"
+                "failed_at": "2026-05-03T01:03:58.606568+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18094,7 +18022,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:04.184612+00:00"
+                "failed_at": "2026-05-03T01:03:58.949093+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18173,7 +18101,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:04.608475+00:00"
+                "failed_at": "2026-05-03T01:03:59.306059+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18252,7 +18180,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:04.945515+00:00"
+                "failed_at": "2026-05-03T01:03:59.662370+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18331,7 +18259,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:05.555108+00:00"
+                "failed_at": "2026-05-03T01:04:00.021763+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18410,7 +18338,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:05.930636+00:00"
+                "failed_at": "2026-05-03T01:04:00.374747+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18489,7 +18417,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:06.339154+00:00"
+                "failed_at": "2026-05-03T01:04:00.715354+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18568,7 +18496,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:06.740557+00:00"
+                "failed_at": "2026-05-03T01:04:01.057345+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18647,7 +18575,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:07.122646+00:00"
+                "failed_at": "2026-05-03T01:04:01.401305+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18726,7 +18654,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:07.493738+00:00"
+                "failed_at": "2026-05-03T01:04:01.712877+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18805,7 +18733,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:07.850812+00:00"
+                "failed_at": "2026-05-03T01:04:02.074922+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18884,7 +18812,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:08.201547+00:00"
+                "failed_at": "2026-05-03T01:04:02.420048+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -18963,7 +18891,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:08.546796+00:00"
+                "failed_at": "2026-05-03T01:04:02.786605+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19042,7 +18970,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:08.908353+00:00"
+                "failed_at": "2026-05-03T01:04:03.129951+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19121,7 +19049,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:09.241427+00:00"
+                "failed_at": "2026-05-03T01:04:03.465924+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19200,7 +19128,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:09.606296+00:00"
+                "failed_at": "2026-05-03T01:04:03.772041+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19279,7 +19207,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:09.963536+00:00"
+                "failed_at": "2026-05-03T01:04:04.131624+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19358,7 +19286,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:10.286700+00:00"
+                "failed_at": "2026-05-03T01:04:04.474782+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19437,7 +19365,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:10.623519+00:00"
+                "failed_at": "2026-05-03T01:04:04.824784+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19516,7 +19444,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:10.986474+00:00"
+                "failed_at": "2026-05-03T01:04:05.135498+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19595,7 +19523,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:11.347012+00:00"
+                "failed_at": "2026-05-03T01:04:05.465693+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19674,7 +19602,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:11.704161+00:00"
+                "failed_at": "2026-05-03T01:04:05.782583+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19753,7 +19681,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:12.047900+00:00"
+                "failed_at": "2026-05-03T01:04:06.091200+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19832,7 +19760,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:12.361779+00:00"
+                "failed_at": "2026-05-03T01:04:06.425347+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19911,7 +19839,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:12.702917+00:00"
+                "failed_at": "2026-05-03T01:04:06.756118+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -19990,7 +19918,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:13.032224+00:00"
+                "failed_at": "2026-05-03T01:04:07.083619+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20069,7 +19997,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:13.362159+00:00"
+                "failed_at": "2026-05-03T01:04:07.390223+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20148,7 +20076,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:13.670155+00:00"
+                "failed_at": "2026-05-03T01:04:07.717132+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20227,7 +20155,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:14.019568+00:00"
+                "failed_at": "2026-05-03T01:04:08.071536+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20306,7 +20234,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:14.346550+00:00"
+                "failed_at": "2026-05-03T01:04:08.440678+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20385,7 +20313,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:14.682969+00:00"
+                "failed_at": "2026-05-03T01:04:08.796386+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20464,7 +20392,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:15.028019+00:00"
+                "failed_at": "2026-05-03T01:04:09.199751+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20543,7 +20471,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:15.369156+00:00"
+                "failed_at": "2026-05-03T01:04:09.561438+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20622,7 +20550,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:15.713915+00:00"
+                "failed_at": "2026-05-03T01:04:09.939437+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20701,7 +20629,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:16.240970+00:00"
+                "failed_at": "2026-05-03T01:04:10.448125+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20780,7 +20708,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:16.575064+00:00"
+                "failed_at": "2026-05-03T01:04:10.873853+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20859,7 +20787,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:16.883349+00:00"
+                "failed_at": "2026-05-03T01:04:11.298074+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -20938,7 +20866,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:17.206422+00:00"
+                "failed_at": "2026-05-03T01:04:11.609305+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -21017,7 +20945,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:17.550660+00:00"
+                "failed_at": "2026-05-03T01:04:11.941535+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -21096,7 +21024,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:17.898805+00:00"
+                "failed_at": "2026-05-03T01:04:12.316704+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -21175,7 +21103,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:18.630792+00:00"
+                "failed_at": "2026-05-03T01:04:12.628122+00:00"
             },
             {
                 "place_name": "Your Local Game Store",
@@ -21254,27 +21182,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:00:19.034292+00:00"
+                "failed_at": "2026-05-03T01:04:12.935458+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 92,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 98,
+            "duplicate_count": 0,
+            "airtable_photos_count": 6,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 62,
             "place_name": "Your Local Game Store",
             "place_id": "ChIJcxD9YAIkVIgRLHMaIeJCTss",
             "record_id": "rec4QlShnYzJkIOsh",
-            "generated_at": "2026-05-02T22:00:19.034735+00:00",
+            "generated_at": "2026-05-03T01:04:12.935933+00:00",
             "azure_assets_count": 6,
             "failed_upload_count": 80,
             "pending_upload_count": 0,
             "selected_airtable_count": 6,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

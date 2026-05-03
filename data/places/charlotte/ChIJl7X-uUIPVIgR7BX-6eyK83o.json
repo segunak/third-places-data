@@ -401,10 +401,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -413,6 +409,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -451,10 +455,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -463,6 +463,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -499,13 +507,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyaYcbJt8K7z2ff3KA_OCQGXKdqaL1OKs0sm8aFUnDCUkfNOuvR7j-aRyY_m_JNENVA3a_8F0g6c8fpXezHcICQi22HMFDD_gIKABmXf2a_I4eSctJ1qz63-87Yz-Tyk0JebUJPlORe5fW3=w2048-h2048-k-no",
                 "source_url_sha256": "6cee5aff6be804a0caca4be2d05524522fc0ce96c9cbb812e8d4a1bf81888567",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -572,7 +576,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:55.443915+00:00"
+                "failed_at": "2026-05-03T01:06:52.711717+00:00"
             },
             {
                 "place_name": "Crane Coffee",
@@ -582,13 +586,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxRCTEJLtCYRuHzBUHgoaw1iLTvlSdVRrS5w2VPoM2Hxh1dar0rhnSCaVHgta1JrbFbhAYMnt4zXSHd5PSV7awS1jlf7_16HQ0UM3FKhmV9snVIFqi_UNzP5PChLylCHAG-mDW1jrgqOwg9=w2048-h2048-k-no",
                 "source_url_sha256": "e2ad7c549445c173b38b30080c7ba37219e7f060f9333be29ed741239d61d6d2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -655,7 +655,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:55.779649+00:00"
+                "failed_at": "2026-05-03T01:06:53.208333+00:00"
             },
             {
                 "place_name": "Crane Coffee",
@@ -734,7 +734,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:56.105878+00:00"
+                "failed_at": "2026-05-03T01:06:53.809680+00:00"
             },
             {
                 "place_name": "Crane Coffee",
@@ -813,27 +813,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:56.730196+00:00"
+                "failed_at": "2026-05-03T01:06:54.223269+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 8,
-            "duplicate_count": 4,
-            "airtable_photos_count": 4,
+            "candidate_count": 10,
+            "duplicate_count": 0,
+            "airtable_photos_count": 2,
             "airtable_photos_google_count": 4,
             "data_file_photo_urls_count": 4,
             "provider_raw_photo_url_big_count": 4,
             "place_name": "Crane Coffee",
             "place_id": "ChIJl7X-uUIPVIgR7BX-6eyK83o",
             "record_id": "recHpR3xDckO4LJu5",
-            "generated_at": "2026-05-02T22:02:56.883648+00:00",
+            "generated_at": "2026-05-03T01:06:54.223591+00:00",
             "azure_assets_count": 2,
             "failed_upload_count": 4,
             "pending_upload_count": 0,
             "selected_airtable_count": 2,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 4
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

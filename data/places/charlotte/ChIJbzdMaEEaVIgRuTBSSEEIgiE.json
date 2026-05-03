@@ -6682,10 +6682,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -6694,6 +6690,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[62].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -6730,13 +6734,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npC2T9ZLyiOxX1zDvFt299gYh_S-cT418wK5AGospfovq0dn5a1OtXq_8VGpv9zyxEqnijo93kUBcNa2RjL2iU-l1mW-TP3dlJ9-aCz1Q8TdbPHw8wPeKflEadDZ1ftinYtVwU7=w2048-h2048-k-no",
                 "source_url_sha256": "c5506f7cf3dbbb27147c338e1b7c70778bbe09051b76cf19afb5fa3db41998ca",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -6803,7 +6803,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:49.631615+00:00"
+                "failed_at": "2026-05-03T01:07:20.962730+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -6813,13 +6813,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr8m6EUweFjeJiJKQSRd-zDf74-rAWT53RUtFXLjNBVPE3RoVSbzJUTB6ZwD-rB867iR5tu4wsaZBCZVFYsYoS1y0GoZAintYeh-lUjcJhqeqn-9tUiGZL5r9pO3UR3Pad5cg7EVQ=w2048-h2048-k-no",
                 "source_url_sha256": "50d2a4f422ac649db380ec1d391737074e4f27b2e24295aefc90fc52c91463db",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -6886,7 +6882,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:49.945818+00:00"
+                "failed_at": "2026-05-03T01:07:21.278658+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -6896,13 +6892,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqdfr9NLkfmDldn58SiWK-mKhxCLHpx44ZBpPPyXPR8bc3ETcMD4CmWdo5UDn5DeP5gZaN1UyDlRQss46gPQTH3I6cBMEh_hYeGghvhJGt51r1jCkh8mgCrVRJN3d5667yNjnxF=w2048-h2048-k-no",
                 "source_url_sha256": "252bc38129e5057ed8627ca98bc8ff9aee6094c1187bda2fe05e67abf5cd9dbe",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -6969,7 +6961,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:50.254058+00:00"
+                "failed_at": "2026-05-03T01:07:21.571862+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -6979,13 +6971,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrffcKq0k9O2iGxc7V5PIBdWnIJNYuZvaVGE2h4UYbk0w7zMEtqQ5Q5mpNNn5Mm5WXnj2GJYVd0NetfZP5DoV5sBRTwDTLu52O0nk-9yUVGurmiawmrIN2tfVAk6qfmu-y5BWTo=w2048-h2048-k-no",
                 "source_url_sha256": "1b3bf9850b52ed5438c2e4582b51530bd37f8a8ad89e5254d4b5ffe9d3921d64",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -7052,7 +7040,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:50.597140+00:00"
+                "failed_at": "2026-05-03T01:07:21.894194+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7062,13 +7050,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no8R-M04ESRgzyeYDiYMcRyLlKCa85X5BA83tf4FGqoEpylymneP_tNU9EBoTy_0NhJ307Y4QSCut_N6bD4gAdyJdkUm7KoWDM32C1e_i9pDlF8NDJU1gvRRuVHhnbRjZYVXVs=w2048-h2048-k-no",
                 "source_url_sha256": "c738eaab7eeae13a08f5294f2251b264db1637b194bf25a08b63663930de3f94",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -7135,7 +7119,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:50.910340+00:00"
+                "failed_at": "2026-05-03T01:07:22.211994+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7145,13 +7129,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no1V3B97j8lraAfwYUzy0R8DwR5sqY9v6r5oZAjcBE569KI5quii8HXlnYapPLmkVuK9wi3VREm1ziM8ePyDBBFnvVdYbk_5FAKFFp3N-RQsoU7Mx_Ia13iyREcRToiM8Eo-mfw=w2048-h2048-k-no",
                 "source_url_sha256": "188c41d0add40864cde4db9358bf10fe78dd0bc599a098d06942bc3e8da67f44",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -7218,7 +7198,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:51.244669+00:00"
+                "failed_at": "2026-05-03T01:07:22.536335+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7228,13 +7208,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npBthAknfKIJ9FVaoD-U1BTFWCgURNFu3LXXUpx5DjbQocFdoXGmxh1mHQ6n3Jse2Bh1agNQtThyMS9HQD8hDe-bQS0cMgH0rDZxRB3bfwiu9trV7Csx9uLP1KgEnPqAW1l6zk=w2048-h2048-k-no",
                 "source_url_sha256": "ba8cea56e4952c974693ca2f3e64d91f60c8ee0361bca23f4767e30484aa4c4b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -7301,7 +7277,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:51.568592+00:00"
+                "failed_at": "2026-05-03T01:07:22.887395+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7311,13 +7287,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr5BO-kD3Z8a0jnJiU7zCwY7_kbQWBwLJsnsax6SbWJw-rGZD20A8MBGMA4dtdSBWQjwPoOsbD3QuJ6udsTSDMRX0Kax__CrSEdn1lJiX1WSfnk-jKpxw0PV2Y_Ow6liFYRq9s=w2048-h2048-k-no",
                 "source_url_sha256": "0d4932cda8474236223c1a14f27e1861cfa78954b03373ef17b92d50a98887ca",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -7384,7 +7356,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:51.899939+00:00"
+                "failed_at": "2026-05-03T01:07:23.262013+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7394,13 +7366,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noyRkZqyNcmj1jZaGUvhHttjdsow_KX97po8E144gwaWhE9KQUNXQFveyLRpX_Eag8xpzQziSRFHxVaXZpfllBTstVi4sdZq8OioMOxVQKt24zugKp_TlFG-rStZ2q3joW4IjLR=w2048-h2048-k-no",
                 "source_url_sha256": "7e907e7923dfdd7ebc45493769c157e191fa9859f532d94464176b2d3c712094",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -7467,7 +7435,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:52.220990+00:00"
+                "failed_at": "2026-05-03T01:07:23.622103+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7477,13 +7445,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqpiwE7dlQ9Q7c5TijMbqIYR4tB5r1McTCPpcCFQPsBrMqGV0JbTgsajZ7OOel0LGdz2X-CWlhCreQRGOAYut5ZIB3sj6HSItgOtqADhyp0vsfwt062dtA0McJ2M1x8rcouJIIwHg=w2048-h2048-k-no",
                 "source_url_sha256": "8e8f15c3a344019ad004e1df244c01bc29930b12677fa93d0e179c1eaa624c96",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -7550,7 +7514,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:52.521571+00:00"
+                "failed_at": "2026-05-03T01:07:24.063229+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7560,13 +7524,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npwOIJF4HIT2SMe3740pi6MyWTcYXQA4plC98x8KUFnSYSExVHaUW0FAmRtOFn-vc8OUYTqd8lvkLlsX7PDaGqbyybcvrM_8_xP24k2wDnntBiguOZ3rN4xtT5HL96RXRDB3IWj=w2048-h2048-k-no",
                 "source_url_sha256": "2f1a8fb9e41d93a26b1400c9b27def815a1b243f0403f8fd47ec64c9a7607a4c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -7633,7 +7593,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:52.840193+00:00"
+                "failed_at": "2026-05-03T01:07:24.536805+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7643,13 +7603,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr4CrWhZs8_2R3F375kHWe9_j36YAJseMmCXdDH0hULggBTKr-v83o9ud2MpIQ2stcJw_Oi80P8jmueot2ozPjrwmUR69OVmjJeGLqpnjdYRpkY9d80IQ-AUBEJacI8VrFYGdd5bg=w2048-h2048-k-no",
                 "source_url_sha256": "55311a5d76667822aff21b2f5004e27040c9620cd8accf7b7343074d8df86147",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -7716,7 +7672,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:53.177330+00:00"
+                "failed_at": "2026-05-03T01:07:25.108206+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7726,13 +7682,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrEPtofI8c0UfQO6Ib1o3vk3dnVbMvmaulsJsresnKjIsrOYN3CpL19lqWcVp1TL9WJAE-CF4JK69HawCFNBS6N-MBlypT8qomfyajbo356SkihRTUZfYMjeDKH5kdJfIvd_frD=w2048-h2048-k-no",
                 "source_url_sha256": "01b1169f3b54fc8e9df6ccaca21c0910af24a2e22eabd397029170f80ee8ab47",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -7799,7 +7751,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:53.513551+00:00"
+                "failed_at": "2026-05-03T01:07:25.467678+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7809,13 +7761,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nob8wsC57c8_UiWEvul5gU9R5fxlvq79wXQZwWUTnVAZjh6A15wJJL2WW0FJpJo2Aw-N6I7SIxTqzb-V40cdoCQ-L7IYSC7y_TMXCDbYWIyMLe9KnchIldb1hcvORcObEGXfD4K=w2048-h2048-k-no",
                 "source_url_sha256": "d742e68aa286dcc07b14b3a7d8bdeccde9aac76c1b30a4d5b06096af59d19d39",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -7882,7 +7830,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:53.835422+00:00"
+                "failed_at": "2026-05-03T01:07:25.819341+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7892,13 +7840,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHM-gyxByhHB0RpWCXlNXEhvVtwPD70enN5Tb-x5KrA-JHEQ9KGYN3SRaB7mLCdBmJeKD2nVHC_gLRas19sR7QxMeyJhkFTHkxNi0s5u-gvAQy6tmVpBD3c63gyIx5jqsntOu9=w2048-h2048-k-no",
                 "source_url_sha256": "1606a57dbe622227c502ef346f0ca56ab8fba8c1ad8c9f72a46f9a3f348df539",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -7965,7 +7909,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:54.142826+00:00"
+                "failed_at": "2026-05-03T01:07:26.169096+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -7975,13 +7919,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqDlMHQbo2b1rFzH0KJYAlU9A-k5PTd5hMs6GePEDJSAXFTJ-1asyAziKogg1PESBY1aCbSoRMjngPPTYeU8-WjoGAHzUugKXF4is-obkgupa1wXKTDB-hhzXtHYx3oKuqgKq0k8g=w2048-h2048-k-no",
                 "source_url_sha256": "ae8118064f750d9c94539048e3752402afaecef5cbb5bd2b28dfe72d5a0ab3fa",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -8048,7 +7988,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:54.488955+00:00"
+                "failed_at": "2026-05-03T01:07:26.530693+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8058,13 +7998,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqiBOFaJJMfoTxrLIZi_WGXx-TJXHn4Cw_aLnZR0D2O3u2VbJ2x8bvHOClpug55pj_CGknMmIH_yh57jUjizJBg-XDGvplEDLLmR4XZNCnVCe8wBtWRPHuZdrfErCc1TdbZk4xe=w2048-h2048-k-no",
                 "source_url_sha256": "c84d6a7c75199478861058e209a581a3ae3947cf40364fceb3e44ec492de4657",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -8131,7 +8067,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:54.794798+00:00"
+                "failed_at": "2026-05-03T01:07:26.869231+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8141,13 +8077,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nps5izhtPZr4mCt0aU2FfvLknOxT05piFxgYqkxUJ-RDSW8ZOWtmXZLQwc5zr5WjuKH6IIHAqYZzIsw27HGkdByNY2GrMF4tV_YboEnsj_83uRJiDIZBQIHPsJ5pIHMFzBcXVIe_g=w2048-h2048-k-no",
                 "source_url_sha256": "7c765c034b43347442be117d50c7e5ebc9819754deeb4191de24734a32b851b2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -8214,7 +8146,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:55.103805+00:00"
+                "failed_at": "2026-05-03T01:07:27.252785+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8224,13 +8156,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nriGMkVvzowmrUV0PvhVhze_u7WkVH17mq5X1MAsUowY6tyLbyy16d9RRrTCux4MncTujDquYAUTmfQDDa_pF20fi_rk3ez5fdcGQZBvWGkPhgNw5m-9H9hOgPqTLQAxcykTaanGg=w2048-h2048-k-no",
                 "source_url_sha256": "42899c8138ff9e48e0d5e137da12d3a90fd740e73d553fdb921b91b32ebbec96",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -8297,7 +8225,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:55.399177+00:00"
+                "failed_at": "2026-05-03T01:07:27.607348+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8307,13 +8235,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no4f7jgrh02mu_dwi_cBd3gjx7iK190h3rA1Jwz5l4ZDfpmFBxXiXd6U0gbE_sCW5oGj1LrPNGhXWvtgFq-ebxyccikE0zXLavEIIEEaRz5KHCcsRiRU-QQXYBU6-SVAeRSOtZc=w2048-h2048-k-no",
                 "source_url_sha256": "0072cef594a3213d93da44d3da8356b5eaf8242bfcf008c02abea19e395c4ac1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -8380,7 +8304,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:55.740104+00:00"
+                "failed_at": "2026-05-03T01:07:27.961057+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8390,13 +8314,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrGmgLy5R8tYk6GpguDAc9dob20mk0ZP4sUT7qp9FXLVpsQKW4zEapExa-9FzaJyD5x1eyKRzduFkTUk4R_lOQa67hEUTM_aJN2qwok7FCxjwje6q_y6lhFDLcUVMKYOiLJDFC57w=w2048-h2048-k-no",
                 "source_url_sha256": "de9fd9294cf1baeca5645455f590d649ae5260d30d50c2d4344c3b8cd1add262",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -8463,7 +8383,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:56.076603+00:00"
+                "failed_at": "2026-05-03T01:07:28.327282+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8473,13 +8393,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nothOFb9yz9VK6EXvcH2UGkGAuqnSP5iu6FMq2pH0fUQUcjNoHdve-txsc0Gppsr3wbsDiasXIyPDyyVpz6CHj1ohmdCJ7VeMqVcWjp24-dMEX2fW6KXwyrnCYt10QXW7iBTPpZ=w2048-h2048-k-no",
                 "source_url_sha256": "a644083a97e50e7acd17422477c8ed5e9e1a81d4c1cbbba5d23296d7fe57f5b3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -8546,7 +8462,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:56.411079+00:00"
+                "failed_at": "2026-05-03T01:07:28.676655+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8556,13 +8472,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqGa5MW3vykH-47Sn8z9tiJ5U-jVd2-vKXXKIpfWwQ-7WsgUKufR1Jf7CGoOrdV8xRZcaK5FwknB--T0CT9dra9myBfXptza9FpRBLsxi2J8WT1mer1wrLsbhjhI2-pnKJbb6C0=w2048-h2048-k-no",
                 "source_url_sha256": "cc83cbfdc418939357f52f8d8ad387b9173a4d354f412dd35d65a141ccfe0060",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -8629,7 +8541,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:56.778534+00:00"
+                "failed_at": "2026-05-03T01:07:29.065873+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8639,13 +8551,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq-12jzBR77mEpxUsE7bTKyuWL_XaKSa63hG1sSQtJ3x-_aQIqcST5Npva-YsJVYOIhw70Zel_9qrNSH52e2DEy_-UpN1Bo8fScX5THPJ-oilvMRrJCv8hfcmi8zMubaQomsDJz=w2048-h2048-k-no",
                 "source_url_sha256": "da044a39930f69a6750ef95826a42bfb8068f4e09d73c64ef4bbbb87a0af2cd0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -8712,7 +8620,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:57.142284+00:00"
+                "failed_at": "2026-05-03T01:07:29.474653+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8722,13 +8630,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrUgc2T_bTOBBbnuGevOLcHjYDnmnN-umwTm9wYYorxgUXNlrb5QbD00mGIYpf0c92XRTo4DruBqWxFOkm94hFDg4asnhX-mCTx0CGcy3TyDa9qsdVwcR-kPjeufm3ydK9845omFQ=w2048-h2048-k-no",
                 "source_url_sha256": "99692b73dbc15bec0fcbdd683e09dbf492e797513da6b1da020e17f1fb095f8a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -8795,7 +8699,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:57.464805+00:00"
+                "failed_at": "2026-05-03T01:07:29.847062+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8805,13 +8709,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nohjSr1sQXAuJQUvT4a7NqCDiH_zPn-MpyUq40SX8vVFmbDRRUFEfFkcQnfqLbTZAfKcnEAghVJlFR5gICfD_091_A1e_lXpoOObvsU7BrqJNQAmuENJka0A0UsWQiMaai7QWQnAw=w2048-h2048-k-no",
                 "source_url_sha256": "cbb3c02d4df5ce91da0fa795ccfbb5e0c18e9607a95bedc2526510be96681019",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -8878,7 +8778,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:57.809010+00:00"
+                "failed_at": "2026-05-03T01:07:30.249425+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8888,13 +8788,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrbj2D-ocysvkwqREDdfOVzZ6BKrdP0Lwtbs9uddjbk1AV2Bu-qa4v_DZo3_gjAs1T3ZvChyFV_12Zc6w0Ehkik6ngPZzWf-KYjBMKCKAGRg7QOhaAU5HrdK5Sov2z2dzrxesY=w2048-h2048-k-no",
                 "source_url_sha256": "c89681a66a69f27e695aa1242d8da1e8dda33ae9ae18d66e573fb541c9bd7a95",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -8961,7 +8857,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:58.134775+00:00"
+                "failed_at": "2026-05-03T01:07:30.631977+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -8971,13 +8867,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npDYRKNv_3UqjKdXgsMAMTMSPArJNjIjE1nIkZENL1hAKWGEDZUAsu8kzh4BYcOjV9p4u-ksHRpxjt4eM0SYi2O3jIuw9O5RdOFKKVzEO4WUk9vdJVHFi4Ho0cm1iI564DluB0Z7Q=w2048-h2048-k-no",
                 "source_url_sha256": "2a175f7388337b98acba3cc9051aceca9f9771c31491753555caf8bddbf9795b",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -9044,7 +8936,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:58.466180+00:00"
+                "failed_at": "2026-05-03T01:07:31.003621+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9054,13 +8946,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq6Z4EX-rJsS2-jabVK0EC4jaOshUhV1O-8Hm_re1TGoP4xT6RhsIWlWIaXZcOn1PJSZR9FbOBjCrRSHFw3IYZF6bdlhRgmeefvY3WNHvIPeh5Jq9w0GiSvo-jHLHfhENgQOZio=w2048-h2048-k-no",
                 "source_url_sha256": "853e61bc4f5c2b37c38ded56b95ff2653d9fae240213f6b1ab96bd37dbded4d9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -9127,7 +9015,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:58.806921+00:00"
+                "failed_at": "2026-05-03T01:07:31.392832+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9206,7 +9094,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:59.165327+00:00"
+                "failed_at": "2026-05-03T01:07:31.837776+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9285,7 +9173,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:59.455744+00:00"
+                "failed_at": "2026-05-03T01:07:32.190575+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9364,7 +9252,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:04:59.803838+00:00"
+                "failed_at": "2026-05-03T01:07:32.559512+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9443,7 +9331,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:00.127669+00:00"
+                "failed_at": "2026-05-03T01:07:32.887390+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9522,7 +9410,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:00.463568+00:00"
+                "failed_at": "2026-05-03T01:07:33.203571+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9601,7 +9489,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:00.791201+00:00"
+                "failed_at": "2026-05-03T01:07:33.600414+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9680,7 +9568,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:01.151708+00:00"
+                "failed_at": "2026-05-03T01:07:33.977161+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9759,7 +9647,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:01.487691+00:00"
+                "failed_at": "2026-05-03T01:07:34.345067+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9838,7 +9726,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:01.826645+00:00"
+                "failed_at": "2026-05-03T01:07:34.693336+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9917,7 +9805,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:02.186025+00:00"
+                "failed_at": "2026-05-03T01:07:35.056109+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -9996,7 +9884,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:02.536150+00:00"
+                "failed_at": "2026-05-03T01:07:35.422536+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10075,7 +9963,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:02.865416+00:00"
+                "failed_at": "2026-05-03T01:07:35.780433+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10154,7 +10042,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:03.209587+00:00"
+                "failed_at": "2026-05-03T01:07:36.185723+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10233,7 +10121,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:03.538698+00:00"
+                "failed_at": "2026-05-03T01:07:36.555389+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10312,7 +10200,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:03.856118+00:00"
+                "failed_at": "2026-05-03T01:07:36.918349+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10391,7 +10279,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:04.214154+00:00"
+                "failed_at": "2026-05-03T01:07:37.328240+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10470,7 +10358,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:04.527732+00:00"
+                "failed_at": "2026-05-03T01:07:37.736892+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10549,7 +10437,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:04.851437+00:00"
+                "failed_at": "2026-05-03T01:07:38.172793+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10628,7 +10516,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:05.192690+00:00"
+                "failed_at": "2026-05-03T01:07:38.712687+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10707,7 +10595,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:05.536112+00:00"
+                "failed_at": "2026-05-03T01:07:39.076971+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10786,7 +10674,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:05.887144+00:00"
+                "failed_at": "2026-05-03T01:07:39.450840+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10865,7 +10753,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:06.233981+00:00"
+                "failed_at": "2026-05-03T01:07:39.833796+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -10944,7 +10832,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:06.541184+00:00"
+                "failed_at": "2026-05-03T01:07:40.272689+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11023,7 +10911,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:06.864461+00:00"
+                "failed_at": "2026-05-03T01:07:40.661807+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11102,7 +10990,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:07.201187+00:00"
+                "failed_at": "2026-05-03T01:07:41.048436+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11181,7 +11069,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:07.505939+00:00"
+                "failed_at": "2026-05-03T01:07:41.437397+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11260,7 +11148,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:07.843794+00:00"
+                "failed_at": "2026-05-03T01:07:41.764730+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11339,7 +11227,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:08.151518+00:00"
+                "failed_at": "2026-05-03T01:07:42.119398+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11418,7 +11306,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:08.457490+00:00"
+                "failed_at": "2026-05-03T01:07:42.488334+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11497,7 +11385,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:08.785686+00:00"
+                "failed_at": "2026-05-03T01:07:42.827943+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11576,7 +11464,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:09.110792+00:00"
+                "failed_at": "2026-05-03T01:07:43.136474+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11655,7 +11543,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:09.438593+00:00"
+                "failed_at": "2026-05-03T01:07:43.456331+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11734,7 +11622,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:09.774841+00:00"
+                "failed_at": "2026-05-03T01:07:43.811146+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11813,7 +11701,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:10.075159+00:00"
+                "failed_at": "2026-05-03T01:07:44.196298+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11892,7 +11780,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:10.388528+00:00"
+                "failed_at": "2026-05-03T01:07:44.536699+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -11971,7 +11859,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:10.693883+00:00"
+                "failed_at": "2026-05-03T01:07:44.869058+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12050,7 +11938,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:11.056829+00:00"
+                "failed_at": "2026-05-03T01:07:45.220349+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12129,7 +12017,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:11.413434+00:00"
+                "failed_at": "2026-05-03T01:07:45.597050+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12208,7 +12096,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:11.772215+00:00"
+                "failed_at": "2026-05-03T01:07:45.928832+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12287,7 +12175,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:12.100685+00:00"
+                "failed_at": "2026-05-03T01:07:46.428428+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12366,7 +12254,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:12.502013+00:00"
+                "failed_at": "2026-05-03T01:07:47.109964+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12445,7 +12333,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:12.974693+00:00"
+                "failed_at": "2026-05-03T01:07:47.617102+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12524,7 +12412,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:13.522632+00:00"
+                "failed_at": "2026-05-03T01:07:48.000071+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12603,7 +12491,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:13.887469+00:00"
+                "failed_at": "2026-05-03T01:07:48.427151+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12682,7 +12570,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:14.257559+00:00"
+                "failed_at": "2026-05-03T01:07:48.835982+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12761,7 +12649,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:14.646335+00:00"
+                "failed_at": "2026-05-03T01:07:49.232182+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12840,7 +12728,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:15.064135+00:00"
+                "failed_at": "2026-05-03T01:07:49.798599+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12919,7 +12807,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:15.455499+00:00"
+                "failed_at": "2026-05-03T01:07:50.413869+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -12998,7 +12886,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:15.796235+00:00"
+                "failed_at": "2026-05-03T01:07:50.801408+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13077,7 +12965,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:16.134182+00:00"
+                "failed_at": "2026-05-03T01:07:51.192648+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13156,7 +13044,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:16.473980+00:00"
+                "failed_at": "2026-05-03T01:07:51.582454+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13235,7 +13123,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:16.795168+00:00"
+                "failed_at": "2026-05-03T01:07:52.022674+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13314,7 +13202,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:17.120666+00:00"
+                "failed_at": "2026-05-03T01:07:52.380670+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13393,7 +13281,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:17.448954+00:00"
+                "failed_at": "2026-05-03T01:07:52.800116+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13472,7 +13360,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:17.778104+00:00"
+                "failed_at": "2026-05-03T01:07:53.242039+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13551,7 +13439,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:18.137587+00:00"
+                "failed_at": "2026-05-03T01:07:53.637756+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13630,7 +13518,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:18.437551+00:00"
+                "failed_at": "2026-05-03T01:07:54.035630+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13709,7 +13597,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:18.767912+00:00"
+                "failed_at": "2026-05-03T01:07:54.441596+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13788,7 +13676,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:19.136564+00:00"
+                "failed_at": "2026-05-03T01:07:54.886059+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13867,7 +13755,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:19.500268+00:00"
+                "failed_at": "2026-05-03T01:07:55.267650+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -13946,7 +13834,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:19.875055+00:00"
+                "failed_at": "2026-05-03T01:07:55.626108+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Harrisburg",
@@ -14025,27 +13913,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:20.201877+00:00"
+                "failed_at": "2026-05-03T01:07:56.015803+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 93,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 94,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 63,
             "place_name": "Cabarrus County Library | Harrisburg",
             "place_id": "ChIJbzdMaEEaVIgRuTBSSEEIgiE",
             "record_id": "recLJNGb6VzetUqox",
-            "generated_at": "2026-05-02T22:05:20.557254+00:00",
+            "generated_at": "2026-05-03T01:07:56.016196+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 91,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

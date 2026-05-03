@@ -5513,10 +5513,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -5525,6 +5521,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -5563,10 +5567,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -5575,6 +5575,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[32].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -5611,13 +5619,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxthD9Ucsz-Tey2DL3DWsRAScWRmlys_dwQtbsJcQrnZEUy_I_SI38ftopu_4qDk2QojDioRadOijXyNdIwqCvlK5vEQrbw_Tva_2xIlMDHCsQX7iTQhYVDC_MsFMCjqLph8-ZSsyIOJu0=w2048-h2048-k-no",
                 "source_url_sha256": "99909d2b7a8d9a29603192e03f03516d5edf0e4f0d0c2f110f6f1cf61df72686",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -5684,7 +5688,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:01.049484+00:00"
+                "failed_at": "2026-05-03T01:03:03.282711+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -5694,13 +5698,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwdS8RcvBdC4xRajPw0_SUQVbhcrNSbS4DqXTDWhWnR0T479YfsNLcyrrTcdL39yQPuXOfIADgO1b1-48Zf04qwCcZr0S0e97Tp2cIIQTF9TPi-AtyfgKLBu_0NahSw_-nvyR6ay4Bc0sY=w2048-h2048-k-no",
                 "source_url_sha256": "ea39dab897023b5673e5401f2b390bafb8c691fcc251bd528136496946d975e7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -5767,7 +5767,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:01.372588+00:00"
+                "failed_at": "2026-05-03T01:03:03.694226+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -5777,13 +5777,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyY2fHVxT1bIM-sEt8gqmudOBV3ADjSW3R6tFuSl2-WZTJ9q48qLjJ9qXZ658-LRamqzMLodnXjcGee3cML6bJ4HpOXhEwcgmMbp3w9uJo_w7yQHtO-Iqn-8Nh1cwT50D9-Xz4sloZ0R1Gt=w2048-h2048-k-no",
                 "source_url_sha256": "c7f843dceb9790f5edbd2cdac29cd1df3ee3ad67914dbfe0af44b2331d01589f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -5850,7 +5846,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:01.709722+00:00"
+                "failed_at": "2026-05-03T01:03:04.132170+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -5860,13 +5856,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxbr3OGHQJ9ohM5kOKuEW0w-d2v85KrJyPZ03KRUKFmA02p_p0ca8QrVpLazpZFE_TYt85cc8OsyXkI5DLVpWrUJ5qDKU4s6R8N6onVRNzhyxq8HoLowpHDD_7b7o-O0oYjTKWXydSgn0U=w2048-h2048-k-no",
                 "source_url_sha256": "40d5b980602cf48858c738179a94149842012104e6a30abe6c34b9ebbecb98f3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -5933,7 +5925,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:02.004421+00:00"
+                "failed_at": "2026-05-03T01:03:04.498985+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -5943,13 +5935,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwyUb2OcEsOztE1Lb6qvtr-UFTWoN4s3vbY5FI7zK3A-omTk4qFF5lRc8-CKIy9n7zRiKeUG6kz0pjXhp6HIDvwrXiIelCx4FQ4II_y-TPnJoV-G_YAEiphAzCEQ_Q0ILMnL-TUJ-pFT88=w2048-h2048-k-no",
                 "source_url_sha256": "689fb6917fdbdf89172eb5e4f52c18ead930a3015686c5b1e373ea4af35fecab",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -6016,7 +6004,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:02.321269+00:00"
+                "failed_at": "2026-05-03T01:03:04.857939+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6026,13 +6014,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzM1eW8xVIzAQxm4mDzZ7TCS1kOoCSZi-KYnO32xiPfhdN746gc8fSC9nzVCk4J4kV_DlN-u71hyHcCKe4Bi4RMjrwH_piQIY6YJ-DxxVcuzuXabKP1jZFAdWiVUugEg972pNoUtMCShvIR=w2048-h2048-k-no",
                 "source_url_sha256": "c7f0cb205d514e639b0af1a9c6daf99cf97512f348edfedb4a67630a440995bf",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -6099,7 +6083,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:02.642806+00:00"
+                "failed_at": "2026-05-03T01:03:05.198139+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6109,13 +6093,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwcXk30inaW1ek9w1nQQZqngWv6TklS4uXRnzIWAcFsMqr2SFpabuHG77-BLDMPWt2TentVrGG-FRf10MFmB4PPk7oBKuawZ9huYoEjV7Vkxs6JnKUMSR-fKWyPAqQT-Cj6JTXKeaLePmdt=w2048-h2048-k-no",
                 "source_url_sha256": "2d9cf1a7b2ac95699d3b0113cd3e30051c7ce4f2e82788fe90c6a47e066ef343",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -6182,7 +6162,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:02.977301+00:00"
+                "failed_at": "2026-05-03T01:03:05.558263+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6192,13 +6172,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy1oUgLYAB1AlgowZCVIm0mqXLR9yfCkK4Q2Ti4adnx53vT8HIhPu3I-i2nVpVHib8fswfnzQusSEAiQ67wXZEXWKlBHMefQOHhNWl3TMy0Ji_bspplDgyLMZHyQnOLrN3ATvaDrs3PWowL=w2048-h2048-k-no",
                 "source_url_sha256": "55f3e019347fe520c237670561076ab8ad526233d7640c21ab3c11b7e53ddc6d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -6265,7 +6241,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:03.307970+00:00"
+                "failed_at": "2026-05-03T01:03:05.916001+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6275,13 +6251,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzMQypEXgu198045JfiQZk_19qesKMnvLjC3PbvS83RdaBcbtpg9fnZ0PY3Dv3rTkvZnZxtWvUqvOiOshdHlJpBHKJJc-WoCh4KqzkSU_cuFDc9HO2BCr5Jzk8VCuiL5pZRSIZdNaAUHVvY=w2048-h2048-k-no",
                 "source_url_sha256": "7e6b8f99ecdabca91766b7060741001d0d0090dbb5eff0d9a9e41a7f4c930230",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -6348,7 +6320,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:03.629098+00:00"
+                "failed_at": "2026-05-03T01:03:06.265305+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6358,13 +6330,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxN2SXQZMP4IZ_E_qFG6RF71UpS7B6gtcBoeDxMGFSU2NVb2jhUfSM6Sm9cmK--8jLTqzAyQYsqMjjQmZXxc_N21FDLHanjgahhtp2itIRO3d_0AVgEsga5hAniT8syB2GmlLtYRPpEfnWN=w2048-h2048-k-no",
                 "source_url_sha256": "5ecfce9453714677fe823353e6ab3f16d29d766a978b557e87e6ee7b07bd9027",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -6431,7 +6399,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:03.993918+00:00"
+                "failed_at": "2026-05-03T01:03:06.654613+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6441,13 +6409,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxsf_MRatGuu_K9gSwLrdFlkeAlFIW6dqj09ER3Vx6ytN64OAEzbGXKE6ov14xp7QCls2wgL0oBFBQCrXyZg8Z2J3O6_Ioq_AfPpSLXsiB_lM0WUIBtOFsA27X2d72SkeQD4oFf0dwyQ0G6=w2048-h2048-k-no",
                 "source_url_sha256": "50c00ef6db9971a39cbfcfbc9e883c74dc7aa16439ff46a4458561d6fc13509d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -6514,7 +6478,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:04.307959+00:00"
+                "failed_at": "2026-05-03T01:03:07.070014+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6524,13 +6488,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwZVakPwxz49pyehrWDiMdGD1TUwHeAmZ-5ro5gL_otTx_PUTvnxcGXI0KLC1dSvcwZtnJCPJ-O_dOvvs9O3BwFITnhBQyo1WSeUaAqf4rMyTy4XjTFkR-fJpI8k8Xu-uFBrxeZ61KLjkzN=w2048-h2048-k-no",
                 "source_url_sha256": "8344aff8dc50caabcbe6bd5be37d420284e54ea08d0a9c85062d9306613e3f32",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -6597,7 +6557,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:04.655382+00:00"
+                "failed_at": "2026-05-03T01:03:07.442664+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6607,13 +6567,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwV3DpIMDHTUIEu5Txo_yWDPgwXq-pRFh3ko5Qh3f4ppfQHjfm2Ah8gFtUv5WO2p85hJzmOOZH0KHkKUnlYIhai9CrOGeNvbxFNLafYgxp1dOoupSuJRNr8e14Z9n3Y40ycTUxaX3tRJtMG=w2048-h2048-k-no",
                 "source_url_sha256": "7c3ff6add7c032b85f149a474263cadbb3fa0d35e0f1e49bbb6bdbceea176a13",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -6680,7 +6636,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:05.013447+00:00"
+                "failed_at": "2026-05-03T01:03:07.825397+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6690,13 +6646,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy-itoksW3U7kwbj-IVjpJY_-cYm0Ssg_vKfrHRhAjTxlOPRSAiBkCeFdPhMGR8ikUjgcNMoNbRvbsT0nRkCXfE9oTjZ2o4eJrsY5N3ZpfaK8dFhVIkpzF9L58SQgqTzPyeKF_dFERbuc-E=w2048-h2048-k-no",
                 "source_url_sha256": "f6c2e6b8026f5279986301f28d04dfb0e1f3ef6e453f937f18a19cdc1c88bc99",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -6763,7 +6715,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:05.353759+00:00"
+                "failed_at": "2026-05-03T01:03:08.206303+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6773,13 +6725,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxxCsUFjqp3m0es-8yaVf0Wa2LvYtjIgAiywYGctib49VxMT_DLo0cUSQoEab7Yusfip_5sk-drgfRbGdwtvR7hsI1O87nAB1lEKwtuxnddsC49UJcDFND8xnqLWZsuSsUgDsS2tRRhzkJe=w2048-h2048-k-no",
                 "source_url_sha256": "cfa36076418cc68fc8ccbf04f7e3a2ad9d2e41bcde0f08f9b6addc8226f4b1cb",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -6846,7 +6794,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:05.692195+00:00"
+                "failed_at": "2026-05-03T01:03:08.608976+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6856,13 +6804,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzT_eF22gbLveWjEV3yNVhqiqNcoLGYfXcjz7wqA6btxvSoczZxlelP-5BSupmUruDvZX6SUzz1rB1miKDz2E7-UC4wduSeBPLwshOT34KMna4uJ6aXhFdJTlU31FzW1QtMuUFT2gX-XdXD=w2048-h2048-k-no",
                 "source_url_sha256": "50e852777e6d22958399a5e08cbae23b1a06ac42e3f6b7a03330d2140830fdcb",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -6929,7 +6873,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:06.056863+00:00"
+                "failed_at": "2026-05-03T01:03:08.986686+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -6939,13 +6883,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzm7iZkyrSclKCRTwo0CSfaGSDLP4h07kbQxqUxJkozcwwGylGEXGWkhP6Fo16QgIVHVV0sIsBqE44If1zJ0PNhz4yaKbodlvBWo_2njrV5EbA9MaWAzwUgIctLnh_tkgM2RPA3IcolXCY=w2048-h2048-k-no",
                 "source_url_sha256": "34438c046afd8b6df6ca9d7cea7eb4da3d7e5fda1ae605a32d5d52201e6ca16d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -7012,7 +6952,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:06.418790+00:00"
+                "failed_at": "2026-05-03T01:03:09.384708+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7022,13 +6962,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxxXILJWKJGnC1qEUiGnI2vFRA_mnDB-NdwpDYJoY1LGIhjcy6xr6P84zunAzUpoj9fMyqqHE8ypPfAJqIInGKpVFIF5bVUpVs8bPElbtCsZ-A8K-IfR1fFDZFdwKmOl5p7qYOA3X_eFECg=w2048-h2048-k-no",
                 "source_url_sha256": "5fd1a64e492d273cdffaa8e8ac49359174eb5238bab24a0990705acc9a073666",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -7095,7 +7031,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:06.808228+00:00"
+                "failed_at": "2026-05-03T01:03:09.818636+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7105,13 +7041,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwCloMGFNw2mCO0ovW0aiaTE88dBTJ35i3StIufLlS8GZuLnkUlPe95HuW7xlzovAjqTKx329PMYMS1W6qJIlnfmnwTm2elRqVXwY1ekRVxaXj5Qpn-VRnSPvJy_7l1jB0_ooqM3Q41zN2P=w2048-h2048-k-no",
                 "source_url_sha256": "e62eddb3c1216016dda7eebbcfc897c6d12b47f47905bc09b812caea2d80f846",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -7178,7 +7110,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:07.169879+00:00"
+                "failed_at": "2026-05-03T01:03:10.232336+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7188,13 +7120,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxpbXUqaj_olH_6D2tma6V2Zf6HV4jEQ-O4_hfXYgMCmlZNB5ZEFbFIxYfWUxNZWDVwtQVkkFuw8rqqJcm35z_XfOXDWzL1zNmVYLbqVM3PjY_asYyzZvqrtpaxjx7CUQyowI7ybjebMa0=w2048-h2048-k-no",
                 "source_url_sha256": "ee72cfe7f887e3f059137f1ecfaaad23941bbb53163363dde374f3e5f40d238d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -7261,7 +7189,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:07.486589+00:00"
+                "failed_at": "2026-05-03T01:03:10.630406+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7271,13 +7199,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxmrHST3DzcHDYpJ-tUF_m6esKdtBharOfPFgEZUTfPNj9NjllhxcnnKzuHpK24EcD_lZjYId658Rd_zXej_Ckuoq-R0QeLR2ro0AGP06iYoHE48016bHhiggCOIFeK5ieaIoUdDcGJa7fr=w2048-h2048-k-no",
                 "source_url_sha256": "94d43ec0367de7526d896c96ad2780253d3b247b72f18eefaabb6d0477228f80",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -7344,7 +7268,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:07.818678+00:00"
+                "failed_at": "2026-05-03T01:03:10.989275+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7354,19 +7278,15 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwiH9M-cHY6ZospyP_kgZ6yretucibx7oYf5rdlYzUiBV_FsiYNUSmEhSBb8dechOMKxvBMkVO2CogtfzxUoFIsJ0u8DKTyNBwakZ_VNyZKkICspH0lYpCoSlmkTBzrM56QfwwCFZroToWo=w2048-h2048-k-no",
                 "source_url_sha256": "18a544edb86d066521ed35385bd7b1f21378959fdad66a8070109c533f846eda",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
                     }
                 ],
-                "http_status": null,
+                "http_status": 403,
                 "attempted_urls": [
                     "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwiH9M-cHY6ZospyP_kgZ6yretucibx7oYf5rdlYzUiBV_FsiYNUSmEhSBb8dechOMKxvBMkVO2CogtfzxUoFIsJ0u8DKTyNBwakZ_VNyZKkICspH0lYpCoSlmkTBzrM56QfwwCFZroToWo=w2048-h2048-k-no",
                     "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwiH9M-cHY6ZospyP_kgZ6yretucibx7oYf5rdlYzUiBV_FsiYNUSmEhSBb8dechOMKxvBMkVO2CogtfzxUoFIsJ0u8DKTyNBwakZ_VNyZKkICspH0lYpCoSlmkTBzrM56QfwwCFZroToWo",
@@ -7418,15 +7338,16 @@
                     },
                     {
                         "url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwiH9M-cHY6ZospyP_kgZ6yretucibx7oYf5rdlYzUiBV_FsiYNUSmEhSBb8dechOMKxvBMkVO2CogtfzxUoFIsJ0u8DKTyNBwakZ_VNyZKkICspH0lYpCoSlmkTBzrM56QfwwCFZroToWo=w1600-h1000-k-no",
-                        "status_code": null,
-                        "content_type": "",
+                        "status_code": 403,
+                        "content_type": "text/html; charset=UTF-8",
+                        "effective_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwiH9M-cHY6ZospyP_kgZ6yretucibx7oYf5rdlYzUiBV_FsiYNUSmEhSBb8dechOMKxvBMkVO2CogtfzxUoFIsJ0u8DKTyNBwakZ_VNyZKkICspH0lYpCoSlmkTBzrM56QfwwCFZroToWo=w1600-h1000-k-no",
                         "bytes": 0,
-                        "error": "HTTPSConnectionPool(host='lh3.googleusercontent.com', port=443): Max retries exceeded with url: /gps-cs-s/AG0ilSwiH9M-cHY6ZospyP_kgZ6yretucibx7oYf5rdlYzUiBV_FsiYNUSmEhSBb8dechOMKxvBMkVO2CogtfzxUoFIsJ0u8DKTyNBwakZ_VNyZKkICspH0lYpCoSlmkTBzrM56QfwwCFZroToWo=w1600-h1000-k-no (Caused by NameResolutionError(\"HTTPSConnection(host='lh3.googleusercontent.com', port=443): Failed to resolve 'lh3.googleusercontent.com' ([Errno -3] Temporary failure in name resolution)\"))"
+                        "error": "HTTP 403"
                     }
                 ],
-                "error": "HTTPSConnectionPool(host='lh3.googleusercontent.com', port=443): Max retries exceeded with url: /gps-cs-s/AG0ilSwiH9M-cHY6ZospyP_kgZ6yretucibx7oYf5rdlYzUiBV_FsiYNUSmEhSBb8dechOMKxvBMkVO2CogtfzxUoFIsJ0u8DKTyNBwakZ_VNyZKkICspH0lYpCoSlmkTBzrM56QfwwCFZroToWo=w1600-h1000-k-no (Caused by NameResolutionError(\"HTTPSConnection(host='lh3.googleusercontent.com', port=443): Failed to resolve 'lh3.googleusercontent.com' ([Errno -3] Temporary failure in name resolution)\"))",
+                "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:18.163767+00:00"
+                "failed_at": "2026-05-03T01:03:11.319023+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7436,13 +7357,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwUcgjwLzVA0cOVLrpWoOLTz2Qobc4e8611TA4cq1i4QzuKl17SKsbpqAYRDOB50art2wTtvWAa3u7QUpJizbFfCE2LP_UwUAoTugx-hEVXxCk4k8ES2MbZ-839xC0tUui898IRxPbHwtOM=w2048-h2048-k-no",
                 "source_url_sha256": "7a77aeacc6358b8bd9cf1142aa531fbeb85888e2795c3a28ad891dc96b39d4ba",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -7509,7 +7426,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:18.506980+00:00"
+                "failed_at": "2026-05-03T01:03:11.699278+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7519,13 +7436,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwfP7e3lm7r6h4qQtnanKYQam_MtD1zJXpH-QHZ-Gt2QZVEnC0HoLmPU8PSEVnSVBSLVVDHtjqayVRJ-SqXJwD7s4oG1A3TPw6WTA0HGePAKsTTkJCAeJPcvu9gTt8FsyN4R_dfPWBaqK_U=w2048-h2048-k-no",
                 "source_url_sha256": "940d1f3d085b7ef942096d3968c605685bb36042911fce7519549dd360bda5ce",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -7592,7 +7505,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:18.882700+00:00"
+                "failed_at": "2026-05-03T01:03:12.083000+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7602,13 +7515,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyMwFFAtzB-oY3wLX9YAWUt9xktIkwwgQD8F1DsUUBi6N8JKnFOVBQWjRQbsuJp5p5t79o8Ij_vwLSMTwwlIFJsBZUmPRs2Qe3HaoCkMNHDC8xVM3bMimAxR6dIPSA9gT2Kf2Q9VGfaAiSA=w2048-h2048-k-no",
                 "source_url_sha256": "acd19d5d9acd16b436fc2aea9af7293aba3a981c25a8bb0405db158b0ac8e9f0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -7675,7 +7584,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:19.273129+00:00"
+                "failed_at": "2026-05-03T01:03:12.476164+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7685,13 +7594,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyYZuaGzHio1Xml8lu3RL6MnaNgWTPlsiQnoxG4D58Z4fYqdp6yIfeMkZZAZBHyMK8yRIdDQ3125IfTY5fd-DOYcm0wtCuHycLs_eAj2_v8djU-9L-ki7RbAOBz7r3uKEUqsmhxqLyaHw8X=w2048-h2048-k-no",
                 "source_url_sha256": "ed66e89c550ecb29070ce1c81788f9389560e3ec593ddb49e486220e7f11fac8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -7758,7 +7663,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:19.644091+00:00"
+                "failed_at": "2026-05-03T01:03:12.821776+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7768,13 +7673,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwxpZQk64Gvkp9YtNHojnrAq7yHJpwG265i3JqrA2GRWPEr79oD8_h9dd4MtBKj68-G_lWLUt49eddbK2xCxd8A6h1co6b3304qz0vOLkHlDNDuKoByNaVHzfCNNgQmz2HsaLnjdgNR-RGF=w2048-h2048-k-no",
                 "source_url_sha256": "6fee0fe533e3fcd099bc46c77d38ac97b4a4519461d1d849190bb5c45b062e23",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -7841,7 +7742,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:20.077329+00:00"
+                "failed_at": "2026-05-03T01:03:13.162947+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -7851,13 +7752,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxS7p2OgrZUXKQmkn00y6Osz-igQsIq-4RCJyyq4o-VLEojPYRfgCDJv00CIGCjtd9FK8c6LVhZGw38skHE3CHM_8HlomwwlI3g7ahif6Lfr-4U50SrcbclDb708d0h1CFbIRTfPJAub8nm=w2048-h2048-k-no",
                 "source_url_sha256": "b25bff9150a85d9902e1add2cb8940bd4dbd3e63a472e24ffd2e6ef4c5bf96f8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -7924,7 +7821,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:20.428494+00:00"
+                "failed_at": "2026-05-03T01:03:13.531648+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8003,7 +7900,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:21.002469+00:00"
+                "failed_at": "2026-05-03T01:03:13.893601+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8082,7 +7979,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:21.377125+00:00"
+                "failed_at": "2026-05-03T01:03:14.260120+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8161,7 +8058,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:21.747678+00:00"
+                "failed_at": "2026-05-03T01:03:14.598997+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8240,7 +8137,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:22.103695+00:00"
+                "failed_at": "2026-05-03T01:03:14.955675+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8319,7 +8216,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:22.467620+00:00"
+                "failed_at": "2026-05-03T01:03:15.332446+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8398,7 +8295,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:22.860712+00:00"
+                "failed_at": "2026-05-03T01:03:15.836176+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8477,7 +8374,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:23.223593+00:00"
+                "failed_at": "2026-05-03T01:03:16.403586+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8556,7 +8453,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:23.578100+00:00"
+                "failed_at": "2026-05-03T01:03:16.910113+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8635,7 +8532,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:23.935155+00:00"
+                "failed_at": "2026-05-03T01:03:17.535321+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8714,7 +8611,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:24.296642+00:00"
+                "failed_at": "2026-05-03T01:03:18.195583+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8793,7 +8690,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:24.644759+00:00"
+                "failed_at": "2026-05-03T01:03:18.764353+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8872,7 +8769,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:25.011677+00:00"
+                "failed_at": "2026-05-03T01:03:19.172991+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -8951,7 +8848,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:25.391978+00:00"
+                "failed_at": "2026-05-03T01:03:19.565415+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9030,7 +8927,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:25.787539+00:00"
+                "failed_at": "2026-05-03T01:03:19.987091+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9109,7 +9006,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:26.142567+00:00"
+                "failed_at": "2026-05-03T01:03:20.449151+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9188,7 +9085,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:26.539265+00:00"
+                "failed_at": "2026-05-03T01:03:20.854019+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9267,7 +9164,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:26.919224+00:00"
+                "failed_at": "2026-05-03T01:03:21.279503+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9346,7 +9243,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:27.301107+00:00"
+                "failed_at": "2026-05-03T01:03:21.698698+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9425,7 +9322,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:27.675750+00:00"
+                "failed_at": "2026-05-03T01:03:22.098226+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9504,7 +9401,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:32.983448+00:00"
+                "failed_at": "2026-05-03T01:03:22.516463+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9583,7 +9480,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:33.292094+00:00"
+                "failed_at": "2026-05-03T01:03:22.914861+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9662,7 +9559,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:33.605895+00:00"
+                "failed_at": "2026-05-03T01:03:23.295563+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9741,7 +9638,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:33.936685+00:00"
+                "failed_at": "2026-05-03T01:03:23.690028+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9820,7 +9717,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:34.263791+00:00"
+                "failed_at": "2026-05-03T01:03:24.115839+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9899,7 +9796,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:34.587514+00:00"
+                "failed_at": "2026-05-03T01:03:24.434034+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -9978,7 +9875,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:34.949607+00:00"
+                "failed_at": "2026-05-03T01:03:24.776274+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10057,7 +9954,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:35.303457+00:00"
+                "failed_at": "2026-05-03T01:03:25.083342+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10136,7 +10033,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:35.663694+00:00"
+                "failed_at": "2026-05-03T01:03:25.421642+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10215,7 +10112,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:36.010260+00:00"
+                "failed_at": "2026-05-03T01:03:25.775669+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10294,7 +10191,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:36.383125+00:00"
+                "failed_at": "2026-05-03T01:03:26.105632+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10373,7 +10270,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:36.808395+00:00"
+                "failed_at": "2026-05-03T01:03:26.418362+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10452,7 +10349,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:37.521635+00:00"
+                "failed_at": "2026-05-03T01:03:26.764805+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10531,7 +10428,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:37.818964+00:00"
+                "failed_at": "2026-05-03T01:03:27.072012+00:00"
             },
             {
                 "place_name": "Haraz Coffee House | University City",
@@ -10610,27 +10507,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T21:59:38.128471+00:00"
+                "failed_at": "2026-05-03T01:03:27.442524+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 66,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 68,
+            "duplicate_count": 0,
+            "airtable_photos_count": 2,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 36,
             "place_name": "Haraz Coffee House | University City",
             "place_id": "ChIJhTWHCN0dVIgRvVjPstiLeKQ",
             "record_id": "recYUpWg2MLQnkI6h",
-            "generated_at": "2026-05-02T21:59:38.128788+00:00",
+            "generated_at": "2026-05-03T01:03:27.442851+00:00",
             "azure_assets_count": 2,
             "failed_upload_count": 62,
             "pending_upload_count": 0,
             "selected_airtable_count": 2,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

@@ -1438,10 +1438,10 @@
                 "place_name": "RegalCha",
                 "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
                 "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=KywXUIGEmHlex0nTYQNN0w&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=85.87138&pitch=0&thumbfov=100",
-                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=KywXUIGEmHlex0nTYQNN0w&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=85.87138&pitch=0&thumbfov=100",
-                "source_url_sha256": "944e434f6860da9130b5efb788377afaf981bddafc65e86e4128cd287c24a61d",
-                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/944e434f6860da9130b5efb788377afaf981bddafc65e86e4128cd287c24a61d.jpg",
+                "canonical_source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/944e434f6860da9130b5efb788377afaf981bddafc65e86e4128cd287c24a61d.jpg",
+                "source_url_sha256": "c5c320b0bb5d2fa8de06a6b80fd4ff3af9f960839535297019dca842a7e4b588",
+                "source_host": "thirdplacesdata.blob.core.windows.net",
                 "source_field": "Airtable Photos",
                 "source_path": "fields.Photos[0]",
                 "provenance": [
@@ -1454,31 +1454,22 @@
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/944e434f6860da9130b5efb788377afaf981bddafc65e86e4128cd287c24a61d.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/944e434f6860da9130b5efb788377afaf981bddafc65e86e4128cd287c24a61d.jpg",
-                "content_sha256": "2b9e06ef2ee527796209eda12bb9835c8e0a2d944eea47d1c9580b6e72db1ef0",
-                "content_type": "image/jpeg",
-                "bytes": 118481,
-                "status": "uploaded",
+                "content_sha256": "",
+                "content_type": "",
+                "bytes": 0,
+                "status": "existing_azure",
                 "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=KywXUIGEmHlex0nTYQNN0w&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=85.87138&pitch=0&thumbfov=100",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=KywXUIGEmHlex0nTYQNN0w&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=85.87138&pitch=0&thumbfov=100",
-                        "bytes": 118481,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T22:08:01.653581+00:00"
+                "attempts": [],
+                "uploaded_at": "2026-05-03T01:20:10.778595+00:00"
             },
             {
                 "place_name": "RegalCha",
                 "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
                 "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOoRLg_9EateId0AK_ayPJ-rnNObqgLHVH059Mx=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOoRLg_9EateId0AK_ayPJ-rnNObqgLHVH059Mx=w2048-h2048-k-no",
-                "source_url_sha256": "515fb0a90de87b7bf6f39eb4d71be5af3e7cd0e16b52118283e0c7b9c051edeb",
-                "source_host": "lh3.googleusercontent.com",
+                "source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/515fb0a90de87b7bf6f39eb4d71be5af3e7cd0e16b52118283e0c7b9c051edeb.jpg",
+                "canonical_source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/515fb0a90de87b7bf6f39eb4d71be5af3e7cd0e16b52118283e0c7b9c051edeb.jpg",
+                "source_url_sha256": "c58d41f4cc4ebe3c3fb86ebb1e763dad6743a4a65f0b7397dd4e0a1fdb5766c2",
+                "source_host": "thirdplacesdata.blob.core.windows.net",
                 "source_field": "Airtable Photos",
                 "source_path": "fields.Photos[1]",
                 "provenance": [
@@ -1491,31 +1482,78 @@
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/515fb0a90de87b7bf6f39eb4d71be5af3e7cd0e16b52118283e0c7b9c051edeb.jpg",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/515fb0a90de87b7bf6f39eb4d71be5af3e7cd0e16b52118283e0c7b9c051edeb.jpg",
-                "content_sha256": "2c5c185dc9c5123aee0c57073fe03162e6928f5ebb6f5ffd3c8c966817f9783e",
-                "content_type": "image/jpeg",
-                "bytes": 354756,
-                "status": "uploaded",
+                "content_sha256": "",
+                "content_type": "",
+                "bytes": 0,
+                "status": "existing_azure",
                 "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipOoRLg_9EateId0AK_ayPJ-rnNObqgLHVH059Mx=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOoRLg_9EateId0AK_ayPJ-rnNObqgLHVH059Mx=w2048-h2048-k-no",
-                        "bytes": 354756,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T22:08:02.535592+00:00"
+                "attempts": [],
+                "uploaded_at": "2026-05-03T01:20:10.778614+00:00"
             },
             {
                 "place_name": "RegalCha",
                 "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
                 "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOIEgLw8znP6HjsFmRcLTlq2ub234eOvcn_Vw4p=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOIEgLw8znP6HjsFmRcLTlq2ub234eOvcn_Vw4p=w2048-h2048-k-no",
-                "source_url_sha256": "883dbae50bcef6d7042185a829b0dfa4f9072f95251880d62a3289396666cee4",
-                "source_host": "lh3.googleusercontent.com",
+                "source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/883dbae50bcef6d7042185a829b0dfa4f9072f95251880d62a3289396666cee4.jpg",
+                "canonical_source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/883dbae50bcef6d7042185a829b0dfa4f9072f95251880d62a3289396666cee4.jpg",
+                "source_url_sha256": "b5a778b675c8509bfb718b1b26123c1bebfbfe064fa76735a810a11f8a49bfae",
+                "source_host": "thirdplacesdata.blob.core.windows.net",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/883dbae50bcef6d7042185a829b0dfa4f9072f95251880d62a3289396666cee4.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/883dbae50bcef6d7042185a829b0dfa4f9072f95251880d62a3289396666cee4.jpg",
+                "content_sha256": "",
+                "content_type": "",
+                "bytes": 0,
+                "status": "existing_azure",
+                "selected_for_airtable": true,
+                "attempts": [],
+                "uploaded_at": "2026-05-03T01:20:10.778624+00:00"
+            },
+            {
+                "place_name": "RegalCha",
+                "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
+                "record_id": "recG2oTkl5qGlyA2j",
+                "source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/9269e01638b669d18fa49945cc8804103ebb07b2efd1b9f406ae246c7b216c2a.jpg",
+                "canonical_source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/9269e01638b669d18fa49945cc8804103ebb07b2efd1b9f406ae246c7b216c2a.jpg",
+                "source_url_sha256": "ee3b8418963692934e4b0bb9d8c122311d12795a1f2de188082d23e6ec6c4e51",
+                "source_host": "thirdplacesdata.blob.core.windows.net",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[3]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/9269e01638b669d18fa49945cc8804103ebb07b2efd1b9f406ae246c7b216c2a.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/9269e01638b669d18fa49945cc8804103ebb07b2efd1b9f406ae246c7b216c2a.jpg",
+                "content_sha256": "",
+                "content_type": "",
+                "bytes": 0,
+                "status": "existing_azure",
+                "selected_for_airtable": true,
+                "attempts": [],
+                "uploaded_at": "2026-05-03T01:20:10.778633+00:00"
+            },
+            {
+                "place_name": "RegalCha",
+                "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
+                "record_id": "recG2oTkl5qGlyA2j",
+                "source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/34c8b2e61c67708a5e4b5afe68e7a86e807c92fdfaf60d6e098bf312e89d320d.jpg",
+                "canonical_source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/34c8b2e61c67708a5e4b5afe68e7a86e807c92fdfaf60d6e098bf312e89d320d.jpg",
+                "source_url_sha256": "a487876938a5451b8d9652029942ecd1e1c751e1a037c36f1288eb3e9bf64640",
+                "source_host": "thirdplacesdata.blob.core.windows.net",
                 "source_field": "Airtable Photos",
                 "source_path": "fields.Photos[4]",
                 "provenance": [
@@ -1525,34 +1563,25 @@
                     }
                 ],
                 "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/883dbae50bcef6d7042185a829b0dfa4f9072f95251880d62a3289396666cee4.jpg",
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/34c8b2e61c67708a5e4b5afe68e7a86e807c92fdfaf60d6e098bf312e89d320d.jpg",
                 "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/883dbae50bcef6d7042185a829b0dfa4f9072f95251880d62a3289396666cee4.jpg",
-                "content_sha256": "1707c5a488278886216d9d096f7000bc320563567fd2bc6997489b8a290e8cd5",
-                "content_type": "image/jpeg",
-                "bytes": 256653,
-                "status": "uploaded",
+                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/34c8b2e61c67708a5e4b5afe68e7a86e807c92fdfaf60d6e098bf312e89d320d.jpg",
+                "content_sha256": "",
+                "content_type": "",
+                "bytes": 0,
+                "status": "existing_azure",
                 "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipOIEgLw8znP6HjsFmRcLTlq2ub234eOvcn_Vw4p=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOIEgLw8znP6HjsFmRcLTlq2ub234eOvcn_Vw4p=w2048-h2048-k-no",
-                        "bytes": 256653,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T22:08:05.084982+00:00"
+                "attempts": [],
+                "uploaded_at": "2026-05-03T01:20:10.778641+00:00"
             },
             {
                 "place_name": "RegalCha",
                 "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
                 "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPNltp0akMq0WYtgearM8HhSlWIDMHNrTRpTBzt=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPNltp0akMq0WYtgearM8HhSlWIDMHNrTRpTBzt=w2048-h2048-k-no",
-                "source_url_sha256": "9269e01638b669d18fa49945cc8804103ebb07b2efd1b9f406ae246c7b216c2a",
-                "source_host": "lh3.googleusercontent.com",
+                "source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/7eebaad0253ae24794f242eae46f3b92af29c00cba5c3a51114ff1a3f054babe.jpg",
+                "canonical_source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/7eebaad0253ae24794f242eae46f3b92af29c00cba5c3a51114ff1a3f054babe.jpg",
+                "source_url_sha256": "4c79a02b8e413403de9cdfe7ba08c29dfc099a79e38d57d7ef854f991c9b1257",
+                "source_host": "thirdplacesdata.blob.core.windows.net",
                 "source_field": "Airtable Photos",
                 "source_path": "fields.Photos[5]",
                 "provenance": [
@@ -1562,34 +1591,25 @@
                     }
                 ],
                 "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/9269e01638b669d18fa49945cc8804103ebb07b2efd1b9f406ae246c7b216c2a.jpg",
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/7eebaad0253ae24794f242eae46f3b92af29c00cba5c3a51114ff1a3f054babe.jpg",
                 "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/9269e01638b669d18fa49945cc8804103ebb07b2efd1b9f406ae246c7b216c2a.jpg",
-                "content_sha256": "dd84703846e57557450f0b05e7df107ca93b66706f2308d944fe8a04c504b7f8",
-                "content_type": "image/jpeg",
-                "bytes": 333953,
-                "status": "uploaded",
+                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/7eebaad0253ae24794f242eae46f3b92af29c00cba5c3a51114ff1a3f054babe.jpg",
+                "content_sha256": "",
+                "content_type": "",
+                "bytes": 0,
+                "status": "existing_azure",
                 "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPNltp0akMq0WYtgearM8HhSlWIDMHNrTRpTBzt=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPNltp0akMq0WYtgearM8HhSlWIDMHNrTRpTBzt=w2048-h2048-k-no",
-                        "bytes": 333953,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T22:08:05.734856+00:00"
+                "attempts": [],
+                "uploaded_at": "2026-05-03T01:20:10.778649+00:00"
             },
             {
                 "place_name": "RegalCha",
                 "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
                 "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNSXYuwDPn9BV6awDK-x_sLIDn84bEAicBXnELS=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNSXYuwDPn9BV6awDK-x_sLIDn84bEAicBXnELS=w2048-h2048-k-no",
-                "source_url_sha256": "34c8b2e61c67708a5e4b5afe68e7a86e807c92fdfaf60d6e098bf312e89d320d",
-                "source_host": "lh3.googleusercontent.com",
+                "source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/97117afdcf26f994da2af9139a2622b9023f53d96030c548f59a58603406f597.jpg",
+                "canonical_source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/97117afdcf26f994da2af9139a2622b9023f53d96030c548f59a58603406f597.jpg",
+                "source_url_sha256": "d4f2e7256b1a0fb5fb0810d44fc70116afb8b039dc216406cdfc0d5506263b8f",
+                "source_host": "thirdplacesdata.blob.core.windows.net",
                 "source_field": "Airtable Photos",
                 "source_path": "fields.Photos[6]",
                 "provenance": [
@@ -1599,34 +1619,25 @@
                     }
                 ],
                 "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/34c8b2e61c67708a5e4b5afe68e7a86e807c92fdfaf60d6e098bf312e89d320d.jpg",
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/97117afdcf26f994da2af9139a2622b9023f53d96030c548f59a58603406f597.jpg",
                 "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/34c8b2e61c67708a5e4b5afe68e7a86e807c92fdfaf60d6e098bf312e89d320d.jpg",
-                "content_sha256": "78c7d06e9d817f7daa8f4210702f02988d40243174d7af28a2fb0dbd5db80888",
-                "content_type": "image/jpeg",
-                "bytes": 199450,
-                "status": "uploaded",
+                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/97117afdcf26f994da2af9139a2622b9023f53d96030c548f59a58603406f597.jpg",
+                "content_sha256": "",
+                "content_type": "",
+                "bytes": 0,
+                "status": "existing_azure",
                 "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNSXYuwDPn9BV6awDK-x_sLIDn84bEAicBXnELS=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNSXYuwDPn9BV6awDK-x_sLIDn84bEAicBXnELS=w2048-h2048-k-no",
-                        "bytes": 199450,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T22:08:06.286452+00:00"
+                "attempts": [],
+                "uploaded_at": "2026-05-03T01:20:10.778656+00:00"
             },
             {
                 "place_name": "RegalCha",
                 "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
                 "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipM9p-GgxSuLV9NZ1LqqrW47mi9CV9mlbxEUfPdk=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipM9p-GgxSuLV9NZ1LqqrW47mi9CV9mlbxEUfPdk=w2048-h2048-k-no",
-                "source_url_sha256": "7eebaad0253ae24794f242eae46f3b92af29c00cba5c3a51114ff1a3f054babe",
-                "source_host": "lh3.googleusercontent.com",
+                "source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/b3c69f1061c3918200115e9782fcc540287249cd5f340bc4573bc3421da89ad9.jpg",
+                "canonical_source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/b3c69f1061c3918200115e9782fcc540287249cd5f340bc4573bc3421da89ad9.jpg",
+                "source_url_sha256": "2fabd9c97569d367d45f028310c9b13fe1692108e7dff127ca6889721b72b199",
+                "source_host": "thirdplacesdata.blob.core.windows.net",
                 "source_field": "Airtable Photos",
                 "source_path": "fields.Photos[7]",
                 "provenance": [
@@ -1636,34 +1647,25 @@
                     }
                 ],
                 "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/7eebaad0253ae24794f242eae46f3b92af29c00cba5c3a51114ff1a3f054babe.jpg",
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/b3c69f1061c3918200115e9782fcc540287249cd5f340bc4573bc3421da89ad9.jpg",
                 "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/7eebaad0253ae24794f242eae46f3b92af29c00cba5c3a51114ff1a3f054babe.jpg",
-                "content_sha256": "2edf4aed63e50f56410e934775ff30e25c902c647b7d1818f7f47afe3cc0268f",
-                "content_type": "image/jpeg",
-                "bytes": 194951,
-                "status": "uploaded",
+                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/b3c69f1061c3918200115e9782fcc540287249cd5f340bc4573bc3421da89ad9.jpg",
+                "content_sha256": "",
+                "content_type": "",
+                "bytes": 0,
+                "status": "existing_azure",
                 "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipM9p-GgxSuLV9NZ1LqqrW47mi9CV9mlbxEUfPdk=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipM9p-GgxSuLV9NZ1LqqrW47mi9CV9mlbxEUfPdk=w2048-h2048-k-no",
-                        "bytes": 194951,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T22:08:06.996132+00:00"
+                "attempts": [],
+                "uploaded_at": "2026-05-03T01:20:10.778664+00:00"
             },
             {
                 "place_name": "RegalCha",
                 "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
                 "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMrWZbvtD9OzdIUVen-5Zarv0zUMlDGnZi2IltD=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMrWZbvtD9OzdIUVen-5Zarv0zUMlDGnZi2IltD=w2048-h2048-k-no",
-                "source_url_sha256": "97117afdcf26f994da2af9139a2622b9023f53d96030c548f59a58603406f597",
-                "source_host": "lh3.googleusercontent.com",
+                "source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/9bacb81c68c9f61cdd14675c472ee96b484f052f006d12acbd0d7fb3aa7c88cd.png",
+                "canonical_source_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/9bacb81c68c9f61cdd14675c472ee96b484f052f006d12acbd0d7fb3aa7c88cd.png",
+                "source_url_sha256": "5ed5965d2f8ec525d7359f9fb90afc272a36d4c82eda0ad5404208b0138c8d71",
+                "source_host": "thirdplacesdata.blob.core.windows.net",
                 "source_field": "Airtable Photos",
                 "source_path": "fields.Photos[8]",
                 "provenance": [
@@ -1673,358 +1675,45 @@
                     }
                 ],
                 "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/97117afdcf26f994da2af9139a2622b9023f53d96030c548f59a58603406f597.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/97117afdcf26f994da2af9139a2622b9023f53d96030c548f59a58603406f597.jpg",
-                "content_sha256": "1cb82f6056765a0e8244b51cd43b74b06a29256661cb2734036085f5a8e3a65c",
-                "content_type": "image/jpeg",
-                "bytes": 260481,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipMrWZbvtD9OzdIUVen-5Zarv0zUMlDGnZi2IltD=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMrWZbvtD9OzdIUVen-5Zarv0zUMlDGnZi2IltD=w2048-h2048-k-no",
-                        "bytes": 260481,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T22:08:07.595514+00:00"
-            },
-            {
-                "place_name": "RegalCha",
-                "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
-                "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPJstyyhFLbv2BhGFcXWm0q449ttb5GRQOZEUNV=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPJstyyhFLbv2BhGFcXWm0q449ttb5GRQOZEUNV=w2048-h2048-k-no",
-                "source_url_sha256": "b3c69f1061c3918200115e9782fcc540287249cd5f340bc4573bc3421da89ad9",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
-                "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    }
-                ],
-                "duplicate_provenance": [],
-                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/b3c69f1061c3918200115e9782fcc540287249cd5f340bc4573bc3421da89ad9.jpg",
-                "blob_container": "place-photos",
-                "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/b3c69f1061c3918200115e9782fcc540287249cd5f340bc4573bc3421da89ad9.jpg",
-                "content_sha256": "bd21220f1a4bde538beabaec6a7f2db368061d3a65d6779b6d8ed1a7a9b889ff",
-                "content_type": "image/jpeg",
-                "bytes": 212424,
-                "status": "uploaded",
-                "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPJstyyhFLbv2BhGFcXWm0q449ttb5GRQOZEUNV=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/jpeg",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPJstyyhFLbv2BhGFcXWm0q449ttb5GRQOZEUNV=w2048-h2048-k-no",
-                        "bytes": 212424,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T22:08:08.313757+00:00"
-            },
-            {
-                "place_name": "RegalCha",
-                "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
-                "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNEX8RVryMo--hLJgaz09BLJ2jDyqhnj8ENSJE1=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNEX8RVryMo--hLJgaz09BLJ2jDyqhnj8ENSJE1=w2048-h2048-k-no",
-                "source_url_sha256": "9bacb81c68c9f61cdd14675c472ee96b484f052f006d12acbd0d7fb3aa7c88cd",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
-                "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    }
-                ],
-                "duplicate_provenance": [],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/9bacb81c68c9f61cdd14675c472ee96b484f052f006d12acbd0d7fb3aa7c88cd.png",
                 "blob_container": "place-photos",
                 "blob_path": "charlotte/ChIJDR6j9SJVUYgRDGE0Wuh6hk8/9bacb81c68c9f61cdd14675c472ee96b484f052f006d12acbd0d7fb3aa7c88cd.png",
-                "content_sha256": "9fd6928407f5c81b52a1209829f647c7e18683cff5f397e9a8eec77a453a2082",
-                "content_type": "image/png",
-                "bytes": 238457,
-                "status": "uploaded",
+                "content_sha256": "",
+                "content_type": "",
+                "bytes": 0,
+                "status": "existing_azure",
                 "selected_for_airtable": true,
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNEX8RVryMo--hLJgaz09BLJ2jDyqhnj8ENSJE1=w2048-h2048-k-no",
-                        "status_code": 200,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNEX8RVryMo--hLJgaz09BLJ2jDyqhnj8ENSJE1=w2048-h2048-k-no",
-                        "bytes": 238457,
-                        "error": null
-                    }
-                ],
-                "uploaded_at": "2026-05-02T22:08:10.290660+00:00"
+                "attempts": [],
+                "uploaded_at": "2026-05-03T01:20:10.778671+00:00"
             }
         ],
-        "azure_asset_failures": [
-            {
-                "place_name": "RegalCha",
-                "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
-                "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w2048-h2048-k-no",
-                "source_url_sha256": "2970fbc18b8e5e35138d0e1b4fc8a888bd09048971fd2cc813ce403e96930303",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
-                "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    }
-                ],
-                "http_status": 404,
-                "attempted_urls": [
-                    "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w2048-h2048-k-no",
-                    "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay",
-                    "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=s0",
-                    "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=s1600",
-                    "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w800-h500-k-no",
-                    "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w1600-h1000-k-no"
-                ],
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w2048-h2048-k-no",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w2048-h2048-k-no",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=s0",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=s0",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=s1600",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=s1600",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w800-h500-k-no",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w800-h500-k-no",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w1600-h1000-k-no",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNYdfgIf1JuTT8eb6JdBQesA71cmMqQ6ZN9Xjay=w1600-h1000-k-no",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    }
-                ],
-                "error": "HTTP 404",
-                "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:03.500678+00:00"
-            },
-            {
-                "place_name": "RegalCha",
-                "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
-                "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w2048-h2048-k-no",
-                "source_url_sha256": "07c17c94713841c901c713ea8c0863928451c9c0f53211006405f147900a4b34",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
-                "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    }
-                ],
-                "http_status": 404,
-                "attempted_urls": [
-                    "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w2048-h2048-k-no",
-                    "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr",
-                    "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=s0",
-                    "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=s1600",
-                    "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w800-h500-k-no",
-                    "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w1600-h1000-k-no"
-                ],
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w2048-h2048-k-no",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w2048-h2048-k-no",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=s0",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=s0",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=s1600",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=s1600",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w800-h500-k-no",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w800-h500-k-no",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w1600-h1000-k-no",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNCCiYfj_VtvvssnuOH1oPDDGAbjVl6i7ucU3xr=w1600-h1000-k-no",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    }
-                ],
-                "error": "HTTP 404",
-                "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:04.393933+00:00"
-            },
-            {
-                "place_name": "RegalCha",
-                "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
-                "record_id": "recG2oTkl5qGlyA2j",
-                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w2048-h2048-k-no",
-                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w2048-h2048-k-no",
-                "source_url_sha256": "87401d63421b9840c6caf6e88c285cd35ee41eb7bd57c2a2e0b7789d05516e79",
-                "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
-                "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    }
-                ],
-                "http_status": 404,
-                "attempted_urls": [
-                    "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w2048-h2048-k-no",
-                    "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj",
-                    "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=s0",
-                    "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=s1600",
-                    "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w800-h500-k-no",
-                    "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w1600-h1000-k-no"
-                ],
-                "attempts": [
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w2048-h2048-k-no",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w2048-h2048-k-no",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=s0",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=s0",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=s1600",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=s1600",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w800-h500-k-no",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w800-h500-k-no",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    },
-                    {
-                        "url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w1600-h1000-k-no",
-                        "status_code": 404,
-                        "content_type": "image/png",
-                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPiobf1k-NsBXVEnKJ014m6Ms4MSKY3z_3IivMj=w1600-h1000-k-no",
-                        "bytes": 0,
-                        "error": "HTTP 404"
-                    }
-                ],
-                "error": "HTTP 404",
-                "reason": "download_failed",
-                "failed_at": "2026-05-02T22:08:09.239454+00:00"
-            }
-        ],
+        "azure_asset_failures": [],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 12,
+            "candidate_count": 9,
             "duplicate_count": 0,
-            "airtable_photos_count": 12,
+            "airtable_photos_count": 9,
             "airtable_photos_google_count": 12,
             "data_file_photo_urls_count": 0,
             "provider_raw_photo_url_big_count": 0,
             "place_name": "RegalCha",
             "place_id": "ChIJDR6j9SJVUYgRDGE0Wuh6hk8",
             "record_id": "recG2oTkl5qGlyA2j",
-            "generated_at": "2026-05-02T22:08:10.290748+00:00",
+            "generated_at": "2026-05-03T01:20:10.778730+00:00",
             "azure_assets_count": 9,
-            "failed_upload_count": 3,
+            "failed_upload_count": 0,
             "pending_upload_count": 0,
             "selected_airtable_count": 9,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 12
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

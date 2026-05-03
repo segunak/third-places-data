@@ -5775,10 +5775,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -5787,6 +5783,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[43].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -5825,10 +5829,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -5837,6 +5837,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[32].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -5875,10 +5883,6 @@
                 "source_path": "fields.Photos[2]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
                     }
@@ -5887,6 +5891,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[33].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -5923,13 +5935,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noybcoCoXlsXbE15JBfKTAj_1XGxwYZWYLj4FRkYKPO473IlzivQXaDc2BqJisRRznkV8IBJQJDGEiBdk5RZK-gc0UkT9MrJ9K1PRH7tUstY54vwiW0FkuXHcrui4yrTO7fuHNIhiUs7J7h=w2048-h2048-k-no",
                 "source_url_sha256": "c32f486d8824da7213bf43670565c51290072bfbbfda1950da7da9f7c3ddde8e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -5996,7 +6004,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:19.434025+00:00"
+                "failed_at": "2026-05-03T01:07:36.367036+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6006,13 +6014,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noazU0_Aq0KnmVvMvdolYag2TJo3UaHLnOGxUHwnrnGW9qndNPBieiEPDLQKztSwVpSAQ_4ttharvHdmsgUKnP0I01PXyej0NtR3OFOFzLtTbFmQsUayPRixqXJZXhfgSQzVnYAkaFVaDU=w2048-h2048-k-no",
                 "source_url_sha256": "b435e7fc16546566088d9c3eed5a2f3a01714373d6bfc80815a971cd17e2ebab",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -6079,7 +6083,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:19.792505+00:00"
+                "failed_at": "2026-05-03T01:07:36.685797+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6089,13 +6093,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npBhB9fHcZWCt5poW4-I0qcCp8Z1HVuHOxzvdfSUDxKfGcqcuGZQKKcmclLj_p5ECJDV3LfoWEyt1vMwJ6WoODrHceDT90LC4dWqldA1l9dsFHaIJVraXh-e6qamLGuzp4QpV-tMR0dqMRo=w2048-h2048-k-no",
                 "source_url_sha256": "de4539b76bfd03fc693cdb58ea7f784737631e7e9d1b86c79c398189864a95cf",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -6162,7 +6162,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:20.105702+00:00"
+                "failed_at": "2026-05-03T01:07:37.047601+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6172,13 +6172,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqRsTbQt0XX7LcNA8gmxEtvcMBhNHQ2bVQSI12QO_hm5JiqmKPz7ln92sI4I31UXU2MRrouQLdffxATN2yLYO_RQoaG-AyMaW9HMBmYqgLCj-v-B5F7P-5aT7paFo2xk91IY6k1OlP91W0N=w2048-h2048-k-no",
                 "source_url_sha256": "b5f3b1982bb187eec7188c0785b8d16fcf35ebf36dc894e91234df3e5b706224",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -6245,7 +6241,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:20.421192+00:00"
+                "failed_at": "2026-05-03T01:07:37.459477+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6255,13 +6251,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrtu3-vIRMHKkt_dWmrNkbfm17TOkVl9UnoVT-TQUb5vcNO-I9l0fqyUjwVC6NSrPpKNJasCBa3-sc0q_1u5aPQEJl1ctmwt1XwzPE8PmaLeZr4LzU1TBCAgBqLhdf0ZH5UmxrAn59X-ZWz=w2048-h2048-k-no",
                 "source_url_sha256": "e28861df53ec4a874d276f1a4d5cb288694c21d07342ffd47e22a1c982cd81de",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -6328,7 +6320,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:20.740474+00:00"
+                "failed_at": "2026-05-03T01:07:37.899655+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6338,13 +6330,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrHftaCAXGSaIMtOnY7DLhIDh6F01Vw_6auCFSpDeCVQoa-Ls8jLLED7PoQcaaR7RkjxxIZVp7SRg8NgxaEZAB02jSD5SDGT-y9B_lHOPBbolG22TFKSuNdyifqvJdYF9rXv29JP4ir8JU=w2048-h2048-k-no",
                 "source_url_sha256": "04730d1e7417d40b1c056fd34528862eea60d4750fcb221829dabd6c0ea2f5d9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -6411,7 +6399,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:21.059359+00:00"
+                "failed_at": "2026-05-03T01:07:38.346571+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6421,13 +6409,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np6brrTpVxZbjZAcY5S7t9eZfLl3B7Vpivn5YNdl20Wme951kpvAp2krzFeO-Gd78RpZ9JoJSq436nUurCMh38NyVtY_1wvVlRZ3IabhYUEreHtEW5Ha5pzhqJxEbZobMubZJ_xjnCCQ4g=w2048-h2048-k-no",
                 "source_url_sha256": "564793bb58eccfc8ef111715689dfe24a65bd8d8690ba3cb2ec66b4baf621c27",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -6494,7 +6478,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:21.372810+00:00"
+                "failed_at": "2026-05-03T01:07:38.819964+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6504,13 +6488,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noSkd7fWd83S4GlZ2PDWNisz-WboRfYW1CAzK-q4HiIvzgz0swtIZJ5gCZeZuiEzET8IeNaSZocbWu_mvZ8LPXqRKRuEtRxDyelL3A0UJyT2e9n5s2zBjQLYuff-Cmdgk3ZWv9PPSizWHwe=w2048-h2048-k-no",
                 "source_url_sha256": "1869ebbdf204a38106806f8f5d90324f3c82cc600977571641707c39375bf1a5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -6577,7 +6557,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:21.697018+00:00"
+                "failed_at": "2026-05-03T01:07:39.154204+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6587,13 +6567,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqAK1zevRtfSrMq7NSBA-oXvQHqXb2973PP6OYz29T1Ta480BGUsTPWxjIqZRxTcU2TLpfhFhaoNDz5HCYhimq-T6iym3Vtt5WIPyPlLIonCo0N-8OvretGr1itG41pUd-admIqb7GqOv7r=w2048-h2048-k-no",
                 "source_url_sha256": "d4c482893891be6037d49ea6885d5ed2ad6f0bfce384fd06a0b28683774c1e70",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -6660,7 +6636,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:22.020427+00:00"
+                "failed_at": "2026-05-03T01:07:39.572320+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6670,13 +6646,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqAPEaVXtQJJVKxMO8C0kHSKtSGJqZNyFLspamMmXBSU6nPDlNRqfxACY9mrpCV-0MgmnKHy0IwNegSfsH6L2B0IylpAdK9UOCl8Kouosg-w-dgsp4j1qa5-wHe1b9yCD_kV1jAN5b8Qllv=w2048-h2048-k-no",
                 "source_url_sha256": "10e536ed35c9b5b40d5c71aef768019c0f789bd144eb790b9b3a171aceac4ce2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -6743,7 +6715,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:22.352603+00:00"
+                "failed_at": "2026-05-03T01:07:39.982202+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6753,13 +6725,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqn9q9JJuINpYbSCGre57fXfUBIv02M8WTYzhebgwaS_hGMiUjYm9Okh2Uwgo3KlY_LnpkXjU9Had8U5k27qaK6cqRYysE9glRmrGK2RToeAeJJ2m_CBOixb938-gfcn6tN9-Tw8Z4tRwA=w2048-h2048-k-no",
                 "source_url_sha256": "525237b957132caaec272c4aae055b4f3b4db8ea3a110338ba97062e616a85be",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -6826,7 +6794,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:22.696276+00:00"
+                "failed_at": "2026-05-03T01:07:40.399988+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6836,13 +6804,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrzr6H3ZIjst2u63Pm3bLXJXVmd14BgydYbyFgugfPtXyHJpgQk4n3R2wSslLOxYDuX6GmW-kFFaeCnIGSfthPyN4OU9eeU6n4dYYf1V-AUin10ojvVMNJ8nCZ3P_1kkwXbSYRW0ZKAvkH2=w2048-h2048-k-no",
                 "source_url_sha256": "aed220695900dbcbc26301a844ecba88dd3205b4a491bb74e74cb414c476cde9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -6909,7 +6873,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:23.040483+00:00"
+                "failed_at": "2026-05-03T01:07:40.789375+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -6919,13 +6883,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nraA6Wh5S3Pxh1kcZ-9ZUdJuFMQ7zbBEaIDiD_iFEoDwhjpqlKllT01kbdo5k7gjLTXwRPcydSIHO0JFP8xSev3E_nQEqWxfhH9DsdsPSTh7M5wK2H6WGYyc9MgGaShYtDqr5GovdQs4yUb=w2048-h2048-k-no",
                 "source_url_sha256": "6930716be3b851bf1157c702a0e2e73bd36a1133c9513c971814b34a84f52296",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -6992,7 +6952,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:23.332293+00:00"
+                "failed_at": "2026-05-03T01:07:41.162820+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7002,13 +6962,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrsiiz-zZ-x5PyYBD1fFWXdsihlOGdXecMhyC6Q7jre6mjvXczziDFGETao1EpnhNhRG2U3dwEwgJmqU4AjSYlCahAFNFUJmxqdAO2xZ-fKOUcrMnsvErxEsK5rQzIQvf9SpQ8optC83ljV=w2048-h2048-k-no",
                 "source_url_sha256": "e63eade5d1f4ca14588c836c31336d3d966978453e68fbb59229fe671c07a7ee",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -7075,7 +7031,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:23.644740+00:00"
+                "failed_at": "2026-05-03T01:07:41.528021+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7085,13 +7041,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npHosap_wjz_4WiyckC8pxyz4DopiOMGQVZxf3c3i-rgozSv8fNM5sI86p5NdnDLFmBzI1EjNJFG_7HY_Fk4uRJ-TqhviIljmNaAxh0WBKRKYCiZ3vrKKWrmEX5MlA71AIvkmUwnEbYeFA=w2048-h2048-k-no",
                 "source_url_sha256": "61e79f3dcd952469ba652c033bdcac22535fca08a8c441c7cef9ac631e6440a2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -7158,7 +7110,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:23.994672+00:00"
+                "failed_at": "2026-05-03T01:07:41.878451+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7168,13 +7120,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nquQ684iA66sGvfsrRrnV4OKYDpDv4B6XaY8lSuw7goJFzXvXA6IJFwrnoH2kbpyiArVy6g0OsfCYiI3uSe7MIYCj53qqnPtnqYxjzz0SUHIwhhbIUWw5UZ615tM_SepUEYjfqleNJecDRo=w2048-h2048-k-no",
                 "source_url_sha256": "57955dccad55b60716ec546262137c5490e818e0546e34670fccb875dc7fd093",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -7241,7 +7189,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:24.305017+00:00"
+                "failed_at": "2026-05-03T01:07:42.237549+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7251,13 +7199,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrPlbNGeYIktwrAn3aMH-1GQ6Xq24lOBEoBDzzekBTB7bDFjzo4AljiKGFln-m-WdqWjljgZ6I556BLiaMHWdUw-8QFpiYdWxOYIQOBlusyAwhn0bSN5fg55fm-BI4HAqPObcGMCdkfZkhu=w2048-h2048-k-no",
                 "source_url_sha256": "198dedd06f786cded3dfb8000dad91a689ba0cc7c987026f056a7e4ed75bd5ae",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -7324,7 +7268,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:24.645454+00:00"
+                "failed_at": "2026-05-03T01:07:42.636105+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7334,13 +7278,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npmP8-YfbYlxZ2udYqpDgPXO4AdPE6EIpTZD7lBsPZpR0ccXs5t5K8xvUXk9T2UzSgYIzo4Nb8819J2zAxbt82vrFEURteRd08-tiizu4Mjmea5Fe4tlBcPEuLBT1GXUt16atqbFZnOcgNe=w2048-h2048-k-no",
                 "source_url_sha256": "07a6ced40ec57e2776492d0f637d2f7e0c0261c3f3c02c8d65cab94eaa9a63f0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -7407,7 +7347,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:24.964489+00:00"
+                "failed_at": "2026-05-03T01:07:42.987763+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7417,13 +7357,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noXBLFPf7Xp7pmtKl1g7pYVAfWtVe17-eqvQ05RFiTtzaElV0SI-6Og8DWc9OzNqHqc42SpXZYzMWmesakj43Y0G8j0Ap3lYvPNXyzXOdyCitV2x9u9r7Ti0VT9F3cskUzolqkh6DgsYVti=w2048-h2048-k-no",
                 "source_url_sha256": "94fcdab93e7385757ac952a98663a1026f16152e314fb8833376156f47d2ed18",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -7490,7 +7426,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:25.288369+00:00"
+                "failed_at": "2026-05-03T01:07:43.335718+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7500,13 +7436,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npxuhmL5zQ-z8GAEr8sc6AiMszQp0vtXH3Nscd131bSVVEkRYjWPuEqCEFQklphdtx8EBDba0uNceftnjlntU4Qm7AZ4TZBb_3gSjmmEnFPx-idEjLjN6p-6I761bHAT6QMWF4NZlWuT8lp=w2048-h2048-k-no",
                 "source_url_sha256": "af6fecbdb62b950c8cc75b76d7f90b5ee7940f422a27db3e206a949cbcad22b1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -7573,7 +7505,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:25.622525+00:00"
+                "failed_at": "2026-05-03T01:07:43.692171+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7583,13 +7515,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np6dJKlcAbh66DkENYozuEUVQbam3xGItziuHEZnM51mfPd2t8f9Hmo2U6RjrdhoFEXzss7xwZmuQ6S72WxpkJtgSgRfjacyddmLaMiJ19hmTuHaH_wPLCx5ctKyp3xPNekV57sdF8kjRGq=w2048-h2048-k-no",
                 "source_url_sha256": "58d1fb62541c9014065aa56d49f9b5ab9ac4de486b7ffa86c9d8d789ca43f41c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -7656,7 +7584,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:25.989132+00:00"
+                "failed_at": "2026-05-03T01:07:44.053513+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7666,13 +7594,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npx6vOHXLZ1_S8s4UpN1hFJ2TSQhGR05_ZPMygZzmYsArmNmuQzcI6bA3xF4Nuq1mBXJHXCt6CmmD7rwQi20SMvz4Glj7lf0-6ZleQHOUdUzrBwmlSe3-5VGSp3FTCFqxvV1LOjk1pre88c=w2048-h2048-k-no",
                 "source_url_sha256": "d63943f2787291e70d5bb51b69252420e0cc80104281d8a843f69d34a99882dd",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -7739,7 +7663,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:26.319555+00:00"
+                "failed_at": "2026-05-03T01:07:44.412144+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7749,13 +7673,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noMYKeEva5WcQOjZVIVPSFFvDkW9Tk_UoFgUjnF1FQ4Bcs8vxnfiIiE_CxpE8U-4kp3z4CGl4gTdrP6YTrKo6rLXHAHrVnVnSsqQJhrR5rLBV7qantpsnN_QR09piLyz3TB4amnkMr7WH8V=w2048-h2048-k-no",
                 "source_url_sha256": "7ac33d029d87a03484e1b57ac306b9bb9740f9a1790ef7405ce93695ef56cc96",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -7822,7 +7742,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:26.657437+00:00"
+                "failed_at": "2026-05-03T01:07:44.762640+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7832,13 +7752,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noLUvndFekK_Qdcz_7ULBA5CoGPjPcofr_aUl8YHkhPX_7gDAdjMjFx_m2fHBkKs4JsxF1NAG5PLhY5bsaZlty1uQgV0ye6_QhAyJrfmABfQOv5mBdeimBXqyn0aWANh3o-RIqb553eLDri=w2048-h2048-k-no",
                 "source_url_sha256": "b7a8a8d517a611c83089f5cb2ebe5e9cff5d428230e366fd785894401a192254",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -7905,7 +7821,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:27.013817+00:00"
+                "failed_at": "2026-05-03T01:07:45.110059+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7915,13 +7831,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr5Z5VHVUQWJyU9oiB-PV02tkbr9BG2pP6kt5v84v5NRrst-xT0yrAeDix9WrAY36sqcGXX-ERvTzElTZK9kJ2TmBTqqeS4nZg2N8SdaRnYeTmL74iO6W97-Ar2m09WzkB6xkZ2l6j951Kj=w2048-h2048-k-no",
                 "source_url_sha256": "c94043ddcd7294eb7a4433166c065ec62765d2929ce33dc52499b909b371196a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -7988,7 +7900,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:27.354187+00:00"
+                "failed_at": "2026-05-03T01:07:45.454096+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -7998,13 +7910,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq_0kHD3B4rryGKwxXvYEgNuyHWA5azliY-bMVwP0Qdn5H01ULfF44pvesMIyIglUysIMZkDWpwjnpNbeL5ngaI4J89I6SsTJo72A8aSIfiIXvs960nmchIoC-P6pFIo1YnFFGFinLqFvk=w2048-h2048-k-no",
                 "source_url_sha256": "bea06f9c744583796571733aa82e2af75beec3977dbd2e48cb2837a30c930624",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -8071,7 +7979,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:27.686131+00:00"
+                "failed_at": "2026-05-03T01:07:45.847082+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8081,13 +7989,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noUE89br2NOfEDmNo0vRUiUv_nCA8qZCJ0pPyB6F2FZN4Mjn9K0IQ42OJzkLHFV7Mbw9OaHjcXzsLYVOTKmznhM1Km_ScHEdGSp7IkLaSfkBeoxavSFGRK527t4oQqbY96x3aTnPsuoISg=w2048-h2048-k-no",
                 "source_url_sha256": "1f48a2a98ce9346a2ff1ceebca2d800a597d167bf79211e51b69da9a98f8bf02",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -8154,7 +8058,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:28.027891+00:00"
+                "failed_at": "2026-05-03T01:07:46.199844+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8233,7 +8137,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:28.341521+00:00"
+                "failed_at": "2026-05-03T01:07:46.932698+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8312,7 +8216,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:28.662250+00:00"
+                "failed_at": "2026-05-03T01:07:47.427771+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8391,7 +8295,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:28.964328+00:00"
+                "failed_at": "2026-05-03T01:07:47.822253+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8470,7 +8374,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:29.287833+00:00"
+                "failed_at": "2026-05-03T01:07:48.222527+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8549,7 +8453,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:29.641113+00:00"
+                "failed_at": "2026-05-03T01:07:48.649104+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8628,7 +8532,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:29.968496+00:00"
+                "failed_at": "2026-05-03T01:07:49.064215+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8707,7 +8611,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:30.284495+00:00"
+                "failed_at": "2026-05-03T01:07:49.543282+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8786,7 +8690,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:30.625817+00:00"
+                "failed_at": "2026-05-03T01:07:50.117508+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8865,7 +8769,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:30.938825+00:00"
+                "failed_at": "2026-05-03T01:07:50.537001+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -8944,7 +8848,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:31.252274+00:00"
+                "failed_at": "2026-05-03T01:07:50.864496+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9023,7 +8927,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:31.557878+00:00"
+                "failed_at": "2026-05-03T01:07:51.258693+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9102,7 +9006,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:31.892965+00:00"
+                "failed_at": "2026-05-03T01:07:51.671521+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9181,7 +9085,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:32.222163+00:00"
+                "failed_at": "2026-05-03T01:07:52.108803+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9260,7 +9164,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:32.571392+00:00"
+                "failed_at": "2026-05-03T01:07:52.524885+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9339,7 +9243,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:32.922409+00:00"
+                "failed_at": "2026-05-03T01:07:52.934699+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9418,7 +9322,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:33.282647+00:00"
+                "failed_at": "2026-05-03T01:07:53.373567+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9497,7 +9401,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:33.625316+00:00"
+                "failed_at": "2026-05-03T01:07:53.753865+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9576,7 +9480,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:33.969611+00:00"
+                "failed_at": "2026-05-03T01:07:54.133642+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9655,7 +9559,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:34.317295+00:00"
+                "failed_at": "2026-05-03T01:07:54.510577+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9734,7 +9638,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:34.693194+00:00"
+                "failed_at": "2026-05-03T01:07:54.946781+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9813,7 +9717,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:35.097513+00:00"
+                "failed_at": "2026-05-03T01:07:55.313478+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9892,7 +9796,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:35.424702+00:00"
+                "failed_at": "2026-05-03T01:07:55.673578+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -9971,7 +9875,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:35.754432+00:00"
+                "failed_at": "2026-05-03T01:07:56.025200+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10050,7 +9954,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:36.082139+00:00"
+                "failed_at": "2026-05-03T01:07:56.415836+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10129,7 +10033,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:36.403695+00:00"
+                "failed_at": "2026-05-03T01:07:56.794303+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10208,7 +10112,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:36.770242+00:00"
+                "failed_at": "2026-05-03T01:07:57.162401+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10287,7 +10191,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:37.146770+00:00"
+                "failed_at": "2026-05-03T01:07:57.531701+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10366,7 +10270,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:37.513772+00:00"
+                "failed_at": "2026-05-03T01:07:57.891877+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10445,7 +10349,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:37.837311+00:00"
+                "failed_at": "2026-05-03T01:07:58.320196+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10524,7 +10428,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:38.148930+00:00"
+                "failed_at": "2026-05-03T01:07:58.728751+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10603,7 +10507,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:38.454434+00:00"
+                "failed_at": "2026-05-03T01:07:59.117517+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10682,7 +10586,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:38.775864+00:00"
+                "failed_at": "2026-05-03T01:07:59.442551+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10761,7 +10665,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:39.566310+00:00"
+                "failed_at": "2026-05-03T01:07:59.781450+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10840,7 +10744,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:39.857844+00:00"
+                "failed_at": "2026-05-03T01:08:00.114149+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10919,7 +10823,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:40.179526+00:00"
+                "failed_at": "2026-05-03T01:08:00.453619+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -10998,7 +10902,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:40.738606+00:00"
+                "failed_at": "2026-05-03T01:08:00.833624+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -11077,7 +10981,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:41.536661+00:00"
+                "failed_at": "2026-05-03T01:08:01.221474+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -11156,7 +11060,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:41.959146+00:00"
+                "failed_at": "2026-05-03T01:08:01.634015+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -11235,7 +11139,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:42.294659+00:00"
+                "failed_at": "2026-05-03T01:08:02.059008+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -11314,7 +11218,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:42.628449+00:00"
+                "failed_at": "2026-05-03T01:08:02.448066+00:00"
             },
             {
                 "place_name": "Daily Grind Coffee Bar",
@@ -11393,27 +11297,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:42.965016+00:00"
+                "failed_at": "2026-05-03T01:08:02.834021+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 74,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 77,
+            "duplicate_count": 0,
+            "airtable_photos_count": 3,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 44,
             "place_name": "Daily Grind Coffee Bar",
             "place_id": "ChIJEfph2hUrVIgR6x0pe8Ix2LA",
             "record_id": "recZ4Xv7yqIwYjlw6",
-            "generated_at": "2026-05-02T22:05:43.148830+00:00",
+            "generated_at": "2026-05-03T01:08:02.834443+00:00",
             "azure_assets_count": 3,
             "failed_upload_count": 68,
             "pending_upload_count": 0,
             "selected_airtable_count": 3,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

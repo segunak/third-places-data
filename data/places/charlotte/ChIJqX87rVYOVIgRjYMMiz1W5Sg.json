@@ -7160,10 +7160,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -7180,6 +7176,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[60].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[60].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -7216,13 +7220,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no05eucqellpORvrZmwO_BZyVfl49Z8xa9FzUWaUv4WZL-oexNFqzbai4e8jQJOfuI8uQKIdRTJoT1xh6X9rkJp2bcqmLJrlu9KD__RLPcD_dsHeRi4bIP9PyPuMOZHrgDpGr0eQg=w2048-h2048-k-no",
                 "source_url_sha256": "f4c16bae58c2c7a7542fa6e4e3750ecb13cf3db6b0c0738c6d61d82ea5af40c5",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -7289,7 +7289,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:52.331509+00:00"
+                "failed_at": "2026-05-03T01:20:02.665076+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -7299,13 +7299,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npht8xSqS2Jb5JvpvQq-2NFaYevAw1tq7-e3CKlVaoqTr8jNN6aB03aQ9CDfHVXDXWFIORupURvAKN4-WCkGNfE9ZOOoLvLbGLMmWTepUjNX54oaDjnycWyHa39gHM02CKCMZAY0uC_ni5j=w2048-h2048-k-no",
                 "source_url_sha256": "18b7dc3327843e184c4720ec59dfaf08fb89d79ff1f4e5885566f9d9d448f074",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -7372,7 +7368,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:52.667369+00:00"
+                "failed_at": "2026-05-03T01:20:03.110440+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -7382,13 +7378,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npyiMrvljYHzDKPxL9VvFyYFrtIpRSfG9lvmmXaG0mNy1t5qqrl5Av2Xok2w5tDP_NqZrjiCe1grTA1k6UGADqKOcBiZoxq1JwE3PwenHkdvc6AjP_kb6vtnzjBV7tLYxuSp5k=w2048-h2048-k-no",
                 "source_url_sha256": "1e4d391622df1da110925c60931e7027ba98d41861c2c8a13add8788786b6937",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -7455,7 +7447,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:52.972693+00:00"
+                "failed_at": "2026-05-03T01:20:08.619287+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -7465,13 +7457,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqyFguvCWnL5J7-ueA8-S468uOX6_HQhEPZfZpgPTEDJNR0sjHGLqIUaWlneN1UbvzW8bCAgSr5sm9g56E6By4_kaNPMzCICOpYeiFeWn6TeJznbMJ8r3Ty-gsuzEzBoy5JWcty7A=w2048-h2048-k-no",
                 "source_url_sha256": "87938286e37f770f7c8f1f9cd07420fadbdf5756930e9885e186c819edaaf2b9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -7538,7 +7526,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:53.282202+00:00"
+                "failed_at": "2026-05-03T01:20:09.187404+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -7548,13 +7536,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noLvvYz4NKUfSRc72XNxZmJFSld54gsTWyK45EkY0vJAtmVPZTXiN6wMB8Chvm2FfFPR3SMEx1s9K44No65mvjB1t_FJPOhBo7BEglFlFSHuechp5gZrT-JuqKQwKMmCjyo5WYn=w2048-h2048-k-no",
                 "source_url_sha256": "ba450941ee38470fd6903961969ef66235a7d83bc6e8a682e03a355fff2e0fe9",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -7621,7 +7605,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:53.613188+00:00"
+                "failed_at": "2026-05-03T01:20:10.030511+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -7631,13 +7615,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noKESAMLADO36j4MuZcjdwYFdIobd04C7aYb2aLWrQu8xJoFX0y-OYAGFq9XBnW0Y6eWkksn362WO24fuNladnq8g3Dn6yQi1SMAXKrMX0S936SwsQQPLVQiPs2WT9wA81mgLMUIw=w2048-h2048-k-no",
                 "source_url_sha256": "5060ce59c49a934404110017ca54be15e47569a77483ac28c250143bec415b04",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -7704,7 +7684,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:53.927011+00:00"
+                "failed_at": "2026-05-03T01:20:10.504816+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -7714,13 +7694,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrkPoGFJoPRi3nP_cBkmpgObO2ai25wudUBfiRPjcAeRAwPJIEuWQ_CL9Um5cwUmMLEEouOmZ9SRtjJpIFl2HaPi2aBXAdOWx_ws5J356iTlCUkQXNGtvjJj43hCjnYzAU3y4ENng=w2048-h2048-k-no",
                 "source_url_sha256": "2e40ac51a3806b3d7ef4644e89e6f45cc1f08eaa128da46e17c3dfb88cea774d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -7787,7 +7763,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:54.243924+00:00"
+                "failed_at": "2026-05-03T01:20:11.034635+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -7797,13 +7773,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqTl3Fv80Cudc2TtD7gZo6qzAcmiboolvsSObCA-L0c6tAbfeqNRsDILzE6SPv5-DIRGKTKSKXauodq7dFxtN0uSWw_c4SoFWexjLn42fwhaCMOnrUnDjaBlEFGCkOSHpevNFxptQ=w2048-h2048-k-no",
                 "source_url_sha256": "9c2e21a901ce9b8ccf2da2f3ea3dc582840faea4a73f446f3b5d074392f3dde7",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -7870,7 +7842,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:54.559097+00:00"
+                "failed_at": "2026-05-03T01:20:11.511544+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -7880,13 +7852,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4notvrl3FVScD80xafN3Ps-fqMynFWMKT6eIs7yf7iqldbILdjCLP390dNY8P1FPgckWB9EYjwCFAmwJUbUIMtPTQPKftcfCBGQIVDa9h8WC31qnTHKNN7n5fqUxfFtRvbX59W7b=w2048-h2048-k-no",
                 "source_url_sha256": "8a2601bc77c6ac2ca557ead26b9d802a103c6dd00ddaae30f3426e30bac050d2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -7953,7 +7921,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:54.873904+00:00"
+                "failed_at": "2026-05-03T01:20:11.983140+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -7963,13 +7931,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noMjEsHfKlLfgowRSNGqUDPNmp4HBJD-TP9c-oXQGxGYXcEnQLnuQM4teda_9asDvld3b3XHw1j2mi0o9AZ4ltMhCmwR0SdpQIYVql0g6ryinY8Bzj1Wk7XQlRn-mWucKitDPBN=w2048-h2048-k-no",
                 "source_url_sha256": "7c760a24ca42ee9ceda6e9ddbbb0a532bc6ca35855cd7849adf0651e3216911a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -8036,7 +8000,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:55.184566+00:00"
+                "failed_at": "2026-05-03T01:20:12.328314+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8046,13 +8010,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr8eTNjfqFU50VklA-A3yL2p8uJBiKKIgHw5uQKJQaSYwEMWKTzsH-2V-QhA6y3yIIDt0f2QVdZIw8o6URwBbwisG5qU3Y40jbPMH9KVhNyASvMjsXjLOSfPb1UydTXPeEdZx4L=w2048-h2048-k-no",
                 "source_url_sha256": "0ad2fdd1b61b66f8b95ea12fec01f4afbf1148c6ffe8e44a1de08c8dd64a14c4",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -8119,7 +8079,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:55.509145+00:00"
+                "failed_at": "2026-05-03T01:20:12.903493+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8129,13 +8089,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np8BiOK_Th8IfJ7Gd0J0PML6aROMV-YOfF47mKuHz2pxssd3Cj1CTbRnMiGGEbqv1CYO5l1ZQr4ALMzBcN_JWj723qovauxz8Lcavu182HtiOVTsejjwjZ0Jq4RIZBPRIb4nwiVjQ=w2048-h2048-k-no",
                 "source_url_sha256": "68398fc6b3d307fc0f773707134ac36e848e3dc18cf53f311333f52069b55a45",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -8202,7 +8158,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:55.830692+00:00"
+                "failed_at": "2026-05-03T01:20:13.315309+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8212,13 +8168,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npoGuyM--oYewnvlWAdnOIXqadYgHIvbB9qmFFuk0wovB8y3fRDS7KIOay2s8QQeRAHxu4IN_na9scANvrrU6hIdZNVglazGb9DLlJwwyBUMmyJ044dPuSEuqxRZhy1scHtegBCcLwBq5go=w2048-h2048-k-no",
                 "source_url_sha256": "e2e4f67ea21db445acee641d1b2e3d60a9fe4f66f28d2a947cfdde59a4c5297d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -8285,7 +8237,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:56.121509+00:00"
+                "failed_at": "2026-05-03T01:20:13.738857+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8295,13 +8247,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqJgemmamv93dzQDzx_ZqMmuSuvKBfho7KolPK6hE35OBbbvUHf4-yh7x3QS4yNknfe8l2RIS4y2G2CP-NaUfgu6kdTG8T-XDuTnLFgn9ECSHI_OPLi86D-l572nlx9U_JI8bM15AshVPq5=w2048-h2048-k-no",
                 "source_url_sha256": "29fb053509559f2312b9cda72c91657167948e29cd5f9ec5812797462667cc45",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -8368,7 +8316,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:56.414771+00:00"
+                "failed_at": "2026-05-03T01:20:14.185136+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8378,13 +8326,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqb1bFg5XctLgETprLdvux-Q3N1Unv0FBHbbQHe6M7NJWkz3znxTMZBSHkx2o1Qr46tHAaKnin26cQOtU7tbgxQWkueIQmegm2u_WocN78jrUJHSFeInIsbAYDh_W6iQG8-ZBr3ZhFocBU=w2048-h2048-k-no",
                 "source_url_sha256": "3e5db646e211bc83c7422575e1fac1bad7d4bd8d7e1d6fccdc12a8498c7e55ef",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -8451,7 +8395,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:56.737829+00:00"
+                "failed_at": "2026-05-03T01:20:14.622942+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8461,13 +8405,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr-09Ip_kjUdz_izRHwFRN79jZ-sGzNZQ3TBumq3vHm1BYzMtHREJ66LSYsAHszZkJ_qNp6H4QJJ3vYIynJrRfOjamXGTNOvnukYWteF16kPLLwNQU5oE9whNPvceyipVhyEdirw5dDgEg8=w2048-h2048-k-no",
                 "source_url_sha256": "6ec7f96cee930364c4556ce6e62c1127311d7dbf0184db622594045940fa5175",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -8534,7 +8474,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:57.065073+00:00"
+                "failed_at": "2026-05-03T01:20:15.426441+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8544,13 +8484,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrtt6-e_DKna1pqxyyJrdisFFzBaF-XvdpJXZURLMhpxkyO4LXap4fCaP3MyOWYXoYdwr7l20LRV_iBZ7KiVUMNsRpz1HJxFe22nA3LASbEds_LqTQfK9SwEoXlQcblgnUP03TZdvu_FjIW=w2048-h2048-k-no",
                 "source_url_sha256": "0e7769edb89ca0d48bb3ec043b12570bd43b5b5b5a8d1a145bd6e6e85cda00fb",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -8617,7 +8553,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:57.347123+00:00"
+                "failed_at": "2026-05-03T01:20:16.019055+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8627,13 +8563,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nolk7RGUfiTtuQLeCpnNniOcdxbvHDtxIPsvb-XxIsZLuTGTlOzyjfFyg0nNSlkwy0n8ZT5ZoymVbGacQm7v4LeWJbmE_CrD9X0p3U6pgP4acJxNeWHNvsa58OX-heWXoJgu5MHa9tLVVAE=w2048-h2048-k-no",
                 "source_url_sha256": "76fd596aef98ad7b9bd45d5799cae0ccdb6859dc57c256fe423543c15415ca81",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -8700,7 +8632,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:57.652410+00:00"
+                "failed_at": "2026-05-03T01:20:16.501676+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8710,13 +8642,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npkWc484wxllBaNAkT--qvUAyZLaAlmUUpzOHfHgSurhHNzfD330aqWHzAksvw50WmZcGoEqjhbZ5cy_wvYoSidRNOuW1rbS84wAmX0CLL_n4tHJzQ3X3-xCw_kB6qJsOktyUsnRqQherNn=w2048-h2048-k-no",
                 "source_url_sha256": "48c90c7b2f10fedf74474283e5b58d3047072a30d547d289a66e830ea88c6e9d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -8783,7 +8711,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:57.973772+00:00"
+                "failed_at": "2026-05-03T01:20:16.915723+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8793,13 +8721,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrT1uRQprBH3VxvL4iKj9GpaXY45AgqAP93hEGWqCUodPluvKmx0Cr5yaBaCbEEzKvEXggSBkOCjfg0rNCqQebKdYnr050jsYGAvXcekgI8vEGBVYKlUPIv_lqWMJdirGO_DSL2o4BBevc=w2048-h2048-k-no",
                 "source_url_sha256": "a2dd3aba537ae9c7bd9fe70a9630b3751aab4e9093f64f84c6199c0929c95106",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -8866,7 +8790,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:58.292671+00:00"
+                "failed_at": "2026-05-03T01:20:17.294030+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8876,13 +8800,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrO5SKvJRauESBWZt0_D1C-Urd7FFrQSKDmOBxCMqVIQr7xFIcaRHBxSoNePLAhjOS9dUaJocy5zS0nq5KTG4bPqV7QvxGGAb9TmsnU2PCyn3XL7VqCvJa5h2BVOObup-WPU5fh8kJrcS4=w2048-h2048-k-no",
                 "source_url_sha256": "5047e4cf95c01552a7f9ef876c18c3e8ef1ed0ab8abc72b05f54dde1045830a6",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -8949,7 +8869,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:58.619561+00:00"
+                "failed_at": "2026-05-03T01:20:17.648993+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -8959,13 +8879,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr0N_7qFF3wnuctvl7JYAnidZoCE9STlPiXGN3zpmeL29CzhFpzUGPaQY6cczJfF3MpC19lw0XSeOVbxSaPqMThbC3vayWIqXOcugBWg0trRUJ8wGpHQTi_C3NDih2SqRFGj2zi0H0Xut8k=w2048-h2048-k-no",
                 "source_url_sha256": "d130682421106957a4af8ca37bb42cc43749ec0195c2a10161701bddd9e153ce",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -9032,7 +8948,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:58.912811+00:00"
+                "failed_at": "2026-05-03T01:20:18.010513+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9042,13 +8958,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqqAO2qBDsm0_Hn8mxAbMRBe6ARKBrfzI63BtSB4oBg5H-Yf7Kp7M4U2HwTglXYlqPzRsx_Xess8ai0-rZ8D5Jza5_LOhvFxJwvP8qaMjSQRCzCvwlAJqHSScrAYGYDGcc4CoIN9nAACTUZ=w2048-h2048-k-no",
                 "source_url_sha256": "67095264282ca8aa9e85cf794f5644600ad9b693b1580b1f4e1e9a1cb8699795",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -9115,7 +9027,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:59.225272+00:00"
+                "failed_at": "2026-05-03T01:20:18.421299+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9125,13 +9037,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqpYPuwspiEQNSQDvV1pkQ6kNc_rLj3WJlXqBRBTKGdcbttqHvlZ16W7N0l7un8xwhzWLx5n7e0SQOhhgwU9xGKqYg1yIpdyvqd16WDNiOLmU8q_gL03vKGe7ZljzTRIEy4USY72S7WoTU=w2048-h2048-k-no",
                 "source_url_sha256": "7eda01761497c9467c13e93909a7e7baf8164c2867f0cfd98b0268bb774aa8bc",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -9198,7 +9106,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:59.549984+00:00"
+                "failed_at": "2026-05-03T01:20:18.849781+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9208,13 +9116,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr_ZmVfKUAnRb_H6R8G5BXM5lbthX9UG3aUcigFBFzuUcy_hZewVqI-fA4H5v7qzDFfVsaUT5KJWY9CSCqE_QsGu8IrRo7nJL1yi1bdvR0NXxgG0HoD2LFl_2PHS4Xr__OA-Igi-wytLwqk=w2048-h2048-k-no",
                 "source_url_sha256": "ee8f1a6ed09c39e1c7348a918f7dc999473ae7566f0e04d67f19b3ab3f17a9ad",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -9281,7 +9185,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:17:59.873257+00:00"
+                "failed_at": "2026-05-03T01:20:19.329662+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9291,13 +9195,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrOS_b66BQBWe_8uF9FBxEp_UgOTP3BrISAKIhHyLw3uUF9W4RVb4fkNylstFPCg0yHkzJyCOTsMufrkhnZF9rlxGUGOKZ07bCbqYFJtPBqlB3_-ki8JXFYxkSU11cNFqUksC3uJLFsH8zV=w2048-h2048-k-no",
                 "source_url_sha256": "f7241a70a6a2af8e943702e975e874c5901da13ed29abba20054101c455c414f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -9364,7 +9264,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:00.230021+00:00"
+                "failed_at": "2026-05-03T01:20:19.842149+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9374,13 +9274,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noYTfEhS2b0QZATr6fKSx2ZyYbIpVkszRcONQgNo4yykOUpA9tuAIYjUXhDGSV3sG82zAyThXVuvWbtYiao7BQsRfWET3G_IL_wEIz6qIyRsyuJZtF9DWZEVfzwFKAMDn7dQ1xSaIJvK2In=w2048-h2048-k-no",
                 "source_url_sha256": "3cca3296378b7f586261ef4604f62fb00966d19fd210e1ee67aafd020a1c2e29",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -9447,7 +9343,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:00.533935+00:00"
+                "failed_at": "2026-05-03T01:20:20.408711+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9457,13 +9353,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npILmLx30hW98cKLWJnmAdZN4wnF-l_stDjilOxwKi8qjyAUkF1fu7i15R33xcSUQDELxf-oQ4BEiWOsSPzicemqLP8K6itmPUI_IPUDWBkI41Lt5X-6FrdMHR1HhliE2eOg1NN824C2kc=w2048-h2048-k-no",
                 "source_url_sha256": "135d42efa881fdad5596339af954c757f0f7dd574197350a72e62387ac1356cd",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -9530,7 +9422,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:00.858187+00:00"
+                "failed_at": "2026-05-03T01:20:20.986539+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9540,13 +9432,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqDTHBf3J3o3oynN_pC43mpxVyGILvKFJDsey5dplbbDOflVlg4IfWTu3FpE7z-kWLRKH0G77FgFn2B-xhAEM6qm_BPVRhZ03U9TCCiFdtAtefDb-Sckc5Ihc-9JJYiDmVgJogt67LMtJg=w2048-h2048-k-no",
                 "source_url_sha256": "fd3cd2cf620974469277d1911c79480b84d1544e21956213c8e17fbb1082c60e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -9613,7 +9501,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:01.167438+00:00"
+                "failed_at": "2026-05-03T01:20:21.540255+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9692,7 +9580,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:01.489315+00:00"
+                "failed_at": "2026-05-03T01:20:27.081932+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9771,7 +9659,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:01.805872+00:00"
+                "failed_at": "2026-05-03T01:20:27.556028+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9850,7 +9738,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:02.121563+00:00"
+                "failed_at": "2026-05-03T01:20:28.075203+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -9929,7 +9817,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:02.417272+00:00"
+                "failed_at": "2026-05-03T01:20:28.582956+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10008,7 +9896,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:02.725587+00:00"
+                "failed_at": "2026-05-03T01:20:33.946927+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10087,7 +9975,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:03.039431+00:00"
+                "failed_at": "2026-05-03T01:20:34.265296+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10166,7 +10054,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:03.360322+00:00"
+                "failed_at": "2026-05-03T01:20:34.639779+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10245,7 +10133,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:03.680249+00:00"
+                "failed_at": "2026-05-03T01:20:35.074402+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10324,7 +10212,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:03.998133+00:00"
+                "failed_at": "2026-05-03T01:20:35.506201+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10403,7 +10291,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:04.318508+00:00"
+                "failed_at": "2026-05-03T01:20:35.961428+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10482,7 +10370,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:04.688071+00:00"
+                "failed_at": "2026-05-03T01:20:36.410481+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10561,7 +10449,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:05.049798+00:00"
+                "failed_at": "2026-05-03T01:20:36.879716+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10640,7 +10528,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:05.415552+00:00"
+                "failed_at": "2026-05-03T01:20:37.395118+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10719,7 +10607,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:05.790313+00:00"
+                "failed_at": "2026-05-03T01:20:37.927303+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10798,7 +10686,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:06.169338+00:00"
+                "failed_at": "2026-05-03T01:20:43.332336+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10877,7 +10765,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:06.562544+00:00"
+                "failed_at": "2026-05-03T01:20:43.744056+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -10956,7 +10844,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:06.969376+00:00"
+                "failed_at": "2026-05-03T01:20:44.138737+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11035,7 +10923,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:07.354218+00:00"
+                "failed_at": "2026-05-03T01:20:44.527758+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11114,7 +11002,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:07.756699+00:00"
+                "failed_at": "2026-05-03T01:20:44.935475+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11193,7 +11081,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:08.151440+00:00"
+                "failed_at": "2026-05-03T01:20:45.376988+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11272,7 +11160,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:08.625292+00:00"
+                "failed_at": "2026-05-03T01:20:45.823263+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11351,7 +11239,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:09.122358+00:00"
+                "failed_at": "2026-05-03T01:20:46.265432+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11430,7 +11318,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:09.576546+00:00"
+                "failed_at": "2026-05-03T01:20:46.673851+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11509,7 +11397,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:10.129436+00:00"
+                "failed_at": "2026-05-03T01:20:47.026838+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11588,7 +11476,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:10.619445+00:00"
+                "failed_at": "2026-05-03T01:20:47.380261+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11667,7 +11555,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:11.084803+00:00"
+                "failed_at": "2026-05-03T01:20:47.687562+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11746,7 +11634,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:11.528687+00:00"
+                "failed_at": "2026-05-03T01:20:48.039303+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11825,7 +11713,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:11.935732+00:00"
+                "failed_at": "2026-05-03T01:20:48.382887+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11904,7 +11792,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:12.371371+00:00"
+                "failed_at": "2026-05-03T01:20:48.753549+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -11983,7 +11871,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:12.848687+00:00"
+                "failed_at": "2026-05-03T01:20:49.140837+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12062,7 +11950,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:13.357465+00:00"
+                "failed_at": "2026-05-03T01:20:49.440523+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12141,7 +12029,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:13.989286+00:00"
+                "failed_at": "2026-05-03T01:20:49.751540+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12220,7 +12108,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:14.524935+00:00"
+                "failed_at": "2026-05-03T01:20:50.058972+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12299,7 +12187,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:15.309630+00:00"
+                "failed_at": "2026-05-03T01:20:50.397610+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12378,7 +12266,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:15.988741+00:00"
+                "failed_at": "2026-05-03T01:20:50.692476+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12457,7 +12345,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:16.545937+00:00"
+                "failed_at": "2026-05-03T01:20:51.017380+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12536,7 +12424,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:17.074724+00:00"
+                "failed_at": "2026-05-03T01:20:51.357518+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12615,7 +12503,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:17.624312+00:00"
+                "failed_at": "2026-05-03T01:20:51.702576+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12694,7 +12582,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:18.166442+00:00"
+                "failed_at": "2026-05-03T01:20:52.063854+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12773,7 +12661,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:18.682596+00:00"
+                "failed_at": "2026-05-03T01:20:52.473261+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12852,7 +12740,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:19.245921+00:00"
+                "failed_at": "2026-05-03T01:20:52.889321+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -12931,7 +12819,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:19.821928+00:00"
+                "failed_at": "2026-05-03T01:20:53.269534+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13010,7 +12898,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:20.364962+00:00"
+                "failed_at": "2026-05-03T01:20:53.669162+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13089,7 +12977,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:20.871503+00:00"
+                "failed_at": "2026-05-03T01:20:54.062204+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13168,7 +13056,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:21.381170+00:00"
+                "failed_at": "2026-05-03T01:20:54.460957+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13247,7 +13135,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:21.976619+00:00"
+                "failed_at": "2026-05-03T01:20:54.891072+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13326,7 +13214,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:22.568301+00:00"
+                "failed_at": "2026-05-03T01:20:55.290695+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13405,7 +13293,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:23.085950+00:00"
+                "failed_at": "2026-05-03T01:20:55.705142+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13484,7 +13372,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:23.614222+00:00"
+                "failed_at": "2026-05-03T01:20:56.042293+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13563,7 +13451,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:24.202109+00:00"
+                "failed_at": "2026-05-03T01:20:56.396172+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13642,7 +13530,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:24.704497+00:00"
+                "failed_at": "2026-05-03T01:20:56.796486+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13721,7 +13609,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:25.204144+00:00"
+                "failed_at": "2026-05-03T01:20:57.217679+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13800,7 +13688,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:25.683917+00:00"
+                "failed_at": "2026-05-03T01:20:57.633794+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13879,7 +13767,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:26.207380+00:00"
+                "failed_at": "2026-05-03T01:20:58.034677+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -13958,7 +13846,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:26.719488+00:00"
+                "failed_at": "2026-05-03T01:20:58.445773+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -14037,7 +13925,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:27.221995+00:00"
+                "failed_at": "2026-05-03T01:20:58.868871+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -14116,7 +14004,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:27.714861+00:00"
+                "failed_at": "2026-05-03T01:20:59.302397+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -14195,7 +14083,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:28.233730+00:00"
+                "failed_at": "2026-05-03T01:21:04.935327+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -14274,7 +14162,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:28.753473+00:00"
+                "failed_at": "2026-05-03T01:21:05.367991+00:00"
             },
             {
                 "place_name": "Cabarrus County Library | Concord",
@@ -14353,27 +14241,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:18:29.258791+00:00"
+                "failed_at": "2026-05-03T01:21:05.763675+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 91,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 92,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 61,
             "place_name": "Cabarrus County Library | Concord",
             "place_id": "ChIJqX87rVYOVIgRjYMMiz1W5Sg",
             "record_id": "rec259fwH6T3VC8bd",
-            "generated_at": "2026-05-02T22:18:29.259170+00:00",
+            "generated_at": "2026-05-03T01:21:05.764170+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 89,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",

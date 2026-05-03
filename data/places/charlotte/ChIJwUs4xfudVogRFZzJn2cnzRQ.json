@@ -518,10 +518,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -534,6 +530,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -572,10 +576,6 @@
                 "source_path": "fields.Photos[1]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
                     }
@@ -588,6 +588,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[2].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -626,10 +634,6 @@
                 "source_path": "fields.Photos[2]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
                     }
@@ -642,6 +646,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -678,13 +690,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrrf6mtb2lR29PnNRVjB-7jM5asLc2zlzL3upPmw3y6psxSPU9sfM5aOSFkahRVSovHsv3k7qmF5wSMSBWp8_TkuiEU63CNuLmU4DIRjVcEV83STEF-SJ_yUPba8j7QMkeCTMhY=w2048-h2048-k-no",
                 "source_url_sha256": "32d2aeff80e9aa7166515ad46b48a861d999200c38e2125ff62618ecdf7832ef",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -751,7 +759,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:13:05.390944+00:00"
+                "failed_at": "2026-05-03T01:20:02.567203+00:00"
             },
             {
                 "place_name": "The Gathering Caf\u00e9",
@@ -830,27 +838,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:13:06.097716+00:00"
+                "failed_at": "2026-05-03T01:20:02.974685+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 8,
-            "duplicate_count": 4,
-            "airtable_photos_count": 4,
+            "candidate_count": 11,
+            "duplicate_count": 0,
+            "airtable_photos_count": 3,
             "airtable_photos_google_count": 4,
             "data_file_photo_urls_count": 4,
             "provider_raw_photo_url_big_count": 4,
             "place_name": "The Gathering Caf\u00e9",
             "place_id": "ChIJwUs4xfudVogRFZzJn2cnzRQ",
             "record_id": "recx2RBQa4C7JtjZr",
-            "generated_at": "2026-05-02T22:13:06.098219+00:00",
+            "generated_at": "2026-05-03T01:20:02.975120+00:00",
             "azure_assets_count": 3,
             "failed_upload_count": 2,
             "pending_upload_count": 0,
             "selected_airtable_count": 3,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 4
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
