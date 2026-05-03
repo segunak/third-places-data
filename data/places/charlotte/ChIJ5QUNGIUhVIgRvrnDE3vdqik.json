@@ -1579,6 +1579,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ5QUNGIUhVIgRvrnDE3vdqik/3b5c33de2c5176e019bb8774c5f811de9313dba203b9e41837ba5ce7be547bf5.jpg",
@@ -1680,7 +1688,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:46.691998+00:00"
+                "failed_at": "2026-05-03T06:07:17.186367+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1759,7 +1767,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:47.215036+00:00"
+                "failed_at": "2026-05-03T06:07:17.543444+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1838,7 +1846,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:47.875941+00:00"
+                "failed_at": "2026-05-03T06:07:17.924513+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1917,7 +1925,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:48.504652+00:00"
+                "failed_at": "2026-05-03T06:07:18.332551+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -1996,7 +2004,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:49.611813+00:00"
+                "failed_at": "2026-05-03T06:07:19.163636+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -2075,7 +2083,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:50.409948+00:00"
+                "failed_at": "2026-05-03T06:07:20.153826+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -2154,7 +2162,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:50.949946+00:00"
+                "failed_at": "2026-05-03T06:07:20.935574+00:00"
             },
             {
                 "place_name": "Platform Coffee",
@@ -2233,7 +2241,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T02:52:51.577129+00:00"
+                "failed_at": "2026-05-03T06:07:21.598905+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -2247,7 +2255,7 @@
             "place_name": "Platform Coffee",
             "place_id": "ChIJ5QUNGIUhVIgRvrnDE3vdqik",
             "record_id": "recDjtDUmCELLwJHj",
-            "generated_at": "2026-05-03T02:52:51.577449+00:00",
+            "generated_at": "2026-05-03T06:07:21.599230+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 8,
             "pending_upload_count": 0,
@@ -2261,7 +2269,15 @@
             "preserved_curator_airtable_photos_count": 2,
             "selected_curator_airtable_photos_count": 2,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 0
+            "non_azure_airtable_photos_count": 0,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
         }
     },
     "data_source": "OutscraperProvider",
