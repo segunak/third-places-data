@@ -421,6 +421,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJl7X-uUIPVIgR7BX-6eyK83o/ffdac1e12de3fd2fac82d0f735f59627b3e72384b63882d930d6b8d9d19336d3.jpg",
@@ -463,6 +471,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[3].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -576,7 +592,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:06:52.711717+00:00"
+                "failed_at": "2026-05-03T02:44:38.391529+00:00"
             },
             {
                 "place_name": "Crane Coffee",
@@ -655,7 +671,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:06:53.208333+00:00"
+                "failed_at": "2026-05-03T02:44:38.765048+00:00"
             },
             {
                 "place_name": "Crane Coffee",
@@ -734,7 +750,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:06:53.809680+00:00"
+                "failed_at": "2026-05-03T02:44:39.161142+00:00"
             },
             {
                 "place_name": "Crane Coffee",
@@ -813,7 +829,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-03T01:06:54.223269+00:00"
+                "failed_at": "2026-05-03T02:44:39.565317+00:00"
             }
         ],
         "azure_asset_summary": {
@@ -827,7 +843,7 @@
             "place_name": "Crane Coffee",
             "place_id": "ChIJl7X-uUIPVIgR7BX-6eyK83o",
             "record_id": "recHpR3xDckO4LJu5",
-            "generated_at": "2026-05-03T01:06:54.223591+00:00",
+            "generated_at": "2026-05-03T02:44:39.565737+00:00",
             "azure_assets_count": 2,
             "failed_upload_count": 4,
             "pending_upload_count": 0,
