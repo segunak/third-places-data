@@ -11100,10 +11100,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -11112,6 +11108,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -11148,13 +11152,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyTflR5J-SAY0bfRHXDzARB7LFfiuKUP0VuDmfO4Uczz2Ku4gReubi5c-1WIqAABXBl3MJ0jo3Qq-loHs0jyqGvga1M0qiqyVB2fWRQAEp8nZOpGLAXknIGnPZpdAF9nSBALunk94yVaco=w2048-h2048-k-no",
                 "source_url_sha256": "c72f6b37f4834bb4149df7d6cc3c8cfdb018d4863987429bde7e3bfac2749fc0",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -11221,7 +11221,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:50.995352+00:00"
+                "failed_at": "2026-05-03T01:05:56.293050+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -11231,13 +11231,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz__WyT1XUre27P5A7QpUp8ggp3ReQ3IjE1axxxNeApWEZ_2gQ3opSXyE7UzZb7s7ePN01esdyz-xpk4W5LJXed3gPBifsxRm2GZBC96fyzhpQx9EwkH43NJ0YnXTfo0r2jcAkf=w2048-h2048-k-no",
                 "source_url_sha256": "97554347bec4a18dd4feeb69438202c74fa63a7a3629f4902b4b5ba4177fe5f2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[2]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[2]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[2]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[2]"
@@ -11304,7 +11300,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:51.472298+00:00"
+                "failed_at": "2026-05-03T01:05:56.859267+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -11314,13 +11310,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx4BaTsBiY--EA-uYVY4NkUl5tNe3R4kgH6PmjPj887BO9REfE0-VcvtJ_9GbqHMRzpQAHfL-Okmd43FhLijT282dFW_JPnWVaGegrWgQxcy2j_HzYoiJU-pD-cHpmaZ3FALc70eA=w2048-h2048-k-no",
                 "source_url_sha256": "c26df600077fbc9ba72f0da111d6ca566cf225b0e0247e2d5d8f8df590d1790d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[3]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[3]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[3]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[3]"
@@ -11387,7 +11379,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:51.977942+00:00"
+                "failed_at": "2026-05-03T01:05:57.241026+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -11397,13 +11389,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwfy2PTEpsItjxEeYFE4p5P1xuwtzYB_SfG0gdIZNGRYHwzVEc_Yjj5tmH-CJ7VdtzC-f86WH2M0Gu-8uRmUgv1r8Z1jU4H1RhTIvxxiGyPmo7kAgl4_goM8wO_QbZGGQwFmP1aWVll8k6j=w2048-h2048-k-no",
                 "source_url_sha256": "0c69b76cabce3f19978f35f58374ce68abcaca0daf4adab555e752fe4eb3b917",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[4]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[4]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[4]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[4]"
@@ -11470,7 +11458,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:52.312832+00:00"
+                "failed_at": "2026-05-03T01:05:57.591688+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -11480,13 +11468,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxalMm9H2OzSdjC0gmDDY1nKL1yWFMLLEhpDX67Pkuu6YRvvtRa-XKH9ZXZV6t7DsUU1xLEaNoHc5UQvh5oKEtWfAoDa-yWJRK6aEiKETw0m2WeBpr6bYcgL50ODDQqEdO5nNmE4Og6DZY=w2048-h2048-k-no",
                 "source_url_sha256": "0ae6953b1a1da54abf4cf75ff9a18fe19db92ab0a6db66211d46c3ce6f3cfffe",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[5]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[5]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[5]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[5]"
@@ -11553,7 +11537,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:52.717492+00:00"
+                "failed_at": "2026-05-03T01:05:57.960552+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -11563,13 +11547,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxxMFtL2vogabS_DyduaK1D7YVvCQg13bGUEjxgUquRqR7sFf5rEDfrzqE9Qx00LV0qbKjdVq9Ope73PzvsP0oC9hbpbRr3M3-lpynPIy-rt7YZiCH9CsRgKquZhYdKN4agp7nH=w2048-h2048-k-no",
                 "source_url_sha256": "8a73c9e0bd7578efef5111dada67ef3bfbf87098a109a64adff4e102eb2a5fc6",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[6]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[6]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[6]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[6]"
@@ -11636,7 +11616,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:53.052336+00:00"
+                "failed_at": "2026-05-03T01:05:58.312146+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -11646,13 +11626,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzbAnZI642YbSaTB-ltPaEgM1eyIrA5syHm0p8v0O49f3YCaGQDnhCgP9ek7aNNRloEoHtCKFzn-e3fbY71c5Hj-bQil3UxgxSN9RIOg5KhLbi0zzZ8DsoobDRvFW1lHGxasCvK=w2048-h2048-k-no",
                 "source_url_sha256": "877c0571d529bef65091881907546293e501f463b0a85bb740bf23cd2819234a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[7]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[7]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[7]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[7]"
@@ -11719,7 +11695,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:53.414737+00:00"
+                "failed_at": "2026-05-03T01:05:58.717937+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -11729,13 +11705,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzwbGin69xZEyPWW66ZJaBKdAnJFMp6uJ8EUiOW1rOf6zhCsrW9Cqz8HjXyekMZU8l8-6seSaIfTh3d9JAJCgzWDrU5csoLRbsG3QqjhBogj9RUTNs-KHuiP-F4sVBFzSUbidJX=w2048-h2048-k-no",
                 "source_url_sha256": "d557d61a322a536f5b84d8dedc3f793527362a2f40b2d12c76aaa0eea6a63e61",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[8]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[8]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[8]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[8]"
@@ -11802,7 +11774,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:53.766502+00:00"
+                "failed_at": "2026-05-03T01:05:59.065422+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -11812,13 +11784,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy1h0a_OqHXoEE9V23npxk-nn70K0vnIZ1l9wyFBVxAkYn2-yGtaH4kQVH5XGZAQ-irOWyQdEnUQnpIV3MWSDFWduBw588RJazIrYMKe0MKGxfyLRYFBAQhxdanK02XTxh5V1iRzXCgBM13=w2048-h2048-k-no",
                 "source_url_sha256": "6eb149d4a285d0e6a44fb2b01e47a4b28a3b58fb69b32f322fa9356295e98a0d",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[9]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[9]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[9]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[9]"
@@ -11885,7 +11853,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:54.151103+00:00"
+                "failed_at": "2026-05-03T01:05:59.443527+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -11895,13 +11863,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSykDQM6Ojf_c595g3QqNWDBTDdgZj7-rptm5UcOVzMdz6szZllDxdLOQi6qSS49gGbOI7r_kSX2u71t3PnU0J8fI1vXQgYKsdUveZpX8LRzO1BwC-utc8pdIcilquI-cnZOkTMS=w2048-h2048-k-no",
                 "source_url_sha256": "0344f0f31d3fc8e8c84c4ebf34c7345dab1803ad511406c7c2dab006b53e7c92",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[10]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[10]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[10]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[10]"
@@ -11968,7 +11932,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:54.564172+00:00"
+                "failed_at": "2026-05-03T01:05:59.848233+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -11978,13 +11942,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGlSIzAvgrqY6KupjXfltnr25teAU581HrkGdq3oklI3--0wxMbqv72ewuTWN6fVliG9TAzeX5bdGW-vSGswK_MPRJlCH8zddZlV2xEBX3ycN5Gf5KBGCCyPkJTSl5CwS0A0lt9UoITFB8XBycB-4JMVF_0SMKGtoHmhhpCQb7lDkhxpxopYIeu=w2048-h2048-k-no",
                 "source_url_sha256": "27b1de81c55b76cb2cf245a45dad236f37ee89dbdf6f3cb69da56ade667de94e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[11]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[11]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[11]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[11]"
@@ -12051,7 +12011,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:54.883615+00:00"
+                "failed_at": "2026-05-03T01:06:00.165033+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12061,13 +12021,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEsvoH63IYeNHgz4l8LjgzJgSS7fvtwkijeo9ZjhwPWGrhQsasozJvVWuw2wPBSJjf4i2iAVyMHeYZA6zK0gtp9f5mHyOCO6mD2JEcbWLnxvQkBVD_n89mOXhNu3VZFQdJnPTeVptABcJddmCfPhJdvZY6PX7fVzJcP53EZJN2dhwKhsmJWwBSvVQ=w2048-h2048-k-no",
                 "source_url_sha256": "95648413b714fa325f8fae07c3fbfeb17278e992ea0a0466d27b11d655b758ca",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[12]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[12]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[12]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[12]"
@@ -12134,7 +12090,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:55.216404+00:00"
+                "failed_at": "2026-05-03T01:06:00.496284+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12144,13 +12100,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyXdXhA56UgELC7oU1CZZJeFTZpC5VtSixYcOvST0xbriE-vDCJ5fACJOr-nSwsc8Gqor06OHUDTOjhXI2h1VQ3qoQGaRKdzr0-0Nwz4nHAhfkgfFiJ9RuaJPGFlOXCNhiznFcxDERRm3A=w2048-h2048-k-no",
                 "source_url_sha256": "7dd82f81ecfc72ecf9940e2e58de92460e6b406abba539abec8d323e4a7bbfeb",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[13]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[13]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[13]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[13]"
@@ -12217,7 +12169,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:55.562627+00:00"
+                "failed_at": "2026-05-03T01:06:00.844266+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12227,13 +12179,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHS2-11q2hnoE0FamBAIIJBvmhXtpUVkqraGzQCaIkGGfw_5YGVsjjc0gZuagP4p-V2Lsd6cNb_v9sqXUSZvX4spLKrCAk3EEgmBvef4pHOHM-ZKxi65-_faQzXruBQ6Uzc1ananUvik8ADZzL1oci-qXJkeRmkdAgyKfFWBJWiLuib_kn6cvru=w2048-h2048-k-no",
                 "source_url_sha256": "58f0becf7ca73d9d39aa557dd8b9b1421c009e5e3b86284e599afb1746f6072e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[14]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[14]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[14]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[14]"
@@ -12300,7 +12248,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:02:55.877576+00:00"
+                "failed_at": "2026-05-03T01:06:01.191677+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12310,13 +12258,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhH0U1Xwzdef2q5zhr7zgZqrPStuP0X2y0RcCKZ7dW1fbO6F19rX6m6x0FUhbnR05m1AwT90GMBv5ev9NV1vW_DmuScsZnwM1NHg6RYKFUF9WExafuqtu0NneRyaldE6vrTHbEReexmE5Y6vQj3B9qphE9FpIofZjDl70-UplPwZG_5BfaCOwd0=w2048-h2048-k-no",
                 "source_url_sha256": "f8ec5e397a7a8dc200bcd0aeab35faf8b261b18c897cbdc74b692e09c7b9f93a",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[15]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[15]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[15]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[15]"
@@ -12383,7 +12327,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:01.195112+00:00"
+                "failed_at": "2026-05-03T01:06:01.571351+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12393,13 +12337,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFDTKGTPEXHnVPugbei3L4pBA5m_fCuoMN12p3bH7RKUzitMVYkiH4vY3kta_vfbiXP1n7ucN-jR_JPl9EfD-p3Hx8v_n_5lOD9BCWD4DjXLqiHqhGhuPgnCDAkRyXdEHaOcg67X4U8wmnzFeTqnzLEGWeacMmXgNZ40U4INzflQc3sueDSl6U=w2048-h2048-k-no",
                 "source_url_sha256": "9e08c7b6a27661164031b971fc2eeaa4283977e2f13042f41288455f4a3b71f8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[16]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[16]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[16]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[16]"
@@ -12466,7 +12406,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:06.524165+00:00"
+                "failed_at": "2026-05-03T01:06:01.928276+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12476,13 +12416,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEzwmhK9k0I8FplpuZBYxkpS9uEE8hYF8Q7Tv8UmWGEGrfpE0-IIPb2B5w47oDN24vJVanBCNbeW8QArGwus9iAOA8PjXw7ihllNwlEMk4OVnCROlU72MBbyGjvngwjADE4EmbSxuTDuOPXbGqwaPYGHt5wb_sh340DJurG6JfUhVfStzN7ljEO=w2048-h2048-k-no",
                 "source_url_sha256": "f87ba9fa40d0069c14e68d215553cb70c8c44ef59481b7a4f830b7414582d407",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[17]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[17]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[17]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[17]"
@@ -12549,7 +12485,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:06.860093+00:00"
+                "failed_at": "2026-05-03T01:06:02.282352+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12559,13 +12495,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGQY2PYBvmOgnh0uOIW8Zlcl0qR6S9DTySXmrU5TM5OaiuqQjDyftXHvJWMj0XCHCFMLgYspgZtmwrsRUmBwBWG7D_KZBm1iJTlj8Lm5ytUspIyjNNRuSquAuyd42uhUvH0e_YXFkvS4p7w1P-eVrd5GDChHeC_s-aZDz-VC7RLwjAResZ0g5Yh=w2048-h2048-k-no",
                 "source_url_sha256": "99a8bd4315e9c25b77d71e9121ea1c57acf3d46f11a76fead7d7dfd2fa84c6bf",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[18]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[18]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[18]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[18]"
@@ -12632,7 +12564,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:07.228109+00:00"
+                "failed_at": "2026-05-03T01:06:02.631056+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12642,13 +12574,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhG2k9RCKdIYRNnhZTABJywrlTdoJATpBIK4mB0a71adxK3p0BBNgAMU1sMWKNafFv0Kcl8KRBBiZAVNfYiCipj2NThMseEyG0Jvol6qog49tBYaDdN7fLJtX63BkEUr0cJODYpV3RIW1Njo-HTYo_-4VlLB6623u9_6iwDcr2Pvaht4i00GQp3Y=w2048-h2048-k-no",
                 "source_url_sha256": "e17e2d418a54e97437fd6f01dbeb1d3b6ec85d8d26b7b2d515d8098411d7c217",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[19]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[19]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[19]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[19]"
@@ -12715,7 +12643,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:07.556660+00:00"
+                "failed_at": "2026-05-03T01:06:03.004004+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12725,13 +12653,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEW1WRZJaaqtaZQALL4WMx-klV2z5kya7wbkjfyHabOQyBfsudqV0GBsETrOrDMAffC8lthxZbI-lid6DMtzX1EYx1D18cPO5TymThbgUdLlOjOzPTAQL_3zuh9JRN70fV6wQKtvoSTq3849e6H0KG4rFYHzVHt6Gq8-oimnaRiRxAk1SZg4nxT=w2048-h2048-k-no",
                 "source_url_sha256": "f113eaa938d5998dc1df3cbbdb192643b088917be6ea0bc70f770e64a2c87f04",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[20]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[20]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[20]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[20]"
@@ -12798,7 +12722,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:07.910448+00:00"
+                "failed_at": "2026-05-03T01:06:03.370048+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12808,13 +12732,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhG-5QoIE13LQeGZQdXl6n8DbjpiVo73BeIxRrS0NvqrhI5N1K3bexCNLFSgRAqKGAONPuyzKsYI1n-xHBw5r9548ahr8C6DsVMhbLoY0DYX_cXvMwbzRkrW7L7nca-c2U8_0gT5rGnnBHzNJXDB8X7gRvVL8S4RkY4B_Y9deL3ef869LgGrHv6X=w2048-h2048-k-no",
                 "source_url_sha256": "cf586a2bc220ec07f381da0c6551f520486728650da4bbd9ac11cc186d998b00",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[21]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[21]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[21]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[21]"
@@ -12881,7 +12801,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:08.228946+00:00"
+                "failed_at": "2026-05-03T01:06:03.732639+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12891,13 +12811,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhF5MXVZOv9ckG5CA_2kTV_DvApF-af_clxKvnOiWBnveL9U_Dhu5b7xY3gqUhJcSXQOVoKy3JEX4sjTvpJAI0sn3OHUDbSVJ8P92HrllI2pri5eky1IwwFbNu6I_0exbdytdg1imIcaAwYnURqlvndcA9yKWmD0-z1fapnGwbQqNXYdvJmwywY=w2048-h2048-k-no",
                 "source_url_sha256": "cbf4feec77ec80bdb7aa06216fc7546805f67f4536b3550485e53acb15eec2d8",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[22]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[22]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[22]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[22]"
@@ -12964,7 +12880,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:08.566549+00:00"
+                "failed_at": "2026-05-03T01:06:04.070980+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -12974,13 +12890,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhG0Hb0udRUK_xcTEuvAZtgUNY_qjDFaqlsd7olC6OMeZDsQ9GNZ22tx48JH0fB-5iNwG9T1Na_tCHqW8Z0jVOmC2VBe4Ha0nRaeHMvtFDylZS1r7z3L4iK4IesUK4auh0lHfDJcJmYty1-idwR0VblT61A5R29eGBVUm03Y47KHPpegpQTuhRcn=w2048-h2048-k-no",
                 "source_url_sha256": "f6a765d2ed32932483f035b45de2b720777b6a7fcbce6b48df2fad422b4b0617",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[23]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[23]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[23]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[23]"
@@ -13047,7 +12959,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:08.923092+00:00"
+                "failed_at": "2026-05-03T01:06:04.443290+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13057,13 +12969,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGowC9VxV5Udy8CcLB_kg_k6OPcQ-w6364U1rzTDfGpuOHm6zKDOBGOtt9OIEogMOYqfo_QwBgYvUxjRWPXf8EzluH_1l7M27nxht4loVT4kOXjIi4ViYhb767MyA_EdYXiM2vXMH1tvlx_jW5HzZhUb0aEFBulC9iFY0WqcmZRWA-7K1zEaMJk=w2048-h2048-k-no",
                 "source_url_sha256": "def820c04e63795835cc3db084fb377d6b35d3dbf08c232358686515287ed41c",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[24]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[24]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[24]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[24]"
@@ -13130,7 +13038,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:09.305764+00:00"
+                "failed_at": "2026-05-03T01:06:04.823189+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13140,13 +13048,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhELuRjx9Qi08-RfVC2NNKUcD6eKvOBGuta8QyjZxK3oY9VS4_X5FR3AY68fmPg52PgaMKFZV6LbYW1FKGeOBYJdp2eD0Ig9awiMRYUS44jMraSb5hH7mB-VaB5QCGU3Vc2tlqc8vtGNUaxweIqH0Cx4ifV-8SDQ0Un3pUdbPlIwpfnISCXrmqJigA=w2048-h2048-k-no",
                 "source_url_sha256": "ffd53b8783125dd83e529a41141a2b1fce2a6a75c2bdc24672bffe1bc407f95f",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[25]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[25]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[25]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[25]"
@@ -13213,7 +13117,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:09.656951+00:00"
+                "failed_at": "2026-05-03T01:06:05.214568+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13223,13 +13127,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHcmjlhkiVpZLsCu6eDb8RHvq01jDBANV61m90lcr59Wy19hWY2MUwOzQD2KYBhKQBo6O8IQuaWyUXHayvaUO5aSwajqN1Kzhnx-pPexDNzar14fAL9ZHPhYItXSwyFbiRk4ccwJIdJZ4nWGVwKQjbaAj1UDqiCAJAU62lBXisYJ0eKJu3Qs72b=w2048-h2048-k-no",
                 "source_url_sha256": "e4bad9a4dcab823db999221d486048faa1695cfde84aa6b56d045908979797b2",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[26]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[26]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[26]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[26]"
@@ -13296,7 +13196,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:10.010481+00:00"
+                "failed_at": "2026-05-03T01:06:05.536507+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13306,13 +13206,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHxrZEN0J_dO3GVVCiK55GzizeUOlBTIr9ZlQFcOh9pzZQAbrT0CC6ceeOVNu4fX-JJynTlQRqaSs9ctNlJ-E1Ksri5FLfhRy8YqHKZoNWgJpNjp7l3LYOHqTWsjFeTmhIa5uxD-Gt2ohVqOJrQHpu8iV4SmioQl3NN0GOODXlg_V77Pr0OFZrW=w2048-h2048-k-no",
                 "source_url_sha256": "5d9d518d200beb0fff42ce5e23bc561cd4b73673e4384b92480f82389253bd40",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[27]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[27]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[27]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[27]"
@@ -13379,7 +13275,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:10.353014+00:00"
+                "failed_at": "2026-05-03T01:06:05.994812+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13389,13 +13285,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEuLCxNp9YSht6sIG4hez3cduXY3Dz2XZdlBX3dwnAbF8XujYnwBjxK_3LzTjNObi445p8PGWmpmgI17Im3Cl3G8tpfJhlnOFDZvpMeLz8iSMdGRY2ZA4x1XWcFok3eiuRFcXzXa2UjHTAe2AXh_8w9HRSJ5W5S3sXMgxnaVs8Ajqpk3UORNFQ=w2048-h2048-k-no",
                 "source_url_sha256": "b80cf1252922aa83f396c3eb735caef155df613573e10fc6c8dd7312ff1fc42e",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[28]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[28]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[28]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[28]"
@@ -13462,7 +13354,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:10.683312+00:00"
+                "failed_at": "2026-05-03T01:06:06.340766+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13472,13 +13364,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhE4TUReu-FGkl3F1XZ6fIAHZUNthosmcHn9f2mf0TLPBRUaaiASCFEza9kKQq7XtbF5x5Lc9Q8cVTaKruK0N0IT1pok9XOFYOBy0w78E_j9N8g5hoLN93_WUxgtMbod9ljatKos-zGwU6fKvUdahFmCphMvdwm6BqWWXE5noEIR1S7KTH1qtS4=w2048-h2048-k-no",
                 "source_url_sha256": "1d22a0df283450c946181185328988165cd58817084a6c4aa97088b8abeab4c1",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[29]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[29]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[29]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[29]"
@@ -13545,7 +13433,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:11.017743+00:00"
+                "failed_at": "2026-05-03T01:06:06.690372+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13624,7 +13512,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:11.360232+00:00"
+                "failed_at": "2026-05-03T01:06:07.077558+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13703,7 +13591,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:12.219330+00:00"
+                "failed_at": "2026-05-03T01:06:07.450031+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13782,7 +13670,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:12.565476+00:00"
+                "failed_at": "2026-05-03T01:06:07.817189+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13861,7 +13749,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:12.957661+00:00"
+                "failed_at": "2026-05-03T01:06:08.154789+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -13940,7 +13828,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:13.288511+00:00"
+                "failed_at": "2026-05-03T01:06:08.590684+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14019,7 +13907,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:13.641265+00:00"
+                "failed_at": "2026-05-03T01:06:09.075795+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14098,7 +13986,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:13.968536+00:00"
+                "failed_at": "2026-05-03T01:06:09.465828+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14177,7 +14065,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:14.303647+00:00"
+                "failed_at": "2026-05-03T01:06:09.841808+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14256,7 +14144,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:14.651213+00:00"
+                "failed_at": "2026-05-03T01:06:10.228076+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14335,7 +14223,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:15.009260+00:00"
+                "failed_at": "2026-05-03T01:06:10.673669+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14414,7 +14302,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:15.356882+00:00"
+                "failed_at": "2026-05-03T01:06:11.084399+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14493,7 +14381,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:15.721730+00:00"
+                "failed_at": "2026-05-03T01:06:11.474670+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14572,7 +14460,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:16.089699+00:00"
+                "failed_at": "2026-05-03T01:06:11.863620+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14651,7 +14539,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:16.452436+00:00"
+                "failed_at": "2026-05-03T01:06:12.213060+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14730,7 +14618,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:16.832386+00:00"
+                "failed_at": "2026-05-03T01:06:12.518667+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14809,7 +14697,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:17.190254+00:00"
+                "failed_at": "2026-05-03T01:06:12.824645+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14888,7 +14776,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:17.541107+00:00"
+                "failed_at": "2026-05-03T01:06:13.115975+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -14967,7 +14855,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:17.874247+00:00"
+                "failed_at": "2026-05-03T01:06:13.430579+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15046,7 +14934,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:18.171308+00:00"
+                "failed_at": "2026-05-03T01:06:13.761134+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15125,7 +15013,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:18.484636+00:00"
+                "failed_at": "2026-05-03T01:06:14.071001+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15204,7 +15092,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:18.828025+00:00"
+                "failed_at": "2026-05-03T01:06:14.393223+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15283,7 +15171,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:19.179675+00:00"
+                "failed_at": "2026-05-03T01:06:14.718106+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15362,7 +15250,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:19.527599+00:00"
+                "failed_at": "2026-05-03T01:06:15.060662+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15441,7 +15329,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:19.878571+00:00"
+                "failed_at": "2026-05-03T01:06:15.359057+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15520,7 +15408,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:20.221832+00:00"
+                "failed_at": "2026-05-03T01:06:15.666199+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15599,7 +15487,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:20.575809+00:00"
+                "failed_at": "2026-05-03T01:06:16.007526+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15678,7 +15566,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:20.943212+00:00"
+                "failed_at": "2026-05-03T01:06:16.324105+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15757,7 +15645,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:21.281213+00:00"
+                "failed_at": "2026-05-03T01:06:16.627079+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15836,7 +15724,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:21.575926+00:00"
+                "failed_at": "2026-05-03T01:06:16.955783+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15915,7 +15803,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:21.908538+00:00"
+                "failed_at": "2026-05-03T01:06:17.304227+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -15994,7 +15882,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:22.250586+00:00"
+                "failed_at": "2026-05-03T01:06:17.670795+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16073,7 +15961,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:22.570542+00:00"
+                "failed_at": "2026-05-03T01:06:18.074456+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16152,7 +16040,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:22.909475+00:00"
+                "failed_at": "2026-05-03T01:06:18.428043+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16231,7 +16119,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:23.258699+00:00"
+                "failed_at": "2026-05-03T01:06:18.836562+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16310,7 +16198,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:23.603424+00:00"
+                "failed_at": "2026-05-03T01:06:19.226887+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16389,7 +16277,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:23.956690+00:00"
+                "failed_at": "2026-05-03T01:06:19.681151+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16468,7 +16356,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:24.323443+00:00"
+                "failed_at": "2026-05-03T01:06:20.026452+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16547,7 +16435,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:24.683896+00:00"
+                "failed_at": "2026-05-03T01:06:20.633894+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16626,7 +16514,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:25.027073+00:00"
+                "failed_at": "2026-05-03T01:06:21.086347+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16705,7 +16593,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:25.357747+00:00"
+                "failed_at": "2026-05-03T01:06:21.414699+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16784,7 +16672,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:25.704505+00:00"
+                "failed_at": "2026-05-03T01:06:21.768809+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16863,7 +16751,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:26.038501+00:00"
+                "failed_at": "2026-05-03T01:06:22.130829+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -16942,7 +16830,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:26.364775+00:00"
+                "failed_at": "2026-05-03T01:06:22.500813+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17021,7 +16909,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:26.679936+00:00"
+                "failed_at": "2026-05-03T01:06:22.870425+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17100,7 +16988,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:27.002413+00:00"
+                "failed_at": "2026-05-03T01:06:23.217957+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17179,7 +17067,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:27.333106+00:00"
+                "failed_at": "2026-05-03T01:06:23.591217+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17258,7 +17146,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:27.636392+00:00"
+                "failed_at": "2026-05-03T01:06:23.937570+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17337,7 +17225,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:27.962537+00:00"
+                "failed_at": "2026-05-03T01:06:24.299943+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17416,7 +17304,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:28.291050+00:00"
+                "failed_at": "2026-05-03T01:06:24.643660+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17495,7 +17383,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:28.626018+00:00"
+                "failed_at": "2026-05-03T01:06:24.962772+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17574,7 +17462,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:29.005755+00:00"
+                "failed_at": "2026-05-03T01:06:25.308101+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17653,7 +17541,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:29.356770+00:00"
+                "failed_at": "2026-05-03T01:06:25.678200+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17732,7 +17620,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:29.698800+00:00"
+                "failed_at": "2026-05-03T01:06:26.008169+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17811,7 +17699,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:30.027707+00:00"
+                "failed_at": "2026-05-03T01:06:26.351093+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17890,7 +17778,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:30.358838+00:00"
+                "failed_at": "2026-05-03T01:06:26.696673+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -17969,7 +17857,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:30.773833+00:00"
+                "failed_at": "2026-05-03T01:06:27.056704+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18048,7 +17936,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:31.252391+00:00"
+                "failed_at": "2026-05-03T01:06:27.414555+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18127,7 +18015,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:31.605218+00:00"
+                "failed_at": "2026-05-03T01:06:27.745388+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18206,7 +18094,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:31.952499+00:00"
+                "failed_at": "2026-05-03T01:06:28.096316+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18285,7 +18173,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:32.302324+00:00"
+                "failed_at": "2026-05-03T01:06:28.457719+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18364,7 +18252,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:32.646597+00:00"
+                "failed_at": "2026-05-03T01:06:28.787063+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18443,7 +18331,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:32.998371+00:00"
+                "failed_at": "2026-05-03T01:06:29.143077+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18522,7 +18410,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:33.352936+00:00"
+                "failed_at": "2026-05-03T01:06:29.535759+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18601,7 +18489,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:33.733059+00:00"
+                "failed_at": "2026-05-03T01:06:29.914821+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18680,7 +18568,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:34.108486+00:00"
+                "failed_at": "2026-05-03T01:06:35.278042+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18759,7 +18647,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:34.472615+00:00"
+                "failed_at": "2026-05-03T01:06:35.646599+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18838,7 +18726,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:34.781523+00:00"
+                "failed_at": "2026-05-03T01:06:35.980945+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18917,7 +18805,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:35.147971+00:00"
+                "failed_at": "2026-05-03T01:06:36.289347+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -18996,7 +18884,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:35.544617+00:00"
+                "failed_at": "2026-05-03T01:06:36.618293+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19075,7 +18963,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:35.889237+00:00"
+                "failed_at": "2026-05-03T01:06:36.938237+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19154,7 +19042,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:36.230676+00:00"
+                "failed_at": "2026-05-03T01:06:37.262999+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19233,7 +19121,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:36.545221+00:00"
+                "failed_at": "2026-05-03T01:06:37.581866+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19312,7 +19200,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:36.862828+00:00"
+                "failed_at": "2026-05-03T01:06:37.888138+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19391,7 +19279,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:37.162964+00:00"
+                "failed_at": "2026-05-03T01:06:38.174597+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19470,7 +19358,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:37.473166+00:00"
+                "failed_at": "2026-05-03T01:06:38.477438+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19549,7 +19437,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:37.803485+00:00"
+                "failed_at": "2026-05-03T01:06:38.769716+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19628,7 +19516,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:38.135143+00:00"
+                "failed_at": "2026-05-03T01:06:39.084888+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19707,7 +19595,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:38.443932+00:00"
+                "failed_at": "2026-05-03T01:06:39.443326+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19786,7 +19674,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:38.763715+00:00"
+                "failed_at": "2026-05-03T01:06:39.751136+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19865,7 +19753,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:39.081886+00:00"
+                "failed_at": "2026-05-03T01:06:40.033049+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -19944,7 +19832,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:39.791662+00:00"
+                "failed_at": "2026-05-03T01:06:40.374231+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20023,7 +19911,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:40.233372+00:00"
+                "failed_at": "2026-05-03T01:06:40.721414+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20102,7 +19990,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:40.613091+00:00"
+                "failed_at": "2026-05-03T01:06:41.107183+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20181,7 +20069,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:40.972278+00:00"
+                "failed_at": "2026-05-03T01:06:41.509561+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20260,7 +20148,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:41.308704+00:00"
+                "failed_at": "2026-05-03T01:06:41.885118+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20339,7 +20227,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:41.701600+00:00"
+                "failed_at": "2026-05-03T01:06:42.317769+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20418,7 +20306,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:42.063258+00:00"
+                "failed_at": "2026-05-03T01:06:42.722284+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20497,7 +20385,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:42.439528+00:00"
+                "failed_at": "2026-05-03T01:06:43.119667+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20576,7 +20464,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:42.939268+00:00"
+                "failed_at": "2026-05-03T01:06:43.480176+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20655,7 +20543,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:43.528305+00:00"
+                "failed_at": "2026-05-03T01:06:43.841253+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20734,7 +20622,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:43.885843+00:00"
+                "failed_at": "2026-05-03T01:06:44.183895+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20813,7 +20701,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:44.258313+00:00"
+                "failed_at": "2026-05-03T01:06:44.563200+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20892,7 +20780,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:44.590758+00:00"
+                "failed_at": "2026-05-03T01:06:44.930869+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -20971,7 +20859,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:44.928452+00:00"
+                "failed_at": "2026-05-03T01:06:45.356054+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -21050,7 +20938,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:45.299543+00:00"
+                "failed_at": "2026-05-03T01:06:45.743363+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -21129,7 +21017,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:45.640007+00:00"
+                "failed_at": "2026-05-03T01:06:46.161008+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -21208,7 +21096,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:51.006061+00:00"
+                "failed_at": "2026-05-03T01:06:46.682020+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -21287,7 +21175,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:51.377671+00:00"
+                "failed_at": "2026-05-03T01:06:47.028836+00:00"
             },
             {
                 "place_name": "Starbucks | 3935 E Independence Blvd",
@@ -21366,27 +21254,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:03:51.761740+00:00"
+                "failed_at": "2026-05-03T01:06:47.343288+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 130,
-            "duplicate_count": 30,
-            "airtable_photos_count": 30,
+            "candidate_count": 131,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 30,
             "data_file_photo_urls_count": 30,
             "provider_raw_photo_url_big_count": 100,
             "place_name": "Starbucks | 3935 E Independence Blvd",
             "place_id": "ChIJI0qMSDEhVIgRTnI9e3mgWh8",
             "record_id": "recNfFdexR7B2DVrD",
-            "generated_at": "2026-05-02T22:03:51.762636+00:00",
+            "generated_at": "2026-05-03T01:06:47.343636+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 128,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 30
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
