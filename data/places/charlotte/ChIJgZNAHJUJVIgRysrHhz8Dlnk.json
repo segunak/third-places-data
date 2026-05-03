@@ -10062,7 +10062,873 @@
             "https://lh3.googleusercontent.com/p/AF1QipP9j3MN3Lsab9mh-_dnZoDyLF5kQKYKkoTNGgYF=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOeTHX449dSE17dzVeMAzm6VoMDS-U6KCFqx0W7=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/p/AF1QipOt5VLJyi6C4z3CluaP8PFEfSjLq8yIOurV_UNE=w2048-h2048-k-no"
-        ]
+        ],
+        "azure_assets": [
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipO9gRbJlW4pFJ3AFGUeH9lBQxgygkZiPlya2vKL=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipO9gRbJlW4pFJ3AFGUeH9lBQxgygkZiPlya2vKL=w2048-h2048-k-no",
+                "source_url_sha256": "e90afd9360923e3c4f3d2d667c2a07a65ce3da150f321f48422e01b5acf70359",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[0]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/e90afd9360923e3c4f3d2d667c2a07a65ce3da150f321f48422e01b5acf70359.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/e90afd9360923e3c4f3d2d667c2a07a65ce3da150f321f48422e01b5acf70359.jpg",
+                "content_sha256": "6b4b740c939b7f93c9b87e2a63934ccfe1e94c8d2ac3518f3b2b139d70336e0c",
+                "content_type": "image/jpeg",
+                "bytes": 564086,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipO9gRbJlW4pFJ3AFGUeH9lBQxgygkZiPlya2vKL=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipO9gRbJlW4pFJ3AFGUeH9lBQxgygkZiPlya2vKL=w2048-h2048-k-no",
+                        "bytes": 564086,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:53.439306+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=LNuiwi1INVWGvqgUFvXYvA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=27.065891&pitch=0&thumbfov=100",
+                "canonical_source_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=LNuiwi1INVWGvqgUFvXYvA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=27.065891&pitch=0&thumbfov=100",
+                "source_url_sha256": "9c8169ba793206bc0b845919d41a62d794823fddc9b7606ec0fb17b72ce02b0a",
+                "source_host": "streetviewpixels-pa.googleapis.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[1]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/9c8169ba793206bc0b845919d41a62d794823fddc9b7606ec0fb17b72ce02b0a.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/9c8169ba793206bc0b845919d41a62d794823fddc9b7606ec0fb17b72ce02b0a.jpg",
+                "content_sha256": "8732c35fabc62ce06926b5e3995e628b5a5d4d2eddc75d31094f4505db1d8702",
+                "content_type": "image/jpeg",
+                "bytes": 140152,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=LNuiwi1INVWGvqgUFvXYvA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=27.065891&pitch=0&thumbfov=100",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=LNuiwi1INVWGvqgUFvXYvA&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=27.065891&pitch=0&thumbfov=100",
+                        "bytes": 140152,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:53.770914+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNtMw54kZKlr_8Ii59Z2NNjrbzaM9vQ-xXegIEw=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNtMw54kZKlr_8Ii59Z2NNjrbzaM9vQ-xXegIEw=w2048-h2048-k-no",
+                "source_url_sha256": "94ee71ff3715e200a370fbeb714500c6a80c8a29fd55e1452de2b07e570a0927",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[2]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[2]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[2]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/94ee71ff3715e200a370fbeb714500c6a80c8a29fd55e1452de2b07e570a0927.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/94ee71ff3715e200a370fbeb714500c6a80c8a29fd55e1452de2b07e570a0927.jpg",
+                "content_sha256": "3bde6cfaf566808850ca220089b3657ca4f7456625a524f8b7ae8b2951841580",
+                "content_type": "image/jpeg",
+                "bytes": 560126,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNtMw54kZKlr_8Ii59Z2NNjrbzaM9vQ-xXegIEw=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNtMw54kZKlr_8Ii59Z2NNjrbzaM9vQ-xXegIEw=w2048-h2048-k-no",
+                        "bytes": 560126,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:54.988294+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOzqh2lryXgGpegHsGGcgGbG65siCP8AxhfSN83=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOzqh2lryXgGpegHsGGcgGbG65siCP8AxhfSN83=w2048-h2048-k-no",
+                "source_url_sha256": "476969c4ef750a915105911ac8c047e12ce1d283dd7688e153981659e72b0c56",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[3]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[3]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[3]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/476969c4ef750a915105911ac8c047e12ce1d283dd7688e153981659e72b0c56.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/476969c4ef750a915105911ac8c047e12ce1d283dd7688e153981659e72b0c56.jpg",
+                "content_sha256": "a8fc02600f2841ecb8fa9e1995525ca82066187582d7df4643cc91ec192c32a6",
+                "content_type": "image/jpeg",
+                "bytes": 651467,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOzqh2lryXgGpegHsGGcgGbG65siCP8AxhfSN83=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOzqh2lryXgGpegHsGGcgGbG65siCP8AxhfSN83=w2048-h2048-k-no",
+                        "bytes": 651467,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:56.401476+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOzxJs3GD-gqEH6_e9WRo7U6NfSG8OF6eozsUor=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOzxJs3GD-gqEH6_e9WRo7U6NfSG8OF6eozsUor=w2048-h2048-k-no",
+                "source_url_sha256": "2e4a59b10372bef171ca9b5ccebef071f8654acd3cdcc06507d8d5a53839e7b3",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[4]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[4]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[4]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/2e4a59b10372bef171ca9b5ccebef071f8654acd3cdcc06507d8d5a53839e7b3.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/2e4a59b10372bef171ca9b5ccebef071f8654acd3cdcc06507d8d5a53839e7b3.jpg",
+                "content_sha256": "c13dfe289304fae0ee1d7dadbb60ad843d21cde84262f813d36b64290e102aeb",
+                "content_type": "image/jpeg",
+                "bytes": 343262,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOzxJs3GD-gqEH6_e9WRo7U6NfSG8OF6eozsUor=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOzxJs3GD-gqEH6_e9WRo7U6NfSG8OF6eozsUor=w2048-h2048-k-no",
+                        "bytes": 343262,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:57.262838+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipN9fVDWcKdhGeBEr-fP99y9ukIt_8pzSF1e36kq=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipN9fVDWcKdhGeBEr-fP99y9ukIt_8pzSF1e36kq=w2048-h2048-k-no",
+                "source_url_sha256": "80dfa27cc6af4cf5e959bb80619c4c1265abf16b0b078e95a1204f1e52f4a8b0",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[5]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[5]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[5]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/80dfa27cc6af4cf5e959bb80619c4c1265abf16b0b078e95a1204f1e52f4a8b0.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/80dfa27cc6af4cf5e959bb80619c4c1265abf16b0b078e95a1204f1e52f4a8b0.jpg",
+                "content_sha256": "c406a121aa433667e00e3a0b717632c61d1f584af6eb61c6a4452e38afb95a43",
+                "content_type": "image/jpeg",
+                "bytes": 756836,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipN9fVDWcKdhGeBEr-fP99y9ukIt_8pzSF1e36kq=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipN9fVDWcKdhGeBEr-fP99y9ukIt_8pzSF1e36kq=w2048-h2048-k-no",
+                        "bytes": 756836,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:58.493072+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOv4UUmpfI4u1oFa73oA-nFLxzW7dkLLOL4TApx=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOv4UUmpfI4u1oFa73oA-nFLxzW7dkLLOL4TApx=w2048-h2048-k-no",
+                "source_url_sha256": "928c65c27a8ebcf885eb0be4e0ea31eab2b499d638da2c41f4164f8dc41deb24",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[6]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[6]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[6]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/928c65c27a8ebcf885eb0be4e0ea31eab2b499d638da2c41f4164f8dc41deb24.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/928c65c27a8ebcf885eb0be4e0ea31eab2b499d638da2c41f4164f8dc41deb24.jpg",
+                "content_sha256": "f763c9d4e74c02ed3884a88a8674e11cb4c28a5c6e733fc0269b350e0d52b26b",
+                "content_type": "image/jpeg",
+                "bytes": 169369,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOv4UUmpfI4u1oFa73oA-nFLxzW7dkLLOL4TApx=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOv4UUmpfI4u1oFa73oA-nFLxzW7dkLLOL4TApx=w2048-h2048-k-no",
+                        "bytes": 169369,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:59.009317+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOEONJtH0zGTkh1aFzDuHSGBY2Z6B3Xt4tl0siy=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOEONJtH0zGTkh1aFzDuHSGBY2Z6B3Xt4tl0siy=w2048-h2048-k-no",
+                "source_url_sha256": "8202c2eafb665d9e6f60ba4ba833d597498af512d96f2979874aa539532c4592",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[7]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[7]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[7]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/8202c2eafb665d9e6f60ba4ba833d597498af512d96f2979874aa539532c4592.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/8202c2eafb665d9e6f60ba4ba833d597498af512d96f2979874aa539532c4592.jpg",
+                "content_sha256": "91b1cd8dbf09525092cdd8aef5a1c3e3de091d174d866c6e437bb4d6527cc34c",
+                "content_type": "image/jpeg",
+                "bytes": 253690,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOEONJtH0zGTkh1aFzDuHSGBY2Z6B3Xt4tl0siy=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOEONJtH0zGTkh1aFzDuHSGBY2Z6B3Xt4tl0siy=w2048-h2048-k-no",
+                        "bytes": 253690,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:57:59.572857+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOK9wIyLWZp3ri2N9YrFVjlXjLO-aQ2ySXlCQvy=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOK9wIyLWZp3ri2N9YrFVjlXjLO-aQ2ySXlCQvy=w2048-h2048-k-no",
+                "source_url_sha256": "165eddcbd630c93964bc9a239af080b0bfa87d0ca56cd1e2522c37896338ca41",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[8]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[8]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[8]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/165eddcbd630c93964bc9a239af080b0bfa87d0ca56cd1e2522c37896338ca41.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/165eddcbd630c93964bc9a239af080b0bfa87d0ca56cd1e2522c37896338ca41.jpg",
+                "content_sha256": "fb82c4650abce429e99d45feec9d918cf587c773ab31074a2bfd30b832b4bda7",
+                "content_type": "image/jpeg",
+                "bytes": 937849,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOK9wIyLWZp3ri2N9YrFVjlXjLO-aQ2ySXlCQvy=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOK9wIyLWZp3ri2N9YrFVjlXjLO-aQ2ySXlCQvy=w2048-h2048-k-no",
+                        "bytes": 937849,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:00.466765+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMCumKf1eYbMN3jsi1Oh5jcZRRgCC4PZCtTLST3=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMCumKf1eYbMN3jsi1Oh5jcZRRgCC4PZCtTLST3=w2048-h2048-k-no",
+                "source_url_sha256": "3973b3ee2283a7afdeb67ad8bf185436c8e08f2d1bf81a68dd7140e20489e03e",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[9]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[9]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[9]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[9]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/3973b3ee2283a7afdeb67ad8bf185436c8e08f2d1bf81a68dd7140e20489e03e.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/3973b3ee2283a7afdeb67ad8bf185436c8e08f2d1bf81a68dd7140e20489e03e.jpg",
+                "content_sha256": "f71d2f362804aa65713e54fd644eb5330ad50a28dc5ea9af639f41e431e0fc48",
+                "content_type": "image/jpeg",
+                "bytes": 878072,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMCumKf1eYbMN3jsi1Oh5jcZRRgCC4PZCtTLST3=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMCumKf1eYbMN3jsi1Oh5jcZRRgCC4PZCtTLST3=w2048-h2048-k-no",
+                        "bytes": 878072,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:07.259038+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOoTp-_h1GxSn6MDjiptYGQE2sCdluOI-RK0a-P=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOoTp-_h1GxSn6MDjiptYGQE2sCdluOI-RK0a-P=w2048-h2048-k-no",
+                "source_url_sha256": "15360bcfa7d5d07e06ea90cc5eab7d2b5ed0f360005af4200a41e7cc1f10b898",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[10]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[10]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[10]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[10]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/15360bcfa7d5d07e06ea90cc5eab7d2b5ed0f360005af4200a41e7cc1f10b898.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/15360bcfa7d5d07e06ea90cc5eab7d2b5ed0f360005af4200a41e7cc1f10b898.jpg",
+                "content_sha256": "223309986cac91c2493a9128313bf677dde8fe5617cbcc494c33192facd9cbc9",
+                "content_type": "image/jpeg",
+                "bytes": 524136,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOoTp-_h1GxSn6MDjiptYGQE2sCdluOI-RK0a-P=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOoTp-_h1GxSn6MDjiptYGQE2sCdluOI-RK0a-P=w2048-h2048-k-no",
+                        "bytes": 524136,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:08.608186+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipPs90zTcBk03GxKsRzTnr2s0lC47xcP0Vh0WIu2=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipPs90zTcBk03GxKsRzTnr2s0lC47xcP0Vh0WIu2=w2048-h2048-k-no",
+                "source_url_sha256": "a462e400fc143c55e94e07821c93f172d27171af5307116e777297af097f491a",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[11]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[11]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[11]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[11]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/a462e400fc143c55e94e07821c93f172d27171af5307116e777297af097f491a.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/a462e400fc143c55e94e07821c93f172d27171af5307116e777297af097f491a.jpg",
+                "content_sha256": "6486045b86cc22c2dbb1ab780f3fb6f01a24a4da4bf76b694e23caf799e138a1",
+                "content_type": "image/jpeg",
+                "bytes": 540013,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipPs90zTcBk03GxKsRzTnr2s0lC47xcP0Vh0WIu2=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipPs90zTcBk03GxKsRzTnr2s0lC47xcP0Vh0WIu2=w2048-h2048-k-no",
+                        "bytes": 540013,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:10.242222+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOW-rlbkmO2YIjgLVDlxyoIzG7TfXSI0NlxaFdk=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOW-rlbkmO2YIjgLVDlxyoIzG7TfXSI0NlxaFdk=w2048-h2048-k-no",
+                "source_url_sha256": "605e46e13a06b44ea30c85d5ec2e866281979c35f580a76b403f7845dce47257",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[12]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[12]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[12]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[12]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/605e46e13a06b44ea30c85d5ec2e866281979c35f580a76b403f7845dce47257.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/605e46e13a06b44ea30c85d5ec2e866281979c35f580a76b403f7845dce47257.jpg",
+                "content_sha256": "bdaa0dee92ac515e1e74833b0df6fc2516602729431dd03907b983b89bc7d27c",
+                "content_type": "image/jpeg",
+                "bytes": 483789,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOW-rlbkmO2YIjgLVDlxyoIzG7TfXSI0NlxaFdk=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOW-rlbkmO2YIjgLVDlxyoIzG7TfXSI0NlxaFdk=w2048-h2048-k-no",
+                        "bytes": 483789,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:11.138109+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOtL5EAaGysTct2TLxuM0Do5V3iiWd8l14PzKeb=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOtL5EAaGysTct2TLxuM0Do5V3iiWd8l14PzKeb=w2048-h2048-k-no",
+                "source_url_sha256": "b4c9fbc3944e9f6183684b70053b79a1c92d418c82bcd6904233040de306e6b9",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[13]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[13]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[13]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[13]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/b4c9fbc3944e9f6183684b70053b79a1c92d418c82bcd6904233040de306e6b9.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/b4c9fbc3944e9f6183684b70053b79a1c92d418c82bcd6904233040de306e6b9.jpg",
+                "content_sha256": "5c9391c9e86e62efaabff5f1e80f67e4dc5044f40ea505bb35f7d4cbf0fda64d",
+                "content_type": "image/jpeg",
+                "bytes": 321848,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOtL5EAaGysTct2TLxuM0Do5V3iiWd8l14PzKeb=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOtL5EAaGysTct2TLxuM0Do5V3iiWd8l14PzKeb=w2048-h2048-k-no",
+                        "bytes": 321848,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:11.812999+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOW3IU98HNLhda2HZ8ZQtAIEjIXsQWsty8iEAtj=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOW3IU98HNLhda2HZ8ZQtAIEjIXsQWsty8iEAtj=w2048-h2048-k-no",
+                "source_url_sha256": "f66ae2c451c7de48c97bb729b8f8cbef55f5f0bcf42597cd1514cc0377917791",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[14]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[14]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[14]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[14]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/f66ae2c451c7de48c97bb729b8f8cbef55f5f0bcf42597cd1514cc0377917791.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/f66ae2c451c7de48c97bb729b8f8cbef55f5f0bcf42597cd1514cc0377917791.jpg",
+                "content_sha256": "b426ab5baf8644ba81f4653b3942f76025c5b401f58dcbbcce9f5d32a3d7f6e2",
+                "content_type": "image/jpeg",
+                "bytes": 188033,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOW3IU98HNLhda2HZ8ZQtAIEjIXsQWsty8iEAtj=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOW3IU98HNLhda2HZ8ZQtAIEjIXsQWsty8iEAtj=w2048-h2048-k-no",
+                        "bytes": 188033,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:12.171182+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipP9j3MN3Lsab9mh-_dnZoDyLF5kQKYKkoTNGgYF=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipP9j3MN3Lsab9mh-_dnZoDyLF5kQKYKkoTNGgYF=w2048-h2048-k-no",
+                "source_url_sha256": "b2cc322d7139cf30c1a543922c3b725eb56307fe23fec82cc7e3b45fe2886505",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[15]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[15]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[15]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[15]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/b2cc322d7139cf30c1a543922c3b725eb56307fe23fec82cc7e3b45fe2886505.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/b2cc322d7139cf30c1a543922c3b725eb56307fe23fec82cc7e3b45fe2886505.jpg",
+                "content_sha256": "d299ed012c94576a8beda33e9082e816d4170ec42fb0f0ade4a9690d0c1323a4",
+                "content_type": "image/jpeg",
+                "bytes": 361788,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipP9j3MN3Lsab9mh-_dnZoDyLF5kQKYKkoTNGgYF=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipP9j3MN3Lsab9mh-_dnZoDyLF5kQKYKkoTNGgYF=w2048-h2048-k-no",
+                        "bytes": 361788,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:18.044566+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOeTHX449dSE17dzVeMAzm6VoMDS-U6KCFqx0W7=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOeTHX449dSE17dzVeMAzm6VoMDS-U6KCFqx0W7=w2048-h2048-k-no",
+                "source_url_sha256": "abb240aed8aa13e2eac63df1dfae8e376ec42a6763dcd0fce5ecb67984f10abd",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[16]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[16]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[16]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[16]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/abb240aed8aa13e2eac63df1dfae8e376ec42a6763dcd0fce5ecb67984f10abd.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/abb240aed8aa13e2eac63df1dfae8e376ec42a6763dcd0fce5ecb67984f10abd.jpg",
+                "content_sha256": "f89f4b80737312af8e477ef07b91383a8c9efe711d3a1bc192fdf2a911a961ce",
+                "content_type": "image/jpeg",
+                "bytes": 138777,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOeTHX449dSE17dzVeMAzm6VoMDS-U6KCFqx0W7=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOeTHX449dSE17dzVeMAzm6VoMDS-U6KCFqx0W7=w2048-h2048-k-no",
+                        "bytes": 138777,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:18.623323+00:00"
+            },
+            {
+                "place_name": "The Holy Grind Coffee House of Kannapolis",
+                "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+                "record_id": "recRTLaXCtzjz8ck5",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipOt5VLJyi6C4z3CluaP8PFEfSjLq8yIOurV_UNE=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipOt5VLJyi6C4z3CluaP8PFEfSjLq8yIOurV_UNE=w2048-h2048-k-no",
+                "source_url_sha256": "a9e0eedf3596b7dfafdcd66fc1a3cefc076129cc80613a03dc39ef15910a865e",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[17]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[17]"
+                    },
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[17]"
+                    }
+                ],
+                "duplicate_provenance": [
+                    {
+                        "field": "photos.photo_urls",
+                        "path": "photos.photo_urls[17]"
+                    }
+                ],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/a9e0eedf3596b7dfafdcd66fc1a3cefc076129cc80613a03dc39ef15910a865e.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJgZNAHJUJVIgRysrHhz8Dlnk/a9e0eedf3596b7dfafdcd66fc1a3cefc076129cc80613a03dc39ef15910a865e.jpg",
+                "content_sha256": "ac95cd14a567a6a46ea7a09a567c520a3354abe4273cdc700dd12be431f50407",
+                "content_type": "image/jpeg",
+                "bytes": 416452,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipOt5VLJyi6C4z3CluaP8PFEfSjLq8yIOurV_UNE=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipOt5VLJyi6C4z3CluaP8PFEfSjLq8yIOurV_UNE=w2048-h2048-k-no",
+                        "bytes": 416452,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:19.329612+00:00"
+            }
+        ],
+        "azure_asset_failures": [],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 18,
+            "duplicate_count": 18,
+            "airtable_photos_count": 18,
+            "airtable_photos_google_count": 18,
+            "data_file_photo_urls_count": 18,
+            "provider_raw_photo_url_big_count": 0,
+            "place_name": "The Holy Grind Coffee House of Kannapolis",
+            "place_id": "ChIJgZNAHJUJVIgRysrHhz8Dlnk",
+            "record_id": "recRTLaXCtzjz8ck5",
+            "generated_at": "2026-05-03T06:58:19.329740+00:00",
+            "azure_assets_count": 18,
+            "failed_upload_count": 0,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 18,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 18,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-01T20:26:56.203678"
