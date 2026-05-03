@@ -4783,7 +4783,162 @@
     "photos": {
         "place_id": "ChIJ_b0Xw_GpVogRTdEnIn0Boe8",
         "message": "Photos retrieval skipped.",
-        "photo_urls": []
+        "photo_urls": [],
+        "azure_assets": [
+            {
+                "place_name": "Caribou Coffee | Huntersville",
+                "place_id": "ChIJ_b0Xw_GpVogRTdEnIn0Boe8",
+                "record_id": "recm7K176S8aWbeLo",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipMlbgcNnvszs8T4JqoUmfo609Uk7s6fL7wjGQvV=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipMlbgcNnvszs8T4JqoUmfo609Uk7s6fL7wjGQvV=w2048-h2048-k-no",
+                "source_url_sha256": "f1ff876b37aa1beebbb47e7811a20edebfa09f4d8a01c379e5f7f086ba18c074",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[1]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[1]"
+                    }
+                ],
+                "duplicate_provenance": [],
+                "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ_b0Xw_GpVogRTdEnIn0Boe8/f1ff876b37aa1beebbb47e7811a20edebfa09f4d8a01c379e5f7f086ba18c074.jpg",
+                "blob_container": "place-photos",
+                "blob_path": "charlotte/ChIJ_b0Xw_GpVogRTdEnIn0Boe8/f1ff876b37aa1beebbb47e7811a20edebfa09f4d8a01c379e5f7f086ba18c074.jpg",
+                "content_sha256": "aa10bbacdc5b4fe7b958c2d3521dec9bb38598b49f8d2d1664052b822c4a88fb",
+                "content_type": "image/jpeg",
+                "bytes": 25878,
+                "status": "uploaded",
+                "selected_for_airtable": true,
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipMlbgcNnvszs8T4JqoUmfo609Uk7s6fL7wjGQvV=w2048-h2048-k-no",
+                        "status_code": 200,
+                        "content_type": "image/jpeg",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipMlbgcNnvszs8T4JqoUmfo609Uk7s6fL7wjGQvV=w2048-h2048-k-no",
+                        "bytes": 25878,
+                        "error": null
+                    }
+                ],
+                "uploaded_at": "2026-05-03T06:58:38.214657+00:00"
+            }
+        ],
+        "azure_asset_failures": [
+            {
+                "place_name": "Caribou Coffee | Huntersville",
+                "place_id": "ChIJ_b0Xw_GpVogRTdEnIn0Boe8",
+                "record_id": "recm7K176S8aWbeLo",
+                "source_url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w2048-h2048-k-no",
+                "canonical_source_url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w2048-h2048-k-no",
+                "source_url_sha256": "6d316458973bdae57da2d2c118007a6052a47e84d66176d6cbe933158960c0f8",
+                "source_host": "lh3.googleusercontent.com",
+                "source_field": "Airtable Photos",
+                "source_path": "fields.Photos[0]",
+                "provenance": [
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    }
+                ],
+                "http_status": 404,
+                "attempted_urls": [
+                    "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w2048-h2048-k-no",
+                    "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc",
+                    "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=s0",
+                    "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=s1600",
+                    "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w800-h500-k-no",
+                    "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w1600-h1000-k-no"
+                ],
+                "attempts": [
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w2048-h2048-k-no",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w2048-h2048-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=s0",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=s0",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=s1600",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=s1600",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w800-h500-k-no",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w800-h500-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    },
+                    {
+                        "url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w1600-h1000-k-no",
+                        "status_code": 404,
+                        "content_type": "image/png",
+                        "effective_url": "https://lh3.googleusercontent.com/p/AF1QipNOlyXiF1J6mwhWX4jBnXS5XNBlhVrWN3MPVpOc=w1600-h1000-k-no",
+                        "bytes": 0,
+                        "error": "HTTP 404"
+                    }
+                ],
+                "error": "HTTP 404",
+                "reason": "download_failed",
+                "failed_at": "2026-05-03T06:58:37.776297+00:00"
+            }
+        ],
+        "azure_asset_summary": {
+            "city": "charlotte",
+            "candidate_count": 2,
+            "duplicate_count": 0,
+            "airtable_photos_count": 2,
+            "airtable_photos_google_count": 2,
+            "data_file_photo_urls_count": 0,
+            "provider_raw_photo_url_big_count": 0,
+            "place_name": "Caribou Coffee | Huntersville",
+            "place_id": "ChIJ_b0Xw_GpVogRTdEnIn0Boe8",
+            "record_id": "recm7K176S8aWbeLo",
+            "generated_at": "2026-05-03T06:58:38.214713+00:00",
+            "azure_assets_count": 1,
+            "failed_upload_count": 1,
+            "pending_upload_count": 0,
+            "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
+            "successful_but_unserved_count": 0,
+            "non_azure_airtable_photos_count": 2,
+            "github_data_file_save_attempted": false,
+            "github_data_file_saved": false,
+            "github_data_file_save_failed": false,
+            "airtable_write_requested": true,
+            "airtable_write_attempted": false,
+            "airtable_update_applied": false,
+            "airtable_update_skipped_no_change": false,
+            "airtable_update_failed": false
+        }
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-22T12:40:05.498513"
