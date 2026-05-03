@@ -1633,10 +1633,6 @@
                 "source_path": "fields.Photos[0]",
                 "provenance": [
                     {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[0]"
-                    },
-                    {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
                     }
@@ -1645,6 +1641,14 @@
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[1].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
                     },
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
@@ -1681,13 +1685,9 @@
                 "canonical_source_url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHjX0YwYgx5qrH0gFN6m6FBnsOi46ZGVUtn0Rie1FhL9TAENU63LaMO_gIMrF3QqkLBK8MlCkR-rahv-7aZwzqnGwR9nwSaX5TxisCBq6753ccYM1Of0I17RXPac6U18B6iYS7LA=w2048-h2048-k-no",
                 "source_url_sha256": "bc9a4b42133cc9b48c636b7e2a13af047dbd116c181096a5985aeb89d96649d3",
                 "source_host": "lh3.googleusercontent.com",
-                "source_field": "Airtable Photos",
-                "source_path": "fields.Photos[1]",
+                "source_field": "photos.photo_urls",
+                "source_path": "photos.photo_urls[1]",
                 "provenance": [
-                    {
-                        "field": "Airtable Photos",
-                        "path": "fields.Photos[1]"
-                    },
                     {
                         "field": "photos.photo_urls",
                         "path": "photos.photo_urls[1]"
@@ -1754,7 +1754,7 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:50.057859+00:00"
+                "failed_at": "2026-05-03T01:07:58.602603+00:00"
             },
             {
                 "place_name": "Heart 2 Heart Bakery & Cafe",
@@ -1833,27 +1833,35 @@
                 ],
                 "error": "HTTP 403",
                 "reason": "download_failed",
-                "failed_at": "2026-05-02T22:05:50.393018+00:00"
+                "failed_at": "2026-05-03T01:07:59.008984+00:00"
             }
         ],
         "azure_asset_summary": {
             "city": "charlotte",
-            "candidate_count": 4,
-            "duplicate_count": 2,
-            "airtable_photos_count": 2,
+            "candidate_count": 5,
+            "duplicate_count": 0,
+            "airtable_photos_count": 1,
             "airtable_photos_google_count": 2,
             "data_file_photo_urls_count": 2,
             "provider_raw_photo_url_big_count": 2,
             "place_name": "Heart 2 Heart Bakery & Cafe",
             "place_id": "ChIJHY64qJmpVogRng7cIsBr6nc",
             "record_id": "rec8DfNHGoONUS3Tv",
-            "generated_at": "2026-05-02T22:05:50.740189+00:00",
+            "generated_at": "2026-05-03T01:07:59.009264+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 2,
             "pending_upload_count": 0,
             "selected_airtable_count": 1,
+            "curator_photo_urls_field_count": 0,
+            "selected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_count": 0,
+            "unselected_curator_photo_urls_field_urls": [],
+            "unsupported_curator_photo_urls_field_count": 0,
+            "unsupported_curator_photo_urls_field_urls": [],
+            "preserved_curator_airtable_photos_count": 0,
+            "selected_curator_airtable_photos_count": 0,
             "successful_but_unserved_count": 0,
-            "non_azure_airtable_photos_count": 2
+            "non_azure_airtable_photos_count": 0
         }
     },
     "data_source": "OutscraperProvider",
