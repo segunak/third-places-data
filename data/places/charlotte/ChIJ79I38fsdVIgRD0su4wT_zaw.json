@@ -294,6 +294,14 @@
                     {
                         "field": "photos.raw_data.photos_data.photo_url_big",
                         "path": "photos.raw_data.photos_data[0].photo_url_big"
+                    },
+                    {
+                        "field": "Airtable Photos",
+                        "path": "fields.Photos[0]"
+                    },
+                    {
+                        "field": "photos.raw_data.photos_data.photo_url_big",
+                        "path": "photos.raw_data.photos_data[0].photo_url_big"
                     }
                 ],
                 "azure_url": "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJ79I38fsdVIgRD0su4wT_zaw/f3003255b3139a351693b217d8f7319d811269eafb4203cbd7ba06200cb8796d.jpg",
@@ -329,7 +337,7 @@
             "place_name": "1368 Sweet Corner Cafe | University City",
             "place_id": "ChIJ79I38fsdVIgRD0su4wT_zaw",
             "record_id": "recliXq3KMsjNN8Dk",
-            "generated_at": "2026-05-03T00:58:39.331415+00:00",
+            "generated_at": "2026-05-03T02:37:01.884265+00:00",
             "azure_assets_count": 1,
             "failed_upload_count": 0,
             "pending_upload_count": 0,
