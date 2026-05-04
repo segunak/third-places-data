@@ -429,6 +429,7 @@ class PhotoAssetService:
             "preserved_curator_airtable_photos_count": len(preserved_curator_urls),
             "selected_curator_airtable_photos_count": len([url for url in preserved_curator_urls if url in selected_url_set]),
             "successful_but_unserved_count": len([asset for asset in success_assets if not asset.get("selected_for_airtable")]),
+            "blob_bytes": sum(int(asset.get("bytes", 0) or 0) for asset in success_assets),
             "webp_converted_count": len([asset for asset in success_assets if asset.get("converted_to_webp")]),
             "webp_fallback_original_count": len([asset for asset in success_assets if asset.get("fallback_original")]),
             "webp_conversion_failed_count": len([asset for asset in success_assets if asset.get("fallback_reason") == "conversion_failed"]),

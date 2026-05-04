@@ -99,8 +99,8 @@ function Convert-DurableStatusResponse {
         return $Response.Content | ConvertFrom-Json -ErrorAction Stop
     }
     catch {
-        Write-Output "Status query response was not JSON. HTTP Status: $($Response.StatusCode) $($Response.StatusDescription)"
-        Write-Output "Status query response body preview:`n$(Get-ContentPreview -Content $Response.Content)"
+        Write-Host "Status query response was not JSON. HTTP Status: $($Response.StatusCode) $($Response.StatusDescription)"
+        Write-Host "Status query response body preview:`n$(Get-ContentPreview -Content $Response.Content)"
         throw
     }
 }

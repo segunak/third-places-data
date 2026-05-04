@@ -121,7 +121,7 @@ def _aggregate_results(results: List[Dict[str, Any]], dry_run: bool) -> Dict[str
         "failed_uploads": sum(result.get("summary", {}).get("failed_upload_count", 0) for result in results),
         "successful_but_unserved": sum(result.get("summary", {}).get("successful_but_unserved_count", 0) for result in results),
         "duplicate_hashes": sum(result.get("summary", {}).get("duplicate_count", 0) for result in results),
-        "blob_bytes": sum(sum(asset.get("bytes", 0) for asset in result.get("assets", [])) for result in results),
+        "blob_bytes": sum(_result_blob_bytes(result) for result in results),
         "records_with_fewer_than_30_selected_assets": len([
             result for result in results
             if 0 < result.get("summary", {}).get("selected_airtable_count", 0) < 30
@@ -183,6 +183,66 @@ def _count_by_key(items: List[Dict[str, Any]], key: str) -> Dict[str, int]:
     return counts
 
 
+def _result_blob_bytes(result: Dict[str, Any]) -> int:
+    summary = result.get("summary", {})
+    if "blob_bytes" in summary:
+        return int(summary.get("blob_bytes", 0) or 0)
+    return sum(int(asset.get("bytes", 0) or 0) for asset in result.get("assets", []) if isinstance(asset, dict))
+
+
+def _compact_migration_activity_result(
+    status: str,
+    message: str,
+    place_name: str,
+    record_id: str,
+    summary: Dict[str, Any],
+    selected_airtable_urls: Optional[List[str]] = None,
+    assets: Optional[List[Dict[str, Any]]] = None,
+    failures: Optional[List[Dict[str, Any]]] = None,
+    place_id: str = "",
+    warnings: Optional[List[str]] = None,
+    skip_reason: Optional[str] = None,
+    error_reason: Optional[str] = None,
+) -> Dict[str, Any]:
+    selected_urls = [url for url in (selected_airtable_urls or []) if isinstance(url, str)]
+    asset_items = [asset for asset in (assets or []) if isinstance(asset, dict)]
+    failure_items = [failure for failure in (failures or []) if isinstance(failure, dict)]
+    compact_summary = dict(summary or {})
+    compact_summary.setdefault("selected_airtable_count", len(selected_urls))
+    compact_summary.setdefault("azure_assets_count", len(asset_items))
+    compact_summary.setdefault("failed_upload_count", len(failure_items))
+    compact_summary.setdefault("blob_bytes", sum(int(asset.get("bytes", 0) or 0) for asset in asset_items))
+
+    result: Dict[str, Any] = {
+        "status": status,
+        "message": message,
+        "place_name": place_name,
+        "record_id": record_id,
+        "summary": compact_summary,
+        "selected_airtable_count": len(selected_urls),
+        "asset_count": len(asset_items),
+        "failure_count": len(failure_items),
+    }
+    if place_id:
+        result["place_id"] = place_id
+    if warnings:
+        result["warnings"] = warnings
+    if skip_reason:
+        result["skip_reason"] = skip_reason
+    if error_reason:
+        result["error_reason"] = error_reason
+    if selected_urls:
+        result["selected_airtable_url_samples"] = selected_urls[:3]
+    if asset_items:
+        result["asset_status_counts"] = _count_by_key(asset_items, "status")
+    if failure_items:
+        result["failure_reason_counts"] = _count_by_key(failure_items, "reason")
+        error_samples = [failure.get("error") for failure in failure_items if failure.get("error")]
+        if error_samples:
+            result["failure_error_samples"] = error_samples[:3]
+    return result
+
+
 def _diagnostic_summary(summary: Dict[str, Any]) -> Dict[str, Any]:
     keys = [
         "candidate_count",
@@ -194,6 +254,7 @@ def _diagnostic_summary(summary: Dict[str, Any]) -> Dict[str, Any]:
         "unselected_curator_photo_urls_field_count",
         "unsupported_curator_photo_urls_field_count",
         "non_azure_airtable_photos_count",
+        "blob_bytes",
         "github_data_file_save_attempted",
         "github_data_file_saved",
         "github_data_file_save_failed",
@@ -233,6 +294,12 @@ def _diagnostic_place_result(result: Dict[str, Any]) -> Dict[str, Any]:
         diagnostic["failure_count"] = len(failures)
         diagnostic["failure_reason_counts"] = _count_by_key(failures, "reason")
         diagnostic["failure_error_samples"] = [failure.get("error") for failure in failures[:3]]
+    elif result.get("failure_count"):
+        diagnostic["failure_count"] = result.get("failure_count")
+        if result.get("failure_reason_counts"):
+            diagnostic["failure_reason_counts"] = result.get("failure_reason_counts")
+        if result.get("failure_error_samples"):
+            diagnostic["failure_error_samples"] = result.get("failure_error_samples")
 
     return {key: value for key, value in diagnostic.items() if value not in (None, {}, [])}
 
@@ -498,17 +565,31 @@ def _compact_place_result(result: Dict[str, Any]) -> Dict[str, Any]:
     if selected_urls:
         compact["selected_airtable_count"] = len(selected_urls)
         compact["selected_airtable_url_samples"] = selected_urls[:3]
+    elif "selected_airtable_count" in result:
+        compact["selected_airtable_count"] = result.get("selected_airtable_count")
+        if result.get("selected_airtable_url_samples"):
+            compact["selected_airtable_url_samples"] = result.get("selected_airtable_url_samples")
 
     assets = [asset for asset in result.get("assets", []) if isinstance(asset, dict)]
     if assets:
         compact["asset_count"] = len(assets)
         compact["asset_status_counts"] = _count_by_key(assets, "status")
+    elif "asset_count" in result:
+        compact["asset_count"] = result.get("asset_count")
+        if result.get("asset_status_counts"):
+            compact["asset_status_counts"] = result.get("asset_status_counts")
 
     failures = [failure for failure in result.get("failures", []) if isinstance(failure, dict)]
     if failures:
         compact["failure_count"] = len(failures)
         compact["failure_reason_counts"] = _count_by_key(failures, "reason")
         compact["failure_error_samples"] = [failure.get("error") for failure in failures[:3]]
+    elif "failure_count" in result:
+        compact["failure_count"] = result.get("failure_count")
+        if result.get("failure_reason_counts"):
+            compact["failure_reason_counts"] = result.get("failure_reason_counts")
+        if result.get("failure_error_samples"):
+            compact["failure_error_samples"] = result.get("failure_error_samples")
 
     return compact
 
@@ -543,17 +624,6 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
     try:
         config = context.get_input() or {}
         phase = "loading_places"
-        _set_migration_progress_status(
-            context,
-            config,
-            phase,
-            0,
-            0,
-            0,
-            0,
-            results,
-        )
-
         all_places = yield context.call_activity("get_all_third_places", {"config": config})
         phase = "filtering_places"
         filtered_places = _filter_places(all_places, config)
@@ -756,14 +826,14 @@ def migrate_single_place_photo_assets(activityInput):
                 place_name,
                 place.get("id", ""),
             )
-            return {
-                "status": "skipped",
-                "skip_reason": "ignored_missing_place_id",
-                "message": message,
-                "place_name": place_name,
-                "record_id": place.get("id", ""),
-                "summary": {"ignored_missing_place_id": True},
-            }
+            return _compact_migration_activity_result(
+                status="skipped",
+                skip_reason="ignored_missing_place_id",
+                message=message,
+                place_name=place_name,
+                record_id=place.get("id", ""),
+                summary={"ignored_missing_place_id": True},
+            )
 
         data_file_path = f"data/places/{city}/{place_id}.json"
         fetch_success, place_data, fetch_message = fetch_data_github(data_file_path)
@@ -808,19 +878,19 @@ def migrate_single_place_photo_assets(activityInput):
                 summary.get("provider_raw_photo_url_big_count", 0),
                 warnings,
             )
-            return {
-                "status": "skipped",
-                "skip_reason": "no_migratable_photo_urls",
-                "message": message,
-                "warnings": warnings,
-                "place_name": place_name,
-                "place_id": place_id,
-                "record_id": place.get("id", ""),
-                "summary": summary,
-                "selected_airtable_urls": selected_urls,
-                "assets": asset_result["assets"],
-                "failures": asset_result["failures"],
-            }
+            return _compact_migration_activity_result(
+                status="skipped",
+                skip_reason="no_migratable_photo_urls",
+                message=message,
+                warnings=warnings,
+                place_name=place_name,
+                place_id=place_id,
+                record_id=place.get("id", ""),
+                summary=summary,
+                selected_airtable_urls=selected_urls,
+                assets=asset_result.get("assets", []),
+                failures=asset_result.get("failures", []),
+            )
 
         if not dry_run and not selected_urls:
             summary = asset_result["summary"]
@@ -841,19 +911,19 @@ def migrate_single_place_photo_assets(activityInput):
                     source_hosts,
                     warnings,
                 )
-                return {
-                    "status": "skipped",
-                    "skip_reason": "all_photo_downloads_failed",
-                    "message": message,
-                    "warnings": warnings,
-                    "place_name": place_name,
-                    "place_id": place_id,
-                    "record_id": place.get("id", ""),
-                    "summary": summary,
-                    "selected_airtable_urls": selected_urls,
-                    "assets": asset_result["assets"],
-                    "failures": asset_result["failures"],
-                }
+                return _compact_migration_activity_result(
+                    status="skipped",
+                    skip_reason="all_photo_downloads_failed",
+                    message=message,
+                    warnings=warnings,
+                    place_name=place_name,
+                    place_id=place_id,
+                    record_id=place.get("id", ""),
+                    summary=summary,
+                    selected_airtable_urls=selected_urls,
+                    assets=asset_result.get("assets", []),
+                    failures=asset_result.get("failures", []),
+                )
 
             message = (
                 "Migration found photo candidates but selected zero Azure Photos URLs; "
@@ -870,19 +940,19 @@ def migrate_single_place_photo_assets(activityInput):
                 summary.get("failed_upload_count", 0),
                 warnings,
             )
-            return {
-                "status": "error",
-                "error_reason": "no_selected_azure_urls",
-                "message": message,
-                "warnings": warnings,
-                "place_name": place_name,
-                "place_id": place_id,
-                "record_id": place.get("id", ""),
-                "summary": summary,
-                "selected_airtable_urls": selected_urls,
-                "assets": asset_result["assets"],
-                "failures": asset_result["failures"],
-            }
+            return _compact_migration_activity_result(
+                status="error",
+                error_reason="no_selected_azure_urls",
+                message=message,
+                warnings=warnings,
+                place_name=place_name,
+                place_id=place_id,
+                record_id=place.get("id", ""),
+                summary=summary,
+                selected_airtable_urls=selected_urls,
+                assets=asset_result.get("assets", []),
+                failures=asset_result.get("failures", []),
+            )
 
         status = "would_update" if dry_run else "updated"
         message = f"Processed {candidate_count} candidates"
@@ -909,27 +979,32 @@ def migrate_single_place_photo_assets(activityInput):
                     and not airtable_update_failed
                 )
                 if airtable_update_failed:
-                    return {
-                        "status": "error",
-                        "message": "Airtable update failed",
-                        "place_name": place_name,
-                        "place_id": place_id,
-                        "record_id": place.get("id", ""),
-                        "summary": asset_result["summary"],
-                    }
+                    return _compact_migration_activity_result(
+                        status="error",
+                        error_reason="airtable_update_failed",
+                        message="Airtable update failed",
+                        warnings=warnings,
+                        place_name=place_name,
+                        place_id=place_id,
+                        record_id=place.get("id", ""),
+                        summary=asset_result["summary"],
+                        selected_airtable_urls=selected_urls,
+                        assets=asset_result.get("assets", []),
+                        failures=asset_result.get("failures", []),
+                    )
 
-        return {
-            "status": status,
-            "message": message,
-            "warnings": warnings,
-            "place_name": place_name,
-            "place_id": place_id,
-            "record_id": place.get("id", ""),
-            "summary": asset_result["summary"],
-            "selected_airtable_urls": selected_urls,
-            "assets": asset_result["assets"],
-            "failures": asset_result["failures"],
-        }
+        return _compact_migration_activity_result(
+            status=status,
+            message=message,
+            warnings=warnings,
+            place_name=place_name,
+            place_id=place_id,
+            record_id=place.get("id", ""),
+            summary=asset_result["summary"],
+            selected_airtable_urls=selected_urls,
+            assets=asset_result.get("assets", []),
+            failures=asset_result.get("failures", []),
+        )
     except Exception as exc:
         logging.error(f"Failed to migrate photo assets for place: {exc}", exc_info=True)
         return {"status": "error", "message": str(exc), "summary": {}}

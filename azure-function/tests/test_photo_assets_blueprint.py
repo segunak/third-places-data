@@ -98,6 +98,31 @@ def test_compact_place_result_summarizes_large_asset_details():
     assert "failures" not in compact
 
 
+def test_compact_place_result_preserves_compact_activity_fields():
+    compact = photo_assets._compact_place_result({
+        "status": "would_update",
+        "place_name": "Compact Cafe",
+        "place_id": "ChIJcompact",
+        "record_id": "recCompact",
+        "summary": {"candidate_count": 12, "blob_bytes": 1234},
+        "selected_airtable_count": 30,
+        "selected_airtable_url_samples": ["https://example.com/one.jpg"],
+        "asset_count": 42,
+        "asset_status_counts": {"would_upload": 42},
+        "failure_count": 2,
+        "failure_reason_counts": {"download_failed": 2},
+        "failure_error_samples": ["HTTP 403"],
+    })
+
+    assert compact["selected_airtable_count"] == 30
+    assert compact["selected_airtable_url_samples"] == ["https://example.com/one.jpg"]
+    assert compact["asset_count"] == 42
+    assert compact["asset_status_counts"] == {"would_upload": 42}
+    assert compact["failure_count"] == 2
+    assert compact["failure_reason_counts"] == {"download_failed": 2}
+    assert compact["failure_error_samples"] == ["HTTP 403"]
+
+
 def test_migration_progress_status_includes_recent_results_and_failure_details():
     status = photo_assets._migration_progress_status(
         {"city": "charlotte", "provider_type": "outscraper", "dry_run": True},
@@ -201,7 +226,7 @@ def test_photo_assets_migration_orchestrator_updates_custom_status_by_phase():
     get_all_call = next(orchestrator)
 
     assert get_all_call["name"] == "get_all_third_places"
-    assert context.custom_statuses[-1]["phase"] == "loading_places"
+    assert context.custom_statuses == []
 
     migration_call = orchestrator.send(places)
     assert migration_call["name"] == "task_all"
@@ -243,7 +268,6 @@ def test_photo_assets_migration_orchestrator_updates_custom_status_by_phase():
 
     phases = [status["phase"] for status in context.custom_statuses]
     assert phases == [
-        "loading_places",
         "places_loaded",
         "migration_batch_running",
         "migration_batch_completed",
@@ -341,6 +365,12 @@ def test_migrate_single_place_uses_data_file_sources_when_airtable_photos_empty(
     assert result["summary"]["airtable_photos_count"] == 0
     assert result["summary"]["data_file_photo_urls_count"] == 1
     assert result["summary"]["provider_raw_photo_url_big_count"] == 1
+    assert result["selected_airtable_count"] == result["summary"]["selected_airtable_count"]
+    assert result["asset_count"] == result["summary"]["azure_assets_count"]
+    assert "assets" not in result
+    assert "failures" not in result
+    assert "inventory" not in result
+    assert "selected_source_urls" not in result
 
 
 def test_migrate_single_place_skip_message_explains_missing_place_id(caplog):
@@ -496,7 +526,8 @@ def test_migrate_single_place_processes_preserved_urls_without_candidates(monkey
     })
 
     assert result["status"] == "would_update"
-    assert result["selected_airtable_urls"] == [curator_url]
+    assert result["selected_airtable_count"] == 1
+    assert result["selected_airtable_url_samples"] == [curator_url]
     assert result["summary"]["candidate_count"] == 0
 
 
@@ -583,7 +614,9 @@ def test_migrate_single_place_skips_when_all_photo_downloads_fail(monkeypatch):
     assert result["status"] == "skipped"
     assert result["skip_reason"] == "all_photo_downloads_failed"
     assert "all photo candidate downloads failed" in result["message"]
-    assert result["selected_airtable_urls"] == []
+    assert result["selected_airtable_count"] == 0
+    assert result["failure_count"] == 2
+    assert result["failure_reason_counts"] == {"download_failed": 2}
     assert result["summary"]["candidate_count"] == 2
 
 
@@ -633,7 +666,7 @@ def test_migrate_single_place_refuses_unexplained_empty_airtable_photos_update(m
     assert result["status"] == "error"
     assert result["error_reason"] == "no_selected_azure_urls"
     assert "refusing to overwrite Airtable Photos with an empty list" in result["message"]
-    assert result["selected_airtable_urls"] == []
+    assert result["selected_airtable_count"] == 0
     assert result["summary"]["candidate_count"] == 2
 
 
@@ -754,6 +787,7 @@ def test_aggregate_results_counts_write_diagnostics():
             "airtable_write_requested": True,
             "airtable_write_attempted": True,
             "airtable_update_applied": True,
+            "blob_bytes": 100,
         }},
         {"status": "updated", "summary": {
             "github_data_file_save_attempted": True,
@@ -761,6 +795,7 @@ def test_aggregate_results_counts_write_diagnostics():
             "airtable_write_requested": True,
             "airtable_write_attempted": True,
             "airtable_update_skipped_no_change": True,
+            "blob_bytes": 250,
         }},
         {"status": "error", "summary": {
             "github_data_file_save_attempted": True,
@@ -777,6 +812,7 @@ def test_aggregate_results_counts_write_diagnostics():
     assert totals["airtable_updates_applied"] == 1
     assert totals["airtable_updates_skipped_no_change"] == 1
     assert totals["airtable_update_failures"] == 0
+    assert totals["blob_bytes"] == 350
 
 
 def test_photo_health_check_reports_counts(monkeypatch):
