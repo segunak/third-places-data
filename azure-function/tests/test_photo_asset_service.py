@@ -30,7 +30,11 @@ def _curator_photo_url(place_id="ChIJ123", name="curator-attA-front.webp"):
     return f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/{name}"
 
 
-def _place_record(photos="", photos_google="", curator_photo_urls=""):
+def _legacy_curator_photo_url(record_id="rec123", name="front.jpg"):
+    return f"https://thirdplacesdata.blob.core.windows.net/curator-photos/{record_id}/{name}"
+
+
+def _place_record(photos="", photos_google=""):
     return {
         "id": "rec123",
         "fields": {
@@ -38,7 +42,6 @@ def _place_record(photos="", photos_google="", curator_photo_urls=""):
             "Google Maps Place Id": "ChIJ123",
             "Photos": photos,
             "Photos Google": photos_google,
-            "Curator Photo URLs": curator_photo_urls,
         },
     }
 
@@ -139,7 +142,7 @@ def test_build_display_photo_urls_puts_curator_urls_first_and_dedupes():
     ]
 
 
-def test_inventory_skips_curator_photo_urls_from_airtable_photos():
+def test_inventory_skips_curator_azure_urls_from_airtable_photos():
     curator_url = _curator_photo_url()
     provider_url = "https://example.com/provider.jpg"
 
@@ -304,7 +307,7 @@ def test_process_place_records_invalid_existing_azure_url_failure():
     assert result["failures"][0]["error"] == "invalid_container"
 
 
-def test_process_place_preserves_curator_photo_urls_at_front(monkeypatch):
+def test_process_place_preserves_curator_azure_urls_at_front(monkeypatch):
     curator_urls = [
         _curator_photo_url(name="curator-attA-front.webp"),
         _curator_photo_url(name="curator-attB-interior.webp"),
@@ -352,7 +355,7 @@ def test_process_place_preserves_curator_photo_urls_at_front(monkeypatch):
     )
 
     result = service.process_place(
-        _place_record(curator_photo_urls=json.dumps(curator_urls)),
+        _place_record(photos=json.dumps(curator_urls)),
         place_data,
         PhotoAssetConfig(dry_run=False, upload=True),
     )
@@ -361,13 +364,11 @@ def test_process_place_preserves_curator_photo_urls_at_front(monkeypatch):
     assert all(url not in downloaded_urls for url in curator_urls)
     assert result["summary"]["preserved_curator_airtable_photos_count"] == 2
     assert result["summary"]["selected_curator_airtable_photos_count"] == 2
-    assert result["summary"]["curator_photo_urls_field_count"] == 2
-    assert result["summary"]["unselected_curator_photo_urls_field_count"] == 0
     assert result["summary"]["failed_upload_count"] == 0
     assert len(result["selected_airtable_urls"]) == 4
 
 
-def test_process_place_preserves_curator_photo_urls_from_photos_field():
+def test_process_place_preserves_curator_azure_urls_from_photos_field():
     curator_url = _curator_photo_url()
 
     result = PhotoAssetService().process_place(
@@ -379,24 +380,8 @@ def test_process_place_preserves_curator_photo_urls_from_photos_field():
     assert result["selected_airtable_urls"] == [curator_url]
     assert result["summary"]["candidate_count"] == 0
     assert result["summary"]["preserved_curator_airtable_photos_count"] == 1
-    assert result["summary"]["curator_photo_urls_field_count"] == 0
     assert result["summary"]["failed_upload_count"] == 0
     assert result["failures"] == []
-
-
-def test_process_place_reports_uncopied_curator_photo_urls_field_values():
-    legacy_field_url = "https://legacy.example.com/curator-photo.jpg"
-
-    result = PhotoAssetService().process_place(
-        _place_record(curator_photo_urls=json.dumps([legacy_field_url])),
-        {"photos": {}},
-        PhotoAssetConfig(dry_run=False, upload=True),
-    )
-
-    assert result["summary"]["curator_photo_urls_field_count"] == 1
-    assert result["summary"]["unsupported_curator_photo_urls_field_count"] == 1
-    assert result["summary"]["unselected_curator_photo_urls_field_count"] == 1
-    assert result["summary"]["unselected_curator_photo_urls_field_urls"] == [legacy_field_url]
 
 
 def test_process_place_dry_run_selected_sources_use_source_order():

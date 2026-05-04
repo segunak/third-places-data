@@ -237,6 +237,30 @@ def ensure_container_exists(container_name: str, public_access: str = "blob") ->
         logging.info(f"Blob container already exists: {container_name}")
 
 
+def sanitize_blob_metadata(metadata: Optional[Dict[str, Any]]) -> Optional[Dict[str, str]]:
+    """Return Azure Blob metadata with header-safe ASCII keys and values."""
+    if not metadata:
+        return metadata
+
+    sanitized: Dict[str, str] = {}
+    for key, value in metadata.items():
+        if value is None:
+            continue
+
+        safe_key = re.sub(r"[^A-Za-z0-9_]", "_", str(key)).strip("_")
+        if not safe_key:
+            continue
+        if safe_key[0].isdigit():
+            safe_key = f"m_{safe_key}"
+
+        normalized_value = unicodedata.normalize("NFKD", str(value)).encode("ascii", "ignore").decode("ascii")
+        safe_value = re.sub(r"[\r\n\t]+", " ", normalized_value)
+        safe_value = re.sub(r"[\x00-\x1f\x7f]+", "", safe_value).strip()
+        sanitized[safe_key[:128]] = safe_value[:1024]
+
+    return sanitized or None
+
+
 def upload_blob_to_container(
     container_name: str,
     blob_path: str,
@@ -261,7 +285,7 @@ def upload_blob_to_container(
             content_disposition="inline",
             cache_control=cache_control,
         ),
-        metadata=metadata,
+        metadata=sanitize_blob_metadata(metadata),
     )
     logging.info(f"Uploaded blob: {container_name}/{blob_path}")
     return blob_client.url

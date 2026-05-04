@@ -1,0 +1,149 @@
+{
+  "migration_totals": {
+    "total_places": 1,
+    "dry_run": false,
+    "updated": 1,
+    "would_update": 0,
+    "skipped": 0,
+    "errors": 0,
+    "candidate_count": 10,
+    "azure_assets_count": 10,
+    "selected_airtable_count": 10,
+    "failed_upload_count": 0,
+    "blob_bytes": 20610224,
+    "airtable_write_requested": 1,
+    "airtable_write_attempted": 1,
+    "airtable_updates_applied": 1,
+    "airtable_updates_skipped_no_change": 0,
+    "airtable_update_failures": 0,
+    "success": true
+  },
+  "status_counts": {
+    "updated": 1
+  },
+  "baseline_google_photos": {
+    "total_rows_checked": 419,
+    "rows_with_google_urls_in_photos": 33,
+    "google_url_occurrences_in_photos": 838
+  },
+  "post_write_google_photos": {
+    "total_rows_checked": 419,
+    "rows_with_google_urls_in_photos": 32,
+    "google_url_occurrences_in_photos": 808
+  },
+  "curator_status_counts": {},
+  "audit_totals": {
+    "total_places": 1,
+    "ignored_missing_place_id": 0,
+    "canonical_photo_url_count": 10,
+    "canonical_curator_url_count": 0,
+    "canonical_standard_url_count": 10,
+    "legacy_airtable_url_count": 0,
+    "non_azure_airtable_url_count": 0,
+    "mappable_legacy_blob_count": 0,
+    "unmappable_legacy_blob_count": 0,
+    "new_container_blob_count": 18,
+    "unserved_blob_count": 8,
+    "errors": 0,
+    "success": true
+  },
+  "migration_results": [
+    {
+      "status": "updated",
+      "message": "Processed 10 candidates",
+      "place_name": "Purrfect Pair Cat Cafe",
+      "record_id": "recc6pU7Q980vf37d",
+      "summary": {
+        "city": "charlotte",
+        "candidate_count": 10,
+        "duplicate_count": 10,
+        "airtable_photos_count": 0,
+        "airtable_photos_google_count": 0,
+        "data_file_photo_urls_count": 10,
+        "provider_raw_photo_url_big_count": 10,
+        "legacy_blob_candidate_count": 0,
+        "place_name": "Purrfect Pair Cat Cafe",
+        "place_id": "ChIJsxdPvJyJVogRCv6GzQsqMKE",
+        "record_id": "recc6pU7Q980vf37d",
+        "generated_at": "2026-05-04T16:07:33.803573+00:00",
+        "azure_assets_count": 10,
+        "failed_upload_count": 0,
+        "pending_upload_count": 0,
+        "selected_airtable_count": 10,
+        "curator_photo_urls_field_count": 0,
+        "selected_curator_photo_urls_field_count": 0,
+        "unselected_curator_photo_urls_field_count": 0,
+        "unselected_curator_photo_urls_field_urls": [],
+        "unsupported_curator_photo_urls_field_count": 0,
+        "unsupported_curator_photo_urls_field_urls": [],
+        "preserved_curator_airtable_photos_count": 0,
+        "selected_curator_airtable_photos_count": 0,
+        "successful_but_unserved_count": 0,
+        "blob_bytes": 20610224,
+        "webp_converted_count": 0,
+        "webp_fallback_original_count": 10,
+        "webp_conversion_failed_count": 0,
+        "legacy_curator_copied_unserved_count": 0,
+        "non_azure_airtable_photos_count": 0,
+        "warnings": [
+          "fresh_google_photos_loaded: 10"
+        ],
+        "retried_after_download_failure": true,
+        "stale_candidate_count": 130,
+        "stale_failed_upload_count": 130,
+        "local_data_file_used": true,
+        "airtable_write_requested": true,
+        "airtable_write_attempted": true,
+        "airtable_update_applied": true,
+        "airtable_update_skipped_no_change": false,
+        "airtable_update_failed": false
+      },
+      "selected_airtable_count": 10,
+      "asset_count": 10,
+      "failure_count": 0,
+      "place_id": "ChIJsxdPvJyJVogRCv6GzQsqMKE",
+      "warnings": [
+        "fresh_google_photos_loaded: 10"
+      ],
+      "selected_airtable_url_samples": [
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJsxdPvJyJVogRCv6GzQsqMKE/04e63388f26e8cdbbb77b19de1c631d1fc75a935fb7f53be7826ad854f7b8418.jpg",
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJsxdPvJyJVogRCv6GzQsqMKE/fbcbe2359186b454163073fd57b9742472dbebd77a265be323dce017fff7f7fa.jpg",
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJsxdPvJyJVogRCv6GzQsqMKE/c2f1ed65e87b398a12885ebe58fc29f79ce2aa953db1091aef2393db1f1c47c4.jpg"
+      ],
+      "asset_status_counts": {
+        "uploaded": 10
+      }
+    }
+  ],
+  "curator_results": [],
+  "audit_results": [
+    {
+      "status": "ok",
+      "place_name": "Purrfect Pair Cat Cafe",
+      "place_id": "ChIJsxdPvJyJVogRCv6GzQsqMKE",
+      "record_id": "recc6pU7Q980vf37d",
+      "airtable_photo_url_count": 10,
+      "canonical_photo_url_count": 10,
+      "canonical_curator_url_count": 0,
+      "canonical_standard_url_count": 10,
+      "legacy_airtable_url_count": 0,
+      "non_azure_airtable_url_count": 0,
+      "new_container_blob_count": 18,
+      "new_container_curator_blob_count": 8,
+      "new_container_standard_blob_count": 10,
+      "new_container_webp_blob_count": 8,
+      "new_container_non_webp_blob_count": 10,
+      "mappable_legacy_blob_count": 0,
+      "unmappable_legacy_blob_count": 0,
+      "missing_blob_reference_count": 0,
+      "missing_blob_reference_samples": [],
+      "unserved_blob_count": 8,
+      "unserved_blob_samples": [
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJsxdPvJyJVogRCv6GzQsqMKE/curator-att9nOSIgwYJf7PuX-fdsafsafdsa.webp",
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJsxdPvJyJVogRCv6GzQsqMKE/curator-attIpuBzpUtzk5QDf-65757657657.webp",
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJsxdPvJyJVogRCv6GzQsqMKE/curator-attRCaxTfFFSBXpNY-88888888888888888888888.webp"
+      ],
+      "warnings": []
+    }
+  ]
+}

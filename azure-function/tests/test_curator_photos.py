@@ -99,7 +99,7 @@ class TestSyncSinglePlaceCuratorPhotos:
         assert result["status"] == "no_change"
         assert result["photos_synced"] == 2
 
-    def test_already_synced_repairs_photos_field_without_writing_legacy_field(self, monkeypatch, airtable_attachment_objects):
+    def test_already_synced_repairs_photos_field(self, monkeypatch, airtable_attachment_objects):
         curator_urls = _expected_curator_urls()
         place_photo_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/" + ("a" * 64) + ".webp"
         place = _make_place(curator_attachments=airtable_attachment_objects, photos=json.dumps([place_photo_url]))
@@ -117,7 +117,6 @@ class TestSyncSinglePlaceCuratorPhotos:
         assert result["photos_synced"] == 2
         assert result["airtable_fields_updated"] == ["Photos"]
         written_fields = mock_table.update.call_args[0][1]
-        assert "Curator Photo URLs" not in written_fields
         assert json.loads(written_fields["Photos"]) == [*curator_urls, place_photo_url]
 
     def test_removed_curator_attachments_clears_curator_urls_from_photos(self, monkeypatch):
@@ -141,7 +140,6 @@ class TestSyncSinglePlaceCuratorPhotos:
         assert deleted_blobs == [("photos", "ChIJtest123/curator-attOLD-old-photo.webp")]
         assert result["airtable_fields_updated"] == ["Photos"]
         written_fields = mock_table.update.call_args[0][1]
-        assert "Curator Photo URLs" not in written_fields
         assert json.loads(written_fields["Photos"]) == [place_photo_url]
 
     def test_new_attachments_upload(self, monkeypatch, airtable_attachment_objects):
