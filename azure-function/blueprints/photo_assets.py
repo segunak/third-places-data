@@ -250,6 +250,9 @@ def _migration_progress_status(
     batch_index: int,
     total_batches: int,
     results: List[Dict[str, Any]],
+    curator_results: Optional[List[Dict[str, Any]]] = None,
+    audit_results: Optional[List[Dict[str, Any]]] = None,
+    error: Optional[Exception] = None,
 ) -> Dict[str, Any]:
     dry_run = bool(config.get("dry_run", True))
     totals = _aggregate_results(results, dry_run)
@@ -273,11 +276,33 @@ def _migration_progress_status(
         "totals_so_far": totals,
     }
 
+    recent_place_results = [_diagnostic_place_result(result) for result in results[-5:]]
+    if recent_place_results:
+        status["recent_place_results"] = recent_place_results
+
     if error_results:
         status["error_count"] = len(error_results)
         status["recent_error_results"] = [_diagnostic_place_result(result) for result in error_results[-10:]]
     elif recent_problem_results:
         status["recent_problem_results"] = [_diagnostic_place_result(result) for result in recent_problem_results]
+
+    if curator_results is not None:
+        curator_errors = [result for result in curator_results if result.get("status") in {"failed", "error"}]
+        status["curator_totals_so_far"] = _aggregate_curator_results(curator_results)
+        if curator_errors:
+            status["recent_curator_error_results"] = [_diagnostic_place_result(result) for result in curator_errors[-10:]]
+
+    if audit_results is not None:
+        audit_errors = [result for result in audit_results if result.get("status") == "error"]
+        status["audit_totals_so_far"] = _aggregate_audit_results(audit_results)
+        if audit_errors:
+            status["recent_audit_error_results"] = [_diagnostic_place_result(result) for result in audit_errors[-10:]]
+
+    if error is not None:
+        status["failure"] = {
+            "type": type(error).__name__,
+            "message": str(error),
+        }
 
     return status
 
@@ -291,6 +316,9 @@ def _set_migration_progress_status(
     batch_index: int,
     total_batches: int,
     results: List[Dict[str, Any]],
+    curator_results: Optional[List[Dict[str, Any]]] = None,
+    audit_results: Optional[List[Dict[str, Any]]] = None,
+    error: Optional[Exception] = None,
 ) -> None:
     if getattr(context, "is_replaying", False):
         return
@@ -302,6 +330,9 @@ def _set_migration_progress_status(
         batch_index,
         total_batches,
         results,
+        curator_results,
+        audit_results,
+        error,
     ))
 
 
@@ -355,18 +386,39 @@ async def photo_assets_migrate(req: func.HttpRequest, client) -> func.HttpRespon
 
 @bp.orchestration_trigger(context_name="context")
 def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext):
+    config: Dict[str, Any] = {}
+    filtered_places: List[Dict[str, Any]] = []
+    results: List[Dict[str, Any]] = []
+    curator_results: List[Dict[str, Any]] = []
+    audit_results: List[Dict[str, Any]] = []
+    concurrency_limit = 20
+    total_batches = 0
+    current_batch_index = 0
+    phase = "starting"
+
     try:
         config = context.get_input() or {}
-        all_places = yield context.call_activity("get_all_third_places", {"config": config})
-        filtered_places = _filter_places(all_places, config)
-
-        results = []
-        concurrency_limit = 20
-        total_batches = (len(filtered_places) + concurrency_limit - 1) // concurrency_limit if filtered_places else 0
+        phase = "loading_places"
         _set_migration_progress_status(
             context,
             config,
-            "places_loaded",
+            phase,
+            0,
+            0,
+            0,
+            0,
+            results,
+        )
+
+        all_places = yield context.call_activity("get_all_third_places", {"config": config})
+        phase = "filtering_places"
+        filtered_places = _filter_places(all_places, config)
+        total_batches = (len(filtered_places) + concurrency_limit - 1) // concurrency_limit if filtered_places else 0
+        phase = "places_loaded"
+        _set_migration_progress_status(
+            context,
+            config,
+            phase,
             0,
             len(filtered_places),
             0,
@@ -375,17 +427,30 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
         )
 
         for batch_index, index in enumerate(range(0, len(filtered_places), concurrency_limit), start=1):
+            current_batch_index = batch_index
             batch = filtered_places[index:index + concurrency_limit]
             tasks = [
                 context.call_activity("migrate_single_place_photo_assets", {"place": place, "config": config})
                 for place in batch
             ]
-            batch_results = yield context.task_all(tasks)
-            results.extend(batch_results)
+            phase = "migration_batch_running"
             _set_migration_progress_status(
                 context,
                 config,
-                "batch_completed",
+                phase,
+                len(results),
+                len(filtered_places),
+                batch_index,
+                total_batches,
+                results,
+            )
+            batch_results = yield context.task_all(tasks)
+            results.extend(batch_results)
+            phase = "migration_batch_completed"
+            _set_migration_progress_status(
+                context,
+                config,
+                phase,
                 len(results),
                 len(filtered_places),
                 batch_index,
@@ -393,50 +458,93 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
                 results,
             )
 
-        curator_results = []
         for batch_index, index in enumerate(range(0, len(filtered_places), concurrency_limit), start=1):
+            current_batch_index = batch_index
             batch = filtered_places[index:index + concurrency_limit]
             tasks = [
                 context.call_activity("sync_single_place_curator_photos", {"place": place, "config": config})
                 for place in batch
             ]
-            batch_results = yield context.task_all(tasks)
-            curator_results.extend(batch_results)
+            phase = "curator_batch_running"
             _set_migration_progress_status(
                 context,
                 config,
-                "curator_batch_completed",
+                phase,
                 len(curator_results),
                 len(filtered_places),
                 batch_index,
                 total_batches,
                 results,
+                curator_results=curator_results,
+            )
+            batch_results = yield context.task_all(tasks)
+            curator_results.extend(batch_results)
+            phase = "curator_batch_completed"
+            _set_migration_progress_status(
+                context,
+                config,
+                phase,
+                len(curator_results),
+                len(filtered_places),
+                batch_index,
+                total_batches,
+                results,
+                curator_results=curator_results,
             )
 
-        audit_results = []
         for batch_index, index in enumerate(range(0, len(filtered_places), concurrency_limit), start=1):
+            current_batch_index = batch_index
             batch = filtered_places[index:index + concurrency_limit]
             tasks = [
                 context.call_activity("audit_single_place_photo_assets", {"place": place, "config": config})
                 for place in batch
             ]
+            phase = "audit_batch_running"
+            _set_migration_progress_status(
+                context,
+                config,
+                phase,
+                len(audit_results),
+                len(filtered_places),
+                batch_index,
+                total_batches,
+                results,
+                curator_results=curator_results,
+                audit_results=audit_results,
+            )
             batch_results = yield context.task_all(tasks)
             audit_results.extend(batch_results)
+            phase = "audit_batch_completed"
+            _set_migration_progress_status(
+                context,
+                config,
+                phase,
+                len(audit_results),
+                len(filtered_places),
+                batch_index,
+                total_batches,
+                results,
+                curator_results=curator_results,
+                audit_results=audit_results,
+            )
 
         totals = _aggregate_results(results, bool(config.get("dry_run", True)))
         audit_totals = _aggregate_audit_results(audit_results)
         curator_errors = len([result for result in curator_results if result.get("status") in {"failed", "error"}])
         migration_success = totals["success"] and curator_errors == 0 and audit_totals["success"]
         compact_results = [_compact_place_result(result) for result in results]
+        phase = "completed"
         _set_migration_progress_status(
             context,
             config,
-            "completed",
+            phase,
             len(results),
             len(filtered_places),
             total_batches,
             total_batches,
             results,
+            curator_results=curator_results,
+            audit_results=audit_results,
         )
         return {
             "success": migration_success,
@@ -453,7 +561,34 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
         }
     except Exception as exc:
         logging.error(f"Critical error in photo asset migration: {exc}", exc_info=True)
-        return {"success": False, "message": "Photo asset migration failed", "data": None, "error": str(exc)}
+        _set_migration_progress_status(
+            context,
+            config,
+            "failed",
+            len(results),
+            len(filtered_places),
+            current_batch_index,
+            total_batches,
+            results,
+            curator_results=curator_results,
+            audit_results=audit_results,
+            error=exc,
+        )
+        return {
+            "success": False,
+            "message": "Photo asset migration failed",
+            "data": {
+                "phase": phase,
+                "processed_places": len(results),
+                "total_places": len(filtered_places),
+                "batch_index": current_batch_index,
+                "total_batches": total_batches,
+                "totals_so_far": _aggregate_results(results, bool(config.get("dry_run", True))),
+                "curator_totals_so_far": _aggregate_curator_results(curator_results),
+                "audit_totals_so_far": _aggregate_audit_results(audit_results),
+            },
+            "error": str(exc),
+        }
 
 
 @bp.activity_trigger(input_name="activityInput")

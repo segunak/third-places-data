@@ -30,6 +30,7 @@ for more details on what Durable Functions return from their status query URL.
 $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 $statusResponse = $null
 $status = $null
+$lastCustomStatusJson = $null
 
 try {
     if ([string]::IsNullOrWhiteSpace($FunctionKey)) {
@@ -60,10 +61,41 @@ try {
             break
         }
 
-        $statusResponse = Invoke-WebRequest -Uri $statusUri -UseBasicParsing -ErrorAction Stop
-        $status = $statusResponse.Content | ConvertFrom-Json
+        try {
+            $statusResponse = Invoke-WebRequest -Uri $statusUri -UseBasicParsing -SkipHttpErrorCheck -ErrorAction Stop
+            try {
+                $status = $statusResponse.Content | ConvertFrom-Json -ErrorAction Stop
+            }
+            catch {
+                Write-Output "Status query response was not JSON. HTTP Status: $($statusResponse.StatusCode) $($statusResponse.StatusDescription)"
+                Write-Output "Status query response body:`n$($statusResponse.Content)"
+                throw
+            }
+        }
+        catch {
+            Write-Output "Status polling failed before a terminal Durable status could be parsed."
+            if ($null -ne $status) {
+                Write-Output "Last known runtime status: $($status.runtimeStatus)"
+                if ($status.PSObject.Properties.Name -contains "customStatus" -and $null -ne $status.customStatus) {
+                    Write-Output "Last known custom status:`n$($status.customStatus | ConvertTo-Json -Depth 50)"
+                }
+            }
+            throw
+        }
+
+        if ([int]$statusResponse.StatusCode -ge 400) {
+            Write-Output "Status query returned HTTP $($statusResponse.StatusCode) $($statusResponse.StatusDescription); parsing Durable payload."
+        }
 
         Write-Output "Polling status. Current runtime status: $($status.runtimeStatus)"
+
+        if ($status.PSObject.Properties.Name -contains "customStatus" -and $null -ne $status.customStatus) {
+            $customStatusJson = $status.customStatus | ConvertTo-Json -Depth 50
+            if ($customStatusJson -ne $lastCustomStatusJson) {
+                Write-Output "Custom status:`n$customStatusJson"
+                $lastCustomStatusJson = $customStatusJson
+            }
+        }
 
         if ($status.runtimeStatus -in ("Completed", "Failed", "Canceled", "Terminated")) {
             break
@@ -119,7 +151,10 @@ try {
     }
 }
 catch {
-    Write-Output "An error occurred: $_"
+    Write-Output "An error occurred: $($_.Exception.Message)"
+    if ($_.ErrorDetails -and -not [string]::IsNullOrWhiteSpace($_.ErrorDetails.Message)) {
+        Write-Output "Error response body:`n$($_.ErrorDetails.Message)"
+    }
     exit 1
 }
 finally {

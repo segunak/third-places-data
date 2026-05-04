@@ -9,6 +9,28 @@ class DummyRequest:
         self.params = params
 
 
+class FakePhotoAssetsOrchestrationContext:
+    def __init__(self, input_data):
+        self._input_data = input_data
+        self.activity_calls = []
+        self.custom_statuses = []
+        self.is_replaying = False
+
+    def get_input(self):
+        return self._input_data
+
+    def call_activity(self, name, input_data):
+        activity_call = {"name": name, "input": input_data}
+        self.activity_calls.append(activity_call)
+        return activity_call
+
+    def task_all(self, tasks):
+        return {"name": "task_all", "tasks": tasks}
+
+    def set_custom_status(self, status):
+        self.custom_statuses.append(status)
+
+
 class DummyAirtableService:
     def __init__(self, provider_type):
         self.provider_type = provider_type
@@ -24,6 +46,10 @@ class DummyAirtableService:
                 },
             }
         ]
+
+
+def run_photo_assets_migration_orchestrator(context):
+    return photo_assets.photo_assets_migration_orchestrator._function._func.orchestrator_function(context)
 
 
 def test_base_config_defaults():
@@ -70,6 +96,137 @@ def test_compact_place_result_summarizes_large_asset_details():
     assert compact["failure_error_samples"] == ["HTTP 403", "HTTP 403"]
     assert "assets" not in compact
     assert "failures" not in compact
+
+
+def test_migration_progress_status_includes_recent_results_and_failure_details():
+    status = photo_assets._migration_progress_status(
+        {"city": "charlotte", "provider_type": "outscraper", "dry_run": True},
+        "failed",
+        1,
+        2,
+        1,
+        2,
+        [{
+            "status": "error",
+            "error_reason": "no_selected_azure_urls",
+            "message": "No selected URLs",
+            "place_name": "Broken Coffee",
+            "place_id": "ChIJbroken",
+            "record_id": "recBroken",
+            "summary": {"candidate_count": 3, "failed_upload_count": 3},
+            "failures": [{"reason": "download_failed", "error": "HTTP 403"}],
+        }],
+        error=RuntimeError("status details available"),
+    )
+
+    assert status["phase"] == "failed"
+    assert status["processed_places"] == 1
+    assert status["error_count"] == 1
+    assert status["recent_place_results"][0]["place_name"] == "Broken Coffee"
+    assert status["recent_error_results"][0]["failure_reason_counts"] == {"download_failed": 1}
+    assert status["failure"] == {"type": "RuntimeError", "message": "status details available"}
+
+
+def test_photo_assets_migration_orchestrator_updates_custom_status_by_phase():
+    context = FakePhotoAssetsOrchestrationContext({
+        "provider_type": "outscraper",
+        "city": "charlotte",
+        "dry_run": True,
+        "upload": False,
+        "write_airtable": False,
+    })
+    places = [
+        {"id": "rec123", "fields": {"Place": "Daily Ritual", "Google Maps Place Id": "ChIJ123"}},
+        {"id": "rec456", "fields": {"Place": "Quiet Library", "Google Maps Place Id": "ChIJ456"}},
+    ]
+
+    orchestrator = run_photo_assets_migration_orchestrator(context)
+    get_all_call = next(orchestrator)
+
+    assert get_all_call["name"] == "get_all_third_places"
+    assert context.custom_statuses[-1]["phase"] == "loading_places"
+
+    migration_call = orchestrator.send(places)
+    assert migration_call["name"] == "task_all"
+    assert [task["name"] for task in migration_call["tasks"]] == [
+        "migrate_single_place_photo_assets",
+        "migrate_single_place_photo_assets",
+    ]
+
+    migration_results = [
+        {"status": "would_update", "place_name": "Daily Ritual", "place_id": "ChIJ123", "summary": {"candidate_count": 2}},
+        {"status": "skipped", "place_name": "Quiet Library", "place_id": "ChIJ456", "summary": {}},
+    ]
+    curator_call = orchestrator.send(migration_results)
+    assert [task["name"] for task in curator_call["tasks"]] == [
+        "sync_single_place_curator_photos",
+        "sync_single_place_curator_photos",
+    ]
+
+    curator_results = [
+        {"status": "no_change", "place_name": "Daily Ritual", "place_id": "ChIJ123"},
+        {"status": "no_change", "place_name": "Quiet Library", "place_id": "ChIJ456"},
+    ]
+    audit_call = orchestrator.send(curator_results)
+    assert [task["name"] for task in audit_call["tasks"]] == [
+        "audit_single_place_photo_assets",
+        "audit_single_place_photo_assets",
+    ]
+
+    audit_results = [
+        {"status": "ok", "place_name": "Daily Ritual", "place_id": "ChIJ123"},
+        {"status": "ok", "place_name": "Quiet Library", "place_id": "ChIJ456"},
+    ]
+    try:
+        orchestrator.send(audit_results)
+    except StopIteration as exc:
+        result = exc.value
+    else:
+        raise AssertionError("Expected orchestrator to complete")
+
+    phases = [status["phase"] for status in context.custom_statuses]
+    assert phases == [
+        "loading_places",
+        "places_loaded",
+        "migration_batch_running",
+        "migration_batch_completed",
+        "curator_batch_running",
+        "curator_batch_completed",
+        "audit_batch_running",
+        "audit_batch_completed",
+        "completed",
+    ]
+    assert result["success"] is True
+    assert context.custom_statuses[-1]["curator_totals_so_far"]["total_places"] == 2
+    assert context.custom_statuses[-1]["audit_totals_so_far"]["total_places"] == 2
+
+
+def test_photo_assets_migration_orchestrator_failure_reports_phase_in_output_and_status():
+    context = FakePhotoAssetsOrchestrationContext({
+        "provider_type": "outscraper",
+        "city": "charlotte",
+        "dry_run": True,
+    })
+
+    orchestrator = run_photo_assets_migration_orchestrator(context)
+    get_all_call = next(orchestrator)
+    assert get_all_call["name"] == "get_all_third_places"
+
+    try:
+        orchestrator.throw(RuntimeError("Airtable unavailable"))
+    except StopIteration as exc:
+        result = exc.value
+    else:
+        raise AssertionError("Expected orchestrator to complete with failure output")
+
+    assert result["success"] is False
+    assert result["data"]["phase"] == "loading_places"
+    assert result["error"] == "Airtable unavailable"
+    assert context.custom_statuses[-1]["phase"] == "failed"
+    assert context.custom_statuses[-1]["failure"] == {
+        "type": "RuntimeError",
+        "message": "Airtable unavailable",
+    }
 
 
 def test_filter_places_rejects_mismatched_record_and_place_id():
