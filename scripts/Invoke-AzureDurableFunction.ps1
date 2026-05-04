@@ -31,6 +31,79 @@ $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 $statusResponse = $null
 $status = $null
 $lastCustomStatusJson = $null
+$orchestrationId = $null
+
+function Get-ContentPreview {
+    param(
+        [AllowNull()]
+        [object]$Content,
+
+        [int]$MaxCharacters = 2000
+    )
+
+    if ($null -eq $Content) {
+        return "<empty>"
+    }
+
+    $text = [string]$Content
+    if ([string]::IsNullOrWhiteSpace($text)) {
+        return "<empty>"
+    }
+
+    if ($text.Length -le $MaxCharacters) {
+        return $text
+    }
+
+    return "$($text.Substring(0, $MaxCharacters))`n... truncated $($text.Length - $MaxCharacters) characters"
+}
+
+function Write-LastKnownDurableContext {
+    param(
+        [AllowNull()]
+        [object]$Status,
+
+        [AllowNull()]
+        [string]$CustomStatusJson,
+
+        [AllowNull()]
+        [string]$OrchestrationId,
+
+        [string]$StatusUri
+    )
+
+    if (-not [string]::IsNullOrWhiteSpace($OrchestrationId)) {
+        Write-Output "Durable orchestration id: $OrchestrationId"
+    }
+    if (-not [string]::IsNullOrWhiteSpace($StatusUri)) {
+        Write-Output "Durable status URL: $StatusUri"
+    }
+    if ($null -ne $Status) {
+        Write-Output "Last known runtime status: $($Status.runtimeStatus)"
+    }
+    else {
+        Write-Output "Last known runtime status: unavailable"
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace($CustomStatusJson)) {
+        Write-Output "Last known custom status:`n$CustomStatusJson"
+    }
+}
+
+function Convert-DurableStatusResponse {
+    param(
+        [Parameter(Mandatory = $true)]
+        [object]$Response
+    )
+
+    try {
+        return $Response.Content | ConvertFrom-Json -ErrorAction Stop
+    }
+    catch {
+        Write-Output "Status query response was not JSON. HTTP Status: $($Response.StatusCode) $($Response.StatusDescription)"
+        Write-Output "Status query response body preview:`n$(Get-ContentPreview -Content $Response.Content)"
+        throw
+    }
+}
 
 try {
     if ([string]::IsNullOrWhiteSpace($FunctionKey)) {
@@ -48,10 +121,13 @@ try {
 
     $initialPayload = $initialResponse.Content | ConvertFrom-Json
     $statusUri = $initialPayload.statusQueryGetUri
+    if ($initialPayload.PSObject.Properties.Name -contains "id") {
+        $orchestrationId = [string]$initialPayload.id
+    }
 
     Write-Output "Orchestration started. Initial status: $($initialResponse.StatusCode) $($initialResponse.StatusDescription)"
-    if ($initialPayload.PSObject.Properties.Name -contains "id") {
-        Write-Output "Durable orchestration id: $($initialPayload.id)"
+    if (-not [string]::IsNullOrWhiteSpace($orchestrationId)) {
+        Write-Output "Durable orchestration id: $orchestrationId"
     }
     Write-Output $initialResponse
 
@@ -64,22 +140,19 @@ try {
         try {
             $statusResponse = Invoke-WebRequest -Uri $statusUri -UseBasicParsing -SkipHttpErrorCheck -ErrorAction Stop
             try {
-                $status = $statusResponse.Content | ConvertFrom-Json -ErrorAction Stop
+                $status = Convert-DurableStatusResponse -Response $statusResponse
             }
             catch {
-                Write-Output "Status query response was not JSON. HTTP Status: $($statusResponse.StatusCode) $($statusResponse.StatusDescription)"
-                Write-Output "Status query response body:`n$($statusResponse.Content)"
-                throw
+                Write-LastKnownDurableContext -Status $status -CustomStatusJson $lastCustomStatusJson -OrchestrationId $orchestrationId -StatusUri $statusUri
+                Write-Output "Retrying Durable status query once after non-JSON response."
+                Start-Sleep -Seconds 5
+                $statusResponse = Invoke-WebRequest -Uri $statusUri -UseBasicParsing -SkipHttpErrorCheck -ErrorAction Stop
+                $status = Convert-DurableStatusResponse -Response $statusResponse
             }
         }
         catch {
             Write-Output "Status polling failed before a terminal Durable status could be parsed."
-            if ($null -ne $status) {
-                Write-Output "Last known runtime status: $($status.runtimeStatus)"
-                if ($status.PSObject.Properties.Name -contains "customStatus" -and $null -ne $status.customStatus) {
-                    Write-Output "Last known custom status:`n$($status.customStatus | ConvertTo-Json -Depth 50)"
-                }
-            }
+            Write-LastKnownDurableContext -Status $status -CustomStatusJson $lastCustomStatusJson -OrchestrationId $orchestrationId -StatusUri $statusUri
             throw
         }
 

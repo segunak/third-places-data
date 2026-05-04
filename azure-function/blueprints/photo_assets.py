@@ -3,6 +3,7 @@ import logging
 import uuid
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
+from urllib.parse import urlparse
 
 import azure.functions as func
 import azure.durable_functions as df
@@ -33,6 +34,8 @@ from services.utils import (
 
 bp = df.Blueprint()
 DEFAULT_PROVIDER_TYPE = "outscraper"
+EXPECTED_SKIP_SAMPLE_LIMIT = 5
+EXPECTED_SKIP_REASONS = {"ignored_missing_place_id", "no_migratable_photo_urls"}
 
 
 def _parse_bool(value: Optional[str], default: bool) -> bool:
@@ -234,6 +237,126 @@ def _diagnostic_place_result(result: Dict[str, Any]) -> Dict[str, Any]:
     return {key: value for key, value in diagnostic.items() if value not in (None, {}, [])}
 
 
+def _compact_curator_result(result: Dict[str, Any]) -> Dict[str, Any]:
+    keys = [
+        "status",
+        "skip_reason",
+        "message",
+        "place_name",
+        "place_id",
+        "record_id",
+        "photos_synced",
+        "photos_deleted",
+        "photos_failed",
+        "curator_photo_urls_count",
+        "photos_field_count",
+        "airtable_fields_updated",
+    ]
+    return {key: result.get(key) for key in keys if result.get(key) not in (None, {}, [])}
+
+
+def _compact_audit_result(result: Dict[str, Any]) -> Dict[str, Any]:
+    keys = [
+        "status",
+        "skip_reason",
+        "message",
+        "place_name",
+        "place_id",
+        "record_id",
+        "canonical_photo_url_count",
+        "canonical_curator_url_count",
+        "canonical_standard_url_count",
+        "legacy_airtable_url_count",
+        "non_azure_airtable_url_count",
+        "mappable_legacy_blob_count",
+        "unmappable_legacy_blob_count",
+        "missing_blob_reference_count",
+        "missing_blob_reference_samples",
+        "unserved_blob_count",
+        "unserved_blob_samples",
+        "warnings",
+    ]
+    return {key: result.get(key) for key in keys if result.get(key) not in (None, {}, [])}
+
+
+def _sample_results(
+    results: List[Dict[str, Any]],
+    compact_fn,
+    limit: int = EXPECTED_SKIP_SAMPLE_LIMIT,
+    statuses: Optional[set[str]] = None,
+) -> List[Dict[str, Any]]:
+    filtered = [result for result in results if statuses is None or result.get("status") in statuses]
+    return [compact_fn(result) for result in filtered[-limit:]]
+
+
+def _compact_results_by_status(
+    results: List[Dict[str, Any]],
+    compact_fn,
+    statuses: set[str],
+) -> List[Dict[str, Any]]:
+    return [compact_fn(result) for result in results if result.get("status") in statuses]
+
+
+def _skip_reason_counts(results: List[Dict[str, Any]]) -> Dict[str, int]:
+    return _count_by_key([result for result in results if result.get("status") == "skipped"], "skip_reason")
+
+
+def _unexpected_skip_results(results: List[Dict[str, Any]], compact_fn) -> List[Dict[str, Any]]:
+    return [
+        compact_fn(result)
+        for result in results
+        if result.get("status") == "skipped" and result.get("skip_reason") not in EXPECTED_SKIP_REASONS
+    ]
+
+
+def _expected_skip_samples(results: List[Dict[str, Any]], compact_fn) -> Dict[str, List[Dict[str, Any]]]:
+    samples: Dict[str, List[Dict[str, Any]]] = {}
+    for reason in sorted(EXPECTED_SKIP_REASONS):
+        reason_results = [
+            result
+            for result in results
+            if result.get("status") == "skipped" and result.get("skip_reason") == reason
+        ]
+        if reason_results:
+            samples[reason] = [compact_fn(result) for result in reason_results[-EXPECTED_SKIP_SAMPLE_LIMIT:]]
+    return samples
+
+
+def _migration_output_data(
+    totals: Dict[str, Any],
+    curator_totals: Dict[str, Any],
+    audit_totals: Dict[str, Any],
+    results: List[Dict[str, Any]],
+    curator_results: List[Dict[str, Any]],
+    audit_results: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    return {
+        "totals": totals,
+        "curator_totals": curator_totals,
+        "audit_totals": audit_totals,
+        "result_counts": {
+            "place_results": len(results),
+            "curator_results": len(curator_results),
+            "audit_results": len(audit_results),
+        },
+        "place_status_counts": _count_by_key(results, "status"),
+        "curator_status_counts": _count_by_key(curator_results, "status"),
+        "audit_status_counts": _count_by_key(audit_results, "status"),
+        "place_skip_reason_counts": _skip_reason_counts(results),
+        "curator_skip_reason_counts": _skip_reason_counts(curator_results),
+        "audit_skip_reason_counts": _skip_reason_counts(audit_results),
+        "place_error_results": _compact_results_by_status(results, _compact_place_result, {"error"}),
+        "place_unexpected_skip_results": _unexpected_skip_results(results, _compact_place_result),
+        "curator_error_results": _compact_results_by_status(curator_results, _compact_curator_result, {"failed", "error"}),
+        "curator_unexpected_skip_results": _unexpected_skip_results(curator_results, _compact_curator_result),
+        "audit_error_results": _compact_results_by_status(audit_results, _compact_audit_result, {"error"}),
+        "audit_unexpected_skip_results": _unexpected_skip_results(audit_results, _compact_audit_result),
+        "expected_place_skip_samples": _expected_skip_samples(results, _compact_place_result),
+        "expected_curator_skip_samples": _expected_skip_samples(curator_results, _compact_curator_result),
+        "expected_audit_skip_samples": _expected_skip_samples(audit_results, _compact_audit_result),
+    }
+
+
 def _all_candidate_downloads_failed(summary: Dict[str, Any], failures: List[Dict[str, Any]]) -> bool:
     candidate_count = int(summary.get("candidate_count", 0) or 0)
     failed_upload_count = int(summary.get("failed_upload_count", 0) or 0)
@@ -253,14 +376,10 @@ def _migration_progress_status(
     curator_results: Optional[List[Dict[str, Any]]] = None,
     audit_results: Optional[List[Dict[str, Any]]] = None,
     error: Optional[Exception] = None,
+    include_diagnostics: bool = False,
 ) -> Dict[str, Any]:
     dry_run = bool(config.get("dry_run", True))
     totals = _aggregate_results(results, dry_run)
-    error_results = [result for result in results if result.get("status") == "error"]
-    recent_problem_results = [
-        result for result in results
-        if result.get("status") in {"error", "skipped"}
-    ][-10:]
 
     status = {
         "phase": phase,
@@ -274,29 +393,52 @@ def _migration_progress_status(
         "batch_index": batch_index,
         "total_batches": total_batches,
         "totals_so_far": totals,
+        "place_status_counts_so_far": _count_by_key(results, "status"),
     }
 
-    recent_place_results = [_diagnostic_place_result(result) for result in results[-5:]]
-    if recent_place_results:
-        status["recent_place_results"] = recent_place_results
-
-    if error_results:
-        status["error_count"] = len(error_results)
-        status["recent_error_results"] = [_diagnostic_place_result(result) for result in error_results[-10:]]
-    elif recent_problem_results:
-        status["recent_problem_results"] = [_diagnostic_place_result(result) for result in recent_problem_results]
-
     if curator_results is not None:
-        curator_errors = [result for result in curator_results if result.get("status") in {"failed", "error"}]
         status["curator_totals_so_far"] = _aggregate_curator_results(curator_results)
-        if curator_errors:
-            status["recent_curator_error_results"] = [_diagnostic_place_result(result) for result in curator_errors[-10:]]
+        status["curator_status_counts_so_far"] = _count_by_key(curator_results, "status")
 
     if audit_results is not None:
-        audit_errors = [result for result in audit_results if result.get("status") == "error"]
         status["audit_totals_so_far"] = _aggregate_audit_results(audit_results)
-        if audit_errors:
-            status["recent_audit_error_results"] = [_diagnostic_place_result(result) for result in audit_errors[-10:]]
+        status["audit_status_counts_so_far"] = _count_by_key(audit_results, "status")
+
+    should_include_diagnostics = include_diagnostics or error is not None
+    if should_include_diagnostics:
+        error_results = [result for result in results if result.get("status") == "error"]
+        recent_problem_results = [
+            result for result in results
+            if result.get("status") in {"error", "skipped"}
+        ][-EXPECTED_SKIP_SAMPLE_LIMIT:]
+        if error_results:
+            status["error_count"] = len(error_results)
+            status["recent_error_results"] = _sample_results(
+                error_results,
+                _diagnostic_place_result,
+            )
+        elif recent_problem_results:
+            status["recent_problem_results"] = [_diagnostic_place_result(result) for result in recent_problem_results]
+
+        recent_place_results = _sample_results(results, _diagnostic_place_result)
+        if recent_place_results:
+            status["recent_place_results"] = recent_place_results
+
+        if curator_results is not None:
+            curator_errors = [result for result in curator_results if result.get("status") in {"failed", "error"}]
+            if curator_errors:
+                status["recent_curator_error_results"] = _sample_results(
+                    curator_errors,
+                    _compact_curator_result,
+                )
+
+        if audit_results is not None:
+            audit_errors = [result for result in audit_results if result.get("status") == "error"]
+            if audit_errors:
+                status["recent_audit_error_results"] = _sample_results(
+                    audit_errors,
+                    _compact_audit_result,
+                )
 
     if error is not None:
         status["failure"] = {
@@ -319,6 +461,7 @@ def _set_migration_progress_status(
     curator_results: Optional[List[Dict[str, Any]]] = None,
     audit_results: Optional[List[Dict[str, Any]]] = None,
     error: Optional[Exception] = None,
+    include_diagnostics: bool = False,
 ) -> None:
     if getattr(context, "is_replaying", False):
         return
@@ -333,6 +476,7 @@ def _set_migration_progress_status(
         curator_results,
         audit_results,
         error,
+        include_diagnostics,
     ))
 
 
@@ -529,10 +673,10 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
             )
 
         totals = _aggregate_results(results, bool(config.get("dry_run", True)))
+        curator_totals = _aggregate_curator_results(curator_results)
         audit_totals = _aggregate_audit_results(audit_results)
         curator_errors = len([result for result in curator_results if result.get("status") in {"failed", "error"}])
         migration_success = totals["success"] and curator_errors == 0 and audit_totals["success"]
-        compact_results = [_compact_place_result(result) for result in results]
         phase = "completed"
         _set_migration_progress_status(
             context,
@@ -545,18 +689,19 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
             results,
             curator_results=curator_results,
             audit_results=audit_results,
+            include_diagnostics=not migration_success,
         )
         return {
             "success": migration_success,
             "message": "Photo asset migration completed" if migration_success else "Photo asset migration completed with errors or audit findings",
-            "data": {
-                "totals": totals,
-                "curator_totals": _aggregate_curator_results(curator_results),
-                "audit_totals": audit_totals,
-                "place_results": compact_results,
-                "curator_results": curator_results,
-                "audit_results": audit_results,
-            },
+            "data": _migration_output_data(
+                totals,
+                curator_totals,
+                audit_totals,
+                results,
+                curator_results,
+                audit_results,
+            ),
             "error": None if migration_success else "Migration errors, curator errors, or final audit findings remain",
         }
     except Exception as exc:
@@ -829,7 +974,15 @@ def photo_assets_audit_orchestrator(context: df.DurableOrchestrationContext):
         return {
             "success": totals["success"],
             "message": "Photo asset audit completed" if totals["success"] else "Photo asset audit found migration leftovers",
-            "data": {"totals": totals, "place_results": results},
+            "data": {
+                "totals": totals,
+                "result_count": len(results),
+                "status_counts": _count_by_key(results, "status"),
+                "skip_reason_counts": _skip_reason_counts(results),
+                "error_results": _compact_results_by_status(results, _compact_audit_result, {"error"}),
+                "unexpected_skip_results": _unexpected_skip_results(results, _compact_audit_result),
+                "expected_skip_samples": _expected_skip_samples(results, _compact_audit_result),
+            },
             "error": None if totals["success"] else "Mappable legacy blobs or legacy/non-Azure Airtable Photos remain",
         }
     except Exception as exc:

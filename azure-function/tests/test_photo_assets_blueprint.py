@@ -127,6 +127,63 @@ def test_migration_progress_status_includes_recent_results_and_failure_details()
     assert status["failure"] == {"type": "RuntimeError", "message": "status details available"}
 
 
+def test_migration_progress_status_omits_verbose_results_by_default():
+    status = photo_assets._migration_progress_status(
+        {"city": "charlotte", "provider_type": "outscraper", "dry_run": True},
+        "migration_batch_completed",
+        2,
+        2,
+        1,
+        1,
+        [
+            {"status": "would_update", "place_name": "Ready Coffee", "summary": {"candidate_count": 12}},
+            {"status": "skipped", "place_name": "No Place Id", "summary": {}},
+        ],
+    )
+
+    assert status["phase"] == "migration_batch_completed"
+    assert status["processed_places"] == 2
+    assert status["place_status_counts_so_far"] == {"would_update": 1, "skipped": 1}
+    assert "recent_place_results" not in status
+    assert "recent_problem_results" not in status
+    assert "recent_error_results" not in status
+
+
+def test_migration_output_data_returns_all_compact_failures_and_expected_skip_samples():
+    data = photo_assets._migration_output_data(
+        {"success": False, "errors": 1},
+        {"success": True, "errors": 0},
+        {"success": False, "errors": 1},
+        [
+            {"status": "would_update", "place_name": "Ready Coffee", "summary": {"candidate_count": 12}},
+            {"status": "error", "place_name": "Broken Coffee", "summary": {"candidate_count": 2}},
+            {"status": "skipped", "skip_reason": "ignored_missing_place_id", "place_name": "No Place Id"},
+            {"status": "skipped", "skip_reason": "all_photo_downloads_failed", "place_name": "Download Failed Cafe"},
+        ],
+        [
+            {"status": "no_change", "place_name": "Ready Coffee"},
+            {"status": "failed", "place_name": "Curator Failure", "photos_failed": 1},
+        ],
+        [
+            {"status": "error", "place_name": "Broken Coffee", "missing_blob_reference_count": 1},
+            {"status": "skipped", "skip_reason": "ignored_missing_place_id", "place_name": "Audit No Place Id"},
+        ],
+    )
+
+    assert data["result_counts"] == {"place_results": 4, "curator_results": 2, "audit_results": 2}
+    assert data["place_status_counts"] == {"would_update": 1, "error": 1, "skipped": 2}
+    assert data["place_skip_reason_counts"] == {"ignored_missing_place_id": 1, "all_photo_downloads_failed": 1}
+    assert data["place_error_results"][0]["place_name"] == "Broken Coffee"
+    assert data["place_unexpected_skip_results"][0]["place_name"] == "Download Failed Cafe"
+    assert data["expected_place_skip_samples"]["ignored_missing_place_id"][0]["place_name"] == "No Place Id"
+    assert data["curator_error_results"][0]["place_name"] == "Curator Failure"
+    assert data["audit_error_results"][0]["missing_blob_reference_count"] == 1
+    assert data["expected_audit_skip_samples"]["ignored_missing_place_id"][0]["place_name"] == "Audit No Place Id"
+    assert "place_results" not in data
+    assert "curator_results" not in data
+    assert "audit_results" not in data
+
+
 def test_photo_assets_migration_orchestrator_updates_custom_status_by_phase():
     context = FakePhotoAssetsOrchestrationContext({
         "provider_type": "outscraper",
@@ -155,7 +212,7 @@ def test_photo_assets_migration_orchestrator_updates_custom_status_by_phase():
 
     migration_results = [
         {"status": "would_update", "place_name": "Daily Ritual", "place_id": "ChIJ123", "summary": {"candidate_count": 2}},
-        {"status": "skipped", "place_name": "Quiet Library", "place_id": "ChIJ456", "summary": {}},
+        {"status": "skipped", "skip_reason": "ignored_missing_place_id", "place_name": "Quiet Library", "place_id": "ChIJ456", "summary": {}},
     ]
     curator_call = orchestrator.send(migration_results)
     assert [task["name"] for task in curator_call["tasks"]] == [
@@ -199,6 +256,15 @@ def test_photo_assets_migration_orchestrator_updates_custom_status_by_phase():
     assert result["success"] is True
     assert context.custom_statuses[-1]["curator_totals_so_far"]["total_places"] == 2
     assert context.custom_statuses[-1]["audit_totals_so_far"]["total_places"] == 2
+    assert "recent_place_results" not in context.custom_statuses[-1]
+    assert result["data"]["result_counts"] == {"place_results": 2, "curator_results": 2, "audit_results": 2}
+    assert result["data"]["place_status_counts"] == {"would_update": 1, "skipped": 1}
+    assert result["data"]["place_error_results"] == []
+    assert result["data"]["place_unexpected_skip_results"] == []
+    assert result["data"]["expected_place_skip_samples"]["ignored_missing_place_id"][0]["place_name"] == "Quiet Library"
+    assert "place_results" not in result["data"]
+    assert "curator_results" not in result["data"]
+    assert "audit_results" not in result["data"]
 
 
 def test_photo_assets_migration_orchestrator_failure_reports_phase_in_output_and_status():
