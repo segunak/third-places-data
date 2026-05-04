@@ -181,6 +181,7 @@ class PhotoPublisherService:
         dry_run: bool = True,
         upload: bool = False,
         try_url_variants: bool = True,
+        download_timeout_seconds: int = 60,
     ) -> Dict[str, Any]:
         return self._publish_url(
             source_url=source_url,
@@ -193,6 +194,7 @@ class PhotoPublisherService:
             dry_run=dry_run,
             upload=upload,
             try_url_variants=try_url_variants,
+            download_timeout_seconds=download_timeout_seconds,
             blob_kind="standard",
         )
 
@@ -208,6 +210,7 @@ class PhotoPublisherService:
         dry_run: bool = True,
         upload: bool = False,
         try_url_variants: bool = True,
+        download_timeout_seconds: int = 60,
     ) -> Dict[str, Any]:
         return self._publish_url(
             source_url=source_url,
@@ -220,6 +223,7 @@ class PhotoPublisherService:
             dry_run=dry_run,
             upload=upload,
             try_url_variants=try_url_variants,
+            download_timeout_seconds=download_timeout_seconds,
             blob_kind="legacy_curator",
         )
 
@@ -232,6 +236,7 @@ class PhotoPublisherService:
         dry_run: bool = True,
         upload: bool = False,
         try_url_variants: bool = True,
+        download_timeout_seconds: int = 60,
     ) -> Dict[str, Any]:
         attachment_id = str(attachment.get("id") or "").strip()
         filename = str(attachment.get("filename") or "photo.jpg").strip()
@@ -257,6 +262,7 @@ class PhotoPublisherService:
             dry_run=dry_run,
             upload=upload,
             try_url_variants=try_url_variants,
+            download_timeout_seconds=download_timeout_seconds,
             blob_kind="curator",
             attachment_id=attachment_id,
             filename=filename,
@@ -274,6 +280,7 @@ class PhotoPublisherService:
         dry_run: bool,
         upload: bool,
         try_url_variants: bool,
+        download_timeout_seconds: int,
         blob_kind: str,
         attachment_id: str = "",
         filename: str = "",
@@ -307,7 +314,11 @@ class PhotoPublisherService:
                 "dry_run": dry_run,
             }
 
-        download_result = self.download_image_asset(canonical_source_url, try_url_variants=try_url_variants)
+        download_result = self.download_image_asset(
+            canonical_source_url,
+            try_url_variants=try_url_variants,
+            timeout=download_timeout_seconds,
+        )
         if not download_result.get("success"):
             return {
                 "success": False,

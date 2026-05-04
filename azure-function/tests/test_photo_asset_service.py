@@ -184,7 +184,7 @@ def test_process_place_uploads_successful_assets_and_selects_azure_urls(monkeypa
     monkeypatch.setattr(
         service.publisher,
         "download_image_asset",
-        lambda source_url, try_url_variants=True: {
+        lambda source_url, try_url_variants=True, timeout=60: {
             "success": True,
             "data": b"\xff\xd8\xffimage",
             "content_type": "image/jpeg",
@@ -211,6 +211,84 @@ def test_process_place_uploads_successful_assets_and_selects_azure_urls(monkeypa
     assert len(result["selected_airtable_urls"]) == 2
     assert all("thirdplacesdata.blob.core.windows.net/photos/ChIJ123/" in url for url in result["selected_airtable_urls"])
     assert "place_data" not in result
+
+
+def test_process_place_passes_configured_download_timeout(monkeypatch):
+    service = PhotoAssetService()
+    observed_timeouts = []
+
+    def mock_download(source_url, try_url_variants=True, timeout=60):
+        observed_timeouts.append(timeout)
+        return {
+            "success": True,
+            "data": b"\xff\xd8\xffimage",
+            "content_type": "image/jpeg",
+            "extension": ".jpg",
+            "content_sha256": "contenthash",
+            "attempts": [],
+            "bytes": 8,
+        }
+
+    monkeypatch.setattr(service.publisher, "download_image_asset", mock_download)
+    monkeypatch.setattr(
+        "services.photo_publisher_service.upload_blob_to_container",
+        lambda container, blob_path, data, content_type, metadata, cache_control, public_access, overwrite: (
+            f"https://thirdplacesdata.blob.core.windows.net/{container}/{blob_path}"
+        ),
+    )
+
+    result = service.process_place(
+        _place_record(),
+        {"photos": {"photo_urls": ["https://example.com/vibe.jpg"]}},
+        PhotoAssetConfig(dry_run=False, upload=True, download_timeout_seconds=7),
+    )
+
+    assert result["summary"]["azure_assets_count"] == 1
+    assert observed_timeouts == [7]
+
+
+def test_chunk_helpers_preserve_selection_order(monkeypatch):
+    place_data = {"photos": {"photo_urls": [
+        "https://example.com/one.jpg",
+        "https://example.com/two.jpg",
+        "https://example.com/three.jpg",
+    ]}}
+    service = PhotoAssetService()
+
+    monkeypatch.setattr(
+        service.publisher,
+        "download_image_asset",
+        lambda source_url, try_url_variants=True, timeout=60: {
+            "success": True,
+            "data": b"\xff\xd8\xffimage",
+            "content_type": "image/jpeg",
+            "extension": ".jpg",
+            "content_sha256": "contenthash",
+            "attempts": [],
+            "bytes": 8,
+        },
+    )
+    monkeypatch.setattr(
+        "services.photo_publisher_service.upload_blob_to_container",
+        lambda container, blob_path, data, content_type, metadata, cache_control, public_access, overwrite: (
+            f"https://thirdplacesdata.blob.core.windows.net/{container}/{blob_path}"
+        ),
+    )
+
+    config = PhotoAssetConfig(dry_run=False, upload=True)
+    place_context = service.prepare_place_context(_place_record(), place_data, config)
+    first_batch = service.process_candidate_batch(place_context, place_context["inventory"][:2], config)
+    second_batch = service.process_candidate_batch(place_context, place_context["inventory"][2:], config)
+    result = service.finalize_place_assets(
+        place_context,
+        [*first_batch["assets"], *second_batch["assets"]],
+        [*first_batch["failures"], *second_batch["failures"]],
+    )
+
+    assert result["summary"]["candidate_count"] == 3
+    assert result["summary"]["azure_assets_count"] == 3
+    assert len(result["selected_airtable_urls"]) == 3
+    assert [asset["azure_url"] for asset in result["assets"]] == result["selected_airtable_urls"]
 
 
 def test_process_place_records_invalid_existing_azure_url_failure():
@@ -253,7 +331,7 @@ def test_process_place_preserves_curator_photo_urls_at_front(monkeypatch):
     service = PhotoAssetService()
     downloaded_urls = []
 
-    def mock_download(source_url, try_url_variants=True):
+    def mock_download(source_url, try_url_variants=True, timeout=60):
         downloaded_urls.append(source_url)
         return {
             "success": True,

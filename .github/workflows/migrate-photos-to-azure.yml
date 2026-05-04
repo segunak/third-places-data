@@ -18,6 +18,41 @@ on:
         required: false
         default: 'false'
         type: string
+      max_places:
+        description: 'Optional limit for canary or batch runs; blank means all places'
+        required: false
+        default: ''
+        type: string
+      record_id:
+        description: 'Optional Airtable record id for a single-place run'
+        required: false
+        default: ''
+        type: string
+      place_id:
+        description: 'Optional Google Maps Place Id for a single-place run'
+        required: false
+        default: ''
+        type: string
+      migration_concurrency:
+        description: 'Concurrent places to process; blank uses function defaults'
+        required: false
+        default: ''
+        type: string
+      candidate_chunk_size:
+        description: 'Photo candidates per upload activity; blank uses function defaults'
+        required: false
+        default: ''
+        type: string
+      download_timeout_seconds:
+        description: 'Per-image HTTP timeout; blank uses function defaults'
+        required: false
+        default: ''
+        type: string
+      try_url_variants:
+        description: 'If true, try Google photo size variants'
+        required: false
+        default: 'true'
+        type: string
   workflow_dispatch:
     inputs:
       provider_type:
@@ -34,6 +69,41 @@ on:
         description: 'If true, report what would change without uploading or writing Airtable'
         required: false
         default: 'false'
+        type: string
+      max_places:
+        description: 'Optional limit for canary or batch runs; blank means all places'
+        required: false
+        default: ''
+        type: string
+      record_id:
+        description: 'Optional Airtable record id for a single-place run'
+        required: false
+        default: ''
+        type: string
+      place_id:
+        description: 'Optional Google Maps Place Id for a single-place run'
+        required: false
+        default: ''
+        type: string
+      migration_concurrency:
+        description: 'Concurrent places to process; blank uses function defaults'
+        required: false
+        default: ''
+        type: string
+      candidate_chunk_size:
+        description: 'Photo candidates per upload activity; blank uses function defaults'
+        required: false
+        default: ''
+        type: string
+      download_timeout_seconds:
+        description: 'Per-image HTTP timeout; blank uses function defaults'
+        required: false
+        default: ''
+        type: string
+      try_url_variants:
+        description: 'If true, try Google photo size variants'
+        required: false
+        default: 'true'
         type: string
 
 concurrency:
@@ -69,9 +139,35 @@ jobs:
             $writeAirtable = "true"
           }
 
-          $tryUrlVariants = "true"
+          $tryUrlVariants = "${{ inputs.try_url_variants }}".ToLowerInvariant()
+          if ($tryUrlVariants -ne "false") {
+            $tryUrlVariants = "true"
+          }
 
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/photo-assets/migrate?provider_type=$providerType&city=$city&dry_run=$dryRun&upload=$upload&write_airtable=$writeAirtable&try_url_variants=$tryUrlVariants"
+          $query = [System.Collections.Generic.List[string]]::new()
+          $query.Add("provider_type=$providerType")
+          $query.Add("city=$city")
+          $query.Add("dry_run=$dryRun")
+          $query.Add("upload=$upload")
+          $query.Add("write_airtable=$writeAirtable")
+          $query.Add("try_url_variants=$tryUrlVariants")
+
+          $optionalInputs = @{
+            max_places = "${{ inputs.max_places }}"
+            record_id = "${{ inputs.record_id }}"
+            place_id = "${{ inputs.place_id }}"
+            migration_concurrency = "${{ inputs.migration_concurrency }}"
+            candidate_chunk_size = "${{ inputs.candidate_chunk_size }}"
+            download_timeout_seconds = "${{ inputs.download_timeout_seconds }}"
+          }
+
+          foreach ($entry in $optionalInputs.GetEnumerator()) {
+            if (-not [string]::IsNullOrWhiteSpace($entry.Value)) {
+              $query.Add("$($entry.Key)=$([uri]::EscapeDataString($entry.Value))")
+            }
+          }
+
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/photo-assets/migrate?$($query -join '&')"
           Write-Host "Using function URL: $FunctionUrl"
 
           ./Invoke-AzureDurableFunction.ps1 `

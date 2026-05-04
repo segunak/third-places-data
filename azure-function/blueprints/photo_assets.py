@@ -36,6 +36,10 @@ bp = df.Blueprint()
 DEFAULT_PROVIDER_TYPE = "outscraper"
 EXPECTED_SKIP_SAMPLE_LIMIT = 5
 EXPECTED_SKIP_REASONS = {"ignored_missing_place_id", "no_migratable_photo_urls"}
+DEFAULT_DRY_RUN_MIGRATION_CONCURRENCY = 20
+DEFAULT_UPLOAD_MIGRATION_CONCURRENCY = 5
+DEFAULT_CANDIDATE_CHUNK_SIZE = 2
+DEFAULT_DOWNLOAD_TIMEOUT_SECONDS = 20
 
 
 def _parse_bool(value: Optional[str], default: bool) -> bool:
@@ -53,8 +57,18 @@ def _parse_int(value: Optional[str], default: int) -> int:
         raise ValueError(f"Invalid integer value: {value}") from exc
 
 
+def _parse_positive_int(value: Optional[str], default: int, name: str) -> int:
+    parsed_value = _parse_int(value, default)
+    if parsed_value <= 0:
+        raise ValueError(f"{name} must be greater than zero")
+    return parsed_value
+
+
 def _base_config_from_params(params) -> Dict[str, Any]:
     dry_run = _parse_bool(params.get("dry_run"), True)
+    upload = _parse_bool(params.get("upload"), not dry_run)
+    write_airtable = _parse_bool(params.get("write_airtable"), not dry_run)
+    default_concurrency = DEFAULT_UPLOAD_MIGRATION_CONCURRENCY if upload and not dry_run else DEFAULT_DRY_RUN_MIGRATION_CONCURRENCY
     return {
         "provider_type": params.get("provider_type", DEFAULT_PROVIDER_TYPE),
         "city": params.get("city", "charlotte"),
@@ -62,9 +76,12 @@ def _base_config_from_params(params) -> Dict[str, Any]:
         "place_id": params.get("place_id", ""),
         "max_places": _parse_int(params.get("max_places"), 0),
         "dry_run": dry_run,
-        "upload": _parse_bool(params.get("upload"), not dry_run),
-        "write_airtable": _parse_bool(params.get("write_airtable"), not dry_run),
+        "upload": upload,
+        "write_airtable": write_airtable,
         "try_url_variants": _parse_bool(params.get("try_url_variants"), True),
+        "migration_concurrency": _parse_positive_int(params.get("migration_concurrency"), default_concurrency, "migration_concurrency"),
+        "candidate_chunk_size": _parse_positive_int(params.get("candidate_chunk_size"), DEFAULT_CANDIDATE_CHUNK_SIZE, "candidate_chunk_size"),
+        "download_timeout_seconds": _parse_positive_int(params.get("download_timeout_seconds"), DEFAULT_DOWNLOAD_TIMEOUT_SECONDS, "download_timeout_seconds"),
     }
 
 
@@ -78,7 +95,21 @@ def _photo_asset_config(config: Dict[str, Any]) -> PhotoAssetConfig:
         dry_run=bool(config.get("dry_run", True)),
         upload=bool(config.get("upload", False)),
         try_url_variants=bool(config.get("try_url_variants", True)),
+        download_timeout_seconds=int(config.get("download_timeout_seconds", DEFAULT_DOWNLOAD_TIMEOUT_SECONDS) or DEFAULT_DOWNLOAD_TIMEOUT_SECONDS),
     )
+
+
+def _migration_concurrency(config: Dict[str, Any]) -> int:
+    default_concurrency = DEFAULT_UPLOAD_MIGRATION_CONCURRENCY if config.get("upload") and not config.get("dry_run", True) else DEFAULT_DRY_RUN_MIGRATION_CONCURRENCY
+    return max(1, int(config.get("migration_concurrency", default_concurrency) or default_concurrency))
+
+
+def _candidate_chunk_size(config: Dict[str, Any]) -> int:
+    return max(1, int(config.get("candidate_chunk_size", DEFAULT_CANDIDATE_CHUNK_SIZE) or DEFAULT_CANDIDATE_CHUNK_SIZE))
+
+
+def _use_chunked_upload_migration(config: Dict[str, Any]) -> bool:
+    return bool(config.get("upload", False)) and not bool(config.get("dry_run", True))
 
 
 def _filter_places(places: List[Dict[str, Any]], config: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -455,6 +486,9 @@ def _migration_progress_status(
         "dry_run": dry_run,
         "upload": bool(config.get("upload", False)),
         "write_airtable": bool(config.get("write_airtable", False)),
+        "migration_concurrency": _migration_concurrency(config),
+        "candidate_chunk_size": _candidate_chunk_size(config),
+        "download_timeout_seconds": int(config.get("download_timeout_seconds", DEFAULT_DOWNLOAD_TIMEOUT_SECONDS) or DEFAULT_DOWNLOAD_TIMEOUT_SECONDS),
         "processed_places": processed_places,
         "total_places": total_places,
         "batch_index": batch_index,
@@ -594,6 +628,36 @@ def _compact_place_result(result: Dict[str, Any]) -> Dict[str, Any]:
     return compact
 
 
+def _compact_asset_for_finalization(asset: Dict[str, Any]) -> Dict[str, Any]:
+    keys = [
+        "source_url_sha256",
+        "azure_url",
+        "status",
+        "bytes",
+        "converted_to_webp",
+        "fallback_original",
+        "fallback_reason",
+        "source_field",
+    ]
+    return {key: asset.get(key) for key in keys if asset.get(key) not in (None, {}, [])}
+
+
+def _compact_failure_for_finalization(failure: Dict[str, Any]) -> Dict[str, Any]:
+    keys = [
+        "source_url_sha256",
+        "source_host",
+        "reason",
+        "error",
+        "http_status",
+        "source_field",
+    ]
+    return {key: failure.get(key) for key in keys if failure.get(key) not in (None, {}, [])}
+
+
+def _candidate_window(items: List[Dict[str, Any]], start: int, count: int) -> List[Dict[str, Any]]:
+    return items[start:start + count]
+
+
 @bp.function_name(name="PhotoAssetsMigrate")
 @bp.route(route="photo-assets/migrate")
 @bp.durable_client_input(client_name="client")
@@ -609,6 +673,13 @@ async def photo_assets_migrate(req: func.HttpRequest, client) -> func.HttpRespon
         return _json_response({"success": False, "message": "Failed to start migration", "error": str(exc)}, 500)
 
 
+def _schedule_migration_task(context: df.DurableOrchestrationContext, place: Dict[str, Any], config: Dict[str, Any]):
+    input_data = {"place": place, "config": config}
+    if _use_chunked_upload_migration(config):
+        return context.call_sub_orchestrator("migrate_place_photo_assets_orchestrator", input_data)
+    return context.call_activity("migrate_single_place_photo_assets", input_data)
+
+
 @bp.orchestration_trigger(context_name="context")
 def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext):
     config: Dict[str, Any] = {}
@@ -616,13 +687,14 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
     results: List[Dict[str, Any]] = []
     curator_results: List[Dict[str, Any]] = []
     audit_results: List[Dict[str, Any]] = []
-    concurrency_limit = 20
+    concurrency_limit = DEFAULT_DRY_RUN_MIGRATION_CONCURRENCY
     total_batches = 0
     current_batch_index = 0
     phase = "starting"
 
     try:
         config = context.get_input() or {}
+        concurrency_limit = _migration_concurrency(config)
         phase = "loading_places"
         all_places = yield context.call_activity("get_all_third_places", {"config": config})
         phase = "filtering_places"
@@ -644,7 +716,7 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
             current_batch_index = batch_index
             batch = filtered_places[index:index + concurrency_limit]
             tasks = [
-                context.call_activity("migrate_single_place_photo_assets", {"place": place, "config": config})
+                _schedule_migration_task(context, place, config)
                 for place in batch
             ]
             phase = "migration_batch_running"
@@ -789,21 +861,329 @@ def photo_assets_migration_orchestrator(context: df.DurableOrchestrationContext)
             audit_results=audit_results,
             error=exc,
         )
+        raise
+
+
+@bp.orchestration_trigger(context_name="context")
+def migrate_place_photo_assets_orchestrator(context: df.DurableOrchestrationContext):
+    activity_input = context.get_input() or {}
+    config = activity_input.get("config", {})
+    prepared = yield context.call_activity("prepare_place_photo_asset_migration", activity_input)
+    if prepared.get("status") != "prepared":
+        return prepared.get("result", prepared)
+
+    candidate_count = int(prepared.get("candidate_count", 0) or 0)
+    chunk_size = _candidate_chunk_size(config)
+    chunk_results = []
+    for chunk_index, start in enumerate(range(0, candidate_count, chunk_size), start=1):
+        chunk_result = yield context.call_activity("migrate_place_photo_asset_chunk", {
+            "prepared": prepared,
+            "config": config,
+            "chunk_index": chunk_index,
+            "candidate_start": start,
+            "candidate_count": min(chunk_size, candidate_count - start),
+        })
+        chunk_results.append(chunk_result)
+
+    return (yield context.call_activity("finalize_place_photo_asset_migration", {
+        "prepared": prepared,
+        "config": config,
+        "chunk_results": chunk_results,
+    }))
+
+
+def _fetch_place_data_for_migration(place: Dict[str, Any], config: Dict[str, Any]) -> tuple[Dict[str, Any], List[str]]:
+    fields = place.get("fields", {}) if isinstance(place, dict) else {}
+    city = config.get("city", "charlotte")
+    place_id = str(fields.get("Google Maps Place Id", "") or "").strip()
+    place_name = fields.get("Place", "Unknown")
+    data_file_path = f"data/places/{city}/{place_id}.json"
+    fetch_success, place_data, fetch_message = fetch_data_github(data_file_path)
+    warnings: List[str] = []
+    if not fetch_success:
+        warnings.append(f"data_file_missing: {fetch_message}")
+        place_data = {"place_id": place_id, "place_name": place_name, "photos": {}}
+    return place_data, warnings
+
+
+def _migration_result_from_asset_result(
+    place: Dict[str, Any],
+    config: Dict[str, Any],
+    asset_result: Dict[str, Any],
+    warnings: Optional[List[str]] = None,
+) -> Dict[str, Any]:
+    fields = place.get("fields", {}) if isinstance(place, dict) else {}
+    place_name = fields.get("Place", "Unknown")
+    place_id = str(fields.get("Google Maps Place Id", "") or "").strip()
+    selected_urls = asset_result["selected_airtable_urls"]
+    dry_run = bool(config.get("dry_run", True))
+    write_airtable = bool(config.get("write_airtable", False))
+    candidate_count = asset_result["summary"].get("candidate_count", 0)
+    asset_result["summary"].update({
+        "github_data_file_save_attempted": False,
+        "github_data_file_saved": False,
+        "github_data_file_save_failed": False,
+        "airtable_write_requested": write_airtable,
+        "airtable_write_attempted": False,
+        "airtable_update_applied": False,
+        "airtable_update_skipped_no_change": False,
+        "airtable_update_failed": False,
+    })
+
+    if candidate_count == 0 and not selected_urls:
+        summary = asset_result["summary"]
+        message = (
+            "Skipped: no migratable photo URLs found after checking Airtable Photos, "
+            "data file photos.photo_urls, and raw provider photo_url_big sources."
+        )
+        logging.info(
+            "Skipping photo asset migration for %s (%s, record_id=%s): no migratable photo URLs found. "
+            "candidate_count=%s airtable_photos_count=%s data_file_photo_urls_count=%s "
+            "provider_raw_photo_url_big_count=%s warnings=%s",
+            place_name,
+            place_id,
+            place.get("id", ""),
+            summary.get("candidate_count", 0),
+            summary.get("airtable_photos_count", 0),
+            summary.get("data_file_photo_urls_count", 0),
+            summary.get("provider_raw_photo_url_big_count", 0),
+            warnings or [],
+        )
+        return _compact_migration_activity_result(
+            status="skipped",
+            skip_reason="no_migratable_photo_urls",
+            message=message,
+            warnings=warnings,
+            place_name=place_name,
+            place_id=place_id,
+            record_id=place.get("id", ""),
+            summary=summary,
+            selected_airtable_urls=selected_urls,
+            assets=asset_result.get("assets", []),
+            failures=asset_result.get("failures", []),
+        )
+
+    if not dry_run and not selected_urls:
+        summary = asset_result["summary"]
+        failures = [failure for failure in asset_result.get("failures", []) if isinstance(failure, dict)]
+        if _all_candidate_downloads_failed(summary, failures):
+            source_hosts = sorted({failure.get("source_host", "unknown") for failure in failures})
+            message = "Skipped: all photo candidate downloads failed, so Airtable Photos was left unchanged."
+            logging.warning(
+                "Skipping photo asset migration for %s (%s, record_id=%s): all candidate downloads failed. "
+                "candidate_count=%s failed_upload_count=%s source_hosts=%s warnings=%s",
+                place_name,
+                place_id,
+                place.get("id", ""),
+                summary.get("candidate_count", 0),
+                summary.get("failed_upload_count", 0),
+                source_hosts,
+                warnings or [],
+            )
+            return _compact_migration_activity_result(
+                status="skipped",
+                skip_reason="all_photo_downloads_failed",
+                message=message,
+                warnings=warnings,
+                place_name=place_name,
+                place_id=place_id,
+                record_id=place.get("id", ""),
+                summary=summary,
+                selected_airtable_urls=selected_urls,
+                assets=asset_result.get("assets", []),
+                failures=asset_result.get("failures", []),
+            )
+
+        message = (
+            "Migration found photo candidates but selected zero Azure Photos URLs; "
+            "refusing to overwrite Airtable Photos with an empty list."
+        )
+        logging.error(
+            "Refusing empty Photos update for %s (%s, record_id=%s): "
+            "candidate_count=%s azure_assets_count=%s failed_upload_count=%s warnings=%s",
+            place_name,
+            place_id,
+            place.get("id", ""),
+            summary.get("candidate_count", 0),
+            summary.get("azure_assets_count", 0),
+            summary.get("failed_upload_count", 0),
+            warnings or [],
+        )
+        return _compact_migration_activity_result(
+            status="error",
+            error_reason="no_selected_azure_urls",
+            message=message,
+            warnings=warnings,
+            place_name=place_name,
+            place_id=place_id,
+            record_id=place.get("id", ""),
+            summary=summary,
+            selected_airtable_urls=selected_urls,
+            assets=asset_result.get("assets", []),
+            failures=asset_result.get("failures", []),
+        )
+
+    status = "would_update" if dry_run else "updated"
+    message = f"Processed {candidate_count} candidates"
+
+    if not dry_run and write_airtable:
+        airtable_service = AirtableService(config.get("provider_type", DEFAULT_PROVIDER_TYPE))
+        asset_result["summary"]["airtable_write_attempted"] = True
+        update_result = airtable_service.update_place_record(
+            record_id=place["id"],
+            field_to_update="Photos",
+            update_value=json.dumps(selected_urls),
+            overwrite=True,
+        )
+        airtable_update_failed = (
+            not update_result.get("updated", False)
+            and update_result.get("old_value") is None
+            and update_result.get("new_value") is None
+        )
+        asset_result["summary"]["airtable_update_applied"] = bool(update_result.get("updated", False))
+        asset_result["summary"]["airtable_update_failed"] = airtable_update_failed
+        asset_result["summary"]["airtable_update_skipped_no_change"] = (
+            not update_result.get("updated", False)
+            and not airtable_update_failed
+        )
+        if airtable_update_failed:
+            return _compact_migration_activity_result(
+                status="error",
+                error_reason="airtable_update_failed",
+                message="Airtable update failed",
+                warnings=warnings,
+                place_name=place_name,
+                place_id=place_id,
+                record_id=place.get("id", ""),
+                summary=asset_result["summary"],
+                selected_airtable_urls=selected_urls,
+                assets=asset_result.get("assets", []),
+                failures=asset_result.get("failures", []),
+            )
+
+    return _compact_migration_activity_result(
+        status=status,
+        message=message,
+        warnings=warnings,
+        place_name=place_name,
+        place_id=place_id,
+        record_id=place.get("id", ""),
+        summary=asset_result["summary"],
+        selected_airtable_urls=selected_urls,
+        assets=asset_result.get("assets", []),
+        failures=asset_result.get("failures", []),
+    )
+
+
+@bp.activity_trigger(input_name="activityInput")
+@bp.function_name("prepare_place_photo_asset_migration")
+def prepare_place_photo_asset_migration(activityInput):
+    place = activityInput.get("place")
+    config = activityInput.get("config", {})
+    try:
+        if not place or "fields" not in place:
+            return {"status": "error", "message": "Invalid place record", "summary": {}}
+        fields = place["fields"]
+        place_name = fields.get("Place", "Unknown")
+        if not is_photo_ready_place(fields):
+            message = "Skipped: no Google Maps Place Id; photo paths ignore non-photo-ready records."
+            return {
+                "status": "skipped",
+                "result": _compact_migration_activity_result(
+                    status="skipped",
+                    skip_reason="ignored_missing_place_id",
+                    message=message,
+                    place_name=place_name,
+                    record_id=place.get("id", ""),
+                    summary={"ignored_missing_place_id": True},
+                ),
+            }
+
+        place_data, warnings = _fetch_place_data_for_migration(place, config)
+        service = PhotoAssetService()
+        place_context = service.prepare_place_context(place, place_data, _photo_asset_config(config))
+        place_context["warnings"] = [*warnings, *place_context.get("warnings", [])]
         return {
-            "success": False,
-            "message": "Photo asset migration failed",
-            "data": {
-                "phase": phase,
-                "processed_places": len(results),
-                "total_places": len(filtered_places),
-                "batch_index": current_batch_index,
-                "total_batches": total_batches,
-                "totals_so_far": _aggregate_results(results, bool(config.get("dry_run", True))),
-                "curator_totals_so_far": _aggregate_curator_results(curator_results),
-                "audit_totals_so_far": _aggregate_audit_results(audit_results),
-            },
-            "error": str(exc),
+            "status": "prepared",
+            "place": place,
+            "place_context": place_context,
+            "candidate_count": len(place_context.get("inventory", [])),
+            "warnings": place_context.get("warnings", []),
         }
+    except Exception as exc:
+        logging.error(f"Failed to prepare photo asset migration for place: {exc}", exc_info=True)
+        return {"status": "error", "message": str(exc), "summary": {}}
+
+
+@bp.activity_trigger(input_name="activityInput")
+@bp.function_name("migrate_place_photo_asset_chunk")
+def migrate_place_photo_asset_chunk(activityInput):
+    prepared = activityInput.get("prepared", {})
+    config = activityInput.get("config", {})
+    chunk_index = int(activityInput.get("chunk_index", 0) or 0)
+    candidate_start = int(activityInput.get("candidate_start", 0) or 0)
+    candidate_count = int(activityInput.get("candidate_count", 0) or 0)
+    try:
+        place_context = prepared.get("place_context", {})
+        candidates = _candidate_window(place_context.get("inventory", []), candidate_start, candidate_count)
+        service = PhotoAssetService()
+        batch_result = service.process_candidate_batch(place_context, candidates, _photo_asset_config(config))
+        assets = [_compact_asset_for_finalization(asset) for asset in batch_result.get("assets", [])]
+        failures = [_compact_failure_for_finalization(failure) for failure in batch_result.get("failures", [])]
+        return {
+            "status": "processed",
+            "place_name": place_context.get("place_name", "Unknown"),
+            "place_id": place_context.get("place_id", ""),
+            "record_id": place_context.get("record_id", ""),
+            "chunk_index": chunk_index,
+            "candidate_start": candidate_start,
+            "candidate_count": candidate_count,
+            "asset_count": len(assets),
+            "failure_count": len(failures),
+            "asset_status_counts": _count_by_key(assets, "status"),
+            "failure_reason_counts": _count_by_key(failures, "reason"),
+            "blob_bytes": sum(int(asset.get("bytes", 0) or 0) for asset in assets),
+            "assets": assets,
+            "failures": failures,
+        }
+    except Exception as exc:
+        logging.error(f"Failed to migrate photo asset chunk: {exc}", exc_info=True)
+        return {
+            "status": "error",
+            "message": str(exc),
+            "chunk_index": chunk_index,
+            "candidate_start": candidate_start,
+            "candidate_count": candidate_count,
+        }
+
+
+@bp.activity_trigger(input_name="activityInput")
+@bp.function_name("finalize_place_photo_asset_migration")
+def finalize_place_photo_asset_migration(activityInput):
+    prepared = activityInput.get("prepared", {})
+    config = activityInput.get("config", {})
+    chunk_results = [result for result in activityInput.get("chunk_results", []) if isinstance(result, dict)]
+    try:
+        place = prepared.get("place")
+        place_context = prepared.get("place_context", {})
+        assets: List[Dict[str, Any]] = []
+        failures: List[Dict[str, Any]] = []
+        for chunk_result in chunk_results:
+            assets.extend([asset for asset in chunk_result.get("assets", []) if isinstance(asset, dict)])
+            failures.extend([failure for failure in chunk_result.get("failures", []) if isinstance(failure, dict)])
+            if chunk_result.get("status") == "error":
+                failures.append({
+                    "reason": "chunk_failed",
+                    "error": chunk_result.get("message", "chunk failed"),
+                    "source_host": "unknown",
+                })
+
+        service = PhotoAssetService()
+        asset_result = service.finalize_place_assets(place_context, assets, failures)
+        return _migration_result_from_asset_result(place, config, asset_result, prepared.get("warnings", []))
+    except Exception as exc:
+        logging.error(f"Failed to finalize photo asset migration for place: {exc}", exc_info=True)
+        return {"status": "error", "message": str(exc), "summary": {}}
 
 
 @bp.activity_trigger(input_name="activityInput")
@@ -818,7 +1198,6 @@ def migrate_single_place_photo_assets(activityInput):
         fields = place["fields"]
         place_name = fields.get("Place", "Unknown")
         place_id = fields.get("Google Maps Place Id", "")
-        city = config.get("city", "charlotte")
         if not is_photo_ready_place(fields):
             message = "Skipped: no Google Maps Place Id; photo paths ignore non-photo-ready records."
             logging.info(
@@ -835,176 +1214,10 @@ def migrate_single_place_photo_assets(activityInput):
                 summary={"ignored_missing_place_id": True},
             )
 
-        data_file_path = f"data/places/{city}/{place_id}.json"
-        fetch_success, place_data, fetch_message = fetch_data_github(data_file_path)
-        warnings: List[str] = []
-        if not fetch_success:
-            warnings.append(f"data_file_missing: {fetch_message}")
-            place_data = {"place_id": place_id, "place_name": place_name, "photos": {}}
-
+        place_data, warnings = _fetch_place_data_for_migration(place, config)
         service = PhotoAssetService()
         asset_result = service.process_place(place, place_data, _photo_asset_config(config))
-        selected_urls = asset_result["selected_airtable_urls"]
-        dry_run = bool(config.get("dry_run", True))
-        write_airtable = bool(config.get("write_airtable", False))
-        candidate_count = asset_result["summary"].get("candidate_count", 0)
-        asset_result["summary"].update({
-            "github_data_file_save_attempted": False,
-            "github_data_file_saved": False,
-            "github_data_file_save_failed": False,
-            "airtable_write_requested": write_airtable,
-            "airtable_write_attempted": False,
-            "airtable_update_applied": False,
-            "airtable_update_skipped_no_change": False,
-            "airtable_update_failed": False,
-        })
-
-        if candidate_count == 0 and not selected_urls:
-            summary = asset_result["summary"]
-            message = (
-                "Skipped: no migratable photo URLs found after checking Airtable Photos, "
-                "data file photos.photo_urls, and raw provider photo_url_big sources."
-            )
-            logging.info(
-                "Skipping photo asset migration for %s (%s, record_id=%s): no migratable photo URLs found. "
-                "candidate_count=%s airtable_photos_count=%s data_file_photo_urls_count=%s "
-                "provider_raw_photo_url_big_count=%s warnings=%s",
-                place_name,
-                place_id,
-                place.get("id", ""),
-                summary.get("candidate_count", 0),
-                summary.get("airtable_photos_count", 0),
-                summary.get("data_file_photo_urls_count", 0),
-                summary.get("provider_raw_photo_url_big_count", 0),
-                warnings,
-            )
-            return _compact_migration_activity_result(
-                status="skipped",
-                skip_reason="no_migratable_photo_urls",
-                message=message,
-                warnings=warnings,
-                place_name=place_name,
-                place_id=place_id,
-                record_id=place.get("id", ""),
-                summary=summary,
-                selected_airtable_urls=selected_urls,
-                assets=asset_result.get("assets", []),
-                failures=asset_result.get("failures", []),
-            )
-
-        if not dry_run and not selected_urls:
-            summary = asset_result["summary"]
-            failures = [failure for failure in asset_result.get("failures", []) if isinstance(failure, dict)]
-            if _all_candidate_downloads_failed(summary, failures):
-                source_hosts = sorted({failure.get("source_host", "unknown") for failure in failures})
-                message = (
-                    "Skipped: all photo candidate downloads failed, so Airtable Photos was left unchanged."
-                )
-                logging.warning(
-                    "Skipping photo asset migration for %s (%s, record_id=%s): all candidate downloads failed. "
-                    "candidate_count=%s failed_upload_count=%s source_hosts=%s warnings=%s",
-                    place_name,
-                    place_id,
-                    place.get("id", ""),
-                    summary.get("candidate_count", 0),
-                    summary.get("failed_upload_count", 0),
-                    source_hosts,
-                    warnings,
-                )
-                return _compact_migration_activity_result(
-                    status="skipped",
-                    skip_reason="all_photo_downloads_failed",
-                    message=message,
-                    warnings=warnings,
-                    place_name=place_name,
-                    place_id=place_id,
-                    record_id=place.get("id", ""),
-                    summary=summary,
-                    selected_airtable_urls=selected_urls,
-                    assets=asset_result.get("assets", []),
-                    failures=asset_result.get("failures", []),
-                )
-
-            message = (
-                "Migration found photo candidates but selected zero Azure Photos URLs; "
-                "refusing to overwrite Airtable Photos with an empty list."
-            )
-            logging.error(
-                "Refusing empty Photos update for %s (%s, record_id=%s): "
-                "candidate_count=%s azure_assets_count=%s failed_upload_count=%s warnings=%s",
-                place_name,
-                place_id,
-                place.get("id", ""),
-                summary.get("candidate_count", 0),
-                summary.get("azure_assets_count", 0),
-                summary.get("failed_upload_count", 0),
-                warnings,
-            )
-            return _compact_migration_activity_result(
-                status="error",
-                error_reason="no_selected_azure_urls",
-                message=message,
-                warnings=warnings,
-                place_name=place_name,
-                place_id=place_id,
-                record_id=place.get("id", ""),
-                summary=summary,
-                selected_airtable_urls=selected_urls,
-                assets=asset_result.get("assets", []),
-                failures=asset_result.get("failures", []),
-            )
-
-        status = "would_update" if dry_run else "updated"
-        message = f"Processed {candidate_count} candidates"
-
-        if not dry_run:
-            if write_airtable:
-                airtable_service = AirtableService(config.get("provider_type", DEFAULT_PROVIDER_TYPE))
-                asset_result["summary"]["airtable_write_attempted"] = True
-                update_result = airtable_service.update_place_record(
-                    record_id=place["id"],
-                    field_to_update="Photos",
-                    update_value=json.dumps(selected_urls),
-                    overwrite=True,
-                )
-                airtable_update_failed = (
-                    not update_result.get("updated", False)
-                    and update_result.get("old_value") is None
-                    and update_result.get("new_value") is None
-                )
-                asset_result["summary"]["airtable_update_applied"] = bool(update_result.get("updated", False))
-                asset_result["summary"]["airtable_update_failed"] = airtable_update_failed
-                asset_result["summary"]["airtable_update_skipped_no_change"] = (
-                    not update_result.get("updated", False)
-                    and not airtable_update_failed
-                )
-                if airtable_update_failed:
-                    return _compact_migration_activity_result(
-                        status="error",
-                        error_reason="airtable_update_failed",
-                        message="Airtable update failed",
-                        warnings=warnings,
-                        place_name=place_name,
-                        place_id=place_id,
-                        record_id=place.get("id", ""),
-                        summary=asset_result["summary"],
-                        selected_airtable_urls=selected_urls,
-                        assets=asset_result.get("assets", []),
-                        failures=asset_result.get("failures", []),
-                    )
-
-        return _compact_migration_activity_result(
-            status=status,
-            message=message,
-            warnings=warnings,
-            place_name=place_name,
-            place_id=place_id,
-            record_id=place.get("id", ""),
-            summary=asset_result["summary"],
-            selected_airtable_urls=selected_urls,
-            assets=asset_result.get("assets", []),
-            failures=asset_result.get("failures", []),
-        )
+        return _migration_result_from_asset_result(place, config, asset_result, warnings)
     except Exception as exc:
         logging.error(f"Failed to migrate photo assets for place: {exc}", exc_info=True)
         return {"status": "error", "message": str(exc), "summary": {}}

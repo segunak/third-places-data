@@ -13,6 +13,7 @@ class FakePhotoAssetsOrchestrationContext:
     def __init__(self, input_data):
         self._input_data = input_data
         self.activity_calls = []
+        self.sub_orchestrator_calls = []
         self.custom_statuses = []
         self.is_replaying = False
 
@@ -23,6 +24,11 @@ class FakePhotoAssetsOrchestrationContext:
         activity_call = {"name": name, "input": input_data}
         self.activity_calls.append(activity_call)
         return activity_call
+
+    def call_sub_orchestrator(self, name, input_data):
+        sub_orchestrator_call = {"name": name, "input": input_data, "kind": "sub_orchestrator"}
+        self.sub_orchestrator_calls.append(sub_orchestrator_call)
+        return sub_orchestrator_call
 
     def task_all(self, tasks):
         return {"name": "task_all", "tasks": tasks}
@@ -52,6 +58,10 @@ def run_photo_assets_migration_orchestrator(context):
     return photo_assets.photo_assets_migration_orchestrator._function._func.orchestrator_function(context)
 
 
+def run_migrate_place_photo_assets_orchestrator(context):
+    return photo_assets.migrate_place_photo_assets_orchestrator._function._func.orchestrator_function(context)
+
+
 def test_base_config_defaults():
     config = photo_assets._base_config_from_params({})
 
@@ -60,6 +70,20 @@ def test_base_config_defaults():
     assert config["upload"] is False
     assert config["write_airtable"] is False
     assert config["try_url_variants"] is True
+    assert config["migration_concurrency"] == 20
+    assert config["candidate_chunk_size"] == 2
+    assert config["download_timeout_seconds"] == 20
+
+
+def test_base_config_uses_upload_safe_defaults_for_live_runs():
+    config = photo_assets._base_config_from_params({"dry_run": "false"})
+
+    assert config["dry_run"] is False
+    assert config["upload"] is True
+    assert config["write_airtable"] is True
+    assert config["migration_concurrency"] == 5
+    assert config["candidate_chunk_size"] == 2
+    assert config["download_timeout_seconds"] == 20
 
 
 def test_base_config_rejects_invalid_int():
@@ -67,6 +91,15 @@ def test_base_config_rejects_invalid_int():
         photo_assets._base_config_from_params({"max_places": "bad"})
     except ValueError as exc:
         assert "Invalid integer value" in str(exc)
+    else:
+        raise AssertionError("Expected ValueError")
+
+
+def test_base_config_rejects_non_positive_migration_controls():
+    try:
+        photo_assets._base_config_from_params({"migration_concurrency": "0"})
+    except ValueError as exc:
+        assert "migration_concurrency must be greater than zero" in str(exc)
     else:
         raise AssertionError("Expected ValueError")
 
@@ -291,7 +324,73 @@ def test_photo_assets_migration_orchestrator_updates_custom_status_by_phase():
     assert "audit_results" not in result["data"]
 
 
-def test_photo_assets_migration_orchestrator_failure_reports_phase_in_output_and_status():
+def test_photo_assets_migration_orchestrator_uses_chunked_sub_orchestrator_for_uploads():
+    context = FakePhotoAssetsOrchestrationContext({
+        "provider_type": "outscraper",
+        "city": "charlotte",
+        "dry_run": False,
+        "upload": True,
+        "write_airtable": True,
+        "migration_concurrency": 1,
+        "candidate_chunk_size": 2,
+    })
+    places = [
+        {"id": "rec123", "fields": {"Place": "Daily Ritual", "Google Maps Place Id": "ChIJ123"}},
+        {"id": "rec456", "fields": {"Place": "Quiet Library", "Google Maps Place Id": "ChIJ456"}},
+    ]
+
+    orchestrator = run_photo_assets_migration_orchestrator(context)
+    get_all_call = next(orchestrator)
+    assert get_all_call["name"] == "get_all_third_places"
+
+    migration_call = orchestrator.send(places)
+    assert migration_call["name"] == "task_all"
+    assert [task["name"] for task in migration_call["tasks"]] == ["migrate_place_photo_assets_orchestrator"]
+    assert migration_call["tasks"][0]["kind"] == "sub_orchestrator"
+    assert migration_call["tasks"][0]["input"]["config"]["candidate_chunk_size"] == 2
+
+
+def test_migrate_place_photo_assets_orchestrator_processes_all_candidate_chunks():
+    context = FakePhotoAssetsOrchestrationContext({
+        "place": {"id": "rec123", "fields": {"Place": "Daily Ritual", "Google Maps Place Id": "ChIJ123"}},
+        "config": {"candidate_chunk_size": 2},
+    })
+    orchestrator = run_migrate_place_photo_assets_orchestrator(context)
+
+    prepare_call = next(orchestrator)
+    assert prepare_call["name"] == "prepare_place_photo_asset_migration"
+
+    prepared = {
+        "status": "prepared",
+        "candidate_count": 5,
+        "place_context": {"place_name": "Daily Ritual", "place_id": "ChIJ123", "record_id": "rec123"},
+    }
+    first_chunk_call = orchestrator.send(prepared)
+    assert first_chunk_call["name"] == "migrate_place_photo_asset_chunk"
+    assert first_chunk_call["input"]["candidate_start"] == 0
+    assert first_chunk_call["input"]["candidate_count"] == 2
+
+    second_chunk_call = orchestrator.send({"status": "processed", "chunk_index": 1})
+    assert second_chunk_call["input"]["candidate_start"] == 2
+    assert second_chunk_call["input"]["candidate_count"] == 2
+
+    third_chunk_call = orchestrator.send({"status": "processed", "chunk_index": 2})
+    assert third_chunk_call["input"]["candidate_start"] == 4
+    assert third_chunk_call["input"]["candidate_count"] == 1
+
+    finalize_call = orchestrator.send({"status": "processed", "chunk_index": 3})
+    assert finalize_call["name"] == "finalize_place_photo_asset_migration"
+    assert len(finalize_call["input"]["chunk_results"]) == 3
+
+    try:
+        orchestrator.send({"status": "updated", "summary": {}})
+    except StopIteration as exc:
+        assert exc.value["status"] == "updated"
+    else:
+        raise AssertionError("Expected place orchestrator to complete")
+
+
+def test_photo_assets_migration_orchestrator_reraises_infrastructure_failure_after_status_update():
     context = FakePhotoAssetsOrchestrationContext({
         "provider_type": "outscraper",
         "city": "charlotte",
@@ -304,14 +403,11 @@ def test_photo_assets_migration_orchestrator_failure_reports_phase_in_output_and
 
     try:
         orchestrator.throw(RuntimeError("Airtable unavailable"))
-    except StopIteration as exc:
-        result = exc.value
+    except RuntimeError as exc:
+        assert str(exc) == "Airtable unavailable"
     else:
-        raise AssertionError("Expected orchestrator to complete with failure output")
+        raise AssertionError("Expected orchestrator to re-raise infrastructure failure")
 
-    assert result["success"] is False
-    assert result["data"]["phase"] == "loading_places"
-    assert result["error"] == "Airtable unavailable"
     assert context.custom_statuses[-1]["phase"] == "failed"
     assert context.custom_statuses[-1]["failure"] == {
         "type": "RuntimeError",

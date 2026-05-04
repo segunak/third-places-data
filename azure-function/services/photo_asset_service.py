@@ -34,6 +34,7 @@ class PhotoAssetConfig:
     dry_run: bool = True
     upload: bool = False
     try_url_variants: bool = True
+    download_timeout_seconds: int = 20
 
 
 def parse_url_list(value: Any) -> List[str]:
@@ -301,12 +302,22 @@ class PhotoAssetService:
         self.publisher = PhotoPublisherService(self.session)
 
     def process_place(self, airtable_record: Dict[str, Any], place_data: Optional[Dict[str, Any]], config: PhotoAssetConfig) -> Dict[str, Any]:
+        place_context = self.prepare_place_context(airtable_record, place_data, config)
+        if place_context.get("status") == "skipped" and "result" in place_context:
+            return place_context["result"]
+        batch_result = self.process_candidate_batch(place_context, place_context.get("inventory", []), config)
+        return self.finalize_place_assets(place_context, batch_result["assets"], batch_result["failures"])
+
+    def prepare_place_context(self, airtable_record: Dict[str, Any], place_data: Optional[Dict[str, Any]], config: PhotoAssetConfig) -> Dict[str, Any]:
         fields = airtable_record.get("fields", {}) if isinstance(airtable_record, dict) else {}
         record_id = airtable_record.get("id", "") if isinstance(airtable_record, dict) else ""
         place_id = str(fields.get("Google Maps Place Id", "") or "").strip()
         place_name = fields.get("Place", "Unknown")
         if not is_photo_ready_place(fields):
-            return self._skipped_missing_id(place_name, record_id, place_id)
+            return {
+                "status": "skipped",
+                "result": self._skipped_missing_id(place_name, record_id, place_id),
+            }
 
         working_place_data = place_data if isinstance(place_data, dict) else {"photos": {}}
         inventory, inventory_summary = build_place_photo_inventory(airtable_record, working_place_data, config.city)
@@ -320,12 +331,27 @@ class PhotoAssetService:
 
         inventory_summary["candidate_count"] = len(inventory)
         inventory_summary["legacy_blob_candidate_count"] = len([candidate for candidate in inventory if str(candidate.get("source_field", "")).startswith("legacy.")])
-        curator_photo_urls_field_urls = curator_photo_urls_field_from_airtable(fields)
-        preserved_curator_urls = preserved_curator_photo_urls_from_airtable(fields)
+        return {
+            "status": "prepared",
+            "place_name": place_name,
+            "place_id": place_id,
+            "record_id": record_id,
+            "inventory": inventory,
+            "inventory_summary": inventory_summary,
+            "warnings": warnings,
+            "curator_photo_urls_field_urls": curator_photo_urls_field_from_airtable(fields),
+            "preserved_curator_urls": preserved_curator_photo_urls_from_airtable(fields),
+            "non_azure_airtable_photos_count": len([url for url in parse_url_list(fields.get("Photos")) if urlparse(url).netloc.lower() != AZURE_ACCOUNT_HOST]),
+        }
 
+    def process_candidate_batch(self, place_context: Dict[str, Any], candidates: List[Dict[str, Any]], config: PhotoAssetConfig) -> Dict[str, Any]:
+        place_name = place_context.get("place_name", "Unknown")
+        place_id = place_context.get("place_id", "")
+        record_id = place_context.get("record_id", "")
         success_assets: List[Dict[str, Any]] = []
         failures: List[Dict[str, Any]] = []
-        for candidate in inventory:
+
+        for candidate in candidates:
             source_url = candidate["canonical_source_url"]
             source_hash = candidate["source_url_sha256"]
             classification = classify_azure_photo_url(source_url, config.city, place_id)
@@ -356,6 +382,7 @@ class PhotoAssetService:
                     dry_run=config.dry_run,
                     upload=config.upload,
                     try_url_variants=config.try_url_variants,
+                    download_timeout_seconds=config.download_timeout_seconds,
                 )
             else:
                 publish_result = self.publisher.publish_standard_url(
@@ -369,6 +396,7 @@ class PhotoAssetService:
                     dry_run=config.dry_run,
                     upload=config.upload,
                     try_url_variants=config.try_url_variants,
+                    download_timeout_seconds=config.download_timeout_seconds,
                 )
 
             if not publish_result.get("success"):
@@ -392,6 +420,21 @@ class PhotoAssetService:
                 if key in publish_result:
                     asset[key] = publish_result[key]
             success_assets.append(asset)
+
+        return {"assets": success_assets, "failures": failures}
+
+    def finalize_place_assets(self, place_context: Dict[str, Any], success_assets: List[Dict[str, Any]], failures: List[Dict[str, Any]]) -> Dict[str, Any]:
+        if place_context.get("status") == "skipped" and "result" in place_context:
+            return place_context["result"]
+
+        place_name = place_context.get("place_name", "Unknown")
+        place_id = place_context.get("place_id", "")
+        record_id = place_context.get("record_id", "")
+        inventory = place_context.get("inventory", [])
+        inventory_summary = place_context.get("inventory_summary", {})
+        curator_photo_urls_field_urls = place_context.get("curator_photo_urls_field_urls", [])
+        preserved_curator_urls = place_context.get("preserved_curator_urls", [])
+        warnings = list(place_context.get("warnings", []))
 
         success_assets = self._dedupe_assets_by_azure_url(success_assets)
         selected_asset_urls = self._selected_asset_urls(inventory, success_assets)
@@ -434,7 +477,7 @@ class PhotoAssetService:
             "webp_fallback_original_count": len([asset for asset in success_assets if asset.get("fallback_original")]),
             "webp_conversion_failed_count": len([asset for asset in success_assets if asset.get("fallback_reason") == "conversion_failed"]),
             "legacy_curator_copied_unserved_count": len([asset for asset in success_assets if asset.get("source_field") == "legacy.curator-photos" and not asset.get("selected_for_airtable")]),
-            "non_azure_airtable_photos_count": len([url for url in parse_url_list(fields.get("Photos")) if urlparse(url).netloc.lower() != AZURE_ACCOUNT_HOST]),
+            "non_azure_airtable_photos_count": int(place_context.get("non_azure_airtable_photos_count", 0) or 0),
             "warnings": warnings,
         }
         return {
