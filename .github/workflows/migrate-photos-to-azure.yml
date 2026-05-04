@@ -69,34 +69,15 @@ jobs:
             $writeAirtable = "true"
           }
 
-          $overwrite = "false"
-          $retryFailures = "true"
-          $failureTtlHours = "0"
           $tryUrlVariants = "true"
 
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/photo-assets/migrate?provider_type=$providerType&city=$city&dry_run=$dryRun&upload=$upload&write_airtable=$writeAirtable&overwrite=$overwrite&retry_failures=$retryFailures&failure_ttl_hours=$failureTtlHours&try_url_variants=$tryUrlVariants"
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/photo-assets/migrate?provider_type=$providerType&city=$city&dry_run=$dryRun&upload=$upload&write_airtable=$writeAirtable&try_url_variants=$tryUrlVariants"
           Write-Host "Using function URL: $FunctionUrl"
-          $statusOutputPath = Join-Path $Env:RUNNER_TEMP "photo-migration-status.json"
-          Write-Host "Writing migration status snapshots to: $statusOutputPath"
 
           ./Invoke-AzureDurableFunction.ps1 `
             -FunctionUrl $FunctionUrl `
             -FunctionKey "$Env:AZURE_FUNCTION_KEY" `
-            -TimeoutSeconds 18000 `
-            -MaxStatusPollFailures 12 `
-            -StatusOutputPath $statusOutputPath `
-            -PrintCustomStatus `
-            -PrintOutputSummary `
-            -PrintOrchestrationId `
-            -FinalOutputJsonDepth 100
+            -TimeoutSeconds 18000
           if ($LASTEXITCODE -ne 0) {
             exit $LASTEXITCODE
           }
-
-      - name: Upload migration status snapshot
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: photo-migration-status
-          path: ${{ runner.temp }}/photo-migration-status.json
-          if-no-files-found: warn

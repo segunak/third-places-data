@@ -74,11 +74,7 @@ jobs:
           ./Invoke-AzureDurableFunction.ps1 `
             -FunctionUrl $FunctionUrl `
             -FunctionKey "$Env:AZURE_FUNCTION_KEY" `
-            -TimeoutSeconds 18000 `
-            -MaxStatusPollFailures 12 `
-            -PrintOutputSummary `
-            -PrintOrchestrationId `
-            -FinalOutputJsonDepth 100
+            -TimeoutSeconds 18000
           if ($LASTEXITCODE -ne 0) {
             exit $LASTEXITCODE
           }
