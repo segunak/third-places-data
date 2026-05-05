@@ -189,6 +189,17 @@ def raw_photos_data(photos_section: Dict[str, Any]) -> List[Dict[str, Any]]:
     return []
 
 
+def raw_photo_fallback_urls(photos_section: Dict[str, Any]) -> Dict[str, str]:
+    raw_data = photos_section.get("raw_data", {}) if isinstance(photos_section, dict) else {}
+    if not isinstance(raw_data, dict):
+        return {}
+    return {
+        field_name: raw_data[field_name]
+        for field_name in ("photo", "street_view")
+        if isinstance(raw_data.get(field_name), str) and raw_data[field_name].startswith("http")
+    }
+
+
 def build_candidate(source_url: str, source_field: str, source_path: str, photo_record: Optional[Dict[str, Any]]) -> Dict[str, Any]:
     canonical_url = canonicalize_url(source_url)
     record = copy.deepcopy(photo_record) if isinstance(photo_record, dict) else {}
@@ -221,6 +232,7 @@ def build_place_photo_inventory(
     fields = airtable_record.get("fields", {}) if isinstance(airtable_record, dict) else {}
     photos_section = place_data.get("photos", {}) if isinstance(place_data, dict) else {}
     raw_records = raw_photos_data(photos_section)
+    raw_fallback_urls = raw_photo_fallback_urls(photos_section)
     candidate_map: Dict[str, Dict[str, Any]] = {}
     duplicate_count = 0
 
@@ -253,6 +265,9 @@ def build_place_photo_inventory(
         if isinstance(url, str) and url.startswith("http"):
             add_candidate(build_candidate(url, "photos.raw_data.photos_data.photo_url_big", f"photos.raw_data.photos_data[{index}].photo_url_big", photo_record))
 
+    for field_name, url in raw_fallback_urls.items():
+        add_candidate(build_candidate(url, f"photos.raw_data.{field_name}", f"photos.raw_data.{field_name}", {"photo_source": field_name}))
+
     inventory = list(candidate_map.values())
     summary = {
         "city": city,
@@ -265,6 +280,8 @@ def build_place_photo_inventory(
             record for record in raw_records
             if isinstance(record.get("photo_url_big"), str) and record.get("photo_url_big", "").startswith("http")
         ]),
+        "provider_raw_photo_count": 1 if raw_fallback_urls.get("photo") else 0,
+        "provider_raw_street_view_count": 1 if raw_fallback_urls.get("street_view") else 0,
     }
     return inventory, summary
 

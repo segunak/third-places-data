@@ -4,6 +4,7 @@ Unit tests for the AirtableService class from airtable_service.py.
 All tests use mocked Airtable API calls - no live API calls are made.
 """
 
+import json
 import pytest
 from unittest import mock
 from collections import Counter
@@ -1298,6 +1299,54 @@ class TestAirtableServiceEnrichSinglePlace:
         description_update = result["field_updates"]["Description"]
         assert description_update.get("skipped_reason") == "Provider returned empty value"
         assert description_update.get("updated") is False
+
+    def test_enrich_single_place_processes_cached_raw_photo_fallback(self, service_with_mocks):
+        """Test cached raw_data.photo can trigger photo publishing even when photo_urls is empty."""
+        service, mock_table, _ = service_with_mocks
+        azure_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/" + ("a" * 64) + ".webp"
+
+        third_place = {
+            "id": "recABC123",
+            "fields": {
+                "Place": TEST_PLACE_NAME,
+                "Google Maps Place Id": TEST_PLACE_ID,
+            },
+        }
+        mock_place_data = {
+            "place_id": TEST_PLACE_ID,
+            "data_source": "OutscraperProvider",
+            "details": {
+                "address": "123 Main St",
+                "parking": ["Free"],
+                "google_maps_url": "https://maps.google.com/?cid=123",
+                "raw_data": {},
+            },
+            "photos": {
+                "photo_urls": [],
+                "raw_data": {
+                    "photos_data": [],
+                    "photo": "https://lh3.googleusercontent.com/p/hero=w800-h500-k-no",
+                },
+            },
+        }
+
+        with mock.patch("services.airtable_service.helpers.get_and_cache_place_data") as mock_get_data:
+            with mock.patch("services.airtable_service.PhotoAssetService") as mock_photo_asset_service:
+                with mock.patch.object(service, "update_place_record", return_value={"updated": True}) as mock_update:
+                    mock_get_data.return_value = ("success", mock_place_data, "")
+                    mock_photo_asset_service.return_value.process_place.return_value = {
+                        "selected_airtable_urls": [azure_url],
+                        "summary": {"candidate_count": 1},
+                    }
+
+                    result = service.enrich_single_place(third_place, "outscraper", "charlotte", False)
+
+        assert result["status"] == "success"
+        mock_photo_asset_service.return_value.process_place.assert_called_once()
+        photos_update_calls = [call for call in mock_update.call_args_list if call.args[1] == "Photos"]
+        assert len(photos_update_calls) == 1
+        assert json.loads(photos_update_calls[0].args[2]) == [azure_url]
+        assert result["photo_publish_summary"] == {"candidate_count": 1}
 
 
 class TestAirtableServiceEnrichBaseData:

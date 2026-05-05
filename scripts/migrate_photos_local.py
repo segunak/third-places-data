@@ -10,7 +10,7 @@ import sys
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 from urllib.parse import urlparse
 
 
@@ -48,6 +48,7 @@ GOOGLE_HOST_TEXT_PATTERN = re.compile(
     r"(lh\d+\.googleusercontent\.com|googleusercontent\.com|googleapis\.com|maps\.google\.com|google\.com)",
     re.IGNORECASE,
 )
+LEGACY_PLACE_PHOTOS_TEXT_PATTERN = re.compile(r"thirdplacesdata\.blob\.core\.windows\.net/place-photos/", re.IGNORECASE)
 
 
 @dataclass
@@ -60,6 +61,8 @@ class MigrationRunConfig:
     download_timeout_seconds: int = 20
     include_legacy_blob_candidates: bool = False
     refresh_google_photos_on_download_failure: bool = True
+    recovery_entries_by_record_id: Optional[Dict[str, Dict[str, Any]]] = None
+    recovery_max_source_urls: int = 10
 
     def to_photo_asset_config(self) -> PhotoAssetConfig:
         return PhotoAssetConfig(
@@ -144,6 +147,15 @@ def is_google_hosted_photo_url(url: str) -> bool:
     )
 
 
+def is_legacy_place_photo_url(url: str) -> bool:
+    parsed = urlparse(url)
+    return (
+        parsed.scheme == "https"
+        and parsed.netloc.lower() == "thirdplacesdata.blob.core.windows.net"
+        and parsed.path.startswith("/place-photos/")
+    )
+
+
 def google_photo_occurrences(record: Dict[str, Any]) -> int:
     photos_value = record.get("fields", {}).get(PHOTOS_FIELD)
     urls = parse_url_list(photos_value)
@@ -152,6 +164,16 @@ def google_photo_occurrences(record: Dict[str, Any]) -> int:
     if photos_value is None:
         return 0
     return len(GOOGLE_HOST_TEXT_PATTERN.findall(json.dumps(photos_value, ensure_ascii=False)))
+
+
+def legacy_place_photo_occurrences(record: Dict[str, Any]) -> int:
+    photos_value = record.get("fields", {}).get(PHOTOS_FIELD)
+    urls = parse_url_list(photos_value)
+    if urls:
+        return len([url for url in urls if is_legacy_place_photo_url(url)])
+    if photos_value is None:
+        return 0
+    return len(LEGACY_PLACE_PHOTOS_TEXT_PATTERN.findall(json.dumps(photos_value, ensure_ascii=False)))
 
 
 def count_google_photo_rows(records: Iterable[Dict[str, Any]]) -> Dict[str, int]:
@@ -171,9 +193,54 @@ def count_google_photo_rows(records: Iterable[Dict[str, Any]]) -> Dict[str, int]
     }
 
 
+def count_legacy_place_photo_rows(records: Iterable[Dict[str, Any]]) -> Dict[str, int]:
+    total_rows = 0
+    rows_with_legacy = 0
+    occurrences = 0
+    for record in records:
+        total_rows += 1
+        count = legacy_place_photo_occurrences(record)
+        if count:
+            rows_with_legacy += 1
+            occurrences += count
+    return {
+        "total_rows_checked": total_rows,
+        "rows_with_legacy_place_photo_urls_in_photos": rows_with_legacy,
+        "legacy_place_photo_url_occurrences_in_photos": occurrences,
+    }
+
+
+def load_recovery_manifest(manifest_path: Optional[Path]) -> Dict[str, Any]:
+    if not manifest_path:
+        return {}
+    with manifest_path.open("r", encoding="utf-8") as manifest_handle:
+        manifest = json.load(manifest_handle)
+    if not isinstance(manifest, dict):
+        raise ValueError("Recovery manifest must be a JSON object.")
+    records = manifest.get("records", [])
+    if not isinstance(records, list):
+        raise ValueError("Recovery manifest records must be a list.")
+    return manifest
+
+
+def recovery_entries_by_record_id(manifest: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+    entries: Dict[str, Dict[str, Any]] = {}
+    for entry in manifest.get("records", []):
+        if not isinstance(entry, dict):
+            continue
+        record_id = str(entry.get("record_id") or "").strip()
+        if not record_id:
+            raise ValueError("Every recovery manifest record needs a record_id.")
+        if record_id in entries:
+            raise ValueError(f"Duplicate record_id in recovery manifest: {record_id}")
+        entries[record_id] = entry
+    return entries
+
+
 def select_target_records(records: List[Dict[str, Any]], args: argparse.Namespace) -> List[Dict[str, Any]]:
     record_id = args.record_id.strip()
     place_id = args.place_id.strip()
+    recovery_record_ids: Set[str] = set(getattr(args, "recovery_record_ids", set()) or set())
     filtered = records
 
     if record_id:
@@ -191,9 +258,18 @@ def select_target_records(records: List[Dict[str, Any]], args: argparse.Namespac
             raise ValueError(f"place_id not found for selected records: {place_id}")
         filtered = matched_by_place
 
-    if not record_id and not place_id:
+    if recovery_record_ids and not record_id and not place_id:
+        filtered = [record for record in filtered if record.get("id") in recovery_record_ids]
+        found_ids = {record.get("id") for record in filtered}
+        missing_ids = sorted(recovery_record_ids - found_ids)
+        if missing_ids:
+            raise ValueError(f"Recovery manifest record_id values not found: {', '.join(missing_ids)}")
+
+    if not record_id and not place_id and not recovery_record_ids:
         if args.filter == "google-photos":
             filtered = [record for record in filtered if google_photo_occurrences(record) > 0]
+        elif args.filter == "place-photos":
+            filtered = [record for record in filtered if legacy_place_photo_occurrences(record) > 0]
         elif args.filter == "all-photo-ready":
             filtered = [record for record in filtered if is_photo_ready_place(record.get("fields", {}))]
         elif args.filter != "all":
@@ -222,6 +298,82 @@ def record_without_google_photos(record: Dict[str, Any]) -> Dict[str, Any]:
     ]
     fields[PHOTOS_FIELD] = json.dumps(retained_urls)
     return copied_record
+
+
+def record_without_legacy_place_photos(record: Dict[str, Any]) -> Dict[str, Any]:
+    copied_record = copy.deepcopy(record)
+    fields = copied_record.setdefault("fields", {})
+    retained_urls = [
+        url for url in parse_url_list(fields.get(PHOTOS_FIELD))
+        if not is_legacy_place_photo_url(url)
+    ]
+    fields[PHOTOS_FIELD] = json.dumps(retained_urls)
+    return copied_record
+
+
+def dedupe_urls(urls: Iterable[str]) -> List[str]:
+    deduped: List[str] = []
+    seen_urls: Set[str] = set()
+    for url in urls:
+        if not isinstance(url, str) or not url.startswith("http") or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        deduped.append(url)
+    return deduped
+
+
+def recovery_urls_from_place_data(place_data: Dict[str, Any]) -> List[str]:
+    photos_section = place_data.get("photos", {}) if isinstance(place_data, dict) else {}
+    urls: List[str] = []
+    if isinstance(photos_section, dict):
+        urls.extend([
+            url for url in parse_url_list(photos_section.get("photo_urls"))
+            if is_google_hosted_photo_url(url)
+        ])
+        raw_data = photos_section.get("raw_data")
+        raw_records = []
+        if isinstance(raw_data, dict) and isinstance(raw_data.get("photos_data"), list):
+            raw_records = raw_data.get("photos_data", [])
+        elif isinstance(raw_data, list):
+            raw_records = raw_data
+        for photo_record in raw_records:
+            if not isinstance(photo_record, dict):
+                continue
+            url = photo_record.get("photo_url_big")
+            if isinstance(url, str) and is_google_hosted_photo_url(url):
+                urls.append(url)
+    return dedupe_urls(urls)
+
+
+def apply_recovery_manifest_entry(
+    place_data: Dict[str, Any],
+    recovery_entry: Dict[str, Any],
+    max_source_urls: int,
+) -> Tuple[Dict[str, Any], List[str], Dict[str, Any]]:
+    entry_urls = [
+        url for url in parse_url_list(recovery_entry.get("photo_urls"))
+        if is_google_hosted_photo_url(url)
+    ]
+    source_urls = dedupe_urls(entry_urls) or recovery_urls_from_place_data(place_data)
+    effective_max = int(recovery_entry.get("max_source_urls") or max_source_urls or 0)
+    if effective_max > 0:
+        source_urls = source_urls[:effective_max]
+
+    recovered_place_data = copy.deepcopy(place_data) if isinstance(place_data, dict) else {}
+    photos_section = recovered_place_data.setdefault("photos", {})
+    photos_section["photo_urls"] = source_urls
+    photos_section["raw_data"] = {
+        "photos_data": [{"photo_url_big": url, "photo_tags": [], "photo_date": ""} for url in source_urls]
+    }
+    summary = {
+        "recovery_manifest_used": True,
+        "recovery_manifest_source": recovery_entry.get("source", ""),
+        "recovery_manifest_photo_url_count": len(source_urls),
+        "recovery_manifest_record_id": recovery_entry.get("record_id", ""),
+        "recovery_manifest_max_source_urls": effective_max,
+    }
+    warnings = [] if source_urls else ["recovery_manifest_source_urls_empty"]
+    return recovered_place_data, warnings, summary
 
 
 def fetch_fresh_google_place_photos(place_id: str, max_photos: int = 10) -> Tuple[Optional[Dict[str, Any]], List[str]]:
@@ -474,10 +626,20 @@ def process_place(
             summary={"ignored_missing_place_id": True},
         )
 
-    place_data, warnings = load_place_data(record, data_root, run_config.city)
+    recovery_entry = (run_config.recovery_entries_by_record_id or {}).get(record_id)
+    record_for_processing = record_without_legacy_place_photos(record) if recovery_entry else record
+    place_data, warnings = load_place_data(record_for_processing, data_root, run_config.city)
+    recovery_summary: Dict[str, Any] = {}
+    if recovery_entry:
+        place_data, recovery_warnings, recovery_summary = apply_recovery_manifest_entry(
+            place_data,
+            recovery_entry,
+            run_config.recovery_max_source_urls,
+        )
+        warnings = [*warnings, *recovery_warnings]
     photo_asset_service = service or PhotoAssetService()
     photo_asset_config = run_config.to_photo_asset_config()
-    place_context = photo_asset_service.prepare_place_context(record, place_data, photo_asset_config)
+    place_context = photo_asset_service.prepare_place_context(record_for_processing, place_data, photo_asset_config)
     if place_context.get("status") == "skipped" and "result" in place_context:
         return place_context["result"]
     place_context["warnings"] = [*warnings, *place_context.get("warnings", [])]
@@ -488,6 +650,8 @@ def process_place(
         batch_result.get("assets", []),
         batch_result.get("failures", []),
     )
+    if recovery_summary:
+        asset_result.setdefault("summary", {}).update(recovery_summary)
     if (
         run_config.refresh_google_photos_on_download_failure
         and not run_config.dry_run
@@ -498,7 +662,8 @@ def process_place(
         fresh_place_data, refresh_warnings = fetch_fresh_google_place_photos(place_id, max_photos=10)
         place_context["warnings"] = [*place_context.get("warnings", []), *refresh_warnings]
         if fresh_place_data:
-            retry_record = record_without_google_photos(record)
+            retry_source_record = record_for_processing if recovery_entry else record
+            retry_record = record_without_google_photos(retry_source_record)
             retry_context = photo_asset_service.prepare_place_context(retry_record, fresh_place_data, photo_asset_config)
             retry_context["warnings"] = [*place_context.get("warnings", []), *retry_context.get("warnings", [])]
             retry_candidates = retry_context.get("inventory", [])
@@ -559,10 +724,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--view", default="All")
     parser.add_argument("--settings-file", type=Path, default=AZURE_FUNCTION_DIR / "local.settings.json")
     parser.add_argument("--data-root", type=Path, default=REPO_ROOT / "data" / "places")
-    parser.add_argument("--filter", choices=["google-photos", "all-photo-ready", "all"], default="google-photos")
+    parser.add_argument("--filter", choices=["google-photos", "place-photos", "all-photo-ready", "all"], default="google-photos")
     parser.add_argument("--record-id", default="")
     parser.add_argument("--place-id", default="")
     parser.add_argument("--max-places", "--limit", dest="max_places", type=int, default=0)
+    parser.add_argument(
+        "--recovery-manifest",
+        type=Path,
+        help="Targeted recovery manifest with Airtable record IDs and optional replacement source photo URLs.",
+    )
+    parser.add_argument(
+        "--recovery-max-photos",
+        type=int,
+        default=10,
+        help="Maximum recovered Google source URLs to use per manifest record unless overridden by the manifest entry.",
+    )
     parser.add_argument("--write", action="store_true", help="Apply Azure uploads and Airtable writes. Default is dry-run.")
     parser.add_argument(
         "--confirm-write",
@@ -592,7 +768,9 @@ def parse_args() -> argparse.Namespace:
 
 
 def require_broad_write_confirmation(args: argparse.Namespace) -> None:
-    targeted = bool(args.record_id.strip() or args.place_id.strip())
+    record_id = str(getattr(args, "record_id", "") or "").strip()
+    place_id = str(getattr(args, "place_id", "") or "").strip()
+    targeted = bool(record_id or place_id or getattr(args, "recovery_manifest", None))
     limited = int(args.max_places or 0) > 0
     if args.write and not targeted and not limited and not args.confirm_write:
         raise RuntimeError("Broad writes require --confirm-write.")
@@ -609,6 +787,10 @@ def main() -> int:
         loaded_settings = load_local_settings(args.settings_file.resolve())
         validate_required_env()
 
+        recovery_manifest = load_recovery_manifest(args.recovery_manifest.resolve() if args.recovery_manifest else None)
+        recovery_entries = recovery_entries_by_record_id(recovery_manifest) if recovery_manifest else {}
+        args.recovery_record_ids = set(recovery_entries.keys())
+
         dry_run = not args.write
         run_config = MigrationRunConfig(
             city=args.city,
@@ -619,10 +801,13 @@ def main() -> int:
             download_timeout_seconds=args.download_timeout_seconds,
             include_legacy_blob_candidates=args.include_legacy_blobs,
             refresh_google_photos_on_download_failure=args.refresh_google_photos,
+            recovery_entries_by_record_id=recovery_entries,
+            recovery_max_source_urls=args.recovery_max_photos,
         )
         airtable_client = AirtablePhotoClient()
         all_records = airtable_client.fetch_records(args.view)
         baseline_google_counts = count_google_photo_rows(all_records)
+        baseline_legacy_place_counts = count_legacy_place_photo_rows(all_records)
         target_records = select_target_records(all_records, args)
 
         print(json.dumps({
@@ -632,9 +817,13 @@ def main() -> int:
             "filter": args.filter,
             "records_fetched": len(all_records),
             "records_targeted": len(target_records),
+            "recovery_manifest": str(args.recovery_manifest.resolve()) if args.recovery_manifest else "",
+            "recovery_manifest_records": len(recovery_entries),
+            "recovery_max_photos": args.recovery_max_photos,
             "include_legacy_blob_candidates": run_config.include_legacy_blob_candidates,
             "refresh_google_photos_on_download_failure": run_config.refresh_google_photos_on_download_failure,
             "baseline_google_photos": baseline_google_counts,
+            "baseline_legacy_place_photos": baseline_legacy_place_counts,
         }, indent=2))
 
         photo_asset_service = PhotoAssetService()
@@ -651,14 +840,20 @@ def main() -> int:
             audit_results, audit_totals = run_audit(target_records, args.city)
 
         post_google_counts = None
+        post_legacy_place_counts = None
         if args.write:
-            post_google_counts = count_google_photo_rows(airtable_client.fetch_records(args.view))
+            post_write_records = airtable_client.fetch_records(args.view)
+            post_google_counts = count_google_photo_rows(post_write_records)
+            post_legacy_place_counts = count_legacy_place_photo_rows(post_write_records)
 
         report = {
             "migration_totals": aggregate_migration_results(migration_results, dry_run),
             "status_counts": count_by_key(migration_results, "status"),
             "baseline_google_photos": baseline_google_counts,
+            "baseline_legacy_place_photos": baseline_legacy_place_counts,
             "post_write_google_photos": post_google_counts,
+            "post_write_legacy_place_photos": post_legacy_place_counts,
+            "recovery_manifest": recovery_manifest,
             "curator_status_counts": {},
             "audit_totals": audit_totals,
             "migration_results": migration_results,
@@ -672,6 +867,7 @@ def main() -> int:
             "migration_totals": report["migration_totals"],
             "status_counts": report["status_counts"],
             "post_write_google_photos": post_google_counts,
+            "post_write_legacy_place_photos": post_legacy_place_counts,
             "audit_totals": audit_totals,
         }, indent=2))
 

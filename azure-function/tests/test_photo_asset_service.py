@@ -90,6 +90,56 @@ def test_inventory_includes_only_in_scope_sources_and_dedupes():
     assert summary["duplicate_count"] == 1
 
 
+def test_inventory_includes_raw_photo_and_street_view_fallbacks():
+    hero_url = "https://lh3.googleusercontent.com/p/hero=w800-h500-k-no"
+    street_view_url = "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=abc&w=1600&h=1000"
+    place_data = {
+        "photos": {
+            "photo_urls": [],
+            "raw_data": {
+                "photos_data": [],
+                "photo": hero_url,
+                "street_view": street_view_url,
+            },
+        }
+    }
+
+    inventory, summary = build_place_photo_inventory(_place_record(), place_data)
+
+    assert [candidate["canonical_source_url"] for candidate in inventory] == [hero_url, street_view_url]
+    assert [candidate["source_field"] for candidate in inventory] == [
+        "photos.raw_data.photo",
+        "photos.raw_data.street_view",
+    ]
+    assert summary["candidate_count"] == 2
+    assert summary["provider_raw_photo_url_big_count"] == 0
+    assert summary["provider_raw_photo_count"] == 1
+    assert summary["provider_raw_street_view_count"] == 1
+
+
+def test_inventory_dedupes_raw_photo_fallback_against_photo_urls():
+    hero_url = "https://lh3.googleusercontent.com/p/hero=w800-h500-k-no"
+    place_data = {
+        "photos": {
+            "photo_urls": [hero_url],
+            "raw_data": {
+                "photos_data": [],
+                "photo": hero_url,
+            },
+        }
+    }
+
+    inventory, summary = build_place_photo_inventory(_place_record(), place_data)
+
+    assert [candidate["canonical_source_url"] for candidate in inventory] == [hero_url]
+    assert inventory[0]["source_field"] == "photos.photo_urls"
+    assert inventory[0]["duplicate_provenance"] == [{
+        "field": "photos.raw_data.photo",
+        "path": "photos.raw_data.photo",
+    }]
+    assert summary["duplicate_count"] == 1
+
+
 def test_existing_place_photo_azure_url_validation():
     valid_url = _standard_photo_url()
     invalid_url = "https://thirdplacesdata.blob.core.windows.net/other-container/rec123/photo.jpg"

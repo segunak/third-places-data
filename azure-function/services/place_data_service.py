@@ -711,11 +711,24 @@ class OutscraperProvider(PlaceDataService):
             if response and len(response) > 0 and len(response[0]) > 0:
                 raw = response[0][0]
                 all_photos = raw.get('photos_data', [])
+                if not isinstance(all_photos, list):
+                    all_photos = []
                 valid = []
                 for p in all_photos:
+                    if not isinstance(p, dict):
+                        continue
                     url = p.get('photo_url_big', '')
                     if self._is_valid_photo_url(url):
                         valid.append(p)
+                seen_urls = {p.get('photo_url_big') for p in valid}
+                for field_name in ('photo', 'street_view'):
+                    url = raw.get(field_name, '')
+                    if self._is_valid_photo_url(url) and url not in seen_urls:
+                        valid.append({
+                            'photo_url_big': url,
+                            'photo_source': field_name,
+                        })
+                        seen_urls.add(url)
                 selected = self._select_prioritized_photos(valid, max_photos=30)
                 logging.info(f"Photo selection for {place_id}: Total={len(all_photos)}, Valid={len(valid)}, Selected={len(selected)}")
                 return {"place_id": place_id, "message": f"Retrieved {len(all_photos)} photos, selected {len(selected)}", "photo_urls": selected, "raw_data": raw}

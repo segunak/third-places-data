@@ -9,11 +9,16 @@ from collections import Counter
 from urllib.parse import urlparse
 from constants import SearchField, MAX_THREAD_WORKERS
 from services import utils as helpers
-from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, is_photo_ready_place
+from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, build_place_photo_inventory, is_photo_ready_place
 from services.place_data_service import PlaceDataProviderFactory
 from typing import Dict, Any, List
 from pyairtable.formulas import match
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+
+def has_photo_asset_candidates(airtable_record: Dict[str, Any], place_data: Dict[str, Any], city: str) -> bool:
+    inventory, _ = build_place_photo_inventory(airtable_record, place_data, city)
+    return bool(inventory)
 
 class AirtableService:
     """Defines methods for interaction with the Charlotte Third Places Airtable database.
@@ -366,7 +371,8 @@ class AirtableService:
             google_maps_url = details.get('google_maps_url', '')
             photos_list = place_data.get('photos', {}).get('photo_urls', [])
             photo_publish_summary = {}
-            if photos_list and is_photo_ready_place(third_place.get('fields', {})):
+            has_photo_candidates = has_photo_asset_candidates(third_place, place_data, city)
+            if has_photo_candidates and is_photo_ready_place(third_place.get('fields', {})):
                 photo_asset_service = PhotoAssetService()
                 photo_asset_result = photo_asset_service.process_place(
                     third_place,
@@ -380,7 +386,7 @@ class AirtableService:
                 )
                 photos_list = photo_asset_result.get('selected_airtable_urls', [])
                 photo_publish_summary = photo_asset_result.get('summary', {})
-            elif photos_list:
+            elif has_photo_candidates:
                 photos_list = []
                 photo_publish_summary = {"skip_reason": "ignored_missing_place_id"}
             result['photo_publish_summary'] = photo_publish_summary
