@@ -11,7 +11,7 @@ from constants import SearchField, MAX_THREAD_WORKERS
 from services import utils as helpers
 from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, build_place_photo_inventory, is_photo_ready_place
 from services.place_data_service import PlaceDataProviderFactory
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from pyairtable.formulas import match
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -292,7 +292,7 @@ class AirtableService:
 
         return f"{parsed_url.scheme}://{parsed_url.netloc}{parsed_url.path}".strip()
 
-    def enrich_single_place(self, third_place: dict, provider_type: str, city: str, force_refresh: bool) -> dict:
+    def enrich_single_place(self, third_place: dict, provider_type: str, city: str, force_refresh: bool, photos_provider_type: Optional[str] = None) -> dict:
         """
         Enriches a single Airtable place record.
         Args:
@@ -333,7 +333,8 @@ class AirtableService:
                 place_id=place_id,
                 city=city,
                 force_refresh=force_refresh,
-                airtable_record_id=record_id
+                airtable_record_id=record_id,
+                photos_provider_type=photos_provider_type
             )
 
             result["status"] = status

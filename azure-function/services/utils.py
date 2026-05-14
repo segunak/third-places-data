@@ -452,8 +452,47 @@ def _fill_photos_from_airtable(place_data: Dict, photos_json: str) -> bool:
         return False
 
 
+def _has_photo_urls(place_data: Dict) -> bool:
+    if not isinstance(place_data, dict):
+        return False
+    photos = place_data.get('photos', {})
+    if not isinstance(photos, dict):
+        return False
+    photo_urls = photos.get('photo_urls', [])
+    return isinstance(photo_urls, list) and bool(photo_urls)
+
+
+def _get_photos_from_provider(photos_provider_type: str, place_id: str) -> Dict[str, Any]:
+    try:
+        photo_provider = PlaceDataProviderFactory.get_provider(photos_provider_type)
+        photos_response = photo_provider.get_place_photos(place_id)
+        if not isinstance(photos_response, dict):
+            return {
+                "place_id": place_id,
+                "message": f"Photo provider {photos_provider_type} returned an invalid response.",
+                "photo_urls": [],
+                "provider_type": photos_provider_type,
+                "data_source": photo_provider.__class__.__name__
+            }
+        photos_response.setdefault('place_id', place_id)
+        photos_response.setdefault('photo_urls', [])
+        photos_response['provider_type'] = photos_provider_type
+        photos_response['data_source'] = photo_provider.__class__.__name__
+        return photos_response
+    except Exception as e:
+        logging.error(f"Error retrieving photos for place ID {place_id} from provider {photos_provider_type}: {e}", exc_info=True)
+        return {
+            "place_id": place_id,
+            "message": f"Error retrieving photos from {photos_provider_type}: {str(e)}",
+            "photo_urls": [],
+            "provider_type": photos_provider_type,
+            "data_source": ""
+        }
+
+
 def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str = None,
-                              city: str = None, force_refresh: bool = False, airtable_record_id: str = None) -> Tuple[str, Dict, str]:
+                              city: str = None, force_refresh: bool = False, airtable_record_id: str = None,
+                              photos_provider_type: str = None) -> Tuple[str, Dict, str]:
     try:
         SENTINEL_NO_PLACE = "__NO_PLACE_FOUND__"
         if not city:
@@ -463,6 +502,11 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
             error_msg = f"Cannot get place data for {place_name} - provider_type not specified"
             logging.error(error_msg)
             return 'failed', None, error_msg
+        provider_type = PlaceDataProviderFactory.normalize_provider_type(provider_type)
+        photos_provider_type = PlaceDataProviderFactory.normalize_provider_type(
+            photos_provider_type or provider_type,
+            'photos_provider_type'
+        )
         data_provider = PlaceDataProviderFactory.get_provider(provider_type)
 
         did_lookup_find_new_place_id = False
@@ -499,6 +543,20 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
 
         if cached_file_exists and not force_refresh:
             logging.info(f"Using cached data for {place_name} (place_id={place_id}) from {cached_file_path}")
+            if photos_provider_type != provider_type and not skip_photos and not _has_photo_urls(cached_json):
+                logging.info(f"Cached data for {place_name} has no photos; fetching photos from provider {photos_provider_type}")
+                photos_response = _get_photos_from_provider(photos_provider_type, place_id)
+                if photos_response.get('photo_urls'):
+                    cached_json['photos'] = photos_response
+                    cached_json['photos_provider_type'] = photos_provider_type
+                    cached_json['last_updated'] = datetime.now().isoformat()
+                    success, save_message = save_data_github(json.dumps(cached_json, indent=4), cached_file_path)
+                    if not success:
+                        logging.warning(f"Failed to save cached photo refresh for {place_name}: {save_message}")
+                    else:
+                        logging.info(f"Saved cached photo refresh for {place_name} to {cached_file_path}")
+                else:
+                    logging.info(f"Photo provider {photos_provider_type} returned no photos for cached place {place_name}; leaving cache unchanged")
             if airtable_record_id and airtable_client:
                 try:
                     airtable_client.update_place_record(airtable_record_id, 'Has Data File', 'Yes', overwrite=True)
@@ -513,8 +571,9 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
             logging.info(f"No cached file found for {place_name} at {cached_file_path} ({cache_message}); fetching fresh data")
 
         # 2. Fetch fresh data (either no cache or force_refresh requested)
-        logging.info(f"Fetching fresh data from provider {provider_type} for {place_name} (place_id={place_id}) skip_photos={skip_photos} force_refresh={force_refresh}")
-        place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=skip_photos)
+        primary_skip_photos = skip_photos or photos_provider_type != provider_type
+        logging.info(f"Fetching fresh data from provider {provider_type} for {place_name} (place_id={place_id}) skip_photos={primary_skip_photos} force_refresh={force_refresh} photos_provider_type={photos_provider_type}")
+        place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=primary_skip_photos)
 
         # If provider returned a sentinel indicating no real data, treat as failure and DO NOT save or update Airtable
         try:
@@ -528,6 +587,10 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
 
         if skip_photos and existing_photos_json:
             _fill_photos_from_airtable(place_data, existing_photos_json)
+        elif photos_provider_type != provider_type:
+            place_data['photos'] = _get_photos_from_provider(photos_provider_type, place_id)
+
+        place_data['photos_provider_type'] = photos_provider_type
 
         place_data['last_updated'] = datetime.now().isoformat()
         success, save_message = save_data_github(json.dumps(place_data, indent=4), cached_file_path)

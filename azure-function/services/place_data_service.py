@@ -805,13 +805,24 @@ class OutscraperProvider(PlaceDataService):
 
 
 class PlaceDataProviderFactory:
+    SUPPORTED_PROVIDER_TYPES = ('google', 'outscraper')
+
+    @staticmethod
+    def normalize_provider_type(provider_type: str, parameter_name: str = 'provider_type') -> str:
+        if provider_type is None:
+            raise ValueError(f"{parameter_name} cannot be None - must be 'google' or 'outscraper'")
+        if not isinstance(provider_type, str):
+            raise ValueError(f"{parameter_name} must be a string, got {type(provider_type).__name__}")
+        normalized = provider_type.strip().lower()
+        if normalized in PlaceDataProviderFactory.SUPPORTED_PROVIDER_TYPES:
+            return normalized
+        if parameter_name == 'provider_type':
+            raise ValueError(f"Unsupported provider type: '{provider_type}'. Must be 'google' or 'outscraper'.")
+        raise ValueError(f"Unsupported {parameter_name}: '{provider_type}'. Must be 'google' or 'outscraper'.")
+
     @staticmethod
     def get_provider(provider_type: str) -> PlaceDataService:
-        if provider_type is None:
-            raise ValueError("provider_type cannot be None - must be 'google' or 'outscraper'")
-        if not isinstance(provider_type, str):
-            raise ValueError(f"provider_type must be a string, got {type(provider_type).__name__}")
-        normalized = provider_type.strip().lower()
+        normalized = PlaceDataProviderFactory.normalize_provider_type(provider_type)
         if normalized == 'google':
             logging.info("Creating new GoogleMapsProvider instance")
             return GoogleMapsProvider()

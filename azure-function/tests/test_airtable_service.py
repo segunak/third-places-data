@@ -1120,6 +1120,24 @@ class TestAirtableServiceEnrichSinglePlace:
         assert result["status"] == "failed"
         assert "API error" in result["message"]
 
+    def test_enrich_single_place_passes_photos_provider_type(self, service_with_mocks):
+        """Test that photo provider override is passed to the data cache helper."""
+        service, mock_table, _ = service_with_mocks
+
+        third_place = {
+            "id": "recABC123",
+            "fields": {
+                "Place": TEST_PLACE_NAME,
+                "Google Maps Place Id": TEST_PLACE_ID
+            }
+        }
+
+        with mock.patch("services.airtable_service.helpers.get_and_cache_place_data") as mock_get_data:
+            mock_get_data.return_value = ("failed", None, "stop after helper call")
+            service.enrich_single_place(third_place, "outscraper", "Charlotte", True, "google")
+
+        assert mock_get_data.call_args.kwargs["photos_provider_type"] == "google"
+
     def test_enrich_single_place_no_details(self, service_with_mocks):
         """Test handling when place data has no details."""
         service, mock_table, _ = service_with_mocks

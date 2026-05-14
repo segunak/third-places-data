@@ -8,6 +8,7 @@ $script:SequentialMode = $false        # Set to $true for sequential processing,
 $script:ForceRefresh = $false         # Set to $true to bypass caching, $false to use cache when available
 $script:City = "charlotte"            # Set to the city you want to use for caching
 $script:ProviderType = "outscraper"   # Set to 'google' or 'outscraper'
+$script:PhotosProviderType = ""       # Set to 'google' or 'outscraper'; blank uses ProviderType
 $script:View = "Insufficient"         # Set to the Airtable view to use (e.g., "Production", "Insufficient")
 
 # Endpoint test toggles (set individual values to $false to skip a test)
@@ -235,6 +236,10 @@ Write-Log "Test configuration: Sequential=$script:SequentialMode, ForceRefresh=$
 # Preflight check: ensure function host is running locally
 Assert-FunctionHostRunning -PingUrl $baseUrl
 
+if ([string]::IsNullOrWhiteSpace($script:PhotosProviderType)) {
+    $script:PhotosProviderType = $script:ProviderType
+}
+
 if ($script:RunEndpointTests.Smoke) {
     # Smoke Test (HTTP)
     Test-HttpFunction -Endpoint 'smoke-test' -Body '{"House": "Martell"}' -Description 'API health check'
@@ -242,13 +247,13 @@ if ($script:RunEndpointTests.Smoke) {
 
 if ($script:RunEndpointTests.EnrichAirtableBase) {
     # Enrich Airtable Base (Durable)
-    $enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&view=$script:View&city=$script:City"
+    $enrichEndpoint = "enrich-airtable-base?provider_type=$script:ProviderType&photos_provider_type=$script:PhotosProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&view=$script:View&city=$script:City"
     Test-DurableFunction -Endpoint $enrichEndpoint -Description "Enrich Airtable base ($script:ProviderType, sequential_mode=$script:SequentialMode, view=$script:View)"
 }
 
 if ($script:RunEndpointTests.RefreshPlaceData) {
     # Refresh Place Data (Durable)
-    $refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&view=$script:View&city=$script:City"
+    $refreshEndpoint = "refresh-place-data?provider_type=$script:ProviderType&photos_provider_type=$script:PhotosProviderType&sequential_mode=$($script:SequentialMode.ToString().ToLower())&force_refresh=$($script:ForceRefresh.ToString().ToLower())&view=$script:View&city=$script:City"
     Test-DurableFunction -Endpoint $refreshEndpoint -Description "Refresh all place data ($script:ProviderType, sequential_mode=$script:SequentialMode, view=$script:View)"
 }
 
@@ -261,7 +266,7 @@ if ($script:RunEndpointTests.RefreshOperationalStatuses) {
 if ($script:RunEndpointTests.RefreshSinglePlace) {
     # Refresh Single Place (Durable) - Test with a known place ID
     $singlePlaceId = "ChIJqX87rVYOVIgRjYMMiz1W5Sg"  # Cabarrus County Library | Concord
-    $singlePlaceEndpoint = "refresh-single-place?place_id=$singlePlaceId&provider_type=$script:ProviderType&city=$script:City"
+    $singlePlaceEndpoint = "refresh-single-place?place_id=$singlePlaceId&provider_type=$script:ProviderType&photos_provider_type=$script:PhotosProviderType&city=$script:City"
     Test-DurableFunction -Endpoint $singlePlaceEndpoint -Description "Refresh single place data (place_id=$singlePlaceId, provider=$script:ProviderType)"
 }
 
