@@ -11,7 +11,6 @@ from services.photo_asset_service import (
     is_curator_photo_azure_url,
     is_photo_ready_place,
     parse_photo_manifest_list,
-    photo_manifest_from_url,
 )
 from services.photo_publisher_service import PhotoPublisherService
 
@@ -111,13 +110,7 @@ def sync_curator_photos_orchestrator(context: df.DurableOrchestrationContext):
 
 def _merge_curator_photos_into_photos(curator_photos: list[dict], existing_photos: list[dict]) -> list[dict]:
     non_curator_photos = [photo for photo in existing_photos if not is_curator_photo_azure_url(photo.get("display", ""))]
-    curator_urls = [photo.get("display", "") for photo in curator_photos]
-    merged = build_display_photo_manifests(curator_urls, non_curator_photos)
-    thumbnails_by_display = {photo.get("display", ""): photo.get("thumbnail", "") for photo in curator_photos}
-    for photo in merged:
-        if photo["display"] in thumbnails_by_display:
-            photo["thumbnail"] = thumbnails_by_display[photo["display"]]
-    return merged
+    return build_display_photo_manifests(curator_photos, non_curator_photos)
 
 
 @bp.activity_trigger(input_name="activityInput")
@@ -187,7 +180,12 @@ def sync_single_place_curator_photos(activityInput):
                 failed_count += 1
                 logging.error("Failed to publish curator attachment for %s: %s", place_name, publish_result.get("error"))
                 continue
-            photo_manifest = publish_result.get("photo_manifest") or photo_manifest_from_url(publish_result["azure_url"])
+            try:
+                photo_manifest = parse_photo_manifest_list([publish_result.get("photo_manifest")], "photo_manifest")[0]
+            except (IndexError, ValueError) as exc:
+                failed_count += 1
+                logging.error("Publisher returned invalid curator manifest for %s: %s", place_name, exc)
+                continue
             published_photos.append(photo_manifest)
             published_urls.append(photo_manifest["display"])
             publish_status = publish_result.get("status")

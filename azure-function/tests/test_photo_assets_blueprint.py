@@ -3,6 +3,10 @@ import json
 from blueprints import photo_assets
 
 
+def _photo_manifest(display_url, thumbnail_url=None):
+    return {"display": display_url, "thumbnail": thumbnail_url or display_url.replace("/display/", "/thumbnail/")}
+
+
 class DummyRequest:
     def __init__(self, params):
         self.params = params
@@ -17,9 +21,9 @@ class DummyAirtableService:
                 "fields": {
                     "Place": "Daily Ritual Coffee",
                     "Google Maps Place Id": "ChIJ5YHD3oOhVogRAV83qWzHmgg",
-                    "Photos": json.dumps([
-                        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ5YHD3oOhVogRAV83qWzHmgg/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg"
-                    ]),
+                    "Photos": json.dumps([_photo_manifest(
+                        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ5YHD3oOhVogRAV83qWzHmgg/display/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.webp"
+                    )]),
                 },
             }
         ]
@@ -107,13 +111,14 @@ def test_aggregate_audit_results_counts_findings():
 def test_audit_single_place_reports_counts(monkeypatch):
     place_id = "ChIJ123"
     record_id = "rec123"
-    canonical_url = f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.webp"
+    canonical_photo = _photo_manifest(f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/display/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.webp")
 
     monkeypatch.setattr(
         photo_assets,
         "list_blobs_in_container",
         lambda container, prefix="": [
-            f"{prefix}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.webp"
+            f"{prefix}display/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.webp",
+            f"{prefix}thumbnail/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.webp",
         ] if container == photo_assets.PHOTOS_CONTAINER else [],
     )
 
@@ -123,17 +128,35 @@ def test_audit_single_place_reports_counts(monkeypatch):
             "fields": {
                 "Place": "Audit Cafe",
                 "Google Maps Place Id": place_id,
-                "Photos": json.dumps([canonical_url, "https://example.com/photo.jpg"]),
+                "Photos": json.dumps([canonical_photo]),
             },
         },
         "config": {"city": "charlotte"},
     })
 
     assert result["status"] == "ok"
-    assert result["canonical_standard_url_count"] == 1
-    assert result["non_azure_airtable_url_count"] == 1
-    assert result["new_container_blob_count"] == 1
+    assert result["airtable_photo_url_count"] == 2
+    assert result["canonical_standard_url_count"] == 2
+    assert result["non_azure_airtable_url_count"] == 0
+    assert result["new_container_blob_count"] == 2
     assert result["missing_blob_reference_count"] == 0
+
+
+def test_audit_single_place_rejects_legacy_photo_strings():
+    result = photo_assets.audit_single_place_photo_assets({
+        "place": {
+            "id": "rec123",
+            "fields": {
+                "Place": "Audit Cafe",
+                "Google Maps Place Id": "ChIJ123",
+                "Photos": json.dumps(["https://example.com/photo.jpg"]),
+            },
+        },
+        "config": {"city": "charlotte"},
+    })
+
+    assert result["status"] == "error"
+    assert "Photos[0] must be an object" in result["message"]
 
 
 def test_photo_health_check_reports_counts(monkeypatch):
@@ -142,7 +165,8 @@ def test_photo_health_check_reports_counts(monkeypatch):
         photo_assets,
         "list_blobs_in_container",
         lambda container, prefix="": [
-            f"{prefix}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg"
+            f"{prefix}display/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.webp",
+            f"{prefix}thumbnail/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.webp",
         ] if container == photo_assets.PHOTOS_CONTAINER else [],
     )
 
@@ -153,8 +177,8 @@ def test_photo_health_check_reports_counts(monkeypatch):
 
     assert response.status_code == 200
     assert body["success"] is True
-    assert body["data"]["airtable_photo_url_count"] == 1
-    assert body["data"]["canonical_standard_url_count"] == 1
+    assert body["data"]["airtable_photo_url_count"] == 2
+    assert body["data"]["canonical_standard_url_count"] == 2
     assert body["data"]["invalid_azure_airtable_url_count"] == 0
     assert body["data"]["non_azure_airtable_url_count"] == 0
-    assert body["data"]["new_container_blob_count"] == 1
+    assert body["data"]["new_container_blob_count"] == 2

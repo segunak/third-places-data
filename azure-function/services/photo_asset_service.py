@@ -48,34 +48,33 @@ def parse_url_list(value: Any) -> List[str]:
     return []
 
 
-def parse_photo_manifest_list(value: Any) -> List[Dict[str, str]]:
-    # Accept the old Photos shape during migration, but normalize everything to
-    # the new display/thumbnail manifest before selection or Airtable writes.
+def _parse_manifest_list_value(value: Any, field_name: str = "Photos") -> List[Any]:
     if isinstance(value, list):
-        parsed_value = value
-    elif isinstance(value, str) and value.strip():
+        return value
+    if isinstance(value, str) and value.strip():
         try:
             parsed_value = json.loads(value)
-        except (TypeError, json.JSONDecodeError):
-            try:
-                parsed_value = ast.literal_eval(value)
-            except (ValueError, SyntaxError):
-                return []
-    else:
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise ValueError(f"{field_name} must be a JSON array of display/thumbnail manifests") from exc
+        if not isinstance(parsed_value, list):
+            raise ValueError(f"{field_name} must be a JSON array of display/thumbnail manifests")
+        return parsed_value
+    if value in (None, ""):
         return []
+    raise ValueError(f"{field_name} must be a JSON array of display/thumbnail manifests")
 
-    if not isinstance(parsed_value, list):
-        return []
 
+def parse_photo_manifest_list(value: Any, field_name: str = "Photos") -> List[Dict[str, str]]:
+    parsed_value = _parse_manifest_list_value(value, field_name)
     manifests: List[Dict[str, str]] = []
-    for item in parsed_value:
-        if isinstance(item, str) and item.startswith("http"):
-            manifests.append(photo_manifest_from_url(item))
-        elif isinstance(item, dict):
-            display_url = canonicalize_url(str(item.get("display") or ""))
-            thumbnail_url = canonicalize_url(str(item.get("thumbnail") or ""))
-            if display_url.startswith("http") and thumbnail_url.startswith("http"):
-                manifests.append({"display": display_url, "thumbnail": thumbnail_url})
+    for index, item in enumerate(parsed_value):
+        if not isinstance(item, dict):
+            raise ValueError(f"{field_name}[{index}] must be an object with display and thumbnail URLs")
+        display_url = canonicalize_url(str(item.get("display") or ""))
+        thumbnail_url = canonicalize_url(str(item.get("thumbnail") or ""))
+        if not display_url.startswith("http") or not thumbnail_url.startswith("http"):
+            raise ValueError(f"{field_name}[{index}] must include HTTP display and thumbnail URLs")
+        manifests.append({"display": display_url, "thumbnail": thumbnail_url})
     return manifests
 
 
@@ -163,16 +162,12 @@ def preserved_curator_photo_urls_from_airtable(fields: Dict[str, Any]) -> List[s
     return urls
 
 
-def photo_manifest_from_url(url: str) -> Dict[str, str]:
-    return {"display": url, "thumbnail": url}
-
-
-def build_display_photo_manifests(curator_urls: List[str], provider_manifests: List[Dict[str, str]]) -> List[Dict[str, str]]:
+def build_display_photo_manifests(curator_manifests: List[Dict[str, str]], provider_manifests: List[Dict[str, str]]) -> List[Dict[str, str]]:
     # Curator photos keep their first-place ordering, then provider manifests
     # fill in behind them. Dedupe by display URL so thumbnails stay paired.
     merged_photos: List[Dict[str, str]] = []
     seen_display_urls: set[str] = set()
-    for photo in [*[photo_manifest_from_url(url) for url in curator_urls], *provider_manifests]:
+    for photo in [*curator_manifests, *provider_manifests]:
         display_url = canonicalize_url(photo.get("display", ""))
         thumbnail_url = canonicalize_url(photo.get("thumbnail", ""))
         if not display_url or not thumbnail_url or display_url in seen_display_urls:
@@ -534,8 +529,7 @@ class PhotoAssetService:
             asset = assets_by_hash.get(candidate.get("source_url_sha256"))
             photo_manifest = asset.get("photo_manifest") if asset else None
             if not isinstance(photo_manifest, dict):
-                azure_url = asset.get("azure_url") if asset else ""
-                photo_manifest = photo_manifest_from_url(azure_url) if azure_url else {}
+                photo_manifest = {}
             display_url = canonicalize_url(str(photo_manifest.get("display", "")))
             thumbnail_url = canonicalize_url(str(photo_manifest.get("thumbnail", "")))
             if not display_url or not thumbnail_url or display_url in seen_urls:
@@ -572,7 +566,7 @@ class PhotoAssetService:
             "provenance": candidate.get("provenance", []),
             "duplicate_provenance": candidate.get("duplicate_provenance", []),
             "azure_url": azure_url,
-            "photo_manifest": candidate.get("photo_manifest", photo_manifest_from_url(azure_url) if azure_url else {}),
+            "photo_manifest": candidate.get("photo_manifest", {}),
             "blob_container": PHOTOS_CONTAINER,
             "blob_path": blob_path,
             "content_sha256": content_sha256,

@@ -31,9 +31,7 @@ from services.photo_asset_service import (  # noqa: E402
     PhotoAssetService,
     classify_azure_photo_url,
     is_photo_ready_place,
-    parse_photo_manifest_list,
     parse_url_list,
-    photo_manifest_from_url,
 )
 from services.photo_publisher_service import (  # noqa: E402
     PHOTOS_CONTAINER,
@@ -74,6 +72,40 @@ AIRTABLE_WRITE_INTERVAL_SECONDS = 0.25
 DISPLAY_VARIANT_CATEGORIES = {"new_display_variant_standard", "new_display_variant_curator"}
 THUMBNAIL_VARIANT_CATEGORIES = {"new_thumbnail_variant_standard", "new_thumbnail_variant_curator"}
 ROOT_AZURE_CATEGORIES = {"new_standard", "new_curator"}
+
+
+def photo_manifest_from_url(url: str) -> Dict[str, str]:
+    return {"display": url, "thumbnail": url}
+
+
+def parse_photo_manifest_list(value: Any) -> List[Dict[str, str]]:
+    # Migration-only compatibility for old Photos/Photos Backup values.
+    if isinstance(value, list):
+        parsed_value = value
+    elif isinstance(value, str) and value.strip():
+        try:
+            parsed_value = json.loads(value)
+        except (TypeError, json.JSONDecodeError):
+            try:
+                parsed_value = ast.literal_eval(value)
+            except (ValueError, SyntaxError):
+                return []
+    else:
+        return []
+
+    if not isinstance(parsed_value, list):
+        return []
+
+    manifests: List[Dict[str, str]] = []
+    for item in parsed_value:
+        if isinstance(item, str) and item.startswith("http"):
+            manifests.append(photo_manifest_from_url(item))
+        elif isinstance(item, dict):
+            display_url = str(item.get("display") or "").strip()
+            thumbnail_url = str(item.get("thumbnail") or "").strip()
+            if display_url.startswith("http") and thumbnail_url.startswith("http"):
+                manifests.append({"display": display_url, "thumbnail": thumbnail_url})
+    return manifests
 
 
 @dataclass

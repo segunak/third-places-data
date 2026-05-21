@@ -442,11 +442,10 @@ def refresh_single_place_photos(activityInput):
             place_result["failed_uploads"] = len(asset_result.get("failures", []))
             place_result["canonical_assets"] = len(asset_result.get("assets", []))
 
-            selected_airtable_photos = asset_result.get("selected_airtable_photos") or asset_result.get("selected_airtable_urls", [])
-            selected_display_photo_urls = [
-                photo.get("display") if isinstance(photo, dict) else photo
-                for photo in selected_airtable_photos
-            ]
+            selected_airtable_photos = parse_photo_manifest_list(asset_result.get("selected_airtable_photos") or [], "selected_airtable_photos")
+            if not selected_airtable_photos and asset_result.get("selected_airtable_urls"):
+                raise ValueError("Photo asset processing returned display URLs without thumbnail manifests")
+            selected_display_photo_urls = [photo["display"] for photo in selected_airtable_photos]
 
             place_result["photos_after"] = len(selected_display_photo_urls)
             if not selected_display_photo_urls:

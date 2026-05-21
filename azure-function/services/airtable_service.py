@@ -9,7 +9,7 @@ from collections import Counter
 from urllib.parse import urlparse
 from constants import SearchField, MAX_THREAD_WORKERS
 from services import utils as helpers
-from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, build_place_photo_inventory, is_photo_ready_place
+from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, build_place_photo_inventory, is_photo_ready_place, parse_photo_manifest_list
 from services.place_data_service import PlaceDataProviderFactory
 from typing import Dict, Any, List, Optional
 from pyairtable.formulas import match
@@ -385,7 +385,9 @@ class AirtableService:
                         try_url_variants=True,
                     ),
                 )
-                photos_list = photo_asset_result.get('selected_airtable_photos') or photo_asset_result.get('selected_airtable_urls', [])
+                photos_list = parse_photo_manifest_list(photo_asset_result.get('selected_airtable_photos') or [], 'selected_airtable_photos')
+                if not photos_list and photo_asset_result.get('selected_airtable_urls'):
+                    raise ValueError("Photo asset processing returned display URLs without thumbnail manifests")
                 photo_publish_summary = photo_asset_result.get('summary', {})
             elif has_photo_candidates:
                 photos_list = []

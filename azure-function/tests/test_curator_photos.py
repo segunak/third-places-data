@@ -29,7 +29,7 @@ def _expected_curator_urls(place_id="ChIJtest123"):
 
 
 def _photo_manifest(url):
-    return {"display": url, "thumbnail": url}
+    return {"display": url, "thumbnail": url.replace("/display/", "/thumbnail/")}
 
 
 def _expected_curator_photos(place_id="ChIJtest123"):
@@ -105,10 +105,10 @@ class TestSyncSinglePlaceCuratorPhotos:
 
     def test_already_synced_returns_no_change(self, monkeypatch, airtable_attachment_objects):
         expected_curator_photos = _expected_curator_photos()
-        place_photo_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/" + ("a" * 64) + ".webp"
+        place_photo_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/display/" + ("a" * 64) + ".webp"
         place = _make_place(
             curator_attachments=airtable_attachment_objects,
-            photos=json.dumps([*expected_curator_photos, place_photo_url]),
+            photos=json.dumps([*expected_curator_photos, _photo_manifest(place_photo_url)]),
         )
         published = _publisher_success(monkeypatch, status="already_exists")
         monkeypatch.setattr("blueprints.curator_photos.AirtableApi", lambda token: (_ for _ in ()).throw(AssertionError("Airtable should not be updated")))
@@ -122,9 +122,8 @@ class TestSyncSinglePlaceCuratorPhotos:
         assert [item["status"] for item in published] == ["already_exists", "already_exists"]
 
     def test_already_synced_repairs_photos_field(self, monkeypatch, airtable_attachment_objects):
-        curator_urls = _expected_curator_urls()
-        place_photo_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/" + ("a" * 64) + ".webp"
-        place = _make_place(curator_attachments=airtable_attachment_objects, photos=json.dumps([place_photo_url]))
+        place_photo_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/display/" + ("a" * 64) + ".webp"
+        place = _make_place(curator_attachments=airtable_attachment_objects, photos=json.dumps([_photo_manifest(place_photo_url)]))
         _publisher_success(monkeypatch)
 
         mock_table = mock.MagicMock()
@@ -143,9 +142,9 @@ class TestSyncSinglePlaceCuratorPhotos:
         assert json.loads(written_fields["Photos"]) == [*_expected_curator_photos(), _photo_manifest(place_photo_url)]
 
     def test_removed_curator_attachments_clears_curator_urls_from_photos_without_deleting_blobs(self, monkeypatch):
-        curator_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/curator-attOLD-old-photo.webp"
-        place_photo_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/" + ("a" * 64) + ".webp"
-        place = _make_place(curator_attachments=[], photos=json.dumps([curator_url, place_photo_url]))
+        curator_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/display/curator-attOLD-old-photo.webp"
+        place_photo_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/display/" + ("a" * 64) + ".webp"
+        place = _make_place(curator_attachments=[], photos=json.dumps([_photo_manifest(curator_url), _photo_manifest(place_photo_url)]))
 
         deleted_blobs = []
 
@@ -220,11 +219,29 @@ class TestSyncSinglePlaceCuratorPhotos:
         assert result["photos_failed"] == 2
         mock_table.update.assert_not_called()
 
+    def test_publish_success_without_manifest_is_failed(self, monkeypatch, airtable_attachment_objects):
+        place = _make_place(curator_attachments=airtable_attachment_objects)
+
+        def publish_without_manifest(self, attachment, place_id, record_id, place_name, dry_run=True, upload=False, try_url_variants=True):
+            return {"success": True, "status": "uploaded", "azure_url": "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/display/curator-bad.webp"}
+
+        monkeypatch.setattr(curator_photos.PhotoPublisherService, "publish_curator_attachment", publish_without_manifest)
+        mock_table = mock.MagicMock()
+        mock_api = mock.MagicMock()
+        mock_api.table.return_value = mock_table
+        monkeypatch.setattr("blueprints.curator_photos.AirtableApi", lambda token: mock_api)
+
+        result = curator_photos.sync_single_place_curator_photos({"place": place, "config": {}})
+
+        assert result["status"] == "failed"
+        assert result["photos_failed"] == 2
+        mock_table.update.assert_not_called()
+
     def test_publish_failure_does_not_delete_existing_curator_blobs(self, monkeypatch, airtable_attachment_objects):
-        existing_curator_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/curator-attABC123-cafe-interior.webp"
+        existing_curator_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/display/curator-attABC123-cafe-interior.webp"
         place = _make_place(
             curator_attachments=airtable_attachment_objects,
-            photos=json.dumps([existing_curator_url]),
+            photos=json.dumps([_photo_manifest(existing_curator_url)]),
         )
 
         def fail_publish(self, attachment, place_id, record_id, place_name, dry_run=True, upload=False, try_url_variants=True):

@@ -50,6 +50,10 @@ def _curator_photo_url(place_id="ChIJ123", name="curator-attA-front.webp"):
     return f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/{name}"
 
 
+def _photo_manifest(display_url, thumbnail_url=None):
+    return {"display": display_url, "thumbnail": thumbnail_url or display_url.replace("/display/", "/thumbnail/")}
+
+
 def _place_record(photos="", photos_google=""):
     return {
         "id": "rec123",
@@ -60,6 +64,14 @@ def _place_record(photos="", photos_google=""):
             "Photos Google": photos_google,
         },
     }
+
+
+def test_inventory_rejects_legacy_airtable_photo_urls():
+    with pytest.raises(ValueError, match=r"Photos\[0\] must be an object"):
+        build_place_photo_inventory(
+            _place_record(photos='["https://example.com/photo-a.jpg"]'),
+            {"photos": {}},
+        )
 
 
 def test_inventory_includes_only_in_scope_sources_and_dedupes():
@@ -91,7 +103,7 @@ def test_inventory_includes_only_in_scope_sources_and_dedupes():
     }
 
     inventory, summary = build_place_photo_inventory(
-        _place_record(photos='["https://example.com/photo-a.jpg"]'),
+        _place_record(photos=json.dumps([_photo_manifest("https://example.com/photo-a.jpg", "https://example.com/photo-a-thumb.jpg")])),
         place_data,
     )
 
@@ -207,11 +219,13 @@ def test_curator_photo_azure_url_validation():
 
 
 def test_inventory_includes_curator_azure_urls_from_airtable_photos_as_variant_sources():
-    curator_url = _curator_photo_url()
-    provider_url = "https://example.com/provider.jpg"
+    curator_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-attA-front.webp"
+    provider_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/" + ("b" * 64) + ".webp"
+    curator_manifest = _photo_manifest(curator_url)
+    provider_manifest = _photo_manifest(provider_url)
 
     inventory, summary = build_place_photo_inventory(
-        _place_record(photos=json.dumps([curator_url, provider_url])),
+        _place_record(photos=json.dumps([curator_manifest, provider_manifest])),
         {"photos": {}},
     )
 
@@ -398,8 +412,12 @@ def test_chunk_helpers_preserve_selection_order(monkeypatch):
 
 def test_process_place_records_invalid_existing_azure_url_failure():
     service = PhotoAssetService()
+    invalid_manifest = _photo_manifest(
+        "https://thirdplacesdata.blob.core.windows.net/other-container/rec123/photo.jpg",
+        "https://thirdplacesdata.blob.core.windows.net/other-container/rec123/photo-thumb.jpg",
+    )
     result = service.process_place(
-        _place_record(photos='["https://thirdplacesdata.blob.core.windows.net/other-container/rec123/photo.jpg"]'),
+        _place_record(photos=json.dumps([invalid_manifest])),
         {"photos": {}},
         PhotoAssetConfig(dry_run=False, upload=True),
     )
@@ -410,9 +428,9 @@ def test_process_place_records_invalid_existing_azure_url_failure():
 
 
 def test_process_place_generates_curator_variants_at_front(monkeypatch):
-    curator_urls = [
-        _curator_photo_url(name="curator-attA-front.webp"),
-        _curator_photo_url(name="curator-attB-interior.webp"),
+    curator_manifests = [
+        _photo_manifest("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-attA-front.webp"),
+        _photo_manifest("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-attB-interior.webp"),
     ]
     place_data = {
         "photos": {
@@ -457,7 +475,7 @@ def test_process_place_generates_curator_variants_at_front(monkeypatch):
     )
 
     result = service.process_place(
-        _place_record(photos=json.dumps(curator_urls)),
+        _place_record(photos=json.dumps(curator_manifests)),
         place_data,
         PhotoAssetConfig(dry_run=False, upload=True),
     )
@@ -466,7 +484,7 @@ def test_process_place_generates_curator_variants_at_front(monkeypatch):
     assert "/display/curator-" in result["selected_airtable_urls"][1]
     assert result["selected_airtable_photos"][0]["thumbnail"].replace("/thumbnail/", "/display/") == result["selected_airtable_urls"][0]
     assert result["selected_airtable_photos"][1]["thumbnail"].replace("/thumbnail/", "/display/") == result["selected_airtable_urls"][1]
-    assert downloaded_urls[:2] == curator_urls
+    assert downloaded_urls == ["https://example.com/vibe.jpg", "https://example.com/front.jpg"]
     assert result["summary"]["preserved_curator_airtable_photos_count"] == 0
     assert result["summary"]["selected_curator_airtable_photos_count"] == 2
     assert result["summary"]["failed_upload_count"] == 0
@@ -474,10 +492,10 @@ def test_process_place_generates_curator_variants_at_front(monkeypatch):
 
 
 def test_process_place_plans_curator_variants_from_photos_field():
-    curator_url = _curator_photo_url()
+    curator_manifest = _photo_manifest("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-attA-front.webp")
 
     result = PhotoAssetService().process_place(
-        _place_record(photos=json.dumps([curator_url])),
+        _place_record(photos=json.dumps([curator_manifest])),
         {"photos": {}},
         PhotoAssetConfig(dry_run=True, upload=False),
     )
@@ -554,17 +572,12 @@ def test_process_place_plans_variants_for_existing_canonical_url_and_ignores_ret
         }
     }
 
-    result = PhotoAssetService().process_place(
-        _place_record(photos=json.dumps([azure_url])),
-        place_data,
-        PhotoAssetConfig(dry_run=True, upload=False),
-    )
-
-    assert len(result["assets"]) == 1
-    assert result["assets"][0]["azure_url"].startswith("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/")
-    assert result["assets"][0]["photo_manifest"]["thumbnail"].startswith("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/thumbnail/")
-    assert result["summary"]["azure_assets_count"] == 1
-    assert "place_data" not in result
+    with pytest.raises(ValueError, match=r"Photos\[0\] must be an object"):
+        PhotoAssetService().process_place(
+            _place_record(photos=json.dumps([azure_url])),
+            place_data,
+            PhotoAssetConfig(dry_run=True, upload=False),
+        )
 
 
 def test_ensure_container_exists_creates_missing_container(monkeypatch):

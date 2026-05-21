@@ -37,6 +37,10 @@ class DummyRequest:
         self.params = params
 
 
+def _photo_manifest(display_url, thumbnail_url=None):
+    return {"display": display_url, "thumbnail": thumbnail_url or display_url.replace("/display/", "/thumbnail/")}
+
+
 class FakeOrchestrationContext:
     def __init__(self, input_data):
         self._input_data = input_data
@@ -407,7 +411,7 @@ def test_refresh_single_place_photos_falls_back_to_airtable_photos_without_raw_d
             "fields": {
                 "Place": "Airtable Photos Place",
                 "Google Maps Place Id": "ChIJ-airtable-photos",
-                "Photos": json.dumps(["https://example.com/airtable-photo.jpg"]),
+                "Photos": json.dumps([_photo_manifest("https://example.com/airtable-photo.jpg", "https://example.com/airtable-photo-thumb.jpg")]),
             },
         },
         "config": {
@@ -427,13 +431,13 @@ def test_refresh_single_place_photos_falls_back_to_airtable_photos_without_raw_d
 
 
 def test_refresh_single_place_photos_counts_existing_airtable_azure_photos_before(monkeypatch):
-    existing_azure_urls = [
-        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-azure/"
+    existing_azure_photos = [
+        _photo_manifest("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-azure/display/"
         + ("a" * 64)
-        + ".jpg",
-        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-azure/"
+        + ".webp"),
+        _photo_manifest("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-azure/display/"
         + ("b" * 64)
-        + ".webp",
+        + ".webp"),
     ]
     provider_result = {
         "photo_urls": ["https://lh5.googleusercontent.com/gps-cs-s/provider-photo-1"],
@@ -458,7 +462,7 @@ def test_refresh_single_place_photos_counts_existing_airtable_azure_photos_befor
             "fields": {
                 "Place": "Already Migrated Place",
                 "Google Maps Place Id": "ChIJ-azure",
-                "Photos": json.dumps(existing_azure_urls),
+                "Photos": json.dumps(existing_azure_photos),
             },
         },
         "config": {
@@ -560,17 +564,62 @@ def test_refresh_single_place_photos_cached_photo_urls_missing_is_skipped(monkey
     assert result["message"] == "No cached photo_urls found"
 
 
+def test_refresh_single_place_photos_fails_when_asset_result_has_urls_without_manifests(monkeypatch):
+    provider_urls = ["https://lh5.googleusercontent.com/gps-cs-s/provider-photo-1"]
+    provider_azure_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/" + ("a" * 64) + ".webp"
+
+    class DummyPhotoAssetService:
+        def process_place(self, place, place_data, config):
+            return {
+                "summary": {"selected_airtable_count": 1},
+                "failures": [],
+                "assets": [],
+                "selected_source_urls": provider_urls,
+                "selected_airtable_urls": [provider_azure_url],
+            }
+
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(photos, "PhotoAssetService", DummyPhotoAssetService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: DummyProvider(provider_photos={"photo_urls": provider_urls, "raw_data": {"photos_data": []}})),
+    )
+    monkeypatch.setattr(photos, "fetch_data_github", lambda path: (True, {"photos": {"photo_urls": []}}, "ok"))
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec123",
+            "fields": {
+                "Place": "Test Place",
+                "Google Maps Place Id": "ChIJ123",
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": True,
+            "photo_source_mode": "refresh_from_data_provider",
+        },
+    })
+
+    assert result["status"] == "error"
+    assert "without thumbnail manifests" in result["message"]
+
+
 def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_source_cache(monkeypatch):
     provider_urls = [
         "https://lh5.googleusercontent.com/gps-cs-s/provider-photo-1",
         "https://lh5.googleusercontent.com/p/provider-photo-2",
     ]
-    curator_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/curator-att1-photo.webp"
+    curator_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-att1-photo.webp"
     provider_azure_url = (
-        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/"
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/"
         + ("a" * 64)
         + ".webp"
     )
+    curator_photo = _photo_manifest(curator_url)
+    provider_photo = _photo_manifest(provider_azure_url)
     saved_payload = {}
     airtable_updates = []
 
@@ -595,6 +644,7 @@ def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_s
                 "failures": [],
                 "assets": [],
                 "selected_source_urls": provider_urls,
+                "selected_airtable_photos": [curator_photo, provider_photo],
                 "selected_airtable_urls": [curator_url, provider_azure_url],
                 "place_data": place_data,
             }
@@ -624,7 +674,7 @@ def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_s
             "fields": {
                 "Place": "Test Place",
                 "Google Maps Place Id": "ChIJ123",
-                "Photos": json.dumps([curator_url]),
+                "Photos": json.dumps([curator_photo]),
             },
         },
         "config": {
@@ -646,6 +696,6 @@ def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_s
     assert airtable_updates == [{
         "record_id": "rec123",
         "field_to_update": "Photos",
-        "update_value": json.dumps([curator_url, provider_azure_url]),
+        "update_value": json.dumps([curator_photo, provider_photo]),
         "overwrite": True,
     }]
