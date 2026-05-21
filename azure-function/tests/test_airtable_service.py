@@ -1322,6 +1322,7 @@ class TestAirtableServiceEnrichSinglePlace:
         """Test cached raw_data.photo can trigger photo publishing even when photo_urls is empty."""
         service, mock_table, _ = service_with_mocks
         azure_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/" + ("a" * 64) + ".webp"
+        thumbnail_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/thumbnail/" + ("a" * 64) + ".webp"
 
         third_place = {
             "id": "recABC123",
@@ -1353,6 +1354,7 @@ class TestAirtableServiceEnrichSinglePlace:
                 with mock.patch.object(service, "update_place_record", return_value={"updated": True}) as mock_update:
                     mock_get_data.return_value = ("success", mock_place_data, "")
                     mock_photo_asset_service.return_value.process_place.return_value = {
+                        "selected_airtable_photos": [{"display": azure_url, "thumbnail": thumbnail_url}],
                         "selected_airtable_urls": [azure_url],
                         "summary": {"candidate_count": 1},
                     }
@@ -1363,7 +1365,7 @@ class TestAirtableServiceEnrichSinglePlace:
         mock_photo_asset_service.return_value.process_place.assert_called_once()
         photos_update_calls = [call for call in mock_update.call_args_list if call.args[1] == "Photos"]
         assert len(photos_update_calls) == 1
-        assert json.loads(photos_update_calls[0].args[2]) == [azure_url]
+        assert json.loads(photos_update_calls[0].args[2]) == [{"display": azure_url, "thumbnail": thumbnail_url}]
         assert result["photo_publish_summary"] == {"candidate_count": 1}
 
 

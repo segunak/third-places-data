@@ -79,10 +79,8 @@ def test_aggregate_audit_results_counts_findings():
             "canonical_photo_url_count": 2,
             "canonical_curator_url_count": 1,
             "canonical_standard_url_count": 1,
-            "legacy_airtable_url_count": 0,
+            "invalid_azure_airtable_url_count": 0,
             "non_azure_airtable_url_count": 0,
-            "mappable_legacy_blob_count": 0,
-            "unmappable_legacy_blob_count": 0,
             "new_container_blob_count": 2,
             "unserved_blob_count": 0,
         },
@@ -92,18 +90,16 @@ def test_aggregate_audit_results_counts_findings():
         },
         {
             "status": "error",
-            "legacy_airtable_url_count": 1,
+            "invalid_azure_airtable_url_count": 1,
             "non_azure_airtable_url_count": 1,
-            "mappable_legacy_blob_count": 1,
         },
     ])
 
     assert totals["total_places"] == 3
     assert totals["ignored_missing_place_id"] == 1
     assert totals["canonical_photo_url_count"] == 2
-    assert totals["legacy_airtable_url_count"] == 1
+    assert totals["invalid_azure_airtable_url_count"] == 1
     assert totals["non_azure_airtable_url_count"] == 1
-    assert totals["mappable_legacy_blob_count"] == 1
     assert totals["errors"] == 1
     assert totals["success"] is False
 
@@ -159,6 +155,6 @@ def test_photo_health_check_reports_counts(monkeypatch):
     assert body["success"] is True
     assert body["data"]["airtable_photo_url_count"] == 1
     assert body["data"]["canonical_standard_url_count"] == 1
-    assert body["data"]["legacy_airtable_url_count"] == 0
+    assert body["data"]["invalid_azure_airtable_url_count"] == 0
     assert body["data"]["non_azure_airtable_url_count"] == 0
     assert body["data"]["new_container_blob_count"] == 1

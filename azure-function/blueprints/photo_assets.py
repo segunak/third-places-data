@@ -13,12 +13,11 @@ from services.photo_asset_service import (
     AZURE_ACCOUNT_HOST,
     classify_azure_photo_url,
     is_photo_ready_place,
+    parse_photo_manifest_list,
     parse_url_list,
 )
 from services.image_conversion_service import webp_encoder_available
 from services.photo_publisher_service import (
-    LEGACY_CURATOR_PHOTOS_CONTAINER,
-    LEGACY_PLACE_PHOTOS_CONTAINER,
     PHOTOS_CONTAINER,
 )
 from services.utils import (
@@ -85,8 +84,7 @@ def _filter_places(places: List[Dict[str, Any]], config: Dict[str, Any]) -> List
 
 
 def _aggregate_audit_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
-    mappable_legacy_left = sum(int(result.get("mappable_legacy_blob_count", 0) or 0) for result in results)
-    legacy_urls_left = sum(int(result.get("legacy_airtable_url_count", 0) or 0) for result in results)
+    invalid_azure_urls_left = sum(int(result.get("invalid_azure_airtable_url_count", 0) or 0) for result in results)
     non_azure_urls_left = sum(int(result.get("non_azure_airtable_url_count", 0) or 0) for result in results)
     errors = len([result for result in results if result.get("status") == "error"])
     return {
@@ -95,14 +93,12 @@ def _aggregate_audit_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
         "canonical_photo_url_count": sum(int(result.get("canonical_photo_url_count", 0) or 0) for result in results),
         "canonical_curator_url_count": sum(int(result.get("canonical_curator_url_count", 0) or 0) for result in results),
         "canonical_standard_url_count": sum(int(result.get("canonical_standard_url_count", 0) or 0) for result in results),
-        "legacy_airtable_url_count": legacy_urls_left,
+        "invalid_azure_airtable_url_count": invalid_azure_urls_left,
         "non_azure_airtable_url_count": non_azure_urls_left,
-        "mappable_legacy_blob_count": mappable_legacy_left,
-        "unmappable_legacy_blob_count": sum(int(result.get("unmappable_legacy_blob_count", 0) or 0) for result in results),
         "new_container_blob_count": sum(int(result.get("new_container_blob_count", 0) or 0) for result in results),
         "unserved_blob_count": sum(int(result.get("unserved_blob_count", 0) or 0) for result in results),
         "errors": errors,
-        "success": errors == 0 and mappable_legacy_left == 0 and legacy_urls_left == 0 and non_azure_urls_left == 0,
+        "success": errors == 0 and invalid_azure_urls_left == 0 and non_azure_urls_left == 0,
     }
 
 
@@ -125,10 +121,8 @@ def _compact_audit_result(result: Dict[str, Any]) -> Dict[str, Any]:
         "canonical_photo_url_count",
         "canonical_curator_url_count",
         "canonical_standard_url_count",
-        "legacy_airtable_url_count",
+        "invalid_azure_airtable_url_count",
         "non_azure_airtable_url_count",
-        "mappable_legacy_blob_count",
-        "unmappable_legacy_blob_count",
         "missing_blob_reference_count",
         "missing_blob_reference_samples",
         "unserved_blob_count",
@@ -219,7 +213,7 @@ def photo_assets_audit_orchestrator(context: df.DurableOrchestrationContext):
                 "unexpected_skip_results": _unexpected_skip_results(results, _compact_audit_result),
                 "expected_skip_samples": _expected_skip_samples(results, _compact_audit_result),
             },
-            "error": None if totals["success"] else "Mappable legacy blobs or legacy/non-Azure Airtable Photos remain",
+            "error": None if totals["success"] else "Invalid Azure or non-Azure Airtable Photos remain",
         }
     except Exception as exc:
         logging.error(f"Critical error in photo asset audit: {exc}", exc_info=True)
@@ -247,42 +241,45 @@ def audit_single_place_photo_assets(activityInput):
                 "record_id": record_id,
             }
 
-        airtable_urls = parse_url_list(fields.get("Photos"))
+        airtable_photos = parse_photo_manifest_list(fields.get("Photos"))
+        airtable_urls = list(dict.fromkeys([
+            url
+            for photo in airtable_photos
+            for url in (photo.get("display", ""), photo.get("thumbnail", ""))
+            if url
+        ]))
         canonical_photo_urls = []
         canonical_curator_urls = []
         canonical_standard_urls = []
-        legacy_urls = []
+        invalid_azure_urls = []
         non_azure_urls = []
         for url in airtable_urls:
             classification = classify_azure_photo_url(url, city, place_id)
             category = classification["category"]
-            if category in {"new_curator", "new_standard"} and classification["reason"] == "valid":
+            if category in {
+                "new_curator",
+                "new_standard",
+                "new_display_variant_curator",
+                "new_display_variant_standard",
+                "new_thumbnail_variant_curator",
+                "new_thumbnail_variant_standard",
+            } and classification["reason"] == "valid":
                 canonical_photo_urls.append(url)
-                if category == "new_curator":
+                if category in {"new_curator", "new_display_variant_curator", "new_thumbnail_variant_curator"}:
                     canonical_curator_urls.append(url)
                 else:
                     canonical_standard_urls.append(url)
-            elif category in {"legacy_curator", "legacy_place_photo"}:
-                legacy_urls.append(url)
+            elif urlparse(url).netloc.lower() == AZURE_ACCOUNT_HOST:
+                invalid_azure_urls.append(url)
             elif urlparse(url).netloc.lower() != AZURE_ACCOUNT_HOST:
                 non_azure_urls.append(url)
 
         new_blobs = []
-        legacy_place_blobs = []
-        legacy_curator_blobs = []
         blob_warnings = []
         try:
             new_blobs = list_blobs_in_container(PHOTOS_CONTAINER, prefix=f"{place_id}/")
         except Exception as exc:
             blob_warnings.append(f"new_container_list_failed: {exc}")
-        try:
-            legacy_place_blobs = list_blobs_in_container(LEGACY_PLACE_PHOTOS_CONTAINER, prefix=f"{city}/{place_id}/")
-        except Exception as exc:
-            blob_warnings.append(f"legacy_place_list_failed: {exc}")
-        try:
-            legacy_curator_blobs = list_blobs_in_container(LEGACY_CURATOR_PHOTOS_CONTAINER, prefix=f"{record_id}/") if record_id else []
-        except Exception as exc:
-            blob_warnings.append(f"legacy_curator_list_failed: {exc}")
 
         airtable_url_set = set(canonical_photo_urls)
         blob_url_set = {f"https://{AZURE_ACCOUNT_HOST}/{PHOTOS_CONTAINER}/{blob}" for blob in new_blobs}
@@ -301,15 +298,13 @@ def audit_single_place_photo_assets(activityInput):
             "canonical_photo_url_count": len(canonical_photo_urls),
             "canonical_curator_url_count": len(canonical_curator_urls),
             "canonical_standard_url_count": len(canonical_standard_urls),
-            "legacy_airtable_url_count": len(legacy_urls),
+            "invalid_azure_airtable_url_count": len(invalid_azure_urls),
             "non_azure_airtable_url_count": len(non_azure_urls),
             "new_container_blob_count": len(new_blobs),
             "new_container_curator_blob_count": curator_blob_count,
             "new_container_standard_blob_count": standard_blob_count,
             "new_container_webp_blob_count": webp_count,
             "new_container_non_webp_blob_count": len(new_blobs) - webp_count,
-            "mappable_legacy_blob_count": len(legacy_place_blobs) + len(legacy_curator_blobs),
-            "unmappable_legacy_blob_count": 0,
             "missing_blob_reference_count": len(missing_blob_urls),
             "missing_blob_reference_samples": missing_blob_urls[:3],
             "unserved_blob_count": len(unserved_blobs),

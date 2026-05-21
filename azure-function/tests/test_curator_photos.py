@@ -23,8 +23,25 @@ def _make_place(record_id="recABC123", place_name="Test Coffee Shop", curator_at
 
 def _expected_curator_urls(place_id="ChIJtest123"):
     return [
-        f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/curator-attABC123-cafe-interior.webp",
-        f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/curator-attDEF456-patio-seating.webp",
+        f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/display/curator-attABC123-cafe-interior.webp",
+        f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/display/curator-attDEF456-patio-seating.webp",
+    ]
+
+
+def _photo_manifest(url):
+    return {"display": url, "thumbnail": url}
+
+
+def _expected_curator_photos(place_id="ChIJtest123"):
+    return [
+        {
+            "display": f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/display/curator-attABC123-cafe-interior.webp",
+            "thumbnail": f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/thumbnail/curator-attABC123-cafe-interior.webp",
+        },
+        {
+            "display": f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/display/curator-attDEF456-patio-seating.webp",
+            "thumbnail": f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/thumbnail/curator-attDEF456-patio-seating.webp",
+        },
     ]
 
 
@@ -35,16 +52,20 @@ def _expected_curator_blobs(place_id="ChIJtest123"):
     ]
 
 
-def _publisher_success(monkeypatch, place_id="ChIJtest123"):
+def _publisher_success(monkeypatch, place_id="ChIJtest123", status="uploaded"):
     published = []
 
     def publish(self, attachment, place_id, record_id, place_name, dry_run=True, upload=False, try_url_variants=True):
         attachment_id = attachment["id"]
         filename_stem = "cafe-interior" if attachment_id == "attABC123" else "patio-seating"
-        blob_path = f"{place_id}/curator-{attachment_id}-{filename_stem}.webp"
-        azure_url = f"https://thirdplacesdata.blob.core.windows.net/photos/{blob_path}"
-        published.append({"attachment_id": attachment_id, "blob_path": blob_path, "azure_url": azure_url})
-        return {"success": True, "blob_path": blob_path, "azure_url": azure_url}
+        display_blob_path = f"{place_id}/display/curator-{attachment_id}-{filename_stem}.webp"
+        thumbnail_blob_path = f"{place_id}/thumbnail/curator-{attachment_id}-{filename_stem}.webp"
+        photo_manifest = {
+            "display": f"https://thirdplacesdata.blob.core.windows.net/photos/{display_blob_path}",
+            "thumbnail": f"https://thirdplacesdata.blob.core.windows.net/photos/{thumbnail_blob_path}",
+        }
+        published.append({"attachment_id": attachment_id, "blob_path": display_blob_path, "photo_manifest": photo_manifest, "status": status})
+        return {"success": True, "status": status, "blob_path": display_blob_path, "azure_url": photo_manifest["display"], "photo_manifest": photo_manifest}
 
     monkeypatch.setattr(curator_photos.PhotoPublisherService, "publish_curator_attachment", publish)
     return published
@@ -75,7 +96,6 @@ class TestSyncSinglePlaceCuratorPhotos:
 
     def test_no_curator_photos_returns_no_change(self, monkeypatch):
         place = _make_place(curator_attachments=[])
-        monkeypatch.setattr(curator_photos, "list_blobs_in_container", lambda *args, **kwargs: [])
         monkeypatch.setattr("blueprints.curator_photos.AirtableApi", lambda token: (_ for _ in ()).throw(AssertionError("Airtable should not be updated")))
 
         result = curator_photos.sync_single_place_curator_photos({"place": place, "config": {}})
@@ -84,27 +104,28 @@ class TestSyncSinglePlaceCuratorPhotos:
         assert result["airtable_fields_updated"] == []
 
     def test_already_synced_returns_no_change(self, monkeypatch, airtable_attachment_objects):
-        curator_urls = _expected_curator_urls()
+        expected_curator_photos = _expected_curator_photos()
         place_photo_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/" + ("a" * 64) + ".webp"
         place = _make_place(
             curator_attachments=airtable_attachment_objects,
-            photos=json.dumps([*curator_urls, place_photo_url]),
+            photos=json.dumps([*expected_curator_photos, place_photo_url]),
         )
-        _publisher_success(monkeypatch)
-        monkeypatch.setattr(curator_photos, "list_blobs_in_container", lambda *args, **kwargs: _expected_curator_blobs())
+        published = _publisher_success(monkeypatch, status="already_exists")
         monkeypatch.setattr("blueprints.curator_photos.AirtableApi", lambda token: (_ for _ in ()).throw(AssertionError("Airtable should not be updated")))
 
         result = curator_photos.sync_single_place_curator_photos({"place": place, "config": {}})
 
         assert result["status"] == "no_change"
         assert result["photos_synced"] == 2
+        assert result["photos_uploaded"] == 0
+        assert result["photos_reused"] == 2
+        assert [item["status"] for item in published] == ["already_exists", "already_exists"]
 
     def test_already_synced_repairs_photos_field(self, monkeypatch, airtable_attachment_objects):
         curator_urls = _expected_curator_urls()
         place_photo_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/" + ("a" * 64) + ".webp"
         place = _make_place(curator_attachments=airtable_attachment_objects, photos=json.dumps([place_photo_url]))
         _publisher_success(monkeypatch)
-        monkeypatch.setattr(curator_photos, "list_blobs_in_container", lambda *args, **kwargs: _expected_curator_blobs())
 
         mock_table = mock.MagicMock()
         mock_api = mock.MagicMock()
@@ -115,18 +136,18 @@ class TestSyncSinglePlaceCuratorPhotos:
 
         assert result["status"] == "updated"
         assert result["photos_synced"] == 2
+        assert result["photos_uploaded"] == 2
+        assert result["photos_reused"] == 0
         assert result["airtable_fields_updated"] == ["Photos"]
         written_fields = mock_table.update.call_args[0][1]
-        assert json.loads(written_fields["Photos"]) == [*curator_urls, place_photo_url]
+        assert json.loads(written_fields["Photos"]) == [*_expected_curator_photos(), _photo_manifest(place_photo_url)]
 
-    def test_removed_curator_attachments_clears_curator_urls_from_photos(self, monkeypatch):
+    def test_removed_curator_attachments_clears_curator_urls_from_photos_without_deleting_blobs(self, monkeypatch):
         curator_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/curator-attOLD-old-photo.webp"
         place_photo_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJtest123/" + ("a" * 64) + ".webp"
         place = _make_place(curator_attachments=[], photos=json.dumps([curator_url, place_photo_url]))
 
-        monkeypatch.setattr(curator_photos, "list_blobs_in_container", lambda *args, **kwargs: ["ChIJtest123/curator-attOLD-old-photo.webp"])
         deleted_blobs = []
-        monkeypatch.setattr(curator_photos, "delete_blob_from_container", lambda container, path: (deleted_blobs.append((container, path)), True)[1])
 
         mock_table = mock.MagicMock()
         mock_api = mock.MagicMock()
@@ -136,16 +157,15 @@ class TestSyncSinglePlaceCuratorPhotos:
         result = curator_photos.sync_single_place_curator_photos({"place": place, "config": {}})
 
         assert result["status"] == "updated"
-        assert result["photos_deleted"] == 1
-        assert deleted_blobs == [("photos", "ChIJtest123/curator-attOLD-old-photo.webp")]
+        assert result["photos_deleted"] == 0
+        assert deleted_blobs == []
         assert result["airtable_fields_updated"] == ["Photos"]
         written_fields = mock_table.update.call_args[0][1]
-        assert json.loads(written_fields["Photos"]) == [place_photo_url]
+        assert json.loads(written_fields["Photos"]) == [_photo_manifest(place_photo_url)]
 
     def test_new_attachments_upload(self, monkeypatch, airtable_attachment_objects):
         place = _make_place(curator_attachments=airtable_attachment_objects)
         published = _publisher_success(monkeypatch)
-        monkeypatch.setattr(curator_photos, "list_blobs_in_container", lambda *args, **kwargs: [])
 
         mock_table = mock.MagicMock()
         mock_api = mock.MagicMock()
@@ -156,22 +176,18 @@ class TestSyncSinglePlaceCuratorPhotos:
 
         assert result["status"] == "updated"
         assert result["photos_synced"] == 2
+        assert result["photos_uploaded"] == 2
+        assert result["photos_reused"] == 0
         assert len(published) == 2
         written_fields = mock_table.update.call_args[0][1]
         assert set(written_fields) == {"Photos"}
         written_photos = json.loads(written_fields["Photos"])
-        assert written_photos == _expected_curator_urls()
+        assert written_photos == _expected_curator_photos()
 
-    def test_orphaned_blobs_deleted(self, monkeypatch, airtable_attachment_objects):
+    def test_orphaned_blobs_are_not_deleted_during_manifest_migration(self, monkeypatch, airtable_attachment_objects):
         place = _make_place(curator_attachments=[airtable_attachment_objects[0]])
         published = _publisher_success(monkeypatch)
-        monkeypatch.setattr(
-            curator_photos,
-            "list_blobs_in_container",
-            lambda *args, **kwargs: [published[0]["blob_path"], "ChIJtest123/curator-attOLD789-old-photo.webp"],
-        )
         deleted_blobs = []
-        monkeypatch.setattr(curator_photos, "delete_blob_from_container", lambda container, path: (deleted_blobs.append(path), True)[1])
 
         mock_table = mock.MagicMock()
         mock_api = mock.MagicMock()
@@ -181,8 +197,8 @@ class TestSyncSinglePlaceCuratorPhotos:
         result = curator_photos.sync_single_place_curator_photos({"place": place, "config": {}})
 
         assert result["status"] == "updated"
-        assert result["photos_deleted"] == 1
-        assert deleted_blobs == ["ChIJtest123/curator-attOLD789-old-photo.webp"]
+        assert result["photos_deleted"] == 0
+        assert deleted_blobs == []
 
     def test_publish_failure_handled_gracefully(self, monkeypatch, airtable_attachment_objects):
         place = _make_place(curator_attachments=airtable_attachment_objects)
@@ -191,7 +207,6 @@ class TestSyncSinglePlaceCuratorPhotos:
             return {"success": False, "error": "Network error"}
 
         monkeypatch.setattr(curator_photos.PhotoPublisherService, "publish_curator_attachment", fail_publish)
-        monkeypatch.setattr(curator_photos, "list_blobs_in_container", lambda *args, **kwargs: [])
 
         mock_table = mock.MagicMock()
         mock_api = mock.MagicMock()
@@ -216,13 +231,7 @@ class TestSyncSinglePlaceCuratorPhotos:
             return {"success": False, "error": "Network error"}
 
         monkeypatch.setattr(curator_photos.PhotoPublisherService, "publish_curator_attachment", fail_publish)
-        monkeypatch.setattr(
-            curator_photos,
-            "list_blobs_in_container",
-            lambda *args, **kwargs: ["ChIJtest123/curator-attABC123-cafe-interior.webp"],
-        )
         deleted_blobs = []
-        monkeypatch.setattr(curator_photos, "delete_blob_from_container", lambda container, path: (deleted_blobs.append(path), True)[1])
 
         mock_table = mock.MagicMock()
         mock_api = mock.MagicMock()

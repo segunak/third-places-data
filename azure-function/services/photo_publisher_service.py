@@ -10,13 +10,11 @@ from urllib.parse import urlparse
 
 import requests
 
-from services.image_conversion_service import convert_image_for_upload, validated_content_type
-from services.utils import upload_blob_to_container
+from services.image_conversion_service import generate_served_image_variants, validated_content_type
+from services.utils import blob_exists_in_container, upload_blob_to_container
 
 
 PHOTOS_CONTAINER = "photos"
-LEGACY_PLACE_PHOTOS_CONTAINER = "place-photos"
-LEGACY_CURATOR_PHOTOS_CONTAINER = "curator-photos"
 AZURE_ACCOUNT_HOST = "thirdplacesdata.blob.core.windows.net"
 CACHE_CONTROL_IMMUTABLE = "public, max-age=31536000, immutable"
 REQUEST_HEADERS = {
@@ -37,10 +35,6 @@ def sha256_hex(value: str) -> str:
 
 def canonical_photo_url(blob_path: str) -> str:
     return f"https://{AZURE_ACCOUNT_HOST}/{PHOTOS_CONTAINER}/{blob_path}"
-
-
-def azure_blob_url(container_name: str, blob_path: str) -> str:
-    return f"https://{AZURE_ACCOUNT_HOST}/{container_name}/{blob_path}"
 
 
 def is_google_hosted_url(url: str) -> bool:
@@ -198,14 +192,14 @@ class PhotoPublisherService:
             blob_kind="standard",
         )
 
-    def publish_legacy_curator_url(
+    def publish_curator_source_url(
         self,
         source_url: str,
         place_id: str,
         record_id: str,
         place_name: str,
         source_hash: Optional[str] = None,
-        source_field: str = "legacy.curator-photos",
+        source_field: str = "Airtable Photos",
         source_path: str = "",
         dry_run: bool = True,
         upload: bool = False,
@@ -224,7 +218,7 @@ class PhotoPublisherService:
             upload=upload,
             try_url_variants=try_url_variants,
             download_timeout_seconds=download_timeout_seconds,
-            blob_kind="legacy_curator",
+            blob_kind="curator_source",
         )
 
     def publish_curator_attachment(
@@ -287,17 +281,62 @@ class PhotoPublisherService:
     ) -> Dict[str, Any]:
         canonical_source_url = (source_url or "").strip()
         effective_source_hash = source_hash or sha256_hex(canonical_source_url)
-        if dry_run or not upload:
-            blob_path = self._blob_path(blob_kind, place_id, effective_source_hash, ".webp", attachment_id, filename)
+        display_blob_path = self._variant_blob_path("display", blob_kind, place_id, effective_source_hash, attachment_id, filename)
+        thumbnail_blob_path = self._variant_blob_path("thumbnail", blob_kind, place_id, effective_source_hash, attachment_id, filename)
+        # Airtable stores only this lightweight manifest; blob metadata keeps the
+        # heavier diagnostics such as hashes, source fields, and byte sizes.
+        photo_manifest = {
+            "display": canonical_photo_url(display_blob_path),
+            "thumbnail": canonical_photo_url(thumbnail_blob_path),
+        }
+        variant_existence = self._served_variant_existence(display_blob_path, thumbnail_blob_path)
+        if not dry_run and upload and variant_existence["served_variants_exist"]:
             return {
                 "success": True,
-                "status": "would_upload",
-                "azure_url": canonical_photo_url(blob_path),
+                "status": "already_exists",
+                "azure_url": photo_manifest["display"],
+                "thumbnail_url": photo_manifest["thumbnail"],
+                "photo_manifest": photo_manifest,
                 "blob_container": PHOTOS_CONTAINER,
-                "blob_path": blob_path,
+                "blob_path": display_blob_path,
+                "display_blob_path": display_blob_path,
+                "thumbnail_blob_path": thumbnail_blob_path,
                 "content_sha256": "",
                 "content_type": "image/webp",
                 "bytes": 0,
+                "thumbnail_bytes": 0,
+                "variant_bytes": {"display": 0, "thumbnail": 0},
+                "source_url": source_url,
+                "canonical_source_url": canonical_source_url,
+                "source_url_sha256": effective_source_hash,
+                "source_field": source_field,
+                "source_path": source_path,
+                "attempts": [],
+                "conversion_status": "already_exists",
+                "converted_to_webp": True,
+                "fallback_original": False,
+                "fallback_reason": "",
+                "conversion_warning": "",
+                "conversion_error": "",
+                "webp_encoder_available": True,
+                "dry_run": dry_run,
+                **variant_existence,
+            }
+        if dry_run or not upload:
+            return {
+                "success": True,
+                "status": self._planned_status_for_variant_existence(variant_existence),
+                "azure_url": photo_manifest["display"],
+                "thumbnail_url": photo_manifest["thumbnail"],
+                "photo_manifest": photo_manifest,
+                "blob_container": PHOTOS_CONTAINER,
+                "blob_path": display_blob_path,
+                "display_blob_path": display_blob_path,
+                "thumbnail_blob_path": thumbnail_blob_path,
+                "content_sha256": "",
+                "content_type": "image/webp",
+                "bytes": 0,
+                "variant_bytes": {"display": 0, "thumbnail": 0},
                 "source_url": source_url,
                 "canonical_source_url": canonical_source_url,
                 "source_url_sha256": effective_source_hash,
@@ -312,6 +351,7 @@ class PhotoPublisherService:
                 "conversion_error": "",
                 "webp_encoder_available": False,
                 "dry_run": dry_run,
+                **variant_existence,
             }
 
         download_result = self.download_image_asset(
@@ -333,16 +373,17 @@ class PhotoPublisherService:
                 "source_path": source_path,
             }
 
-        conversion = convert_image_for_upload(
+        variants = generate_served_image_variants(
             download_result["data"],
             download_result["content_type"],
             download_result.get("extension", ""),
         )
-        if not conversion.success:
+        failed_variants = [variant for variant in variants.values() if not variant.success]
+        if failed_variants:
             return {
                 "success": False,
-                "status": conversion.status,
-                "error": conversion.error,
+                "status": failed_variants[0].status,
+                "error": failed_variants[0].error,
                 "attempts": download_result.get("attempts", []),
                 "source_url": source_url,
                 "canonical_source_url": canonical_source_url,
@@ -351,65 +392,137 @@ class PhotoPublisherService:
                 "source_path": source_path,
             }
 
-        blob_path = self._blob_path(blob_kind, place_id, effective_source_hash, conversion.extension, attachment_id, filename)
-        metadata = {
-            "airtable_record_id": record_id[:128],
-            "place_id": place_id[:128],
-            "place_name": place_name[:128],
-            "source_url_sha256": effective_source_hash,
-            "source_host": urlparse(canonical_source_url).netloc.lower()[:128],
-            "source_field": source_field[:128],
-            "content_sha256": conversion.content_sha256,
-            "content_type": conversion.content_type,
-            "conversion_status": conversion.status[:128],
+        uploaded_urls: Dict[str, str] = {}
+        blob_paths = {
+            "display": display_blob_path,
+            "thumbnail": thumbnail_blob_path,
         }
-        azure_url = upload_blob_to_container(
-            PHOTOS_CONTAINER,
-            blob_path,
-            conversion.data,
-            content_type=conversion.content_type,
-            metadata=metadata,
-            cache_control=CACHE_CONTROL_IMMUTABLE,
-            public_access="blob",
-            overwrite=True,
-        )
+        # Upload both variants so the frontend can load thumbnails without
+        # downloading or decoding the larger display asset.
+        for variant_name, variant in variants.items():
+            metadata = {
+                "airtable_record_id": record_id[:128],
+                "place_id": place_id[:128],
+                "place_name": place_name[:128],
+                "source_url_sha256": effective_source_hash,
+                "source_host": urlparse(canonical_source_url).netloc.lower()[:128],
+                "source_field": source_field[:128],
+                "content_sha256": variant.content_sha256,
+                "content_type": variant.content_type,
+                "conversion_status": variant.status[:128],
+                "variant": variant_name,
+            }
+            uploaded_urls[variant_name] = upload_blob_to_container(
+                PHOTOS_CONTAINER,
+                blob_paths[variant_name],
+                variant.data,
+                content_type=variant.content_type,
+                metadata=metadata,
+                cache_control=CACHE_CONTROL_IMMUTABLE,
+                public_access="blob",
+                overwrite=True,
+            )
+
+        uploaded_manifest = {
+            "display": uploaded_urls["display"],
+            "thumbnail": uploaded_urls["thumbnail"],
+        }
+        display = variants["display"]
+        thumbnail = variants["thumbnail"]
 
         return {
             "success": True,
             "status": "uploaded",
-            "azure_url": azure_url,
+            "azure_url": uploaded_manifest["display"],
+            "thumbnail_url": uploaded_manifest["thumbnail"],
+            "photo_manifest": uploaded_manifest,
             "blob_container": PHOTOS_CONTAINER,
-            "blob_path": blob_path,
-            "content_sha256": conversion.content_sha256,
-            "content_type": conversion.content_type,
-            "bytes": len(conversion.data),
+            "blob_path": display_blob_path,
+            "display_blob_path": display_blob_path,
+            "thumbnail_blob_path": thumbnail_blob_path,
+            "content_sha256": display.content_sha256,
+            "content_type": display.content_type,
+            "bytes": display.bytes,
+            "thumbnail_bytes": thumbnail.bytes,
+            "variant_bytes": {"display": display.bytes, "thumbnail": thumbnail.bytes},
             "source_url": source_url,
             "canonical_source_url": canonical_source_url,
             "source_url_sha256": effective_source_hash,
             "source_field": source_field,
             "source_path": source_path,
             "attempts": download_result.get("attempts", []),
-            "conversion_status": conversion.status,
-            "converted_to_webp": conversion.converted_to_webp,
-            "fallback_original": conversion.fallback_original,
-            "fallback_reason": conversion.fallback_reason,
-            "conversion_warning": conversion.warning,
-            "conversion_error": conversion.error,
-            "webp_encoder_available": conversion.webp_encoder_available,
+            "conversion_status": display.status,
+            "converted_to_webp": True,
+            "fallback_original": False,
+            "fallback_reason": "",
+            "conversion_warning": ";".join([warning for warning in (display.warning, thumbnail.warning) if warning]),
+            "conversion_error": "",
+            "webp_encoder_available": True,
             "dry_run": dry_run,
+            **variant_existence,
         }
 
-    def _blob_path(
+    def _variant_blob_path(
         self,
+        variant: str,
         blob_kind: str,
         place_id: str,
         source_hash: str,
-        extension: str,
         attachment_id: str = "",
         filename: str = "",
     ) -> str:
         if blob_kind == "curator":
-            return f"{place_id}/curator-{attachment_id}-{safe_filename_stem(filename)}{extension}"
-        if blob_kind == "legacy_curator":
-            return f"{place_id}/curator-legacy-{source_hash}{extension}"
-        return f"{place_id}/{source_hash}{extension}"
+            variant_filename = f"curator-{attachment_id}-{safe_filename_stem(filename)}.webp"
+        elif blob_kind == "curator_source":
+            variant_filename = f"curator-{source_hash}.webp"
+        else:
+            variant_filename = f"{source_hash}.webp"
+        return f"{place_id}/{variant}/{variant_filename}"
+
+    def _served_variants_exist(self, display_blob_path: str, thumbnail_blob_path: str) -> bool:
+        try:
+            return (
+                blob_exists_in_container(PHOTOS_CONTAINER, display_blob_path)
+                and blob_exists_in_container(PHOTOS_CONTAINER, thumbnail_blob_path)
+            )
+        except Exception as exc:
+            logging.warning("Could not check existing photo variants; continuing with upload: %s", exc)
+            return False
+
+    def _served_variant_existence(self, display_blob_path: str, thumbnail_blob_path: str) -> Dict[str, Any]:
+        result: Dict[str, Any] = {
+            "existence_check_succeeded": True,
+            "display_blob_exists": False,
+            "thumbnail_blob_exists": False,
+            "served_variants_exist": False,
+            "missing_variants": ["display", "thumbnail"],
+        }
+        try:
+            result["display_blob_exists"] = blob_exists_in_container(PHOTOS_CONTAINER, display_blob_path)
+            result["thumbnail_blob_exists"] = blob_exists_in_container(PHOTOS_CONTAINER, thumbnail_blob_path)
+        except Exception as exc:
+            logging.warning("Could not check existing photo variants; continuing with upload: %s", exc)
+            result["existence_check_succeeded"] = False
+            result["existence_check_error"] = str(exc)
+            return result
+
+        missing_variants = []
+        if not result["display_blob_exists"]:
+            missing_variants.append("display")
+        if not result["thumbnail_blob_exists"]:
+            missing_variants.append("thumbnail")
+        result["missing_variants"] = missing_variants
+        result["served_variants_exist"] = not missing_variants
+        return result
+
+    def _planned_status_for_variant_existence(self, variant_existence: Dict[str, Any]) -> str:
+        if not variant_existence.get("existence_check_succeeded", False):
+            return "would_upload_existence_unknown"
+        missing_variants = variant_existence.get("missing_variants", [])
+        if not missing_variants:
+            return "already_exists"
+        if missing_variants == ["display"]:
+            return "would_upload_missing_display"
+        if missing_variants == ["thumbnail"]:
+            return "would_upload_missing_thumbnail"
+        return "would_upload_missing_both"

@@ -291,17 +291,35 @@ def upload_blob_to_container(
     return blob_client.url
 
 
+def blob_exists_in_container(container_name: str, blob_path: str) -> bool:
+    """Return True when a blob exists in the requested container."""
+    try:
+        client = _get_blob_service_client()
+        blob_client = client.get_blob_client(container=container_name, blob=blob_path)
+        return bool(blob_client.exists())
+    except ResourceNotFoundError:
+        return False
+
+
 def delete_blob_from_container(container_name: str, blob_path: str) -> bool:
     """Delete a blob from a container. Returns True if deleted."""
+    return delete_blob_from_container_with_status(container_name, blob_path) == "deleted"
+
+
+def delete_blob_from_container_with_status(container_name: str, blob_path: str) -> str:
+    """Delete a blob and return deleted, missing_already, or failed."""
     try:
         client = _get_blob_service_client()
         blob_client = client.get_blob_client(container=container_name, blob=blob_path)
         blob_client.delete_blob()
         logging.info(f"Deleted blob: {container_name}/{blob_path}")
-        return True
+        return "deleted"
+    except ResourceNotFoundError:
+        logging.info(f"Blob already missing: {container_name}/{blob_path}")
+        return "missing_already"
     except Exception as e:
         logging.warning(f"Failed to delete blob {container_name}/{blob_path}: {e}")
-        return False
+        return "failed"
 
 
 def list_blobs_in_container(container_name: str, prefix: str = "") -> list:

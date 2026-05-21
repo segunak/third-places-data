@@ -385,7 +385,7 @@ class AirtableService:
                         try_url_variants=True,
                     ),
                 )
-                photos_list = photo_asset_result.get('selected_airtable_urls', [])
+                photos_list = photo_asset_result.get('selected_airtable_photos') or photo_asset_result.get('selected_airtable_urls', [])
                 photo_publish_summary = photo_asset_result.get('summary', {})
             elif has_photo_candidates:
                 photos_list = []

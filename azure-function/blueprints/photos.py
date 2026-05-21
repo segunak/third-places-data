@@ -4,7 +4,7 @@ import azure.functions as func
 import azure.durable_functions as df
 from datetime import datetime
 from services.airtable_service import AirtableService
-from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, parse_url_list, remove_photo_manifest_fields
+from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, parse_photo_manifest_list, parse_url_list, remove_photo_manifest_fields
 from services.place_data_service import PlaceDataProviderFactory
 from services.utils import fetch_data_github, save_data_github
 
@@ -374,7 +374,7 @@ def refresh_single_place_photos(activityInput):
 
         photos_section = place_data.get('photos', {})
         current_photos = parse_url_list(photos_section.get('photo_urls', []))
-        place_result["photos_before"] = len(parse_url_list(fields.get('Photos')))
+        place_result["photos_before"] = len(parse_photo_manifest_list(fields.get('Photos')))
         place_result["cached_photo_urls_before"] = len(current_photos)
 
         selected_source_photo_urls = []
@@ -442,7 +442,11 @@ def refresh_single_place_photos(activityInput):
             place_result["failed_uploads"] = len(asset_result.get("failures", []))
             place_result["canonical_assets"] = len(asset_result.get("assets", []))
 
-            selected_display_photo_urls = asset_result.get("selected_airtable_urls", [])
+            selected_airtable_photos = asset_result.get("selected_airtable_photos") or asset_result.get("selected_airtable_urls", [])
+            selected_display_photo_urls = [
+                photo.get("display") if isinstance(photo, dict) else photo
+                for photo in selected_airtable_photos
+            ]
 
             place_result["photos_after"] = len(selected_display_photo_urls)
             if not selected_display_photo_urls:
@@ -478,7 +482,7 @@ def refresh_single_place_photos(activityInput):
                     return place_result
 
                 if write_airtable:
-                    photos_json = json.dumps(selected_display_photo_urls)
+                    photos_json = json.dumps(selected_airtable_photos)
                     update_result = airtable_client.update_place_record(
                         record_id=place['id'],
                         field_to_update='Photos',

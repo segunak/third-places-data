@@ -7,20 +7,19 @@ import azure.functions as func
 from pyairtable import Api as AirtableApi
 
 from services.photo_asset_service import (
-    build_display_photo_urls,
+    build_display_photo_manifests,
     is_curator_photo_azure_url,
     is_photo_ready_place,
-    parse_url_list,
+    parse_photo_manifest_list,
+    photo_manifest_from_url,
 )
-from services.photo_publisher_service import PHOTOS_CONTAINER, PhotoPublisherService
-from services.utils import delete_blob_from_container, list_blobs_in_container
+from services.photo_publisher_service import PhotoPublisherService
 
 
 bp = df.Blueprint()
 
 CURATOR_PHOTOS_FIELD = "Curator Photos"
 PHOTOS_FIELD = "Photos"
-MAX_PHOTOS_FIELD_URLS = 30
 
 
 def validate_sync_curator_photos_request(req: func.HttpRequest):
@@ -110,9 +109,15 @@ def sync_curator_photos_orchestrator(context: df.DurableOrchestrationContext):
         }
 
 
-def _merge_curator_urls_into_photos(curator_urls: list[str], existing_photo_urls: list[str]) -> list[str]:
-    non_curator_photo_urls = [url for url in existing_photo_urls if not is_curator_photo_azure_url(url)]
-    return build_display_photo_urls(curator_urls, non_curator_photo_urls, max_photos=MAX_PHOTOS_FIELD_URLS)
+def _merge_curator_photos_into_photos(curator_photos: list[dict], existing_photos: list[dict]) -> list[dict]:
+    non_curator_photos = [photo for photo in existing_photos if not is_curator_photo_azure_url(photo.get("display", ""))]
+    curator_urls = [photo.get("display", "") for photo in curator_photos]
+    merged = build_display_photo_manifests(curator_urls, non_curator_photos)
+    thumbnails_by_display = {photo.get("display", ""): photo.get("thumbnail", "") for photo in curator_photos}
+    for photo in merged:
+        if photo["display"] in thumbnails_by_display:
+            photo["thumbnail"] = thumbnails_by_display[photo["display"]]
+    return merged
 
 
 @bp.activity_trigger(input_name="activityInput")
@@ -132,6 +137,8 @@ def sync_single_place_curator_photos(activityInput):
             "status": "",
             "message": "",
             "photos_synced": 0,
+            "photos_uploaded": 0,
+            "photos_reused": 0,
             "photos_deleted": 0,
             "photos_failed": 0,
             "curator_photo_urls_count": 0,
@@ -158,11 +165,13 @@ def sync_single_place_curator_photos(activityInput):
             return place_result
 
         curator_attachments = fields.get(CURATOR_PHOTOS_FIELD) or []
-        existing_photo_urls = parse_url_list(fields.get(PHOTOS_FIELD))
+        existing_photos = parse_photo_manifest_list(fields.get(PHOTOS_FIELD))
 
         publisher = PhotoPublisherService()
         published_urls = []
-        expected_blob_paths = set()
+        published_photos = []
+        uploaded_count = 0
+        reused_count = 0
         failed_count = 0
         for attachment in curator_attachments:
             publish_result = publisher.publish_curator_attachment(
@@ -178,27 +187,23 @@ def sync_single_place_curator_photos(activityInput):
                 failed_count += 1
                 logging.error("Failed to publish curator attachment for %s: %s", place_name, publish_result.get("error"))
                 continue
-            published_urls.append(publish_result["azure_url"])
-            expected_blob_paths.add(publish_result["blob_path"])
-
-        existing_curator_blobs = set()
-        try:
-            existing_curator_blobs = set(list_blobs_in_container(PHOTOS_CONTAINER, prefix=f"{place_id}/curator-"))
-        except Exception as exc:
-            logging.warning("Failed to list curator blobs for %s (%s): %s", place_name, place_id, exc)
+            photo_manifest = publish_result.get("photo_manifest") or photo_manifest_from_url(publish_result["azure_url"])
+            published_photos.append(photo_manifest)
+            published_urls.append(photo_manifest["display"])
+            publish_status = publish_result.get("status")
+            if publish_status == "already_exists":
+                reused_count += 1
+            elif publish_status == "uploaded":
+                uploaded_count += 1
 
         deleted_count = 0
-        if not dry_run and failed_count == 0:
-            for orphan_path in existing_curator_blobs - expected_blob_paths:
-                if delete_blob_from_container(PHOTOS_CONTAINER, orphan_path):
-                    deleted_count += 1
 
-        merged_photo_urls = existing_photo_urls
+        merged_photos = existing_photos
         if failed_count == 0:
-            merged_photo_urls = _merge_curator_urls_into_photos(published_urls, existing_photo_urls)
+            merged_photos = _merge_curator_photos_into_photos(published_photos, existing_photos)
         airtable_updates = {}
-        if existing_photo_urls != merged_photo_urls:
-            airtable_updates[PHOTOS_FIELD] = json.dumps(merged_photo_urls)
+        if existing_photos != merged_photos:
+            airtable_updates[PHOTOS_FIELD] = json.dumps(merged_photos)
 
         if airtable_updates and write_airtable and not dry_run:
             api = AirtableApi(os.environ["AIRTABLE_PERSONAL_ACCESS_TOKEN"])
@@ -207,7 +212,10 @@ def sync_single_place_curator_photos(activityInput):
 
         if failed_count > 0:
             place_result["status"] = "failed"
-            place_result["message"] = f"Failed to sync {failed_count} current curator photos; synced {len(published_urls)}."
+            place_result["message"] = (
+                f"Failed to sync {failed_count} current curator photos; "
+                f"uploaded {uploaded_count}, reused {reused_count}."
+            )
         elif dry_run and (published_urls or airtable_updates or deleted_count):
             place_result["status"] = "would_update"
             place_result["message"] = f"Would sync {len(published_urls)} current curator photos; failed {failed_count}."
@@ -216,13 +224,19 @@ def sync_single_place_curator_photos(activityInput):
             place_result["message"] = "All curator photos already synced"
         else:
             place_result["status"] = "updated"
-            place_result["message"] = f"Synced {len(published_urls)} current curator photos, deleted {deleted_count} orphaned, failed {failed_count}."
+            place_result["message"] = (
+                f"Synced {len(published_urls)} current curator photos "
+                f"({uploaded_count} uploaded, {reused_count} reused), "
+                f"deleted {deleted_count} orphaned, failed {failed_count}."
+            )
 
         place_result["photos_synced"] = len(published_urls)
+        place_result["photos_uploaded"] = uploaded_count
+        place_result["photos_reused"] = reused_count
         place_result["photos_deleted"] = deleted_count
         place_result["photos_failed"] = failed_count
         place_result["curator_photo_urls_count"] = len(published_urls)
-        place_result["photos_field_count"] = len(merged_photo_urls)
+        place_result["photos_field_count"] = len(merged_photos)
         place_result["airtable_fields_updated"] = list(airtable_updates.keys()) if write_airtable and not dry_run else []
         return place_result
     except Exception as ex:
@@ -233,6 +247,8 @@ def sync_single_place_curator_photos(activityInput):
             "status": "error",
             "message": str(ex),
             "photos_synced": 0,
+            "photos_uploaded": 0,
+            "photos_reused": 0,
             "photos_deleted": 0,
             "photos_failed": 0,
         }
