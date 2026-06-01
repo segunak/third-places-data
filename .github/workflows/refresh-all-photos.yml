@@ -1,4 +1,4 @@
-name: Refresh All Photos From Cache
+name: Refresh Photos From Selected Source
 
 on:
   workflow_call:
@@ -12,6 +12,11 @@ on:
         description: 'City to process'
         required: false
         default: 'charlotte'
+        type: string
+      place_id:
+        description: 'Optional Google Maps Place ID filter'
+        required: false
+        default: ''
         type: string
       dry_run:
         description: 'Dry run: If true, only logs what would be done without making changes'
@@ -44,6 +49,11 @@ on:
         description: 'City to process'
         required: false
         default: 'charlotte'
+        type: string
+      place_id:
+        description: 'Optional Google Maps Place ID filter'
+        required: false
+        default: ''
         type: string
       dry_run:
         description: 'Dry run: If true, only logs what would be done without making changes'
@@ -86,12 +96,17 @@ jobs:
         run: |
           $providerType = "${{ inputs.provider_type }}"
           $city = "${{ inputs.city }}"
+          $placeId = "${{ inputs.place_id }}"
           $dryRun = "${{ inputs.dry_run }}"
           $maxPlaces = "${{ inputs.max_places }}"
           $sequentialMode = "${{ inputs.sequential_mode }}"
           $photoSourceMode = "${{ inputs.photo_source_mode }}"
           
           $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&dry_run=$dryRun&sequential_mode=$sequentialMode&photo_source_mode=$photoSourceMode"
+
+          if ($placeId -ne '') {
+            $FunctionUrl += "&place_id=$placeId"
+          }
           
           if ($maxPlaces -ne '') {
             $FunctionUrl += "&max_places=$maxPlaces"

@@ -12,6 +12,11 @@ on:
         required: false
         default: 'outscraper'
         type: string
+      photos_provider_type:
+        description: 'Provider type for photo retrieval; blank uses provider_type'
+        required: false
+        default: 'google'
+        type: string
       city:
         description: 'City for caching'
         required: false
@@ -32,6 +37,11 @@ on:
         description: 'Provider type for data refresh'
         required: false
         default: 'outscraper'
+        type: string
+      photos_provider_type:
+        description: 'Provider type for photo retrieval; blank uses provider_type'
+        required: false
+        default: 'google'
         type: string
       city:
         description: 'City for caching'
@@ -65,8 +75,13 @@ jobs:
         run: |
           $placeId = "${{ inputs.place_id }}"
           $providerType = "${{ inputs.provider_type }}"
+          $photosProviderType = "${{ inputs.photos_provider_type }}"
           $city = "${{ inputs.city }}"
           $forceRefresh = "${{ inputs.force_refresh }}"
+
+          if ([string]::IsNullOrWhiteSpace($photosProviderType)) {
+            $photosProviderType = $providerType
+          }
           
           # Validate required place_id parameter
           if ([string]::IsNullOrWhiteSpace($placeId)) {
@@ -74,7 +89,7 @@ jobs:
             exit 1
           }
           
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-single-place?place_id=$placeId&provider_type=$providerType&city=$city&force_refresh=$forceRefresh"
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-single-place?place_id=$placeId&provider_type=$providerType&photos_provider_type=$photosProviderType&city=$city&force_refresh=$forceRefresh"
           
           Write-Host "Using orchestrator URL: $FunctionUrl"
           

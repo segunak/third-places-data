@@ -155,75 +155,189 @@
     },
     "photos": {
         "place_id": "ChIJIXvpQACfVogRqclhfIIQJOw",
-        "message": "Retrieved 0 photos, filtered out 0, selected 0",
-        "photo_urls": [],
+        "message": "Photos refreshed to Azure by admin function using outscraper and mode refresh_from_data_provider",
+        "photo_urls": [
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJIXvpQACfVogRqclhfIIQJOw/dc2a4a8b0b4822ffaef22663dc8238a5b4864836f6013f38f594e84fb2daaba1.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJIXvpQACfVogRqclhfIIQJOw/9319b069c94dc3064fbfed5de6c6b9f1ac2b4a27b069cb2bb045426275e8996d.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJIXvpQACfVogRqclhfIIQJOw/91ebb52eb547300cee431f12352cfddd6f7ce535bdf4d36614e63594adf4f54d.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJIXvpQACfVogRqclhfIIQJOw/ad56c59839f7b2c937be27f8de0f772fac5fcf4134daf162812472d2522947af.jpg",
+            "https://thirdplacesdata.blob.core.windows.net/place-photos/charlotte/ChIJIXvpQACfVogRqclhfIIQJOw/b516bcc4f6e7bff652d65e4d5ad56267e09161e375c433bf5fd853d9bc2aa645.jpg"
+        ],
         "raw_data": {
-            "query": "ChIJIXvpQACfVogRqclhfIIQJOw",
-            "name": "Keren Charlotte Radiance Coffee",
-            "name_for_emails": "Keren Charlotte Radiance Coffee",
-            "place_id": "ChIJIXvpQACfVogRqclhfIIQJOw",
-            "google_id": "0x88569f0040e97b21:0xec2410827c61c9a9",
-            "kgmid": "/g/11yshwhp82",
-            "full_address": "2903 S Tryon St, Charlotte, NC 28203",
-            "borough": "",
-            "street": null,
-            "postal_code": "28203",
-            "area_service": null,
-            "country_code": null,
-            "country": null,
-            "city": null,
-            "us_state": null,
-            "state": null,
-            "plus_code": null,
-            "latitude": 35.2025249,
-            "longitude": -80.8715816,
-            "h3": "8944d84c26fffff",
-            "time_zone": "America/New_York",
-            "popular_times": null,
-            "site": null,
-            "phone": null,
-            "type": "Coffee shop",
-            "logo": null,
-            "description": null,
-            "typical_time_spent": null,
-            "located_in": null,
-            "located_google_id": null,
-            "category": "coffee shops",
-            "subtypes": "Coffee shop",
-            "posts": null,
-            "reviews_tags": null,
-            "rating": null,
-            "reviews": null,
-            "photos_count": 0,
-            "cid": "17015743444731152809",
-            "reviews_link": null,
-            "reviews_id": null,
-            "photo": null,
-            "street_view": null,
-            "working_hours": null,
-            "working_hours_csv_compatible": null,
-            "other_hours": null,
-            "business_status": "OPERATIONAL",
             "about": {
+                "Accessibility": {
+                    "Wheelchair accessible entrance": true,
+                    "Wheelchair accessible parking lot": true
+                },
+                "Atmosphere": {
+                    "Casual": true
+                },
                 "Offerings": {
                     "Coffee": true
+                },
+                "Payments": {
+                    "Credit cards": true,
+                    "Debit cards": true
+                },
+                "Popular for": {
+                    "Solo dining": true
+                },
+                "Service options": {
+                    "Dine-in": true
                 }
             },
-            "range": null,
-            "prices": null,
-            "reviews_per_score": null,
-            "reservation_links": null,
+            "address": "2903 S Tryon St, Charlotte, NC 28203",
+            "area_service": false,
             "booking_appointment_link": null,
-            "menu_link": null,
-            "order_links": null,
-            "owner_id": null,
-            "verified": false,
-            "owner_title": "Keren Charlotte Radiance Coffee",
-            "owner_link": null,
+            "business_status": "CLOSED_TEMPORARILY",
+            "category": "coffee shops",
+            "cid": "17015743444731152809",
+            "city": "Charlotte",
+            "country": "United States of America",
+            "country_code": "US",
+            "county": "Southside Park",
+            "description": null,
+            "google_id": "0x88569f0040e97b21:0xec2410827c61c9a9",
+            "h3": "8944d84c26fffff",
+            "kgmid": "/g/11yshwhp82",
+            "latitude": 35.2025249,
+            "located_google_id": null,
+            "located_in": null,
             "location_link": "https://www.google.com/maps/place/Keren+Charlotte+Radiance+Coffee/@35.2025249,-80.8715816,14z/data=!4m8!1m2!2m1!1sKeren+Charlotte+Radiance+Coffee!3m4!1s0x88569f0040e97b21:0xec2410827c61c9a9!8m2!3d35.2025249!4d-80.8715816",
             "location_reviews_link": "https://www.google.com/maps/place/Keren+Charlotte+Radiance+Coffee/@35.2025249,-80.8715816,13.99z/data=!4m16!1m7!3m6!1s0x88569f0040e97b21:0xec2410827c61c9a9!2sKeren+Charlotte+Radiance+Coffee!8m2!3d35.2025249!4d-80.8715816!16s%2Fg%2F11ckvg1dmb!3m7!1s0x88569f0040e97b21:0xec2410827c61c9a9!8m2!3d35.2025249!4d-80.8715816!9m1!1b1!16s%2Fg%2F11ckvg1dmb?entry=ttu",
-            "photos_data": []
-        }
+            "logo": null,
+            "longitude": -80.8715816,
+            "menu_link": null,
+            "name": "Keren Charlotte Radiance Coffee",
+            "name_for_emails": "Keren Charlotte Radiance Coffee",
+            "order_links": null,
+            "other_hours": null,
+            "owner_id": null,
+            "owner_link": null,
+            "owner_title": "Keren Charlotte Radiance Coffee",
+            "phone": null,
+            "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE6bn9hYVqMYC_cJnyOK7k3tkc4btCQtd1r-pXMX_ExB7jMQ6Nf3LfUSIQCetlkAhJdW4OTgK1XkRuzR76eXzFOA78F9UNrKLmsViPGKEUJd-z0Iul6NMk5CUjCwl9ha3cyq_SKXjOyQveH=w800-h500-k-no",
+            "photos_count": 5,
+            "photos_data": [
+                {
+                    "latitude": 35.202655,
+                    "longitude": -80.8717791,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE6bn9hYVqMYC_cJnyOK7k3tkc4btCQtd1r-pXMX_ExB7jMQ6Nf3LfUSIQCetlkAhJdW4OTgK1XkRuzR76eXzFOA78F9UNrKLmsViPGKEUJd-z0Iul6NMk5CUjCwl9ha3cyq_SKXjOyQveH=w203-h270-k-no",
+                    "photo_date": "1/9/2026 21:00:00",
+                    "photo_id": "CIABIhDBbAFrJYWpt7jIsOg92RnS",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        1
+                    ],
+                    "photo_tags": [
+                        "all"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE6bn9hYVqMYC_cJnyOK7k3tkc4btCQtd1r-pXMX_ExB7jMQ6Nf3LfUSIQCetlkAhJdW4OTgK1XkRuzR76eXzFOA78F9UNrKLmsViPGKEUJd-z0Iul6NMk5CUjCwl9ha3cyq_SKXjOyQveH",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE6bn9hYVqMYC_cJnyOK7k3tkc4btCQtd1r-pXMX_ExB7jMQ6Nf3LfUSIQCetlkAhJdW4OTgK1XkRuzR76eXzFOA78F9UNrKLmsViPGKEUJd-z0Iul6NMk5CUjCwl9ha3cyq_SKXjOyQveH=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.202655,
+                    "longitude": -80.8717791,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHas-Fo7QYpy25BvqvqlyO81rHVh0oNRK386l9F-9857Sre3qwUbZ7KRhRwYgTUu2MkCqc_owb91Lf3AwjGl2vWJacDxMLVbfYmTFyB-CAxRJVl1tu8NbdHsZrcwzU6pyt579sQyYTEd9MN=w203-h152-k-no",
+                    "photo_date": "3/14/2026 18:00:00",
+                    "photo_id": "CIABIhBetob2g338LbrPlApzL9Yh",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        2
+                    ],
+                    "photo_tags": [
+                        "front"
+                    ],
+                    "photo_upload_source": "gmm_android_rap",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHas-Fo7QYpy25BvqvqlyO81rHVh0oNRK386l9F-9857Sre3qwUbZ7KRhRwYgTUu2MkCqc_owb91Lf3AwjGl2vWJacDxMLVbfYmTFyB-CAxRJVl1tu8NbdHsZrcwzU6pyt579sQyYTEd9MN",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHas-Fo7QYpy25BvqvqlyO81rHVh0oNRK386l9F-9857Sre3qwUbZ7KRhRwYgTUu2MkCqc_owb91Lf3AwjGl2vWJacDxMLVbfYmTFyB-CAxRJVl1tu8NbdHsZrcwzU6pyt579sQyYTEd9MN=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.202655,
+                    "longitude": -80.8717791,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHjAaj3c6M6LVB4ffqGn5rlLezR7e02Oi_AhCB3Gg4GOjehfzlgLgcijq34phxfHDGLhacdXsOlzXeDSm_EacKFNZkMspQMVyOEcsL-F9nCacEDzCFzOQwlw1fTDfC-ORO0ntajiSABs7o=w203-h270-k-no",
+                    "photo_date": "1/9/2026 21:00:00",
+                    "photo_id": "CIABIhDaIE59mzo7_wdtmlG32MvC",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        8,
+                        3
+                    ],
+                    "photo_tags": [
+                        "food",
+                        "drink"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHjAaj3c6M6LVB4ffqGn5rlLezR7e02Oi_AhCB3Gg4GOjehfzlgLgcijq34phxfHDGLhacdXsOlzXeDSm_EacKFNZkMspQMVyOEcsL-F9nCacEDzCFzOQwlw1fTDfC-ORO0ntajiSABs7o",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHjAaj3c6M6LVB4ffqGn5rlLezR7e02Oi_AhCB3Gg4GOjehfzlgLgcijq34phxfHDGLhacdXsOlzXeDSm_EacKFNZkMspQMVyOEcsL-F9nCacEDzCFzOQwlw1fTDfC-ORO0ntajiSABs7o=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.202655,
+                    "longitude": -80.8717791,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGFNxr9kziMVl59WHqj5uLfAwRfKLSHLvuF3EJUHn3i-lVa7mhx9Qgrwo6m2jawpHCz0ttuxRB6zAYVLIZqZL2qN9p7aHJhrhCGHTQdAWRonErRG1JxxW6AXzCzo0YyDnyFaPdcrdqWC1jj=w203-h152-k-no",
+                    "photo_date": "1/9/2026 21:00:00",
+                    "photo_id": "CIABIhB0HsCfcV9u0qKNI1KMdM5g",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        6
+                    ],
+                    "photo_tags": [
+                        "menu"
+                    ],
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGFNxr9kziMVl59WHqj5uLfAwRfKLSHLvuF3EJUHn3i-lVa7mhx9Qgrwo6m2jawpHCz0ttuxRB6zAYVLIZqZL2qN9p7aHJhrhCGHTQdAWRonErRG1JxxW6AXzCzo0YyDnyFaPdcrdqWC1jj",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGFNxr9kziMVl59WHqj5uLfAwRfKLSHLvuF3EJUHn3i-lVa7mhx9Qgrwo6m2jawpHCz0ttuxRB6zAYVLIZqZL2qN9p7aHJhrhCGHTQdAWRonErRG1JxxW6AXzCzo0YyDnyFaPdcrdqWC1jj=w2048-h2048-k-no"
+                },
+                {
+                    "latitude": 35.202685492940915,
+                    "longitude": -80.87175058339086,
+                    "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=P_HON8elsUbw0emM1WD4oQ&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=139.31071&pitch=0&thumbfov=100",
+                    "photo_date": "12/15/2025 14:00:00",
+                    "photo_id": "P_HON8elsUbw0emM1WD4oQ",
+                    "photo_source_video": null,
+                    "photo_tag_ids": [
+                        2
+                    ],
+                    "photo_tags": [
+                        "front"
+                    ],
+                    "photo_upload_source": "launch",
+                    "photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=P_HON8elsUbw0emM1WD4oQ&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=139.31071&pitch=0&thumbfov=100",
+                    "photo_url_big": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=P_HON8elsUbw0emM1WD4oQ&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=139.31071&pitch=0&thumbfov=100"
+                }
+            ],
+            "place_id": "ChIJIXvpQACfVogRqclhfIIQJOw",
+            "plus_code": "867X643H+29",
+            "popular_times": null,
+            "postal_code": "28203",
+            "posts": null,
+            "prices": null,
+            "query": "ChIJIXvpQACfVogRqclhfIIQJOw",
+            "range": null,
+            "rating": 5,
+            "reservation_links": null,
+            "reviews": 3,
+            "reviews_id": "-1431000628978398807",
+            "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJIXvpQACfVogRqclhfIIQJOw&q=*&authuser=0&hl=en&gl=US",
+            "reviews_per_score": null,
+            "reviews_tags": [
+                "seating"
+            ],
+            "state": "North Carolina",
+            "state_code": "NC",
+            "street": "2903 S Tryon St",
+            "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=P_HON8elsUbw0emM1WD4oQ&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=139.31071&pitch=0&thumbfov=100",
+            "subtypes": "Coffee shop",
+            "time_zone": "America/New_York",
+            "type": "Coffee shop",
+            "typical_time_spent": null,
+            "verified": false,
+            "website": null,
+            "working_hours": null,
+            "working_hours_csv_compatible": null
+        },
+        "last_refreshed": "2026-05-02T21:31:24.113810"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-12-17T01:10:31.408466"

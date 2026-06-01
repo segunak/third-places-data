@@ -10,6 +10,7 @@ import unicodedata
 from datetime import datetime
 from azure.storage.filedatalake import DataLakeServiceClient
 from azure.storage.blob import BlobServiceClient
+from azure.core.exceptions import ResourceExistsError, ResourceNotFoundError
 from threading import Lock
 from constants import SearchField
 from services.place_data_service import PlaceDataProviderFactory
@@ -213,59 +214,132 @@ def save_reviews_azure(json_data, review_file_name):
 # Azure Blob Storage Helpers
 # =============================================================================
 
-CURATOR_PHOTOS_CONTAINER = "curator-photos"
-
-
 def _get_blob_service_client() -> BlobServiceClient:
     connection_string = os.environ['AzureWebJobsStorage']
     return BlobServiceClient.from_connection_string(connection_string)
 
 
-def upload_blob(blob_path: str, data: bytes, content_type: str = "image/jpeg") -> str:
-    """
-    Upload binary data to Azure Blob Storage and return the public URL.
-
-    Args:
-        blob_path: The path within the container (e.g., "recXYZ/attABC_photo.jpg").
-        data: The raw image bytes.
-        content_type: MIME type for the blob.
-
-    Returns:
-        The public URL of the uploaded blob.
-    """
-    from azure.storage.blob import ContentSettings
+def ensure_container_exists(container_name: str, public_access: str = "blob") -> None:
+    """Create a blob container when missing; treat existing containers as success."""
     client = _get_blob_service_client()
-    blob_client = client.get_blob_client(container=CURATOR_PHOTOS_CONTAINER, blob=blob_path)
+    container_client = client.get_container_client(container_name)
+    try:
+        container_client.get_container_properties()
+        return
+    except ResourceNotFoundError:
+        pass
+
+    access_type = "blob" if public_access == "blob" else None
+    try:
+        container_client.create_container(public_access=access_type)
+        logging.info(f"Created blob container: {container_name}")
+    except ResourceExistsError:
+        logging.info(f"Blob container already exists: {container_name}")
+
+
+def sanitize_blob_metadata(metadata: Optional[Dict[str, Any]]) -> Optional[Dict[str, str]]:
+    """Return Azure Blob metadata with header-safe ASCII keys and values."""
+    if not metadata:
+        return metadata
+
+    sanitized: Dict[str, str] = {}
+    for key, value in metadata.items():
+        if value is None:
+            continue
+
+        safe_key = re.sub(r"[^A-Za-z0-9_]", "_", str(key)).strip("_")
+        if not safe_key:
+            continue
+        if safe_key[0].isdigit():
+            safe_key = f"m_{safe_key}"
+
+        normalized_value = unicodedata.normalize("NFKD", str(value)).encode("ascii", "ignore").decode("ascii")
+        safe_value = re.sub(r"[\r\n\t]+", " ", normalized_value)
+        safe_value = re.sub(r"[\x00-\x1f\x7f]+", "", safe_value).strip()
+        sanitized[safe_key[:128]] = safe_value[:1024]
+
+    return sanitized or None
+
+
+def upload_blob_to_container(
+    container_name: str,
+    blob_path: str,
+    data: bytes,
+    content_type: str = "image/jpeg",
+    metadata: Optional[Dict[str, str]] = None,
+    cache_control: Optional[str] = None,
+    public_access: str = "blob",
+    overwrite: bool = True,
+) -> str:
+    """Upload binary data to an Azure Blob Storage container and return its URL."""
+    from azure.storage.blob import ContentSettings
+
+    ensure_container_exists(container_name, public_access=public_access)
+    client = _get_blob_service_client()
+    blob_client = client.get_blob_client(container=container_name, blob=blob_path)
     blob_client.upload_blob(
         data,
-        overwrite=True,
+        overwrite=overwrite,
         content_settings=ContentSettings(
             content_type=content_type,
             content_disposition="inline",
+            cache_control=cache_control,
         ),
+        metadata=sanitize_blob_metadata(metadata),
     )
-    logging.info(f"Uploaded blob: {blob_path}")
+    logging.info(f"Uploaded blob: {container_name}/{blob_path}")
     return blob_client.url
 
 
-def delete_blob(blob_path: str) -> bool:
-    """Delete a blob from the curator-photos container. Returns True if deleted."""
+def blob_exists_in_container(container_name: str, blob_path: str) -> bool:
+    """Return True when a blob exists in the requested container."""
     try:
         client = _get_blob_service_client()
-        blob_client = client.get_blob_client(container=CURATOR_PHOTOS_CONTAINER, blob=blob_path)
-        blob_client.delete_blob()
-        logging.info(f"Deleted blob: {blob_path}")
-        return True
-    except Exception as e:
-        logging.warning(f"Failed to delete blob {blob_path}: {e}")
+        blob_client = client.get_blob_client(container=container_name, blob=blob_path)
+        return bool(blob_client.exists())
+    except ResourceNotFoundError:
         return False
 
 
-def list_blobs(prefix: str) -> list:
-    """List blob names under a prefix in the curator-photos container."""
+def delete_blob_from_container(container_name: str, blob_path: str) -> bool:
+    """Delete a blob from a container. Returns True if deleted."""
+    return delete_blob_from_container_with_status(container_name, blob_path) == "deleted"
+
+
+def delete_blob_from_container_with_status(container_name: str, blob_path: str) -> str:
+    """Delete a blob and return deleted, missing_already, or failed."""
+    try:
+        client = _get_blob_service_client()
+        blob_client = client.get_blob_client(container=container_name, blob=blob_path)
+        blob_client.delete_blob()
+        logging.info(f"Deleted blob: {container_name}/{blob_path}")
+        return "deleted"
+    except ResourceNotFoundError:
+        logging.info(f"Blob already missing: {container_name}/{blob_path}")
+        return "missing_already"
+    except Exception as e:
+        logging.warning(f"Failed to delete blob {container_name}/{blob_path}: {e}")
+        return "failed"
+
+
+def list_blobs_in_container(container_name: str, prefix: str = "") -> list:
+    """List blob names under a prefix in a container."""
     client = _get_blob_service_client()
-    container_client = client.get_container_client(CURATOR_PHOTOS_CONTAINER)
+    container_client = client.get_container_client(container_name)
     return [blob.name for blob in container_client.list_blobs(name_starts_with=prefix)]
+
+
+def delete_container(container_name: str) -> bool:
+    """Delete a blob container. Returns True if deleted."""
+    try:
+        client = _get_blob_service_client()
+        container_client = client.get_container_client(container_name)
+        container_client.delete_container()
+        logging.info(f"Deleted blob container: {container_name}")
+        return True
+    except Exception as e:
+        logging.warning(f"Failed to delete blob container {container_name}: {e}")
+        return False
 
 
 def download_image(url: str) -> Tuple[bytes, str]:
@@ -396,8 +470,47 @@ def _fill_photos_from_airtable(place_data: Dict, photos_json: str) -> bool:
         return False
 
 
+def _has_photo_urls(place_data: Dict) -> bool:
+    if not isinstance(place_data, dict):
+        return False
+    photos = place_data.get('photos', {})
+    if not isinstance(photos, dict):
+        return False
+    photo_urls = photos.get('photo_urls', [])
+    return isinstance(photo_urls, list) and bool(photo_urls)
+
+
+def _get_photos_from_provider(photos_provider_type: str, place_id: str) -> Dict[str, Any]:
+    try:
+        photo_provider = PlaceDataProviderFactory.get_provider(photos_provider_type)
+        photos_response = photo_provider.get_place_photos(place_id)
+        if not isinstance(photos_response, dict):
+            return {
+                "place_id": place_id,
+                "message": f"Photo provider {photos_provider_type} returned an invalid response.",
+                "photo_urls": [],
+                "provider_type": photos_provider_type,
+                "data_source": photo_provider.__class__.__name__
+            }
+        photos_response.setdefault('place_id', place_id)
+        photos_response.setdefault('photo_urls', [])
+        photos_response['provider_type'] = photos_provider_type
+        photos_response['data_source'] = photo_provider.__class__.__name__
+        return photos_response
+    except Exception as e:
+        logging.error(f"Error retrieving photos for place ID {place_id} from provider {photos_provider_type}: {e}", exc_info=True)
+        return {
+            "place_id": place_id,
+            "message": f"Error retrieving photos from {photos_provider_type}: {str(e)}",
+            "photo_urls": [],
+            "provider_type": photos_provider_type,
+            "data_source": ""
+        }
+
+
 def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str = None,
-                              city: str = None, force_refresh: bool = False, airtable_record_id: str = None) -> Tuple[str, Dict, str]:
+                              city: str = None, force_refresh: bool = False, airtable_record_id: str = None,
+                              photos_provider_type: str = None) -> Tuple[str, Dict, str]:
     try:
         SENTINEL_NO_PLACE = "__NO_PLACE_FOUND__"
         if not city:
@@ -407,6 +520,11 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
             error_msg = f"Cannot get place data for {place_name} - provider_type not specified"
             logging.error(error_msg)
             return 'failed', None, error_msg
+        provider_type = PlaceDataProviderFactory.normalize_provider_type(provider_type)
+        photos_provider_type = PlaceDataProviderFactory.normalize_provider_type(
+            photos_provider_type or provider_type,
+            'photos_provider_type'
+        )
         data_provider = PlaceDataProviderFactory.get_provider(provider_type)
 
         did_lookup_find_new_place_id = False
@@ -443,6 +561,20 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
 
         if cached_file_exists and not force_refresh:
             logging.info(f"Using cached data for {place_name} (place_id={place_id}) from {cached_file_path}")
+            if photos_provider_type != provider_type and not skip_photos and not _has_photo_urls(cached_json):
+                logging.info(f"Cached data for {place_name} has no photos; fetching photos from provider {photos_provider_type}")
+                photos_response = _get_photos_from_provider(photos_provider_type, place_id)
+                if photos_response.get('photo_urls'):
+                    cached_json['photos'] = photos_response
+                    cached_json['photos_provider_type'] = photos_provider_type
+                    cached_json['last_updated'] = datetime.now().isoformat()
+                    success, save_message = save_data_github(json.dumps(cached_json, indent=4), cached_file_path)
+                    if not success:
+                        logging.warning(f"Failed to save cached photo refresh for {place_name}: {save_message}")
+                    else:
+                        logging.info(f"Saved cached photo refresh for {place_name} to {cached_file_path}")
+                else:
+                    logging.info(f"Photo provider {photos_provider_type} returned no photos for cached place {place_name}; leaving cache unchanged")
             if airtable_record_id and airtable_client:
                 try:
                     airtable_client.update_place_record(airtable_record_id, 'Has Data File', 'Yes', overwrite=True)
@@ -457,8 +589,9 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
             logging.info(f"No cached file found for {place_name} at {cached_file_path} ({cache_message}); fetching fresh data")
 
         # 2. Fetch fresh data (either no cache or force_refresh requested)
-        logging.info(f"Fetching fresh data from provider {provider_type} for {place_name} (place_id={place_id}) skip_photos={skip_photos} force_refresh={force_refresh}")
-        place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=skip_photos)
+        primary_skip_photos = skip_photos or photos_provider_type != provider_type
+        logging.info(f"Fetching fresh data from provider {provider_type} for {place_name} (place_id={place_id}) skip_photos={primary_skip_photos} force_refresh={force_refresh} photos_provider_type={photos_provider_type}")
+        place_data = data_provider.get_all_place_data(place_id, place_name, skip_photos=primary_skip_photos)
 
         # If provider returned a sentinel indicating no real data, treat as failure and DO NOT save or update Airtable
         try:
@@ -472,6 +605,10 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
 
         if skip_photos and existing_photos_json:
             _fill_photos_from_airtable(place_data, existing_photos_json)
+        elif photos_provider_type != provider_type:
+            place_data['photos'] = _get_photos_from_provider(photos_provider_type, place_id)
+
+        place_data['photos_provider_type'] = photos_provider_type
 
         place_data['last_updated'] = datetime.now().isoformat()
         success, save_message = save_data_github(json.dumps(place_data, indent=4), cached_file_path)

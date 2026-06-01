@@ -433,6 +433,57 @@ class TestOutscraperProviderGetPlacePhotos:
         assert photos["place_id"] == TEST_PLACE_ID
         assert photos["photo_urls"] == []
 
+    def test_get_place_photos_uses_photo_and_street_view_when_gallery_empty(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test scalar Outscraper image fields are used when photos_data is empty."""
+        from services.place_data_service import OutscraperProvider
+
+        hero_url = "https://lh3.googleusercontent.com/p/hero=w800-h500-k-no"
+        street_view_url = "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=abc&w=1600&h=1000"
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_photos.return_value = [[{
+            "place_id": TEST_PLACE_ID,
+            "photos_data": [],
+            "photo": hero_url,
+            "street_view": street_view_url,
+        }]]
+
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                photos = provider.get_place_photos(TEST_PLACE_ID)
+
+        assert photos["place_id"] == TEST_PLACE_ID
+        assert photos["photo_urls"] == [hero_url, street_view_url]
+        assert photos["raw_data"]["photo"] == hero_url
+        assert photos["raw_data"]["street_view"] == street_view_url
+
+    def test_get_place_photos_dedupes_scalar_fallback_urls(self, mock_env_vars, outscraper_balance_sufficient):
+        """Test fallback URLs are not duplicated when already present in photos_data."""
+        from services.place_data_service import OutscraperProvider
+
+        shared_url = "https://lh5.googleusercontent.com/p/shared-big"
+        street_view_url = "https://lh3.googleusercontent.com/p/street-view=w1600-h1000-k-no"
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_photos.return_value = [[{
+            "place_id": TEST_PLACE_ID,
+            "photos_data": [{
+                "photo_id": "photo-shared",
+                "photo_url_big": shared_url,
+                "photo_date": "12/01/2024 10:00:00",
+                "photo_tags": ["vibe"],
+            }],
+            "photo": shared_url,
+            "street_view": street_view_url,
+        }]]
+
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                photos = provider.get_place_photos(TEST_PLACE_ID)
+
+        assert photos["photo_urls"].count(shared_url) == 1
+        assert street_view_url in photos["photo_urls"]
+
 
 class TestOutscraperProviderSelectPrioritizedPhotos:
     """Tests for _select_prioritized_photos method."""

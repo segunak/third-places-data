@@ -10,6 +10,9 @@ These tests verify that places are correctly categorized into:
 """
 
 import pytest
+from unittest import mock
+
+from conftest import TEST_PLACE_ID, TEST_PLACE_NAME
 
 
 class TestOrchestratorResultCategorization:
@@ -378,3 +381,37 @@ class TestOrchestratorResultCategorization:
         unchanged = categorized['places_unchanged'][0]
         assert unchanged['field_comparison']['Parking']['raw_provider_value'] == raw_parking
         assert isinstance(unchanged['field_comparison']['Parking']['raw_provider_value'], dict)
+
+
+class TestEnrichSinglePlaceActivity:
+    """Tests for enrichment activity provider propagation."""
+
+    def test_enrich_single_place_passes_photos_provider_type(self, mock_env_vars):
+        from blueprints import airtable
+
+        place = {
+            "id": "recABC123",
+            "fields": {
+                "Place": TEST_PLACE_NAME,
+                "Google Maps Place Id": TEST_PLACE_ID,
+            },
+        }
+
+        with mock.patch("blueprints.airtable.AirtableService") as mock_service_class:
+            mock_service = mock_service_class.return_value
+            mock_service.enrich_single_place.return_value = {
+                "place_name": TEST_PLACE_NAME,
+                "status": "succeeded",
+                "field_updates": {},
+            }
+
+            result = airtable.enrich_single_place({
+                "place": place,
+                "provider_type": "outscraper",
+                "photos_provider_type": "google",
+                "city": "charlotte",
+                "force_refresh": True,
+            })
+
+        assert result["status"] == "succeeded"
+        mock_service.enrich_single_place.assert_called_once_with(place, "outscraper", "charlotte", True, "google")

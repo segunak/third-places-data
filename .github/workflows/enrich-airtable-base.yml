@@ -8,6 +8,11 @@ on:
         required: false
         default: 'outscraper'
         type: string
+      photos_provider_type:
+        description: 'Provider type for photo retrieval; blank uses provider_type'
+        required: false
+        default: 'google'
+        type: string
       sequential_mode:
         description: 'Whether to run in sequential mode'
         required: false
@@ -34,6 +39,11 @@ on:
         description: 'Provider type for data enrichment'
         required: false
         default: 'outscraper'
+        type: string
+      photos_provider_type:
+        description: 'Provider type for photo retrieval; blank uses provider_type'
+        required: false
+        default: 'google'
         type: string
       sequential_mode:
         description: 'Whether to run in sequential mode'
@@ -76,12 +86,17 @@ jobs:
           AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
         run: |
           $providerType = "${{ inputs.provider_type }}"
+          $photosProviderType = "${{ inputs.photos_provider_type }}"
           $sequentialMode = "${{ inputs.sequential_mode }}"
           $forceRefresh = "${{ inputs.force_refresh }}"
           $view = "${{ inputs.view }}"
           $city = "${{ inputs.city }}"
+
+          if ([string]::IsNullOrWhiteSpace($photosProviderType)) {
+            $photosProviderType = $providerType
+          }
           
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/enrich-airtable-base?provider_type=$providerType&sequential_mode=$sequentialMode&force_refresh=$forceRefresh&view=$view&city=$city"
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/enrich-airtable-base?provider_type=$providerType&photos_provider_type=$photosProviderType&sequential_mode=$sequentialMode&force_refresh=$forceRefresh&view=$view&city=$city"
           
           Write-Host "Using function URL: $FunctionUrl"
           

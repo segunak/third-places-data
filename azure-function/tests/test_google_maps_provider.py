@@ -473,3 +473,23 @@ class TestGoogleMapsProviderGetAllPlaceData:
         # Details should contain error info due to failure
         assert "error" in data["details"]
         assert data["details"]["place_id"] == TEST_PLACE_ID
+
+
+class TestPlaceDataProviderFactory:
+    """Tests for provider type normalization."""
+
+    def test_normalize_provider_type_lowercases_and_strips(self, mock_env_vars):
+        from services.place_data_service import PlaceDataProviderFactory
+
+        assert PlaceDataProviderFactory.normalize_provider_type(" Google ") == "google"
+        assert PlaceDataProviderFactory.normalize_provider_type("OUTSCRAPER") == "outscraper"
+
+    def test_normalize_provider_type_uses_parameter_name_in_errors(self, mock_env_vars):
+        from services.place_data_service import PlaceDataProviderFactory
+
+        with pytest.raises(ValueError) as exc_info:
+            PlaceDataProviderFactory.normalize_provider_type("bad", "photos_provider_type")
+
+        assert "photos_provider_type" in str(exc_info.value)
+        assert "google" in str(exc_info.value)
+        assert "outscraper" in str(exc_info.value)

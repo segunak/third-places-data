@@ -22,6 +22,7 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
 
     try:
         provider_type = req.params.get('provider_type')
+        photos_provider_type = req.params.get('photos_provider_type')
         force_refresh = req.params.get('force_refresh', '').lower() == 'true'
         sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
         city = req.params.get('city')
@@ -52,14 +53,33 @@ async def enrich_airtable_base(req: func.HttpRequest, client) -> func.HttpRespon
                 mimetype="application/json"
             )
 
+        try:
+            provider_type = PlaceDataProviderFactory.normalize_provider_type(provider_type)
+            photos_provider_type = PlaceDataProviderFactory.normalize_provider_type(
+                photos_provider_type or provider_type,
+                'photos_provider_type'
+            )
+        except ValueError as validation_error:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Invalid provider parameter",
+                    "data": None,
+                    "error": str(validation_error)
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+
         logging.info(f"Starting enrichment with parameters: city={city}, force_refresh={force_refresh}, "
                      f"sequential_mode={sequential_mode}, provider_type={provider_type}, "
-                     f"view={view}")
+                     f"photos_provider_type={photos_provider_type}, view={view}")
 
         config_dict = {
             "force_refresh": force_refresh,
             "sequential_mode": sequential_mode,
             "provider_type": provider_type,
+            "photos_provider_type": photos_provider_type,
             "city": city,
             "view": view
         }
@@ -91,6 +111,7 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
         force_refresh = config_dict.get("force_refresh", False)
         sequential_mode = config_dict.get("sequential_mode", False)
         provider_type = config_dict.get("provider_type", None)
+        photos_provider_type = config_dict.get("photos_provider_type") or provider_type
         city = config_dict.get("city")
         view = config_dict.get("view", "Production")
 
@@ -126,6 +147,7 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
                 activity_input = {
                     "place": place,
                     "provider_type": provider_type,
+                    "photos_provider_type": photos_provider_type,
                     "city": city,
                     "force_refresh": force_refresh,
                     "sequential_mode": sequential_mode,
@@ -142,6 +164,7 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
                     activity_input = {
                         "place": place,
                         "provider_type": provider_type,
+                        "photos_provider_type": photos_provider_type,
                         "city": city,
                         "force_refresh": force_refresh,
                         "sequential_mode": sequential_mode,
@@ -279,6 +302,7 @@ def enrich_single_place(activityInput):
     try:
         place = activityInput.get("place")
         provider_type = activityInput.get("provider_type")
+        photos_provider_type = activityInput.get("photos_provider_type") or provider_type
         city = activityInput.get("city")
         force_refresh = activityInput.get("force_refresh", False)
         sequential_mode = activityInput.get("sequential_mode", False)
@@ -294,7 +318,7 @@ def enrich_single_place(activityInput):
             }
 
         airtable_client = AirtableService(provider_type, sequential_mode, view)
-        result = airtable_client.enrich_single_place(place, provider_type, city, force_refresh)
+        result = airtable_client.enrich_single_place(place, provider_type, city, force_refresh, photos_provider_type)
         return result
     except Exception as ex:
         logging.error(f"Error enriching place {place_name}: {ex}", exc_info=True)

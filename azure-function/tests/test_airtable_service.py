@@ -4,6 +4,7 @@ Unit tests for the AirtableService class from airtable_service.py.
 All tests use mocked Airtable API calls - no live API calls are made.
 """
 
+import json
 import pytest
 from unittest import mock
 from collections import Counter
@@ -1119,6 +1120,24 @@ class TestAirtableServiceEnrichSinglePlace:
         assert result["status"] == "failed"
         assert "API error" in result["message"]
 
+    def test_enrich_single_place_passes_photos_provider_type(self, service_with_mocks):
+        """Test that photo provider override is passed to the data cache helper."""
+        service, mock_table, _ = service_with_mocks
+
+        third_place = {
+            "id": "recABC123",
+            "fields": {
+                "Place": TEST_PLACE_NAME,
+                "Google Maps Place Id": TEST_PLACE_ID
+            }
+        }
+
+        with mock.patch("services.airtable_service.helpers.get_and_cache_place_data") as mock_get_data:
+            mock_get_data.return_value = ("failed", None, "stop after helper call")
+            service.enrich_single_place(third_place, "outscraper", "Charlotte", True, "google")
+
+        assert mock_get_data.call_args.kwargs["photos_provider_type"] == "google"
+
     def test_enrich_single_place_no_details(self, service_with_mocks):
         """Test handling when place data has no details."""
         service, mock_table, _ = service_with_mocks
@@ -1298,6 +1317,91 @@ class TestAirtableServiceEnrichSinglePlace:
         description_update = result["field_updates"]["Description"]
         assert description_update.get("skipped_reason") == "Provider returned empty value"
         assert description_update.get("updated") is False
+
+    def test_enrich_single_place_processes_cached_raw_photo_fallback(self, service_with_mocks):
+        """Test cached raw_data.photo can trigger photo publishing even when photo_urls is empty."""
+        service, mock_table, _ = service_with_mocks
+        azure_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/" + ("a" * 64) + ".webp"
+        thumbnail_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/thumbnail/" + ("a" * 64) + ".webp"
+
+        third_place = {
+            "id": "recABC123",
+            "fields": {
+                "Place": TEST_PLACE_NAME,
+                "Google Maps Place Id": TEST_PLACE_ID,
+            },
+        }
+        mock_place_data = {
+            "place_id": TEST_PLACE_ID,
+            "data_source": "OutscraperProvider",
+            "details": {
+                "address": "123 Main St",
+                "parking": ["Free"],
+                "google_maps_url": "https://maps.google.com/?cid=123",
+                "raw_data": {},
+            },
+            "photos": {
+                "photo_urls": [],
+                "raw_data": {
+                    "photos_data": [],
+                    "photo": "https://lh3.googleusercontent.com/p/hero=w800-h500-k-no",
+                },
+            },
+        }
+
+        with mock.patch("services.airtable_service.helpers.get_and_cache_place_data") as mock_get_data:
+            with mock.patch("services.airtable_service.PhotoAssetService") as mock_photo_asset_service:
+                with mock.patch.object(service, "update_place_record", return_value={"updated": True}) as mock_update:
+                    mock_get_data.return_value = ("success", mock_place_data, "")
+                    mock_photo_asset_service.return_value.process_place.return_value = {
+                        "selected_airtable_photos": [{"display": azure_url, "thumbnail": thumbnail_url}],
+                        "selected_airtable_urls": [azure_url],
+                        "summary": {"candidate_count": 1},
+                    }
+
+                    result = service.enrich_single_place(third_place, "outscraper", "charlotte", False)
+
+        assert result["status"] == "success"
+        mock_photo_asset_service.return_value.process_place.assert_called_once()
+        photos_update_calls = [call for call in mock_update.call_args_list if call.args[1] == "Photos"]
+        assert len(photos_update_calls) == 1
+        assert json.loads(photos_update_calls[0].args[2]) == [{"display": azure_url, "thumbnail": thumbnail_url}]
+        assert result["photo_publish_summary"] == {"candidate_count": 1}
+
+    def test_enrich_single_place_fails_when_photo_asset_result_has_urls_without_manifests(self, service_with_mocks):
+        service, _, _ = service_with_mocks
+        azure_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/" + ("a" * 64) + ".webp"
+        third_place = {
+            "id": "recABC123",
+            "fields": {
+                "Place": TEST_PLACE_NAME,
+                "Google Maps Place Id": TEST_PLACE_ID,
+            },
+        }
+        mock_place_data = {
+            "place_id": TEST_PLACE_ID,
+            "details": {
+                "address": "123 Main St",
+                "parking": ["Free"],
+                "google_maps_url": "https://maps.google.com/?cid=123",
+                "raw_data": {},
+            },
+            "photos": {"photo_urls": ["https://example.com/photo.jpg"]},
+        }
+
+        with mock.patch("services.airtable_service.helpers.get_and_cache_place_data", return_value=("success", mock_place_data, "")):
+            with mock.patch("services.airtable_service.PhotoAssetService") as mock_photo_asset_service:
+                with mock.patch.object(service, "update_place_record") as mock_update:
+                    mock_photo_asset_service.return_value.process_place.return_value = {
+                        "selected_airtable_urls": [azure_url],
+                        "summary": {"candidate_count": 1},
+                    }
+
+                    result = service.enrich_single_place(third_place, "outscraper", "charlotte", False)
+
+        assert result["status"] == "failed"
+        assert "without thumbnail manifests" in result["message"]
+        mock_update.assert_not_called()
 
 
 class TestAirtableServiceEnrichBaseData:

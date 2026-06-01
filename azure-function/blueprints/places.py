@@ -4,6 +4,7 @@ import azure.functions as func
 import azure.durable_functions as df
 from services import utils as helpers
 from services.airtable_service import AirtableService
+from services.place_data_service import PlaceDataProviderFactory
 from constants import SearchField
 
 bp = df.Blueprint()
@@ -23,6 +24,7 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
     try:
         city = req.params.get('city')
         provider_type = req.params.get('provider_type')
+        photos_provider_type = req.params.get('photos_provider_type')
         force_refresh = req.params.get('force_refresh', '').lower() == 'true'
         sequential_mode = req.params.get('sequential_mode', '').lower() == 'true'
         # view parameter specifies which Airtable view to use. Defaults to "Production".
@@ -53,9 +55,27 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
                 mimetype="application/json"
             )
 
+        try:
+            provider_type = PlaceDataProviderFactory.normalize_provider_type(provider_type)
+            photos_provider_type = PlaceDataProviderFactory.normalize_provider_type(
+                photos_provider_type or provider_type,
+                'photos_provider_type'
+            )
+        except ValueError as validation_error:
+            return func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "Invalid provider parameter",
+                    "data": None,
+                    "error": str(validation_error)
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
+
         logging.info(
-            "Starting place data refresh with parameters: force_refresh=%s, sequential_mode=%s, city=%s, provider_type=%s, view=%s",
-            force_refresh, sequential_mode, city, provider_type, view
+            "Starting place data refresh with parameters: force_refresh=%s, sequential_mode=%s, city=%s, provider_type=%s, photos_provider_type=%s, view=%s",
+            force_refresh, sequential_mode, city, provider_type, photos_provider_type, view
         )
 
         orchestration_input = {
@@ -63,6 +83,7 @@ async def refresh_place_data(req: func.HttpRequest, client) -> func.HttpResponse
             "sequential_mode": sequential_mode,
             "city": city,
             "provider_type": provider_type,
+            "photos_provider_type": photos_provider_type,
             "view": view
         }
 
@@ -97,6 +118,7 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
         force_refresh = orchestration_input.get("force_refresh", False)
         sequential_mode = orchestration_input.get("sequential_mode", False)
         provider_type = orchestration_input.get("provider_type", None)
+        photos_provider_type = orchestration_input.get("photos_provider_type") or provider_type
         view = orchestration_input.get("view", "Production")
 
         if not city:
@@ -107,6 +129,7 @@ def get_place_data_orchestrator(context: df.DurableOrchestrationContext):
 
         config_dict = {
             "provider_type": provider_type,
+            "photos_provider_type": photos_provider_type,
             "sequential_mode": sequential_mode,
             "city": city,
             "force_refresh": force_refresh,
@@ -186,6 +209,7 @@ def get_place_data(activityInput):
             error_msg = f"Error processing place data: provider_type cannot be None - must be 'google' or 'outscraper'"
             logging.error(error_msg)
             return helpers.create_place_response('failed', place_name, None, error_msg)
+        photos_provider_type = config_dict.get('photos_provider_type') or provider_type
 
         record_id = place['id']
         place_id = place['fields'].get('Google Maps Place Id', None)
@@ -197,7 +221,7 @@ def get_place_data(activityInput):
             return helpers.create_place_response('failed', place_name, None, error_msg)
 
         force_refresh = config_dict.get('force_refresh', False)
-        logging.info(f"get_place_data: Processing {place_name} with place_id {place_id} using provider_type={provider_type}")
+        logging.info(f"get_place_data: Processing {place_name} with place_id {place_id} using provider_type={provider_type}, photos_provider_type={photos_provider_type}")
 
         status, place_data, message = helpers.get_and_cache_place_data(
             provider_type=provider_type,
@@ -205,7 +229,8 @@ def get_place_data(activityInput):
             place_id=place_id,
             city=city,
             force_refresh=force_refresh,
-            airtable_record_id=record_id
+            airtable_record_id=record_id,
+            photos_provider_type=photos_provider_type
         )
 
         if status == 'succeeded' or status == 'cached':
@@ -233,6 +258,7 @@ async def refresh_single_place(req: func.HttpRequest, client) -> func.HttpRespon
     try:
         place_id = req.params.get('place_id')
         provider_type = req.params.get('provider_type')
+        photos_provider_type = req.params.get('photos_provider_type')
         city = req.params.get('city')
         force_refresh = req.params.get('force_refresh', '').lower() == 'true'
 
@@ -272,24 +298,32 @@ async def refresh_single_place(req: func.HttpRequest, client) -> func.HttpRespon
                 mimetype="application/json"
             )
 
-        if provider_type not in ['google', 'outscraper']:
+        try:
+            provider_type = PlaceDataProviderFactory.normalize_provider_type(provider_type)
+            photos_provider_type = PlaceDataProviderFactory.normalize_provider_type(
+                photos_provider_type or provider_type,
+                'photos_provider_type'
+            )
+        except ValueError as validation_error:
             return func.HttpResponse(
                 json.dumps({
                     "success": False,
-                    "message": "Invalid provider_type",
+                    "message": "Invalid provider parameter",
                     "data": None,
-                    "error": "provider_type must be 'google' or 'outscraper'"
+                    "error": str(validation_error)
                 }),
                 status_code=400,
                 mimetype="application/json"
             )
 
         logging.info(f"Starting single place refresh for place_id={place_id}, "
-                     f"provider_type={provider_type}, city={city}, force_refresh={force_refresh}")
+                     f"provider_type={provider_type}, photos_provider_type={photos_provider_type}, "
+                     f"city={city}, force_refresh={force_refresh}")
 
         orchestration_input = {
             "place_id": place_id,
             "provider_type": provider_type,
+            "photos_provider_type": photos_provider_type,
             "city": city,
             "force_refresh": force_refresh
         }
@@ -322,6 +356,7 @@ def refresh_single_place_orchestrator(context: df.DurableOrchestrationContext):
         orchestration_input = context.get_input() or {}
         place_id = orchestration_input.get("place_id")
         provider_type = orchestration_input.get("provider_type")
+        photos_provider_type = orchestration_input.get("photos_provider_type") or provider_type
         city = orchestration_input.get("city")
         force_refresh = orchestration_input.get("force_refresh", False)
 
@@ -356,6 +391,7 @@ def refresh_single_place_orchestrator(context: df.DurableOrchestrationContext):
                 "place": place_record,
                 "config": {
                     "provider_type": provider_type,
+                    "photos_provider_type": photos_provider_type,
                     "city": city,
                     "force_refresh": force_refresh
                 }
@@ -367,6 +403,7 @@ def refresh_single_place_orchestrator(context: df.DurableOrchestrationContext):
             {
                 "place": place_record,
                 "provider_type": provider_type,
+                "photos_provider_type": photos_provider_type,
                 "city": city,
                 "force_refresh": force_refresh
             }
@@ -388,6 +425,7 @@ def refresh_single_place_orchestrator(context: df.DurableOrchestrationContext):
                 "enrich_message": enrich_result.get('message'),
                 "field_updates": enrich_result.get('field_updates', {}),
                 "provider_type": provider_type,
+                "photos_provider_type": photos_provider_type,
                 "city": city
             },
             "error": None if overall_success else f"Refresh: {refresh_result.get('message', 'Unknown error')}; Enrich: {enrich_result.get('message', 'Unknown error')}"
