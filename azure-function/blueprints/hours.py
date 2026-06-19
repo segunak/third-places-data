@@ -9,15 +9,15 @@ bp = df.Blueprint()
 
 
 # ======================================================
-# Operating Hours Refresh Functions
+# Hours Refresh Functions
 # ======================================================
 
 
-@bp.function_name(name="RefreshOperatingHours")
-@bp.route(route="refresh-operating-hours")
+@bp.function_name(name="RefreshHours")
+@bp.route(route="refresh-hours")
 @bp.durable_client_input(client_name="client")
-async def refresh_operating_hours(req: func.HttpRequest, client) -> func.HttpResponse:
-    logging.info("Received request to refresh operating hours.")
+async def refresh_hours(req: func.HttpRequest, client) -> func.HttpResponse:
+    logging.info("Received request to refresh hours.")
 
     try:
         provider_type = req.params.get('provider_type')
@@ -50,16 +50,16 @@ async def refresh_operating_hours(req: func.HttpRequest, client) -> func.HttpRes
             "provider_type": provider_type,
             "city": city
         }
-        instance_id = await client.start_new("refresh_operating_hours_orchestrator", client_input=config_dict)
-        logging.info(f"Started operating hours refresh orchestration with ID: {instance_id}")
+        instance_id = await client.start_new("refresh_hours_orchestrator", client_input=config_dict)
+        logging.info(f"Started hours refresh orchestration with ID: {instance_id}")
         response = client.create_check_status_response(req, instance_id)
         return response
     except Exception as ex:
-        logging.error(f"Error encountered while starting the operating hours refresh orchestration: {ex}", exc_info=True)
+        logging.error(f"Error encountered while starting the hours refresh orchestration: {ex}", exc_info=True)
         return func.HttpResponse(
             json.dumps({
                 "success": False,
-                "message": "Server error occurred while starting the operating hours refresh orchestration.",
+                "message": "Server error occurred while starting the hours refresh orchestration.",
                 "data": None,
                 "error": str(ex)
             }),
@@ -69,9 +69,9 @@ async def refresh_operating_hours(req: func.HttpRequest, client) -> func.HttpRes
 
 
 @bp.orchestration_trigger(context_name="context")
-def refresh_operating_hours_orchestrator(context: df.DurableOrchestrationContext):
+def refresh_hours_orchestrator(context: df.DurableOrchestrationContext):
     try:
-        logging.info("refresh_operating_hours_orchestrator started.")
+        logging.info("refresh_hours_orchestrator started.")
         config_dict = context.get_input() or {}
         provider_type = config_dict.get("provider_type")
         city = config_dict.get("city")
@@ -99,7 +99,7 @@ def refresh_operating_hours_orchestrator(context: df.DurableOrchestrationContext
         from constants import MAX_THREAD_WORKERS
         concurrency_limit = MAX_THREAD_WORKERS
 
-        logging.info(f"Refreshing operating hours for {len(places_with_id)} places using provider '{provider_type}'")
+        logging.info(f"Refreshing hours for {len(places_with_id)} places using provider '{provider_type}'")
 
         for i in range(0, len(places_with_id), concurrency_limit):
             batch = places_with_id[i:i + concurrency_limit]
@@ -110,7 +110,7 @@ def refresh_operating_hours_orchestrator(context: df.DurableOrchestrationContext
                     "provider_type": provider_type,
                     "city": city
                 }
-                batch_tasks.append(context.call_activity("refresh_single_place_operating_hours", activity_input))
+                batch_tasks.append(context.call_activity("refresh_single_place_hours", activity_input))
 
             batch_results = yield context.task_all(batch_tasks)
             total_batches = (len(places_with_id) + concurrency_limit - 1) // concurrency_limit
@@ -124,7 +124,7 @@ def refresh_operating_hours_orchestrator(context: df.DurableOrchestrationContext
 
         result = {
             "success": len(failed) == 0,
-            "message": f"Operating hours refresh complete. {len(updated)} updated, {len(skipped)} skipped, {len(failed)} failed.",
+            "message": f"Hours refresh complete. {len(updated)} updated, {len(skipped)} skipped, {len(failed)} failed.",
             "data": {
                 "total_processed": len(results),
                 "updated": len(updated),
@@ -136,18 +136,18 @@ def refresh_operating_hours_orchestrator(context: df.DurableOrchestrationContext
         }
         return result
     except Exception as ex:
-        logging.error(f"Critical error in refresh_operating_hours_orchestrator: {ex}", exc_info=True)
+        logging.error(f"Critical error in refresh_hours_orchestrator: {ex}", exc_info=True)
         return {
             "success": False,
-            "message": "Error occurred during the operating hours refresh orchestration.",
+            "message": "Error occurred during the hours refresh orchestration.",
             "data": None,
             "error": str(ex)
         }
 
 
 @bp.activity_trigger(input_name="activityInput")
-@bp.function_name("refresh_single_place_operating_hours")
-def refresh_single_place_operating_hours(activityInput):
+@bp.function_name("refresh_single_place_hours")
+def refresh_single_place_hours(activityInput):
     place_name = "Unknown Place"
     try:
         place = activityInput.get("place")
@@ -167,7 +167,7 @@ def refresh_single_place_operating_hours(activityInput):
             }
 
         data_provider = PlaceDataProviderFactory.get_provider(provider_type)
-        hours_list = data_provider.get_operating_hours(place_id)
+        hours_list = data_provider.get_hours(place_id)
 
         if not hours_list:
             return {
@@ -175,7 +175,7 @@ def refresh_single_place_operating_hours(activityInput):
                 "place_id": place_id,
                 "record_id": record_id,
                 "update_status": "skipped",
-                "message": "No operating hours returned by provider"
+                "message": "No hours returned by provider"
             }
 
         hours_json = json.dumps(hours_list, ensure_ascii=False)
@@ -183,7 +183,7 @@ def refresh_single_place_operating_hours(activityInput):
         airtable_client = AirtableService(provider_type)
         update_result = airtable_client.update_place_record(
             record_id,
-            'Operating Hours',
+            'Hours',
             hours_json,
             overwrite=True
         )
@@ -193,11 +193,11 @@ def refresh_single_place_operating_hours(activityInput):
             "place_id": place_id,
             "record_id": record_id,
             "update_status": "updated" if update_result.get('updated') else "skipped",
-            "message": f"Operating hours {'updated' if update_result.get('updated') else 'unchanged'}",
+            "message": f"Hours {'updated' if update_result.get('updated') else 'unchanged'}",
             "hours": hours_list
         }
     except Exception as ex:
-        logging.error(f"Error refreshing operating hours for {place_name}: {ex}", exc_info=True)
+        logging.error(f"Error refreshing hours for {place_name}: {ex}", exc_info=True)
         return {
             "place_name": place_name,
             "update_status": "failed",

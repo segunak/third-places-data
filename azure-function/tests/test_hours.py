@@ -1,5 +1,5 @@
 """
-Tests for the operating hours feature across providers and enrichment pipeline.
+Tests for the hours feature across providers and enrichment pipeline.
 
 Canonical format: "Day: H:MM AM - H:MM PM"
 Examples: "Monday: 3 PM - 8 PM", "Tuesday: 11 AM - 2 PM, 5 PM - 10 PM"
@@ -109,15 +109,15 @@ class TestParseCompactTime:
         assert PlaceDataService._parse_compact_time("11PM") == "11 PM"
 
 
-class TestNormalizeOperatingHours:
-    """Tests for PlaceDataService.normalize_operating_hours."""
+class TestNormalizeHours:
+    """Tests for PlaceDataService.normalize_hours."""
 
     def test_cleans_google_unicode(self):
         raw = [
             "Monday: 7:00\u202fAM\u2009\u2013\u20095:00\u202fPM",
             "Tuesday: 8:00\u202fAM\u2009\u2013\u20093:00\u202fPM"
         ]
-        result = PlaceDataService.normalize_operating_hours(raw)
+        result = PlaceDataService.normalize_hours(raw)
         assert result == [
             "Monday: 7 AM - 5 PM",
             "Tuesday: 8 AM - 3 PM"
@@ -125,51 +125,51 @@ class TestNormalizeOperatingHours:
 
     def test_preserves_clean_strings(self):
         clean = ["Monday: 7 AM - 5 PM", "Sunday: Closed"]
-        assert PlaceDataService.normalize_operating_hours(clean) == clean
+        assert PlaceDataService.normalize_hours(clean) == clean
 
     def test_preserves_minutes(self):
         with_minutes = ["Monday: 7:30 AM - 5 PM"]
-        assert PlaceDataService.normalize_operating_hours(with_minutes) == ["Monday: 7:30 AM - 5 PM"]
+        assert PlaceDataService.normalize_hours(with_minutes) == ["Monday: 7:30 AM - 5 PM"]
 
     def test_strips_on_the_hour_before_dash(self):
         """Google sends '12:00 - 9:00 PM' for noon — strip :00 before dash too."""
         raw = ["Monday: 12:00 - 9:00 PM"]
-        result = PlaceDataService.normalize_operating_hours(raw)
+        result = PlaceDataService.normalize_hours(raw)
         assert result == ["Monday: 12 PM - 9 PM"]
 
     def test_fixes_bare_noon_from_google(self):
         """Google sends noon as '12' without AM/PM — add PM."""
         raw = ["Sunday: 12:00\u2009\u2013\u20096:00\u202fPM"]
-        result = PlaceDataService.normalize_operating_hours(raw)
+        result = PlaceDataService.normalize_hours(raw)
         assert result == ["Sunday: 12 PM - 6 PM"]
 
     def test_fixes_bare_noon_with_minutes_close(self):
         """Noon opening with minutes on close time."""
         raw = ["Monday: 12:00\u2009\u2013\u20096:30\u202fPM"]
-        result = PlaceDataService.normalize_operating_hours(raw)
+        result = PlaceDataService.normalize_hours(raw)
         assert result == ["Monday: 12 PM - 6:30 PM"]
 
     def test_does_not_add_pm_when_already_present(self):
         """12 PM should not become 12 PM PM."""
         clean = ["Monday: 12 PM - 9 PM"]
-        assert PlaceDataService.normalize_operating_hours(clean) == ["Monday: 12 PM - 9 PM"]
+        assert PlaceDataService.normalize_hours(clean) == ["Monday: 12 PM - 9 PM"]
 
     def test_fixes_bare_opening_time_inherits_pm(self):
         """Google sends '4 - 10 PM' where 4 has no AM/PM — should become '4 PM - 10 PM'."""
         raw = ["Tuesday: 4 - 10 PM"]
-        result = PlaceDataService.normalize_operating_hours(raw)
+        result = PlaceDataService.normalize_hours(raw)
         assert result == ["Tuesday: 4 PM - 10 PM"]
 
     def test_fixes_bare_opening_time_inherits_am(self):
         """Opening time inherits AM from close time."""
         raw = ["Monday: 6 - 11 AM"]
-        result = PlaceDataService.normalize_operating_hours(raw)
+        result = PlaceDataService.normalize_hours(raw)
         assert result == ["Monday: 6 AM - 11 AM"]
 
     def test_fixes_bare_opening_in_multi_range(self):
         """Multi-range where second range has bare opening: '11 AM - 2 PM, 5 - 10 PM'."""
         raw = ["Monday: 11 AM - 2 PM, 5 - 10 PM"]
-        result = PlaceDataService.normalize_operating_hours(raw)
+        result = PlaceDataService.normalize_hours(raw)
         assert result == ["Monday: 11 AM - 2 PM, 5 PM - 10 PM"]
 
     def test_fixes_hopfly_brewing_hours(self):
@@ -179,7 +179,7 @@ class TestNormalizeOperatingHours:
             "Tuesday: 4:00\u202fPM\u2009\u2013\u200910:00\u202fPM",
             "Friday: 1:00\u202fPM\u2009\u2013\u200911:00\u202fPM",
         ]
-        result = PlaceDataService.normalize_operating_hours(raw)
+        result = PlaceDataService.normalize_hours(raw)
         assert result[0] == "Monday: Closed"
         assert result[1] == "Tuesday: 4 PM - 10 PM"
         assert result[2] == "Friday: 1 PM - 11 PM"
@@ -187,14 +187,14 @@ class TestNormalizeOperatingHours:
     def test_fixes_bare_opening_with_minutes(self):
         """Opening time with minutes but no AM/PM: '5:30 - 10 PM'."""
         raw = ["Monday: 5:30 - 10 PM"]
-        result = PlaceDataService.normalize_operating_hours(raw)
+        result = PlaceDataService.normalize_hours(raw)
         assert result == ["Monday: 5:30 PM - 10 PM"]
 
     def test_handles_empty_list(self):
-        assert PlaceDataService.normalize_operating_hours([]) == []
+        assert PlaceDataService.normalize_hours([]) == []
 
     def test_handles_none(self):
-        assert PlaceDataService.normalize_operating_hours(None) == []
+        assert PlaceDataService.normalize_hours(None) == []
 
 
 # ======================================================
@@ -282,7 +282,7 @@ class TestFormatConsistency:
 
     def test_same_format_simple_hours(self):
         google_raw = ["Monday: 3:00\u202fPM\u2009\u2013\u20098:00\u202fPM"]
-        google_result = PlaceDataService.normalize_operating_hours(google_raw)
+        google_result = PlaceDataService.normalize_hours(google_raw)
 
         outscraper_raw = {"Monday": ["3-8PM"]}
         outscraper_result = OutscraperProvider._normalize_outscraper_hours(outscraper_raw)
@@ -291,7 +291,7 @@ class TestFormatConsistency:
 
     def test_same_format_am_pm(self):
         google_raw = ["Tuesday: 9:00\u202fAM\u2009\u2013\u20095:00\u202fPM"]
-        google_result = PlaceDataService.normalize_operating_hours(google_raw)
+        google_result = PlaceDataService.normalize_hours(google_raw)
 
         outscraper_raw = {"Tuesday": ["9AM-5PM"]}
         outscraper_result = OutscraperProvider._normalize_outscraper_hours(outscraper_raw)
@@ -300,7 +300,7 @@ class TestFormatConsistency:
 
     def test_same_format_multi_range(self):
         google_raw = ["Monday: 11:00\u202fAM\u2009\u2013\u20092:00\u202fPM, 5:00\u202fPM\u2009\u2013\u200910:00\u202fPM"]
-        google_result = PlaceDataService.normalize_operating_hours(google_raw)
+        google_result = PlaceDataService.normalize_hours(google_raw)
 
         outscraper_raw = {"Monday": ["11AM-2PM", "5-10PM"]}
         outscraper_result = OutscraperProvider._normalize_outscraper_hours(outscraper_raw)
@@ -313,8 +313,8 @@ class TestFormatConsistency:
 # ======================================================
 
 
-class TestGoogleMapsProviderGetOperatingHours:
-    """Tests for GoogleMapsProvider.get_operating_hours — returns normalized output."""
+class TestGoogleMapsProviderGetHours:
+    """Tests for GoogleMapsProvider.get_hours — returns normalized output."""
 
     @patch('services.place_data_service.requests.get')
     def test_returns_normalized_hours(self, mock_get, mock_env_vars):
@@ -332,7 +332,7 @@ class TestGoogleMapsProviderGetOperatingHours:
         mock_get.return_value = mock_response
 
         provider = GoogleMapsProvider()
-        result = provider.get_operating_hours("ChIJtest123")
+        result = provider.get_hours("ChIJtest123")
 
         assert result[0] == "Monday: 7 AM - 5 PM"
         assert result[1] == "Sunday: Closed"
@@ -346,7 +346,7 @@ class TestGoogleMapsProviderGetOperatingHours:
         mock_get.return_value = mock_response
 
         provider = GoogleMapsProvider()
-        result = provider.get_operating_hours("ChIJtest123")
+        result = provider.get_hours("ChIJtest123")
         assert result == []
 
     @patch('services.place_data_service.requests.get')
@@ -354,12 +354,12 @@ class TestGoogleMapsProviderGetOperatingHours:
         mock_get.side_effect = Exception("API error")
 
         provider = GoogleMapsProvider()
-        result = provider.get_operating_hours("ChIJtest123")
+        result = provider.get_hours("ChIJtest123")
         assert result == []
 
 
-class TestOutscraperProviderGetOperatingHours:
-    """Tests for OutscraperProvider.get_operating_hours — uses fields param for lighter requests."""
+class TestOutscraperProviderGetHours:
+    """Tests for OutscraperProvider.get_hours — uses fields param for lighter requests."""
 
     @patch.object(OutscraperProvider, '__init__', lambda self: None)
     def test_extracts_and_normalizes_hours(self):
@@ -378,7 +378,7 @@ class TestOutscraperProviderGetOperatingHours:
             }
         }]]
 
-        result = provider.get_operating_hours("ChIJtest")
+        result = provider.get_hours("ChIJtest")
 
         assert result[0] == "Sunday: Closed"
         assert result[1] == "Monday: 9 AM - 5 PM"
@@ -400,7 +400,7 @@ class TestOutscraperProviderGetOperatingHours:
             "place_id": "ChIJtest"
         }]]
 
-        result = provider.get_operating_hours("ChIJtest")
+        result = provider.get_hours("ChIJtest")
         assert result == []
 
     @patch.object(OutscraperProvider, '__init__', lambda self: None)
@@ -412,7 +412,7 @@ class TestOutscraperProviderGetOperatingHours:
 
         provider.client.google_maps_search.side_effect = Exception("API error")
 
-        result = provider.get_operating_hours("ChIJtest")
+        result = provider.get_hours("ChIJtest")
         assert result == []
 
 
@@ -421,7 +421,7 @@ class TestOutscraperProviderGetOperatingHours:
 # ======================================================
 
 
-class TestOperatingHoursJsonRoundTrip:
+class TestHoursJsonRoundTrip:
     """Test that normalized hours survive JSON serialization."""
 
     def test_canonical_format_round_trip(self):
@@ -452,8 +452,8 @@ class TestOperatingHoursJsonRoundTrip:
 # ======================================================
 
 
-class TestExtractOperatingHours:
-    """Tests for AirtableService._extract_operating_hours — produces canonical format."""
+class TestExtractHours:
+    """Tests for AirtableService._extract_hours — produces canonical format."""
 
     def _create_airtable_service_mock(self):
         from services.airtable_service import AirtableService
@@ -471,7 +471,7 @@ class TestExtractOperatingHours:
                 ]
             }
         }
-        result = svc._extract_operating_hours(raw_data, 'GoogleMapsProvider')
+        result = svc._extract_hours(raw_data, 'GoogleMapsProvider')
         parsed = json.loads(result)
         assert parsed == ["Monday: 9 AM - 5 PM", "Tuesday: 9 AM - 5 PM"]
 
@@ -483,20 +483,20 @@ class TestExtractOperatingHours:
                 "Friday": ["9AM-9PM"]
             }
         }
-        result = svc._extract_operating_hours(raw_data, 'OutscraperProvider')
+        result = svc._extract_hours(raw_data, 'OutscraperProvider')
         parsed = json.loads(result)
         assert "Monday: 9 AM - 5 PM" in parsed
         assert "Friday: 9 AM - 9 PM" in parsed
 
     def test_returns_empty_string_when_no_data(self):
         svc = self._create_airtable_service_mock()
-        assert svc._extract_operating_hours({}, 'GoogleMapsProvider') == ''
-        assert svc._extract_operating_hours(None, 'GoogleMapsProvider') == ''
+        assert svc._extract_hours({}, 'GoogleMapsProvider') == ''
+        assert svc._extract_hours(None, 'GoogleMapsProvider') == ''
 
     def test_returns_empty_string_for_empty_hours(self):
         svc = self._create_airtable_service_mock()
         raw_data = {"regularOpeningHours": {"weekdayDescriptions": []}}
-        assert svc._extract_operating_hours(raw_data, 'GoogleMapsProvider') == ''
+        assert svc._extract_hours(raw_data, 'GoogleMapsProvider') == ''
 
     def test_google_and_outscraper_enrichment_produce_same_format(self):
         """Key test: both providers produce identical format through the enrichment pipeline."""
@@ -509,7 +509,77 @@ class TestExtractOperatingHours:
         }
         outscraper_raw = {"working_hours": {"Monday": ["3-8PM"]}}
 
-        google_result = json.loads(svc._extract_operating_hours(google_raw, 'GoogleMapsProvider'))
-        outscraper_result = json.loads(svc._extract_operating_hours(outscraper_raw, 'OutscraperProvider'))
+        google_result = json.loads(svc._extract_hours(google_raw, 'GoogleMapsProvider'))
+        outscraper_result = json.loads(svc._extract_hours(outscraper_raw, 'OutscraperProvider'))
 
         assert google_result[0] == outscraper_result[0] == "Monday: 3 PM - 8 PM"
+
+
+# ======================================================
+# Hours Refresh Activity Tests
+# ======================================================
+
+
+class TestRefreshSinglePlaceHours:
+    """Tests for the refresh_single_place_hours activity."""
+
+    def test_updates_hours_field(self):
+        from blueprints import hours
+
+        provider = MagicMock()
+        provider.get_hours.return_value = ["Monday: 9 AM - 5 PM"]
+        airtable_client = MagicMock()
+        airtable_client.update_place_record.return_value = {"updated": True}
+        activity_input = {
+            "place": {
+                "id": "recABC123",
+                "fields": {
+                    "Place": "Test Place",
+                    "Google Maps Place Id": "ChIJtest"
+                }
+            },
+            "provider_type": "google",
+            "city": "charlotte"
+        }
+
+        with patch("blueprints.hours.PlaceDataProviderFactory.get_provider", return_value=provider) as mock_get_provider:
+            with patch("blueprints.hours.AirtableService", return_value=airtable_client) as mock_airtable_service:
+                result = hours.refresh_single_place_hours(activity_input)
+
+        mock_get_provider.assert_called_once_with("google")
+        provider.get_hours.assert_called_once_with("ChIJtest")
+        mock_airtable_service.assert_called_once_with("google")
+        airtable_client.update_place_record.assert_called_once_with(
+            "recABC123",
+            "Hours",
+            json.dumps(["Monday: 9 AM - 5 PM"], ensure_ascii=False),
+            overwrite=True
+        )
+        assert result["update_status"] == "updated"
+        assert result["hours"] == ["Monday: 9 AM - 5 PM"]
+
+    def test_skips_when_provider_returns_no_hours(self):
+        from blueprints import hours
+
+        provider = MagicMock()
+        provider.get_hours.return_value = []
+        activity_input = {
+            "place": {
+                "id": "recABC123",
+                "fields": {
+                    "Place": "Test Place",
+                    "Google Maps Place Id": "ChIJtest"
+                }
+            },
+            "provider_type": "google",
+            "city": "charlotte"
+        }
+
+        with patch("blueprints.hours.PlaceDataProviderFactory.get_provider", return_value=provider):
+            with patch("blueprints.hours.AirtableService") as mock_airtable_service:
+                result = hours.refresh_single_place_hours(activity_input)
+
+        provider.get_hours.assert_called_once_with("ChIJtest")
+        mock_airtable_service.assert_not_called()
+        assert result["update_status"] == "skipped"
+        assert result["message"] == "No hours returned by provider"

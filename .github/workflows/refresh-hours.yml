@@ -1,37 +1,37 @@
-name: Refresh Operating Hours
+name: Refresh Hours
 
 on:
   workflow_call:
     inputs:
       provider_type:
-        description: 'Provider type for operating hours refresh'
+        description: 'Provider type for hours refresh'
         required: false
         default: 'google'
         type: string
       city:
-        description: 'City for the operating hours refresh'
+        description: 'City for the hours refresh'
         required: false
         default: 'charlotte'
         type: string
   workflow_dispatch:
     inputs:
       provider_type:
-        description: 'Provider type for operating hours refresh'
+        description: 'Provider type for hours refresh'
         required: false
         default: 'google'
         type: string
       city:
-        description: 'City for the operating hours refresh'
+        description: 'City for the hours refresh'
         required: false
         default: 'charlotte'
         type: string
 
 concurrency: 
-  group: refresh-operating-hours
+  group: refresh-hours
   cancel-in-progress: true
 
 jobs:
-  trigger-refresh-operating-hours:
+  trigger-refresh-hours:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
@@ -48,7 +48,7 @@ jobs:
           $providerType = "${{ inputs.provider_type || 'google' }}"
           $city = "${{ inputs.city || 'charlotte' }}"
 
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-operating-hours?provider_type=$providerType&city=$city"
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-hours?provider_type=$providerType&city=$city"
           
           Write-Host "Using function URL: $FunctionUrl"
           

@@ -16,13 +16,13 @@
 			"label": "pip install (functions)",
 			"type": "shell",
 			"osx": {
-				"command": "${config:azureFunctions.pythonVenv}/bin/python -m pip install -r requirements.txt"
+				"command": "venv='${config:azureFunctions.pythonVenv}'; if [ ! -x \"$venv/bin/python\" ] || ! \"$venv/bin/python\" -c 'import sys' >/dev/null 2>&1; then rm -rf \"$venv\" && python -m venv \"$venv\"; fi && \"$venv/bin/python\" -m pip install -r requirements.txt"
 			},
 			"windows": {
-				"command": "${config:azureFunctions.pythonVenv}\\Scripts\\python -m pip install -r requirements.txt"
+				"command": "$venv = '${config:azureFunctions.pythonVenv}'; $venvPython = Join-Path $venv 'Scripts\\python.exe'; if (!(Test-Path $venvPython)) { python -m venv $venv }; & $venvPython -c 'import sys'; if ($LASTEXITCODE -ne 0) { Remove-Item -Recurse -Force $venv; python -m venv $venv }; & $venvPython -m pip install -r requirements.txt"
 			},
 			"linux": {
-				"command": "${config:azureFunctions.pythonVenv}/bin/python -m pip install -r requirements.txt"
+				"command": "venv='${config:azureFunctions.pythonVenv}'; if [ ! -x \"$venv/bin/python\" ] || ! \"$venv/bin/python\" -c 'import sys' >/dev/null 2>&1; then rm -rf \"$venv\" && python -m venv \"$venv\"; fi && \"$venv/bin/python\" -m pip install -r requirements.txt"
 			},
 			"problemMatcher": [],
 			"options": {

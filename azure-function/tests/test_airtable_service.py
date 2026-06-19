@@ -374,7 +374,8 @@ class TestAirtableServiceExtractRawProviderValues:
             "priceLevel": "PRICE_LEVEL_MODERATE",
             "parkingOptions": {"freeParkingLot": True, "paidStreetParking": False},
             "googleMapsUri": "https://maps.google.com/?cid=123456",
-            "location": {"latitude": 35.2271, "longitude": -80.8431}
+            "location": {"latitude": 35.2271, "longitude": -80.8431},
+            "regularOpeningHours": {"weekdayDescriptions": ["Monday: 9 AM - 5 PM"]}
         }
         
         result = service._extract_raw_provider_values(raw_data, "GoogleMapsProvider")
@@ -387,6 +388,7 @@ class TestAirtableServiceExtractRawProviderValues:
         assert result["Google Maps Profile URL"] == "https://maps.google.com/?cid=123456"
         assert result["Latitude"] == 35.2271
         assert result["Longitude"] == -80.8431
+        assert result["Hours"] == {"weekdayDescriptions": ["Monday: 9 AM - 5 PM"]}
         # Derived fields should have no value
         assert result["Google Maps Place Id"] == "No Value From Provider"
         assert result["Photos"] == "No Value From Provider"
@@ -400,7 +402,8 @@ class TestAirtableServiceExtractRawProviderValues:
             "range": "$$",
             "about": {"Parking": {"Free parking lot": True, "Paid street parking": False}},
             "latitude": 35.2271,
-            "longitude": -80.8431
+            "longitude": -80.8431,
+            "working_hours": {"Monday": ["9AM-5PM"]}
         }
         
         result = service._extract_raw_provider_values(raw_data, "OutscraperProvider")
@@ -412,6 +415,7 @@ class TestAirtableServiceExtractRawProviderValues:
         assert result["Parking"] == {"Free parking lot": True, "Paid street parking": False}
         assert result["Latitude"] == 35.2271
         assert result["Longitude"] == -80.8431
+        assert result["Hours"] == {"Monday": ["9AM-5PM"]}
         # Derived fields should have no value
         assert result["Google Maps Place Id"] == "No Value From Provider"
         assert result["Google Maps Profile URL"] == "No Value From Provider"
@@ -421,14 +425,14 @@ class TestAirtableServiceExtractRawProviderValues:
         """Test extraction with empty raw data returns all 'No Value From Provider'."""
         result = service._extract_raw_provider_values({}, "GoogleMapsProvider")
         
-        for field in ["Website", "Address", "Description", "Purchase Required", "Parking", "Photos", "Latitude", "Longitude"]:
+        for field in ["Website", "Address", "Description", "Purchase Required", "Parking", "Photos", "Latitude", "Longitude", "Hours"]:
             assert result[field] == "No Value From Provider"
 
     def test_extract_none_raw_data(self, service):
         """Test extraction with None raw data returns all 'No Value From Provider'."""
         result = service._extract_raw_provider_values(None, "GoogleMapsProvider")
         
-        for field in ["Website", "Address", "Description", "Purchase Required", "Parking", "Photos", "Latitude", "Longitude"]:
+        for field in ["Website", "Address", "Description", "Purchase Required", "Parking", "Photos", "Latitude", "Longitude", "Hours"]:
             assert result[field] == "No Value From Provider"
 
     def test_extract_unknown_provider(self, service):
@@ -436,7 +440,7 @@ class TestAirtableServiceExtractRawProviderValues:
         raw_data = {"site": "https://example.com"}
         result = service._extract_raw_provider_values(raw_data, "UnknownProvider")
         
-        for field in ["Website", "Address", "Description", "Purchase Required", "Parking", "Photos", "Latitude", "Longitude"]:
+        for field in ["Website", "Address", "Description", "Purchase Required", "Parking", "Photos", "Latitude", "Longitude", "Hours"]:
             assert result[field] == "No Value From Provider"
 
     def test_extract_preserves_structured_objects(self, service):
@@ -1100,6 +1104,49 @@ class TestAirtableServiceEnrichSinglePlace:
         
         assert result["status"] == "success"
         assert result["place_name"] == TEST_PLACE_NAME
+
+    def test_enrich_single_place_writes_hours_field(self, service_with_mocks):
+        """Test enrichment writes normalized provider hours to the Airtable Hours field."""
+        service, mock_table, _ = service_with_mocks
+
+        mock_table.get.return_value = {
+            "id": "recABC123",
+            "fields": {"Place": TEST_PLACE_NAME}
+        }
+
+        third_place = {
+            "id": "recABC123",
+            "fields": {
+                "Place": TEST_PLACE_NAME,
+                "Google Maps Place Id": TEST_PLACE_ID
+            }
+        }
+        raw_hours = {
+            "weekdayDescriptions": [
+                "Monday: 9:00\u202fAM\u2009\u2013\u20095:00\u202fPM"
+            ]
+        }
+        mock_place_data = {
+            "place_id": TEST_PLACE_ID,
+            "data_source": "GoogleMapsProvider",
+            "details": {
+                "google_maps_url": "https://maps.google.com/?cid=123",
+                "raw_data": {"regularOpeningHours": raw_hours}
+            },
+            "photos": {"photo_urls": []}
+        }
+
+        with mock.patch("services.airtable_service.helpers.get_and_cache_place_data") as mock_get_data:
+            with mock.patch.object(service, "update_place_record", return_value={"updated": True}) as mock_update:
+                mock_get_data.return_value = ("success", mock_place_data, "")
+                result = service.enrich_single_place(third_place, "google", "Charlotte", False)
+
+        assert result["status"] == "success"
+        assert "Hours" in result["field_updates"]
+        hours_update_calls = [call for call in mock_update.call_args_list if call.args[1] == "Hours"]
+        assert len(hours_update_calls) == 1
+        assert json.loads(hours_update_calls[0].args[2]) == ["Monday: 9 AM - 5 PM"]
+        assert hours_update_calls[0].kwargs["raw_provider_value"] == raw_hours
 
     def test_enrich_single_place_failed_status(self, service_with_mocks):
         """Test handling of failed status from data fetch."""

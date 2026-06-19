@@ -55,7 +55,7 @@ class PlaceDataService(ABC):
         return True
 
     # ======================================================
-    # Operating Hours Normalization Utilities
+    # Hours Normalization Utilities
     # ======================================================
     # Target format: "Day: H:MM AM - H:MM PM"
     # Examples: "Monday: 3:00 PM - 8:00 PM", "Tuesday: 11:00 AM - 2:00 PM, 5:00 PM - 10:00 PM"
@@ -227,8 +227,8 @@ class PlaceDataService(ABC):
         )
 
     @staticmethod
-    def normalize_operating_hours(hours_list: List[str]) -> List[str]:
-        """Normalize a list of operating hours strings to the canonical format.
+    def normalize_hours(hours_list: List[str]) -> List[str]:
+        """Normalize a list of hours strings to the canonical format.
 
         Handles both Google format (Unicode cleanup) and Outscraper format (compact time parsing).
         Strips :00 from on-the-hour times for cleaner display.
@@ -318,7 +318,7 @@ class PlaceDataService(ABC):
         pass
 
     @abstractmethod
-    def get_operating_hours(self, place_id: str) -> List[str]:
+    def get_hours(self, place_id: str) -> List[str]:
         pass
 
     def place_id_handler(self, place_name: str, place_id: Optional[str] = None) -> str:
@@ -539,7 +539,7 @@ class GoogleMapsProvider(PlaceDataService):
             logging.error(f"Error checking operational status for place ID {place_id}: {e}")
             return True
 
-    def get_operating_hours(self, place_id: str) -> List[str]:
+    def get_hours(self, place_id: str) -> List[str]:
         try:
             url = f'https://places.googleapis.com/v1/places/{place_id}?languageCode=en'
             headers = {
@@ -552,11 +552,11 @@ class GoogleMapsProvider(PlaceDataService):
             raw = response.json()
             hours = raw.get('regularOpeningHours', {})
             weekday_descriptions = hours.get('weekdayDescriptions', [])
-            normalized = self.normalize_operating_hours(weekday_descriptions)
-            logging.info(f"Retrieved operating hours for {place_id}: {len(normalized)} days")
+            normalized = self.normalize_hours(weekday_descriptions)
+            logging.info(f"Retrieved hours for {place_id}: {len(normalized)} days")
             return normalized
         except Exception as e:
-            logging.error(f"Error retrieving operating hours for place ID {place_id}: {e}")
+            logging.error(f"Error retrieving hours for place ID {place_id}: {e}")
             return []
 
 
@@ -784,7 +784,7 @@ class OutscraperProvider(PlaceDataService):
                 result.append(f"{day}: {formatted}")
         return result
 
-    def get_operating_hours(self, place_id: str) -> List[str]:
+    def get_hours(self, place_id: str) -> List[str]:
         try:
             results = self.client.google_maps_search(
                 place_id, limit=1,
@@ -796,11 +796,11 @@ class OutscraperProvider(PlaceDataService):
                 raw = results[0][0]
                 working_hours = raw.get('working_hours', {})
                 normalized = self._normalize_outscraper_hours(working_hours)
-                logging.info(f"Retrieved operating hours for {place_id} via Outscraper: {len(normalized)} days")
+                logging.info(f"Retrieved hours for {place_id} via Outscraper: {len(normalized)} days")
                 return normalized
             return []
         except Exception as e:
-            logging.error(f"Error retrieving operating hours for place ID {place_id} via Outscraper: {e}")
+            logging.error(f"Error retrieving hours for place ID {place_id} via Outscraper: {e}")
             return []
 
 
