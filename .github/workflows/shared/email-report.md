@@ -14,11 +14,11 @@ safe-outputs:
           required: true
           type: string
         html_body:
-          description: "Sanitized HTML email body, 60000 characters maximum."
-          required: true
+          description: "Legacy input ignored by the email renderer. HTML is generated from text_body."
+          required: false
           type: string
         text_body:
-          description: "Plain-text fallback email body, 20000 characters maximum."
+          description: "Plain-text email report body, 20000 characters maximum."
           required: true
           type: string
       steps:
@@ -53,21 +53,15 @@ safe-outputs:
 
               const item = items[0];
               const subject = String(item.subject || '').trim();
-              const rawHtmlBody = String(item.html_body || '');
               const rawTextBody = String(item.text_body || '');
 
-              if (!subject || !rawHtmlBody || !rawTextBody) {
-                core.setFailed('subject, html_body, and text_body are required.');
+              if (!subject || !rawTextBody) {
+                core.setFailed('subject and text_body are required.');
                 return;
               }
 
               if (subject.length > 160) {
                 core.setFailed(`subject exceeds 160 characters (${subject.length}).`);
-                return;
-              }
-
-              if (rawHtmlBody.length > 60000) {
-                core.setFailed(`html_body exceeds 60000 characters (${rawHtmlBody.length}).`);
                 return;
               }
 
@@ -86,7 +80,34 @@ safe-outputs:
               }
 
               function formatTextLine(value) {
-                return escapeHtml(value).replace(/\bhttps?:\/\/[^\s<]+/g, (url) => `<a href="${url}" style="color: #0f766e; text-decoration: underline;">${url}</a>`);
+                const links = [];
+                let text = String(value || '').replace(/\[\]\([^)]*\)/g, '');
+                text = text.replace(/\[([^\]\n]+)\]\((https?:\/\/[^)\s]+)\)/g, (_match, label, url) => {
+                  const token = `@@LINK_${links.length}@@`;
+                  links.push(`<a href="${escapeHtml(url)}" style="color: #0f766e; text-decoration: underline;">${escapeHtml(label)}</a>`);
+                  return token;
+                });
+
+                let output = escapeHtml(text)
+                  .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
+                  .replace(/\*([^*\n]+)\*/g, '<em>$1</em>')
+                  .replace(/\bhttps?:\/\/[^\s<]+/g, (url) => `<a href="${url}" style="color: #0f766e; text-decoration: underline;">${url}</a>`);
+
+                links.forEach((link, index) => {
+                  output = output.replace(`@@LINK_${index}@@`, link);
+                });
+                return output.trim();
+              }
+
+              function shouldSkipTextLine(value) {
+                const trimmed = String(value || '').trim();
+                return !trimmed
+                  || /^(?:-{3,}|\*{3,}|_{3,})$/.test(trimmed)
+                  || /^\(?\s*!doctype\s+html\s*\)?$/i.test(trimmed)
+                  || /^<!doctype\s+html>$/i.test(trimmed)
+                  || /^<\/?(?:html|body)\b[^>]*>$/i.test(trimmed)
+                  || /^\(\/?(?:html|body)\b[^)]*\)$/i.test(trimmed)
+                  || /^\[\]\([^)]*\)$/.test(trimmed);
               }
 
               function textBodyToHtmlDocument(value) {
@@ -101,8 +122,22 @@ safe-outputs:
 
                 for (const line of String(value || '').split('\n')) {
                   const trimmed = line.trim();
-                  if (!trimmed) {
+                  if (shouldSkipTextLine(trimmed)) {
                     flushList();
+                    continue;
+                  }
+
+                  const heading = trimmed.match(/^(#{1,3})\s+(.+)$/);
+                  if (heading) {
+                    flushList();
+                    const level = Math.min(heading[1].length, 3);
+                    const styles = {
+                      1: 'font-size: 22px; line-height: 1.25; margin: 0 0 16px 0; color: #111827;',
+                      2: 'font-size: 18px; line-height: 1.35; margin: 22px 0 10px 0; color: #111827;',
+                      3: 'font-size: 16px; line-height: 1.4; margin: 18px 0 8px 0; color: #111827;'
+                    };
+                    blocks.push(`<h${level} style="${styles[level]}">${formatTextLine(heading[2])}</h${level}>`);
+                    firstContent = false;
                     continue;
                   }
 
@@ -125,59 +160,11 @@ safe-outputs:
                 return `<!doctype html>\n<html>\n<body>\n<div style="font-family: Arial, sans-serif; color: #1f2937; line-height: 1.5; max-width: 720px; margin: 0 auto; padding: 24px;">${blocks.join('\n')}\n</div>\n</body>\n</html>`;
               }
 
-              function normalizeModelHtml(value) {
-                const tagNames = 'html|body|div|table|thead|tbody|tr|td|th|p|h1|h2|h3|h4|h5|h6|a|strong|em|ul|ol|li|span|br|hr';
-                let output = String(value || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
-
-                output = output.replace(new RegExp(`\\(\\s*\\/\\s*(${tagNames})\\s*\\)`, 'gi'), '</$1>');
-                output = output.replace(new RegExp(`\\(\\s*(${tagNames})\\b([^)]*)\\)`, 'gi'), (_match, tag, attrs) => `<${tag}${attrs || ''}>`);
-                output = output.replace(new RegExp(`(^|\\n)(\\s*)(${tagNames})\\b([^<>\\n]*?)\\)`, 'gi'), (_match, lineStart, indent, tag, attrs) => `${lineStart}${indent}<${tag}${attrs || ''}>`);
-                output = output.replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>');
-                return output;
-              }
-
-              const requiredHtmlTagPattern = /<\/?(?:html|body|div|table|tr|td|p|h1|h2|h3|a|strong|em|ul|ol|li|span|br)\b/i;
-              let normalizedHtmlBody = normalizeModelHtml(rawHtmlBody);
-
-              const malformedHtmlPatterns = [
-                /^\s*(?:div|p|h[1-6]|a|span|strong|em)\b[^<>\n]*[)>]/im,
-                /\(\/?(?:div|a|p|h[1-6]|span|strong|em|table|tr|td)\b/i,
-                /^\s{0,3}#{1,6}\s+/m,
-                /\[[^\]]+\]\([^)]+\)/
-              ];
-
-              const blockedPatterns = [
-                /<\s*script\b/i,
-                /<\s*iframe\b/i,
-                /<\s*form\b/i,
-                /<\s*img\b/i,
-                /<\s*link\b/i,
-                /<\s*style\b/i,
-                /on\w+\s*=/i,
-                /javascript\s*:/i,
-                /data\s*:/i
-              ];
-
-              for (const pattern of blockedPatterns) {
-                if (pattern.test(rawHtmlBody) || pattern.test(normalizedHtmlBody)) {
-                  core.setFailed(`html_body contains blocked HTML or attribute pattern: ${pattern}`);
-                  return;
-                }
-              }
-
-              const needsHtmlFallback = !requiredHtmlTagPattern.test(normalizedHtmlBody) || malformedHtmlPatterns.some((pattern) => pattern.test(normalizedHtmlBody));
               const normalizedTextBody = rawTextBody.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
-              if (needsHtmlFallback) {
-                core.warning('html_body was Markdown or malformed pseudo-HTML after normalization; using a sanitized HTML rendering of text_body.');
-                normalizedHtmlBody = textBodyToHtmlDocument(normalizedTextBody);
-              }
-
-              const htmlDocument = /<html[\s>]/i.test(normalizedHtmlBody)
-                ? normalizedHtmlBody
-                : `<!doctype html>\n<html>\n<body>\n${normalizedHtmlBody}\n</body>\n</html>`;
+              const htmlDocument = textBodyToHtmlDocument(normalizedTextBody);
 
               if (htmlDocument.length > 60000) {
-                core.setFailed(`normalized html_body exceeds 60000 characters (${htmlDocument.length}).`);
+                core.setFailed(`generated HTML body exceeds 60000 characters (${htmlDocument.length}).`);
                 return;
               }
 
@@ -212,7 +199,8 @@ safe-outputs:
 <!--
 Shared safe-output component for Third Place Alerts.
 
-Agents call `send_email_report` with `subject`, `html_body`, and `text_body`.
+Agents call `send_email_report` with `subject` and `text_body`. The shared
+job generates the Gmail-compatible HTML body deterministically from `text_body`.
 The agent never receives Gmail credentials; this post-agent safe-output job sends
 the message using `MAIL_USERNAME` and `MAIL_PASSWORD` repository secrets.
 -->

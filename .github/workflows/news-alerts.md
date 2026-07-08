@@ -497,16 +497,13 @@ Not relevant:
 If relevant new items exist, call `send_email_report` with:
 
 - `subject`: `Third Place News Alerts - YYYY-MM-DD`
-- `html_body`: an HTML email using inline CSS only. No scripts, forms, iframes, external images, tracking pixels, or remote stylesheets.
-- `text_body`: a plain text fallback with the same items.
+- `text_body`: a plain text report with the same items.
 
-HTML formatting rules for Gmail:
+Formatting rules:
 
-- `html_body` must be valid HTML, not Markdown. Start with `<!doctype html><html><body>` and end with `</body></html>`.
-- Use literal angle-bracket tags such as `<div>`, `<p>`, `<h1>`, `<h2>`, `<strong>`, `<ul>`, `<li>`, and `<a href="https://example.com">Permalink</a>`.
-- Never use pseudo-tags like `(div ...)`, `(/div)`, `div style="..."`, Markdown headings like `# Heading`, Markdown bold like `**text**`, or Markdown links like `[text](url)` inside `html_body`.
-- Put CSS inline on elements, for example `<div style="font-family: Arial, sans-serif; color: #1a1a1a;">`. Do not use `<style>` blocks.
-- `text_body` must be plain text only: no HTML tags and no Markdown table formatting.
+- Do not provide `html_body`; the shared email job generates HTML from `text_body`.
+- `text_body` must be readable plain text. Do not include HTML tags, `<!doctype html>`, `(!doctype html)`, pseudo-tags like `(div ...)`, or Markdown table formatting.
+- Simple Markdown headings, bullets, bold, italic, and links are allowed in `text_body` because the shared email job renders them deterministically.
 
 Include at most 20 items. Rank items in this order:
 
