@@ -48,9 +48,12 @@ tools:
       create-orphan: true
       format-json: true
   bash:
+    - "cat:*"
     - "date:*"
     - "mkdir:*"
     - "node:*"
+    - "python3:*"
+    - "safeoutputs:*"
 network:
   allowed:
     - defaults
@@ -70,7 +73,7 @@ steps:
     run: |
       set -euo pipefail
       mkdir -p /tmp/gh-aw/agent
-      export MEMORY_DIR="/tmp/gh-aw/repo-memory-third-place-alerts"
+      export MEMORY_DIR="/tmp/gh-aw/repo-memory/third-place-alerts"
       mkdir -p "$MEMORY_DIR/reddit"
       export MODE="${MODE:-real}"
       export NY_HOUR="$(TZ=America/New_York date +%H:%M)"
@@ -88,7 +91,7 @@ steps:
       const mode = process.env.MODE || 'real';
       const shouldRun = process.env.SHOULD_RUN || 'true';
       const gateReason = process.env.GATE_REASON || '';
-      const memoryDir = process.env.MEMORY_DIR || '/tmp/gh-aw/repo-memory-third-place-alerts';
+      const memoryDir = process.env.MEMORY_DIR || '/tmp/gh-aw/repo-memory/third-place-alerts';
       const seenPath = `${memoryDir}/reddit/seen.json`;
       const outPath = '/tmp/gh-aw/agent/reddit-candidates.json';
       const logPath = '/tmp/gh-aw/agent/reddit-collection-log.json';
@@ -429,7 +432,7 @@ Read these files first:
 
 - `/tmp/gh-aw/agent/reddit-candidates.json`
 - `/tmp/gh-aw/agent/reddit-collection-log.json`
-- `/tmp/gh-aw/repo-memory-third-place-alerts/reddit/seen.json`
+- `/tmp/gh-aw/repo-memory/third-place-alerts/reddit/seen.json`
 
 ## Gate And Test Rules
 
@@ -460,6 +463,14 @@ If relevant new items exist, call `send_email_report` with:
 - `html_body`: an HTML email using inline CSS only. No scripts, forms, iframes, external images, tracking pixels, or remote stylesheets.
 - `text_body`: a plain text fallback with the same items.
 
+HTML formatting rules for Gmail:
+
+- `html_body` must be valid HTML, not Markdown. Start with `<!doctype html><html><body>` and end with `</body></html>`.
+- Use literal angle-bracket tags such as `<div>`, `<p>`, `<h1>`, `<h2>`, `<strong>`, `<ul>`, `<li>`, and `<a href="https://example.com">Permalink</a>`.
+- Never use pseudo-tags like `(div ...)`, `(/div)`, `div style="..."`, Markdown headings like `# Heading`, Markdown bold like `**text**`, or Markdown links like `[text](url)` inside `html_body`.
+- Put CSS inline on elements, for example `<div style="font-family: Arial, sans-serif; color: #1a1a1a;">`. Do not use `<style>` blocks.
+- `text_body` must be plain text only: no HTML tags and no Markdown table formatting.
+
 Include at most 20 items. Rank items in this order:
 
 1. Exact `third place` / `third space` matches.
@@ -473,7 +484,7 @@ Each item must include title, source/permalink, why it matters, and matched evid
 
 ## Repo Memory Update
 
-After calling `send_email_report` in real mode, update `/tmp/gh-aw/repo-memory-third-place-alerts/reddit/seen.json` with only the relevant notified items. Keep this shape:
+After calling `send_email_report` in real mode, update `/tmp/gh-aw/repo-memory/third-place-alerts/reddit/seen.json` with only the relevant notified items. Keep this shape:
 
 ```json
 {
