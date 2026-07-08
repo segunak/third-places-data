@@ -40,7 +40,14 @@ while IFS= read -r file; do
   gh aw compile "$file"
 
   if [ ! -f "$lock_file" ]; then
+    if [[ "$file" == .github/workflows/shared/* ]]; then
+      git add "$file"
+      echo "pre-commit: shared workflow $file has no lock file; staged source only"
+      continue
+    fi
+
     echo "pre-commit: expected $lock_file after compiling $file, but it was not created." >&2
+    echo "pre-commit: if $file is a shared workflow component, place it under .github/workflows/shared/." >&2
     exit 1
   fi
 
