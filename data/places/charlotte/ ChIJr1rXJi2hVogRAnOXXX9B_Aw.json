@@ -1,0 +1,23 @@
+{
+    "place_id": " ChIJr1rXJi2hVogRAnOXXX9B_Aw",
+    "place_name": "ARBOL Eatery",
+    "details": {
+        "place_id": " ChIJr1rXJi2hVogRAnOXXX9B_Aw",
+        "error": "400 Client Error: Bad Request for url: https://places.googleapis.com/v1/places/%20ChIJr1rXJi2hVogRAnOXXX9B_Aw?languageCode=en",
+        "message": "Failed to retrieve details from Google Maps API"
+    },
+    "reviews": {
+        "place_id": " ChIJr1rXJi2hVogRAnOXXX9B_Aw",
+        "message": "Reviews are not available directly from the Google Maps API",
+        "reviews_data": []
+    },
+    "photos": {
+        "place_id": " ChIJr1rXJi2hVogRAnOXXX9B_Aw",
+        "message": "Error retrieving photos: 400 Client Error: Bad Request for url: https://places.googleapis.com/v1/places/%20ChIJr1rXJi2hVogRAnOXXX9B_Aw?languageCode=en",
+        "photo_urls": [],
+        "raw_data": {}
+    },
+    "data_source": "GoogleMapsProvider",
+    "last_updated": "2026-07-09T23:44:19.332595",
+    "photos_provider_type": "google"
+}
