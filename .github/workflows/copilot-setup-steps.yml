@@ -1,11 +1,13 @@
 name: "Copilot Setup Steps"
 
 # This workflow configures the environment for GitHub Copilot Agent with gh-aw MCP server
+# and Python for repository agent skills.
 on:
   workflow_dispatch:
   push:
     paths:
       - .github/workflows/copilot-setup-steps.yml
+      - .github/skills/place-json-evidence/**
 
 jobs:
   # The job MUST be called 'copilot-setup-steps' to be recognized by GitHub Copilot Agent
@@ -18,9 +20,21 @@ jobs:
       contents: read
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v6
-      - name: Install gh-aw extension
+
+      - name: Set Up Python For Agent Skills
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Verify Place JSON Evidence Extractor
+      
+        run: |
+          python --version
+          python .github/skills/place-json-evidence/extract_place_json_evidence.py --help
+
+      - name: Install gh-aw Extension
         uses: github/gh-aw-actions/setup-cli@ba6380cc6e5be5d21677bebe04d52fb48e3abec7 # v0.81.6
         with:
           version: v0.81.6

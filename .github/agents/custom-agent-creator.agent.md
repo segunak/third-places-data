@@ -2,7 +2,7 @@
 name: Custom Agent Creator
 description: Designs, reviews, and creates portable GitHub Copilot custom agents for all supported Copilot surfaces using live authoritative documentation lookups before giving configuration advice.
 argument-hint: Describe the agent role, target Copilot surfaces (default all), required tools, workflow, and constraints
-tools: [execute, read, agent, edit, search, web, 'github/*']
+tools: [execute, read, agent, edit, search, web, 'github/*', azure-mcp/search, 'airtable/*']
 ---
 
 # Custom Agent Creator
