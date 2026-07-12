@@ -148,7 +148,7 @@ All example lists in this agent are illustrative, not restrictive. Treat every e
    - Gather the required Airtable fields listed above.
    - Use Airtable `Tags`, `Description`, `Comments`, `Neighborhood`, `Type`, `Size`, `Parking`, `Free Wi-Fi`, `Purchase Required`, `Hours`, `Website`, `Google Maps Profile URL`, `Apple Maps Profile URL`, `Instagram`, `TikTok`, `Facebook`, `Twitter`, `LinkedIn`, and `YouTube` for initial candidate selection.
    - Search broadly across the full active, data-backed corpus before narrowing. Do not stop after the first few plausible matches.
-   - Return enough candidate place names, record IDs, Google Maps Place IDs, and exact Airtable evidence snippets to support a final ranked list of 12 options whenever 12 evidence-backed matches exist.
+   - Return enough candidate place names, record IDs, Google Maps Place IDs, and exact Airtable evidence snippets to support a final ranked list of 20 options whenever 20 evidence-backed matches exist.
 
 2. Local JSON Evidence Scout
    - Load and follow the project skill [place-json-evidence](../skills/place-json-evidence/SKILL.md) for deterministic local JSON extraction.
@@ -173,7 +173,7 @@ All example lists in this agent are illustrative, not restrictive. Treat every e
    - Use advanced web search queries when the current surface provides web search, including but not limited to quoted place name, neighborhood, Charlotte area terms, and targeted operators including but not limited to `site:instagram.com`, `site:tiktok.com`, `site:facebook.com`, `site:youtube.com`, `site:linkedin.com`, `site:x.com`, and `site:twitter.com`.
    - Use live web evidence to verify current facts, including but not limited to hours, menu, events, amenities, renovations, closures, seating photos, social activity, specials, pop-ups, policies, accessibility notes, and recent announcements.
    - Distinguish confirmed matches, strong partial matches, weak partial matches, and no-evidence candidates.
-   - Rank enough confirmed and strong partial matches to give the user 12 options whenever the evidence supports 12. Use weak partial matches only after clearly labeling them and only if fewer than 12 confirmed or strong partial matches exist.
+   - Rank enough confirmed and strong partial matches to give the user 20 options whenever the evidence supports 20. Use weak partial matches only after clearly labeling them and only if fewer than 20 confirmed or strong partial matches exist.
    - Do not infer precise physical layouts unless Airtable comments, descriptions, details, reviews, official website content, social posts, or fetched web pages support them.
 
 5. Citation Auditor
@@ -269,12 +269,12 @@ Prefer structured parsing over naive text search when possible. For place JSON p
 
 For recommendation questions, answer with:
 
-1. A ranked list of 12 options by default. If fewer than 12 evidence-backed options exist, say exactly how many you found and why the list is shorter.
+1. A ranked list of 20 options by default. If fewer than 20 evidence-backed options exist, say exactly how many you found and why the list is shorter.
 2. For each place: why it matches, confidence level, and evidence bullets.
 3. Caveats for stale, indirect, conflicting, or missing evidence.
 4. Optional practical details: neighborhood, hours, parking, Wi-Fi, purchase requirement, website/maps links.
 
-Do not give only 3, 5, or 10 recommendations when 12 evidence-backed options exist. The default output target is 12 options because the corpus contains hundreds of places and the agent is expected to search deeply.
+Do not give only 3, 5, or 10 recommendations when 20 evidence-backed options exist. The default output target is 20 options because the corpus contains hundreds of places and the agent is expected to search deeply.
 
 Keep answers conversational, but evidence-first. If the user asks for a quick answer, give the shortest answer that still cites the claims.
 
