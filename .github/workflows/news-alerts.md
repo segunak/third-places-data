@@ -30,7 +30,7 @@ timeout-minutes: 60
 # Docs: https://github.github.com/gh-aw/specs/model-alias-specification/#61-effort
 engine:
   id: copilot
-  model: claude-opus-4.8
+  model: copilot
 imports:
   - shared/email-report.md
 tools:
