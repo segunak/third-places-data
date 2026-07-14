@@ -2,11 +2,8 @@
 name: News Alerts
 on:
   schedule:
-    # Daily at 5 PM ET during daylight saving time, 21:00 UTC.
-    - cron: "0 21 * * *"
-    # Daily at 5 PM ET during standard time, 22:00 UTC.
-    # The America/New_York gate below skips whichever UTC run is not currently 5 PM ET.
-    - cron: "0 22 * * *"
+    - cron: "0 17 * * *"
+      timezone: "America/New_York"
   workflow_dispatch:
     inputs:
       mode:
@@ -164,41 +161,18 @@ steps:
   - name: Collect News Alert Candidates
     env:
       MODE: ${{ github.event.inputs.mode }}
-      EVENT_NAME: ${{ github.event_name }}
-      EVENT_SCHEDULE: ${{ github.event.schedule }}
     run: |
       set -euo pipefail
       mkdir -p /tmp/gh-aw/agent
       export MEMORY_DIR="/tmp/gh-aw/repo-memory/third-place-alerts"
       mkdir -p "$MEMORY_DIR/news"
       export MODE="${MODE:-real}"
-      export NY_UTC_OFFSET="$(TZ=America/New_York date +%z)"
-      export ACTIVE_SCHEDULE=""
-      export SHOULD_RUN="true"
-      export GATE_REASON="manual dispatch or active 5 PM ET schedule"
-      # Scheduled jobs may start late, so select the DST-aware cron by identity instead of runner start time.
-      if [ "$EVENT_NAME" = "schedule" ]; then
-        case "$NY_UTC_OFFSET" in
-          -0400) export ACTIVE_SCHEDULE="0 21 * * *" ;;
-          -0500) export ACTIVE_SCHEDULE="0 22 * * *" ;;
-          *)
-            export SHOULD_RUN="false"
-            export GATE_REASON="scheduled run skipped because America/New_York returned unsupported UTC offset ${NY_UTC_OFFSET}"
-            ;;
-        esac
-        if [ "$SHOULD_RUN" = "true" ] && [ "$EVENT_SCHEDULE" != "$ACTIVE_SCHEDULE" ]; then
-          export SHOULD_RUN="false"
-          export GATE_REASON="inactive DST schedule ${EVENT_SCHEDULE} skipped; active 5 PM ET schedule is ${ACTIVE_SCHEDULE} for offset ${NY_UTC_OFFSET}"
-        fi
-      fi
 
       node <<'NODE'
       const fs = require('fs');
       const crypto = require('crypto');
 
       const mode = process.env.MODE || 'real';
-      const shouldRun = process.env.SHOULD_RUN || 'true';
-      const gateReason = process.env.GATE_REASON || '';
       const memoryDir = process.env.MEMORY_DIR || '/tmp/gh-aw/repo-memory/third-place-alerts';
       const seenPath = `${memoryDir}/news/seen.json`;
       const outPath = '/tmp/gh-aw/agent/news-candidates.json';
@@ -209,7 +183,7 @@ steps:
       const userAgent = 'script:charlotte-third-places-alerts:v1.0.0';
       const config = JSON.parse(fs.readFileSync('/tmp/gh-aw/agent/news-alert-config.json', 'utf8'));
       const { locationTerms, googleLocationQuery, subjectTerms, actionTerms, excludedHrefParts, sources, googleTemplates } = config;
-      const log = { mode, gate: { should_run: shouldRun, reason: gateReason }, started_at: now.toISOString(), urls: [], errors: [] };
+      const log = { mode, started_at: now.toISOString(), urls: [], errors: [] };
 
       function ensureSeenFile() {
         if (!fs.existsSync(seenPath)) fs.writeFileSync(seenPath, JSON.stringify({ items: [] }, null, 2) + String.fromCharCode(10));
@@ -394,15 +368,9 @@ steps:
 
       async function main() {
         ensureSeenFile();
-        if (shouldRun === 'false') {
-          fs.writeFileSync(outPath, JSON.stringify({ mode, should_run: false, gate_reason: gateReason, generated_at: now.toISOString(), candidates: [] }, null, 2));
-          fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
-          return;
-        }
         if (mode === 'test') {
           fs.writeFileSync(outPath, JSON.stringify({
             mode,
-            should_run: true,
             test: true,
             generated_at: now.toISOString(),
             candidates: [makeCandidate({ name: 'Test News', site: 'example.com' }, 'test', 'test', 'Test: New coffee shop opens as a third place in Charlotte', 'https://example.com/test-third-place', 'Synthetic test candidate for validating the Third Place News Alerts email path in Charlotte.', now.toISOString(), null, 'openings-food', 'Charlotte third place coffee shop')]
@@ -451,14 +419,14 @@ steps:
           .filter((item) => !isSeen(item, seen))
           .sort((a, b) => (b.relevance_score - a.relevance_score) || (Date.parse(b.published_at || b.discovered_at) - Date.parse(a.published_at || a.discovered_at)))
           .slice(0, 250);
-        fs.writeFileSync(outPath, JSON.stringify({ mode, should_run: true, test: false, generated_at: now.toISOString(), candidates }, null, 2));
+        fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates }, null, 2));
         fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
       }
 
       main().catch((error) => {
         log.errors.push({ fatal: error.message, stack: error.stack });
         fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
-        fs.writeFileSync(outPath, JSON.stringify({ mode, should_run: true, test: false, generated_at: now.toISOString(), candidates: [], error: error.message }, null, 2));
+        fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates: [], error: error.message }, null, 2));
       });
       NODE
 ---
@@ -475,9 +443,7 @@ Read these files first:
 - `/tmp/gh-aw/agent/news-collection-log.json`
 - `/tmp/gh-aw/repo-memory/third-place-alerts/news/seen.json`
 
-## Gate And Test Rules
-
-If `news-candidates.json` has `should_run: false`, do not analyze anything. You MUST call `noop` with the gate reason.
+## Test Rules
 
 If `mode` is `test`, send exactly one test email using `send_email_report`, then call no other safe-output tool. Do not update repo memory in test mode.
 
