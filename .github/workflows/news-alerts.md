@@ -2,10 +2,10 @@
 name: News Alerts
 on:
   schedule:
-    # Daily at 5:00 PM Eastern Time; America/New_York handles EST/EDT automatically.
+    # Daily at 5:20 PM Eastern Time; America/New_York handles EST/EDT automatically.
     # GitHub Actions: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onschedule
     # gh-aw: https://github.github.com/gh-aw/reference/schedule-syntax/#iana-timezone-field
-    - cron: "0 17 * * *"
+    - cron: "20 17 * * *"
       timezone: "America/New_York"
   workflow_dispatch:
     inputs:
