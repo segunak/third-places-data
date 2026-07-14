@@ -26,11 +26,9 @@ permissions:
   contents: read
   copilot-requests: write
 timeout-minutes: 60
-# Docs: https://github.github.com/gh-aw/reference/model-tables/#model-aliases
-# Docs: https://github.github.com/gh-aw/specs/model-alias-specification/#61-effort
 engine:
   id: copilot
-  model: copilot
+  model: copilot # Aliases: https://github.github.com/gh-aw/reference/model-tables/#model-aliases
 imports:
   - shared/email-report.md
 tools:
@@ -70,18 +68,31 @@ steps:
     env:
       MODE: ${{ github.event.inputs.mode }}
       EVENT_NAME: ${{ github.event_name }}
+      EVENT_SCHEDULE: ${{ github.event.schedule }}
     run: |
       set -euo pipefail
       mkdir -p /tmp/gh-aw/agent
       export MEMORY_DIR="/tmp/gh-aw/repo-memory/third-place-alerts"
       mkdir -p "$MEMORY_DIR/reddit"
       export MODE="${MODE:-real}"
-      export NY_HOUR="$(TZ=America/New_York date +%H:%M)"
+      export NY_UTC_OFFSET="$(TZ=America/New_York date +%z)"
+      export ACTIVE_SCHEDULE=""
       export SHOULD_RUN="true"
-      export GATE_REASON="manual dispatch or active 5 PM ET collection window"
-      if [ "$EVENT_NAME" = "schedule" ] && [ "$NY_HOUR" != "17:00" ]; then
-        export SHOULD_RUN="false"
-        export GATE_REASON="scheduled UTC run skipped because America/New_York local time is ${NY_HOUR}, not 17:00"
+      export GATE_REASON="manual dispatch or active 5 PM ET schedule"
+      # Scheduled jobs may start late, so select the DST-aware cron by identity instead of runner start time.
+      if [ "$EVENT_NAME" = "schedule" ]; then
+        case "$NY_UTC_OFFSET" in
+          -0400) export ACTIVE_SCHEDULE="0 21 * * *" ;;
+          -0500) export ACTIVE_SCHEDULE="0 22 * * *" ;;
+          *)
+            export SHOULD_RUN="false"
+            export GATE_REASON="scheduled run skipped because America/New_York returned unsupported UTC offset ${NY_UTC_OFFSET}"
+            ;;
+        esac
+        if [ "$SHOULD_RUN" = "true" ] && [ "$EVENT_SCHEDULE" != "$ACTIVE_SCHEDULE" ]; then
+          export SHOULD_RUN="false"
+          export GATE_REASON="inactive DST schedule ${EVENT_SCHEDULE} skipped; active 5 PM ET schedule is ${ACTIVE_SCHEDULE} for offset ${NY_UTC_OFFSET}"
+        fi
       fi
 
       node <<'NODE'

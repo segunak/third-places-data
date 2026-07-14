@@ -24,7 +24,7 @@ safe-outputs:
       steps:
         - name: Extract And Validate Email Request
           id: email
-          uses: actions/github-script@v8
+          uses: actions/github-script@v9.0.0
           with:
             script: |
               const fs = require('fs');

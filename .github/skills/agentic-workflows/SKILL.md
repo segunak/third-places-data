@@ -9,19 +9,9 @@ Use this skill when a user asks to design, create, update, debug, or upgrade Git
 
 This skill is a dispatcher: identify the task type, load the matching workflow prompt/skill file, and follow it directly. Keep responses concise and ask a clarifying question if the correct prompt is unclear.
 
-## Model Selection Policy
-
-For gh-aw workflow creation or updates, default to explicit high-effort Opus unless the user explicitly chooses another model:
-
-```yaml
-# Docs: https://github.github.com/gh-aw/reference/model-tables/#model-aliases
-# Docs: https://github.github.com/gh-aw/specs/model-alias-specification/#61-effort
-engine:
-  id: copilot
-  model: "opus?effort=high"
-```
-
-If the user asks for GPT, research the current GitHub Agentic Workflows model alias documentation before choosing the model string. Use the latest documented GPT alias available through the Copilot gateway with `?effort=high`, state the exact `engine.id` and `engine.model` to the user, and ask when the model preference is ambiguous. If the user does not choose, use Opus high-effort.
+Repository overlay (optional):
+- If `.github/aw/instructions.md` exists, load it with `@.github/aw/instructions.md` after loading the matched prompt/skill.
+- Precedence: repository overlay instructions override upstream defaults when they conflict.
 
 Read only the files you need:
 Load these files from `github/gh-aw` (they are not available locally).
@@ -38,6 +28,7 @@ Load these files from `github/gh-aw` (they are not available locally).
 - `.github/aw/create-shared-agentic-workflow.md`
 - `.github/aw/debug-agentic-workflow.md`
 - `.github/aw/deployment-status.md`
+- `.github/aw/designer.md`
 - `.github/aw/experiments.md`
 - `.github/aw/github-agentic-workflows.md`
 - `.github/aw/github-mcp-server.md`
@@ -79,9 +70,8 @@ Load these files from `github/gh-aw` (they are not available locally).
 - `.github/aw/workflow-editing.md`
 - `.github/aw/workflow-patterns.md`
 
-- `.github/skills/agentic-workflow-designer/SKILL.md`
 After loading the matching workflow prompt or skill, follow it directly:
-- Design workflows from scratch via interview: `skills/agentic-workflow-designer/SKILL.md`
+- Design workflows from scratch via interview: `.github/aw/designer.md`
 - Create new workflows: `.github/aw/create-agentic-workflow.md`
 - Update existing workflows: `.github/aw/update-agentic-workflow.md`
 - Debug, audit, or investigate workflows: `.github/aw/debug-agentic-workflow.md`
