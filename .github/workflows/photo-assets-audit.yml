@@ -4,44 +4,46 @@ on:
   workflow_call:
     inputs:
       city:
-        description: 'City to audit'
+        description: 'City'
         required: false
         default: 'charlotte'
         type: string
       max_places:
-        description: 'Maximum places to include; 0 means all places'
+        description: 'Maximum Places'
         required: false
         default: '0'
         type: string
       record_id:
-        description: 'Optional Airtable record ID filter'
+        description: 'Airtable Record ID'
         required: false
         default: ''
         type: string
       place_id:
-        description: 'Optional Google Maps Place ID filter'
+        description: 'Google Maps Place ID'
         required: false
         default: ''
         type: string
   workflow_dispatch:
     inputs:
       city:
-        description: 'City to audit'
+        description: 'City'
         required: false
         default: 'charlotte'
-        type: string
+        type: choice
+        options:
+          - 'charlotte'
       max_places:
-        description: 'Maximum places to include; 0 means all places'
+        description: 'Maximum Places'
         required: false
         default: '0'
         type: string
       record_id:
-        description: 'Optional Airtable record ID filter'
+        description: 'Airtable Record ID'
         required: false
         default: ''
         type: string
       place_id:
-        description: 'Optional Google Maps Place ID filter'
+        description: 'Google Maps Place ID'
         required: false
         default: ''
         type: string

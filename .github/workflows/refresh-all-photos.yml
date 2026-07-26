@@ -4,77 +4,86 @@ on:
   workflow_call:
     inputs:
       provider_type:
-        description: 'Provider type for photo selection algorithm'
+        description: 'Data Provider'
         required: false
-        default: 'outscraper'
+        default: 'google'
         type: string
       city:
-        description: 'City to process'
+        description: 'City'
         required: false
         default: 'charlotte'
         type: string
       place_id:
-        description: 'Optional Google Maps Place ID filter'
+        description: 'Google Maps Place ID'
         required: false
         default: ''
         type: string
       dry_run:
-        description: 'Dry run: If true, only logs what would be done without making changes'
+        description: 'Dry Run'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
       max_places:
-        description: 'Maximum number of places to process (optional)'
+        description: 'Maximum Places'
         required: false
         default: ''
         type: string
       sequential_mode:
-        description: 'Whether to run in sequential mode'
+        description: 'Sequential Mode'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
       photo_source_mode:
-        description: 'Photo source mode: refresh_from_data_provider, refresh_from_data_file_raw_data, refresh_from_data_file_photo_urls'
+        description: 'Photo Source'
         required: false
         default: 'refresh_from_data_file_raw_data'
         type: string
   workflow_dispatch:
     inputs:
       provider_type:
-        description: 'Provider type for photo selection algorithm'
+        description: 'Data Provider'
         required: false
-        default: 'outscraper'
-        type: string
+        default: 'google'
+        type: choice
+        options:
+          - 'google'
+          - 'outscraper'
       city:
-        description: 'City to process'
+        description: 'City'
         required: false
         default: 'charlotte'
-        type: string
+        type: choice
+        options:
+          - 'charlotte'
       place_id:
-        description: 'Optional Google Maps Place ID filter'
+        description: 'Google Maps Place ID'
         required: false
         default: ''
         type: string
       dry_run:
-        description: 'Dry run: If true, only logs what would be done without making changes'
+        description: 'Dry Run'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
       max_places:
-        description: 'Maximum number of places to process (optional)'
+        description: 'Maximum Places'
         required: false
         default: ''
         type: string
       sequential_mode:
-        description: 'Whether to run in sequential mode'
+        description: 'Sequential Mode'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
       photo_source_mode:
-        description: 'Photo source mode: refresh_from_data_provider, refresh_from_data_file_raw_data, refresh_from_data_file_photo_urls'
+        description: 'Photo Source'
         required: false
         default: 'refresh_from_data_file_raw_data'
-        type: string
+        type: choice
+        options:
+          - 'refresh_from_data_provider'
+          - 'refresh_from_data_file_raw_data'
+          - 'refresh_from_data_file_photo_urls'
 
 concurrency: 
   group: refresh-all-photos
@@ -97,9 +106,9 @@ jobs:
           $providerType = "${{ inputs.provider_type }}"
           $city = "${{ inputs.city }}"
           $placeId = "${{ inputs.place_id }}"
-          $dryRun = "${{ inputs.dry_run }}"
+          $dryRun = "${{ inputs.dry_run }}".ToLowerInvariant()
           $maxPlaces = "${{ inputs.max_places }}"
-          $sequentialMode = "${{ inputs.sequential_mode }}"
+          $sequentialMode = "${{ inputs.sequential_mode }}".ToLowerInvariant()
           $photoSourceMode = "${{ inputs.photo_source_mode }}"
           
           $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&dry_run=$dryRun&sequential_mode=$sequentialMode&photo_source_mode=$photoSourceMode"

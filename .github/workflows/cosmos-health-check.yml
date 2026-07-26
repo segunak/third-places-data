@@ -4,17 +4,19 @@ on:
   workflow_call:
     inputs:
       city:
-        description: 'City folder name for GitHub JSON files (default: charlotte)'
+        description: 'City'
         required: false
         default: 'charlotte'
         type: string
   workflow_dispatch:
     inputs:
       city:
-        description: 'City folder name for GitHub JSON files (default: charlotte)'
+        description: 'City'
         required: false
         default: 'charlotte'
-        type: string
+        type: choice
+        options:
+          - 'charlotte'
 
 concurrency: 
   group: cosmos-health-check

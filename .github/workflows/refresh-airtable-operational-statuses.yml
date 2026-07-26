@@ -4,37 +4,42 @@ on:
   workflow_call:
     inputs:
       provider_type:
-        description: 'Provider type for data refresh'
+        description: 'Data Provider'
         required: false
         default: 'google'
         type: string
       sequential_mode:
-        description: 'Whether to run in sequential mode'
+        description: 'Sequential Mode'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
       city:
-        description: 'City for the data refresh'
+        description: 'City'
         required: false
         default: 'charlotte'
         type: string
   workflow_dispatch:
     inputs:
       provider_type:
-        description: 'Provider type for data refresh'
+        description: 'Data Provider'
         required: false
         default: 'google'
-        type: string
+        type: choice
+        options:
+          - 'google'
+          - 'outscraper'
       sequential_mode:
-        description: 'Whether to run in sequential mode'
+        description: 'Sequential Mode'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
       city:
-        description: 'City for the data refresh'
+        description: 'City'
         required: false
         default: 'charlotte'
-        type: string
+        type: choice
+        options:
+          - 'charlotte'
 
 concurrency: 
   group: refresh-airtable-operational-statuses
@@ -59,7 +64,7 @@ jobs:
           # does not populate the `inputs` context — only `workflow_dispatch` and
           # `workflow_call` do. Without these, cron runs send empty query parameters.
           $providerType = "${{ inputs.provider_type || 'google' }}"
-          $sequentialMode = "${{ inputs.sequential_mode || 'false' }}"
+          $sequentialMode = "${{ inputs.sequential_mode || 'false' }}".ToLowerInvariant()
           $city = "${{ inputs.city || 'charlotte' }}"
 
           $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-airtable-operational-statuses?provider_type=$providerType&sequential_mode=$sequentialMode&city=$city"

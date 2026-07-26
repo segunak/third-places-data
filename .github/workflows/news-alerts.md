@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "Run mode. Use test to verify email formatting without repo-memory writes."
+        description: "Run Mode"
         required: false
         type: choice
         default: real
@@ -19,7 +19,7 @@ on:
           - test
       aw_context:
         default: "{}"
-        description: "Agent caller context (used internally by Agentic Workflows)."
+        description: "Agent Context"
         required: false
         type: string
 permissions:

@@ -4,17 +4,19 @@ on:
   workflow_call:
     inputs:
       city:
-        description: 'City to process'
+        description: 'City'
         required: false
         default: 'charlotte'
         type: string
   workflow_dispatch:
     inputs:
       city:
-        description: 'City to process'
+        description: 'City'
         required: false
         default: 'charlotte'
-        type: string
+        type: choice
+        options:
+          - 'charlotte'
 
 concurrency: 
   group: sync-curator-photos

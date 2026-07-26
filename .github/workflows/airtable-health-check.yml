@@ -4,17 +4,24 @@ on:
   workflow_call:
     inputs:
       view:
-        description: 'Airtable view to check (default: Production)'
+        description: 'Airtable View'
         required: false
         default: 'Production'
         type: string
   workflow_dispatch:
     inputs:
       view:
-        description: 'Airtable view to check (default: Production)'
+        description: 'Airtable View'
         required: false
         default: 'Production'
-        type: string
+        type: choice
+        options:
+          - 'All'
+          - 'Production'
+          - 'Insufficient'
+          - 'Coming Soon'
+          - 'Archived'
+          - 'Not Operational'
 
 concurrency: 
   group: airtable-health-check

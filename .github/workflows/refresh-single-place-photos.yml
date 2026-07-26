@@ -4,45 +4,50 @@ on:
   workflow_call:
     inputs:
       provider_type:
-        description: 'Provider to fetch live photos from'
+        description: 'Data Provider'
         required: false
-        default: 'outscraper'
+        default: 'google'
         type: string
       city:
-        description: 'City to process'
+        description: 'City'
         required: false
         default: 'charlotte'
         type: string
       place_id:
-        description: 'Google Maps Place ID to refresh'
+        description: 'Google Maps Place ID'
         required: true
         type: string
       dry_run:
-        description: 'If true, only reports what would change without uploading or writing Airtable'
+        description: 'Dry Run'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
   workflow_dispatch:
     inputs:
       provider_type:
-        description: 'Provider to fetch live photos from'
+        description: 'Data Provider'
         required: false
-        default: 'outscraper'
-        type: string
+        default: 'google'
+        type: choice
+        options:
+          - 'google'
+          - 'outscraper'
       city:
-        description: 'City to process'
+        description: 'City'
         required: false
         default: 'charlotte'
-        type: string
+        type: choice
+        options:
+          - 'charlotte'
       place_id:
-        description: 'Google Maps Place ID to refresh'
+        description: 'Google Maps Place ID'
         required: true
         type: string
       dry_run:
-        description: 'If true, only reports what would change without uploading or writing Airtable'
+        description: 'Dry Run'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
 
 concurrency:
   group: refresh-single-place-photos-${{ inputs.place_id }}

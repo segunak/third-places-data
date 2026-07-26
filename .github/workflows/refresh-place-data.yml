@@ -4,67 +4,82 @@ on:
   workflow_call:
     inputs:
       provider_type:
-        description: 'Provider type for data refresh'
+        description: 'Data Provider'
         required: false
-        default: 'outscraper'
+        default: 'google'
         type: string
       photos_provider_type:
-        description: 'Provider type for photo retrieval; blank uses provider_type'
+        description: 'Photo Provider'
         required: false
         default: 'google'
         type: string
       sequential_mode:
-        description: 'Whether to run in sequential mode'
+        description: 'Sequential Mode'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
       force_refresh:
-        description: 'Force refresh of all data'
+        description: 'Force Refresh'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
       view:
-        description: 'Airtable view to use (e.g., Production, Insufficient)'
+        description: 'Airtable View'
         required: false
         default: 'Insufficient'
         type: string
       city:
-        description: 'City to refresh data for'
+        description: 'City'
         required: false
         default: 'charlotte'
         type: string
   workflow_dispatch:
     inputs:
       provider_type:
-        description: 'Provider type for data refresh'
-        required: false
-        default: 'outscraper'
-        type: string
-      photos_provider_type:
-        description: 'Provider type for photo retrieval; blank uses provider_type'
+        description: 'Data Provider'
         required: false
         default: 'google'
-        type: string
+        type: choice
+        options:
+          - 'google'
+          - 'outscraper'
+      photos_provider_type:
+        description: 'Photo Provider'
+        required: false
+        default: 'google'
+        type: choice
+        options:
+          - 'google'
+          - 'outscraper'
       sequential_mode:
-        description: 'Whether to run in sequential mode'
+        description: 'Sequential Mode'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
       force_refresh:
-        description: 'Force refresh of all data'
+        description: 'Force Refresh'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
       view:
-        description: 'Airtable view to use (e.g., Production, Insufficient)'
+        description: 'Airtable View'
         required: false
         default: 'Insufficient'
-        type: string
+        type: choice
+        options:
+          - 'All'
+          - 'Production'
+          - 'Insufficient'
+          - 'Coming Soon'
+          - 'Archived'
+          - 'Not Operational'
       city:
-        description: 'City to refresh data for'
+        description: 'City'
         required: false
         default: 'charlotte'
-        type: string
+        type: choice
+        options:
+          - 'charlotte'
 
 concurrency: 
   group: refresh-place-data
@@ -86,8 +101,8 @@ jobs:
         run: |
           $providerType = "${{ inputs.provider_type }}"
           $photosProviderType = "${{ inputs.photos_provider_type }}"
-          $sequentialMode = "${{ inputs.sequential_mode }}"
-          $forceRefresh = "${{ inputs.force_refresh }}"
+          $sequentialMode = "${{ inputs.sequential_mode }}".ToLowerInvariant()
+          $forceRefresh = "${{ inputs.force_refresh }}".ToLowerInvariant()
           $view = "${{ inputs.view }}"
           $city = "${{ inputs.city }}"
 

@@ -4,27 +4,32 @@ on:
   workflow_call:
     inputs:
       provider_type:
-        description: 'Provider type for hours refresh'
+        description: 'Data Provider'
         required: false
         default: 'google'
         type: string
       city:
-        description: 'City for the hours refresh'
+        description: 'City'
         required: false
         default: 'charlotte'
         type: string
   workflow_dispatch:
     inputs:
       provider_type:
-        description: 'Provider type for hours refresh'
+        description: 'Data Provider'
         required: false
         default: 'google'
-        type: string
+        type: choice
+        options:
+          - 'google'
+          - 'outscraper'
       city:
-        description: 'City for the hours refresh'
+        description: 'City'
         required: false
         default: 'charlotte'
-        type: string
+        type: choice
+        options:
+          - 'charlotte'
 
 concurrency: 
   group: refresh-hours

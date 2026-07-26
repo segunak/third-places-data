@@ -4,40 +4,37 @@ on:
   workflow_call:
     inputs:
       limit:
-        description: 'Maximum number of places to sync (optional, leave empty for all)'
+        description: 'Place Limit'
         required: false
         default: ''
         type: string
       batch_size:
-        description: 'Degree of parallelism for processing places (default: 1 = sequential). Keep low (1-10) to avoid Cosmos DB 429 errors.'
+        description: 'Batch Size'
         required: false
         default: '1'
         type: string
       force:
-        description: 'Force sync all places regardless of changes (true/false). Default is false (incremental sync - only sync places modified since last sync).'
+        description: 'Force Sync'
         required: false
-        default: 'false'
-        type: string
+        default: false
+        type: boolean
   workflow_dispatch:
     inputs:
       limit:
-        description: 'Maximum number of places to sync (optional, leave empty for all)'
+        description: 'Place Limit'
         required: false
         default: ''
         type: string
       batch_size:
-        description: 'Degree of parallelism for processing places (default: 1 = sequential). Keep low (1-10) to avoid Cosmos DB 429 errors.'
+        description: 'Batch Size'
         required: false
         default: '1'
         type: string
       force:
-        description: 'Force sync all places regardless of changes (true/false). Default is false (incremental sync - only sync places modified since last sync).'
+        description: 'Force Sync'
         required: false
-        default: 'false'
-        type: choice
-        options:
-          - 'false'
-          - 'true'
+        default: false
+        type: boolean
 
 concurrency: 
   group: cosmos-sync-places
@@ -59,7 +56,7 @@ jobs:
         run: |
           $limit = "${{ inputs.limit }}"
           $batchSize = "${{ inputs.batch_size }}"
-          $force = "${{ inputs.force }}"
+          $force = "${{ inputs.force }}".ToLowerInvariant()
           
           $FunctionUrl = "https://third-places-data.azurewebsites.net/api/cosmos/sync-places"
           $queryParams = @()
