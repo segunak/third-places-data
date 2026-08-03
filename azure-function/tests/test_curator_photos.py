@@ -219,7 +219,36 @@ class TestSyncSinglePlaceCuratorPhotos:
         assert result["photos_failed"] == 2
         mock_table.update.assert_not_called()
 
-    def test_publish_success_without_manifest_is_failed(self, monkeypatch, airtable_attachment_objects):
+    def test_partial_failure_persists_successful_photos(self, monkeypatch, airtable_attachment_objects):
+        place = _make_place(curator_attachments=airtable_attachment_objects)
+
+        def partial_publish(self, attachment, place_id, record_id, place_name, dry_run=True, upload=False, try_url_variants=True):
+            if attachment["id"] != "attABC123":
+                return {"success": False, "error": "response exceeded 50000000 byte limit"}
+            display_blob_path = f"{place_id}/display/curator-attABC123-cafe-interior.webp"
+            thumbnail_blob_path = f"{place_id}/thumbnail/curator-attABC123-cafe-interior.webp"
+            photo_manifest = {
+                "display": f"https://thirdplacesdata.blob.core.windows.net/photos/{display_blob_path}",
+                "thumbnail": f"https://thirdplacesdata.blob.core.windows.net/photos/{thumbnail_blob_path}",
+            }
+            return {"success": True, "status": "uploaded", "azure_url": photo_manifest["display"], "photo_manifest": photo_manifest}
+
+        monkeypatch.setattr(curator_photos.PhotoPublisherService, "publish_curator_attachment", partial_publish)
+
+        mock_table = mock.MagicMock()
+        mock_api = mock.MagicMock()
+        mock_api.table.return_value = mock_table
+        monkeypatch.setattr("blueprints.curator_photos.AirtableApi", lambda token: mock_api)
+
+        result = curator_photos.sync_single_place_curator_photos({"place": place, "config": {}})
+
+        assert result["status"] == "failed"
+        assert result["photos_synced"] == 1
+        assert result["photos_uploaded"] == 1
+        assert result["photos_failed"] == 1
+        assert result["airtable_fields_updated"] == ["Photos"]
+        written_fields = mock_table.update.call_args[0][1]
+        assert json.loads(written_fields["Photos"]) == [_expected_curator_photos()[0]]
         place = _make_place(curator_attachments=airtable_attachment_objects)
 
         def publish_without_manifest(self, attachment, place_id, record_id, place_name, dry_run=True, upload=False, try_url_variants=True):

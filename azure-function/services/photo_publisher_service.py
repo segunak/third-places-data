@@ -87,7 +87,7 @@ class PhotoPublisherService:
         source_url: str,
         try_url_variants: bool = True,
         timeout: int = 60,
-        max_bytes: int = 12_000_000,
+        max_bytes: int = 50_000_000,
     ) -> Dict[str, Any]:
         urls_to_try = [source_url]
         if try_url_variants and is_google_hosted_url(source_url):

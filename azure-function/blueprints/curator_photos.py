@@ -113,6 +113,15 @@ def _merge_curator_photos_into_photos(curator_photos: list[dict], existing_photo
     return build_display_photo_manifests(curator_photos, non_curator_photos)
 
 
+def _merge_partial_curator_photos(published_photos: list[dict], existing_photos: list[dict]) -> list[dict]:
+    # Safe fallback used when at least one attachment failed to publish. Preserve
+    # every photo already on the record and prepend the newly published curator
+    # photos, deduped by display URL. Unlike the clean-run merge this never strips
+    # existing curator photos, so one failed attachment can't drop photos that are
+    # already live; genuine deletions reconcile on the next fully successful run.
+    return build_display_photo_manifests(published_photos, existing_photos)
+
+
 @bp.activity_trigger(input_name="activityInput")
 @bp.function_name("sync_single_place_curator_photos")
 def sync_single_place_curator_photos(activityInput):
@@ -199,6 +208,8 @@ def sync_single_place_curator_photos(activityInput):
         merged_photos = existing_photos
         if failed_count == 0:
             merged_photos = _merge_curator_photos_into_photos(published_photos, existing_photos)
+        elif published_photos:
+            merged_photos = _merge_partial_curator_photos(published_photos, existing_photos)
         airtable_updates = {}
         if existing_photos != merged_photos:
             airtable_updates[PHOTOS_FIELD] = json.dumps(merged_photos)
@@ -211,8 +222,9 @@ def sync_single_place_curator_photos(activityInput):
         if failed_count > 0:
             place_result["status"] = "failed"
             place_result["message"] = (
-                f"Failed to sync {failed_count} current curator photos; "
-                f"uploaded {uploaded_count}, reused {reused_count}."
+                f"Synced {len(published_urls)} curator photos "
+                f"({uploaded_count} uploaded, {reused_count} reused); "
+                f"{failed_count} failed and were skipped."
             )
         elif dry_run and (published_urls or airtable_updates or deleted_count):
             place_result["status"] = "would_update"
