@@ -35,13 +35,12 @@ tools:
   repo-memory:
     - id: third-place-alerts
       branch-name: memory/third-place-alerts
-      description: "Durable state for third-place Reddit and news alert dedupe."
+      description: "Durable state for third-place news alert dedupe."
       file-glob:
-        - "reddit/*.json"
         - "news/*.json"
       allowed-extensions: [".json"]
       max-file-size: 5242880
-      max-file-count: 2
+      max-file-count: 1
       max-patch-size: 524288
       create-orphan: true
       format-json: true

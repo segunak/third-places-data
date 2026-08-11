@@ -2,10 +2,10 @@
 name: Reddit Alerts
 on:
   schedule:
-    # Daily at 5:20 PM Eastern Time; America/New_York handles EST/EDT automatically.
+    # Daily at 5:35 PM Eastern Time; America/New_York handles EST/EDT automatically.
     # GitHub Actions: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onschedule
     # gh-aw: https://github.github.com/gh-aw/reference/schedule-syntax/#iana-timezone-field
-    - cron: "20 17 * * *"
+    - cron: "35 17 * * *"
       timezone: "America/New_York"
   workflow_dispatch:
     inputs:
@@ -35,13 +35,12 @@ tools:
   repo-memory:
     - id: third-place-alerts
       branch-name: memory/third-place-alerts
-      description: "Durable state for third-place Reddit and news alert dedupe."
+      description: "Durable state for third-place Reddit alert dedupe."
       file-glob:
         - "reddit/*.json"
-        - "news/*.json"
       allowed-extensions: [".json"]
       max-file-size: 5242880
-      max-file-count: 2
+      max-file-count: 1
       max-patch-size: 524288
       create-orphan: true
       format-json: true
