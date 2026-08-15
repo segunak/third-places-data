@@ -4,6 +4,7 @@ from unittest import mock
 import pytest
 from azure.core.exceptions import ResourceNotFoundError
 
+from constants import MAX_SELECTED_PHOTOS
 from services import utils
 from services.image_conversion_service import ImageVariantResult
 from services.image_conversion_service import validated_content_type
@@ -277,6 +278,10 @@ def test_gif_content_is_not_supported_for_place_photo_assets():
 def test_process_place_uploads_successful_assets_and_selects_azure_urls(monkeypatch):
     place_data = {
         "photos": {
+            "photo_urls": [
+                "https://example.com/vibe.jpg",
+                "https://example.com/front.jpg",
+            ],
             "raw_data": {
                 "photos_data": [
                     {
@@ -434,6 +439,10 @@ def test_process_place_generates_curator_variants_at_front(monkeypatch):
     ]
     place_data = {
         "photos": {
+            "photo_urls": [
+                "https://example.com/vibe.jpg",
+                "https://example.com/front.jpg",
+            ],
             "raw_data": {
                 "photos_data": [
                     {
@@ -509,25 +518,60 @@ def test_process_place_plans_curator_variants_from_photos_field():
     assert result["failures"] == []
 
 
-def test_process_place_does_not_cap_selected_airtable_photo_manifests():
+@pytest.mark.parametrize("curated_count", [MAX_SELECTED_PHOTOS, MAX_SELECTED_PHOTOS + 1])
+def test_process_place_selects_only_curated_photo_urls_and_keeps_all_raw_data(monkeypatch, curated_count):
+    raw_photo_urls = [f"https://example.com/photo-{index}.jpg" for index in range(100)]
+    curated_photo_urls = raw_photo_urls[:curated_count]
     place_data = {
         "photos": {
-            "photo_urls": [f"https://example.com/photo-{index}.jpg" for index in range(31)]
+            "photo_urls": curated_photo_urls,
+            "raw_data": {
+                "photos_data": [
+                    {
+                        "photo_url_big": photo_url,
+                        "photo_tags": ["vibe"],
+                        "photo_date": "12/01/2025 10:00:00",
+                    }
+                    for photo_url in raw_photo_urls
+                ]
+            },
         }
     }
 
-    result = PhotoAssetService().process_place(
+    service = PhotoAssetService()
+
+    def publish_standard_url(source_url, place_id, record_id, place_name, source_hash=None, **kwargs):
+        digest = source_hash or sha256_hex(source_url)
+        display_url = f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/display/{digest}.webp"
+        thumbnail_url = f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/thumbnail/{digest}.webp"
+        return {
+            "success": True,
+            "status": "would_upload",
+            "azure_url": display_url,
+            "blob_path": f"{place_id}/display/{digest}.webp",
+            "content_sha256": digest,
+            "content_type": "image/webp",
+            "photo_manifest": {"display": display_url, "thumbnail": thumbnail_url},
+        }
+
+    monkeypatch.setattr(service.publisher, "publish_standard_url", publish_standard_url)
+
+    result = service.process_place(
         _place_record(),
         place_data,
         PhotoAssetConfig(dry_run=True, upload=False),
     )
 
-    assert len(result["selected_airtable_photos"]) == 31
-    assert len(result["selected_airtable_urls"]) == 31
-    assert result["summary"]["selected_airtable_count"] == 31
+    assert len(place_data["photos"]["raw_data"]["photos_data"]) == 100
+    assert result["summary"]["provider_raw_photo_url_big_count"] == 100
+    assert result["selected_source_urls"] == curated_photo_urls
+    assert len(result["selected_airtable_photos"]) == curated_count
+    assert len(result["selected_airtable_urls"]) == curated_count
+    assert result["summary"]["selected_airtable_count"] == curated_count
+    assert [asset["source_url"] for asset in result["assets"] if asset["selected_for_airtable"]] == curated_photo_urls
 
 
-def test_process_place_dry_run_selected_sources_use_source_order():
+def test_process_place_dry_run_does_not_select_raw_data_without_photo_urls():
     place_data = {
         "photos": {
             "raw_data": {
@@ -553,10 +597,8 @@ def test_process_place_dry_run_selected_sources_use_source_order():
         PhotoAssetConfig(dry_run=True, upload=False),
     )
 
-    assert result["selected_source_urls"] == [
-        "https://example.com/front-new.jpg",
-        "https://example.com/vibe-old.jpg",
-    ]
+    assert result["selected_source_urls"] == []
+    assert result["selected_airtable_photos"] == []
 
 
 def test_process_place_plans_variants_for_existing_canonical_url_and_ignores_retired_manifest():

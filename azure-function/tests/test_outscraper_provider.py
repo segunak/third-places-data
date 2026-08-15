@@ -8,7 +8,7 @@ import pytest
 from unittest import mock
 
 from conftest import TEST_PLACE_ID, TEST_PLACE_NAME, load_fixture, create_mock_response
-from constants import OUTSCRAPER_BALANCE_THRESHOLD
+from constants import MAX_SELECTED_PHOTOS, OUTSCRAPER_BALANCE_THRESHOLD
 
 
 class TestOutscraperProviderInit:
@@ -517,7 +517,7 @@ class TestOutscraperProviderSelectPrioritizedPhotos:
             {"photo_url_big": f"http://front{i}.jpg", "photo_date": f"01/{i:02d}/2024 10:00:00", "photo_tags": ["front"]}
             for i in range(1, 11)
         ]
-        result = provider._select_prioritized_photos(photos, max_photos=30)
+        result = provider._select_prioritized_photos(photos, max_photos=MAX_SELECTED_PHOTOS)
         front_count = sum(1 for url in result if "front" in url)
         assert front_count <= 5
 
@@ -536,7 +536,7 @@ class TestOutscraperProviderSelectPrioritizedPhotos:
             {"photo_url_big": "http://same.jpg", "photo_date": "01/01/2024 10:00:00", "photo_tags": ["vibe"]},
             {"photo_url_big": "http://same.jpg", "photo_date": "01/02/2024 10:00:00", "photo_tags": ["front"]},
         ]
-        result = provider._select_prioritized_photos(photos, max_photos=30)
+        result = provider._select_prioritized_photos(photos, max_photos=MAX_SELECTED_PHOTOS)
         assert len(result) == 1
 
 

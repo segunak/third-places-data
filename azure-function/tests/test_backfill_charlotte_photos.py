@@ -104,10 +104,10 @@ def test_process_file_merges_new_photos_with_existing(tmp_path):
 
 
 def test_process_file_already_full_skips(tmp_path):
-    """When photo_urls already has 30 entries, no changes are made."""
+    """When photo_urls reaches the configured limit, no changes are made."""
     module = load_backfill_module()
 
-    existing_urls = [f"https://example.com/photo-{i}.jpg" for i in range(30)]
+    existing_urls = [f"https://example.com/photo-{i}.jpg" for i in range(module.MAX_SELECTED_PHOTOS)]
     sample_payload = {
         "photos": {
             "photo_urls": existing_urls,
@@ -129,7 +129,7 @@ def test_process_file_already_full_skips(tmp_path):
     result = module.process_file(file_path, dry_run=False)
 
     assert result["status"] == "already_full"
-    assert result["count"] == 30
+    assert result["count"] == module.MAX_SELECTED_PHOTOS
     # File should not have been modified
     payload = json.loads(file_path.read_text(encoding="utf-8"))
     assert payload["photos"]["photo_urls"] == existing_urls
@@ -168,6 +168,6 @@ def test_select_prioritized_photos_respects_limit_and_dedupes():
             }
         )
 
-    selected = module.select_prioritized_photos(photos, max_photos=30)
-    assert len(selected) <= 30
+    selected = module.select_prioritized_photos(photos, max_photos=module.MAX_SELECTED_PHOTOS)
+    assert len(selected) <= module.MAX_SELECTED_PHOTOS
     assert len(selected) == len(set(selected))

@@ -3,6 +3,7 @@ import logging
 import azure.functions as func
 import azure.durable_functions as df
 from datetime import datetime
+from constants import MAX_SELECTED_PHOTOS
 from services.airtable_service import AirtableService
 from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, parse_photo_manifest_list, parse_url_list, remove_photo_manifest_fields
 from services.place_data_service import PlaceDataProviderFactory
@@ -427,7 +428,8 @@ def refresh_single_place_photos(activityInput):
                             if data_provider._is_valid_photo_url(photo_url):
                                 valid_photos.append(photo)
 
-                        selected_source_photo_urls = photo_selector(valid_photos, max_photos=30)
+                        selected_source_photo_urls = photo_selector(valid_photos, max_photos=MAX_SELECTED_PHOTOS)
+                        photos_section['photo_urls'] = selected_source_photo_urls
                         logging.info(f"Selected {len(selected_source_photo_urls)} photos from cached raw_data for {place_name}")
 
             asset_service = PhotoAssetService()

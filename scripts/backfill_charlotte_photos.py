@@ -5,6 +5,11 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
+AZURE_FUNCTION_DIR = Path(__file__).resolve().parents[1] / "azure-function"
+sys.path.insert(0, str(AZURE_FUNCTION_DIR))
+
+from constants import MAX_SELECTED_PHOTOS
+
 
 def is_valid_photo_url(url: str) -> bool:
     return isinstance(url, str) and url.startswith("http")
@@ -17,7 +22,7 @@ def parse_photo_date(date_str: str) -> datetime:
         return datetime.min
 
 
-def select_prioritized_photos(photos_data: List[Dict[str, Any]], max_photos: int = 30) -> List[str]:
+def select_prioritized_photos(photos_data: List[Dict[str, Any]], max_photos: int = MAX_SELECTED_PHOTOS) -> List[str]:
     if not photos_data:
         return []
 
@@ -106,7 +111,7 @@ def process_file(file_path: Path, dry_run: bool) -> Dict[str, Any]:
             existing_valid.append(url)
             seen.add(url)
 
-    max_photos = 30
+    max_photos = MAX_SELECTED_PHOTOS
     remaining_capacity = max_photos - len(existing_valid)
 
     # If already at or above the limit, nothing to backfill
@@ -217,7 +222,7 @@ def summarize(results: List[Dict[str, Any]]) -> None:
         ("would_update", "Have room + raw_data available to add more photos"),
         ("preserved_existing", "Have photo_urls but no usable raw_data to pull more from"),
         ("skipped_no_raw_data", "Empty photo_urls AND no usable raw_data"),
-        ("already_full", "Already at 30 photo_urls, no room to add"),
+        ("already_full", f"Already at {MAX_SELECTED_PHOTOS} photo_urls, no room to add"),
         ("no_new_photos", "raw_data exists but all URLs already in photo_urls"),
     ]:
         items = buckets.get(label, [])

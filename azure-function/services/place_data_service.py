@@ -9,7 +9,7 @@ from unidecode import unidecode
 from outscraper import ApiClient
 from abc import ABC, abstractmethod
 from typing import Dict, List, Any, Optional
-from constants import DEFAULT_REVIEWS_LIMIT, PlaceDetailsField, OUTSCRAPER_BALANCE_THRESHOLD
+from constants import DEFAULT_REVIEWS_LIMIT, MAX_SELECTED_PHOTOS, PlaceDetailsField, OUTSCRAPER_BALANCE_THRESHOLD
 
 
 class PlaceDataService(ABC):
@@ -241,7 +241,7 @@ class PlaceDataService(ABC):
         result = [PlaceDataService._strip_on_the_hour(line) for line in result]
         return [PlaceDataService._fix_bare_opening_times(line) for line in result]
 
-    def _select_prioritized_photos(self, photos_data: List[Dict[str, Any]], max_photos: int = 30) -> List[str]:
+    def _select_prioritized_photos(self, photos_data: List[Dict[str, Any]], max_photos: int = MAX_SELECTED_PHOTOS) -> List[str]:
         if not photos_data:
             return []
 
@@ -476,7 +476,7 @@ class GoogleMapsProvider(PlaceDataService):
                     photo_records.append({'photo_url_big': details['photoUri'], 'photo_tags': [], 'photo_date': ''})
 
             valid_records = [photo for photo in photo_records if self._is_valid_photo_url(photo.get('photo_url_big', ''))]
-            selected_urls = [photo.get('photo_url_big', '') for photo in valid_records if photo.get('photo_url_big')][:30]
+            selected_urls = [photo.get('photo_url_big', '') for photo in valid_records if photo.get('photo_url_big')]
             raw_data['photos_data'] = valid_records
             logging.info(f"Photo selection for {place_id}: Total={len(photo_records)}, Selected={len(selected_urls)}")
             return {"place_id": place_id, "message": f"Selected {len(selected_urls)} photos", "photo_urls": selected_urls, "raw_data": raw_data}
@@ -729,7 +729,7 @@ class OutscraperProvider(PlaceDataService):
                             'photo_source': field_name,
                         })
                         seen_urls.add(url)
-                selected = self._select_prioritized_photos(valid, max_photos=30)
+                selected = self._select_prioritized_photos(valid, max_photos=MAX_SELECTED_PHOTOS)
                 logging.info(f"Photo selection for {place_id}: Total={len(all_photos)}, Valid={len(valid)}, Selected={len(selected)}")
                 return {"place_id": place_id, "message": f"Retrieved {len(all_photos)} photos, selected {len(selected)}", "photo_urls": selected, "raw_data": raw}
             logging.warning(f"No photo results found for place ID {place_id} using Outscraper.")

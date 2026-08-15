@@ -296,20 +296,6 @@ def build_place_photo_inventory(
     return inventory, summary
 
 
-def select_prioritized_photo_records(photo_records: List[Dict[str, Any]], max_photos: int = 30) -> List[Dict[str, Any]]:
-    unique: List[Dict[str, Any]] = []
-    seen_urls: set[str] = set()
-    for record in [record for record in photo_records if isinstance(record, dict) and record.get("photo_url_big")]:
-        url = record["photo_url_big"]
-        if url in seen_urls:
-            continue
-        unique.append(record)
-        seen_urls.add(url)
-        if len(unique) >= max_photos:
-            break
-    return unique
-
-
 class PhotoAssetService:
     def __init__(self, session: Optional[requests.Session] = None):
         self.session = session or requests.Session()
@@ -319,7 +305,20 @@ class PhotoAssetService:
         place_context = self.prepare_place_context(airtable_record, place_data, config)
         if place_context.get("status") == "skipped" and "result" in place_context:
             return place_context["result"]
-        batch_result = self.process_candidate_batch(place_context, place_context.get("inventory", []), config)
+        inventory = place_context.get("inventory", [])
+        provider_candidates = [
+            candidate for candidate in inventory
+            if any(source.get("field") == "photos.photo_urls" for source in candidate.get("provenance", []))
+        ]
+        if provider_candidates:
+            curator_candidates = [
+                candidate for candidate in inventory
+                if is_curator_photo_azure_url(candidate.get("canonical_source_url", ""))
+            ]
+            selected_candidates = [*curator_candidates, *provider_candidates]
+        else:
+            selected_candidates = [candidate for candidate in inventory if candidate.get("photo_manifest")]
+        batch_result = self.process_candidate_batch(place_context, selected_candidates, config)
         return self.finalize_place_assets(place_context, batch_result["assets"], batch_result["failures"])
 
     def prepare_place_context(self, airtable_record: Dict[str, Any], place_data: Optional[Dict[str, Any]], config: PhotoAssetConfig) -> Dict[str, Any]:
@@ -627,10 +626,8 @@ class PhotoAssetService:
         return deduped
 
     def _source_selection_urls(self, inventory: List[Dict[str, Any]]) -> List[str]:
-        records: List[Dict[str, Any]] = []
-        for candidate in inventory:
-            photo_record = copy.deepcopy(candidate.get("photo_record", {}))
-            photo_record["photo_url_big"] = candidate["canonical_source_url"]
-            photo_record["source_url_sha256"] = candidate["source_url_sha256"]
-            records.append(photo_record)
-        return [record["photo_url_big"] for record in select_prioritized_photo_records(records, max_photos=30)]
+        return [
+            candidate["canonical_source_url"]
+            for candidate in inventory
+            if any(source.get("field") == "photos.photo_urls" for source in candidate.get("provenance", []))
+        ]

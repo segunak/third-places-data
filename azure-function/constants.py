@@ -4,6 +4,9 @@ from enum import Enum
 # Default number of reviews to retrieve from place data providers
 DEFAULT_REVIEWS_LIMIT = 250
 
+# Maximum number of provider photos selected for a place
+MAX_SELECTED_PHOTOS = 30
+
 # Thread pool configuration
 MAX_THREAD_WORKERS = 50 # Maximum number of threads for concurrent tasks
 

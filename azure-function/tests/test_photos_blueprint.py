@@ -1,6 +1,7 @@
 import json
 
 from blueprints import photos
+from constants import MAX_SELECTED_PHOTOS
 
 
 class DummyAirtableService:
@@ -15,7 +16,7 @@ class DummyProvider:
     def _is_valid_photo_url(self, url):
         return isinstance(url, str) and url.startswith("http")
 
-    def _select_prioritized_photos(self, photos_data, max_photos=30):
+    def _select_prioritized_photos(self, photos_data, max_photos=MAX_SELECTED_PHOTOS):
         selected = []
         seen = set()
         for photo in photos_data:
@@ -430,7 +431,7 @@ def test_refresh_single_place_photos_falls_back_to_airtable_photos_without_raw_d
     assert result["photos_after"] == 1
 
 
-def test_refresh_single_place_photos_counts_existing_airtable_azure_photos_before(monkeypatch):
+def test_refresh_single_place_photos_replaces_existing_standard_photos_with_curated_provider_photos(monkeypatch):
     existing_azure_photos = [
         _photo_manifest("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-azure/display/"
         + ("a" * 64)
@@ -478,7 +479,7 @@ def test_refresh_single_place_photos_counts_existing_airtable_azure_photos_befor
     assert result["status"] == "would_update"
     assert result["photos_before"] == 2
     assert result["cached_photo_urls_before"] == 0
-    assert result["photos_after"] == 3
+    assert result["photos_after"] == 1
 
 
 def test_refresh_single_place_photos_from_cached_photo_urls_dry_run(monkeypatch):
