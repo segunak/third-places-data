@@ -4,7 +4,7 @@ import json
 import pytest
 
 from blueprints import photos
-from constants import MAX_SELECTED_PHOTOS
+from constants import MAX_SELECTED_PHOTOS, PHOTO_REFRESH_BATCH_SIZE
 
 
 class DummyAirtableService:
@@ -96,7 +96,6 @@ def test_validate_refresh_all_photos_request_success_required_controls():
             "provider_type": "outscraper",
             "view": "Production",
             "refresh_below": "30",
-            "batch_size": "5",
         })
     )
 
@@ -108,13 +107,13 @@ def test_validate_refresh_all_photos_request_success_required_controls():
     assert parsed["max_places"] is None
     assert parsed["view"] == "Production"
     assert parsed["refresh_below"] == 30
-    assert parsed["batch_size"] == 5
+    assert "batch_size" not in parsed
     assert parsed["force_provider"] is False
 
 
 def test_validate_refresh_all_photos_request_requires_refresh_below():
     parsed, error_response = photos.validate_refresh_all_photos_request(
-        DummyRequest({"provider_type": "outscraper", "view": "Production", "batch_size": "5"})
+        DummyRequest({"provider_type": "outscraper", "view": "Production"})
     )
 
     assert parsed is None
@@ -122,14 +121,18 @@ def test_validate_refresh_all_photos_request_requires_refresh_below():
     assert json.loads(error_response.get_body().decode("utf-8"))["message"] == "Missing refresh_below value"
 
 
-def test_validate_refresh_all_photos_request_requires_batch_size():
+def test_validate_refresh_all_photos_request_does_not_expose_batch_size():
     parsed, error_response = photos.validate_refresh_all_photos_request(
-        DummyRequest({"provider_type": "outscraper", "view": "Production", "refresh_below": "30"})
+        DummyRequest({
+            "provider_type": "outscraper",
+            "view": "Production",
+            "refresh_below": "30",
+            "batch_size": "99",
+        })
     )
 
-    assert parsed is None
-    assert error_response.status_code == 400
-    assert json.loads(error_response.get_body().decode("utf-8"))["message"] == "Missing batch_size value"
+    assert error_response is None
+    assert "batch_size" not in parsed
 
 
 def test_validate_refresh_all_photos_request_requires_view():
@@ -137,7 +140,6 @@ def test_validate_refresh_all_photos_request_requires_view():
         DummyRequest({
             "provider_type": "outscraper",
             "refresh_below": "30",
-            "batch_size": "5",
         })
     )
 
@@ -152,7 +154,6 @@ def test_validate_refresh_all_photos_request_accepts_bulk_controls():
             "provider_type": "outscraper",
             "view": "Insufficient Photos",
             "refresh_below": "25",
-            "batch_size": "3",
             "max_places": "12",
         })
     )
@@ -160,7 +161,7 @@ def test_validate_refresh_all_photos_request_accepts_bulk_controls():
     assert error_response is None
     assert parsed["view"] == "Insufficient Photos"
     assert parsed["refresh_below"] == 25
-    assert parsed["batch_size"] == 3
+    assert "batch_size" not in parsed
     assert parsed["max_places"] == 12
 
 
@@ -234,7 +235,6 @@ def test_refresh_all_photos_starter_passes_required_bulk_controls():
             "provider_type": "outscraper",
             "view": "Production",
             "refresh_below": "30",
-            "batch_size": "5",
         }),
         client,
     ))
@@ -243,7 +243,7 @@ def test_refresh_all_photos_starter_passes_required_bulk_controls():
     orchestration_input = client.started[0]["input"]
     assert orchestration_input["view"] == "Production"
     assert orchestration_input["refresh_below"] == 30
-    assert orchestration_input["batch_size"] == 5
+    assert "batch_size" not in orchestration_input
     assert orchestration_input["place_id"] == ""
 
 
@@ -357,17 +357,15 @@ def test_refresh_all_photos_orchestrator_batches_and_reports_every_record():
     ]
     places = [
         {
-            "id": "rec-a",
-            "fields": {"Place": "A", "Google Maps Place Id": "ChIJ-a", "Photos": "[]"},
-        },
-        {
-            "id": "rec-b",
-            "fields": {"Place": "B", "Google Maps Place Id": "ChIJ-b", "Photos": "[]"},
-        },
-        {
-            "id": "rec-c",
-            "fields": {"Place": "C", "Google Maps Place Id": "ChIJ-c", "Photos": "[]"},
-        },
+            "id": f"rec-{letter}",
+            "fields": {
+                "Place": letter.upper(),
+                "Google Maps Place Id": f"ChIJ-{letter}",
+                "Photos": "[]",
+            },
+        }
+        for letter in ("a", "b", "c", "d", "e", "f")
+    ] + [
         {
             "id": "rec-sufficient",
             "fields": {
@@ -383,7 +381,6 @@ def test_refresh_all_photos_orchestrator_batches_and_reports_every_record():
         "city": "charlotte",
         "view": "Production",
         "dry_run": True,
-        "batch_size": 2,
         "refresh_below": 30,
     })
 
@@ -392,18 +389,18 @@ def test_refresh_all_photos_orchestrator_batches_and_reports_every_record():
 
     first_batch = orchestrator.send(places)
     assert first_batch["name"] == "task_all"
-    assert len(first_batch["tasks"]) == 2
+    assert len(first_batch["tasks"]) == PHOTO_REFRESH_BATCH_SIZE
 
     second_batch = orchestrator.send([
-        {"record_id": "rec-a", "status": "would_use_cache", "provider_called": False},
-        {"record_id": "rec-b", "status": "would_fetch_provider", "provider_called": False},
+        {"record_id": f"rec-{letter}", "status": "would_use_cache", "provider_called": False}
+        for letter in ("a", "b", "c", "d", "e")
     ])
     assert second_batch["name"] == "task_all"
     assert len(second_batch["tasks"]) == 1
 
     try:
         orchestrator.send([
-            {"record_id": "rec-c", "status": "would_fetch_provider", "provider_called": False},
+            {"record_id": "rec-f", "status": "would_fetch_provider", "provider_called": False},
         ])
     except StopIteration as exc:
         result = exc.value
@@ -411,12 +408,12 @@ def test_refresh_all_photos_orchestrator_batches_and_reports_every_record():
         raise AssertionError("Expected orchestrator to complete")
 
     assert result["success"] is True
-    assert result["data"]["total_places"] == 5
-    assert result["data"]["selected_places"] == 3
+    assert result["data"]["total_places"] == 8
+    assert result["data"]["selected_places"] == 6
     assert result["data"]["skipped"] == 2
-    assert len(result["data"]["place_results"]) == 5
+    assert len(result["data"]["place_results"]) == 8
     assert {item["record_id"] for item in result["data"]["place_results"]} == {
-        "rec-a", "rec-b", "rec-c", "rec-sufficient", "rec-missing"
+        "rec-a", "rec-b", "rec-c", "rec-d", "rec-e", "rec-f", "rec-sufficient", "rec-missing"
     }
 
 
@@ -426,7 +423,6 @@ def test_validate_refresh_all_photos_request_invalid_photo_source_mode():
             "provider_type": "outscraper",
             "view": "Production",
             "refresh_below": "30",
-            "batch_size": "5",
             "photo_source_mode": "bad_mode"
         })
     )
@@ -443,7 +439,6 @@ def test_validate_refresh_all_photos_request_invalid_max_places():
             "provider_type": "outscraper",
             "view": "Production",
             "refresh_below": "30",
-            "batch_size": "5",
             "max_places": "not_an_int"
         })
     )

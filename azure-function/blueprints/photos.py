@@ -3,7 +3,7 @@ import logging
 import azure.functions as func
 import azure.durable_functions as df
 from datetime import datetime
-from constants import MAX_SELECTED_PHOTOS
+from constants import MAX_SELECTED_PHOTOS, PHOTO_REFRESH_BATCH_SIZE
 from services.airtable_service import AirtableService
 from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, is_curator_photo_azure_url, parse_photo_manifest_list, parse_url_list, remove_photo_manifest_fields
 from services.place_data_service import PlaceDataProviderFactory
@@ -23,7 +23,6 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
     try_url_variants = req.params.get('try_url_variants', 'true').lower() == 'true'
     max_places_param = req.params.get('max_places')
     refresh_below_param = req.params.get('refresh_below')
-    batch_size_param = req.params.get('batch_size')
     photo_source_mode = req.params.get('photo_source_mode', 'cache_first')
     valid_photo_source_modes = {
         'cache_first',
@@ -68,18 +67,6 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
             mimetype="application/json"
         )
 
-    if not place_id and batch_size_param in (None, ''):
-        return None, func.HttpResponse(
-            json.dumps({
-                "success": False,
-                "message": "Missing batch_size value",
-                "data": None,
-                "error": "batch_size is required"
-            }),
-            status_code=400,
-            mimetype="application/json"
-        )
-
     if provider_type not in ['google', 'outscraper']:
         return None, func.HttpResponse(
             json.dumps({
@@ -111,7 +98,6 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
         )
 
     refresh_below = None
-    batch_size = None
     if not place_id:
         try:
             refresh_below = int(refresh_below_param)
@@ -124,22 +110,6 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
                     "message": "Invalid refresh_below value",
                     "data": None,
                     "error": "refresh_below must be a positive integer"
-                }),
-                status_code=400,
-                mimetype="application/json"
-            )
-
-        try:
-            batch_size = int(batch_size_param)
-            if batch_size < 1:
-                raise ValueError
-        except ValueError:
-            return None, func.HttpResponse(
-                json.dumps({
-                    "success": False,
-                    "message": "Invalid batch_size value",
-                    "data": None,
-                    "error": "batch_size must be a positive integer"
                 }),
                 status_code=400,
                 mimetype="application/json"
@@ -191,7 +161,6 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
     if not place_id:
         parsed.update({
             "view": view,
-            "batch_size": batch_size,
             "refresh_below": refresh_below,
             "max_places": max_places,
         })
@@ -372,7 +341,6 @@ async def refresh_all_photos(req: func.HttpRequest, client) -> func.HttpResponse
         if not place_id:
             orchestration_input.update({
                 "view": parsed_request["view"],
-                "batch_size": parsed_request["batch_size"],
                 "refresh_below": parsed_request["refresh_below"],
                 "max_places": parsed_request["max_places"],
             })
@@ -447,12 +415,10 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
             results = [place_result]
         else:
             view = orchestration_input["view"]
-            batch_size = orchestration_input["batch_size"]
             refresh_below = orchestration_input["refresh_below"]
             max_places = orchestration_input.get("max_places")
             config_dict.update({
                 "view": view,
-                "batch_size": batch_size,
                 "refresh_below": refresh_below,
                 "max_places": max_places,
             })
@@ -463,11 +429,11 @@ def refresh_all_photos_orchestrator(context: df.DurableOrchestrationContext):
             selected_places, pre_results = plan_places_for_photo_refresh(all_third_places, config_dict)
             results = list(pre_results)
             logging.info(
-                f"Running photo refresh in sequential batches of {batch_size} "
+                f"Running photo refresh in sequential batches of {PHOTO_REFRESH_BATCH_SIZE} "
                 f"for {len(selected_places)} selected places"
             )
-            for index in range(0, len(selected_places), batch_size):
-                batch = selected_places[index:index + batch_size]
+            for index in range(0, len(selected_places), PHOTO_REFRESH_BATCH_SIZE):
+                batch = selected_places[index:index + PHOTO_REFRESH_BATCH_SIZE]
                 tasks = [
                     context.call_activity(
                         "refresh_single_place_photos",

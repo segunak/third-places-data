@@ -32,10 +32,6 @@ on:
         description: 'Refresh places with fewer Airtable photos than this value'
         required: true
         type: string
-      batch_size:
-        description: 'Places processed in parallel per batch'
-        required: true
-        type: string
   workflow_dispatch:
     inputs:
       provider_type:
@@ -79,10 +75,6 @@ on:
         description: 'Refresh places with fewer Airtable photos than this value'
         required: true
         type: string
-      batch_size:
-        description: 'Places processed in parallel per batch'
-        required: true
-        type: string
 
 concurrency: 
   group: refresh-all-photos
@@ -107,8 +99,7 @@ jobs:
           $dryRun = "${{ inputs.dry_run }}".ToLowerInvariant()
           $maxPlaces = [uri]::EscapeDataString("${{ inputs.max_places }}")
           $refreshBelow = [uri]::EscapeDataString("${{ inputs.refresh_below }}")
-          $batchSize = [uri]::EscapeDataString("${{ inputs.batch_size }}")
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&view=$view&dry_run=$dryRun&refresh_below=$refreshBelow&batch_size=$batchSize"
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&view=$view&dry_run=$dryRun&refresh_below=$refreshBelow"
           
           if ($maxPlaces -ne '') {
             $FunctionUrl += "&max_places=$maxPlaces"

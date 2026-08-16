@@ -7,6 +7,9 @@ DEFAULT_REVIEWS_LIMIT = 250
 # Maximum number of provider photos selected for a place
 MAX_SELECTED_PHOTOS = 35
 
+# Number of places processed in parallel during bulk photo refresh
+PHOTO_REFRESH_BATCH_SIZE = 5
+
 # Thread pool configuration
 MAX_THREAD_WORKERS = 50 # Maximum number of threads for concurrent tasks
 
