@@ -212,217 +212,1082 @@
     },
     "photos": {
         "place_id": "ChIJLc2g5LezVogRb1hH-yzwGcE",
-        "message": "Selected 10 photos",
+        "message": "Photos reconciled using outscraper from provider",
         "photo_urls": [
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjD1quP09am-idh0TyZ4bWKKiySoE5QOjLFdUEI6S31F5QVjzoLsJi769EnBoILD0AKkcU-Hb9BWKxOKYk-0xVhGoXwHfPw7MXMN58G34vDUWIc3hL4vrOTJc_2HFNqLmypDCf8BpQEE5zJ7efMGX_yMHg=s4800-w3600-h4800",
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjDHXpwluSeYn7vZ7ijty6-ZxBV-3POcC9ulcOpx4_hMIr956am9TJnRYQipJ41QMD1X7JuCobPTeesRC8GEUtZNWLoz9LPOdy3C_IzSthiseBj5dwO90ctzJaovV6VcmRE1nOi4bQLjqq1kVaWtFl71kA=s4800-w3024-h4032",
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjCnKMVGxfifkVxDRGMxUeyBBHU_G5TeNZ73VOT0GLGbjcRFFmE-OnPc1mQmf6PuAFiAPJndrSfzHgTCUoposO7vnRieTU6p_ZuiHoNtnR4ebWFrpDziJKocdqVs8XoFrBMqnf-A9GMUm775fdT1UPYmOg=s4800-w3024-h4032",
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjCdDs1AJWd7oglr3w2RQ9J6sIgSVFHJ_K1Fp1h9XBz3AgXyNrN5UBWKcXkCNLwlC5Au6soraCb38ge1KHJ1v5Lngnk7L7V5CgVduU92JpdV1CsNje3MX4y28dHryrmOZw_p6BK-zQ0btpwIZF0SZyc4Nw=s4800-w3024-h4032",
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjDbZjKshtgcD61IvR3NiGJhGovju93MlrY1UrNxklXU_4RryIf_3UHClvmz1AfuPDSXwehN8_brO2jt8FHxU7B549b66spGTlz4lvRKCUb_Y5Qk4lUXIMlL2_AfzQtgK5nOB_ucHQmTycMn_IJBGaGEcg=s4800-w3024-h4032",
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjCmuNFBdnqXNi7afElN4zw9m1UZcQkRD4vGbwInbYwyfRGRac5XBO4UKOCkd-be0U7M1K0wOweT2BClWXk8_xrlPm-uKndEiVWSPPc7p2VF4tQNXliLdCxZcVzLPK3Q9dxVfBSGT73VOozMLBsfLeNjew=s4800-w3600-h4800",
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjDL2kagsR8qm9lz6hvvjq0I6wQbzMLZq_5Jel0lkY-DcUxx9-WyxtfuziVtF1Frv8KLfx5aPzRH35IvWl-EVZg_Y3lFssJtsa9R-PaM4OV-WCKCyYEo_BS3ZAsvFnDDTrf4EJlz4sXwlZfLDp7_wyuK7g=s4800-w3024-h4032",
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjBRZ3JuaCD8wAF2Jz-0n0-JIAJzXEDQkm0mAbUZcN2BpxbZDi2kJa-ao5kQ0cv1VSEIjVOq80HBG6_QzC2ee3DZxPN0YZee9ukDDT1ZUzH-keAOGGXJ3m-Fb_jcjpI1o4HWxjZtGg05zoll1QsB_PPU=s4800-w3024-h4032",
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjBbe-G9aaT6RdwQMKUle_D3Yua9OwnaeHV76lY7oBNIKFswkiPoIiZhCqF6tE_DaxyMtTJF2AAGTD9CvLSWZCOUcZqhqHopqWBI_2DoadNV7caDzrrmlCe3r-8AgTyexIwbRU9wfEBE4V6gE8wbcBDYDw=s4800-w2252-h4000",
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjBmHsDEUCtnqtVZv0qe9gA8axNpjzS7xZ4_Emu7S7o2dAcaCybxllvmyN2-Lcg8E6NxaqypUVkmIRJuDwPA7P5fmK5p9PlHIyoyr9qyJ5vbKqR8D3YEcwQljaw-gavdE0w4OyoRU9MnAI0ABZTD5T58pA=s4800-w3600-h4800"
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlE-tcWLI9G5Jo5b1YpVqMk6Z8e2NKsXKAurUJFURGBL8xO5T4zFHrWvJSeqf9XUBk5dBmoD4RpmBdd8c5dg5uMS1M5nN-qJkA8t-HbWBFCIcG8niDigFJyFviLRoV0J3lQSV2C7UaMzcaq=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkA1stO0B0z6UPGDKlcjcGjr5TpGiXosluE-tMFAEp3WzJFb8-TraYtksVfTYxpPM0bPj96dGWmFWJkdq9IrLFy7uZs56I0P0jNB4G2oyDXC9WTtECi_knnPw4Vv554AWNJ4FBnV5j3btsZ=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl87nOQrLd1L7oCJqVC3E40yrajRh5cD5yYFoON_GeLDx6FQatf_ig1lYc3Sl-h5tQhaVp1u8ChQJhe3B6Wy2irRFLNqGFbSE70jmIXfTB2YcJIvjpdeKdlxPDFlLB2uE8OR_yR7GntHtvl=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnrsO9rKvbPp06fnmwP9n3BBGWTQfBuaMG2mLSfme1qPIEnQJhXFfNZJFUww0kaeDRZ0v-9_l88eEs-CumzrccXplqBjjRJdSpCWQE2Hbreb5vuqQQNeTZw_8H3j3oEQm0EeJdESHhXjAIP=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnvd__lBZHpjptjh_V4lamUJMBF19Y4p5EcPeN0Wb17fdofxVjBBQ4zk5H1UPhcjRrsIobSvBPNxPLOu20M1zds9w4i0xtZlfGWIHK0nJtqKjNVDmMAOC4oTwd6IHWnf0n5PZT3YsTfYLA2=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlr-9P_YncjaSD5Bb_s3kgGgP3DoNxJr66FZg-E9JiaF560ikiiARqT0T3noAhdLIe1HidHgzWBlKh2PKAWmPZ9JNmvFtEFg4GGiJQdnzfS3B2z5FBoBHJkvfSfCF0K4uiakCn2csbee5_6=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmFIgALQx2XbW6X9EUk1Re8wzBU8gvROP8jlB1zaxdNUmmcwAiRjjus4SDCMmPZ5qsgOmqwL7EKFt1YaAY5-XwZM13B3DHNE9pugiFPP1izVbkQl0XgcNhfL2Wx1eXcgXEGnVSBjKWXX-2R=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlhObBg6YWzm4xDiwzlOrUq9Wj33419-RVlHhxyIxhMOOF8vcqtdoSQiHh3zpzZunWSitxFpOdc5mVLSbiRsnUNMjXw5jsAIkWKM9ruJcmnZ8sdJMCb0bFn7cmYmkR2W8waz_8exlitCTqs=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlX9bARj_hfkqj3TJmzwiURMdSf15NfY686LRdO1oLgQLN9t4_UILPEJypcM21KRtL4ubJsbb6ftw5ZPioOOvdKFuF2QpgmixBRYVtMP579VbSnIu4ZTsaWo0f40R19jRK3pHSscEjfwQxo=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk5c23dP4fT8_znDozDSOiDzW5xIEdX8PLKrh3sNxR1nKO0j25QZsJXV2s3sI7hAQYg3oJ4Oze48pczdAjv0nbndOwlUaSogmdfPTzOhxlDWQQ1JA-PX83eBYHuzrP4zliKReQrnq0rYrJP=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnrsO9rKvbPp06fnmwP9n3BBGWTQfBuaMG2mLSfme1qPIEnQJhXFfNZJFUww0kaeDRZ0v-9_l88eEs-CumzrccXplqBjjRJdSpCWQE2Hbreb5vuqQQNeTZw_8H3j3oEQm0EeJdESHhXjAIP=w800-h500-k-no",
+            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=XMjp7Qi8ocLvrz66W3Gc8g&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=2.503706&pitch=0&thumbfov=100"
         ],
         "raw_data": {
-            "photos": [
+            "query": "ChIJLc2g5LezVogRb1hH-yzwGcE",
+            "name": "Fred & June's Books - Denver",
+            "name_for_emails": "Fred And Junes Books Denver",
+            "place_id": "ChIJLc2g5LezVogRb1hH-yzwGcE",
+            "google_id": "0x8856b3b7e4a0cd2d:0xc119f02cfb47586f",
+            "kgmid": "/g/11ykjw8hy7",
+            "address": "3744 NC-16, Denver, NC 28037",
+            "county": null,
+            "street": "3744 NC-16",
+            "area_service": false,
+            "country_code": "US",
+            "country": "United States of America",
+            "postal_code": "28037",
+            "city": "Denver",
+            "state": "North Carolina",
+            "state_code": "NC",
+            "plus_code": "867WGXJC+Q8",
+            "latitude": 35.53188,
+            "longitude": -81.02913,
+            "h3": "8944d86d537ffff",
+            "time_zone": "America/New_York",
+            "popular_times": [
                 {
-                    "name": "places/ChIJLc2g5LezVogRb1hH-yzwGcE/photos/AWCwydhcy6PNURNUYg2sBsOyHrA4jmhr1vdT63gOncu9-LsOFngI7jsOpePBSFO9R5xFNM0NRJNT0rboGqvXAqHKodGhVtyHe4zUFUINL2MOGt4W8luNQK2avnnhiv4zJ3LPDzw4PcNBaq51zJs3L0gA3bjOyUwHCsD3YMFG2U0ek5mm1Rvp9JMJd9EVY73JRS4DlWGtvnlOyrDdVhDGOq2xASANRSwoZ1jwLFq5Pg5GeNIBeTzZmQVGScJACz4Jc7KPXEhFe9EJcIcCc-JP5eqgGYYECHgJhxVKDAcSkx7MDaAioSBO5DPyAOzR9rbFO_C1UuPjSbhRyFIf7fUM8HSOLvZ2tvwWXT8s7hKzFKScLC8gx0gZnnn2n-6n9pTZz9vjfBL34NYtmPx5HKW30HRmoAFX32wreF25hbVjun47NZnN8q8zp6dRQr2nJScC7vFu",
-                    "widthPx": 3600,
-                    "heightPx": 4800,
-                    "authorAttributions": [
+                    "day": 7,
+                    "day_text": "Sunday",
+                    "popular_times": [
                         {
-                            "displayName": "Mandy Stewart",
-                            "uri": "https://maps.google.com/maps/contrib/108160755399553822992",
-                            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXXyF6zdjhjfPf2Z57DhK8kCdafBoKlABr-VSAgtSvPy_pCzdrT=s100-p-k-no-mo"
+                            "hour": 6,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 7,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 8,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 9,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 10,
+                            "percentage": 53,
+                            "title": "Usually a little busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 11,
+                            "percentage": 53,
+                            "title": "Usually a little busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 12,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 13,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 14,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 15,
+                            "percentage": 38,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 16,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 17,
+                            "percentage": 42,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 18,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 19,
+                            "percentage": 26,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 20,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 21,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 22,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 23,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
                         }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhBoonpkEwUDBmhYs317XwZq&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhBoonpkEwUDBmhYs317XwZq!2e10!4m2!3m1!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f"
+                    ]
                 },
                 {
-                    "name": "places/ChIJLc2g5LezVogRb1hH-yzwGcE/photos/AWCwydhreqWpaxfvfQg1aZvvUJutDJ4R0CKE6p4t2P9quceyGZghvCuSmer8-jDD7-4zcxHKDrUhT7ueIcurzjtuHrW1ssemfzBBb4NgWvzY6fnEChx4GRHKRsLyGEYlI972TT6JI962IBiDMI5IMYO87NITbIN8J70zKsX00EiGmzHmaHF1h0SPeNSzWG7iundpWBVuU5iUbcNCYMF50alxn_AcUa0PUsR7lEWuNoADEHiJiaxneRFoJbFt2WVtwSDHr_peSpy8NSZ6xiG5t08H4oY9rJ0lMuGTkD9gZybk6O0U0C9qJxZs4z-K6E-5edGwfPq85Y5d-ulH4A_lnjxwbWT3K7n7ThhPnD6jBCZuImJyf4l8XqTjDBBhAbEnaoKqisslTQdNAR3Xz-joZeNBiNxaippZN_d2Q_7CI2m5L1yXPmstJwVBsu_ZKXU5_zSx",
-                    "widthPx": 3024,
-                    "heightPx": 4032,
-                    "authorAttributions": [
+                    "day": 1,
+                    "day_text": "Monday",
+                    "popular_times": [
                         {
-                            "displayName": "Mandy Stewart",
-                            "uri": "https://maps.google.com/maps/contrib/108160755399553822992",
-                            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXXyF6zdjhjfPf2Z57DhK8kCdafBoKlABr-VSAgtSvPy_pCzdrT=s100-p-k-no-mo"
+                            "hour": 6,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 7,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 8,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 9,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 10,
+                            "percentage": 57,
+                            "title": "Usually a little busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 11,
+                            "percentage": 61,
+                            "title": "Usually a little busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 12,
+                            "percentage": 61,
+                            "title": "Usually a little busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 13,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 14,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 15,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 16,
+                            "percentage": 42,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 17,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 18,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 19,
+                            "percentage": 38,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 20,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 21,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 22,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 23,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
                         }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhC1DfdB237bnoJmMO2891xV&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhC1DfdB237bnoJmMO2891xV!2e10!4m2!3m1!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f"
+                    ]
                 },
                 {
-                    "name": "places/ChIJLc2g5LezVogRb1hH-yzwGcE/photos/AWCwydj10ELVltJm9pr-UHhZ-96YiHgfhSyKaewKla5cNnZgeaMuCgrdeTItu9tZKoGCT2WlVk-YbjNLInse3HDFgWsPNW2zqmMNWsYu7D_gfxm5usBbLaSnz244wGM7BKsBBEH0K3EaOPEoZ6TtpxLAqgkraIJA9DF5wKQBxx3-54N0inc1m6gCzkkXcd-MGYm69vxeX24yVUZzOreJ-HwOJCj-yxYM3x8ja4WxZIjYAyq1uiDDdwOFOS0IqVARgenm30v6_IyFEazzRAoCE-bDJXViNAWR-gX4PCHFySPnBJIQn5PH4mu-Gu4H6si-57qHOcqf19ctpaWsjXqvRV0pVazwDejQygrc6niRr7JdHCFMS_UJCC-ljYMCfbMfti7FtUXA1ySmYRI3-LxlsRYVihdtqTVxFjjw22Uaqh4AWjFA9mu0Qe-ym7nrISW24TfR",
-                    "widthPx": 3024,
-                    "heightPx": 4032,
-                    "authorAttributions": [
+                    "day": 2,
+                    "day_text": "Tuesday",
+                    "popular_times": [
                         {
-                            "displayName": "Mandy Stewart",
-                            "uri": "https://maps.google.com/maps/contrib/108160755399553822992",
-                            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXXyF6zdjhjfPf2Z57DhK8kCdafBoKlABr-VSAgtSvPy_pCzdrT=s100-p-k-no-mo"
+                            "hour": 6,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 7,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 8,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 9,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 10,
+                            "percentage": 30,
+                            "title": "Usually not too busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 11,
+                            "percentage": 23,
+                            "title": "Usually not too busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 12,
+                            "percentage": 26,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 13,
+                            "percentage": 19,
+                            "title": "Usually not busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 14,
+                            "percentage": 15,
+                            "title": "Usually not busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 15,
+                            "percentage": 19,
+                            "title": "Usually not busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 16,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 17,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 18,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 19,
+                            "percentage": 42,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 20,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 21,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 22,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 23,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
                         }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhBbXKdD4e9EiV4l28q6N7rb&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhBbXKdD4e9EiV4l28q6N7rb!2e10!4m2!3m1!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f"
+                    ]
                 },
                 {
-                    "name": "places/ChIJLc2g5LezVogRb1hH-yzwGcE/photos/AWCwydgBnqSYRDWfIPGTOkUFraob8HF1qYqbZn8vV9EJaLJMO5eSHaG0yyUq1DietFuz3V3Ycef7MFdaxnECBe8HKXVyZehRTUgRs7HNTA7WPULcV8PKH-xnr2BP4G1pO-a_gkbF4o8lvw94olKuUzR7AXqafOfA3jBnoecpCs1KTzqNiUpG_IwDakz7wIkH6myab2vZ965FKVs0HIqA7YBu9OpBi5_pGWxUPgY_eVGr9RLGeO-Sl2BM-ZQRQStF5QeB8bJyr2CUEcTBUslSjTWLy5UWoQIwoi6F1vGb2Us30rbk-Ya47Qc3IbAtt7CdHsslVWtv-LKL8_4UAshsp7T0_77NnXlcnGJkNodafmcqbvvIhOghvMeWOZcf0816HjRxVz1Eq9iyItwLv3fY1FAx6R2sqcQXIyKINrnqIUSviXYeEwxw1xeg1gpEnqgLEied",
-                    "widthPx": 3024,
-                    "heightPx": 4032,
-                    "authorAttributions": [
+                    "day": 3,
+                    "day_text": "Wednesday",
+                    "popular_times": [
                         {
-                            "displayName": "Mandy Stewart",
-                            "uri": "https://maps.google.com/maps/contrib/108160755399553822992",
-                            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXXyF6zdjhjfPf2Z57DhK8kCdafBoKlABr-VSAgtSvPy_pCzdrT=s100-p-k-no-mo"
+                            "hour": 6,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 7,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 8,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 9,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 10,
+                            "percentage": 42,
+                            "title": "Usually not too busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 11,
+                            "percentage": 30,
+                            "title": "Usually not too busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 12,
+                            "percentage": 23,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 13,
+                            "percentage": 26,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 14,
+                            "percentage": 26,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 15,
+                            "percentage": 26,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 16,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 17,
+                            "percentage": 38,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 18,
+                            "percentage": 42,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 19,
+                            "percentage": 38,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 20,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 21,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 22,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 23,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
                         }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhDRJNEj59IKdzCXHp2O5vss&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhDRJNEj59IKdzCXHp2O5vss!2e10!4m2!3m1!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f"
+                    ]
                 },
                 {
-                    "name": "places/ChIJLc2g5LezVogRb1hH-yzwGcE/photos/AWCwydhmj32-5sIRcMBrb_N_QN5vuHmxRJAK1nVa6MJHs0HRKcPpVEvK_lD4itVRKDHA71h7D53UVuJ8-VSx7ANhHI5O2fHyUJLgahf6oVYUPkY4RaJLawER7aKanCUBJOdNsrh1q6W0Tbi9SGdUpL_T4tOUKcPnBWclovsYiMUEWjivevuNWcZ95G1wweNhVv0ntfM8QMDfmlC65B9CGwyXbhvSqgPkYzqk9VtCkxlIKKzphIETL1H7pAUw4QfulCzjeFdYkXff4N_uEAluSIYOyVxI0jHegiWS18caxAxSoDFY-0dJuYaF9UB0uqY2kCxUYhgoTJZ2_YWASWO3SieRACMc06U88hp00t0jTYBWsBUdaKPXFPZ1bBbkEQghHDoHiWYb9ecmECoBzqvRxWYEEkIQb76CakocDWvE54r__Gr4J2YBOm_HQTbom6mqh6YC",
-                    "widthPx": 3024,
-                    "heightPx": 4032,
-                    "authorAttributions": [
+                    "day": 4,
+                    "day_text": "Thursday",
+                    "popular_times": [
                         {
-                            "displayName": "Alexis Brethauer",
-                            "uri": "https://maps.google.com/maps/contrib/112375003442014936193",
-                            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVGBaBuDD1tzGVFkBKaAo610QyQyzPfWkyvPzRDGYxfMpFiK-zr=s100-p-k-no-mo"
+                            "hour": 6,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 7,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 8,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 9,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 10,
+                            "percentage": 53,
+                            "title": "Usually a little busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 11,
+                            "percentage": 38,
+                            "title": "Usually not too busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 12,
+                            "percentage": 42,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 13,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 14,
+                            "percentage": 42,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 15,
+                            "percentage": 50,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 16,
+                            "percentage": 50,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 17,
+                            "percentage": 42,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 18,
+                            "percentage": 57,
+                            "title": "Usually a little busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 19,
+                            "percentage": 61,
+                            "title": "Usually a little busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 20,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 21,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 22,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 23,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
                         }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhB1vDm-vVQ05c4oDChvJP1W&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhB1vDm-vVQ05c4oDChvJP1W!2e10!4m2!3m1!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f"
+                    ]
                 },
                 {
-                    "name": "places/ChIJLc2g5LezVogRb1hH-yzwGcE/photos/AWCwydhG8yS8aN2LBQJnpjSK2ixltD_nBxuhP3mF743bn4BzMVQxO8azAr3YpjBFshQHAgAXMyoDp_fmFLPx8_Kg1yED9eBd0y2cYPVQx1ag9DQNAMJ259hRCajdUZTa9kFjumy81j95AejW2RnwYs7AUvI_-mjGeLbqtKyhQ3Oew4vyVGJ8B7bI-h2QThtQBXuxBxJ1lZ34aFR8Rb13Q1Wd-xupkPjUwRuJhjizb2YYJczyOdhQsT7fQg8kqpW-42GGEOfITzKYidcioXnWWqJK1_asIlaGt7qfX4RNxaM9YZ97n-zCtIR-660yM99GP9WO6iSj7ATNwJsDq4i4eI_88-QBKAS9TIaf5ercqe7MwWO-HI0lOeEgXS38dOCaH47zBtTIfB922RZ0HdR8YNUz-y03vZ6Bg7gQs3sX7kMJLo2UkmXWfF_U0XT6Qa95TFS_",
-                    "widthPx": 3600,
-                    "heightPx": 4800,
-                    "authorAttributions": [
+                    "day": 5,
+                    "day_text": "Friday",
+                    "popular_times": [
                         {
-                            "displayName": "Mandy Stewart",
-                            "uri": "https://maps.google.com/maps/contrib/108160755399553822992",
-                            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXXyF6zdjhjfPf2Z57DhK8kCdafBoKlABr-VSAgtSvPy_pCzdrT=s100-p-k-no-mo"
+                            "hour": 6,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 7,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 8,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 9,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 10,
+                            "percentage": 50,
+                            "title": "Usually not too busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 11,
+                            "percentage": 30,
+                            "title": "Usually not too busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 12,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 13,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 14,
+                            "percentage": 30,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 15,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 16,
+                            "percentage": 42,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 17,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 18,
+                            "percentage": 38,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 19,
+                            "percentage": 46,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 20,
+                            "percentage": 61,
+                            "title": "Usually a little busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 21,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 22,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 23,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
                         }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhCaNZqPrYsV50b9bXUupxBq&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhCaNZqPrYsV50b9bXUupxBq!2e10!4m2!3m1!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f"
+                    ]
                 },
                 {
-                    "name": "places/ChIJLc2g5LezVogRb1hH-yzwGcE/photos/AWCwydiKf_sz2V5lBDHyELU03LcuH4j2M3gdVt6gq_3yfK3xELMdbnIOKzQ-fc9oc6Qd-8qSJBL-R5IOIeFCYkc_3aj5o8Yqi45FRaCFAbHl_C42t0A7uyp4whFqsiX0epNF4f7j67OdHyHFiHGR61jUXMBonD4xngDc6v90UAwUzMhvY0EPCCT5yPVOSAGs60aDw8dzlSri4YHa1p85EXxyzLJkKH8yjtS5f4x0eWZxyqbAT9ca5z8T5DV0_TbKezqk2z8n2dJSExZJp2Aezx9X9KAFE43nKHazIRBHvAiP5NyUqrnQQdP-3Z23zY2jQJVTbuOk4do8_46SSFySkMXbsxx3R0CFbkm48bm-vhjL46RgJd2rYw6k8e07ia4AZBoy4ByxaxItitPHuAuAdiAkGOc6M-z5o9m6T2Ru8802pbozd-4MQS_9CMpHO4-RKc05",
-                    "widthPx": 3024,
-                    "heightPx": 4032,
-                    "authorAttributions": [
+                    "day": 6,
+                    "day_text": "Saturday",
+                    "popular_times": [
                         {
-                            "displayName": "Abbey Marzo",
-                            "uri": "https://maps.google.com/maps/contrib/111161397588838425790",
-                            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVjDWrlp1aazoWcgAQaJBh5_eUQzw51sh8UScMqbIIntH6t3Hcw=s100-p-k-no-mo"
+                            "hour": 6,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 7,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 8,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "6a"
+                        },
+                        {
+                            "hour": 9,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 10,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 11,
+                            "percentage": 26,
+                            "title": "Usually not too busy",
+                            "time": "9a"
+                        },
+                        {
+                            "hour": 12,
+                            "percentage": 34,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 13,
+                            "percentage": 50,
+                            "title": "Usually not too busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 14,
+                            "percentage": 76,
+                            "title": "Usually a little busy",
+                            "time": "12p"
+                        },
+                        {
+                            "hour": 15,
+                            "percentage": 100,
+                            "title": "Usually as busy as it gets",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 16,
+                            "percentage": 92,
+                            "title": "Usually as busy as it gets",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 17,
+                            "percentage": 73,
+                            "title": "Usually a little busy",
+                            "time": "3p"
+                        },
+                        {
+                            "hour": 18,
+                            "percentage": 50,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 19,
+                            "percentage": 30,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 20,
+                            "percentage": 23,
+                            "title": "Usually not too busy",
+                            "time": "6p"
+                        },
+                        {
+                            "hour": 21,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 22,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
+                        },
+                        {
+                            "hour": 23,
+                            "percentage": 0,
+                            "title": "",
+                            "time": "9p"
                         }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhAfWaHy9yK9WBtADTrbmyDC&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhAfWaHy9yK9WBtADTrbmyDC!2e10!4m2!3m1!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f"
+                    ]
                 },
                 {
-                    "name": "places/ChIJLc2g5LezVogRb1hH-yzwGcE/photos/AWCwydhhbFDoCfpv_zJV39MrwaFlUKw1pJysjZ5uRN8ZnaQ61RK0vL5No7Sye7gg7yeNOPAI7awI9RfXehE4zrzbLbPemLIMATmRGNUoals1XnF06nz33Fgned4DRPptpzSrGA8Ti_8yOrzSv5tre08aE4Q_RcGQgnBHqYCvz1KWcr0tPviX6TSB1OkFJLVaOYEKOjwlp7G-dAagKqIwTxn6FzWKIKCLZAJyIR7Iyb-0abYrME06XbRyIueeWvZte17XiCEVUCdgq1DNFe10CcdOh0qKOPQ0uI5tJmaBfUHOQthUPPxLFpGce31SvPWD27gbmD9vTxqbut21kxaAii8svF_ilP5rNocFBzIE1CTCCllTh441AL1YGYiKxlyG0dxo1_YJgBk7DsiQIXVopuVYUL2OG2YgjyrQVNbCW6Pte2SrTkftGK0LmMrEm9Xotw",
-                    "widthPx": 3024,
-                    "heightPx": 4032,
-                    "authorAttributions": [
-                        {
-                            "displayName": "Holly Reiter",
-                            "uri": "https://maps.google.com/maps/contrib/108617683391100781787",
-                            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWuUn2QzJFobJ9rnN_D7aVdb7wYQe-olYnu9HR4Zr0Kp6gXt1e_=s100-p-k-no-mo"
-                        }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhCOr3uO9lRXxdga9U3GZZaP&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhCOr3uO9lRXxdga9U3GZZaP!2e10!4m2!3m1!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f"
-                },
-                {
-                    "name": "places/ChIJLc2g5LezVogRb1hH-yzwGcE/photos/AWCwydhw-jf3qwATM1qszC_7-Y3_1b_Ion8v5xAsJABLdFskJt2RIQCqqWLhLIwW-qtam8b0U1K4b9hww9GPxveERvM8JDoAbpulXsRQ170VMu-uppU06wTbMJPqch8Esuvs1dPqkheAD2LlWZLO6NWQWA_qtxms95CuqErG_I4tnbbJykJsE4E7Lnvy561ZJX9lhPZEYzVmAaK_QQJ2bURbr86FDvYtvbVHIQI5HipLsb7Ypti2XNzcQHgfuT2bODvgiHzIiT-7eTq9-xJgYG12TTp37bmK3ziDDU3pIJ4Tt8TCiwvt8izxz5l0gdlxgNC-JE4puGrTrgxGb510cw-mk0jOKMyDDrz-vchgwlKOXQ4dicpxCU60FTDmLGaaNVBtlw-rw_asvuvWwm8-uwBsXxirbWaZ4K4JV6yNNB6Ke-3S5Q1H1E84_xcYBqzBtlNN",
-                    "widthPx": 2252,
-                    "heightPx": 4000,
-                    "authorAttributions": [
-                        {
-                            "displayName": "Caitlyn Harrison",
-                            "uri": "https://maps.google.com/maps/contrib/104654738459649234349",
-                            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocJkB-xjdw6tNCCK99r1IXOswaQ-a96goFBGnp-MWLX6CUm1HA=s100-p-k-no-mo"
-                        }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhBVsZLzW0fKT_LtOGt9aFHO&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhBVsZLzW0fKT_LtOGt9aFHO!2e10!4m2!3m1!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f"
-                },
-                {
-                    "name": "places/ChIJLc2g5LezVogRb1hH-yzwGcE/photos/AWCwydgbGZfuRopBKrtxYQP7Xpr7nsaf-Lzg7t_TQyVu58G5_-mYnBUgaaH_QmaDZypyaiZi2yKPJRBsi6hj-O7Ew0ls1BsGycYhGo21E8DdCjTT9YNqGnWKmMMQOm7152zmB-A5n8PRvbhNUuolOCs_dGiOup9LoN7SksNdwGx8zWnJuycgdDR6IEVEN6e8qCgQ7kIyOVmQeJClONVgdo3NJIsb315m7KNYGdEYNUGYbzRYBWwiCMm2m8FIEI3pzWNWmUPH8E1EZKeVboMaegl1thwE_09j0KTFlK0FPycuAK1DQcMqX3b5GgHVSvzQ48yfbAmwG6xUtGZnXNq5pPVgoUUTj083YQNfiVgnzndnm6ybMDk7kQT6pCxoEHXdMVBZNzKvdzqtHUQ7Eev-HpgSaZ1FeGLSXZmLYHMqdNwb8mOAZN-RxrUvSwMNrmGbSdYP",
-                    "widthPx": 3600,
-                    "heightPx": 4800,
-                    "authorAttributions": [
-                        {
-                            "displayName": "Mandy Stewart",
-                            "uri": "https://maps.google.com/maps/contrib/108160755399553822992",
-                            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXXyF6zdjhjfPf2Z57DhK8kCdafBoKlABr-VSAgtSvPy_pCzdrT=s100-p-k-no-mo"
-                        }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhBLopy0WrZxmgdw4KSyv3uI&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhBLopy0WrZxmgdw4KSyv3uI!2e10!4m2!3m1!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f"
+                    "day": "live",
+                    "percentage": 31,
+                    "title": "Not too busy",
+                    "time": 19
                 }
             ],
+            "website": "https://www.fredandjunesbooks.com/",
+            "phone": "+1 833-761-2543",
+            "type": "Book store",
+            "logo": "https://lh5.googleusercontent.com/-Hx5Sh02NbWw/AAAAAAAAAAI/AAAAAAAAAAA/pUVx3GKQQEg/s44-p-k-no-ns-nd/photo.jpg",
+            "description": null,
+            "typical_time_spent": null,
+            "located_in": null,
+            "located_google_id": null,
+            "category": "Book store",
+            "subtypes": "Book store",
+            "posts": null,
+            "reviews_tags": [
+                "kids zone",
+                "indie bookstore",
+                "record selection",
+                "cute bookstore",
+                "book clubs",
+                "gifts",
+                "thriller",
+                "friendly staff",
+                "local bookstore",
+                "layout"
+            ],
+            "rating": 5,
+            "reviews": 40,
+            "photos_count": 16,
+            "cid": "13914416599722842223",
+            "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJLc2g5LezVogRb1hH-yzwGcE&q=*&authuser=0&hl=en&gl=US",
+            "reviews_id": "-4532327473986709393",
+            "photo": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnrsO9rKvbPp06fnmwP9n3BBGWTQfBuaMG2mLSfme1qPIEnQJhXFfNZJFUww0kaeDRZ0v-9_l88eEs-CumzrccXplqBjjRJdSpCWQE2Hbreb5vuqQQNeTZw_8H3j3oEQm0EeJdESHhXjAIP=w800-h500-k-no",
+            "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=XMjp7Qi8ocLvrz66W3Gc8g&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=2.503706&pitch=0&thumbfov=100",
+            "working_hours": {
+                "Monday": [
+                    "10AM-8PM"
+                ],
+                "Tuesday": [
+                    "10AM-8PM"
+                ],
+                "Wednesday": [
+                    "10AM-8PM"
+                ],
+                "Thursday": [
+                    "10AM-8PM"
+                ],
+                "Friday": [
+                    "10AM-9PM"
+                ],
+                "Saturday": [
+                    "10AM-9PM"
+                ],
+                "Sunday": [
+                    "10AM-8PM"
+                ]
+            },
+            "working_hours_csv_compatible": "Sunday,10AM,8PM|Monday,10AM,8PM|Tuesday,10AM,8PM|Wednesday,10AM,8PM|Thursday,10AM,8PM|Friday,10AM,9PM|Saturday,10AM,9PM",
+            "other_hours": null,
+            "business_status": "OPERATIONAL",
+            "about": {
+                "Service options": {
+                    "Onsite services": true,
+                    "Delivery": false
+                },
+                "Accessibility": {
+                    "Wheelchair accessible entrance": true,
+                    "Wheelchair accessible parking lot": true
+                },
+                "Planning": {
+                    "Quick visit": true
+                },
+                "Payments": {
+                    "Credit cards": true,
+                    "Debit cards": true,
+                    "NFC mobile payments": true
+                }
+            },
+            "range": null,
+            "prices": null,
+            "reviews_per_score": null,
+            "reservation_links": null,
+            "booking_appointment_link": null,
+            "menu_link": null,
+            "order_links": null,
+            "owner_id": "101692096320814606958",
+            "verified": true,
+            "owner_title": "Fred & June's Books - Denver",
+            "owner_link": "https://www.google.com/maps/contrib/101692096320814606958",
+            "location_link": "https://www.google.com/maps/place/Fred+%26+June%27s+Books+-+Denver/@35.53188,-81.02913,14z/data=!4m8!1m2!2m1!1sFred+%26+June%27s+Books+-+Denver!3m4!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f!8m2!3d35.53188!4d-81.02913",
+            "location_reviews_link": "https://www.google.com/maps/place/Fred+%26+June%27s+Books+-+Denver/@35.53188,-81.02913,13.99z/data=!4m16!1m7!3m6!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f!2sFred+%26+June%27s+Books+-+Denver!8m2!3d35.53188!4d-81.02913!16s%2Fg%2F11ckvg1dmb!3m7!1s0x8856b3b7e4a0cd2d:0xc119f02cfb47586f!8m2!3d35.53188!4d-81.02913!9m1!1b1!16s%2Fg%2F11ckvg1dmb?entry=ttu",
             "photos_data": [
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjD1quP09am-idh0TyZ4bWKKiySoE5QOjLFdUEI6S31F5QVjzoLsJi769EnBoILD0AKkcU-Hb9BWKxOKYk-0xVhGoXwHfPw7MXMN58G34vDUWIc3hL4vrOTJc_2HFNqLmypDCf8BpQEE5zJ7efMGX_yMHg=s4800-w3600-h4800",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhBoonpkEwUDBmhYs317XwZq",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnrsO9rKvbPp06fnmwP9n3BBGWTQfBuaMG2mLSfme1qPIEnQJhXFfNZJFUww0kaeDRZ0v-9_l88eEs-CumzrccXplqBjjRJdSpCWQE2Hbreb5vuqQQNeTZw_8H3j3oEQm0EeJdESHhXjAIP",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnrsO9rKvbPp06fnmwP9n3BBGWTQfBuaMG2mLSfme1qPIEnQJhXFfNZJFUww0kaeDRZ0v-9_l88eEs-CumzrccXplqBjjRJdSpCWQE2Hbreb5vuqQQNeTZw_8H3j3oEQm0EeJdESHhXjAIP=w2048-h2048-k-no",
+                    "latitude": 35.53178,
+                    "longitude": -81.0291142,
+                    "photo_date": "9/29/2025 2:00:00",
+                    "photo_upload_source": "gmm_ios_photo_post",
+                    "photo_source_video": null,
+                    "photo_tags": null,
+                    "photo_tag_ids": null,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnrsO9rKvbPp06fnmwP9n3BBGWTQfBuaMG2mLSfme1qPIEnQJhXFfNZJFUww0kaeDRZ0v-9_l88eEs-CumzrccXplqBjjRJdSpCWQE2Hbreb5vuqQQNeTZw_8H3j3oEQm0EeJdESHhXjAIP=w203-h270-k-no"
                 },
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjDHXpwluSeYn7vZ7ijty6-ZxBV-3POcC9ulcOpx4_hMIr956am9TJnRYQipJ41QMD1X7JuCobPTeesRC8GEUtZNWLoz9LPOdy3C_IzSthiseBj5dwO90ctzJaovV6VcmRE1nOi4bQLjqq1kVaWtFl71kA=s4800-w3024-h4032",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhC1DfdB237bnoJmMO2891xV",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnvd__lBZHpjptjh_V4lamUJMBF19Y4p5EcPeN0Wb17fdofxVjBBQ4zk5H1UPhcjRrsIobSvBPNxPLOu20M1zds9w4i0xtZlfGWIHK0nJtqKjNVDmMAOC4oTwd6IHWnf0n5PZT3YsTfYLA2",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnvd__lBZHpjptjh_V4lamUJMBF19Y4p5EcPeN0Wb17fdofxVjBBQ4zk5H1UPhcjRrsIobSvBPNxPLOu20M1zds9w4i0xtZlfGWIHK0nJtqKjNVDmMAOC4oTwd6IHWnf0n5PZT3YsTfYLA2=w2048-h2048-k-no",
+                    "latitude": 35.53178,
+                    "longitude": -81.0291142,
+                    "photo_date": "9/29/2025 2:00:00",
+                    "photo_upload_source": "gmm_ios_photo_post",
+                    "photo_source_video": null,
+                    "photo_tags": null,
+                    "photo_tag_ids": null,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnvd__lBZHpjptjh_V4lamUJMBF19Y4p5EcPeN0Wb17fdofxVjBBQ4zk5H1UPhcjRrsIobSvBPNxPLOu20M1zds9w4i0xtZlfGWIHK0nJtqKjNVDmMAOC4oTwd6IHWnf0n5PZT3YsTfYLA2=w203-h270-k-no"
                 },
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjCnKMVGxfifkVxDRGMxUeyBBHU_G5TeNZ73VOT0GLGbjcRFFmE-OnPc1mQmf6PuAFiAPJndrSfzHgTCUoposO7vnRieTU6p_ZuiHoNtnR4ebWFrpDziJKocdqVs8XoFrBMqnf-A9GMUm775fdT1UPYmOg=s4800-w3024-h4032",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhBbXKdD4e9EiV4l28q6N7rb",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlr-9P_YncjaSD5Bb_s3kgGgP3DoNxJr66FZg-E9JiaF560ikiiARqT0T3noAhdLIe1HidHgzWBlKh2PKAWmPZ9JNmvFtEFg4GGiJQdnzfS3B2z5FBoBHJkvfSfCF0K4uiakCn2csbee5_6",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlr-9P_YncjaSD5Bb_s3kgGgP3DoNxJr66FZg-E9JiaF560ikiiARqT0T3noAhdLIe1HidHgzWBlKh2PKAWmPZ9JNmvFtEFg4GGiJQdnzfS3B2z5FBoBHJkvfSfCF0K4uiakCn2csbee5_6=w2048-h2048-k-no",
+                    "latitude": 35.53178,
+                    "longitude": -81.0291142,
+                    "photo_date": "9/29/2025 2:00:00",
+                    "photo_upload_source": "gmm_ios_review_post",
+                    "photo_source_video": null,
+                    "photo_tags": null,
+                    "photo_tag_ids": null,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlr-9P_YncjaSD5Bb_s3kgGgP3DoNxJr66FZg-E9JiaF560ikiiARqT0T3noAhdLIe1HidHgzWBlKh2PKAWmPZ9JNmvFtEFg4GGiJQdnzfS3B2z5FBoBHJkvfSfCF0K4uiakCn2csbee5_6=w203-h270-k-no"
                 },
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjCdDs1AJWd7oglr3w2RQ9J6sIgSVFHJ_K1Fp1h9XBz3AgXyNrN5UBWKcXkCNLwlC5Au6soraCb38ge1KHJ1v5Lngnk7L7V5CgVduU92JpdV1CsNje3MX4y28dHryrmOZw_p6BK-zQ0btpwIZF0SZyc4Nw=s4800-w3024-h4032",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhBLopy0WrZxmgdw4KSyv3uI",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmFIgALQx2XbW6X9EUk1Re8wzBU8gvROP8jlB1zaxdNUmmcwAiRjjus4SDCMmPZ5qsgOmqwL7EKFt1YaAY5-XwZM13B3DHNE9pugiFPP1izVbkQl0XgcNhfL2Wx1eXcgXEGnVSBjKWXX-2R",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmFIgALQx2XbW6X9EUk1Re8wzBU8gvROP8jlB1zaxdNUmmcwAiRjjus4SDCMmPZ5qsgOmqwL7EKFt1YaAY5-XwZM13B3DHNE9pugiFPP1izVbkQl0XgcNhfL2Wx1eXcgXEGnVSBjKWXX-2R=w2048-h2048-k-no",
+                    "latitude": 35.53178,
+                    "longitude": -81.0291142,
+                    "photo_date": "9/29/2025 2:00:00",
+                    "photo_upload_source": "gmm_ios_photo_post",
+                    "photo_source_video": null,
+                    "photo_tags": null,
+                    "photo_tag_ids": null,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmFIgALQx2XbW6X9EUk1Re8wzBU8gvROP8jlB1zaxdNUmmcwAiRjjus4SDCMmPZ5qsgOmqwL7EKFt1YaAY5-XwZM13B3DHNE9pugiFPP1izVbkQl0XgcNhfL2Wx1eXcgXEGnVSBjKWXX-2R=w203-h270-k-no"
                 },
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjDbZjKshtgcD61IvR3NiGJhGovju93MlrY1UrNxklXU_4RryIf_3UHClvmz1AfuPDSXwehN8_brO2jt8FHxU7B549b66spGTlz4lvRKCUb_Y5Qk4lUXIMlL2_AfzQtgK5nOB_ucHQmTycMn_IJBGaGEcg=s4800-w3024-h4032",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhCaNZqPrYsV50b9bXUupxBq",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlhObBg6YWzm4xDiwzlOrUq9Wj33419-RVlHhxyIxhMOOF8vcqtdoSQiHh3zpzZunWSitxFpOdc5mVLSbiRsnUNMjXw5jsAIkWKM9ruJcmnZ8sdJMCb0bFn7cmYmkR2W8waz_8exlitCTqs",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlhObBg6YWzm4xDiwzlOrUq9Wj33419-RVlHhxyIxhMOOF8vcqtdoSQiHh3zpzZunWSitxFpOdc5mVLSbiRsnUNMjXw5jsAIkWKM9ruJcmnZ8sdJMCb0bFn7cmYmkR2W8waz_8exlitCTqs=w2048-h2048-k-no",
+                    "latitude": 35.53178,
+                    "longitude": -81.0291142,
+                    "photo_date": "9/29/2025 2:00:00",
+                    "photo_upload_source": "gmm_ios_photo_post",
+                    "photo_source_video": null,
+                    "photo_tags": null,
+                    "photo_tag_ids": null,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlhObBg6YWzm4xDiwzlOrUq9Wj33419-RVlHhxyIxhMOOF8vcqtdoSQiHh3zpzZunWSitxFpOdc5mVLSbiRsnUNMjXw5jsAIkWKM9ruJcmnZ8sdJMCb0bFn7cmYmkR2W8waz_8exlitCTqs=w203-h270-k-no"
                 },
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjCmuNFBdnqXNi7afElN4zw9m1UZcQkRD4vGbwInbYwyfRGRac5XBO4UKOCkd-be0U7M1K0wOweT2BClWXk8_xrlPm-uKndEiVWSPPc7p2VF4tQNXliLdCxZcVzLPK3Q9dxVfBSGT73VOozMLBsfLeNjew=s4800-w3600-h4800",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhAelhoRWf3iCxWL_mWGWFRb",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkA1stO0B0z6UPGDKlcjcGjr5TpGiXosluE-tMFAEp3WzJFb8-TraYtksVfTYxpPM0bPj96dGWmFWJkdq9IrLFy7uZs56I0P0jNB4G2oyDXC9WTtECi_knnPw4Vv554AWNJ4FBnV5j3btsZ",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkA1stO0B0z6UPGDKlcjcGjr5TpGiXosluE-tMFAEp3WzJFb8-TraYtksVfTYxpPM0bPj96dGWmFWJkdq9IrLFy7uZs56I0P0jNB4G2oyDXC9WTtECi_knnPw4Vv554AWNJ4FBnV5j3btsZ=w2048-h2048-k-no",
+                    "latitude": 35.53178,
+                    "longitude": -81.0291142,
+                    "photo_date": "6/16/2026 18:00:00",
+                    "photo_upload_source": "local_universal_mobile_review_post",
+                    "photo_source_video": null,
+                    "photo_tags": null,
+                    "photo_tag_ids": null,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkA1stO0B0z6UPGDKlcjcGjr5TpGiXosluE-tMFAEp3WzJFb8-TraYtksVfTYxpPM0bPj96dGWmFWJkdq9IrLFy7uZs56I0P0jNB4G2oyDXC9WTtECi_knnPw4Vv554AWNJ4FBnV5j3btsZ=w203-h270-k-no"
                 },
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjDL2kagsR8qm9lz6hvvjq0I6wQbzMLZq_5Jel0lkY-DcUxx9-WyxtfuziVtF1Frv8KLfx5aPzRH35IvWl-EVZg_Y3lFssJtsa9R-PaM4OV-WCKCyYEo_BS3ZAsvFnDDTrf4EJlz4sXwlZfLDp7_wyuK7g=s4800-w3024-h4032",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhAM_4i9y-XSzFFLl_DxGTQZ",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlX9bARj_hfkqj3TJmzwiURMdSf15NfY686LRdO1oLgQLN9t4_UILPEJypcM21KRtL4ubJsbb6ftw5ZPioOOvdKFuF2QpgmixBRYVtMP579VbSnIu4ZTsaWo0f40R19jRK3pHSscEjfwQxo",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlX9bARj_hfkqj3TJmzwiURMdSf15NfY686LRdO1oLgQLN9t4_UILPEJypcM21KRtL4ubJsbb6ftw5ZPioOOvdKFuF2QpgmixBRYVtMP579VbSnIu4ZTsaWo0f40R19jRK3pHSscEjfwQxo=w2048-h2048-k-no",
+                    "latitude": 35.53178,
+                    "longitude": -81.0291142,
+                    "photo_date": "9/29/2025 2:00:00",
+                    "photo_upload_source": "gmm_ios_photo_post",
+                    "photo_source_video": null,
+                    "photo_tags": null,
+                    "photo_tag_ids": null,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlX9bARj_hfkqj3TJmzwiURMdSf15NfY686LRdO1oLgQLN9t4_UILPEJypcM21KRtL4ubJsbb6ftw5ZPioOOvdKFuF2QpgmixBRYVtMP579VbSnIu4ZTsaWo0f40R19jRK3pHSscEjfwQxo=w203-h270-k-no"
                 },
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjBRZ3JuaCD8wAF2Jz-0n0-JIAJzXEDQkm0mAbUZcN2BpxbZDi2kJa-ao5kQ0cv1VSEIjVOq80HBG6_QzC2ee3DZxPN0YZee9ukDDT1ZUzH-keAOGGXJ3m-Fb_jcjpI1o4HWxjZtGg05zoll1QsB_PPU=s4800-w3024-h4032",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhCFq9sW4GdLJWYK9gRtPrYo",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl87nOQrLd1L7oCJqVC3E40yrajRh5cD5yYFoON_GeLDx6FQatf_ig1lYc3Sl-h5tQhaVp1u8ChQJhe3B6Wy2irRFLNqGFbSE70jmIXfTB2YcJIvjpdeKdlxPDFlLB2uE8OR_yR7GntHtvl",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl87nOQrLd1L7oCJqVC3E40yrajRh5cD5yYFoON_GeLDx6FQatf_ig1lYc3Sl-h5tQhaVp1u8ChQJhe3B6Wy2irRFLNqGFbSE70jmIXfTB2YcJIvjpdeKdlxPDFlLB2uE8OR_yR7GntHtvl=w2048-h2048-k-no",
+                    "latitude": 35.53178,
+                    "longitude": -81.0291142,
+                    "photo_date": "6/16/2026 18:00:00",
+                    "photo_upload_source": "local_universal_mobile_review_post",
+                    "photo_source_video": null,
+                    "photo_tags": null,
+                    "photo_tag_ids": null,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl87nOQrLd1L7oCJqVC3E40yrajRh5cD5yYFoON_GeLDx6FQatf_ig1lYc3Sl-h5tQhaVp1u8ChQJhe3B6Wy2irRFLNqGFbSE70jmIXfTB2YcJIvjpdeKdlxPDFlLB2uE8OR_yR7GntHtvl=w203-h270-k-no"
                 },
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjBbe-G9aaT6RdwQMKUle_D3Yua9OwnaeHV76lY7oBNIKFswkiPoIiZhCqF6tE_DaxyMtTJF2AAGTD9CvLSWZCOUcZqhqHopqWBI_2DoadNV7caDzrrmlCe3r-8AgTyexIwbRU9wfEBE4V6gE8wbcBDYDw=s4800-w2252-h4000",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhAREfP5YOkHzZYso1p0vnbA",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlE-tcWLI9G5Jo5b1YpVqMk6Z8e2NKsXKAurUJFURGBL8xO5T4zFHrWvJSeqf9XUBk5dBmoD4RpmBdd8c5dg5uMS1M5nN-qJkA8t-HbWBFCIcG8niDigFJyFviLRoV0J3lQSV2C7UaMzcaq",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlE-tcWLI9G5Jo5b1YpVqMk6Z8e2NKsXKAurUJFURGBL8xO5T4zFHrWvJSeqf9XUBk5dBmoD4RpmBdd8c5dg5uMS1M5nN-qJkA8t-HbWBFCIcG8niDigFJyFviLRoV0J3lQSV2C7UaMzcaq=w2048-h2048-k-no",
+                    "latitude": 35.53178,
+                    "longitude": -81.0291142,
+                    "photo_date": "9/29/2025 2:00:00",
+                    "photo_upload_source": "gmm_ios_photo_post",
+                    "photo_source_video": null,
+                    "photo_tags": [
+                        "all"
+                    ],
+                    "photo_tag_ids": [
+                        1
+                    ],
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlE-tcWLI9G5Jo5b1YpVqMk6Z8e2NKsXKAurUJFURGBL8xO5T4zFHrWvJSeqf9XUBk5dBmoD4RpmBdd8c5dg5uMS1M5nN-qJkA8t-HbWBFCIcG8niDigFJyFviLRoV0J3lQSV2C7UaMzcaq=w203-h270-k-no"
                 },
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjBmHsDEUCtnqtVZv0qe9gA8axNpjzS7xZ4_Emu7S7o2dAcaCybxllvmyN2-Lcg8E6NxaqypUVkmIRJuDwPA7P5fmK5p9PlHIyoyr9qyJ5vbKqR8D3YEcwQljaw-gavdE0w4OyoRU9MnAI0ABZTD5T58pA=s4800-w3600-h4800",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhDRJNEj59IKdzCXHp2O5vss",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk5c23dP4fT8_znDozDSOiDzW5xIEdX8PLKrh3sNxR1nKO0j25QZsJXV2s3sI7hAQYg3oJ4Oze48pczdAjv0nbndOwlUaSogmdfPTzOhxlDWQQ1JA-PX83eBYHuzrP4zliKReQrnq0rYrJP",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk5c23dP4fT8_znDozDSOiDzW5xIEdX8PLKrh3sNxR1nKO0j25QZsJXV2s3sI7hAQYg3oJ4Oze48pczdAjv0nbndOwlUaSogmdfPTzOhxlDWQQ1JA-PX83eBYHuzrP4zliKReQrnq0rYrJP=w2048-h2048-k-no",
+                    "latitude": 35.53178,
+                    "longitude": -81.0291142,
+                    "photo_date": "9/29/2025 2:00:00",
+                    "photo_upload_source": "gmm_ios_photo_post",
+                    "photo_source_video": null,
+                    "photo_tags": null,
+                    "photo_tag_ids": null,
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk5c23dP4fT8_znDozDSOiDzW5xIEdX8PLKrh3sNxR1nKO0j25QZsJXV2s3sI7hAQYg3oJ4Oze48pczdAjv0nbndOwlUaSogmdfPTzOhxlDWQQ1JA-PX83eBYHuzrP4zliKReQrnq0rYrJP=w203-h270-k-no"
                 }
             ]
-        }
+        },
+        "provider_type": "outscraper",
+        "selection_source": "provider",
+        "selection_limit": 35,
+        "raw_photo_count": 10,
+        "selected_photo_count": 12,
+        "last_refreshed": "2026-08-16T23:08:35.583098"
     },
     "data_source": "GoogleMapsProvider",
     "last_updated": "2026-07-16T02:53:28.699496",
-    "photos_provider_type": "google"
+    "photos_provider_type": "outscraper"
 }
