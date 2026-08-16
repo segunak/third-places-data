@@ -1,8 +1,10 @@
+import base64
 import json
 from unittest import mock
+from requests.exceptions import ChunkedEncodingError
 
 from conftest import TEST_PLACE_ID, TEST_PLACE_NAME
-from services.utils import get_and_cache_place_data, sanitize_blob_metadata
+from services.utils import fetch_data_github, get_and_cache_place_data, sanitize_blob_metadata
 
 
 def test_sanitize_blob_metadata_returns_header_safe_ascii_values():
@@ -17,6 +19,54 @@ def test_sanitize_blob_metadata_returns_header_safe_ascii_values():
         "place_name": "Cafe Rose Charlotte",
         "m_1bad_key": "value with controls",
     }
+
+
+class BrokenGitHubResponse:
+    @property
+    def content(self):
+        raise ChunkedEncodingError("incomplete response body")
+
+
+def test_fetch_data_github_retries_incomplete_response(mock_env_vars, monkeypatch):
+    monkeypatch.setenv("GITHUB_PERSONAL_ACCESS_TOKEN", "test-github-token")
+    place_data = {"place_id": TEST_PLACE_ID}
+    encoded_content = base64.b64encode(json.dumps(place_data).encode()).decode()
+    complete_response = mock.MagicMock(status_code=200)
+    complete_response.content = b"complete"
+    complete_response.json.return_value = {
+        "type": "file",
+        "encoding": "base64",
+        "content": encoded_content,
+    }
+    session = mock.MagicMock()
+    session.get.side_effect = [BrokenGitHubResponse(), complete_response]
+
+    with mock.patch("services.utils.requests.Session", return_value=session):
+        with mock.patch("services.utils.time.sleep"):
+            success, result, message = fetch_data_github("data/places/charlotte/test.json")
+
+    assert success is True
+    assert result == place_data
+    assert message == "File fetched successfully"
+    assert session.get.call_count == 2
+
+
+def test_fetch_data_github_reports_exhausted_incomplete_response(mock_env_vars, monkeypatch):
+    monkeypatch.setenv("GITHUB_PERSONAL_ACCESS_TOKEN", "test-github-token")
+    session = mock.MagicMock()
+    session.get.return_value = BrokenGitHubResponse()
+
+    with mock.patch("services.utils.requests.Session", return_value=session):
+        with mock.patch("services.utils.time.sleep"):
+            success, result, message = fetch_data_github(
+                "data/places/charlotte/test.json",
+                max_retries=2,
+            )
+
+    assert success is False
+    assert result is None
+    assert "Network error while fetching from GitHub" in message
+    assert session.get.call_count == 3
 
 
 class TestGetAndCachePlaceDataPhotosProvider:

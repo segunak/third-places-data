@@ -6,6 +6,7 @@ import dotenv
 import base64
 import logging
 import requests
+import time
 import unicodedata
 from datetime import datetime
 from azure.storage.filedatalake import DataLakeServiceClient
@@ -400,13 +401,29 @@ def save_data_github(json_data: str, full_file_path: str, max_retries=3):
     return False, "Maximum retries exceeded while attempting to save file to GitHub"
 
 
-def fetch_data_github(full_file_path) -> Tuple[bool, Optional[Dict], str]:
+def fetch_data_github(full_file_path, max_retries=3) -> Tuple[bool, Optional[Dict], str]:
     from requests.adapters import HTTPAdapter
     from urllib3.util import Retry
     session = requests.Session()
     retry_strategy = Retry(total=3, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504], allowed_methods=["GET"])
     adapter = HTTPAdapter(max_retries=retry_strategy)
     session.mount("https://", adapter)
+
+    def get_complete_response(url, headers, timeout):
+        for attempt in range(max_retries + 1):
+            try:
+                response = session.get(url, headers=headers, timeout=timeout)
+                _ = response.content
+                return response
+            except requests.RequestException as exc:
+                if attempt >= max_retries:
+                    raise
+                logging.warning(
+                    f"GitHub response read failed for {full_file_path}: {exc}. "
+                    f"Retrying ({attempt + 1}/{max_retries})."
+                )
+                time.sleep(attempt + 1)
+
     try:
         github_token = os.environ['GITHUB_PERSONAL_ACCESS_TOKEN']
         headers = {"Authorization": f"token {github_token}", "Accept": "application/vnd.github.v3+json"}
@@ -414,7 +431,7 @@ def fetch_data_github(full_file_path) -> Tuple[bool, Optional[Dict], str]:
         branch = "master"
         url_get = f"https://api.github.com/repos/{repo_name}/contents/{full_file_path}?ref={branch}"
         logging.info(f"Fetching file from GitHub: {full_file_path}")
-        get_response = session.get(url_get, headers=headers, timeout=30)
+        get_response = get_complete_response(url_get, headers, 30)
         if get_response.status_code != 200:
             if get_response.status_code == 404:
                 return False, None, f"File {full_file_path} not found in repository"
@@ -425,7 +442,7 @@ def fetch_data_github(full_file_path) -> Tuple[bool, Optional[Dict], str]:
             return False, None, f"Path {full_file_path} does not point to a file"
         if content_info.get("encoding") == "none" or not content_info.get("content"):
             if "download_url" in content_info:
-                download_response = session.get(content_info["download_url"], headers=headers, timeout=60)
+                download_response = get_complete_response(content_info["download_url"], headers, 60)
                 if download_response.status_code == 200:
                     file_content = download_response.text
                 else:
