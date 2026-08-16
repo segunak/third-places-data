@@ -6,7 +6,7 @@ from datetime import datetime
 from constants import MAX_SELECTED_PHOTOS, PHOTO_REFRESH_BATCH_SIZE
 from services.airtable_service import AirtableService
 from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, is_curator_photo_azure_url, parse_photo_manifest_list, parse_url_list, remove_photo_manifest_fields
-from services.place_data_service import PlaceDataProviderFactory
+from services.place_data_service import PlaceDataProviderFactory, PlaceDataService
 from services.utils import fetch_data_github, save_data_github
 
 bp = df.Blueprint()
@@ -579,15 +579,6 @@ def refresh_single_place_photos(activityInput):
             place_result["message"] = "No Google Maps Place Id; photo refresh ignored."
             return place_result
 
-        try:
-            airtable_client = AirtableService(provider_type)
-            data_provider = PlaceDataProviderFactory.get_provider(provider_type)
-
-        except Exception as e:
-            place_result["status"] = "error"
-            place_result["message"] = f"Failed to initialize components: {str(e)}"
-            return place_result
-
         data_file_path = f"data/places/{city}/{place_id}.json"
         success, place_data, message = fetch_data_github(data_file_path)
 
@@ -621,7 +612,7 @@ def refresh_single_place_photos(activityInput):
         place_result["cached_photo_urls_before"] = len(current_photos)
 
         raw_data = photos_section.get('raw_data', {})
-        cache_selection = data_provider.select_photos_from_raw_data(raw_data)
+        cache_selection = PlaceDataService.select_photos_from_raw_data(raw_data)
         place_result["cached_raw_photo_count"] = cache_selection['raw_photo_count']
         place_result["cached_valid_photo_count"] = cache_selection['valid_photo_count']
         place_result["cached_selected_photo_count"] = len(cache_selection['photo_urls'])
@@ -668,8 +659,18 @@ def refresh_single_place_photos(activityInput):
                 place_result["message"] = "No selectable cached photos."
             return place_result
 
+        airtable_client = None
+        if write_airtable:
+            try:
+                airtable_client = AirtableService(provider_type, initialize_provider=False)
+            except Exception as e:
+                place_result["status"] = "error"
+                place_result["message"] = f"Failed to initialize Airtable: {str(e)}"
+                return place_result
+
         try:
             if provider_required:
+                data_provider = PlaceDataProviderFactory.get_provider(provider_type)
                 provider_photos = data_provider.get_place_photos(place_id)
                 place_result["provider_called"] = True
                 if not isinstance(provider_photos, dict):
@@ -681,7 +682,7 @@ def refresh_single_place_photos(activityInput):
                     )
                     return place_result
                 provider_raw_data = provider_photos.get('raw_data', {})
-                provider_selection = data_provider.select_photos_from_raw_data(provider_raw_data)
+                provider_selection = PlaceDataService.select_photos_from_raw_data(provider_raw_data)
                 place_result["provider_raw_photo_count"] = provider_selection['raw_photo_count']
                 selected_source_photo_urls = provider_photos.get('photo_urls', [])
                 place_result["provider_selected_photo_count"] = len(selected_source_photo_urls)

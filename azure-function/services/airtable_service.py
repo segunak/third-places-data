@@ -24,7 +24,7 @@ class AirtableService:
     """Defines methods for interaction with the Charlotte Third Places Airtable database.
     """
 
-    def __init__(self, provider_type=None, sequential_mode=False, view="Production"):
+    def __init__(self, provider_type=None, sequential_mode=False, view="Production", initialize_provider=True):
         logging.basicConfig(level=logging.INFO)
 
         if 'FUNCTIONS_WORKER_RUNTIME' in os.environ:
@@ -56,8 +56,10 @@ class AirtableService:
             raise ValueError("AirtableService requires provider_type to be specified ('google' or 'outscraper').")
 
         self.provider_type = provider_type
-        self.data_provider = PlaceDataProviderFactory.get_provider(self.provider_type)
-        logging.info(f"Initialized data service of type '{self.provider_type}'")
+        self.data_provider = None
+        if initialize_provider:
+            self.data_provider = PlaceDataProviderFactory.get_provider(self.provider_type)
+            logging.info(f"Initialized data service of type '{self.provider_type}'")
         self.api = Api(self.AIRTABLE_PERSONAL_ACCESS_TOKEN)
     
     @property

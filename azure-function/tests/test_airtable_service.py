@@ -53,6 +53,18 @@ class TestAirtableServiceInit:
         
         assert service.provider_type == "outscraper"
 
+    def test_init_can_skip_provider(self, mock_env_vars):
+        """Test initialization without a place data provider."""
+        from services.airtable_service import AirtableService
+
+        with mock.patch("services.airtable_service.pyairtable.Table"):
+            with mock.patch("services.airtable_service.Api"):
+                with mock.patch("services.airtable_service.PlaceDataProviderFactory.get_provider") as mock_factory:
+                    service = AirtableService(provider_type="outscraper", initialize_provider=False)
+
+        mock_factory.assert_not_called()
+        assert service.data_provider is None
+
     def test_init_sets_default_view(self, mock_env_vars):
         """Test that default view is 'Production'."""
         from services.airtable_service import AirtableService

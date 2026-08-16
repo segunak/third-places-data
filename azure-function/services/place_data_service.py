@@ -45,7 +45,8 @@ class PlaceDataService(ABC):
     def find_place_id(self, place_name: str) -> str:
         pass
 
-    def _is_valid_photo_url(self, url: str) -> bool:
+    @staticmethod
+    def _is_valid_photo_url(url: str) -> bool:
         if not url or not isinstance(url, str):
             logging.debug("Invalid photo URL: empty or not a string")
             return False
@@ -241,7 +242,8 @@ class PlaceDataService(ABC):
         result = [PlaceDataService._strip_on_the_hour(line) for line in result]
         return [PlaceDataService._fix_bare_opening_times(line) for line in result]
 
-    def _select_prioritized_photos(self, photos_data: List[Dict[str, Any]], max_photos: int = MAX_SELECTED_PHOTOS) -> List[str]:
+    @staticmethod
+    def _select_prioritized_photos(photos_data: List[Dict[str, Any]], max_photos: int = MAX_SELECTED_PHOTOS) -> List[str]:
         if not photos_data or max_photos <= 0:
             return []
 
@@ -300,8 +302,8 @@ class PlaceDataService(ABC):
 
         return selected_urls
 
+    @staticmethod
     def select_photos_from_raw_data(
-        self,
         raw_data: Any,
         max_photos: int = MAX_SELECTED_PHOTOS,
     ) -> Dict[str, Any]:
@@ -320,13 +322,13 @@ class PlaceDataService(ABC):
         seen_urls = set()
         for record in raw_records:
             url = record.get('photo_url_big', '')
-            if self._is_valid_photo_url(url):
+            if PlaceDataService._is_valid_photo_url(url):
                 valid_records.append(record)
                 seen_urls.add(url)
 
         for field_name in ('photo', 'street_view'):
             url = scalar_source.get(field_name, '')
-            if self._is_valid_photo_url(url) and url not in seen_urls:
+            if PlaceDataService._is_valid_photo_url(url) and url not in seen_urls:
                 valid_records.append({
                     'photo_url_big': url,
                     'photo_source': field_name,
@@ -336,7 +338,7 @@ class PlaceDataService(ABC):
         return {
             'raw_photo_count': len(raw_records),
             'valid_photo_count': len(seen_urls),
-            'photo_urls': self._select_prioritized_photos(valid_records, max_photos=max_photos),
+            'photo_urls': PlaceDataService._select_prioritized_photos(valid_records, max_photos=max_photos),
         }
 
     def validate_place_id(self, place_id: str) -> bool:

@@ -8,7 +8,7 @@ from constants import MAX_SELECTED_PHOTOS, PHOTO_REFRESH_BATCH_SIZE
 
 
 class DummyAirtableService:
-    def __init__(self, provider_type):
+    def __init__(self, provider_type, initialize_provider=True):
         self.provider_type = provider_type
 
 
@@ -543,6 +543,41 @@ def test_refresh_single_place_photos_from_data_provider_dry_run(monkeypatch):
     assert result["photos_before"] == 0
     assert result["provider_called"] is False
     assert provider.get_place_photos_calls == []
+
+
+def test_refresh_single_place_photos_dry_run_does_not_initialize_clients(monkeypatch):
+    def fail_if_called(*args, **kwargs):
+        raise AssertionError("Dry run must not initialize live clients")
+
+    monkeypatch.setattr(photos, "AirtableService", fail_if_called)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(fail_if_called),
+    )
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, {"photos": {"photo_urls": [], "raw_data": {}}}, "ok"),
+    )
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-dry-run",
+            "fields": {
+                "Place": "Dry Run Place",
+                "Google Maps Place Id": "ChIJ-dry-run",
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": True,
+        },
+    })
+
+    assert result["status"] == "would_fetch_provider"
+    assert result["provider_called"] is False
 
 
 def test_refresh_single_place_photos_cache_first_dry_run_uses_sufficient_raw_cache(monkeypatch):
@@ -1266,7 +1301,7 @@ def test_refresh_single_place_photos_allows_count_reduction_only_when_forced(
     airtable_updates = []
 
     class CaptureAirtableService:
-        def __init__(self, provider_type):
+        def __init__(self, provider_type, initialize_provider=True):
             self.provider_type = provider_type
 
         def update_place_record(self, record_id, field_to_update, update_value, overwrite):
@@ -1411,7 +1446,7 @@ def test_refresh_single_place_photos_handles_concurrent_airtable_changes(
     writes = []
 
     class ConflictAirtableService:
-        def __init__(self, provider_type):
+        def __init__(self, provider_type, initialize_provider=True):
             self.provider_type = provider_type
 
         def get_place_record_by_id(self, record_id):
@@ -1506,7 +1541,7 @@ def test_refresh_single_place_photos_cache_hit_is_idempotent(monkeypatch):
     save_calls = []
 
     class NoChangeAirtableService:
-        def __init__(self, provider_type):
+        def __init__(self, provider_type, initialize_provider=True):
             self.provider_type = provider_type
 
         def get_place_record_by_id(self, record_id):
