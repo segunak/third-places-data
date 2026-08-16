@@ -1,4 +1,7 @@
+import asyncio
 import json
+
+import pytest
 
 from blueprints import photos
 from constants import MAX_SELECTED_PHOTOS
@@ -12,6 +15,7 @@ class DummyAirtableService:
 class DummyProvider:
     def __init__(self, provider_photos=None):
         self._provider_photos = provider_photos or {"photo_urls": [], "raw_data": {}}
+        self.get_place_photos_calls = []
 
     def _is_valid_photo_url(self, url):
         return isinstance(url, str) and url.startswith("http")
@@ -29,13 +33,36 @@ class DummyProvider:
                 break
         return selected
 
+    def select_photos_from_raw_data(self, raw_data, max_photos=MAX_SELECTED_PHOTOS):
+        records = raw_data.get("photos_data", []) if isinstance(raw_data, dict) else raw_data
+        records = [record for record in records if isinstance(record, dict)] if isinstance(records, list) else []
+        selected = self._select_prioritized_photos(records, max_photos=max_photos)
+        return {
+            "raw_photo_count": len(records),
+            "valid_photo_count": len({record.get("photo_url_big") for record in records if self._is_valid_photo_url(record.get("photo_url_big"))}),
+            "photo_urls": selected,
+        }
+
     def get_place_photos(self, place_id):
+        self.get_place_photos_calls.append(place_id)
         return self._provider_photos
 
 
 class DummyRequest:
     def __init__(self, params):
         self.params = params
+
+
+class DummyDurableClient:
+    def __init__(self):
+        self.started = []
+
+    async def start_new(self, orchestrator_name, client_input=None):
+        self.started.append({"name": orchestrator_name, "input": client_input})
+        return "instance-123"
+
+    def create_check_status_response(self, req, instance_id):
+        return {"instance_id": instance_id}
 
 
 def _photo_manifest(display_url, thumbnail_url=None):
@@ -63,9 +90,14 @@ def run_refresh_all_photos_orchestrator(context):
     return photos.refresh_all_photos_orchestrator._function._func.orchestrator_function(context)
 
 
-def test_validate_refresh_all_photos_request_success_defaults():
+def test_validate_refresh_all_photos_request_success_required_controls():
     parsed, error_response = photos.validate_refresh_all_photos_request(
-        DummyRequest({"provider_type": "outscraper"})
+        DummyRequest({
+            "provider_type": "outscraper",
+            "view": "Production",
+            "refresh_below": "30",
+            "batch_size": "5",
+        })
     )
 
     assert error_response is None
@@ -73,9 +105,109 @@ def test_validate_refresh_all_photos_request_success_defaults():
     assert parsed["city"] == "charlotte"
     assert parsed["dry_run"] is True
     assert parsed["place_id"] == ""
-    assert parsed["sequential_mode"] is False
     assert parsed["max_places"] is None
-    assert parsed["photo_source_mode"] == "refresh_from_data_file_raw_data"
+    assert parsed["view"] == "Production"
+    assert parsed["refresh_below"] == 30
+    assert parsed["batch_size"] == 5
+    assert parsed["force_provider"] is False
+
+
+def test_validate_refresh_all_photos_request_requires_refresh_below():
+    parsed, error_response = photos.validate_refresh_all_photos_request(
+        DummyRequest({"provider_type": "outscraper", "view": "Production", "batch_size": "5"})
+    )
+
+    assert parsed is None
+    assert error_response.status_code == 400
+    assert json.loads(error_response.get_body().decode("utf-8"))["message"] == "Missing refresh_below value"
+
+
+def test_validate_refresh_all_photos_request_requires_batch_size():
+    parsed, error_response = photos.validate_refresh_all_photos_request(
+        DummyRequest({"provider_type": "outscraper", "view": "Production", "refresh_below": "30"})
+    )
+
+    assert parsed is None
+    assert error_response.status_code == 400
+    assert json.loads(error_response.get_body().decode("utf-8"))["message"] == "Missing batch_size value"
+
+
+def test_validate_refresh_all_photos_request_requires_view():
+    parsed, error_response = photos.validate_refresh_all_photos_request(
+        DummyRequest({
+            "provider_type": "outscraper",
+            "refresh_below": "30",
+            "batch_size": "5",
+        })
+    )
+
+    assert parsed is None
+    assert error_response.status_code == 400
+    assert json.loads(error_response.get_body().decode("utf-8"))["message"] == "Missing view value"
+
+
+def test_validate_refresh_all_photos_request_accepts_bulk_controls():
+    parsed, error_response = photos.validate_refresh_all_photos_request(
+        DummyRequest({
+            "provider_type": "outscraper",
+            "view": "Insufficient Photos",
+            "refresh_below": "25",
+            "batch_size": "3",
+            "max_places": "12",
+        })
+    )
+
+    assert error_response is None
+    assert parsed["view"] == "Insufficient Photos"
+    assert parsed["refresh_below"] == 25
+    assert parsed["batch_size"] == 3
+    assert parsed["max_places"] == 12
+
+
+def test_plan_places_for_photo_refresh_reports_every_record():
+    curator = _photo_manifest(
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-low/display/curator-att1.webp"
+    )
+    places = [
+        {
+            "id": "rec-sufficient",
+            "fields": {
+                "Place": "Sufficient",
+                "Google Maps Place Id": "ChIJ-sufficient",
+                "Photos": json.dumps([_photo_manifest(f"https://example.com/display/{index}.webp", f"https://example.com/thumbnail/{index}.webp") for index in range(30)]),
+            },
+        },
+        {
+            "id": "rec-low",
+            "fields": {
+                "Place": "Low",
+                "Google Maps Place Id": "ChIJ-low",
+                "Photos": json.dumps([curator]),
+            },
+        },
+        {"id": "rec-missing", "fields": {"Place": "Missing ID", "Photos": "[]"}},
+        {
+            "id": "rec-limited",
+            "fields": {
+                "Place": "Limited",
+                "Google Maps Place Id": "ChIJ-limited",
+                "Photos": "[]",
+            },
+        },
+    ]
+
+    selected, skipped = photos.plan_places_for_photo_refresh(
+        places,
+        {"refresh_below": 30, "max_places": 1},
+    )
+
+    assert [item["place"]["id"] for item in selected] == ["rec-limited"]
+    assert {result["record_id"]: result["status"] for result in skipped} == {
+        "rec-sufficient": "skipped_sufficient",
+        "rec-low": "skipped_max_places",
+        "rec-missing": "skipped_missing_place_id",
+    }
+    assert len(selected) + len(skipped) == len(places)
 
 
 def test_validate_refresh_all_photos_request_accepts_place_id_filter():
@@ -88,78 +220,85 @@ def test_validate_refresh_all_photos_request_accepts_place_id_filter():
 
     assert error_response is None
     assert parsed["place_id"] == "ChIJ123"
+    assert parsed["force_provider"] is True
+    assert "view" not in parsed
+    assert "refresh_below" not in parsed
+    assert "batch_size" not in parsed
 
 
-def test_filter_places_for_photo_refresh_filters_by_place_id():
-    places = [
-        {"id": "rec123", "fields": {"Google Maps Place Id": "ChIJ123"}},
-        {"id": "rec456", "fields": {"Google Maps Place Id": "ChIJ456"}},
-    ]
+def test_refresh_all_photos_starter_passes_required_bulk_controls():
+    client = DummyDurableClient()
 
-    filtered = photos.filter_places_for_photo_refresh(places, {"place_id": "ChIJ456"})
+    response = asyncio.run(photos.refresh_all_photos._function._func.__wrapped__(
+        DummyRequest({
+            "provider_type": "outscraper",
+            "view": "Production",
+            "refresh_below": "30",
+            "batch_size": "5",
+        }),
+        client,
+    ))
 
-    assert filtered == [places[1]]
-
-
-def test_filter_places_for_photo_refresh_rejects_duplicate_place_id():
-    places = [
-        {"id": "rec123", "fields": {"Google Maps Place Id": "ChIJ123"}},
-        {"id": "rec456", "fields": {"Google Maps Place Id": "ChIJ123"}},
-    ]
-
-    try:
-        photos.filter_places_for_photo_refresh(places, {"place_id": "ChIJ123"})
-    except ValueError as exc:
-        assert "duplicate place_id found" in str(exc)
-    else:
-        raise AssertionError("Expected ValueError")
+    assert response == {"instance_id": "instance-123"}
+    orchestration_input = client.started[0]["input"]
+    assert orchestration_input["view"] == "Production"
+    assert orchestration_input["refresh_below"] == 30
+    assert orchestration_input["batch_size"] == 5
+    assert orchestration_input["place_id"] == ""
 
 
-def test_filter_places_for_photo_refresh_rejects_missing_place_id():
-    places = [
-        {"id": "rec123", "fields": {"Google Maps Place Id": "ChIJ123"}},
-        {"id": "rec456", "fields": {"Google Maps Place Id": "ChIJ456"}},
-    ]
+def test_refresh_all_photos_starter_omits_bulk_controls_for_single_place():
+    client = DummyDurableClient()
 
-    try:
-        photos.filter_places_for_photo_refresh(places, {"place_id": "ChIJ789"})
-    except ValueError as exc:
-        assert "place_id not found" in str(exc)
-    else:
-        raise AssertionError("Expected ValueError")
+    response = asyncio.run(photos.refresh_all_photos._function._func.__wrapped__(
+        DummyRequest({
+            "provider_type": "outscraper",
+            "place_id": "ChIJ123",
+            "dry_run": "false",
+        }),
+        client,
+    ))
+
+    assert response == {"instance_id": "instance-123"}
+    orchestration_input = client.started[0]["input"]
+    assert orchestration_input["place_id"] == "ChIJ123"
+    assert orchestration_input["force_provider"] is True
+    assert "view" not in orchestration_input
+    assert "refresh_below" not in orchestration_input
+    assert "batch_size" not in orchestration_input
 
 
-def test_refresh_all_photos_orchestrator_applies_place_id_before_parallel_fanout():
-    places = [
-        {"id": "rec123", "fields": {"Google Maps Place Id": "ChIJ123", "Place": "Wrong One"}},
-        {"id": "rec456", "fields": {"Google Maps Place Id": "ChIJ456", "Place": "Target"}},
-        {"id": "rec789", "fields": {"Google Maps Place Id": "ChIJ789", "Place": "Wrong Two"}},
-    ]
+def test_refresh_all_photos_orchestrator_looks_up_place_id_and_forces_provider():
+    place = {
+        "id": "rec456",
+        "fields": {"Google Maps Place Id": "ChIJ456", "Place": "Target"},
+    }
     context = FakeOrchestrationContext({
         "provider_type": "outscraper",
         "city": "charlotte",
         "place_id": "ChIJ456",
         "dry_run": True,
-        "sequential_mode": False,
-        "photo_source_mode": "refresh_from_data_provider",
     })
 
     orchestrator = run_refresh_all_photos_orchestrator(context)
-    get_all_call = next(orchestrator)
+    find_call = next(orchestrator)
 
-    assert get_all_call["name"] == "get_all_third_places"
+    assert find_call == {
+        "name": "find_place_by_id",
+        "input": {"place_id": "ChIJ456", "provider_type": "outscraper"},
+    }
 
-    fanout_call = orchestrator.send(places)
-    assert fanout_call["name"] == "task_all"
-    assert len(fanout_call["tasks"]) == 1
-
-    refresh_call = fanout_call["tasks"][0]
+    refresh_call = orchestrator.send(place)
     assert refresh_call["name"] == "refresh_single_place_photos"
-    assert refresh_call["input"]["place"] == places[1]
+    assert refresh_call["input"]["place"] == place
     assert refresh_call["input"]["config"]["place_id"] == "ChIJ456"
+    assert refresh_call["input"]["config"]["force_provider"] is True
+    assert "view" not in refresh_call["input"]["config"]
+    assert "refresh_below" not in refresh_call["input"]["config"]
+    assert "batch_size" not in refresh_call["input"]["config"]
 
     try:
-        orchestrator.send([{"status": "would_update", "message": "ok"}])
+        orchestrator.send({"status": "would_fetch_provider", "message": "ok", "provider_called": False})
     except StopIteration as exc:
         result = exc.value
     else:
@@ -173,7 +312,8 @@ def test_refresh_all_photos_orchestrator_applies_place_id_before_parallel_fanout
     assert refresh_calls[0]["input"]["place"]["id"] == "rec456"
     assert result["success"] is True
     assert result["data"]["total_places"] == 1
-    assert result["data"]["updated"] == 1
+    assert result["data"]["updated"] == 0
+    assert result["data"]["would_fetch_provider"] == 1
     assert len(result["data"]["place_results"]) == 1
 
 
@@ -187,17 +327,15 @@ def test_refresh_all_photos_orchestrator_missing_place_id_does_not_fan_out():
         "city": "charlotte",
         "place_id": "ChIJ789",
         "dry_run": True,
-        "sequential_mode": False,
-        "photo_source_mode": "refresh_from_data_provider",
     })
 
     orchestrator = run_refresh_all_photos_orchestrator(context)
-    get_all_call = next(orchestrator)
+    find_call = next(orchestrator)
 
-    assert get_all_call["name"] == "get_all_third_places"
+    assert find_call["name"] == "find_place_by_id"
 
     try:
-        orchestrator.send(places)
+        orchestrator.send(None)
     except StopIteration as exc:
         result = exc.value
     else:
@@ -212,10 +350,83 @@ def test_refresh_all_photos_orchestrator_missing_place_id_does_not_fan_out():
     assert result["error"] == "place_id not found: ChIJ789"
 
 
+def test_refresh_all_photos_orchestrator_batches_and_reports_every_record():
+    sufficient_photos = [
+        _photo_manifest(f"https://example.com/display/{index}.webp", f"https://example.com/thumbnail/{index}.webp")
+        for index in range(30)
+    ]
+    places = [
+        {
+            "id": "rec-a",
+            "fields": {"Place": "A", "Google Maps Place Id": "ChIJ-a", "Photos": "[]"},
+        },
+        {
+            "id": "rec-b",
+            "fields": {"Place": "B", "Google Maps Place Id": "ChIJ-b", "Photos": "[]"},
+        },
+        {
+            "id": "rec-c",
+            "fields": {"Place": "C", "Google Maps Place Id": "ChIJ-c", "Photos": "[]"},
+        },
+        {
+            "id": "rec-sufficient",
+            "fields": {
+                "Place": "Sufficient",
+                "Google Maps Place Id": "ChIJ-sufficient",
+                "Photos": json.dumps(sufficient_photos),
+            },
+        },
+        {"id": "rec-missing", "fields": {"Place": "Missing", "Photos": "[]"}},
+    ]
+    context = FakeOrchestrationContext({
+        "provider_type": "outscraper",
+        "city": "charlotte",
+        "view": "Production",
+        "dry_run": True,
+        "batch_size": 2,
+        "refresh_below": 30,
+    })
+
+    orchestrator = run_refresh_all_photos_orchestrator(context)
+    assert next(orchestrator)["name"] == "get_all_third_places"
+
+    first_batch = orchestrator.send(places)
+    assert first_batch["name"] == "task_all"
+    assert len(first_batch["tasks"]) == 2
+
+    second_batch = orchestrator.send([
+        {"record_id": "rec-a", "status": "would_use_cache", "provider_called": False},
+        {"record_id": "rec-b", "status": "would_fetch_provider", "provider_called": False},
+    ])
+    assert second_batch["name"] == "task_all"
+    assert len(second_batch["tasks"]) == 1
+
+    try:
+        orchestrator.send([
+            {"record_id": "rec-c", "status": "would_fetch_provider", "provider_called": False},
+        ])
+    except StopIteration as exc:
+        result = exc.value
+    else:
+        raise AssertionError("Expected orchestrator to complete")
+
+    assert result["success"] is True
+    assert result["data"]["total_places"] == 5
+    assert result["data"]["selected_places"] == 3
+    assert result["data"]["skipped"] == 2
+    assert len(result["data"]["place_results"]) == 5
+    assert {item["record_id"] for item in result["data"]["place_results"]} == {
+        "rec-a", "rec-b", "rec-c", "rec-sufficient", "rec-missing"
+    }
+
+
 def test_validate_refresh_all_photos_request_invalid_photo_source_mode():
     parsed, error_response = photos.validate_refresh_all_photos_request(
         DummyRequest({
             "provider_type": "outscraper",
+            "view": "Production",
+            "refresh_below": "30",
+            "batch_size": "5",
             "photo_source_mode": "bad_mode"
         })
     )
@@ -230,6 +441,9 @@ def test_validate_refresh_all_photos_request_invalid_max_places():
     parsed, error_response = photos.validate_refresh_all_photos_request(
         DummyRequest({
             "provider_type": "outscraper",
+            "view": "Production",
+            "refresh_below": "30",
+            "batch_size": "5",
             "max_places": "not_an_int"
         })
     )
@@ -240,7 +454,7 @@ def test_validate_refresh_all_photos_request_invalid_max_places():
     assert body["message"] == "Invalid max_places value"
 
 
-def test_refresh_single_place_photos_invalid_mode_falls_back_to_raw_data_branch(monkeypatch):
+def test_refresh_single_place_photos_invalid_internal_mode_requires_provider(monkeypatch):
     monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
     monkeypatch.setattr(
         photos.PlaceDataProviderFactory,
@@ -287,8 +501,7 @@ def test_refresh_single_place_photos_invalid_mode_falls_back_to_raw_data_branch(
     }
 
     result = photos.refresh_single_place_photos(activity_input)
-    assert result["status"] == "would_update"
-    assert result["photos_after"] == 1
+    assert result["status"] == "would_fetch_provider"
 
 
 def test_refresh_single_place_photos_from_data_provider_dry_run(monkeypatch):
@@ -300,11 +513,12 @@ def test_refresh_single_place_photos_from_data_provider_dry_run(monkeypatch):
         "raw_data": {"photos_data": []}
     }
 
+    provider = DummyProvider(provider_photos=provider_result)
     monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
     monkeypatch.setattr(
         photos.PlaceDataProviderFactory,
         "get_provider",
-        staticmethod(lambda provider_type: DummyProvider(provider_photos=provider_result)),
+        staticmethod(lambda provider_type: provider),
     )
     monkeypatch.setattr(
         photos,
@@ -330,9 +544,188 @@ def test_refresh_single_place_photos_from_data_provider_dry_run(monkeypatch):
 
     result = photos.refresh_single_place_photos(activity_input)
 
-    assert result["status"] == "would_update"
+    assert result["status"] == "would_fetch_provider"
     assert result["photos_before"] == 0
-    assert result["photos_after"] == 2
+    assert result["provider_called"] is False
+    assert provider.get_place_photos_calls == []
+
+
+def test_refresh_single_place_photos_cache_first_dry_run_uses_sufficient_raw_cache(monkeypatch):
+    provider = DummyProvider()
+    raw_records = [
+        {
+            "photo_url_big": f"https://example.com/photo-{index}.jpg",
+            "photo_tags": ["vibe"],
+            "photo_date": "12/01/2025 10:00:00",
+        }
+        for index in range(MAX_SELECTED_PHOTOS)
+    ]
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(photos.PlaceDataProviderFactory, "get_provider", staticmethod(lambda provider_type: provider))
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, {"photos": {"raw_data": {"photos_data": raw_records}}}, "ok"),
+    )
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-cache",
+            "fields": {"Place": "Cache Place", "Google Maps Place Id": "ChIJ-cache", "Photos": "[]"},
+        },
+        "config": {"provider_type": "outscraper", "city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "would_use_cache"
+    assert result["selection_source"] == "cache"
+    assert result["cached_raw_photo_count"] == MAX_SELECTED_PHOTOS
+    assert result["cached_selected_photo_count"] == MAX_SELECTED_PHOTOS
+    assert result["provider_called"] is False
+    assert provider.get_place_photos_calls == []
+
+
+def test_refresh_single_place_photos_cache_first_uses_available_google_cache(monkeypatch):
+    provider = DummyProvider()
+    raw_records = [
+        {"photo_url_big": f"https://example.com/google-photo-{index}.jpg"}
+        for index in range(10)
+    ]
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(photos.PlaceDataProviderFactory, "get_provider", staticmethod(lambda provider_type: provider))
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, {
+            "photos_provider_type": "google",
+            "photos": {"raw_data": {"photos_data": raw_records}},
+        }, "ok"),
+    )
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-google-cache",
+            "fields": {"Place": "Google Cache", "Google Maps Place Id": "ChIJ-google-cache"},
+        },
+        "config": {"provider_type": "google", "city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "would_use_cache"
+    assert result["cached_selected_photo_count"] == 10
+    assert provider.get_place_photos_calls == []
+
+
+def test_refresh_single_place_photos_cache_first_dry_run_reports_provider_fetch(monkeypatch):
+    provider = DummyProvider()
+    raw_records = [
+        {"photo_url_big": f"https://example.com/photo-{index}.jpg", "photo_tags": ["vibe"]}
+        for index in range(MAX_SELECTED_PHOTOS - 1)
+    ]
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(photos.PlaceDataProviderFactory, "get_provider", staticmethod(lambda provider_type: provider))
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, {"photos": {"raw_data": {"photos_data": raw_records}}}, "ok"),
+    )
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-provider",
+            "fields": {"Place": "Provider Place", "Google Maps Place Id": "ChIJ-provider", "Photos": "[]"},
+        },
+        "config": {"provider_type": "outscraper", "city": "charlotte", "dry_run": True},
+    })
+
+    assert result["status"] == "would_fetch_provider"
+    assert result["selection_source"] == "provider"
+    assert result["cached_selected_photo_count"] == MAX_SELECTED_PHOTOS - 1
+    assert result["provider_called"] is False
+    assert provider.get_place_photos_calls == []
+
+
+def test_refresh_single_place_photos_reports_provider_fetch_failure(monkeypatch):
+    provider = DummyProvider({
+        "photo_urls": [],
+        "raw_data": {},
+        "error": "provider unavailable",
+    })
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(photos.PlaceDataProviderFactory, "get_provider", staticmethod(lambda provider_type: provider))
+    monkeypatch.setattr(photos, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
+    monkeypatch.setattr(
+        photos,
+        "save_data_github",
+        lambda content, path: (_ for _ in ()).throw(AssertionError("Provider failures must not be saved")),
+    )
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-provider-error",
+            "fields": {"Place": "Provider Error", "Google Maps Place Id": "ChIJ-provider-error"},
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": False,
+            "force_provider": True,
+        },
+    })
+
+    assert result["status"] == "failed_provider_fetch"
+    assert result["provider_called"] is True
+    assert result["message"] == "outscraper photo fetch failed: provider unavailable"
+
+
+def test_refresh_single_place_photos_cache_uses_selectable_count_not_raw_count(monkeypatch):
+    provider = DummyProvider()
+    raw_records = [
+        {"photo_url_big": f"https://example.com/photo-{index % 20}.jpg", "photo_tags": ["vibe"]}
+        for index in range(MAX_SELECTED_PHOTOS + 10)
+    ]
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(photos.PlaceDataProviderFactory, "get_provider", staticmethod(lambda provider_type: provider))
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, {"photos": {"raw_data": {"photos_data": raw_records}}}, "ok"),
+    )
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-duplicates",
+            "fields": {"Place": "Duplicates", "Google Maps Place Id": "ChIJ-duplicates", "Photos": "[]"},
+        },
+        "config": {"provider_type": "outscraper", "city": "charlotte", "dry_run": True},
+    })
+
+    assert result["cached_raw_photo_count"] == MAX_SELECTED_PHOTOS + 10
+    assert result["cached_selected_photo_count"] == 20
+    assert result["status"] == "would_fetch_provider"
+
+
+def test_refresh_single_place_photos_selected_urls_without_raw_data_are_cache_miss(monkeypatch):
+    provider = DummyProvider()
+    selected_urls = [f"https://example.com/photo-{index}.jpg" for index in range(MAX_SELECTED_PHOTOS)]
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(photos.PlaceDataProviderFactory, "get_provider", staticmethod(lambda provider_type: provider))
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, {"photos": {"photo_urls": selected_urls}}, "ok"),
+    )
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-selected-only",
+            "fields": {"Place": "Selected Only", "Google Maps Place Id": "ChIJ-selected-only", "Photos": "[]"},
+        },
+        "config": {"provider_type": "outscraper", "city": "charlotte", "dry_run": True},
+    })
+
+    assert result["cached_photo_urls_before"] == MAX_SELECTED_PHOTOS
+    assert result["cached_raw_photo_count"] == 0
+    assert result["cached_selected_photo_count"] == 0
+    assert result["status"] == "would_fetch_provider"
 
 
 def test_refresh_single_place_photos_from_raw_data_dry_run(monkeypatch):
@@ -388,12 +781,12 @@ def test_refresh_single_place_photos_from_raw_data_dry_run(monkeypatch):
 
     result = photos.refresh_single_place_photos(activity_input)
 
-    assert result["status"] == "would_update"
+    assert result["status"] == "would_use_cache"
     assert result["photos_before"] == 0
     assert result["photos_after"] == 2
 
 
-def test_refresh_single_place_photos_falls_back_to_airtable_photos_without_raw_data(monkeypatch):
+def test_refresh_single_place_photos_raw_data_mode_does_not_use_airtable_as_provider_source(monkeypatch):
     monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
     monkeypatch.setattr(
         photos.PlaceDataProviderFactory,
@@ -425,13 +818,13 @@ def test_refresh_single_place_photos_falls_back_to_airtable_photos_without_raw_d
 
     result = photos.refresh_single_place_photos(activity_input)
 
-    assert result["status"] == "would_update"
+    assert result["status"] == "skipped_no_photos"
     assert result["photos_before"] == 1
     assert result["cached_photo_urls_before"] == 0
-    assert result["photos_after"] == 1
+    assert result["photos_after"] == 0
 
 
-def test_refresh_single_place_photos_replaces_existing_standard_photos_with_curated_provider_photos(monkeypatch):
+def test_refresh_single_place_photos_provider_dry_run_leaves_existing_manifests_unchanged(monkeypatch):
     existing_azure_photos = [
         _photo_manifest("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-azure/display/"
         + ("a" * 64)
@@ -445,11 +838,12 @@ def test_refresh_single_place_photos_replaces_existing_standard_photos_with_cura
         "raw_data": {"photos_data": []},
     }
 
+    provider = DummyProvider(provider_photos=provider_result)
     monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
     monkeypatch.setattr(
         photos.PlaceDataProviderFactory,
         "get_provider",
-        staticmethod(lambda provider_type: DummyProvider(provider_photos=provider_result)),
+        staticmethod(lambda provider_type: provider),
     )
     monkeypatch.setattr(
         photos,
@@ -476,10 +870,11 @@ def test_refresh_single_place_photos_replaces_existing_standard_photos_with_cura
 
     result = photos.refresh_single_place_photos(activity_input)
 
-    assert result["status"] == "would_update"
+    assert result["status"] == "would_fetch_provider"
     assert result["photos_before"] == 2
     assert result["cached_photo_urls_before"] == 0
-    assert result["photos_after"] == 1
+    assert result["photos_after"] == 0
+    assert provider.get_place_photos_calls == []
 
 
 def test_refresh_single_place_photos_from_cached_photo_urls_dry_run(monkeypatch):
@@ -524,7 +919,7 @@ def test_refresh_single_place_photos_from_cached_photo_urls_dry_run(monkeypatch)
 
     result = photos.refresh_single_place_photos(activity_input)
 
-    assert result["status"] == "would_update"
+    assert result["status"] == "would_use_cache"
     assert result["photos_before"] == 0
     assert result["cached_photo_urls_before"] == 2
     assert result["photos_after"] == 2
@@ -561,8 +956,8 @@ def test_refresh_single_place_photos_cached_photo_urls_missing_is_skipped(monkey
 
     result = photos.refresh_single_place_photos(activity_input)
 
-    assert result["status"] == "skipped"
-    assert result["message"] == "No cached photo_urls found"
+    assert result["status"] == "skipped_no_photos"
+    assert result["message"] == "No selectable cached photos."
 
 
 def test_refresh_single_place_photos_fails_when_asset_result_has_urls_without_manifests(monkeypatch):
@@ -587,6 +982,7 @@ def test_refresh_single_place_photos_fails_when_asset_result_has_urls_without_ma
         staticmethod(lambda provider_type: DummyProvider(provider_photos={"photo_urls": provider_urls, "raw_data": {"photos_data": []}})),
     )
     monkeypatch.setattr(photos, "fetch_data_github", lambda path: (True, {"photos": {"photo_urls": []}}, "ok"))
+    monkeypatch.setattr(photos, "save_data_github", lambda content, path: (True, "saved"))
 
     result = photos.refresh_single_place_photos({
         "place": {
@@ -599,7 +995,9 @@ def test_refresh_single_place_photos_fails_when_asset_result_has_urls_without_ma
         "config": {
             "provider_type": "outscraper",
             "city": "charlotte",
-            "dry_run": True,
+            "dry_run": False,
+            "upload": True,
+            "write_airtable": True,
             "photo_source_mode": "refresh_from_data_provider",
         },
     })
@@ -608,19 +1006,71 @@ def test_refresh_single_place_photos_fails_when_asset_result_has_urls_without_ma
     assert "without thumbnail manifests" in result["message"]
 
 
-def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_source_cache(monkeypatch):
+def test_refresh_single_place_photos_reports_complete_publish_failure(monkeypatch):
+    provider_url = "https://example.com/provider.jpg"
+
+    class FailedPhotoAssetService:
+        def process_place(self, place, place_data, config):
+            return {
+                "summary": {"selected_airtable_count": 0, "failed_upload_count": 1},
+                "failures": [{"source_url": provider_url, "error": "download failed"}],
+                "assets": [],
+                "selected_airtable_photos": [],
+                "selected_airtable_urls": [],
+            }
+
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(photos, "PhotoAssetService", FailedPhotoAssetService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: DummyProvider({
+            "photo_urls": [provider_url],
+            "raw_data": {"photos_data": [{"photo_url_big": provider_url}]},
+        })),
+    )
+    monkeypatch.setattr(photos, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
+    monkeypatch.setattr(photos, "save_data_github", lambda content, path: (True, "saved"))
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-publish-failure",
+            "fields": {"Place": "Publish Failure", "Google Maps Place Id": "ChIJ-publish-failure"},
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": False,
+            "force_provider": True,
+        },
+    })
+
+    assert result["status"] == "failed_photo_publish"
+    assert result["data_file_status"] == "updated"
+    assert result["failed_uploads"] == 1
+
+
+def test_refresh_single_place_photos_non_dry_run_preserves_curator_and_caps_oversized_provider_inventory(monkeypatch):
     provider_urls = [
-        "https://lh5.googleusercontent.com/gps-cs-s/provider-photo-1",
-        "https://lh5.googleusercontent.com/p/provider-photo-2",
+        f"https://lh5.googleusercontent.com/p/provider-photo-{index}"
+        for index in range(MAX_SELECTED_PHOTOS)
     ]
     curator_url = "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-att1-photo.webp"
-    provider_azure_url = (
-        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/"
-        + ("a" * 64)
-        + ".webp"
-    )
     curator_photo = _photo_manifest(curator_url)
-    provider_photo = _photo_manifest(provider_azure_url)
+    existing_provider_photos = [
+        _photo_manifest(
+            f"https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/{index:064x}.webp"
+        )
+        for index in range(MAX_SELECTED_PHOTOS + 1)
+    ]
+    selected_provider_photos = existing_provider_photos[:MAX_SELECTED_PHOTOS]
+    provider_raw_data = {
+        "photos_data": [
+            {"photo_url_big": provider_url, "photo_tags": ["vibe"]}
+            for provider_url in provider_urls
+        ],
+        "photo": "https://lh5.googleusercontent.com/p/provider-hero",
+    }
     saved_payload = {}
     airtable_updates = []
 
@@ -637,16 +1087,30 @@ def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_s
             })
             return {"updated": True}
 
+        def get_place_record_by_id(self, record_id):
+            return {
+                "id": record_id,
+                "fields": {
+                    "Place": "Test Place",
+                    "Photos": json.dumps([curator_photo, *existing_provider_photos]),
+                },
+            }
+
     class DummyPhotoAssetService:
         def process_place(self, place, place_data, config):
+            assert "json" in saved_payload
             assert place_data["photos"]["photo_urls"] == provider_urls
+            assert place_data["photos"]["raw_data"] == provider_raw_data
             return {
-                "summary": {"selected_airtable_count": 2},
+                "summary": {"selected_airtable_count": 1 + MAX_SELECTED_PHOTOS},
                 "failures": [],
                 "assets": [],
                 "selected_source_urls": provider_urls,
-                "selected_airtable_photos": [curator_photo, provider_photo],
-                "selected_airtable_urls": [curator_url, provider_azure_url],
+                "selected_airtable_photos": [curator_photo, *selected_provider_photos],
+                "selected_airtable_urls": [
+                    curator_url,
+                    *[photo["display"] for photo in selected_provider_photos],
+                ],
                 "place_data": place_data,
             }
 
@@ -660,7 +1124,7 @@ def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_s
     monkeypatch.setattr(
         photos.PlaceDataProviderFactory,
         "get_provider",
-        staticmethod(lambda provider_type: DummyProvider(provider_photos={"photo_urls": provider_urls, "raw_data": {"photos_data": []}})),
+        staticmethod(lambda provider_type: DummyProvider(provider_photos={"photo_urls": provider_urls, "raw_data": provider_raw_data})),
     )
     monkeypatch.setattr(
         photos,
@@ -675,7 +1139,7 @@ def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_s
             "fields": {
                 "Place": "Test Place",
                 "Google Maps Place Id": "ChIJ123",
-                "Photos": json.dumps([curator_photo]),
+                "Photos": json.dumps([curator_photo, *existing_provider_photos]),
             },
         },
         "config": {
@@ -690,13 +1154,196 @@ def test_refresh_single_place_photos_non_dry_run_preserves_curator_display_and_s
 
     result = photos.refresh_single_place_photos(activity_input)
 
-    assert result["status"] == "updated"
-    assert result["photos_after"] == 2
+    assert result["status"] == "updated_from_provider"
+    assert result["photos_after"] == 1 + MAX_SELECTED_PHOTOS
+    assert result["curator_photos_after"] == 1
+    assert result["provider_photos_after"] == MAX_SELECTED_PHOTOS
     assert saved_payload["path"] == "data/places/charlotte/ChIJ123.json"
     assert saved_payload["json"]["photos"]["photo_urls"] == provider_urls
+    assert saved_payload["json"]["photos"]["raw_data"] == provider_raw_data
+    assert saved_payload["json"]["photos"]["selection_source"] == "provider"
+    assert saved_payload["json"]["photos"]["selection_limit"] == MAX_SELECTED_PHOTOS
     assert airtable_updates == [{
         "record_id": "rec123",
         "field_to_update": "Photos",
-        "update_value": json.dumps([curator_photo, provider_photo]),
+        "update_value": json.dumps([curator_photo, *selected_provider_photos]),
         "overwrite": True,
     }]
+
+
+@pytest.mark.parametrize(
+    ("latest_matches_proposed", "expected_status", "expected_airtable_status"),
+    [
+        (True, "updated_data_file", "no_change"),
+        (False, "conflict", "conflict"),
+    ],
+)
+def test_refresh_single_place_photos_handles_concurrent_airtable_changes(
+    monkeypatch,
+    latest_matches_proposed,
+    expected_status,
+    expected_airtable_status,
+):
+    curator_photo = _photo_manifest(
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-att1.webp"
+    )
+    provider_photo = _photo_manifest(
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/" + ("a" * 64) + ".webp"
+    )
+    concurrent_provider_photo = (
+        provider_photo
+        if latest_matches_proposed
+        else _photo_manifest(
+            "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/" + ("b" * 64) + ".webp"
+        )
+    )
+    provider_urls = ["https://example.com/provider.jpg"]
+    writes = []
+
+    class ConflictAirtableService:
+        def __init__(self, provider_type):
+            self.provider_type = provider_type
+
+        def get_place_record_by_id(self, record_id):
+            return {
+                "id": record_id,
+                "fields": {"Photos": json.dumps([curator_photo, concurrent_provider_photo])},
+            }
+
+        def update_place_record(self, *args, **kwargs):
+            writes.append((args, kwargs))
+            return {"updated": True}
+
+    class SuccessfulPhotoAssetService:
+        def process_place(self, place, place_data, config):
+            return {
+                "summary": {"selected_airtable_count": 2},
+                "failures": [],
+                "assets": [],
+                "selected_airtable_photos": [curator_photo, provider_photo],
+                "selected_airtable_urls": [curator_photo["display"], provider_photo["display"]],
+            }
+
+    monkeypatch.setattr(photos, "AirtableService", ConflictAirtableService)
+    monkeypatch.setattr(photos, "PhotoAssetService", SuccessfulPhotoAssetService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: DummyProvider(provider_photos={
+            "photo_urls": provider_urls,
+            "raw_data": {"photos_data": [{"photo_url_big": provider_urls[0]}]},
+        })),
+    )
+    monkeypatch.setattr(photos, "fetch_data_github", lambda path: (True, {"photos": {}}, "ok"))
+    monkeypatch.setattr(photos, "save_data_github", lambda content, path: (True, "saved"))
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec123",
+            "fields": {
+                "Place": "Test Place",
+                "Google Maps Place Id": "ChIJ123",
+                "Photos": json.dumps([curator_photo]),
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": False,
+            "upload": True,
+            "write_airtable": True,
+            "force_provider": True,
+        },
+    })
+
+    assert result["status"] == expected_status
+    assert result["airtable_status"] == expected_airtable_status
+    assert writes == []
+
+
+def test_refresh_single_place_photos_cache_hit_is_idempotent(monkeypatch):
+    provider = DummyProvider()
+    provider_manifest = _photo_manifest(
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-cache/display/" + ("a" * 64) + ".webp"
+    )
+    current_manifests = [provider_manifest]
+    raw_records = [
+        {"photo_url_big": f"https://example.com/photo-{index}.jpg", "photo_tags": ["vibe"]}
+        for index in range(MAX_SELECTED_PHOTOS)
+    ]
+    selected_urls = [record["photo_url_big"] for record in raw_records]
+    cached_place_data = {
+        "data_source": "OutscraperProvider",
+        "photos_provider_type": "outscraper",
+        "photos": {
+            "raw_data": {"photos_data": raw_records},
+            "photo_urls": selected_urls,
+            "provider_type": "outscraper",
+            "selection_source": "cache",
+            "selection_limit": MAX_SELECTED_PHOTOS,
+            "raw_photo_count": MAX_SELECTED_PHOTOS,
+            "selected_photo_count": MAX_SELECTED_PHOTOS,
+            "last_refreshed": "2026-08-15T12:00:00",
+            "message": "Photos reconciled using outscraper from cache",
+        },
+    }
+    save_calls = []
+
+    class NoChangeAirtableService:
+        def __init__(self, provider_type):
+            self.provider_type = provider_type
+
+        def get_place_record_by_id(self, record_id):
+            return {"id": record_id, "fields": {"Photos": json.dumps(current_manifests)}}
+
+        def update_place_record(self, record_id, field_to_update, update_value, overwrite):
+            raise AssertionError("A matching Airtable manifest must not be updated")
+
+    class NoChangePhotoAssetService:
+        def process_place(self, place, place_data, config):
+            return {
+                "summary": {"selected_airtable_count": 1},
+                "failures": [],
+                "assets": [],
+                "selected_airtable_photos": current_manifests,
+                "selected_airtable_urls": [provider_manifest["display"]],
+            }
+
+    def save_data(content, path):
+        save_calls.append((content, path))
+        return True, "saved"
+
+    monkeypatch.setattr(photos, "AirtableService", NoChangeAirtableService)
+    monkeypatch.setattr(photos, "PhotoAssetService", NoChangePhotoAssetService)
+    monkeypatch.setattr(photos.PlaceDataProviderFactory, "get_provider", staticmethod(lambda provider_type: provider))
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, cached_place_data, "ok"),
+    )
+    monkeypatch.setattr(photos, "save_data_github", save_data)
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-cache",
+            "fields": {
+                "Place": "Cache Place",
+                "Google Maps Place Id": "ChIJ-cache",
+                "Photos": json.dumps(current_manifests),
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": False,
+            "upload": True,
+            "write_airtable": True,
+        },
+    })
+
+    assert result["status"] == "no_change"
+    assert result["selection_source"] == "cache"
+    assert result["provider_called"] is False
+    assert result["data_file_status"] == "no_change"
+    assert provider.get_place_photos_calls == []
+    assert save_calls == []

@@ -1,4 +1,4 @@
-name: Refresh Photos From Selected Source
+name: Refresh All Photos For View
 
 on:
   workflow_call:
@@ -6,17 +6,16 @@ on:
       provider_type:
         description: 'Data Provider'
         required: false
-        default: 'google'
+        default: 'outscraper'
         type: string
       city:
         description: 'City'
         required: false
         default: 'charlotte'
         type: string
-      place_id:
-        description: 'Google Maps Place ID'
-        required: false
-        default: ''
+      view:
+        description: 'Airtable View'
+        required: true
         type: string
       dry_run:
         description: 'Dry Run'
@@ -28,22 +27,20 @@ on:
         required: false
         default: ''
         type: string
-      sequential_mode:
-        description: 'Sequential Mode'
-        required: false
-        default: false
-        type: boolean
-      photo_source_mode:
-        description: 'Photo Source'
-        required: false
-        default: 'refresh_from_data_file_raw_data'
+      refresh_below:
+        description: 'Refresh places with fewer Airtable photos than this value'
+        required: true
+        type: string
+      batch_size:
+        description: 'Places processed in parallel per batch'
+        required: true
         type: string
   workflow_dispatch:
     inputs:
       provider_type:
         description: 'Data Provider'
         required: false
-        default: 'google'
+        default: 'outscraper'
         type: choice
         options:
           - 'google'
@@ -55,11 +52,17 @@ on:
         type: choice
         options:
           - 'charlotte'
-      place_id:
-        description: 'Google Maps Place ID'
-        required: false
-        default: ''
-        type: string
+      view:
+        description: 'Airtable View'
+        required: true
+        type: choice
+        options:
+          - 'All'
+          - 'Production'
+          - 'Insufficient'
+          - 'Coming Soon'
+          - 'Archived'
+          - 'Not Operational'
       dry_run:
         description: 'Dry Run'
         required: false
@@ -70,20 +73,14 @@ on:
         required: false
         default: ''
         type: string
-      sequential_mode:
-        description: 'Sequential Mode'
-        required: false
-        default: false
-        type: boolean
-      photo_source_mode:
-        description: 'Photo Source'
-        required: false
-        default: 'refresh_from_data_file_raw_data'
-        type: choice
-        options:
-          - 'refresh_from_data_provider'
-          - 'refresh_from_data_file_raw_data'
-          - 'refresh_from_data_file_photo_urls'
+      refresh_below:
+        description: 'Refresh places with fewer Airtable photos than this value'
+        required: true
+        type: string
+      batch_size:
+        description: 'Places processed in parallel per batch'
+        required: true
+        type: string
 
 concurrency: 
   group: refresh-all-photos
@@ -97,25 +94,19 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Invoke PowerShell Script
-        id: invoke_script
         working-directory: ./scripts
         shell: pwsh
         env:
           AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
         run: |
-          $providerType = "${{ inputs.provider_type }}"
-          $city = "${{ inputs.city }}"
-          $placeId = "${{ inputs.place_id }}"
+          $providerType = [uri]::EscapeDataString("${{ inputs.provider_type }}")
+          $city = [uri]::EscapeDataString("${{ inputs.city }}")
+          $view = [uri]::EscapeDataString("${{ inputs.view }}")
           $dryRun = "${{ inputs.dry_run }}".ToLowerInvariant()
-          $maxPlaces = "${{ inputs.max_places }}"
-          $sequentialMode = "${{ inputs.sequential_mode }}".ToLowerInvariant()
-          $photoSourceMode = "${{ inputs.photo_source_mode }}"
-          
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&dry_run=$dryRun&sequential_mode=$sequentialMode&photo_source_mode=$photoSourceMode"
-
-          if ($placeId -ne '') {
-            $FunctionUrl += "&place_id=$placeId"
-          }
+          $maxPlaces = [uri]::EscapeDataString("${{ inputs.max_places }}")
+          $refreshBelow = [uri]::EscapeDataString("${{ inputs.refresh_below }}")
+          $batchSize = [uri]::EscapeDataString("${{ inputs.batch_size }}")
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&view=$view&dry_run=$dryRun&refresh_below=$refreshBelow&batch_size=$batchSize"
           
           if ($maxPlaces -ne '') {
             $FunctionUrl += "&max_places=$maxPlaces"
@@ -130,27 +121,13 @@ jobs:
             exit $LASTEXITCODE
           }
 
-      - name: Check Script Result
-        if: always()
-        run: |
-          echo "Script execution completed with status: ${{ steps.invoke_script.outcome }}"
-          if ("${{ steps.invoke_script.outcome }}" -ne "success") {
-            exit 1
-          }
+  purge-orchestrations:
+    needs: trigger-refresh-all-photos
+    uses: ./.github/workflows/purge-orchestrations.yml
+    secrets: inherit
 
-      - name: Purge Orchestrations
-        if: always()
-        shell: pwsh
-        working-directory: ./scripts
-        env:
-          AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
-        run: |
-          Write-Host "Cleaning up completed orchestrations..."
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/purge-orchestrations"
-          $FunctionKey = "$Env:AZURE_FUNCTION_KEY"
-          ./Invoke-AzureFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey $FunctionKey -TimeoutSeconds 300
-          if ($LASTEXITCODE -ne 0) {
-            Write-Warning "Orchestration purge failed, but this is non-critical."
-          } else {
-            Write-Host "Orchestration purge completed."
-          }
+  site-revalidation:
+    needs: trigger-refresh-all-photos
+    if: ${{ !inputs.dry_run }}
+    uses: ./.github/workflows/site-revalidation.yml
+    secrets: inherit

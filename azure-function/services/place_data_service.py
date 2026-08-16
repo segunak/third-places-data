@@ -242,7 +242,7 @@ class PlaceDataService(ABC):
         return [PlaceDataService._fix_bare_opening_times(line) for line in result]
 
     def _select_prioritized_photos(self, photos_data: List[Dict[str, Any]], max_photos: int = MAX_SELECTED_PHOTOS) -> List[str]:
-        if not photos_data:
+        if not photos_data or max_photos <= 0:
             return []
 
         def parse_date(date_str: str):
@@ -271,26 +271,73 @@ class PlaceDataService(ABC):
             else:
                 tagless.append(photo)
 
-        selected = []
-        selected.extend(vibe[:min(len(vibe), max_photos)])
-        remaining = max_photos - len(selected)
-        selected.extend(front[:min(5, len(front), remaining)])
-        remaining = max_photos - len(selected)
-        selected.extend(all_tag[:remaining])
-        remaining = max_photos - len(selected)
-        selected.extend(other[:remaining])
-        remaining = max_photos - len(selected)
-        if remaining > 0:
-            selected.extend(tagless[:remaining])
+        selected_urls = []
+        seen_urls = set()
 
-        unique, seen = [], set()
-        for photo in selected:
-            url = photo['photo_url_big']
-            if url not in seen:
-                unique.append(photo)
-                seen.add(url)
+        def add_photos(photos, category_limit=None):
+            category_count = 0
+            for photo in photos:
+                url = photo['photo_url_big']
+                if url in seen_urls:
+                    continue
+                selected_urls.append(url)
+                seen_urls.add(url)
+                category_count += 1
+                if len(selected_urls) >= max_photos:
+                    return
+                if category_limit is not None and category_count >= category_limit:
+                    return
 
-        return [photo['photo_url_big'] for photo in unique[:max_photos]]
+        add_photos(vibe)
+        if len(selected_urls) < max_photos:
+            add_photos(front, category_limit=5)
+        if len(selected_urls) < max_photos:
+            add_photos(all_tag)
+        if len(selected_urls) < max_photos:
+            add_photos(other)
+        if len(selected_urls) < max_photos:
+            add_photos(tagless)
+
+        return selected_urls
+
+    def select_photos_from_raw_data(
+        self,
+        raw_data: Any,
+        max_photos: int = MAX_SELECTED_PHOTOS,
+    ) -> Dict[str, Any]:
+        if isinstance(raw_data, list):
+            raw_records = [item for item in raw_data if isinstance(item, dict)]
+            scalar_source = {}
+        elif isinstance(raw_data, dict):
+            photos_data = raw_data.get('photos_data', [])
+            raw_records = [item for item in photos_data if isinstance(item, dict)] if isinstance(photos_data, list) else []
+            scalar_source = raw_data
+        else:
+            raw_records = []
+            scalar_source = {}
+
+        valid_records = []
+        seen_urls = set()
+        for record in raw_records:
+            url = record.get('photo_url_big', '')
+            if self._is_valid_photo_url(url):
+                valid_records.append(record)
+                seen_urls.add(url)
+
+        for field_name in ('photo', 'street_view'):
+            url = scalar_source.get(field_name, '')
+            if self._is_valid_photo_url(url) and url not in seen_urls:
+                valid_records.append({
+                    'photo_url_big': url,
+                    'photo_source': field_name,
+                })
+                seen_urls.add(url)
+
+        return {
+            'raw_photo_count': len(raw_records),
+            'valid_photo_count': len(seen_urls),
+            'photo_urls': self._select_prioritized_photos(valid_records, max_photos=max_photos),
+        }
 
     def validate_place_id(self, place_id: str) -> bool:
         url = f'https://places.googleapis.com/v1/places/{place_id}?fields=id&languageCode=en'
@@ -482,7 +529,13 @@ class GoogleMapsProvider(PlaceDataService):
             return {"place_id": place_id, "message": f"Selected {len(selected_urls)} photos", "photo_urls": selected_urls, "raw_data": raw_data}
         except Exception as e:
             logging.error(f"Error retrieving photos for place ID {place_id}: {e}")
-            return {"place_id": place_id, "message": f"Error retrieving photos: {str(e)}", "photo_urls": [], "raw_data": {}}
+            return {
+                "place_id": place_id,
+                "message": f"Error retrieving photos: {str(e)}",
+                "error": str(e),
+                "photo_urls": [],
+                "raw_data": {},
+            }
 
     def _get_photo_details(self, photo_name: str) -> Dict[str, Any]:
         # Place photo resource names can expire. Always request fresh names from a recent
@@ -710,33 +763,28 @@ class OutscraperProvider(PlaceDataService):
             response = self.client.google_maps_photos(place_id, language=self.default_params['language'], region=self.default_params['region'])
             if response and len(response) > 0 and len(response[0]) > 0:
                 raw = response[0][0]
-                all_photos = raw.get('photos_data', [])
-                if not isinstance(all_photos, list):
-                    all_photos = []
-                valid = []
-                for p in all_photos:
-                    if not isinstance(p, dict):
-                        continue
-                    url = p.get('photo_url_big', '')
-                    if self._is_valid_photo_url(url):
-                        valid.append(p)
-                seen_urls = {p.get('photo_url_big') for p in valid}
-                for field_name in ('photo', 'street_view'):
-                    url = raw.get(field_name, '')
-                    if self._is_valid_photo_url(url) and url not in seen_urls:
-                        valid.append({
-                            'photo_url_big': url,
-                            'photo_source': field_name,
-                        })
-                        seen_urls.add(url)
-                selected = self._select_prioritized_photos(valid, max_photos=MAX_SELECTED_PHOTOS)
-                logging.info(f"Photo selection for {place_id}: Total={len(all_photos)}, Valid={len(valid)}, Selected={len(selected)}")
-                return {"place_id": place_id, "message": f"Retrieved {len(all_photos)} photos, selected {len(selected)}", "photo_urls": selected, "raw_data": raw}
+                selection = self.select_photos_from_raw_data(raw)
+                selected = selection['photo_urls']
+                logging.info(
+                    f"Photo selection for {place_id}: Total={selection['raw_photo_count']}, "
+                    f"Valid={selection['valid_photo_count']}, Selected={len(selected)}"
+                )
+                return {
+                    "place_id": place_id,
+                    "message": f"Retrieved {selection['raw_photo_count']} photos, selected {len(selected)}",
+                    "photo_urls": selected,
+                    "raw_data": raw,
+                }
             logging.warning(f"No photo results found for place ID {place_id} using Outscraper.")
             return {"place_id": place_id, "message": "No photos found", "photo_urls": []}
         except Exception as e:
             logging.error(f"Error retrieving photos from Outscraper for {place_id}: {e}")
-            return {"place_id": place_id, "message": f"Error retrieving photos: {str(e)}",                "photo_urls": []}
+            return {
+                "place_id": place_id,
+                "message": f"Error retrieving photos: {str(e)}",
+                "error": str(e),
+                "photo_urls": [],
+            }
 
     def find_place_id(self, place_name: str) -> str:
         try:

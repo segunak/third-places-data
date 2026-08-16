@@ -432,6 +432,21 @@ class TestOutscraperProviderGetPlacePhotos:
         
         assert photos["place_id"] == TEST_PLACE_ID
         assert photos["photo_urls"] == []
+        assert "error" not in photos
+
+    def test_get_place_photos_reports_provider_error(self, mock_env_vars, outscraper_balance_sufficient):
+        from services.place_data_service import OutscraperProvider
+
+        mock_client = mock.MagicMock()
+        mock_client.google_maps_photos.side_effect = RuntimeError("provider unavailable")
+
+        with mock.patch("services.place_data_service.requests.get", return_value=create_mock_response(outscraper_balance_sufficient)):
+            with mock.patch("services.place_data_service.ApiClient", return_value=mock_client):
+                provider = OutscraperProvider()
+                photos = provider.get_place_photos(TEST_PLACE_ID)
+
+        assert photos["photo_urls"] == []
+        assert photos["error"] == "provider unavailable"
 
     def test_get_place_photos_uses_photo_and_street_view_when_gallery_empty(self, mock_env_vars, outscraper_balance_sufficient):
         """Test scalar Outscraper image fields are used when photos_data is empty."""
@@ -538,6 +553,60 @@ class TestOutscraperProviderSelectPrioritizedPhotos:
         ]
         result = provider._select_prioritized_photos(photos, max_photos=MAX_SELECTED_PHOTOS)
         assert len(result) == 1
+
+    def test_select_prioritized_photos_duplicate_does_not_consume_limit(self, provider):
+        photos = [
+            {"photo_url_big": "http://same.jpg", "photo_date": "01/03/2024 10:00:00", "photo_tags": ["other"]},
+            {"photo_url_big": "http://fallback.jpg", "photo_date": "01/02/2024 10:00:00", "photo_tags": ["other"]},
+            {"photo_url_big": "http://same.jpg", "photo_date": "01/01/2024 10:00:00", "photo_tags": ["vibe"]},
+        ]
+
+        result = provider._select_prioritized_photos(photos, max_photos=2)
+
+        assert result == ["http://same.jpg", "http://fallback.jpg"]
+
+    def test_select_photos_from_raw_data_ranks_duplicate_metadata_before_deduplication(self, provider):
+        raw_data = {
+            "photos_data": [
+                {"photo_url_big": "https://example.com/shared.jpg", "photo_tags": ["other"]},
+                {"photo_url_big": "https://example.com/shared.jpg", "photo_tags": ["vibe"]},
+                {"photo_url_big": "https://example.com/front.jpg", "photo_tags": ["front"]},
+            ]
+        }
+
+        selection = provider.select_photos_from_raw_data(raw_data, max_photos=1)
+
+        assert selection["valid_photo_count"] == 2
+        assert selection["photo_urls"] == ["https://example.com/shared.jpg"]
+
+    def test_select_photos_from_raw_data_uses_gallery_and_scalar_fallbacks(self, provider):
+        raw_data = {
+            "photos_data": [
+                {
+                    "photo_url_big": "https://example.com/vibe.jpg",
+                    "photo_date": "12/01/2025 10:00:00",
+                    "photo_tags": ["vibe"],
+                },
+                {
+                    "photo_url_big": "https://example.com/front.jpg",
+                    "photo_date": "11/01/2025 10:00:00",
+                    "photo_tags": ["front"],
+                },
+            ],
+            "photo": "https://example.com/hero.jpg",
+            "street_view": "https://example.com/street.jpg",
+        }
+
+        selection = provider.select_photos_from_raw_data(raw_data)
+
+        assert selection["raw_photo_count"] == 2
+        assert selection["valid_photo_count"] == 4
+        assert selection["photo_urls"] == [
+            "https://example.com/vibe.jpg",
+            "https://example.com/front.jpg",
+            "https://example.com/hero.jpg",
+            "https://example.com/street.jpg",
+        ]
 
 
 class TestOutscraperProviderIsValidPhotoUrl:

@@ -219,6 +219,19 @@ class TestGoogleMapsProviderGetPlacePhotos:
         assert len(photos["photo_urls"]) == 2
         assert any("gps-cs-s" in url for url in photos["photo_urls"])
 
+    def test_get_place_photos_reports_provider_error(self, mock_env_vars):
+        from services.place_data_service import GoogleMapsProvider
+
+        with mock.patch(
+            "services.place_data_service.requests.get",
+            side_effect=RuntimeError("provider unavailable"),
+        ):
+            provider = GoogleMapsProvider()
+            photos = provider.get_place_photos(TEST_PLACE_ID)
+
+        assert photos["photo_urls"] == []
+        assert photos["error"] == "provider unavailable"
+
 
 class TestGoogleMapsProviderIsValidPhotoUrl:
     """Tests for _is_valid_photo_url method."""

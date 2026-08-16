@@ -272,8 +272,8 @@ if ($script:RunEndpointTests.RefreshSinglePlace) {
 
 if ($script:RunEndpointTests.RefreshAllPhotos) {
     # Refresh All Photos (Durable)
-    $photosEndpoint = "refresh-all-photos?provider_type=$script:ProviderType&city=$script:City&dry_run=true&sequential_mode=$($script:SequentialMode.ToString().ToLower())"
-    Test-DurableFunction -Endpoint $photosEndpoint -Description "Refresh all photos in dry run mode ($script:ProviderType, sequential_mode=$script:SequentialMode)"
+    $photosEndpoint = "refresh-all-photos?provider_type=$script:ProviderType&city=$script:City&view=Production&dry_run=true&refresh_below=30&batch_size=1"
+    Test-DurableFunction -Endpoint $photosEndpoint -Description "Refresh all photos in dry run mode ($script:ProviderType, view=Production, batch_size=1)"
 }
 
 if ($script:RunEndpointTests.PurgeOrchestrations) {

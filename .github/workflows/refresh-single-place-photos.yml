@@ -6,7 +6,7 @@ on:
       provider_type:
         description: 'Data Provider'
         required: false
-        default: 'google'
+        default: 'outscraper'
         type: string
       city:
         description: 'City'
@@ -27,7 +27,7 @@ on:
       provider_type:
         description: 'Data Provider'
         required: false
-        default: 'google'
+        default: 'outscraper'
         type: choice
         options:
           - 'google'
@@ -57,10 +57,10 @@ jobs:
   refresh-single-place-photos:
     runs-on: windows-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v6
 
-      - name: Refresh single place photos
+      - name: Refresh Single Place Photos
         working-directory: ./scripts
         shell: pwsh
         env:
@@ -89,7 +89,7 @@ jobs:
             $writeAirtable = "true"
           }
 
-          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&place_id=$placeId&dry_run=$dryRun&sequential_mode=true&photo_source_mode=refresh_from_data_provider&upload=$upload&write_airtable=$writeAirtable&try_url_variants=true"
+          $FunctionUrl = "https://third-places-data.azurewebsites.net/api/refresh-all-photos?provider_type=$providerType&city=$city&place_id=$placeId&dry_run=$dryRun&upload=$upload&write_airtable=$writeAirtable&try_url_variants=true"
           Write-Host "Using function URL: $FunctionUrl"
 
           ./Invoke-AzureDurableFunction.ps1 -FunctionUrl $FunctionUrl -FunctionKey "$Env:AZURE_FUNCTION_KEY" -TimeoutSeconds 1800
@@ -104,5 +104,6 @@ jobs:
 
   site-revalidation:
     needs: refresh-single-place-photos
+    if: ${{ !inputs.dry_run }}
     uses: ./.github/workflows/site-revalidation.yml
     secrets: inherit

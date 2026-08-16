@@ -494,7 +494,7 @@ def test_process_place_generates_curator_variants_at_front(monkeypatch):
     assert result["selected_airtable_photos"][0]["thumbnail"].replace("/thumbnail/", "/display/") == result["selected_airtable_urls"][0]
     assert result["selected_airtable_photos"][1]["thumbnail"].replace("/thumbnail/", "/display/") == result["selected_airtable_urls"][1]
     assert downloaded_urls == ["https://example.com/vibe.jpg", "https://example.com/front.jpg"]
-    assert result["summary"]["preserved_curator_airtable_photos_count"] == 0
+    assert result["summary"]["preserved_curator_airtable_photos_count"] == 2
     assert result["summary"]["selected_curator_airtable_photos_count"] == 2
     assert result["summary"]["failed_upload_count"] == 0
     assert len(result["selected_airtable_urls"]) == 4
@@ -513,9 +513,77 @@ def test_process_place_plans_curator_variants_from_photos_field():
     assert result["selected_airtable_photos"][0]["display"].startswith("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-")
     assert result["selected_airtable_photos"][0]["thumbnail"].startswith("https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/thumbnail/curator-")
     assert result["summary"]["candidate_count"] == 1
-    assert result["summary"]["preserved_curator_airtable_photos_count"] == 0
+    assert result["summary"]["preserved_curator_airtable_photos_count"] == 1
     assert result["summary"]["failed_upload_count"] == 0
     assert result["failures"] == []
+
+
+def test_process_place_preserves_curators_and_uses_existing_provider_fallbacks():
+    curator_manifest = _photo_manifest(
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-attA-front.webp"
+    )
+    existing_provider_manifests = [
+        _photo_manifest(
+            "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/" + (character * 64) + ".webp"
+        )
+        for character in ("a", "b")
+    ]
+    place_data = {
+        "photos": {
+            "photo_urls": ["https://example.com/new-provider.jpg"],
+            "raw_data": {
+                "photos_data": [{"photo_url_big": "https://example.com/new-provider.jpg"}]
+            },
+        }
+    }
+
+    result = PhotoAssetService().process_place(
+        _place_record(photos=json.dumps([curator_manifest, *existing_provider_manifests])),
+        place_data,
+        PhotoAssetConfig(dry_run=True, upload=False),
+    )
+
+    assert result["selected_airtable_photos"][0] == curator_manifest
+    provider_manifests = [
+        manifest
+        for manifest in result["selected_airtable_photos"]
+        if not is_curator_photo_azure_url(manifest["display"])
+    ]
+    assert len(provider_manifests) == len(existing_provider_manifests)
+    assert any(manifest in provider_manifests for manifest in existing_provider_manifests)
+    assert result["summary"]["preserved_curator_airtable_photos_count"] == 1
+
+
+def test_process_place_publishes_overlapping_provider_candidate_once(monkeypatch):
+    source_url = "https://example.com/provider.jpg"
+    service = PhotoAssetService()
+    publish_calls = []
+
+    def publish_standard_url(source_url, place_id, record_id, place_name, source_hash=None, **kwargs):
+        publish_calls.append(source_url)
+        digest = source_hash or sha256_hex(source_url)
+        display_url = f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/display/{digest}.webp"
+        thumbnail_url = f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/thumbnail/{digest}.webp"
+        return {
+            "success": True,
+            "status": "would_upload",
+            "azure_url": display_url,
+            "blob_path": f"{place_id}/display/{digest}.webp",
+            "content_sha256": digest,
+            "content_type": "image/webp",
+            "photo_manifest": {"display": display_url, "thumbnail": thumbnail_url},
+        }
+
+    monkeypatch.setattr(service.publisher, "publish_standard_url", publish_standard_url)
+
+    result = service.process_place(
+        _place_record(photos=json.dumps([_photo_manifest(source_url, "https://example.com/provider-thumb.jpg")])),
+        {"photos": {"photo_urls": [source_url]}},
+        PhotoAssetConfig(dry_run=True, upload=False),
+    )
+
+    assert publish_calls == [source_url]
+    assert len(result["selected_airtable_photos"]) == 1
 
 
 @pytest.mark.parametrize("curated_count", [MAX_SELECTED_PHOTOS, MAX_SELECTED_PHOTOS + 1])

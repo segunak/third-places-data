@@ -274,6 +274,9 @@ class AirtableService:
                 "raw_provider_value": raw_provider_value
             }
 
+    def get_place_record_by_id(self, record_id: str) -> Dict[str, Any]:
+        return self.charlotte_third_places.get(record_id)
+
     def get_base_url(self, url: str) -> str:
         """
         Extracts and returns the base URL (scheme, domain, and path) from a full URL.

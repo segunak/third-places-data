@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 
 import requests
 
+from constants import MAX_SELECTED_PHOTOS
 from services.photo_publisher_service import (
     AZURE_ACCOUNT_HOST,
     PHOTOS_CONTAINER,
@@ -310,14 +311,29 @@ class PhotoAssetService:
             candidate for candidate in inventory
             if any(source.get("field") == "photos.photo_urls" for source in candidate.get("provenance", []))
         ]
+        existing_provider_candidates = [
+            candidate for candidate in inventory
+            if candidate.get("photo_manifest")
+            and not is_curator_photo_azure_url(candidate.get("canonical_source_url", ""))
+        ]
         if provider_candidates:
-            curator_candidates = [
-                candidate for candidate in inventory
-                if is_curator_photo_azure_url(candidate.get("canonical_source_url", ""))
-            ]
-            selected_candidates = [*curator_candidates, *provider_candidates]
+            selected_candidates = []
+            selected_candidate_hashes = set()
+            for candidate in [*provider_candidates, *existing_provider_candidates]:
+                source_hash = candidate.get("source_url_sha256")
+                if source_hash in selected_candidate_hashes:
+                    continue
+                selected_candidates.append(candidate)
+                selected_candidate_hashes.add(source_hash)
+            provider_target_count = max(
+                len(provider_candidates),
+                min(MAX_SELECTED_PHOTOS, len(existing_provider_candidates)),
+            )
         else:
-            selected_candidates = [candidate for candidate in inventory if candidate.get("photo_manifest")]
+            selected_candidates = existing_provider_candidates
+            provider_target_count = len(existing_provider_candidates)
+        place_context["selection_inventory"] = selected_candidates
+        place_context["provider_target_count"] = provider_target_count
         batch_result = self.process_candidate_batch(place_context, selected_candidates, config)
         return self.finalize_place_assets(place_context, batch_result["assets"], batch_result["failures"])
 
@@ -334,6 +350,12 @@ class PhotoAssetService:
 
         working_place_data = place_data if isinstance(place_data, dict) else {"photos": {}}
         inventory, inventory_summary = build_place_photo_inventory(airtable_record, working_place_data, config.city)
+        airtable_manifests = parse_photo_manifest_list(fields.get("Photos"))
+        preserved_curator_manifests = [
+            manifest
+            for manifest in airtable_manifests
+            if is_curator_photo_azure_url(manifest.get("display", ""))
+        ]
         warnings: List[str] = []
 
         inventory_summary["candidate_count"] = len(inventory)
@@ -345,7 +367,7 @@ class PhotoAssetService:
             "inventory": inventory,
             "inventory_summary": inventory_summary,
             "warnings": warnings,
-            "preserved_curator_urls": [],
+            "preserved_curator_manifests": preserved_curator_manifests,
             "non_azure_airtable_photos_count": len([photo for photo in parse_photo_manifest_list(fields.get("Photos")) if urlparse(photo.get("display", "")).netloc.lower() != AZURE_ACCOUNT_HOST]),
         }
 
@@ -444,13 +466,17 @@ class PhotoAssetService:
         place_id = place_context.get("place_id", "")
         record_id = place_context.get("record_id", "")
         inventory = place_context.get("inventory", [])
+        selection_inventory = place_context.get("selection_inventory", inventory)
         inventory_summary = place_context.get("inventory_summary", {})
-        preserved_curator_urls = place_context.get("preserved_curator_urls", [])
+        preserved_curator_manifests = place_context.get("preserved_curator_manifests", [])
         warnings = list(place_context.get("warnings", []))
 
         success_assets = self._dedupe_assets_by_azure_url(success_assets)
-        selected_asset_manifests = self._selected_asset_manifests(inventory, success_assets)
-        selected_photos = build_display_photo_manifests(preserved_curator_urls, selected_asset_manifests)
+        selected_asset_manifests = self._selected_asset_manifests(selection_inventory, success_assets)
+        provider_target_count = place_context.get("provider_target_count")
+        if isinstance(provider_target_count, int):
+            selected_asset_manifests = selected_asset_manifests[:provider_target_count]
+        selected_photos = build_display_photo_manifests(preserved_curator_manifests, selected_asset_manifests)
         selected_urls = [photo["display"] for photo in selected_photos]
         selected_url_set = set(selected_urls)
         for asset in success_assets:
@@ -468,7 +494,7 @@ class PhotoAssetService:
             "failed_upload_count": len(kept_failures),
             "pending_upload_count": len([asset for asset in success_assets if asset.get("status") == "would_upload"]),
             "selected_airtable_count": len(selected_urls),
-            "preserved_curator_airtable_photos_count": len(preserved_curator_urls),
+            "preserved_curator_airtable_photos_count": len(preserved_curator_manifests),
             "selected_curator_airtable_photos_count": len([url for url in selected_urls if is_curator_photo_azure_url(url)]),
             "successful_but_unserved_count": len([asset for asset in success_assets if not asset.get("selected_for_airtable")]),
             "blob_bytes": sum(int(asset.get("bytes", 0) or 0) for asset in success_assets),
