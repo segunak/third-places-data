@@ -20,6 +20,107 @@ def test_sanitize_blob_metadata_returns_header_safe_ascii_values():
 
 
 class TestGetAndCachePlaceDataPhotosProvider:
+    @staticmethod
+    def _fresh_place_data():
+        return {
+            "place_id": TEST_PLACE_ID,
+            "place_name": TEST_PLACE_NAME,
+            "data_source": "OutscraperProvider",
+            "details": {"place_id": TEST_PLACE_ID, "raw_data": {}},
+            "photos": {"photo_urls": []},
+        }
+
+    def test_fresh_save_sets_has_data_file_after_github_save(self, mock_env_vars):
+        provider = mock.MagicMock()
+        provider.get_all_place_data.return_value = self._fresh_place_data()
+        airtable_instance = mock.MagicMock()
+        airtable_instance.get_record.return_value = None
+        events = []
+
+        def save_data(*args):
+            events.append("saved")
+            return True, "saved"
+
+        def update_record(record_id, field_name, value, overwrite):
+            events.append((record_id, field_name, value, overwrite))
+            return {"updated": True}
+
+        airtable_instance.update_place_record.side_effect = update_record
+
+        with mock.patch("services.utils.PlaceDataProviderFactory.get_provider", return_value=provider):
+            with mock.patch("services.airtable_service.AirtableService", return_value=airtable_instance):
+                with mock.patch("services.utils.fetch_data_github", return_value=(False, None, "not found")):
+                    with mock.patch("services.utils.save_data_github", side_effect=save_data):
+                        status, _, _ = get_and_cache_place_data(
+                            provider_type="outscraper",
+                            place_name=TEST_PLACE_NAME,
+                            place_id=TEST_PLACE_ID,
+                            city="charlotte",
+                            airtable_record_id="recABC",
+                        )
+
+        assert status == "succeeded"
+        assert events == [
+            "saved",
+            ("recABC", "Has Data File", "Yes", True),
+        ]
+
+    def test_fresh_save_failure_does_not_set_has_data_file(self, mock_env_vars):
+        provider = mock.MagicMock()
+        provider.get_all_place_data.return_value = self._fresh_place_data()
+        airtable_instance = mock.MagicMock()
+        airtable_instance.get_record.return_value = None
+
+        with mock.patch("services.utils.PlaceDataProviderFactory.get_provider", return_value=provider):
+            with mock.patch("services.airtable_service.AirtableService", return_value=airtable_instance):
+                with mock.patch("services.utils.fetch_data_github", return_value=(False, None, "not found")):
+                    with mock.patch(
+                        "services.utils.save_data_github",
+                        return_value=(False, "GitHub API returned status code 409"),
+                    ):
+                        status, place_data, message = get_and_cache_place_data(
+                            provider_type="outscraper",
+                            place_name=TEST_PLACE_NAME,
+                            place_id=TEST_PLACE_ID,
+                            city="charlotte",
+                            airtable_record_id="recABC",
+                        )
+
+        assert status == "failed"
+        assert place_data is None
+        assert "Failed to save data file" in message
+        airtable_instance.update_place_record.assert_not_called()
+
+    def test_cached_file_sets_has_data_file_without_github_save(self, mock_env_vars):
+        provider = mock.MagicMock()
+        cached_place_data = self._fresh_place_data()
+        airtable_instance = mock.MagicMock()
+        airtable_instance.get_record.return_value = None
+
+        with mock.patch("services.utils.PlaceDataProviderFactory.get_provider", return_value=provider):
+            with mock.patch("services.airtable_service.AirtableService", return_value=airtable_instance):
+                with mock.patch(
+                    "services.utils.fetch_data_github",
+                    return_value=(True, cached_place_data, "File fetched successfully"),
+                ):
+                    with mock.patch("services.utils.save_data_github") as mock_save:
+                        status, _, _ = get_and_cache_place_data(
+                            provider_type="outscraper",
+                            place_name=TEST_PLACE_NAME,
+                            place_id=TEST_PLACE_ID,
+                            city="charlotte",
+                            airtable_record_id="recABC",
+                        )
+
+        assert status == "cached"
+        mock_save.assert_not_called()
+        airtable_instance.update_place_record.assert_called_once_with(
+            "recABC",
+            "Has Data File",
+            "Yes",
+            overwrite=True,
+        )
+
     def test_fresh_fetch_uses_photo_provider_when_different(self, mock_env_vars):
         primary_provider = mock.MagicMock()
         primary_provider.get_all_place_data.return_value = {

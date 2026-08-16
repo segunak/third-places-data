@@ -49,6 +49,34 @@ def test_get_place_data_passes_photos_provider_type(monkeypatch):
     assert captured["photos_provider_type"] == "google"
 
 
+def test_get_place_data_does_not_return_url_when_data_file_save_failed(monkeypatch):
+    from blueprints import places
+
+    monkeypatch.setattr(
+        places.helpers,
+        "get_and_cache_place_data",
+        lambda **kwargs: ("failed", None, "Failed to save data file"),
+    )
+
+    result = places.get_place_data({
+        "place": {
+            "id": "recABC123",
+            "fields": {
+                "Place": TEST_PLACE_NAME,
+                "Google Maps Place Id": TEST_PLACE_ID,
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+        },
+    })
+
+    assert result["status"] == "failed"
+    assert result["response"] is None
+    assert result["message"] == "Failed to save data file"
+
+
 def test_refresh_single_place_orchestrator_passes_photos_provider_type_to_refresh_and_enrich():
     from blueprints import places
 

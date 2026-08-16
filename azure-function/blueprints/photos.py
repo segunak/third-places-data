@@ -300,6 +300,19 @@ def _curator_manifests_are_preserved(original, proposed):
     return proposed_curator == original and proposed[:len(original)] == original
 
 
+def _merge_curator_manifests(*manifest_groups):
+    merged = []
+    seen_display_urls = set()
+    for manifests in manifest_groups:
+        for manifest in manifests:
+            display_url = manifest.get("display", "")
+            if display_url in seen_display_urls:
+                continue
+            merged.append(manifest)
+            seen_display_urls.add(display_url)
+    return merged
+
+
 @bp.function_name(name="RefreshAllPhotos")
 @bp.route(route="refresh-all-photos")
 @bp.durable_client_input(client_name="client")
@@ -579,9 +592,13 @@ def refresh_single_place_photos(activityInput):
         success, place_data, message = fetch_data_github(data_file_path)
 
         if not success:
-            place_result["status"] = "error"
-            place_result["message"] = f"Failed to read data file: {message}"
-            return place_result
+            if "not found in repository" in message:
+                place_data = {}
+                place_result["data_file_status"] = "missing"
+            else:
+                place_result["status"] = "error"
+                place_result["message"] = f"Failed to read data file: {message}"
+                return place_result
 
         if not isinstance(place_data, dict):
             place_result["status"] = "error"
@@ -611,7 +628,9 @@ def refresh_single_place_photos(activityInput):
 
         selected_source_photo_urls = []
         provider_required = force_provider
-        if photo_source_mode == "refresh_from_data_file_photo_urls":
+        if force_provider:
+            place_result["selection_source"] = "provider"
+        elif photo_source_mode == "refresh_from_data_file_photo_urls":
             selected_source_photo_urls = current_photos
             place_result["selection_source"] = "cached_photo_urls"
             provider_required = False
@@ -708,9 +727,19 @@ def refresh_single_place_photos(activityInput):
             else:
                 place_result["data_file_status"] = "no_change"
 
+            asset_place = place
+            if force_provider:
+                asset_place = {
+                    **place,
+                    "fields": {
+                        **fields,
+                        "Photos": json.dumps(original_curator_photos),
+                    },
+                }
+
             asset_service = PhotoAssetService()
             asset_result = asset_service.process_place(
-                place,
+                asset_place,
                 place_data,
                 PhotoAssetConfig(
                     city=city,
@@ -749,18 +778,20 @@ def refresh_single_place_photos(activityInput):
                 )
                 return place_result
 
-            protected_provider_count = min(
-                len({photo["display"] for photo in original_provider_photos}),
-                MAX_SELECTED_PHOTOS,
-            )
-            proposed_provider_count = len({photo["display"] for photo in proposed_provider_photos})
-            if proposed_provider_count < protected_provider_count:
-                place_result["status"] = "failed_provider_regression"
-                place_result["message"] = (
-                    "Proposed Airtable Photos would reduce the protected provider photo count "
-                    f"below {protected_provider_count}."
-                )
-                return place_result
+            if not force_provider:
+                protected_provider_count = len({
+                    photo["display"] for photo in original_provider_photos
+                })
+                proposed_provider_count = len({
+                    photo["display"] for photo in proposed_provider_photos
+                })
+                if proposed_provider_count < protected_provider_count:
+                    place_result["status"] = "failed_provider_regression"
+                    place_result["message"] = (
+                        "Proposed Airtable Photos would reduce the protected provider photo count "
+                        f"below {protected_provider_count}."
+                    )
+                    return place_result
 
             place_result["photos_after"] = len(selected_airtable_photos)
             place_result["curator_photos_after"] = len(proposed_curator_photos)
@@ -781,6 +812,19 @@ def refresh_single_place_photos(activityInput):
                 latest_airtable_photos = parse_photo_manifest_list(
                     latest_record.get('fields', {}).get('Photos') if latest_record else None
                 )
+                if force_provider:
+                    latest_curator_photos, _ = _split_airtable_photo_manifests(latest_airtable_photos)
+                    retained_curator_photos = _merge_curator_manifests(
+                        original_curator_photos,
+                        latest_curator_photos,
+                    )
+                    selected_airtable_photos = [
+                        *retained_curator_photos,
+                        *proposed_provider_photos,
+                    ]
+                    place_result["photos_after"] = len(selected_airtable_photos)
+                    place_result["curator_photos_after"] = len(retained_curator_photos)
+
                 if latest_airtable_photos == selected_airtable_photos:
                     if place_result["data_file_status"] == "updated":
                         place_result["status"] = "updated_data_file"
@@ -791,7 +835,7 @@ def refresh_single_place_photos(activityInput):
                     place_result["airtable_status"] = "no_change"
                     return place_result
 
-                if latest_airtable_photos != initial_airtable_photos:
+                if not force_provider and latest_airtable_photos != initial_airtable_photos:
                     place_result["status"] = "conflict"
                     place_result["airtable_status"] = "conflict"
                     place_result["message"] = "Airtable Photos changed during processing; update aborted."

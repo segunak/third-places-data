@@ -638,6 +638,146 @@ def test_refresh_single_place_photos_cache_first_dry_run_reports_provider_fetch(
     assert provider.get_place_photos_calls == []
 
 
+def test_refresh_single_place_photos_missing_data_file_is_cache_miss(monkeypatch):
+    provider = DummyProvider()
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: provider),
+    )
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (False, None, f"File {path} not found in repository"),
+    )
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-missing-file",
+            "fields": {
+                "Place": "Missing Data File",
+                "Google Maps Place Id": "ChIJ-missing-file",
+                "Photos": "[]",
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": True,
+        },
+    })
+
+    assert result["status"] == "would_fetch_provider"
+    assert result["selection_source"] == "provider"
+    assert result["data_file_status"] == "missing"
+    assert provider.get_place_photos_calls == []
+
+
+def test_refresh_single_place_photos_live_run_creates_missing_data_file(monkeypatch):
+    provider_url = "https://example.com/provider.jpg"
+    provider = DummyProvider({
+        "photo_urls": [provider_url],
+        "raw_data": {
+            "photos_data": [{"photo_url_big": provider_url}],
+        },
+    })
+    saved_payload = {}
+
+    class SuccessfulPhotoAssetService:
+        def process_place(self, place, place_data, config):
+            manifest = _photo_manifest(
+                "https://thirdplacesdata.blob.core.windows.net/photos/"
+                "ChIJ-missing-file/display/" + ("a" * 64) + ".webp"
+            )
+            return {
+                "summary": {"selected_airtable_count": 1},
+                "failures": [],
+                "assets": [],
+                "selected_airtable_photos": [manifest],
+                "selected_airtable_urls": [manifest["display"]],
+            }
+
+    def save_data(content, path):
+        saved_payload["path"] = path
+        saved_payload["content"] = json.loads(content)
+        return True, "created"
+
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(photos, "PhotoAssetService", SuccessfulPhotoAssetService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: provider),
+    )
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (False, None, f"File {path} not found in repository"),
+    )
+    monkeypatch.setattr(photos, "save_data_github", save_data)
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-missing-file",
+            "fields": {
+                "Place": "Missing Data File",
+                "Google Maps Place Id": "ChIJ-missing-file",
+                "Photos": "[]",
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": False,
+            "upload": False,
+            "write_airtable": False,
+        },
+    })
+
+    assert result["status"] == "updated_data_file"
+    assert result["data_file_status"] == "updated"
+    assert result["provider_called"] is True
+    assert provider.get_place_photos_calls == ["ChIJ-missing-file"]
+    assert saved_payload["path"] == "data/places/charlotte/ChIJ-missing-file.json"
+    assert saved_payload["content"]["photos"]["photo_urls"] == [provider_url]
+
+
+def test_refresh_single_place_photos_data_file_fetch_error_still_fails(monkeypatch):
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: DummyProvider()),
+    )
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (False, None, "Network error while fetching from GitHub: timeout"),
+    )
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-fetch-error",
+            "fields": {
+                "Place": "Fetch Error",
+                "Google Maps Place Id": "ChIJ-fetch-error",
+                "Photos": "[]",
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": True,
+        },
+    })
+
+    assert result["status"] == "error"
+    assert result["message"] == (
+        "Failed to read data file: Network error while fetching from GitHub: timeout"
+    )
+
+
 def test_refresh_single_place_photos_reports_provider_fetch_failure(monkeypatch):
     provider = DummyProvider({
         "photo_urls": [],
@@ -779,6 +919,50 @@ def test_refresh_single_place_photos_from_raw_data_dry_run(monkeypatch):
     assert result["status"] == "would_use_cache"
     assert result["photos_before"] == 0
     assert result["photos_after"] == 2
+
+
+def test_refresh_single_place_photos_force_overrides_cached_source_mode(monkeypatch):
+    provider = DummyProvider()
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: provider),
+    )
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (True, {
+            "photos": {
+                "raw_data": {
+                    "photos_data": [
+                        {"photo_url_big": "https://example.com/cached.jpg"},
+                    ],
+                },
+            },
+        }, "ok"),
+    )
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-force",
+            "fields": {
+                "Place": "Forced Place",
+                "Google Maps Place Id": "ChIJ-force",
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": True,
+            "force_provider": True,
+            "photo_source_mode": "refresh_from_data_file_raw_data",
+        },
+    })
+
+    assert result["status"] == "would_fetch_provider"
+    assert result["selection_source"] == "provider"
+    assert provider.get_place_photos_calls == []
 
 
 def test_refresh_single_place_photos_raw_data_mode_does_not_use_airtable_as_provider_source(monkeypatch):
@@ -1045,7 +1229,19 @@ def test_refresh_single_place_photos_reports_complete_publish_failure(monkeypatc
     assert result["failed_uploads"] == 1
 
 
-def test_refresh_single_place_photos_non_dry_run_preserves_curator_and_caps_oversized_provider_inventory(monkeypatch):
+@pytest.mark.parametrize(
+    ("force_provider", "expected_status", "expected_airtable_updates"),
+    [
+        (False, "failed_provider_regression", 0),
+        (True, "updated_from_provider", 1),
+    ],
+)
+def test_refresh_single_place_photos_allows_count_reduction_only_when_forced(
+    monkeypatch,
+    force_provider,
+    expected_status,
+    expected_airtable_updates,
+):
     provider_urls = [
         f"https://lh5.googleusercontent.com/p/provider-photo-{index}"
         for index in range(MAX_SELECTED_PHOTOS)
@@ -1096,6 +1292,12 @@ def test_refresh_single_place_photos_non_dry_run_preserves_curator_and_caps_over
             assert "json" in saved_payload
             assert place_data["photos"]["photo_urls"] == provider_urls
             assert place_data["photos"]["raw_data"] == provider_raw_data
+            asset_photos = json.loads(place["fields"]["Photos"])
+            assert asset_photos == (
+                [curator_photo]
+                if force_provider
+                else [curator_photo, *existing_provider_photos]
+            )
             return {
                 "summary": {"selected_airtable_count": 1 + MAX_SELECTED_PHOTOS},
                 "failures": [],
@@ -1143,44 +1345,57 @@ def test_refresh_single_place_photos_non_dry_run_preserves_curator_and_caps_over
             "dry_run": False,
             "upload": True,
             "write_airtable": True,
-            "photo_source_mode": "refresh_from_data_provider",
+            "force_provider": force_provider,
         },
     }
 
     result = photos.refresh_single_place_photos(activity_input)
 
-    assert result["status"] == "updated_from_provider"
-    assert result["photos_after"] == 1 + MAX_SELECTED_PHOTOS
-    assert result["curator_photos_after"] == 1
-    assert result["provider_photos_after"] == MAX_SELECTED_PHOTOS
+    assert result["status"] == expected_status
+    assert result["photos_before"] == 2 + MAX_SELECTED_PHOTOS
     assert saved_payload["path"] == "data/places/charlotte/ChIJ123.json"
     assert saved_payload["json"]["photos"]["photo_urls"] == provider_urls
     assert saved_payload["json"]["photos"]["raw_data"] == provider_raw_data
     assert saved_payload["json"]["photos"]["selection_source"] == "provider"
     assert saved_payload["json"]["photos"]["selection_limit"] == MAX_SELECTED_PHOTOS
-    assert airtable_updates == [{
-        "record_id": "rec123",
-        "field_to_update": "Photos",
-        "update_value": json.dumps([curator_photo, *selected_provider_photos]),
-        "overwrite": True,
-    }]
+    assert len(airtable_updates) == expected_airtable_updates
+    if force_provider:
+        assert result["photos_after"] == 1 + MAX_SELECTED_PHOTOS
+        assert result["provider_photos_after"] == MAX_SELECTED_PHOTOS
+    else:
+        assert "protected provider photo count" in result["message"]
 
 
 @pytest.mark.parametrize(
-    ("latest_matches_proposed", "expected_status", "expected_airtable_status"),
+    (
+        "force_provider",
+        "latest_matches_proposed",
+        "latest_has_new_curator",
+        "expected_status",
+        "expected_airtable_status",
+        "expected_writes",
+    ),
     [
-        (True, "updated_data_file", "no_change"),
-        (False, "conflict", "conflict"),
+        (False, True, False, "updated_data_file", "no_change", 0),
+        (False, False, False, "conflict", "conflict", 0),
+        (True, False, False, "updated_from_provider", "updated", 1),
+        (True, False, True, "updated_from_provider", "updated", 1),
     ],
 )
 def test_refresh_single_place_photos_handles_concurrent_airtable_changes(
     monkeypatch,
+    force_provider,
     latest_matches_proposed,
+    latest_has_new_curator,
     expected_status,
     expected_airtable_status,
+    expected_writes,
 ):
     curator_photo = _photo_manifest(
         "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-att1.webp"
+    )
+    concurrent_curator_photo = _photo_manifest(
+        "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/curator-att2.webp"
     )
     provider_photo = _photo_manifest(
         "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ123/display/" + ("a" * 64) + ".webp"
@@ -1200,9 +1415,12 @@ def test_refresh_single_place_photos_handles_concurrent_airtable_changes(
             self.provider_type = provider_type
 
         def get_place_record_by_id(self, record_id):
+            latest_photos = [curator_photo, concurrent_provider_photo]
+            if latest_has_new_curator:
+                latest_photos.insert(1, concurrent_curator_photo)
             return {
                 "id": record_id,
-                "fields": {"Photos": json.dumps([curator_photo, concurrent_provider_photo])},
+                "fields": {"Photos": json.dumps(latest_photos)},
             }
 
         def update_place_record(self, *args, **kwargs):
@@ -1247,13 +1465,16 @@ def test_refresh_single_place_photos_handles_concurrent_airtable_changes(
             "dry_run": False,
             "upload": True,
             "write_airtable": True,
-            "force_provider": True,
+            "force_provider": force_provider,
         },
     })
 
     assert result["status"] == expected_status
     assert result["airtable_status"] == expected_airtable_status
-    assert writes == []
+    assert len(writes) == expected_writes
+    if force_provider and latest_has_new_curator:
+        written_photos = json.loads(writes[0][1]["update_value"])
+        assert written_photos[:2] == [curator_photo, concurrent_curator_photo]
 
 
 def test_refresh_single_place_photos_cache_hit_is_idempotent(monkeypatch):

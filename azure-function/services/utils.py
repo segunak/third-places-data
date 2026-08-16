@@ -614,9 +614,11 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
         success, save_message = save_data_github(json.dumps(place_data, indent=4), cached_file_path)
 
         if not success:
-            logging.warning(f"Failed to save fresh data for {place_name}: {save_message}")
-        else:
-            logging.info(f"Saved fresh data for {place_name} to {cached_file_path}")
+            error_message = f"Failed to save data file for {place_name}: {save_message}"
+            logging.error(error_message)
+            return 'failed', None, error_message
+
+        logging.info(f"Saved fresh data for {place_name} to {cached_file_path}")
 
         if airtable_record_id and airtable_client:
             try:
