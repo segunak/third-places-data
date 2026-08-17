@@ -1778,7 +1778,7 @@
         "place_id": "ChIJr3rOEDa-VogRg8hNgRx3ahI",
         "message": "Photos reconciled using outscraper from provider",
         "photo_urls": [
-            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlB0UIJ3t6g2AC6lpCpT3feyEBCfi9e1fcmTUMnIUhPS9Vrs7PnzwmtHL1XMAl1gqYa207DkwOWHhPNHFrM7XKV-7X15fwAbAk3Oj4g1qdrjyvt6Jb3AWSCxJ5kKs801uKJWj1-yw=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnKA54Bs-WeSb2U6fvydutedh5GZaR0H2hYQ7cOR_lQ54t5nMHrjQhmYHIUFmz5rtIhQsob-zQ5a0LJbVeS5zm4lC9vlunzmudGSTqkL0BXGBabkV6PUO32vPN29SfstnCwGVxjOA=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmimTuL_HfXJOnUjtK6B5tAuvfAe7MPJ34aCjQRmU1Riw1Rgd3BIM-mpE6j27kG539QTN85BUGoo3R1qJvldkolklRJN0S5oH8z3ZBHh66Q4JoJP14eBp_0hRSXv5ubF76yeVrCvw=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnW6mF3xitP9e7BVNBbezWnwxM-nk8ZrAFVa4qVLbZdtuiIvYXfYK8Cbr1IOmum2XPhYROMo3oyfzb8Wkbpz_KM6CuO81z3LGwMU71H4_OF2PlOmsAUt9LsujxV60DEO5uE858=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnYeUbg3oDMEg9D1AzUR88HFamZ0KUM2hV0W6sIHMLxx1oLJxExivr699KY0Dnr2-6O-z0BV7G5Gfdt9X86z71YKraJDOc6Ny6_G6nT8Bbbo7EukRKuh50CE65G4P9vEcco6Z_M=w2048-h2048-k-no",
@@ -1822,7 +1822,7 @@
             "typical_time_spent": null,
             "located_in": "Franklin Square III - Shopping Center",
             "located_google_id": "0x8856be36758f1247:0xe533049991450575",
-            "category": null,
+            "category": "coffee shops",
             "subtypes": "Coffee shop",
             "posts": null,
             "reviews_tags": [
@@ -1843,6 +1843,9 @@
             "photo": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmimTuL_HfXJOnUjtK6B5tAuvfAe7MPJ34aCjQRmU1Riw1Rgd3BIM-mpE6j27kG539QTN85BUGoo3R1qJvldkolklRJN0S5oH8z3ZBHh66Q4JoJP14eBp_0hRSXv5ubF76yeVrCvw=w800-h500-k-no",
             "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=F0KnBk3I_rjoSW8T8Rw9Rw&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=45.952843&pitch=0&thumbfov=100",
             "working_hours": {
+                "Sunday": [
+                    "11AM-7PM"
+                ],
                 "Monday": [
                     "10AM-8PM"
                 ],
@@ -1860,21 +1863,61 @@
                 ],
                 "Saturday": [
                     "10AM-8PM"
-                ],
-                "Sunday": [
-                    "11AM-7PM"
                 ]
             },
             "working_hours_csv_compatible": "Sunday,11AM,7PM|Monday,10AM,8PM|Tuesday,10AM,8PM|Wednesday,10AM,8PM|Thursday,10AM,8PM|Friday,10AM,8PM|Saturday,10AM,8PM",
             "other_hours": null,
             "business_status": "OPERATIONAL",
             "about": {
+                "Service options": {
+                    "Onsite services": true,
+                    "Takeout": true,
+                    "Dine-in": true,
+                    "Delivery": false
+                },
+                "Highlights": {
+                    "Great coffee": true,
+                    "Great tea selection": true
+                },
+                "Popular for": {
+                    "Solo dining": true
+                },
                 "Accessibility": {
                     "Wheelchair accessible entrance": true,
                     "Wheelchair accessible parking lot": true
+                },
+                "Offerings": {
+                    "Coffee": true,
+                    "Quick bite": true
+                },
+                "Dining options": {
+                    "Dessert": true,
+                    "Table service": false
+                },
+                "Amenities": {
+                    "Wi-Fi": true
+                },
+                "Atmosphere": {
+                    "Casual": true,
+                    "Trendy": true
+                },
+                "Crowd": {
+                    "Tourists": true
+                },
+                "Planning": {
+                    "Accepts reservations": false
+                },
+                "Payments": {
+                    "Credit cards": true,
+                    "Debit cards": true,
+                    "NFC mobile payments": true
+                },
+                "Parking": {
+                    "Free parking lot": true,
+                    "Free street parking": true
                 }
             },
-            "range": null,
+            "range": "$1\u201310",
             "prices": null,
             "reviews_per_score": null,
             "reservation_links": null,
@@ -1941,22 +1984,22 @@
                 },
                 {
                     "photo_id": "CIHM0ogKEICAgIC7593N4wE",
-                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlB0UIJ3t6g2AC6lpCpT3feyEBCfi9e1fcmTUMnIUhPS9Vrs7PnzwmtHL1XMAl1gqYa207DkwOWHhPNHFrM7XKV-7X15fwAbAk3Oj4g1qdrjyvt6Jb3AWSCxJ5kKs801uKJWj1-yw",
-                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlB0UIJ3t6g2AC6lpCpT3feyEBCfi9e1fcmTUMnIUhPS9Vrs7PnzwmtHL1XMAl1gqYa207DkwOWHhPNHFrM7XKV-7X15fwAbAk3Oj4g1qdrjyvt6Jb3AWSCxJ5kKs801uKJWj1-yw=w2048-h2048-k-no",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnKA54Bs-WeSb2U6fvydutedh5GZaR0H2hYQ7cOR_lQ54t5nMHrjQhmYHIUFmz5rtIhQsob-zQ5a0LJbVeS5zm4lC9vlunzmudGSTqkL0BXGBabkV6PUO32vPN29SfstnCwGVxjOA",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnKA54Bs-WeSb2U6fvydutedh5GZaR0H2hYQ7cOR_lQ54t5nMHrjQhmYHIUFmz5rtIhQsob-zQ5a0LJbVeS5zm4lC9vlunzmudGSTqkL0BXGBabkV6PUO32vPN29SfstnCwGVxjOA=w2048-h2048-k-no",
                     "latitude": 35.260329399999996,
                     "longitude": -81.11309949999999,
                     "photo_date": "8/18/2024 19:00:00",
                     "photo_upload_source": "gmm_ios_review_post",
                     "photo_source_video": null,
                     "photo_tags": [
-                        "all",
-                        "vibe"
+                        "vibe",
+                        "all"
                     ],
                     "photo_tag_ids": [
-                        9,
-                        1
+                        1,
+                        9
                     ],
-                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlB0UIJ3t6g2AC6lpCpT3feyEBCfi9e1fcmTUMnIUhPS9Vrs7PnzwmtHL1XMAl1gqYa207DkwOWHhPNHFrM7XKV-7X15fwAbAk3Oj4g1qdrjyvt6Jb3AWSCxJ5kKs801uKJWj1-yw=w203-h270-k-no"
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnKA54Bs-WeSb2U6fvydutedh5GZaR0H2hYQ7cOR_lQ54t5nMHrjQhmYHIUFmz5rtIhQsob-zQ5a0LJbVeS5zm4lC9vlunzmudGSTqkL0BXGBabkV6PUO32vPN29SfstnCwGVxjOA=w203-h270-k-no"
                 },
                 {
                     "photo_id": "CIHM0ogKEICAgIC7593NEw",
@@ -2056,7 +2099,7 @@
         "selection_limit": 35,
         "raw_photo_count": 10,
         "selected_photo_count": 12,
-        "last_refreshed": "2026-08-16T22:27:28.721290"
+        "last_refreshed": "2026-08-17T03:20:43.784179"
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2026-05-23T23:36:49.638823",
