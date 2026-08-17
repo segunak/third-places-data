@@ -114,6 +114,21 @@ def validate_refresh_all_photos_request(req: func.HttpRequest):
                 status_code=400,
                 mimetype="application/json"
             )
+        if refresh_below > MAX_SELECTED_PHOTOS:
+            return None, func.HttpResponse(
+                json.dumps({
+                    "success": False,
+                    "message": "refresh_below exceeds the safe maximum",
+                    "data": None,
+                    "error": (
+                        f"refresh_below must be between 1 and MAX_SELECTED_PHOTOS "
+                        f"({MAX_SELECTED_PHOTOS}); received {refresh_below}. "
+                        "Higher values could refresh every eligible place."
+                    )
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
 
     if dry_run:
         upload = False

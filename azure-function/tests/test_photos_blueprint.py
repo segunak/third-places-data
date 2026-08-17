@@ -165,6 +165,38 @@ def test_validate_refresh_all_photos_request_accepts_bulk_controls():
     assert parsed["max_places"] == 12
 
 
+def test_validate_refresh_all_photos_request_accepts_maximum_refresh_below():
+    parsed, error_response = photos.validate_refresh_all_photos_request(
+        DummyRequest({
+            "provider_type": "outscraper",
+            "view": "Production",
+            "refresh_below": str(MAX_SELECTED_PHOTOS),
+        })
+    )
+
+    assert error_response is None
+    assert parsed["refresh_below"] == MAX_SELECTED_PHOTOS
+
+
+def test_validate_refresh_all_photos_request_rejects_refresh_below_above_maximum():
+    unsafe_value = MAX_SELECTED_PHOTOS + 1
+    parsed, error_response = photos.validate_refresh_all_photos_request(
+        DummyRequest({
+            "provider_type": "outscraper",
+            "view": "Production",
+            "refresh_below": str(unsafe_value),
+        })
+    )
+
+    assert parsed is None
+    assert error_response.status_code == 400
+    body = json.loads(error_response.get_body().decode("utf-8"))
+    assert body["message"] == "refresh_below exceeds the safe maximum"
+    assert f"MAX_SELECTED_PHOTOS ({MAX_SELECTED_PHOTOS})" in body["error"]
+    assert f"received {unsafe_value}" in body["error"]
+    assert "could refresh every eligible place" in body["error"]
+
+
 def test_plan_places_for_photo_refresh_reports_every_record():
     curator = _photo_manifest(
         "https://thirdplacesdata.blob.core.windows.net/photos/ChIJ-low/display/curator-att1.webp"
