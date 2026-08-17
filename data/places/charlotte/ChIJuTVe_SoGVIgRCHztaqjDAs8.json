@@ -3810,6 +3810,7 @@
         "message": "Photos reconciled using outscraper from provider",
         "photo_urls": [
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=k-2liICSYJHJV8WrPb1xzg&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=337.93274&pitch=0&thumbfov=100",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWngri-xv-U6BshLA2KPCOvZBR8n09Eq-Wm5fkB61uJxptgqpuZuT6PKiIJR-H_9Mtb0915s8SavFH8Zwr4HdvncecSEN0tUm0Vbi6pwQD8P958H0un-IICf5fo9Iv4HgfeBAzY=w2048-h2048-k-no",
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=k-2liICSYJHJV8WrPb1xzg&cb_client=search.gws-prod.gps&w=800&h=500&yaw=337.93274&pitch=0&thumbfov=100",
             "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=k-2liICSYJHJV8WrPb1xzg&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=337.93274&pitch=0&thumbfov=100"
         ],
@@ -4622,15 +4623,32 @@
                         2
                     ],
                     "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=k-2liICSYJHJV8WrPb1xzg&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=337.93274&pitch=0&thumbfov=100"
+                },
+                {
+                    "photo_id": "CIHM0ogKEICAgIDrl8v1Gg",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWngri-xv-U6BshLA2KPCOvZBR8n09Eq-Wm5fkB61uJxptgqpuZuT6PKiIJR-H_9Mtb0915s8SavFH8Zwr4HdvncecSEN0tUm0Vbi6pwQD8P958H0un-IICf5fo9Iv4HgfeBAzY",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWngri-xv-U6BshLA2KPCOvZBR8n09Eq-Wm5fkB61uJxptgqpuZuT6PKiIJR-H_9Mtb0915s8SavFH8Zwr4HdvncecSEN0tUm0Vbi6pwQD8P958H0un-IICf5fo9Iv4HgfeBAzY=w2048-h2048-k-no",
+                    "latitude": 35.504681999999995,
+                    "longitude": -80.6349388,
+                    "photo_date": "7/21/2024 1:00:00",
+                    "photo_upload_source": "local_universal_mobile_review_post",
+                    "photo_source_video": null,
+                    "photo_tags": [
+                        "all"
+                    ],
+                    "photo_tag_ids": [
+                        1
+                    ],
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWngri-xv-U6BshLA2KPCOvZBR8n09Eq-Wm5fkB61uJxptgqpuZuT6PKiIJR-H_9Mtb0915s8SavFH8Zwr4HdvncecSEN0tUm0Vbi6pwQD8P958H0un-IICf5fo9Iv4HgfeBAzY=w203-h152-k-no"
                 }
             ]
         },
-        "last_refreshed": "2026-08-16T22:49:20.162393",
+        "last_refreshed": "2026-08-17T02:21:38.984689",
         "provider_type": "outscraper",
         "selection_source": "provider",
         "selection_limit": 35,
-        "raw_photo_count": 1,
-        "selected_photo_count": 3
+        "raw_photo_count": 2,
+        "selected_photo_count": 4
     },
     "data_source": "OutscraperProvider",
     "last_updated": "2025-09-13T20:51:28.460772",
