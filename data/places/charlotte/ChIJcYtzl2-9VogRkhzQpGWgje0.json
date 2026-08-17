@@ -4565,7 +4565,7 @@
     },
     "photos": {
         "place_id": "ChIJcYtzl2-9VogRkhzQpGWgje0",
-        "message": "Photos reconciled using outscraper from provider",
+        "message": "Photos reconciled using outscraper from cache",
         "photo_urls": [
             "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk0wWSRy8re0Iprs2Co-VbdfZGr4x2deXchv8lBI_vPbjbwe6sKG7m07M_fcftwOV0DLvEWbG_G2TWufxI_q3cxX5rtnQYnDr0GheXGhbfbnoI9I68_-4PBZGAhu5BMpXLsMgH9mZzT_1gf=w2048-h2048-k-no",
             "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkPEm5_4TzsGjwf0YROafsAVksb7Z_cB4DVieGBC_42HRnvj7sMirhQcIt3VPEzGIQPoEGqMxuL6wGWasIc7B2b6rtDlIFAqNR9xgd0W3puECJbbbh1uHrkVtQOeIiXS1Mma0hAM_r0Yr0=w2048-h2048-k-no",
@@ -6128,7 +6128,7 @@
         },
         "provider_type": "outscraper",
         "data_source": "GoogleMapsProvider",
-        "selection_source": "provider",
+        "selection_source": "cache",
         "selection_limit": 35,
         "raw_photo_count": 100,
         "selected_photo_count": 35,
