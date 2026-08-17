@@ -7,6 +7,9 @@ DEFAULT_REVIEWS_LIMIT = 250
 # Maximum number of provider photos selected for a place
 MAX_SELECTED_PHOTOS = 35
 
+# Number of retries after the first cached photo publication attempt
+PHOTO_CACHE_PUBLISH_RETRY_COUNT = 3
+
 # Number of places processed in parallel during bulk photo refresh
 PHOTO_REFRESH_BATCH_SIZE = 5
 

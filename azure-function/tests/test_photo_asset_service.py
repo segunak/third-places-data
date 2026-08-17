@@ -586,6 +586,51 @@ def test_process_place_publishes_overlapping_provider_candidate_once(monkeypatch
     assert len(result["selected_airtable_photos"]) == 1
 
 
+def test_process_place_retries_only_failed_candidates(monkeypatch):
+    successful_url = "https://example.com/successful-provider.jpg"
+    retry_url = "https://example.com/retry-provider.jpg"
+    publish_call_counts = {successful_url: 0, retry_url: 0}
+    service = PhotoAssetService()
+
+    def publish_standard_url(source_url, place_id, record_id, place_name, source_hash=None, **kwargs):
+        publish_call_counts[source_url] += 1
+        if source_url == retry_url and publish_call_counts[source_url] < 4:
+            return {
+                "success": False,
+                "status": "download_failed",
+                "attempts": [{"url": source_url, "status_code": 403}],
+                "http_status": 403,
+                "error": "HTTP 403",
+            }
+
+        digest = source_hash or sha256_hex(source_url)
+        display_url = f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/display/{digest}.webp"
+        thumbnail_url = f"https://thirdplacesdata.blob.core.windows.net/photos/{place_id}/thumbnail/{digest}.webp"
+        return {
+            "success": True,
+            "status": "would_upload",
+            "azure_url": display_url,
+            "blob_path": f"{place_id}/display/{digest}.webp",
+            "content_sha256": digest,
+            "content_type": "image/webp",
+            "photo_manifest": {"display": display_url, "thumbnail": thumbnail_url},
+        }
+
+    monkeypatch.setattr(service.publisher, "publish_standard_url", publish_standard_url)
+
+    result = service.process_place(
+        _place_record(),
+        {"photos": {"photo_urls": [successful_url, retry_url]}},
+        PhotoAssetConfig(dry_run=True, upload=False, publish_retry_count=3),
+    )
+
+    assert publish_call_counts == {successful_url: 1, retry_url: 4}
+    assert result["failures"] == []
+    assert len(result["selected_airtable_photos"]) == 2
+    assert result["summary"]["publish_attempt_count"] == 4
+    assert result["summary"]["publish_retry_count"] == 3
+
+
 @pytest.mark.parametrize("curated_count", [MAX_SELECTED_PHOTOS, MAX_SELECTED_PHOTOS + 1])
 def test_process_place_selects_only_curated_photo_urls_and_keeps_all_raw_data(monkeypatch, curated_count):
     raw_photo_urls = [f"https://example.com/photo-{index}.jpg" for index in range(100)]

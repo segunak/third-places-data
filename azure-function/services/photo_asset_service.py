@@ -30,6 +30,7 @@ class PhotoAssetConfig:
     upload: bool = False
     try_url_variants: bool = True
     download_timeout_seconds: int = 20
+    publish_retry_count: int = 0
 
 
 def parse_url_list(value: Any) -> List[str]:
@@ -335,7 +336,33 @@ class PhotoAssetService:
         place_context["selection_inventory"] = selected_candidates
         place_context["provider_target_count"] = provider_target_count
         batch_result = self.process_candidate_batch(place_context, selected_candidates, config)
-        return self.finalize_place_assets(place_context, batch_result["assets"], batch_result["failures"])
+        success_assets = batch_result["assets"]
+        failures = batch_result["failures"]
+        publish_attempt_count = 1 if selected_candidates else 0
+
+        for _ in range(max(0, config.publish_retry_count)):
+            if not failures:
+                break
+            failed_hashes = {
+                failure.get("source_url_sha256")
+                for failure in failures
+                if failure.get("source_url_sha256")
+            }
+            retry_candidates = [
+                candidate
+                for candidate in selected_candidates
+                if candidate.get("source_url_sha256") in failed_hashes
+            ]
+            if not retry_candidates:
+                break
+            retry_result = self.process_candidate_batch(place_context, retry_candidates, config)
+            success_assets.extend(retry_result["assets"])
+            failures = retry_result["failures"]
+            publish_attempt_count += 1
+
+        place_context["publish_attempt_count"] = publish_attempt_count
+        place_context["publish_retry_count"] = max(0, publish_attempt_count - 1)
+        return self.finalize_place_assets(place_context, success_assets, failures)
 
     def prepare_place_context(self, airtable_record: Dict[str, Any], place_data: Optional[Dict[str, Any]], config: PhotoAssetConfig) -> Dict[str, Any]:
         fields = airtable_record.get("fields", {}) if isinstance(airtable_record, dict) else {}
@@ -493,6 +520,8 @@ class PhotoAssetService:
             "azure_assets_count": len(success_assets),
             "failed_upload_count": len(kept_failures),
             "pending_upload_count": len([asset for asset in success_assets if asset.get("status") == "would_upload"]),
+            "publish_attempt_count": int(place_context.get("publish_attempt_count", 0) or 0),
+            "publish_retry_count": int(place_context.get("publish_retry_count", 0) or 0),
             "selected_airtable_count": len(selected_urls),
             "preserved_curator_airtable_photos_count": len(preserved_curator_manifests),
             "selected_curator_airtable_photos_count": len([url for url in selected_urls if is_curator_photo_azure_url(url)]),

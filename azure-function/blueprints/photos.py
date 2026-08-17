@@ -3,7 +3,7 @@ import logging
 import azure.functions as func
 import azure.durable_functions as df
 from datetime import datetime
-from constants import MAX_SELECTED_PHOTOS, PHOTO_REFRESH_BATCH_SIZE
+from constants import MAX_SELECTED_PHOTOS, PHOTO_CACHE_PUBLISH_RETRY_COUNT, PHOTO_REFRESH_BATCH_SIZE
 from services.airtable_service import AirtableService
 from services.photo_asset_service import PhotoAssetConfig, PhotoAssetService, is_curator_photo_azure_url, parse_photo_manifest_list, parse_url_list, remove_photo_manifest_fields
 from services.place_data_service import PlaceDataProviderFactory, PlaceDataService
@@ -572,6 +572,9 @@ def refresh_single_place_photos(activityInput):
             "uploaded_assets": 0,
             "reused_assets": 0,
             "canonical_assets": 0,
+            "cache_publish_attempts": 0,
+            "cache_publish_failures": 0,
+            "cache_fallback_used": False,
         }
 
         if not place or 'fields' not in place:
@@ -753,6 +756,11 @@ def refresh_single_place_photos(activityInput):
                     },
                 }
 
+            cache_publish_retry_count = (
+                PHOTO_CACHE_PUBLISH_RETRY_COUNT
+                if photo_source_mode == "cache_first" and not provider_required
+                else 0
+            )
             asset_service = PhotoAssetService()
             asset_result = asset_service.process_place(
                 asset_place,
@@ -762,6 +770,7 @@ def refresh_single_place_photos(activityInput):
                     dry_run=False,
                     upload=upload,
                     try_url_variants=try_url_variants,
+                    publish_retry_count=cache_publish_retry_count,
                 ),
             )
             place_result["photo_asset_summary"] = asset_result.get("summary", {})
@@ -787,6 +796,29 @@ def refresh_single_place_photos(activityInput):
                 return place_result
 
             proposed_curator_photos, proposed_provider_photos = _split_airtable_photo_manifests(selected_airtable_photos)
+            if cache_publish_retry_count:
+                place_result["cache_publish_attempts"] = int(
+                    asset_result.get("summary", {}).get("publish_attempt_count", 1)
+                )
+                place_result["cache_publish_failures"] = len(asset_result.get("failures", []))
+                if asset_result.get("failures") or not proposed_provider_photos:
+                    logging.warning(
+                        f"Cached photo publishing failed for {place_name} after "
+                        f"{place_result['cache_publish_attempts']} attempts; fetching {provider_type}."
+                    )
+                    fallback_result = refresh_single_place_photos({
+                        "place": place,
+                        "config": {
+                            **config,
+                            "force_provider": True,
+                            "photo_source_mode": "refresh_from_data_provider",
+                        },
+                    })
+                    fallback_result["cache_publish_attempts"] = place_result["cache_publish_attempts"]
+                    fallback_result["cache_publish_failures"] = place_result["cache_publish_failures"]
+                    fallback_result["cache_fallback_used"] = True
+                    return fallback_result
+
             if selected_source_photo_urls and not proposed_provider_photos:
                 place_result["status"] = "failed_photo_publish"
                 place_result["message"] = (

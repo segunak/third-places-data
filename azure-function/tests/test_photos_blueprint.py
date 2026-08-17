@@ -1296,6 +1296,140 @@ def test_refresh_single_place_photos_reports_complete_publish_failure(monkeypatc
     assert result["failed_uploads"] == 1
 
 
+def test_refresh_single_place_photos_cache_publish_failure_falls_back_to_provider(monkeypatch):
+    cached_urls = [
+        f"https://lh3.googleusercontent.com/cached-{index}"
+        for index in range(MAX_SELECTED_PHOTOS)
+    ]
+    provider_urls = [
+        f"https://lh3.googleusercontent.com/provider-{index}"
+        for index in range(MAX_SELECTED_PHOTOS)
+    ]
+    provider = DummyProvider({
+        "photo_urls": provider_urls,
+        "raw_data": {
+            "photos_data": [
+                {"photo_url_big": provider_url}
+                for provider_url in provider_urls
+            ],
+        },
+    })
+    curator_manifest = _photo_manifest(
+        "https://thirdplacesdata.blob.core.windows.net/photos/"
+        "ChIJ-cache-fallback/display/curator-att1-photo.webp"
+    )
+    asset_calls = []
+    saved_payloads = []
+
+    class CacheThenProviderPhotoAssetService:
+        def process_place(self, place, place_data, config):
+            selected_urls = place_data["photos"]["photo_urls"]
+            asset_calls.append({
+                "photo_urls": selected_urls,
+                "publish_retry_count": getattr(config, "publish_retry_count", 0),
+            })
+            if selected_urls == cached_urls:
+                return {
+                    "summary": {
+                        "selected_airtable_count": 1,
+                        "publish_attempt_count": 4,
+                    },
+                    "failures": [
+                        {"canonical_source_url": cached_url, "error": "HTTP 403"}
+                        for cached_url in cached_urls
+                    ],
+                    "assets": [],
+                    "selected_airtable_photos": [curator_manifest],
+                    "selected_airtable_urls": [curator_manifest["display"]],
+                }
+
+            provider_manifests = [
+                _photo_manifest(
+                    "https://thirdplacesdata.blob.core.windows.net/photos/"
+                    f"ChIJ-cache-fallback/display/{index:064x}.webp"
+                )
+                for index in range(MAX_SELECTED_PHOTOS)
+            ]
+            selected_manifests = [curator_manifest, *provider_manifests]
+            return {
+                "summary": {"selected_airtable_count": len(selected_manifests)},
+                "failures": [],
+                "assets": [],
+                "selected_airtable_photos": selected_manifests,
+                "selected_airtable_urls": [
+                    manifest["display"]
+                    for manifest in selected_manifests
+                ],
+            }
+
+    def save_data(content, path):
+        saved_payloads.append(json.loads(content))
+        return True, "saved"
+
+    monkeypatch.setattr(photos, "AirtableService", DummyAirtableService)
+    monkeypatch.setattr(photos, "PhotoAssetService", CacheThenProviderPhotoAssetService)
+    monkeypatch.setattr(
+        photos.PlaceDataProviderFactory,
+        "get_provider",
+        staticmethod(lambda provider_type: provider),
+    )
+    monkeypatch.setattr(
+        photos,
+        "fetch_data_github",
+        lambda path: (
+            True,
+            {
+                "photos_provider_type": "outscraper",
+                "photos": {
+                    "raw_data": {
+                        "photos_data": [
+                            {"photo_url_big": cached_url}
+                            for cached_url in cached_urls
+                        ],
+                    },
+                },
+            },
+            "ok",
+        ),
+    )
+    monkeypatch.setattr(photos, "save_data_github", save_data)
+
+    result = photos.refresh_single_place_photos({
+        "place": {
+            "id": "rec-cache-fallback",
+            "fields": {
+                "Place": "Cache Fallback",
+                "Google Maps Place Id": "ChIJ-cache-fallback",
+                "Photos": json.dumps([curator_manifest]),
+            },
+        },
+        "config": {
+            "provider_type": "outscraper",
+            "city": "charlotte",
+            "dry_run": False,
+            "upload": True,
+            "write_airtable": False,
+            "photo_source_mode": "cache_first",
+        },
+    })
+
+    assert result["status"] == "updated_data_file"
+    assert result["selection_source"] == "provider"
+    assert result["provider_called"] is True
+    assert result["cache_fallback_used"] is True
+    assert result["cache_publish_attempts"] == 4
+    assert result["curator_photos_after"] == 1
+    assert result["provider_photos_after"] == MAX_SELECTED_PHOTOS
+    assert provider.get_place_photos_calls == ["ChIJ-cache-fallback"]
+    assert asset_calls == [
+        {"photo_urls": cached_urls, "publish_retry_count": 3},
+        {"photo_urls": provider_urls, "publish_retry_count": 0},
+    ]
+    assert saved_payloads[-1]["photos"]["raw_data"] == provider._provider_photos["raw_data"]
+    assert saved_payloads[-1]["photos"]["photo_urls"] == provider_urls
+    assert saved_payloads[-1]["photos"]["selection_source"] == "provider"
+
+
 @pytest.mark.parametrize(
     ("force_provider", "expected_status", "expected_airtable_updates"),
     [
