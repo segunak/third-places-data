@@ -21,7 +21,9 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Set Up Python For Agent Skills
         uses: actions/setup-python@v6
@@ -35,6 +37,6 @@ jobs:
           python .github/skills/place-json-evidence/extract_place_json_evidence.py --help
 
       - name: Install gh-aw Extension
-        uses: github/gh-aw-actions/setup-cli@ca8678ca22a7aab577514482576720da641e5661 # v0.82.9
+        uses: github/gh-aw-actions/setup-cli@9271a1804551c0dc4fb0085a97979950aa2f8489 # v0.88.2
         with:
-          version: v0.82.9
+          version: v0.88.2
