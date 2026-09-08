@@ -182,7 +182,7 @@ safe-outputs:
 
         - name: Send Email
           if: ${{ steps.email.outputs.send == 'true' }}
-          uses: dawidd6/action-send-mail@v18
+          uses: dawidd6/action-send-mail@v20
           with:
             server_address: smtp.gmail.com
             server_port: 465
