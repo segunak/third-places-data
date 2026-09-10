@@ -8,7 +8,7 @@
         "website": "https://simplicityclt.com/",
         "address": "3216 South Blvd #101, Charlotte, NC 28209, USA",
         "description": "",
-        "purchase_required": "Unsure",
+        "purchase_required": "Yes",
         "parking": [
             "Free",
             "Street"
@@ -111,48 +111,72 @@
             "googleMapsUri": "https://maps.google.com/?cid=7627585771361179061&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
             "websiteUri": "https://simplicityclt.com/",
             "regularOpeningHours": {
-                "openNow": true,
+                "openNow": false,
                 "periods": [
                     {
                         "open": {
+                            "day": 1,
+                            "hour": 7,
+                            "minute": 0
+                        },
+                        "close": {
+                            "day": 1,
+                            "hour": 16,
+                            "minute": 0
+                        }
+                    },
+                    {
+                        "open": {
+                            "day": 2,
+                            "hour": 7,
+                            "minute": 0
+                        },
+                        "close": {
+                            "day": 2,
+                            "hour": 16,
+                            "minute": 0
+                        }
+                    },
+                    {
+                        "open": {
                             "day": 3,
-                            "hour": 9,
+                            "hour": 7,
                             "minute": 0
                         },
                         "close": {
                             "day": 3,
-                            "hour": 14,
+                            "hour": 16,
                             "minute": 0
                         }
                     },
                     {
                         "open": {
                             "day": 4,
-                            "hour": 9,
+                            "hour": 7,
                             "minute": 0
                         },
                         "close": {
                             "day": 4,
-                            "hour": 14,
+                            "hour": 16,
                             "minute": 0
                         }
                     },
                     {
                         "open": {
                             "day": 5,
-                            "hour": 9,
+                            "hour": 7,
                             "minute": 0
                         },
                         "close": {
                             "day": 5,
-                            "hour": 14,
+                            "hour": 16,
                             "minute": 0
                         }
                     },
                     {
                         "open": {
                             "day": 6,
-                            "hour": 10,
+                            "hour": 9,
                             "minute": 0
                         },
                         "close": {
@@ -163,17 +187,18 @@
                     }
                 ],
                 "weekdayDescriptions": [
-                    "Monday: Closed",
-                    "Tuesday: Closed",
-                    "Wednesday: 9:00\u202fAM\u2009\u2013\u20092:00\u202fPM",
-                    "Thursday: 9:00\u202fAM\u2009\u2013\u20092:00\u202fPM",
-                    "Friday: 9:00\u202fAM\u2009\u2013\u20092:00\u202fPM",
-                    "Saturday: 10:00\u202fAM\u2009\u2013\u20092:00\u202fPM",
+                    "Monday: 7:00\u202fAM\u2009\u2013\u20094:00\u202fPM",
+                    "Tuesday: 7:00\u202fAM\u2009\u2013\u20094:00\u202fPM",
+                    "Wednesday: 7:00\u202fAM\u2009\u2013\u20094:00\u202fPM",
+                    "Thursday: 7:00\u202fAM\u2009\u2013\u20094:00\u202fPM",
+                    "Friday: 7:00\u202fAM\u2009\u2013\u20094:00\u202fPM",
+                    "Saturday: 9:00\u202fAM\u2009\u2013\u20092:00\u202fPM",
                     "Sunday: Closed"
                 ],
-                "nextCloseTime": "2026-08-27T18:00:00Z"
+                "nextOpenTime": "2026-09-11T11:00:00Z"
             },
             "businessStatus": "OPERATIONAL",
+            "priceLevel": "PRICE_LEVEL_INEXPENSIVE",
             "displayName": {
                 "text": "Simpli City Cafe",
                 "languageCode": "en"
@@ -197,37 +222,187 @@
     },
     "photos": {
         "place_id": "ChIJBcq_4QqfVogRtZXOq9ig2mk",
-        "message": "Selected 1 photos",
+        "message": "Retrieved 2 photos, selected 4",
         "photo_urls": [
-            "https://lh3.googleusercontent.com/place-photos/AG9NLjAXvLbMyjtKKJkOm5hEMQ29m5lTQqm3R_3-IclRZ76bNB5c9h_37XjVZeJCsemKFQiNGmqVMP1RAwHqzcUo4wuRljcC3expaXJ4TyM5F_MJc0L8iAOkQM_Mp5eF90UoewkjWguw4apAhwfJrP9yGULg=s4800-w3024-h4032"
+            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Sy9aBCwCaSfWPH02MZQ14w&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=316.87112&pitch=0&thumbfov=100",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkYI6tF3BhOq6FO9CXqOJ-gbNVnyB2BctJmOWUb9Yjdy6K4t--6Mp_qB_GsCXCQiBsPvc3b876tjCkYeqSO5kJENWOKs5ERtCif8fe50yuv7x_RzvKAt3xnVjy2qfcJC3YsFILKnOMtPyQ=w2048-h2048-k-no",
+            "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkYI6tF3BhOq6FO9CXqOJ-gbNVnyB2BctJmOWUb9Yjdy6K4t--6Mp_qB_GsCXCQiBsPvc3b876tjCkYeqSO5kJENWOKs5ERtCif8fe50yuv7x_RzvKAt3xnVjy2qfcJC3YsFILKnOMtPyQ=w800-h500-k-no",
+            "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Sy9aBCwCaSfWPH02MZQ14w&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=316.87112&pitch=0&thumbfov=100"
         ],
         "raw_data": {
-            "photos": [
-                {
-                    "name": "places/ChIJBcq_4QqfVogRtZXOq9ig2mk/photos/AVoNoXS-enOEbovYQk0WL28aTxTmXtPhekSOhHLQafKxyRPFy2AFkddRoKkDrSDBy7Q7TzkH3JLhfWKmQ2zvSNB_P0FJy-hMlb9KdMZrTe46-zGQvno1R32k_A4WrIqc9F9TrlzlB9RBpcfsqmuArUg8k-Ss0oSFQDc0prid-X90eCmRzjrhSZ12wyWAxPVdCvox9B33p8rP4poIG77AQrN0p56isk-w8ZiJgA9uvQ0IMZySTq5nj07-jv6jNenVXwzUgvudn7A8xZrG91LTrhgvbePwwDgN7wDbPI57Ncfbg1LFdGNPvrz9AMpLhwz52vdN0J5pkqqWdXUBGuPDoISy8JdLb2XVKpVkO0N-vXSt_2eH_zY9ZVnoWVmHKDvhlAnzfryhdiGJAE5tkXsLGX-KQTbIDKWc87roaNa2q4mLm8-QssUT43fQw-1-au1fFA",
-                    "widthPx": 3024,
-                    "heightPx": 4032,
-                    "authorAttributions": [
-                        {
-                            "displayName": "Kirsten Samkutty",
-                            "uri": "https://maps.google.com/maps/contrib/104566441361667949510",
-                            "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocL_7LmxXqy0NJYDTOV6b0BE53--3pjddJ-AF2W2vtT6eKqss9o=s100-p-k-no-mo"
-                        }
-                    ],
-                    "flagContentUri": "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIABIhCZbMiasCS1QPtDQTnDPFKd&t=27&cb_client=maps_api_places.places_api&hl=en",
-                    "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhCZbMiasCS1QPtDQTnDPFKd!2e10!4m2!3m1!1s0x88569f0ae1bfca05:0x69daa0d8abce95b5"
-                }
+            "query": "ChIJBcq_4QqfVogRtZXOq9ig2mk",
+            "name": "Simpli City Cafe",
+            "name_for_emails": "Simpli City Cafe",
+            "place_id": "ChIJBcq_4QqfVogRtZXOq9ig2mk",
+            "google_id": "0x88569f0ae1bfca05:0x69daa0d8abce95b5",
+            "kgmid": "/g/11zks27c6h",
+            "address": "3216 South Blvd #101, Charlotte, NC 28209",
+            "county": "Sedgefield",
+            "street": "3216 South Blvd #101",
+            "area_service": false,
+            "country_code": "US",
+            "country": "United States of America",
+            "postal_code": "28209",
+            "city": "Charlotte",
+            "state": "North Carolina",
+            "state_code": "NC",
+            "plus_code": "867X54WH+GF",
+            "latitude": 35.1962814,
+            "longitude": -80.8713063,
+            "h3": "8944d84c27bffff",
+            "time_zone": "America/New_York",
+            "popular_times": null,
+            "website": "https://simplicityclt.com/",
+            "phone": "+1 980-202-1376",
+            "type": "Cafe",
+            "logo": "https://lh5.googleusercontent.com/-5eXjT78fF14/AAAAAAAAAAI/AAAAAAAAAAA/wZkbaI0NaEY/s44-p-k-no-ns-nd/photo.jpg",
+            "description": null,
+            "typical_time_spent": null,
+            "located_in": null,
+            "located_google_id": null,
+            "category": "cafes",
+            "subtypes": "Cafe",
+            "posts": null,
+            "reviews_tags": [
+                "matcha"
             ],
+            "rating": 4.9,
+            "reviews": 7,
+            "photos_count": 2,
+            "cid": "7627585771361179061",
+            "reviews_link": "https://search.google.com/local/reviews?placeid=ChIJBcq_4QqfVogRtZXOq9ig2mk&q=*&authuser=0&hl=en&gl=US",
+            "reviews_id": "7627585771361179061",
+            "photo": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkYI6tF3BhOq6FO9CXqOJ-gbNVnyB2BctJmOWUb9Yjdy6K4t--6Mp_qB_GsCXCQiBsPvc3b876tjCkYeqSO5kJENWOKs5ERtCif8fe50yuv7x_RzvKAt3xnVjy2qfcJC3YsFILKnOMtPyQ=w800-h500-k-no",
+            "street_view": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Sy9aBCwCaSfWPH02MZQ14w&cb_client=search.gws-prod.gps&w=1600&h=1000&yaw=316.87112&pitch=0&thumbfov=100",
+            "working_hours": {
+                "Monday": [
+                    "7AM-4PM"
+                ],
+                "Tuesday": [
+                    "7AM-4PM"
+                ],
+                "Wednesday": [
+                    "7AM-4PM"
+                ],
+                "Thursday": [
+                    "7AM-4PM"
+                ],
+                "Friday": [
+                    "7AM-4PM"
+                ],
+                "Saturday": [
+                    "9AM-2PM"
+                ],
+                "Sunday": [
+                    "Closed"
+                ]
+            },
+            "working_hours_csv_compatible": "Monday,7AM,4PM|Tuesday,7AM,4PM|Wednesday,7AM,4PM|Thursday,7AM,4PM|Friday,7AM,4PM|Saturday,9AM,2PM",
+            "other_hours": null,
+            "business_status": "OPERATIONAL",
+            "about": {
+                "Service options": {
+                    "Curbside pickup": true,
+                    "Takeout": true,
+                    "Dine-in": true
+                },
+                "Highlights": {
+                    "Great coffee": true,
+                    "Great tea selection": true
+                },
+                "Popular for": {
+                    "Solo dining": true
+                },
+                "Accessibility": {
+                    "Wheelchair accessible entrance": true,
+                    "Wheelchair accessible parking lot": true,
+                    "Wheelchair accessible restroom": true,
+                    "Wheelchair accessible seating": true
+                },
+                "Offerings": {
+                    "Coffee": true,
+                    "Organic dishes": true,
+                    "Prepared foods": true,
+                    "Quick bite": true
+                },
+                "Dining options": {
+                    "Dessert": true
+                },
+                "Amenities": {
+                    "Restroom": true
+                },
+                "Atmosphere": {
+                    "Casual": true,
+                    "Trendy": true
+                },
+                "Payments": {
+                    "Credit cards": true,
+                    "Debit cards": true,
+                    "NFC mobile payments": true
+                },
+                "Children": {
+                    "Good for kids": true
+                },
+                "Parking": {
+                    "Free street parking": true
+                }
+            },
+            "range": "$1\u201310",
+            "prices": null,
+            "reviews_per_score": null,
+            "reservation_links": null,
+            "booking_appointment_link": null,
+            "menu_link": null,
+            "order_links": null,
+            "owner_id": "108088466880814374046",
+            "verified": true,
+            "owner_title": "Simpli City Cafe",
+            "owner_link": "https://www.google.com/maps/contrib/108088466880814374046",
+            "location_link": "https://www.google.com/maps/place/Simpli+City+Cafe/@35.1962814,-80.8713063,14z/data=!4m8!1m2!2m1!1sSimpli+City+Cafe!3m4!1s0x88569f0ae1bfca05:0x69daa0d8abce95b5!8m2!3d35.1962814!4d-80.8713063",
+            "location_reviews_link": "https://www.google.com/maps/place/Simpli+City+Cafe/@35.1962814,-80.8713063,13.99z/data=!4m16!1m7!3m6!1s0x88569f0ae1bfca05:0x69daa0d8abce95b5!2sSimpli+City+Cafe!8m2!3d35.1962814!4d-80.8713063!16s%2Fg%2F11ckvg1dmb!3m7!1s0x88569f0ae1bfca05:0x69daa0d8abce95b5!8m2!3d35.1962814!4d-80.8713063!9m1!1b1!16s%2Fg%2F11ckvg1dmb?entry=ttu",
             "photos_data": [
                 {
-                    "photo_url_big": "https://lh3.googleusercontent.com/place-photos/AG9NLjAXvLbMyjtKKJkOm5hEMQ29m5lTQqm3R_3-IclRZ76bNB5c9h_37XjVZeJCsemKFQiNGmqVMP1RAwHqzcUo4wuRljcC3expaXJ4TyM5F_MJc0L8iAOkQM_Mp5eF90UoewkjWguw4apAhwfJrP9yGULg=s4800-w3024-h4032",
-                    "photo_tags": [],
-                    "photo_date": ""
+                    "photo_id": "CIABIhCZbMiasCS1QPtDQTnDPFKd",
+                    "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkYI6tF3BhOq6FO9CXqOJ-gbNVnyB2BctJmOWUb9Yjdy6K4t--6Mp_qB_GsCXCQiBsPvc3b876tjCkYeqSO5kJENWOKs5ERtCif8fe50yuv7x_RzvKAt3xnVjy2qfcJC3YsFILKnOMtPyQ",
+                    "photo_url_big": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkYI6tF3BhOq6FO9CXqOJ-gbNVnyB2BctJmOWUb9Yjdy6K4t--6Mp_qB_GsCXCQiBsPvc3b876tjCkYeqSO5kJENWOKs5ERtCif8fe50yuv7x_RzvKAt3xnVjy2qfcJC3YsFILKnOMtPyQ=w2048-h2048-k-no",
+                    "latitude": 35.1960854,
+                    "longitude": -80.8711202,
+                    "photo_date": "8/22/2026 13:00:00",
+                    "photo_upload_source": "local_universal_mobile_review_post",
+                    "photo_source_video": null,
+                    "photo_tags": [
+                        "drink",
+                        "food"
+                    ],
+                    "photo_tag_ids": [
+                        3,
+                        8
+                    ],
+                    "original_photo_url": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkYI6tF3BhOq6FO9CXqOJ-gbNVnyB2BctJmOWUb9Yjdy6K4t--6Mp_qB_GsCXCQiBsPvc3b876tjCkYeqSO5kJENWOKs5ERtCif8fe50yuv7x_RzvKAt3xnVjy2qfcJC3YsFILKnOMtPyQ=w203-h270-k-no"
+                },
+                {
+                    "photo_id": "Sy9aBCwCaSfWPH02MZQ14w",
+                    "photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Sy9aBCwCaSfWPH02MZQ14w&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=316.87112&pitch=0&thumbfov=100",
+                    "photo_url_big": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Sy9aBCwCaSfWPH02MZQ14w&cb_client=maps_sv.tactile.gps&w=1600&h=1000&yaw=316.87112&pitch=0&thumbfov=100",
+                    "latitude": 35.19609959636001,
+                    "longitude": -80.87109790036016,
+                    "photo_date": "12/27/2025 15:00:00",
+                    "photo_upload_source": "launch",
+                    "photo_source_video": null,
+                    "photo_tags": [
+                        "front"
+                    ],
+                    "photo_tag_ids": [
+                        2
+                    ],
+                    "original_photo_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Sy9aBCwCaSfWPH02MZQ14w&cb_client=maps_sv.tactile.gps&w=203&h=100&yaw=316.87112&pitch=0&thumbfov=100"
                 }
             ]
-        }
+        },
+        "provider_type": "outscraper",
+        "data_source": "OutscraperProvider"
     },
     "data_source": "GoogleMapsProvider",
-    "last_updated": "2026-08-27T17:37:42.701017",
-    "photos_provider_type": "google"
+    "last_updated": "2026-09-10T21:24:45.937889",
+    "photos_provider_type": "outscraper"
 }
