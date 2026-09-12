@@ -2,10 +2,13 @@
 name: Reddit Alerts
 on:
   schedule:
-    # Daily at 5:35 PM Eastern Time; America/New_York handles EST/EDT automatically.
+    # Sunday at 2 PM Eastern Time; America/New_York handles EST/EDT automatically.
     # GitHub Actions: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onschedule
     # gh-aw: https://github.github.com/gh-aw/reference/schedule-syntax/#iana-timezone-field
-    - cron: "35 17 * * *"
+    - cron: "0 14 * * 0"
+      timezone: "America/New_York"
+    # Monday, Wednesday, and Friday at 5 PM Eastern Time.
+    - cron: "0 17 * * 1,3,5"
       timezone: "America/New_York"
   workflow_dispatch:
     inputs:
