@@ -11,7 +11,7 @@ on:
       photos_provider_type:
         description: 'Photo Provider'
         required: false
-        default: 'google'
+        default: 'outscraper'
         type: string
       sequential_mode:
         description: 'Sequential Mode'
@@ -46,7 +46,7 @@ on:
       photos_provider_type:
         description: 'Photo Provider'
         required: false
-        default: 'google'
+        default: 'outscraper'
         type: choice
         options:
           - 'google'
