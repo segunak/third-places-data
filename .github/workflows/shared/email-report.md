@@ -3,8 +3,10 @@ safe-outputs:
   github-token: ${{ secrets.GH_AW_GITHUB_TOKEN }}
   jobs:
     send-email-report:
-      description: "Send a private Third Place Alerts email report through Gmail SMTP."
+      description: "Send the final Third Place Alerts email report through Gmail SMTP. Call this tool one time with the complete report. Do not use it to test the command syntax or to send placeholder text. If you call it more than one time, the job sends only the last request."
       runs-on: ubuntu-latest
+      # Keep all requests, so that gh-aw does not drop a real report that follows a probe.
+      max: 5
       output: "Email report processed."
       permissions:
         contents: read
@@ -38,7 +40,14 @@ safe-outputs:
               }
 
               const agentOutput = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
+              const ingestionErrors = agentOutput.errors || [];
               const items = (agentOutput.items || []).filter((item) => item.type === 'send_email_report');
+
+              // Ingestion removes the requests that it rejects. Do not send an earlier request instead of a removed request.
+              if (ingestionErrors.length > 0) {
+                core.setFailed(`Agent output has ingestion errors. The job does not send an email: ${ingestionErrors.join('; ')}`);
+                return;
+              }
 
               if (items.length === 0) {
                 core.info('No send_email_report request found; no email will be sent.');
@@ -47,11 +56,10 @@ safe-outputs:
               }
 
               if (items.length > 1) {
-                core.setFailed(`Expected at most one send_email_report request, found ${items.length}.`);
-                return;
+                core.warning(`Found ${items.length} send_email_report requests. The job sends only the last request.`);
               }
 
-              const item = items[0];
+              const item = items[items.length - 1];
               const subject = String(item.subject || '').trim();
               const rawTextBody = String(item.text_body || '');
 
@@ -201,6 +209,8 @@ Shared safe-output component for Third Place Alerts.
 
 Agents call `send_email_report` with `subject` and `text_body`. The shared
 job generates the Gmail-compatible HTML body deterministically from `text_body`.
+If the agent calls the tool more than one time, the job sends only the last
+request. If gh-aw ingestion rejects any agent output, the job does not send an email.
 The agent never receives Gmail credentials; this post-agent safe-output job sends
 the message using `MAIL_USERNAME` and `MAIL_PASSWORD` repository secrets.
 -->

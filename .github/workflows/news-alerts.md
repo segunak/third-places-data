@@ -50,6 +50,7 @@ tools:
   bash:
     - "cat:*"
     - "date:*"
+    - "jq:*"
     - "mkdir:*"
     - "node:*"
     - "python3:*"
