@@ -31,22 +31,10 @@ permissions:
 timeout-minutes: 60
 engine:
   id: copilot
-  model: copilot # Aliases: https://github.github.com/gh-aw/reference/model-tables/#model-aliases
+  model: "opus?effort=high"
 imports:
   - shared/email-report.md
 tools:
-  repo-memory:
-    - id: third-place-alerts
-      branch-name: memory/third-place-alerts
-      description: "Durable state for third-place Reddit alert dedupe."
-      file-glob:
-        - "reddit/*.json"
-      allowed-extensions: [".json"]
-      max-file-size: 5242880
-      max-file-count: 1
-      max-patch-size: 524288
-      create-orphan: true
-      format-json: true
   bash:
     - "cat:*"
     - "date:*"
@@ -66,6 +54,11 @@ safe-outputs:
     max: 1
     report-as-issue: false
 steps:
+  - name: Read Trusted Reddit Delivery State
+    env:
+      GH_TOKEN: ${{ github.token }}
+    run: |
+      python3 scripts/alert_delivery.py prepare --kind reddit --directory "$RUNNER_TEMP/alert-inputs"
   - name: Collect Reddit Alert Candidates
     env:
       MODE: ${{ github.event.inputs.mode }}
@@ -363,6 +356,12 @@ steps:
           fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
           return;
         }
+        const replay = JSON.parse(fs.readFileSync(`${process.env.RUNNER_TEMP}/alert-inputs/replay.json`, 'utf8'));
+        if (replay) {
+          fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates: replay.candidates, replay }, null, 2));
+          fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
+          return;
+        }
         const seen = readSeen();
         const all = [];
         for (const entry of queryFamilies) {
@@ -404,6 +403,16 @@ steps:
         fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates: [], error: error.message }, null, 2));
       });
       NODE
+  - name: Seal Reddit Candidates Before Agent
+    run: |
+      python3 scripts/alert_delivery.py seal --kind reddit --directory "$RUNNER_TEMP/alert-inputs"
+  - name: Upload Immutable Reddit Candidates
+    uses: actions/upload-artifact@v7.0.1
+    with:
+      name: alert-inputs-${{ github.run_attempt }}
+      path: ${{ runner.temp }}/alert-inputs/candidates.json
+      if-no-files-found: error
+      retention-days: 30
 ---
 
 ## Reddit Alerts
@@ -420,7 +429,9 @@ Read these files first:
 
 ## Test Rules
 
-If `mode` is `test`, send exactly one test email using `send_email_report`, then call no other safe-output tool. Do not update repo memory in test mode.
+The trigger alone controls test mode. For `mode: test`, select the synthetic
+candidate and submit once. In real mode never submit test/placeholder payloads or
+probe the live tool. A successful call means queued, not sent. No jq is allowed.
 
 ## Relevance Rules
 
@@ -439,16 +450,13 @@ Not relevant:
 
 ## Email Requirements
 
-If relevant new items exist, call `send_email_report` with:
-
-- `subject`: `Third Place Reddit Alerts - YYYY-MM-DD`
-- `text_body`: a plain text report with the same items.
-
-Formatting rules:
-
-- Do not provide `html_body`; the shared email job generates HTML from `text_body`.
-- `text_body` must be readable plain text. Do not include HTML tags, `<!doctype html>`, `(!doctype html)`, pseudo-tags like `(div ...)`, or Markdown table formatting.
-- Simple Markdown headings, bullets, bold, italic, and links are allowed in `text_body` because the shared email job renders them deterministically.
+Call `send_email_report` only with `selection`, a base64-encoded UTF-8 JSON list containing entries
+with the candidate's exact `id`, `category`, and `evidence` (a verbatim quote of at
+least three words from the title or text). Categories: `third-place`,
+`openings-cafe`, `openings-food`, `openings-bar`, `openings-other`, `closings`,
+`reviews-spotlights`, `community-events`, `recommendations`. Do not supply a subject,
+body, or mode. The trusted job renders the report from immutable collected data.
+If `replay` is present, submit exactly `replay.selection`, without alteration.
 
 Include at most 20 items. Rank items in this order:
 
@@ -459,28 +467,29 @@ Include at most 20 items. Rank items in this order:
 5. Reviews, spotlights, features, recurring events, and community/creative-scene leads.
 6. Everything else that still passed relevance.
 
-Each item must include title, source/permalink, why it matters, and matched evidence.
+## Submission and History
 
-## Repo Memory Update
+Never edit repo memory. The shared safe job alone records only the delivered items
+after SMTP acceptance. It uses SHA-conditional file updates, preserving News and
+other memory on the shared branch. Test mode never writes history.
+For an empty normal result call `noop` exactly once with a reason; never noop a
+pending replay. Ambiguous SMTP outcomes block processing pending operator
+reconciliation as documented in `news-alerts.md`.
 
-After calling `send_email_report` in real mode, update `/tmp/gh-aw/repo-memory/third-place-alerts/reddit/seen.json` with only the relevant notified items. Keep this shape:
+Build `/tmp/selection.json` with Python after selecting relevant candidates.
+Encode and validate locally with the allowed `python3` command:
 
-```json
-{
-  "items": [
-    {
-      "id": "t3_example",
-      "permalink": "https://www.reddit.com/r/Charlotte/comments/example/",
-      "title": "Example",
-      "text_hash": "sha256",
-      "first_seen_at": "2026-07-07T00:00:00.000Z",
-      "last_notified_at": "2026-07-07T00:00:00.000Z",
-      "source_query_family": "coffee-cafe"
-    }
-  ]
-}
+```python
+import base64, json
+from pathlib import Path
+data = json.loads(Path("/tmp/gh-aw/agent/reddit-candidates.json").read_text())
+selected = data["replay"]["selection"] if data.get("replay") else json.loads(Path("/tmp/selection.json").read_text())
+assert 1 <= len(selected) <= 20
+assert all(set(x) == {"id", "category", "evidence"} for x in selected)
+encoded = base64.b64encode(json.dumps(selected, ensure_ascii=False).encode()).decode()
+Path("/tmp/email-request.json").write_text(json.dumps({"selection": encoded}))
 ```
 
-Prune entries older than 90 days based on `last_notified_at` when present, otherwise `first_seen_at`. Keep at most 10,000 entries.
-
-If there are no relevant new items, call `noop` with a short reason and do not update repo memory.
+Then invoke `safeoutputs send_email_report . < /tmp/email-request.json` exactly
+once. Do not make live syntax probes, retry, or submit a second corrected variant
+after a successful queue response.

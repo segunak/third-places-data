@@ -1,206 +1,84 @@
 ---
+# gh-aw v0.88.7 always gates custom safe jobs on the retained output type.
+# This read-only job also validates noops, empty output and discarded requests.
+jobs:
+  validate_alert_output:
+    needs: [agent, detection]
+    if: always() && !cancelled() && needs.agent.result == 'success' && (needs.detection.result == 'success' || needs.detection.result == 'skipped')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Trusted Validation Code
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout: |
+            scripts
+            data/alert-recovery
+      - name: Download Raw And Ingested Output
+        uses: actions/download-artifact@v8.0.1
+        with:
+          pattern: "{agent,agent-output-fallback}"
+          merge-multiple: true
+          path: ${{ runner.temp }}/alert-validation
+      - name: Download Immutable Pre-Agent Candidates
+        uses: actions/download-artifact@v8.0.1
+        with:
+          name: alert-inputs-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/alert-inputs
+      - name: Reject Invalid Or Dropped Reports
+        env:
+          ALERT_KIND: ${{ github.workflow == 'News Alerts' && 'news' || 'reddit' }}
+          GH_TOKEN: ${{ github.token }}
+          GH_AW_AGENT_OUTPUT: ${{ runner.temp }}/alert-validation/agent_output.json
+        run: |
+          python3 scripts/alert_delivery.py validate --kind "$ALERT_KIND" --directory "$RUNNER_TEMP/alert-inputs"
 safe-outputs:
   github-token: ${{ secrets.GH_AW_GITHUB_TOKEN }}
   jobs:
     send-email-report:
-      description: "Send a private Third Place Alerts email report through Gmail SMTP."
+      description: "Submit one final structured selection for trusted rendering, SMTP delivery and delivery-bound history. Success only means queued."
       runs-on: ubuntu-latest
-      output: "Email report processed."
+      # Validation is repeated here before SMTP. v0.88.7 cannot depend on a
+      # normal custom job; the parallel read-only job covers absent output types.
+      if: needs.agent.result == 'success' && (needs.detection.result == 'success' || needs.detection.result == 'skipped')
+      output: "Delivery validation completed."
       permissions:
-        contents: read
+        contents: write
       inputs:
-        subject:
-          description: "Email subject, 160 characters maximum."
-          required: true
-          type: string
-        html_body:
-          description: "Legacy input ignored by the email renderer. HTML is generated from text_body."
-          required: false
-          type: string
-        text_body:
-          description: "Plain-text email report body, 20000 characters maximum."
+        selection:
+          description: 'Base64-encoded UTF-8 JSON list of 1-20 objects: {"id":"candidate title_hash (news) or id (Reddit)","category":"approved category","evidence":"verbatim candidate quote"}. Encoding preserves quotes through gh-aw mention sanitization. No email body or mode.'
           required: true
           type: string
       steps:
-        - name: Extract And Validate Email Request
-          id: email
-          uses: actions/github-script@v9.0.0
+        - name: Checkout Trusted Delivery Code
+          uses: actions/checkout@v7.0.1
           with:
-            script: |
-              const fs = require('fs');
-              const path = require('path');
-              const outputFile = process.env.GH_AW_AGENT_OUTPUT;
-
-              if (!outputFile || !fs.existsSync(outputFile)) {
-                core.info('No agent output file found; no email will be sent.');
-                core.setOutput('send', 'false');
-                return;
-              }
-
-              const agentOutput = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
-              const items = (agentOutput.items || []).filter((item) => item.type === 'send_email_report');
-
-              if (items.length === 0) {
-                core.info('No send_email_report request found; no email will be sent.');
-                core.setOutput('send', 'false');
-                return;
-              }
-
-              if (items.length > 1) {
-                core.setFailed(`Expected at most one send_email_report request, found ${items.length}.`);
-                return;
-              }
-
-              const item = items[0];
-              const subject = String(item.subject || '').trim();
-              const rawTextBody = String(item.text_body || '');
-
-              if (!subject || !rawTextBody) {
-                core.setFailed('subject and text_body are required.');
-                return;
-              }
-
-              if (subject.length > 160) {
-                core.setFailed(`subject exceeds 160 characters (${subject.length}).`);
-                return;
-              }
-
-              if (rawTextBody.length > 20000) {
-                core.setFailed(`text_body exceeds 20000 characters (${rawTextBody.length}).`);
-                return;
-              }
-
-              function escapeHtml(value) {
-                return String(value || '')
-                  .replace(/&/g, '&amp;')
-                  .replace(/</g, '&lt;')
-                  .replace(/>/g, '&gt;')
-                  .replace(/"/g, '&quot;')
-                  .replace(/'/g, '&#39;');
-              }
-
-              function formatTextLine(value) {
-                const links = [];
-                let text = String(value || '').replace(/\[\]\([^)]*\)/g, '');
-                text = text.replace(/\[([^\]\n]+)\]\((https?:\/\/[^)\s]+)\)/g, (_match, label, url) => {
-                  const token = `@@LINK_${links.length}@@`;
-                  links.push(`<a href="${escapeHtml(url)}" style="color: #0f766e; text-decoration: underline;">${escapeHtml(label)}</a>`);
-                  return token;
-                });
-
-                let output = escapeHtml(text)
-                  .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
-                  .replace(/\*([^*\n]+)\*/g, '<em>$1</em>')
-                  .replace(/\bhttps?:\/\/[^\s<]+/g, (url) => `<a href="${url}" style="color: #0f766e; text-decoration: underline;">${url}</a>`);
-
-                links.forEach((link, index) => {
-                  output = output.replace(`@@LINK_${index}@@`, link);
-                });
-                return output.trim();
-              }
-
-              function shouldSkipTextLine(value) {
-                const trimmed = String(value || '').trim();
-                return !trimmed
-                  || /^(?:-{3,}|\*{3,}|_{3,})$/.test(trimmed)
-                  || /^\(?\s*!doctype\s+html\s*\)?$/i.test(trimmed)
-                  || /^<!doctype\s+html>$/i.test(trimmed)
-                  || /^<\/?(?:html|body)\b[^>]*>$/i.test(trimmed)
-                  || /^\(\/?(?:html|body)\b[^)]*\)$/i.test(trimmed)
-                  || /^\[\]\([^)]*\)$/.test(trimmed);
-              }
-
-              function textBodyToHtmlDocument(value) {
-                const blocks = [];
-                let listItems = [];
-                let firstContent = true;
-                const flushList = () => {
-                  if (listItems.length === 0) return;
-                  blocks.push(`<ul style="margin: 12px 0 18px 22px; padding: 0;">${listItems.join('')}</ul>`);
-                  listItems = [];
-                };
-
-                for (const line of String(value || '').split('\n')) {
-                  const trimmed = line.trim();
-                  if (shouldSkipTextLine(trimmed)) {
-                    flushList();
-                    continue;
-                  }
-
-                  const heading = trimmed.match(/^(#{1,3})\s+(.+)$/);
-                  if (heading) {
-                    flushList();
-                    const level = Math.min(heading[1].length, 3);
-                    const styles = {
-                      1: 'font-size: 22px; line-height: 1.25; margin: 0 0 16px 0; color: #111827;',
-                      2: 'font-size: 18px; line-height: 1.35; margin: 22px 0 10px 0; color: #111827;',
-                      3: 'font-size: 16px; line-height: 1.4; margin: 18px 0 8px 0; color: #111827;'
-                    };
-                    blocks.push(`<h${level} style="${styles[level]}">${formatTextLine(heading[2])}</h${level}>`);
-                    firstContent = false;
-                    continue;
-                  }
-
-                  const bullet = trimmed.match(/^(?:[-*]|\d+\.)\s+(.+)$/);
-                  if (bullet) {
-                    listItems.push(`<li style="margin: 0 0 8px 0;">${formatTextLine(bullet[1])}</li>`);
-                    continue;
-                  }
-
-                  flushList();
-                  if (firstContent) {
-                    blocks.push(`<h1 style="font-size: 22px; line-height: 1.25; margin: 0 0 16px 0; color: #111827;">${formatTextLine(trimmed)}</h1>`);
-                    firstContent = false;
-                  } else {
-                    blocks.push(`<p style="font-size: 15px; line-height: 1.55; margin: 0 0 12px 0; color: #1f2937;">${formatTextLine(trimmed)}</p>`);
-                  }
-                }
-                flushList();
-
-                return `<!doctype html>\n<html>\n<body>\n<div style="font-family: Arial, sans-serif; color: #1f2937; line-height: 1.5; max-width: 720px; margin: 0 auto; padding: 24px;">${blocks.join('\n')}\n</div>\n</body>\n</html>`;
-              }
-
-              const normalizedTextBody = rawTextBody.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
-              const htmlDocument = textBodyToHtmlDocument(normalizedTextBody);
-
-              if (htmlDocument.length > 60000) {
-                core.setFailed(`generated HTML body exceeds 60000 characters (${htmlDocument.length}).`);
-                return;
-              }
-
-              const outputDir = path.join(process.env.RUNNER_TEMP || '/tmp', 'third-place-alert-email');
-              fs.mkdirSync(outputDir, { recursive: true });
-              const htmlPath = path.join(outputDir, 'body.html');
-              const textPath = path.join(outputDir, 'body.txt');
-              fs.writeFileSync(htmlPath, htmlDocument, 'utf8');
-              fs.writeFileSync(textPath, normalizedTextBody, 'utf8');
-
-              core.setOutput('send', 'true');
-              core.setOutput('subject', subject);
-              core.setOutput('html_body_file', `file://${htmlPath}`);
-              core.setOutput('text_body_file', `file://${textPath}`);
-
-        - name: Send Email
-          if: ${{ steps.email.outputs.send == 'true' }}
-          uses: dawidd6/action-send-mail@v20
+            ref: ${{ github.sha }}
+            persist-credentials: false
+            sparse-checkout: |
+              scripts
+              data/alert-recovery
+        - name: Download Immutable Pre-Agent Candidates
+          uses: actions/download-artifact@v8.0.1
           with:
-            server_address: smtp.gmail.com
-            server_port: 465
-            secure: true
-            username: ${{ secrets.MAIL_USERNAME }}
-            password: ${{ secrets.MAIL_PASSWORD }}
-            subject: ${{ steps.email.outputs.subject }}
-            to: segun@charlottethirdplaces.com
-            from: Charlotte Third Places Alerts <${{ secrets.MAIL_USERNAME }}>
-            body: ${{ steps.email.outputs.text_body_file }}
-            html_body: ${{ steps.email.outputs.html_body_file }}
+            name: alert-inputs-${{ github.run_attempt }}
+            path: ${{ runner.temp }}/alert-inputs
+        - name: Validate Deliver And Record Receipt
+          env:
+            ALERT_KIND: ${{ github.workflow == 'News Alerts' && 'news' || 'reddit' }}
+            GH_TOKEN: ${{ secrets.GH_AW_GITHUB_TOKEN }}
+            MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+            MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          run: |
+            python3 scripts/alert_delivery.py deliver --kind "$ALERT_KIND" --directory "$RUNNER_TEMP/alert-inputs"
 ---
 
 <!--
-Shared safe-output component for Third Place Alerts.
-
-Agents call `send_email_report` with `subject` and `text_body`. The shared
-job generates the Gmail-compatible HTML body deterministically from `text_body`.
-The agent never receives Gmail credentials; this post-agent safe-output job sends
-the message using `MAIL_USERNAME` and `MAIL_PASSWORD` repository secrets.
+Shared news/Reddit safe-output boundary. An immutable upload before the agent
+provides trusted candidates; the agent returns only references and evidence.
+Only this job has SMTP and memory-write credentials. The memory Contents API
+uses SHA-conditional updates; no agent memory patch is applied.
 -->

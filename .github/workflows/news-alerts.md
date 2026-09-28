@@ -31,22 +31,10 @@ permissions:
 timeout-minutes: 60
 engine:
   id: copilot
-  model: copilot # Aliases: https://github.github.com/gh-aw/reference/model-tables/#model-aliases
+  model: "opus?effort=high"
 imports:
   - shared/email-report.md
 tools:
-  repo-memory:
-    - id: third-place-alerts
-      branch-name: memory/third-place-alerts
-      description: "Durable state for third-place news alert dedupe."
-      file-glob:
-        - "news/*.json"
-      allowed-extensions: [".json"]
-      max-file-size: 5242880
-      max-file-count: 1
-      max-patch-size: 524288
-      create-orphan: true
-      format-json: true
   bash:
     - "cat:*"
     - "date:*"
@@ -96,6 +84,13 @@ safe-outputs:
     max: 1
     report-as-issue: false
 steps:
+  # Read-only history acquisition, not repo-memory (which auto-pushes agent patches).
+  - name: Read Trusted News Delivery State
+    env:
+      GH_TOKEN: ${{ github.token }}
+    run: |
+      python3 scripts/alert_delivery.py prepare --kind news --directory "$RUNNER_TEMP/alert-inputs"
+
   - name: Write News Alert Config
     run: |
       set -euo pipefail
@@ -384,6 +379,13 @@ steps:
           return;
         }
 
+        const replay = JSON.parse(fs.readFileSync(`${process.env.RUNNER_TEMP}/alert-inputs/replay.json`, 'utf8'));
+        if (replay) {
+          fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates: replay.candidates, replay }, null, 2));
+          fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
+          return; // Recovery/outbox replay MUST precede all normal collection.
+        }
+
         const seen = readSeen();
         const all = [];
         for (const source of sources) {
@@ -420,9 +422,15 @@ steps:
           const key = item.url;
           if (!byUrl.has(key) || byUrl.get(key).relevance_score < item.relevance_score) byUrl.set(key, item);
         }
+        const candidateHashes = new Set();
         const candidates = [...byUrl.values()]
           .filter((item) => !isSeen(item, seen))
           .sort((a, b) => (b.relevance_score - a.relevance_score) || (Date.parse(b.published_at || b.discovered_at) - Date.parse(a.published_at || a.discovered_at)))
+          .filter((item) => {
+            if (candidateHashes.has(item.title_hash)) return false;
+            candidateHashes.add(item.title_hash);
+            return true;
+          })
           .slice(0, 250);
         fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates }, null, 2));
         fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
@@ -434,6 +442,16 @@ steps:
         fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates: [], error: error.message }, null, 2));
       });
       NODE
+  - name: Seal News Candidates Before Agent
+    run: |
+      python3 scripts/alert_delivery.py seal --kind news --directory "$RUNNER_TEMP/alert-inputs"
+  - name: Upload Immutable News Candidates
+    uses: actions/upload-artifact@v7.0.1
+    with:
+      name: alert-inputs-${{ github.run_attempt }}
+      path: ${{ runner.temp }}/alert-inputs/candidates.json
+      if-no-files-found: error
+      retention-days: 30
 ---
 
 ## News Alerts
@@ -450,7 +468,11 @@ Read these files first:
 
 ## Test Rules
 
-If `mode` is `test`, send exactly one test email using `send_email_report`, then call no other safe-output tool. Do not update repo memory in test mode.
+The trigger is the sole authority for test mode. If the input file says `mode: test`,
+select its synthetic candidate and submit exactly once. In real mode NEVER call
+`send_email_report` as a syntax/authentication probe, with test/placeholder content,
+or more than once. A successful tool response means **queued, not sent**.
+Validate payload JSON locally with Python; do not use `jq` (not allowed).
 
 ## Relevance Rules
 
@@ -476,16 +498,18 @@ Not relevant:
 
 ## Email Requirements
 
-If relevant new items exist, call `send_email_report` with:
+Submit only `selection`, a base64-encoded UTF-8 JSON list. Each entry contains `id` (the
+candidate's exact `title_hash`), `category`, and `evidence` (a verbatim quote of at
+least three words from its title, description, or article_text_excerpt).
+Categories: `third-place`, `openings-cafe`, `openings-food`, `openings-bar`,
+`openings-other`, `closings`, `reviews-spotlights`, `community-events`,
+`recommendations`. The trusted delivery job renders title, source, URL, category
+explanation and matched evidence from the sealed candidates, not an agent body.
+Do not supply `subject`, `text_body`, `html_body`, or `mode`.
 
-- `subject`: `Third Place News Alerts - YYYY-MM-DD`
-- `text_body`: a plain text report with the same items.
-
-Formatting rules:
-
-- Do not provide `html_body`; the shared email job generates HTML from `text_body`.
-- `text_body` must be readable plain text. Do not include HTML tags, `<!doctype html>`, `(!doctype html)`, pseudo-tags like `(div ...)`, or Markdown table formatting.
-- Simple Markdown headings, bullets, bold, italic, and links are allowed in `text_body` because the shared email job renders them deterministically.
+If the candidates file contains `replay`, submit **exactly** `replay.selection`.
+Do not re-filter, shorten, or noop a replay: it is an already-approved, unsent
+report. Historical recovery titles are evidence, not claims of current events.
 
 Include at most 20 items. Rank items in this order:
 
@@ -496,28 +520,51 @@ Include at most 20 items. Rank items in this order:
 5. Reviews, spotlights, features, recurring events, and community/creative-scene leads.
 6. Everything else that still passed relevance.
 
-Each item must include title, source/permalink, why it matters, and matched evidence.
+## Submission and History
 
-## Repo Memory Update
+Never edit repo memory. Only the trusted safe job records the exact delivered items
+after SMTP acceptance; it preserves other history and Reddit memory. If normal
+collection has no relevant new items, call `noop` once with a short reason. Never
+noop collection failures or an outstanding replay.
 
-After calling `send_email_report` in real mode, update `/tmp/gh-aw/repo-memory/third-place-alerts/news/seen.json` with only the relevant notified items. Keep this shape:
+Supported submission (no jq, no live probes): first build your selected entries
+in `/tmp/selection.json` using Python. For replay use the provided list unchanged.
+Then validate and encode locally:
 
-```json
-{
-  "items": [
-    {
-      "url": "https://example.com/story",
-      "source": "Example Source",
-      "title": "Example",
-      "title_hash": "sha256",
-      "first_seen_at": "2026-07-07T00:00:00.000Z",
-      "last_notified_at": "2026-07-07T00:00:00.000Z",
-      "relevance_category": "openings-food"
-    }
-  ]
-}
+```python
+import base64, json
+from pathlib import Path
+data = json.loads(Path("/tmp/gh-aw/agent/news-candidates.json").read_text())
+selected = data["replay"]["selection"] if data.get("replay") else json.loads(Path("/tmp/selection.json").read_text())
+assert 1 <= len(selected) <= 20
+assert all(set(x) == {"id", "category", "evidence"} for x in selected)
+encoded = base64.b64encode(json.dumps(selected, ensure_ascii=False).encode()).decode()
+Path("/tmp/email-request.json").write_text(json.dumps({"selection": encoded}))
 ```
 
-Prune entries older than 90 days based on `last_notified_at` when present, otherwise `first_seen_at`. Keep at most 10,000 entries.
+Run that Python with the allowed `python3` command, then make the single final call:
+`safeoutputs send_email_report . < /tmp/email-request.json`.
+Do not retry or submit a corrected variant after a successful queue response.
+The encoding prevents gh-aw's string-input mention sanitizer from changing
+verbatim source evidence (including the incident's `@The Milestone` title).
+The delivery job decodes and validates every entry; encoding grants no trust.
 
-If there are no relevant new items, call `noop` with a short reason and do not update repo memory.
+## Deployment and Recovery
+
+On deployment, real runs replay the verified 14 unsent leads from incident
+36350803135 before normal collection. The manifest in
+`data/alert-recovery/news-36350803135.json` retains exact URLs, titles, hashes and
+categories from commit 85e155c02583305022665951afd179398a1f1551. No live state is
+changed merely by merging this implementation. Test mode never repairs or updates
+history. The first real delivery stages an outbox and removes only incident records
+with the proven false notification timestamp. Recovery is complete only after SMTP
+acceptance and a durable receipt; an explicit rejection remains retryable.
+
+SMTP cannot guarantee exactly-once delivery across a process/network failure.
+An ambiguous send or failed receipt write leaves a `sending` outbox that blocks
+normal processing and automatic resends. An operator must check Gmail Sent using
+the outbox's deterministic Message-ID, then reconcile that delivery state: record
+the exact saved report as delivered only with evidence of acceptance, or reset to
+`prepared` only with evidence it was not accepted. Never delete the outbox or mark
+the recovery complete merely to unblock a run. History API failures and missing,
+invalid, duplicate, or truncated output artifacts fail closed before SMTP.

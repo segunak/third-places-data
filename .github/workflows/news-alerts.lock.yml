@@ -1,5 +1,5 @@
-# gh-aw-metadata: {"schema_version":"v4","frontmatter_hash":"caaa15bc62ee036b04c1bfb0a70e661455b36b4fc4a68b8d62d4efba14e12b59","body_hash":"fccdd410cb4dfc3d6716f165399597c9747973eed463e6a3236dd38b6c472c47","compiler_version":"v0.88.7","strict":true,"agent_id":"copilot","agent_model":"copilot","engine_versions":{"copilot":"1.0.80"}}
-# gh-aw-manifest: {"version":1,"secrets":["GH_AW_DEFAULT_OTLP_HEADERS","GH_AW_GITHUB_MCP_SERVER_TOKEN","GH_AW_GITHUB_TOKEN","GITHUB_TOKEN","MAIL_PASSWORD","MAIL_USERNAME"],"actions":[{"repo":"actions/cache/restore","sha":"55cc8345863c7cc4c66a329aec7e433d2d1c52a9","version":"v6.1.0"},{"repo":"actions/cache/save","sha":"55cc8345863c7cc4c66a329aec7e433d2d1c52a9","version":"v6.1.0"},{"repo":"actions/checkout","sha":"3d3c42e5aac5ba805825da76410c181273ba90b1","version":"v7.0.1"},{"repo":"actions/download-artifact","sha":"3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c","version":"v8.0.1"},{"repo":"actions/github-script","sha":"3a2844b7e9c422d3c10d287c895573f7108da1b3","version":"v9.0.0"},{"repo":"actions/setup-node","sha":"820762786026740c76f36085b0efc47a31fe5020","version":"v7.0.0"},{"repo":"actions/upload-artifact","sha":"043fb46d1a93c77aae656e7c1c64a875d1fc6a0a","version":"v7.0.1"},{"repo":"dawidd6/action-send-mail","sha":"ca8dbb4d4f91ca7f75e7f2feea5339e76ce70c90","version":"v20"},{"repo":"github/gh-aw-actions/setup","sha":"5e508589e03a7757a7e05b26e834292f5445bfb6","version":"v0.88.7"}],"containers":[{"image":"ghcr.io/github/gh-aw-firewall/agent:0.28.14","digest":"sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98","pinned_image":"ghcr.io/github/gh-aw-firewall/agent:0.28.14@sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98"},{"image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14","digest":"sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5","pinned_image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14@sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5"},{"image":"ghcr.io/github/gh-aw-firewall/squid:0.28.14","digest":"sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5","pinned_image":"ghcr.io/github/gh-aw-firewall/squid:0.28.14@sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5"},{"image":"ghcr.io/github/gh-aw-mcpg:v0.4.18","digest":"sha256:85b940556a8faa4e1fdbef124bfd75f2c4ebd855a10b88a1c3b6f3e97f6f1a53","pinned_image":"ghcr.io/github/gh-aw-mcpg:v0.4.18@sha256:85b940556a8faa4e1fdbef124bfd75f2c4ebd855a10b88a1c3b6f3e97f6f1a53"},{"image":"ghcr.io/github/gh-aw-node","digest":"sha256:0daa8971fa4732b647150cb6524a6b0804b68d5d24f6f58b5dd1af23bd63fb23","pinned_image":"ghcr.io/github/gh-aw-node@sha256:0daa8971fa4732b647150cb6524a6b0804b68d5d24f6f58b5dd1af23bd63fb23"},{"image":"ghcr.io/github/github-mcp-server:v1.11.0","digest":"sha256:fbec75de11c255213fa08d80fb166abe73d851fff631c51c0079872967720699","pinned_image":"ghcr.io/github/github-mcp-server:v1.11.0@sha256:fbec75de11c255213fa08d80fb166abe73d851fff631c51c0079872967720699"}],"mcp_servers":[{"name":"github","tools":["get_commit","get_file_contents","get_latest_release","get_me","get_pull_request","get_pull_request_comments","get_pull_request_diff","get_pull_request_files","get_pull_request_review_comments","get_pull_request_reviews","get_pull_request_status","get_release_by_tag","get_tag","issue_read","list_branches","list_commits","list_issue_types","list_issues","list_pull_requests","list_releases","list_starred_repositories","list_tags","pull_request_read","search_code","search_issues","search_pull_requests","search_repositories"]},{"name":"safeoutputs","tools":["missing_data","missing_tool","noop","send_email_report"]}]}
+# gh-aw-metadata: {"schema_version":"v4","frontmatter_hash":"8ad817d60bc11c92acba9a6c50acf8dd3c334733aa895b692b1cd0e579c44242","body_hash":"3a0b166aa88076ac174700908003899c5e96cb8af9fed22b34bd1159bfc1dfac","compiler_version":"v0.88.7","strict":true,"agent_id":"copilot","agent_model":"opus?effort=high","engine_versions":{"copilot":"1.0.80"}}
+# gh-aw-manifest: {"version":1,"secrets":["GH_AW_DEFAULT_OTLP_HEADERS","GH_AW_GITHUB_MCP_SERVER_TOKEN","GH_AW_GITHUB_TOKEN","GITHUB_TOKEN","MAIL_PASSWORD","MAIL_USERNAME"],"actions":[{"repo":"actions/cache/restore","sha":"55cc8345863c7cc4c66a329aec7e433d2d1c52a9","version":"v6.1.0"},{"repo":"actions/cache/save","sha":"55cc8345863c7cc4c66a329aec7e433d2d1c52a9","version":"v6.1.0"},{"repo":"actions/checkout","sha":"3d3c42e5aac5ba805825da76410c181273ba90b1","version":"v7.0.1"},{"repo":"actions/download-artifact","sha":"3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c","version":"v8.0.1"},{"repo":"actions/github-script","sha":"3a2844b7e9c422d3c10d287c895573f7108da1b3","version":"v9.0.0"},{"repo":"actions/setup-node","sha":"820762786026740c76f36085b0efc47a31fe5020","version":"v7.0.0"},{"repo":"actions/upload-artifact","sha":"043fb46d1a93c77aae656e7c1c64a875d1fc6a0a","version":"v7.0.1"},{"repo":"github/gh-aw-actions/setup","sha":"5e508589e03a7757a7e05b26e834292f5445bfb6","version":"v0.88.7"}],"containers":[{"image":"ghcr.io/github/gh-aw-firewall/agent:0.28.14","digest":"sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98","pinned_image":"ghcr.io/github/gh-aw-firewall/agent:0.28.14@sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98"},{"image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14","digest":"sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5","pinned_image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14@sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5"},{"image":"ghcr.io/github/gh-aw-firewall/squid:0.28.14","digest":"sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5","pinned_image":"ghcr.io/github/gh-aw-firewall/squid:0.28.14@sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5"},{"image":"ghcr.io/github/gh-aw-mcpg:v0.4.18","digest":"sha256:85b940556a8faa4e1fdbef124bfd75f2c4ebd855a10b88a1c3b6f3e97f6f1a53","pinned_image":"ghcr.io/github/gh-aw-mcpg:v0.4.18@sha256:85b940556a8faa4e1fdbef124bfd75f2c4ebd855a10b88a1c3b6f3e97f6f1a53"},{"image":"ghcr.io/github/gh-aw-node","digest":"sha256:0daa8971fa4732b647150cb6524a6b0804b68d5d24f6f58b5dd1af23bd63fb23","pinned_image":"ghcr.io/github/gh-aw-node@sha256:0daa8971fa4732b647150cb6524a6b0804b68d5d24f6f58b5dd1af23bd63fb23"},{"image":"ghcr.io/github/github-mcp-server:v1.11.0","digest":"sha256:fbec75de11c255213fa08d80fb166abe73d851fff631c51c0079872967720699","pinned_image":"ghcr.io/github/github-mcp-server:v1.11.0@sha256:fbec75de11c255213fa08d80fb166abe73d851fff631c51c0079872967720699"}],"mcp_servers":[{"name":"github","tools":["get_commit","get_file_contents","get_latest_release","get_me","get_pull_request","get_pull_request_comments","get_pull_request_diff","get_pull_request_files","get_pull_request_review_comments","get_pull_request_reviews","get_pull_request_status","get_release_by_tag","get_tag","issue_read","list_branches","list_commits","list_issue_types","list_issues","list_pull_requests","list_releases","list_starred_repositories","list_tags","pull_request_read","search_code","search_issues","search_pull_requests","search_repositories"]},{"name":"safeoutputs","tools":["missing_data","missing_tool","noop","send_email_report"]}]}
 # This file was automatically generated by gh-aw (v0.88.7). DO NOT EDIT. To debug this workflow, load the skill at https://github.com/github/gh-aw/blob/main/debug.md
 #
 #    ___                   _   _
@@ -45,7 +45,6 @@
 #   - actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0 (source v9)
 #   - actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
 #   - actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-#   - dawidd6/action-send-mail@ca8dbb4d4f91ca7f75e7f2feea5339e76ce70c90 # v20
 #   - github/gh-aw-actions/setup@5e508589e03a7757a7e05b26e834292f5445bfb6 # v0.88.7
 #
 # Container images used:
@@ -140,7 +139,7 @@ jobs:
         env:
           GH_AW_INFO_ENGINE_ID: "copilot"
           GH_AW_INFO_ENGINE_NAME: "GitHub Copilot CLI"
-          GH_AW_INFO_MODEL: "copilot"
+          GH_AW_INFO_MODEL: "opus?effort=high"
           GH_AW_INFO_VERSION: "1.0.80"
           GH_AW_INFO_AGENT_VERSION: "1.0.80"
           GH_AW_INFO_CLI_VERSION: "v0.88.7"
@@ -272,7 +271,7 @@ jobs:
           GH_AW_ACTIONS_DIR: ${{ runner.temp }}/gh-aw/actions
           GH_AW_PROMPT: ${{ runner.temp }}/gh-aw/aw-prompts/prompt.txt
           GH_AW_SAFE_OUTPUTS: ${{ runner.temp }}/gh-aw/safeoutputs/outputs.jsonl
-          GH_AW_PROMPT_CONFIG: "{\"items\":[{\"content_env\":\"GH_AW_PROMPT_CONTENT_0000\"},{\"file\":\"xpia.md\"},{\"file\":\"temp_folder_prompt.md\"},{\"file\":\"markdown.md\"},{\"file\":\"repo_memory_prompt_multi.md\"},{\"file\":\"safe_outputs_prompt.md\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0001\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0002\"},{\"file\":\"mcp_cli_tools_with_safeoutputs_prompt.md\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0003\"},{\"file\":\"github_mcp_tools_with_safeoutputs_prompt.md\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0004\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0005\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0006\"}]}"
+          GH_AW_PROMPT_CONFIG: "{\"items\":[{\"content_env\":\"GH_AW_PROMPT_CONTENT_0000\"},{\"file\":\"xpia.md\"},{\"file\":\"temp_folder_prompt.md\"},{\"file\":\"markdown.md\"},{\"file\":\"safe_outputs_prompt.md\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0001\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0002\"},{\"file\":\"mcp_cli_tools_with_safeoutputs_prompt.md\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0003\"},{\"file\":\"github_mcp_tools_with_safeoutputs_prompt.md\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0004\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0005\"},{\"content_env\":\"GH_AW_PROMPT_CONTENT_0006\"}]}"
           GH_AW_EXPR_1A3A194A: ${{ github.event.discussion.number || (fromJSON(github.event.inputs.aw_context || github.event.client_payload.aw_context || '{}').item_type == 'discussion' && fromJSON(github.event.inputs.aw_context || github.event.client_payload.aw_context || '{}').item_number) }}
           GH_AW_EXPR_463A214A: ${{ github.event.pull_request.number || (fromJSON(github.event.inputs.aw_context || github.event.client_payload.aw_context || '{}').item_type == 'pull_request' && fromJSON(github.event.inputs.aw_context || github.event.client_payload.aw_context || '{}').item_number) }}
           GH_AW_EXPR_802A9F6A: ${{ github.event.issue.number || (fromJSON(github.event.inputs.aw_context || github.event.client_payload.aw_context || '{}').item_type == 'issue' && fromJSON(github.event.inputs.aw_context || github.event.client_payload.aw_context || '{}').item_number) }}
@@ -320,8 +319,6 @@ jobs:
           GH_AW_GITHUB_RUN_ID: ${{ github.run_id }}
           GH_AW_GITHUB_WORKSPACE: ${{ github.workspace }}
           GH_AW_MCP_CLI_SERVERS_LIST: "- `github` — run `github --help` to see available tools\n- `safeoutputs` — run `safeoutputs --help` to see available tools"
-          GH_AW_MEMORY_ALLOWED_EXTENSIONS: '.json'
-          GH_AW_MEMORY_LIST: "- **third-place-alerts**: `/tmp/gh-aw/repo-memory/third-place-alerts/` - Durable state for third-place news alert dedupe. (branch: `memory/third-place-alerts`)\n"
         with:
           script: |
             const path = require('path');
@@ -343,9 +340,7 @@ jobs:
                 GH_AW_GITHUB_REPOSITORY: process.env.GH_AW_GITHUB_REPOSITORY,
                 GH_AW_GITHUB_RUN_ID: process.env.GH_AW_GITHUB_RUN_ID,
                 GH_AW_GITHUB_WORKSPACE: process.env.GH_AW_GITHUB_WORKSPACE,
-                GH_AW_MCP_CLI_SERVERS_LIST: process.env.GH_AW_MCP_CLI_SERVERS_LIST,
-                GH_AW_MEMORY_ALLOWED_EXTENSIONS: process.env.GH_AW_MEMORY_ALLOWED_EXTENSIONS,
-                GH_AW_MEMORY_LIST: process.env.GH_AW_MEMORY_LIST
+                GH_AW_MCP_CLI_SERVERS_LIST: process.env.GH_AW_MCP_CLI_SERVERS_LIST
               }
             });
       - name: Validate prompt placeholders
@@ -477,22 +472,27 @@ jobs:
         with:
           name: activation
           path: /tmp/gh-aw
-      # Repo memory git-based storage configuration from frontmatter processed below
-      - name: Clone repo-memory branch (third-place-alerts)
-        env:
+      - env:
           GH_TOKEN: ${{ github.token }}
-          GITHUB_SERVER_URL: ${{ github.server_url }}
-          BRANCH_NAME: memory/third-place-alerts
-          TARGET_REPO: ${{ github.repository }}
-          MEMORY_DIR: /tmp/gh-aw/repo-memory/third-place-alerts
-          CREATE_ORPHAN: true
-        run: bash "${RUNNER_TEMP}/gh-aw/actions/clone_repo_memory_branch.sh"
+        name: Read Trusted News Delivery State
+        run: |
+          python3 scripts/alert_delivery.py prepare --kind news --directory "$RUNNER_TEMP/alert-inputs"
       - name: Write News Alert Config
         run: "set -euo pipefail\nmkdir -p /tmp/gh-aw/agent\n\nnode <<'NODE'\nconst fs = require('fs');\n\nconst locationTerms = [\n  'Charlotte', 'Charlotte, NC', 'CLT', 'Mecklenburg County',\n  'Arbor Glen', 'Ashley Park', 'Ballantyne', 'Belmont', 'Bradfield Farms', 'Carmel', 'China Grove', 'Closeburn - Glenkirk', 'Collingwood', 'Commonwealth Park', 'Concord', 'Cornelius', 'Cotswold', 'Dallas', 'Davidson', 'Davis Lake - Eastfield', 'Denver', 'Dilworth', 'Druid Hills South', 'East Forest', 'Eastland - Wilora Lake', 'Eastover', 'Eastway', 'Elizabeth', 'Enderly Park', 'Fort Mill', 'Gastonia', 'Grier Heights', 'Harrisburg', 'Hickory Grove', 'Highland Creek', 'Huntersville', 'Independence Blvd', 'Indian Land', 'Indian Trail', 'Kannapolis', 'Kings Mountain', 'Landis', 'Lincoln Heights', 'Lockwood', 'LoSo', 'Lowell', 'Madison Park', 'Matthews', 'Midtown', 'Mineral Springs', 'Mint Hill', 'Monroe', 'Montclaire South', 'Montford', 'Mooresville', 'Mount Holly', 'Mountain Island', 'Myers Park', 'NoDa', 'North Sharon Amity / Reddman Road', 'Northwest Charlotte', 'Oakhurst', 'Olde Whitehall', 'Optimist Park', 'Pineville', 'Piper Glen', 'Plaza Midwood', 'Plaza Shamrock', 'Providence Crossing', 'Providence Park', 'Quail Hollow', 'Raintree', 'Renaissance Park', 'Rock Hill', 'Sardis Crossing', 'Sardis Woods', 'Seversville', 'Sheffield Park', 'South End', 'SouthPark', 'Stallings', 'Stanley', 'Starmount', 'Steele Creek', 'Sugar Creek', 'Tega Cay', 'University City', 'Uptown', 'Washington Heights', 'Waverly', 'Waxhaw', 'Wedgewood', 'Wesley Heights', 'West Sugar Creek',\n  'Cabarrus County', 'Union County', 'Gaston County', 'Iredell County', 'Lincoln County', 'York County', 'Lancaster County', 'Rowan County', 'Cleveland County', 'Lake Norman', 'Salisbury', 'Statesville', 'Troutman', 'Lincolnton', 'Lancaster', 'Sherrills Ford', 'Lowesville'\n];\nconst googleLocationTerms = ['Charlotte', '\"Charlotte, NC\"', 'CLT', '\"Mecklenburg County\"', '\"South End\"', 'NoDa', '\"Plaza Midwood\"', 'SouthPark', 'Ballantyne', '\"Lake Norman\"', 'Huntersville', 'Cornelius', 'Davidson', 'Mooresville', 'Concord', 'Kannapolis', 'Harrisburg', 'Matthews', 'Pineville', '\"Mint Hill\"', '\"Indian Trail\"', 'Waxhaw', 'Monroe', 'Gastonia', 'Belmont', '\"Mount Holly\"', '\"Fort Mill\"', '\"Rock Hill\"', '\"Indian Land\"', '\"Tega Cay\"', 'Denver', '\"Kings Mountain\"', 'Salisbury', 'Statesville', 'Lincolnton', '\"Cabarrus County\"', '\"Union County\"', '\"Gaston County\"', '\"Iredell County\"', '\"Lincoln County\"', '\"York County\"', '\"Lancaster County\"', '\"Rowan County\"', '\"Cleveland County\"'];\nconst subjectTerms = ['coffee', 'espresso', 'cafe', 'café', 'coffee bar', 'coffeehouse', 'coffee shop', 'tea', 'tea house', 'tea room', 'tea bar', 'boba', 'bubble tea', 'bakery', 'pastry', 'pastry shop', 'donut shop', 'deli', 'eatery', 'restaurant', 'food truck', 'food hall', 'ice cream', 'creamery', 'gelato', 'dessert cafe', 'bookstore', 'book shop', 'bookshop', 'library', 'public library', 'branch library', 'community center', 'coworking', 'coworking space', 'co-working', 'workspace', 'study spot', 'brewery', 'taproom', 'beer garden', 'wine bar', 'bar', 'pub', 'speakeasy', 'bottle shop', 'beer shop', 'market', 'farmers market', 'grocery store', 'garden', 'community garden', 'park', 'greenway', 'public space', 'plaza', 'art gallery', 'art studio', 'arts center', 'performing arts', 'theater', 'music venue', 'live music', 'museum', 'makerspace', 'game store', 'board game', 'gaming lounge', 'arcade', 'book club', 'event venue', 'third place', 'third places', 'third space'];\nconst actionTerms = ['grand opening', 'opening soon', 'now open', 'new location', 'new concept', 'debut', 'review', 'spotlight', 'feature', 'closes', 'closing', 'reopens', 'renovation', 'expansion'];\nconst excludedHrefParts = ['login', 'subscribe', 'newsletter', '/author/', '/tag/', '/tags/', '/video/', '.jpg', '.png', '.gif', '.webp', 'mailto:', 'javascript:', '#'];\nconst sources = [\n  { name: 'Charlotte Observer / CharlotteFive', site: 'charlotteobserver.com/charlottefive', urls: ['https://www.charlotteobserver.com/charlottefive/', 'https://www.charlotteobserver.com/charlottefive/c5-food-drink/', 'https://www.charlotteobserver.com/charlottefive/c5-around-town/', 'https://www.charlotteobserver.com/charlottefive/c5-things-to-do/'] },\n  { name: 'Axios Charlotte', site: 'www.axios.com/local/charlotte', ignore_url_location: true, urls: ['https://www.axios.com/local/charlotte', 'https://www.axios.com/local/charlotte/food-and-drink', 'https://www.axios.com/local/charlotte/things-to-do', 'https://www.axios.com/local/charlotte/business', 'https://www.axios.com/local/charlotte/newcomers'] },\n  { name: 'WSOC-TV', site: 'wsoctv.com', urls: ['https://www.wsoctv.com/news/local/', 'https://www.wsoctv.com/community/', 'https://www.wsoctv.com/your704/'] },\n  { name: 'WBTV', site: 'wbtv.com', urls: ['https://www.wbtv.com/news/local/', 'https://www.wbtv.com/community/', 'https://www.wbtv.com/content/food/', 'https://www.wbtv.com/community/features', 'https://www.wbtv.com/community/new-to-charlotte'] },\n  { name: 'WCNC', site: 'wcnc.com', feeds: ['https://www.wcnc.com/feeds/syndication/rss/news/local'], urls: ['https://www.wcnc.com/local'] },\n  { name: 'Queen City News', site: 'qcnews.com', feeds: ['https://www.qcnews.com/feed/'], urls: ['https://www.qcnews.com/news/local-news/', 'https://www.qcnews.com/news/u-s/north-carolina/', 'https://www.qcnews.com/charlotte/'] },\n  { name: 'WCCB Charlotte', site: 'wccbcharlotte.com', feeds: ['https://www.wccbcharlotte.com/feed/'], urls: ['https://www.wccbcharlotte.com/category/local-news/', 'https://www.wccbcharlotte.com/category/entertainment/', 'https://www.wccbcharlotte.com/events/'] },\n  { name: 'Charlotte Business Journal', site: 'bizjournals.com/charlotte', urls: ['https://www.bizjournals.com/charlotte/news/food-and-lifestyle', 'https://www.bizjournals.com/charlotte/news/food-and-lifestyle/restaurants', 'https://www.bizjournals.com/charlotte/news/food-and-lifestyle/bars', 'https://www.bizjournals.com/charlotte/news/food-and-lifestyle/arts', 'https://www.bizjournals.com/charlotte/news/food-and-lifestyle/country-clubs'] },\n  { name: 'Charlotte Inno', site: 'bizjournals.com/charlotte/inno', urls: ['https://www.bizjournals.com/charlotte/inno'] },\n  { name: 'What Now Charlotte', site: 'whatnow.com/charlotte/', ignore_url_location: true, feeds: ['https://whatnow.com/charlotte/feed/'], urls: ['https://whatnow.com/charlotte/restaurants/', 'https://whatnow.com/charlotte/retail/', 'https://whatnow.com/charlotte/real-estate/'] },\n  { name: 'The Charlotte Ledger', site: 'thecharlotteledger.com', urls: ['https://www.thecharlotteledger.com/archive', 'https://www.thecharlotteledger.com/'] },\n  { name: 'Charlotte Magazine', site: 'charlottemagazine.com', urls: ['https://www.charlottemagazine.com/food-drink/', 'https://www.charlottemagazine.com/things-to-do/', 'https://www.charlottemagazine.com/arts-culture/'] },\n  { name: 'SouthPark Magazine', site: 'southparkmagazine.com', feeds: ['https://southparkmagazine.com/feed/'], urls: ['https://southparkmagazine.com/category/cuisine/', 'https://southparkmagazine.com/category/entertainment/', 'https://southparkmagazine.com/category/the-arts/'] },\n  { name: 'Queen City Nerve / QC Nerve', site: 'qcnerve.com', feeds: ['https://qcnerve.com/feed/'], urls: ['https://qcnerve.com/category/food-drink/', 'https://qcnerve.com/category/guides-events/', 'https://qcnerve.com/category/arts-culture/', 'https://qcnerve.com/category/news-opinion/small-business/'] },\n  { name: 'WFAE', site: 'wfae.org', feeds: ['https://www.wfae.org/index.rss'], urls: ['https://www.wfae.org/arts-culture', 'https://www.wfae.org/business', 'https://www.wfae.org/local-news'] },\n  { name: 'QCity Metro', site: 'qcitymetro.com', urls: ['https://www.qcitymetro.com/latest-stories', 'https://www.qcitymetro.com/sections/things-to-do', 'https://www.qcitymetro.com/sections/food-drink', 'https://www.qcitymetro.com/sections/culture', 'https://www.qcitymetro.com/things-to-do/calendar/'] },\n  { name: 'Creative Loafing / clclt.com', site: 'clclt.com', feeds: ['https://clclt.com/feed'], urls: [] },\n  { name: 'Charlotte Stories', site: 'charlottestories.com', feeds: ['https://www.charlottestories.com/feed/'], urls: ['https://www.charlottestories.com/category/food/', 'https://www.charlottestories.com/category/development/', 'https://www.charlottestories.com/category/charlotte/'] },\n  { name: 'Ballantyne Magazine', site: 'ballantynemagazine.com', urls: ['https://www.ballantynemagazine.com/', 'https://www.ballantynemagazine.com/food-drink/', 'https://www.ballantynemagazine.com/around-town/'] },\n  { name: 'Herald Online / Rock Hill Herald', site: 'heraldonline.com', urls: ['https://www.heraldonline.com/news/local/', 'https://www.heraldonline.com/news/business/', 'https://www.heraldonline.com/living/food-drink/'] },\n  { name: 'Lake Norman Publications', site: 'lakenormanpublications.com', feeds: ['https://www.lakenormanpublications.com/feed/'], urls: ['https://www.lakenormanpublications.com/category/news/', 'https://www.lakenormanpublications.com/category/business/'] },\n  { name: 'Cornelius Today', site: 'corneliustoday.com', feeds: ['https://www.corneliustoday.com/feed/'], urls: ['https://www.corneliustoday.com/', 'https://www.corneliustoday.com/category/events/', 'https://www.corneliustoday.com/category/whats-delicious/'] },\n  { name: 'News of Davidson', site: 'newsofdavidson.org', feeds: ['https://www.newsofdavidson.org/feed/'], urls: ['https://newsofdavidson.org/category/local-businesses/', 'https://newsofdavidson.org/category/news/', 'https://newsofdavidson.org/category/a-and-e/'] },\n  { name: 'Mooresville Tribune', site: 'mooresvilletribune.com', feeds: ['https://mooresvilletribune.com/search/?f=rss&t=article&c=news/local&l=50&s=start_time&sd=desc'], urls: ['https://mooresvilletribune.com/news/local/'] },\n  { name: 'Statesville Record & Landmark', site: 'statesville.com', feeds: ['https://statesville.com/search/?f=rss&t=article&c=news/local&l=50&s=start_time&sd=desc'], urls: ['https://statesville.com/news/local/'] },\n  { name: 'Independent Tribune', site: 'independenttribune.com', feeds: ['https://independenttribune.com/search/?f=rss&t=article&c=news/local&l=50&s=start_time&sd=desc'], urls: ['https://independenttribune.com/news/local/'] },\n  { name: 'Enquirer-Journal', site: 'enquirerjournal.com', feeds: ['https://enquirerjournal.com/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc'], urls: ['https://enquirerjournal.com/news/', 'https://enquirerjournal.com/enquirer_journal/'] },\n  { name: 'Salisbury Post', site: 'salisburypost.com', feeds: ['https://www.salisburypost.com/feed/'], urls: ['https://www.salisburypost.com/category/news/', 'https://www.salisburypost.com/category/lifestyle/'] },\n  { name: 'Gaston Gazette', site: 'gastongazette.com', urls: ['https://www.gastongazette.com/'] },\n  { name: 'Carolina Gateway', site: 'pmg-sc.com/carolina_gateway', feeds: ['https://www.pmg-sc.com/carolina_gateway/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc'], urls: ['https://www.pmg-sc.com/carolina_gateway/'] }\n];\nconst googleTemplates = [\n  { family: 'openings-food', template: 'site:{site} (coffee OR \"coffee shop\" OR cafe OR café OR bakery OR tea OR boba OR restaurant OR deli OR \"food truck\" OR \"food hall\" OR \"ice cream\") {locations} (\"grand opening\" OR \"opening soon\" OR \"now open\" OR \"new location\" OR debut) when:7d' },\n  { family: 'places-community', template: 'site:{site} (bookstore OR library OR \"community center\" OR coworking OR makerspace OR \"art gallery\" OR \"arts center\" OR \"performing arts\" OR theater OR museum OR \"game store\" OR arcade OR market OR \"farmers market\" OR park OR greenway OR \"third place\") {locations} (opening OR new OR feature OR spotlight OR review OR event) when:7d' },\n  { family: 'drinks-hangouts', template: 'site:{site} (brewery OR taproom OR \"beer garden\" OR \"wine bar\" OR bar OR pub OR speakeasy OR \"bottle shop\" OR \"live music\") {locations} (opening OR \"now open\" OR \"new location\" OR review OR feature) when:7d' },\n  { family: 'closures-changes', template: 'site:{site} (coffee OR cafe OR restaurant OR bakery OR brewery OR bookstore OR library OR market OR coworking OR \"arts center\" OR \"third place\") {locations} (closes OR closing OR reopens OR renovation OR expansion OR rebrand) when:7d' }\n];\n\nfs.writeFileSync('/tmp/gh-aw/agent/news-alert-config.json', JSON.stringify({\n  locationTerms,\n  googleLocationQuery: `(${googleLocationTerms.join(' OR ')})`,\n  subjectTerms,\n  actionTerms,\n  excludedHrefParts,\n  sources,\n  googleTemplates\n}, null, 2));\nNODE\n"
       - env:
           MODE: ${{ github.event.inputs.mode }}
         name: Collect News Alert Candidates
-        run: "set -euo pipefail\nmkdir -p /tmp/gh-aw/agent\nexport MEMORY_DIR=\"/tmp/gh-aw/repo-memory/third-place-alerts\"\nmkdir -p \"$MEMORY_DIR/news\"\nexport MODE=\"${MODE:-real}\"\n\nnode <<'NODE'\nconst fs = require('fs');\nconst crypto = require('crypto');\n\nconst mode = process.env.MODE || 'real';\nconst memoryDir = process.env.MEMORY_DIR || '/tmp/gh-aw/repo-memory/third-place-alerts';\nconst seenPath = `${memoryDir}/news/seen.json`;\nconst outPath = '/tmp/gh-aw/agent/news-candidates.json';\nconst logPath = '/tmp/gh-aw/agent/news-collection-log.json';\nconst now = new Date();\nconst sevenDaysMs = 7 * 24 * 60 * 60 * 1000;\nconst sinceMs = now.getTime() - sevenDaysMs;\nconst userAgent = 'script:charlotte-third-places-alerts:v1.0.0';\nconst config = JSON.parse(fs.readFileSync('/tmp/gh-aw/agent/news-alert-config.json', 'utf8'));\nconst { locationTerms, googleLocationQuery, subjectTerms, actionTerms, excludedHrefParts, sources, googleTemplates } = config;\nconst log = { mode, started_at: now.toISOString(), urls: [], errors: [] };\n\nfunction ensureSeenFile() {\n  if (!fs.existsSync(seenPath)) fs.writeFileSync(seenPath, JSON.stringify({ items: [] }, null, 2) + String.fromCharCode(10));\n}\n\nfunction hashText(value) {\n  return crypto.createHash('sha256').update(String(value || '').trim().toLowerCase()).digest('hex');\n}\n\nfunction decodeXml(value) {\n  return String(value || '').replaceAll('&amp;', '&').replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&quot;', '\"').replaceAll('&#39;', \"'\");\n}\n\nfunction stripTags(value) {\n  return decodeXml(value).replaceAll('<![CDATA[', '').replaceAll(']]>', '').replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim();\n}\n\nfunction hasAny(text, terms) {\n  const lower = String(text || '').toLowerCase();\n  return terms.some((term) => lower.includes(term.toLowerCase()));\n}\n\nfunction locationEvidenceText(candidate) {\n  const fields = [candidate.title, candidate.description, candidate.source_category, candidate.article_text_excerpt];\n  if (!candidate.ignore_url_location) fields.push(candidate.url);\n  return fields.join(' ');\n}\n\nfunction hasLocation(candidate) {\n  return hasAny(locationEvidenceText(candidate), locationTerms);\n}\n\nfunction canonicalUrl(value) {\n  try {\n    const url = new URL(value);\n    for (const key of [...url.searchParams.keys()]) {\n      if (key.startsWith('utm_') || ['fbclid', 'gclid', 'mc_cid', 'mc_eid', 'cmpid', 'storylink'].includes(key)) url.searchParams.delete(key);\n    }\n    url.hash = '';\n    return url.toString();\n  } catch {\n    return value || null;\n  }\n}\n\nfunction scoreCandidate(candidate) {\n  const text = [candidate.title, candidate.description, candidate.article_text_excerpt].join(' ').toLowerCase();\n  if (text.includes('third place') || text.includes('third space')) return 100;\n  if (hasAny(text, ['grand opening', 'opening soon', 'now open', 'new location', 'debut', 'reopens'])) return 90;\n  if (hasAny(text, ['closes', 'closing', 'rebrand', 'renovation', 'expansion'])) return 80;\n  if (candidate.source_kind === 'source-page') return 70;\n  if (candidate.source_kind === 'google-news-rss' && hasAny(candidate.title, subjectTerms.concat(actionTerms))) return 60;\n  return 40;\n}\n\nfunction readSeen() {\n  ensureSeenFile();\n  try {\n    const parsed = JSON.parse(fs.readFileSync(seenPath, 'utf8'));\n    return Array.isArray(parsed.items) ? parsed.items : [];\n  } catch {\n    return [];\n  }\n}\n\nfunction isSeen(candidate, seenItems) {\n  return seenItems.some((item) => item.url === candidate.url || item.title_hash === candidate.title_hash);\n}\n\nasync function fetchText(url) {\n  log.urls.push(url);\n  const controller = new AbortController();\n  const timeout = setTimeout(() => controller.abort(), 30000);\n  try {\n    const response = await fetch(url, { headers: { 'User-Agent': userAgent }, signal: controller.signal });\n    const text = await response.text();\n    clearTimeout(timeout);\n    if (!response.ok) return { ok: false, status: response.status, body: text.slice(0, 500) };\n    return { ok: true, status: response.status, body: text };\n  } catch (error) {\n    clearTimeout(timeout);\n    return { ok: false, status: 'network', body: String(error.message || error) };\n  }\n}\n\nfunction parseFeedItems(xml, source, sourceUrl, sourceKind) {\n  const items = [];\n  const rssItems = xml.split('<item>').slice(1).map((part) => part.split('</item>')[0] || '');\n  const atomItems = xml.split('<entry>').slice(1).map((part) => part.split('</entry>')[0] || '');\n  for (const item of rssItems.slice(0, 100)) {\n    const title = stripTags(tagValue(item, 'title'));\n    const link = canonicalUrl(stripTags(tagValue(item, 'link')));\n    const description = stripTags(tagValue(item, 'description'));\n    const pubDate = stripTags(tagValue(item, 'pubDate')) || null;\n    items.push(makeCandidate(source, sourceUrl, sourceKind, title, link, description, pubDate, null, null));\n  }\n  for (const item of atomItems.slice(0, 100)) {\n    const title = stripTags(tagValue(item, 'title'));\n    const link = canonicalUrl(linkHref(item));\n    const description = stripTags(tagValue(item, 'content') || tagValue(item, 'summary'));\n    const pubDate = stripTags(tagValue(item, 'updated') || tagValue(item, 'published')) || null;\n    items.push(makeCandidate(source, sourceUrl, sourceKind, title, link, description, pubDate, null, null));\n  }\n  return items.filter((item, index) => item.url && item.title && (item.published_at ? Date.parse(item.published_at) >= sinceMs : index < 30));\n}\n\nfunction tagValue(xml, tagName) {\n  const open = xml.indexOf(`<${tagName}`);\n  if (open < 0) return '';\n  const contentStart = xml.indexOf('>', open) + 1;\n  const close = xml.indexOf(`</${tagName}>`, contentStart);\n  if (contentStart <= 0 || close < 0) return '';\n  return xml.slice(contentStart, close);\n}\n\nfunction linkHref(entry) {\n  const open = entry.indexOf('<link');\n  if (open < 0) return '';\n  const end = entry.indexOf('>', open);\n  const chunk = entry.slice(open, end);\n  const key = 'href=\"';\n  const start = chunk.indexOf(key);\n  if (start < 0) return '';\n  const valueStart = start + key.length;\n  const valueEnd = chunk.indexOf('\"', valueStart);\n  return decodeXml(chunk.slice(valueStart, valueEnd));\n}\n\nfunction makeCandidate(source, sourceUrl, sourceKind, title, url, description, publishedAt, category, family, articleText = null) {\n  const normalizedUrl = canonicalUrl(url);\n  const candidate = {\n    url: normalizedUrl,\n    source: source.name,\n    source_url: sourceUrl,\n    title: title || null,\n    description: description || null,\n    published_at: publishedAt && !Number.isNaN(Date.parse(publishedAt)) ? new Date(Date.parse(publishedAt)).toISOString() : null,\n    discovered_at: now.toISOString(),\n    source_category: category || null,\n    matching_keyword_family: family || null,\n    location_evidence: [],\n    source_kind: sourceKind,\n    article_text_excerpt: articleText ? articleText.slice(0, 1000) : null,\n    ignore_url_location: source.ignore_url_location === true\n  };\n  candidate.title_hash = hashText([candidate.source, candidate.title, candidate.published_at || ''].join('|'));\n  candidate.relevance_score = scoreCandidate(candidate);\n  candidate.location_evidence = locationTerms.filter((term) => hasAny(locationEvidenceText(candidate), [term]));\n  delete candidate.ignore_url_location;\n  return candidate;\n}\n\nfunction sameDomain(source, href) {\n  try {\n    const url = new URL(href);\n    return url.hostname.replace(/^www\\./, '').includes(source.site.split('/')[0].replace(/^www\\./, ''));\n  } catch {\n    return false;\n  }\n}\n\nfunction absolutize(base, href) {\n  try { return new URL(href, base).toString(); } catch { return null; }\n}\n\nfunction parseLinks(html, source, sourceUrl) {\n  const links = [];\n  for (const match of html.matchAll(/<a\\s+[^>]*href=[\"']([^\"']+)[\"'][^>]*>([\\s\\S]*?)<\\/a>/gi)) {\n    const href = absolutize(sourceUrl, decodeXml(match[1]));\n    if (!href) continue;\n    const lowerHref = href.toLowerCase();\n    if (excludedHrefParts.some((part) => lowerHref.includes(part))) continue;\n    if (!sameDomain(source, href)) continue;\n    const title = stripTags(match[2]);\n    if (!title || title.length < 8) continue;\n    links.push({ url: canonicalUrl(href), title });\n  }\n  const byUrl = new Map();\n  for (const link of links) if (!byUrl.has(link.url)) byUrl.set(link.url, link);\n  return [...byUrl.values()].slice(0, 50);\n}\n\nasync function main() {\n  ensureSeenFile();\n  if (mode === 'test') {\n    fs.writeFileSync(outPath, JSON.stringify({\n      mode,\n      test: true,\n      generated_at: now.toISOString(),\n      candidates: [makeCandidate({ name: 'Test News', site: 'example.com' }, 'test', 'test', 'Test: New coffee shop opens as a third place in Charlotte', 'https://example.com/test-third-place', 'Synthetic test candidate for validating the Third Place News Alerts email path in Charlotte.', now.toISOString(), null, 'openings-food', 'Charlotte third place coffee shop')]\n    }, null, 2));\n    fs.writeFileSync(logPath, JSON.stringify(log, null, 2));\n    return;\n  }\n\n  const seen = readSeen();\n  const all = [];\n  for (const source of sources) {\n    for (const feed of source.feeds || []) {\n      const response = await fetchText(feed);\n      if (!response.ok) { log.errors.push({ source: source.name, url: feed, error: response }); continue; }\n      all.push(...parseFeedItems(response.body, source, feed, 'feed'));\n    }\n    for (const sourceUrl of source.urls || []) {\n      const response = await fetchText(sourceUrl);\n      if (!response.ok) { log.errors.push({ source: source.name, url: sourceUrl, error: response }); continue; }\n      const links = parseLinks(response.body, source, sourceUrl);\n      for (const link of links) {\n        if (!hasAny([link.title, link.url].join(' '), subjectTerms.concat(actionTerms))) continue;\n        let articleText = null;\n        const articleResponse = await fetchText(link.url);\n        if (articleResponse.ok) articleText = stripTags(articleResponse.body).slice(0, 1000);\n        all.push(makeCandidate(source, sourceUrl, 'source-page', link.title, link.url, null, null, null, 'source-page', articleText));\n      }\n    }\n    for (const template of googleTemplates) {\n      const query = template.template.replaceAll('{site}', source.site).replaceAll('{locations}', googleLocationQuery);\n      const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-US&gl=US&ceid=US:en`;\n      const response = await fetchText(rssUrl);\n      if (!response.ok) { log.errors.push({ source: source.name, url: rssUrl, error: response }); continue; }\n      all.push(...parseFeedItems(response.body, source, rssUrl, 'google-news-rss').slice(0, 50).map((item) => ({ ...item, matching_keyword_family: template.family, relevance_score: scoreCandidate({ ...item, matching_keyword_family: template.family }) })));\n    }\n  }\n\n  const byUrl = new Map();\n  for (const item of all) {\n    if (!item.url || !item.title) continue;\n    if (!hasLocation(item)) continue;\n    const key = item.url;\n    if (!byUrl.has(key) || byUrl.get(key).relevance_score < item.relevance_score) byUrl.set(key, item);\n  }\n  const candidates = [...byUrl.values()]\n    .filter((item) => !isSeen(item, seen))\n    .sort((a, b) => (b.relevance_score - a.relevance_score) || (Date.parse(b.published_at || b.discovered_at) - Date.parse(a.published_at || a.discovered_at)))\n    .slice(0, 250);\n  fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates }, null, 2));\n  fs.writeFileSync(logPath, JSON.stringify(log, null, 2));\n}\n\nmain().catch((error) => {\n  log.errors.push({ fatal: error.message, stack: error.stack });\n  fs.writeFileSync(logPath, JSON.stringify(log, null, 2));\n  fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates: [], error: error.message }, null, 2));\n});\nNODE"
+        run: "set -euo pipefail\nmkdir -p /tmp/gh-aw/agent\nexport MEMORY_DIR=\"/tmp/gh-aw/repo-memory/third-place-alerts\"\nmkdir -p \"$MEMORY_DIR/news\"\nexport MODE=\"${MODE:-real}\"\n\nnode <<'NODE'\nconst fs = require('fs');\nconst crypto = require('crypto');\n\nconst mode = process.env.MODE || 'real';\nconst memoryDir = process.env.MEMORY_DIR || '/tmp/gh-aw/repo-memory/third-place-alerts';\nconst seenPath = `${memoryDir}/news/seen.json`;\nconst outPath = '/tmp/gh-aw/agent/news-candidates.json';\nconst logPath = '/tmp/gh-aw/agent/news-collection-log.json';\nconst now = new Date();\nconst sevenDaysMs = 7 * 24 * 60 * 60 * 1000;\nconst sinceMs = now.getTime() - sevenDaysMs;\nconst userAgent = 'script:charlotte-third-places-alerts:v1.0.0';\nconst config = JSON.parse(fs.readFileSync('/tmp/gh-aw/agent/news-alert-config.json', 'utf8'));\nconst { locationTerms, googleLocationQuery, subjectTerms, actionTerms, excludedHrefParts, sources, googleTemplates } = config;\nconst log = { mode, started_at: now.toISOString(), urls: [], errors: [] };\n\nfunction ensureSeenFile() {\n  if (!fs.existsSync(seenPath)) fs.writeFileSync(seenPath, JSON.stringify({ items: [] }, null, 2) + String.fromCharCode(10));\n}\n\nfunction hashText(value) {\n  return crypto.createHash('sha256').update(String(value || '').trim().toLowerCase()).digest('hex');\n}\n\nfunction decodeXml(value) {\n  return String(value || '').replaceAll('&amp;', '&').replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&quot;', '\"').replaceAll('&#39;', \"'\");\n}\n\nfunction stripTags(value) {\n  return decodeXml(value).replaceAll('<![CDATA[', '').replaceAll(']]>', '').replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim();\n}\n\nfunction hasAny(text, terms) {\n  const lower = String(text || '').toLowerCase();\n  return terms.some((term) => lower.includes(term.toLowerCase()));\n}\n\nfunction locationEvidenceText(candidate) {\n  const fields = [candidate.title, candidate.description, candidate.source_category, candidate.article_text_excerpt];\n  if (!candidate.ignore_url_location) fields.push(candidate.url);\n  return fields.join(' ');\n}\n\nfunction hasLocation(candidate) {\n  return hasAny(locationEvidenceText(candidate), locationTerms);\n}\n\nfunction canonicalUrl(value) {\n  try {\n    const url = new URL(value);\n    for (const key of [...url.searchParams.keys()]) {\n      if (key.startsWith('utm_') || ['fbclid', 'gclid', 'mc_cid', 'mc_eid', 'cmpid', 'storylink'].includes(key)) url.searchParams.delete(key);\n    }\n    url.hash = '';\n    return url.toString();\n  } catch {\n    return value || null;\n  }\n}\n\nfunction scoreCandidate(candidate) {\n  const text = [candidate.title, candidate.description, candidate.article_text_excerpt].join(' ').toLowerCase();\n  if (text.includes('third place') || text.includes('third space')) return 100;\n  if (hasAny(text, ['grand opening', 'opening soon', 'now open', 'new location', 'debut', 'reopens'])) return 90;\n  if (hasAny(text, ['closes', 'closing', 'rebrand', 'renovation', 'expansion'])) return 80;\n  if (candidate.source_kind === 'source-page') return 70;\n  if (candidate.source_kind === 'google-news-rss' && hasAny(candidate.title, subjectTerms.concat(actionTerms))) return 60;\n  return 40;\n}\n\nfunction readSeen() {\n  ensureSeenFile();\n  try {\n    const parsed = JSON.parse(fs.readFileSync(seenPath, 'utf8'));\n    return Array.isArray(parsed.items) ? parsed.items : [];\n  } catch {\n    return [];\n  }\n}\n\nfunction isSeen(candidate, seenItems) {\n  return seenItems.some((item) => item.url === candidate.url || item.title_hash === candidate.title_hash);\n}\n\nasync function fetchText(url) {\n  log.urls.push(url);\n  const controller = new AbortController();\n  const timeout = setTimeout(() => controller.abort(), 30000);\n  try {\n    const response = await fetch(url, { headers: { 'User-Agent': userAgent }, signal: controller.signal });\n    const text = await response.text();\n    clearTimeout(timeout);\n    if (!response.ok) return { ok: false, status: response.status, body: text.slice(0, 500) };\n    return { ok: true, status: response.status, body: text };\n  } catch (error) {\n    clearTimeout(timeout);\n    return { ok: false, status: 'network', body: String(error.message || error) };\n  }\n}\n\nfunction parseFeedItems(xml, source, sourceUrl, sourceKind) {\n  const items = [];\n  const rssItems = xml.split('<item>').slice(1).map((part) => part.split('</item>')[0] || '');\n  const atomItems = xml.split('<entry>').slice(1).map((part) => part.split('</entry>')[0] || '');\n  for (const item of rssItems.slice(0, 100)) {\n    const title = stripTags(tagValue(item, 'title'));\n    const link = canonicalUrl(stripTags(tagValue(item, 'link')));\n    const description = stripTags(tagValue(item, 'description'));\n    const pubDate = stripTags(tagValue(item, 'pubDate')) || null;\n    items.push(makeCandidate(source, sourceUrl, sourceKind, title, link, description, pubDate, null, null));\n  }\n  for (const item of atomItems.slice(0, 100)) {\n    const title = stripTags(tagValue(item, 'title'));\n    const link = canonicalUrl(linkHref(item));\n    const description = stripTags(tagValue(item, 'content') || tagValue(item, 'summary'));\n    const pubDate = stripTags(tagValue(item, 'updated') || tagValue(item, 'published')) || null;\n    items.push(makeCandidate(source, sourceUrl, sourceKind, title, link, description, pubDate, null, null));\n  }\n  return items.filter((item, index) => item.url && item.title && (item.published_at ? Date.parse(item.published_at) >= sinceMs : index < 30));\n}\n\nfunction tagValue(xml, tagName) {\n  const open = xml.indexOf(`<${tagName}`);\n  if (open < 0) return '';\n  const contentStart = xml.indexOf('>', open) + 1;\n  const close = xml.indexOf(`</${tagName}>`, contentStart);\n  if (contentStart <= 0 || close < 0) return '';\n  return xml.slice(contentStart, close);\n}\n\nfunction linkHref(entry) {\n  const open = entry.indexOf('<link');\n  if (open < 0) return '';\n  const end = entry.indexOf('>', open);\n  const chunk = entry.slice(open, end);\n  const key = 'href=\"';\n  const start = chunk.indexOf(key);\n  if (start < 0) return '';\n  const valueStart = start + key.length;\n  const valueEnd = chunk.indexOf('\"', valueStart);\n  return decodeXml(chunk.slice(valueStart, valueEnd));\n}\n\nfunction makeCandidate(source, sourceUrl, sourceKind, title, url, description, publishedAt, category, family, articleText = null) {\n  const normalizedUrl = canonicalUrl(url);\n  const candidate = {\n    url: normalizedUrl,\n    source: source.name,\n    source_url: sourceUrl,\n    title: title || null,\n    description: description || null,\n    published_at: publishedAt && !Number.isNaN(Date.parse(publishedAt)) ? new Date(Date.parse(publishedAt)).toISOString() : null,\n    discovered_at: now.toISOString(),\n    source_category: category || null,\n    matching_keyword_family: family || null,\n    location_evidence: [],\n    source_kind: sourceKind,\n    article_text_excerpt: articleText ? articleText.slice(0, 1000) : null,\n    ignore_url_location: source.ignore_url_location === true\n  };\n  candidate.title_hash = hashText([candidate.source, candidate.title, candidate.published_at || ''].join('|'));\n  candidate.relevance_score = scoreCandidate(candidate);\n  candidate.location_evidence = locationTerms.filter((term) => hasAny(locationEvidenceText(candidate), [term]));\n  delete candidate.ignore_url_location;\n  return candidate;\n}\n\nfunction sameDomain(source, href) {\n  try {\n    const url = new URL(href);\n    return url.hostname.replace(/^www\\./, '').includes(source.site.split('/')[0].replace(/^www\\./, ''));\n  } catch {\n    return false;\n  }\n}\n\nfunction absolutize(base, href) {\n  try { return new URL(href, base).toString(); } catch { return null; }\n}\n\nfunction parseLinks(html, source, sourceUrl) {\n  const links = [];\n  for (const match of html.matchAll(/<a\\s+[^>]*href=[\"']([^\"']+)[\"'][^>]*>([\\s\\S]*?)<\\/a>/gi)) {\n    const href = absolutize(sourceUrl, decodeXml(match[1]));\n    if (!href) continue;\n    const lowerHref = href.toLowerCase();\n    if (excludedHrefParts.some((part) => lowerHref.includes(part))) continue;\n    if (!sameDomain(source, href)) continue;\n    const title = stripTags(match[2]);\n    if (!title || title.length < 8) continue;\n    links.push({ url: canonicalUrl(href), title });\n  }\n  const byUrl = new Map();\n  for (const link of links) if (!byUrl.has(link.url)) byUrl.set(link.url, link);\n  return [...byUrl.values()].slice(0, 50);\n}\n\nasync function main() {\n  ensureSeenFile();\n  if (mode === 'test') {\n    fs.writeFileSync(outPath, JSON.stringify({\n      mode,\n      test: true,\n      generated_at: now.toISOString(),\n      candidates: [makeCandidate({ name: 'Test News', site: 'example.com' }, 'test', 'test', 'Test: New coffee shop opens as a third place in Charlotte', 'https://example.com/test-third-place', 'Synthetic test candidate for validating the Third Place News Alerts email path in Charlotte.', now.toISOString(), null, 'openings-food', 'Charlotte third place coffee shop')]\n    }, null, 2));\n    fs.writeFileSync(logPath, JSON.stringify(log, null, 2));\n    return;\n  }\n\n  const replay = JSON.parse(fs.readFileSync(`${process.env.RUNNER_TEMP}/alert-inputs/replay.json`, 'utf8'));\n  if (replay) {\n    fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates: replay.candidates, replay }, null, 2));\n    fs.writeFileSync(logPath, JSON.stringify(log, null, 2));\n    return; // Recovery/outbox replay MUST precede all normal collection.\n  }\n\n  const seen = readSeen();\n  const all = [];\n  for (const source of sources) {\n    for (const feed of source.feeds || []) {\n      const response = await fetchText(feed);\n      if (!response.ok) { log.errors.push({ source: source.name, url: feed, error: response }); continue; }\n      all.push(...parseFeedItems(response.body, source, feed, 'feed'));\n    }\n    for (const sourceUrl of source.urls || []) {\n      const response = await fetchText(sourceUrl);\n      if (!response.ok) { log.errors.push({ source: source.name, url: sourceUrl, error: response }); continue; }\n      const links = parseLinks(response.body, source, sourceUrl);\n      for (const link of links) {\n        if (!hasAny([link.title, link.url].join(' '), subjectTerms.concat(actionTerms))) continue;\n        let articleText = null;\n        const articleResponse = await fetchText(link.url);\n        if (articleResponse.ok) articleText = stripTags(articleResponse.body).slice(0, 1000);\n        all.push(makeCandidate(source, sourceUrl, 'source-page', link.title, link.url, null, null, null, 'source-page', articleText));\n      }\n    }\n    for (const template of googleTemplates) {\n      const query = template.template.replaceAll('{site}', source.site).replaceAll('{locations}', googleLocationQuery);\n      const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-US&gl=US&ceid=US:en`;\n      const response = await fetchText(rssUrl);\n      if (!response.ok) { log.errors.push({ source: source.name, url: rssUrl, error: response }); continue; }\n      all.push(...parseFeedItems(response.body, source, rssUrl, 'google-news-rss').slice(0, 50).map((item) => ({ ...item, matching_keyword_family: template.family, relevance_score: scoreCandidate({ ...item, matching_keyword_family: template.family }) })));\n    }\n  }\n\n  const byUrl = new Map();\n  for (const item of all) {\n    if (!item.url || !item.title) continue;\n    if (!hasLocation(item)) continue;\n    const key = item.url;\n    if (!byUrl.has(key) || byUrl.get(key).relevance_score < item.relevance_score) byUrl.set(key, item);\n  }\n  const candidateHashes = new Set();\n  const candidates = [...byUrl.values()]\n    .filter((item) => !isSeen(item, seen))\n    .sort((a, b) => (b.relevance_score - a.relevance_score) || (Date.parse(b.published_at || b.discovered_at) - Date.parse(a.published_at || a.discovered_at)))\n    .filter((item) => {\n      if (candidateHashes.has(item.title_hash)) return false;\n      candidateHashes.add(item.title_hash);\n      return true;\n    })\n    .slice(0, 250);\n  fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates }, null, 2));\n  fs.writeFileSync(logPath, JSON.stringify(log, null, 2));\n}\n\nmain().catch((error) => {\n  log.errors.push({ fatal: error.message, stack: error.stack });\n  fs.writeFileSync(logPath, JSON.stringify(log, null, 2));\n  fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates: [], error: error.message }, null, 2));\n});\nNODE\n"
+      - name: Seal News Candidates Before Agent
+        run: |
+          python3 scripts/alert_delivery.py seal --kind news --directory "$RUNNER_TEMP/alert-inputs"
+      - name: Upload Immutable News Candidates
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          if-no-files-found: error
+          name: alert-inputs-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/alert-inputs/candidates.json
+          retention-days: 30
 
       - name: Configure Git credentials
         env:
@@ -562,7 +562,7 @@ jobs:
         env:
           GH_AW_FILE_ROOT: "${{ runner.temp }}/gh-aw"
           GH_AW_FILE_CONFIG: "{\"files\":[{\"path\":\"safeoutputs/config.json\",\"content_env\":\"GH_AW_SAFE_OUTPUTS_CONFIG\"}]}"
-          GH_AW_SAFE_OUTPUTS_CONFIG: "{\"create_report_incomplete_issue\":{},\"missing_data\":{},\"missing_tool\":{},\"noop\":{\"max\":1,\"report-as-issue\":\"false\"},\"push_repo_memory\":{\"memories\":[{\"allowed_extensions\":[\".json\"],\"dir\":\"/tmp/gh-aw/repo-memory/third-place-alerts\",\"file_glob\":\"news/*.json\",\"format_json\":true,\"id\":\"third-place-alerts\",\"max_file_count\":1,\"max_file_size\":5242880,\"max_patch_size\":524288}]},\"report_incomplete\":{},\"send-email-report\":{\"description\":\"Send a private Third Place Alerts email report through Gmail SMTP.\",\"inputs\":{\"html_body\":{\"default\":null,\"description\":\"Legacy input ignored by the email renderer. HTML is generated from text_body.\",\"required\":false,\"type\":\"string\"},\"subject\":{\"default\":null,\"description\":\"Email subject, 160 characters maximum.\",\"required\":true,\"type\":\"string\"},\"text_body\":{\"default\":null,\"description\":\"Plain-text email report body, 20000 characters maximum.\",\"required\":true,\"type\":\"string\"}},\"output\":\"Email report processed.\"}}"
+          GH_AW_SAFE_OUTPUTS_CONFIG: "{\"create_report_incomplete_issue\":{},\"missing_data\":{},\"missing_tool\":{},\"noop\":{\"max\":1,\"report-as-issue\":\"false\"},\"report_incomplete\":{},\"send-email-report\":{\"description\":\"Submit one final structured selection for trusted rendering, SMTP delivery and delivery-bound history. Success only means queued.\",\"inputs\":{\"selection\":{\"default\":null,\"description\":\"Base64-encoded UTF-8 JSON list of 1-20 objects: {\\\"id\\\":\\\"candidate title_hash (news) or id (Reddit)\\\",\\\"category\\\":\\\"approved category\\\",\\\"evidence\\\":\\\"verbatim candidate quote\\\"}. Encoding preserves quotes through gh-aw mention sanitization. No email body or mode.\",\"required\":true,\"type\":\"string\"}},\"output\":\"Delivery validation completed.\"}}"
         with:
           script: |
             const path = require('path');
@@ -579,26 +579,17 @@ jobs:
               "repo_params": {},
               "dynamic_tools": [
                 {
-                  "description": "Send a private Third Place Alerts email report through Gmail SMTP.",
+                  "description": "Submit one final structured selection for trusted rendering, SMTP delivery and delivery-bound history. Success only means queued.",
                   "inputSchema": {
                     "additionalProperties": false,
                     "properties": {
-                      "html_body": {
-                        "description": "Legacy input ignored by the email renderer. HTML is generated from text_body.",
-                        "type": "string"
-                      },
-                      "subject": {
-                        "description": "Email subject, 160 characters maximum.",
-                        "type": "string"
-                      },
-                      "text_body": {
-                        "description": "Plain-text email report body, 20000 characters maximum.",
+                      "selection": {
+                        "description": "Base64-encoded UTF-8 JSON list of 1-20 objects: {\"id\":\"candidate title_hash (news) or id (Reddit)\",\"category\":\"approved category\",\"evidence\":\"verbatim candidate quote\"}. Encoding preserves quotes through gh-aw mention sanitization. No email body or mode.",
                         "type": "string"
                       }
                     },
                     "required": [
-                      "subject",
-                      "text_body"
+                      "selection"
                     ],
                     "type": "object"
                   },
@@ -662,16 +653,6 @@ jobs:
                     "type": "string",
                     "sanitize": true,
                     "maxLength": 65000
-                  }
-                }
-              },
-              "push_repo_memory": {
-                "defaultMax": 1,
-                "fields": {
-                  "memory_id": {
-                    "type": "string",
-                    "sanitize": true,
-                    "maxLength": 128
                   }
                 }
               },
@@ -934,7 +915,7 @@ jobs:
           COPILOT_AGENT_RUNNER_TYPE: STANDALONE
           COPILOT_DUMMY_BYOK: dummy-byok-key-for-offline-mode
           COPILOT_GITHUB_TOKEN: ${{ github.token }}
-          COPILOT_MODEL: copilot
+          COPILOT_MODEL: opus?effort=high
           GH_AW_LLM_PROVIDER: github
           GH_AW_MAX_AI_CREDITS: ${{ vars.GH_AW_DEFAULT_MAX_AI_CREDITS || '1000' }}
           GH_AW_MAX_TURNS: ${{ vars.GH_AW_DEFAULT_MAX_TURNS || '' }}
@@ -1110,37 +1091,6 @@ jobs:
           if [ ! -f /tmp/gh-aw/agent_output.json ]; then
             echo '{"items":[]}' > /tmp/gh-aw/agent_output.json
           fi
-      # Upload repo memory as artifacts for push job
-      - name: Sanitize repo-memory filenames (third-place-alerts)
-        if: always()
-        continue-on-error: true
-        env:
-          MEMORY_DIR: /tmp/gh-aw/repo-memory/third-place-alerts
-        run: bash "${RUNNER_TEMP}/gh-aw/actions/sanitize_repo_memory_filenames.sh"
-      - name: Filter repo-memory files (third-place-alerts)
-        id: filter_repo_memory_74686972642d706c6163652d616c65727473
-        if: always()
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
-        env:
-          MEMORY_DIR: /tmp/gh-aw/repo-memory/third-place-alerts
-          ALLOWED_EXTENSIONS: '[".json"]'
-          FILE_GLOB_FILTER: "news/*.json"
-        with:
-          script: |
-            const path = require('path');
-            const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
-            const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
-            setupGlobals(core, github, context, exec, io, getOctokit);
-            const { main } = require(path.join(actionsDir, 'memory_file_eligibility.cjs'));
-            await main();
-      - name: Upload repo-memory artifact (third-place-alerts)
-        if: always() && steps.filter_repo_memory_74686972642d706c6163652d616c65727473.outcome == 'success'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: repo-memory-thirdplacealerts
-          path: /tmp/gh-aw/repo-memory/third-place-alerts
-          retention-days: 1
-          if-no-files-found: ignore
       # Small dedicated copy of the agent output so safe-output processing
       # survives a failed or timed-out upload of the larger agent artifact
       - name: Upload agent output fallback artifact
@@ -1185,9 +1135,9 @@ jobs:
       - activation
       - agent
       - detection
-      - push_repo_memory
       - safe_outputs
       - send_email_report
+      - validate_alert_output
     if: >
       always() && (needs.agent.result != 'skipped' || needs.activation.outputs.lockdown_check_failed == 'true' ||
       needs.activation.outputs.oauth_token_check_failed == 'true' || needs.activation.outputs.stale_lock_file_failed == 'true' ||
@@ -1433,10 +1383,6 @@ jobs:
           GH_AW_DAILY_AI_CREDITS_EXCEEDED: ${{ needs.activation.outputs.daily_ai_credits_exceeded }}
           GH_AW_DAILY_AI_CREDITS_TOTAL_EFFECTIVE_TOKENS: ${{ needs.activation.outputs.daily_ai_credits_total_effective_tokens }}
           GH_AW_DAILY_AI_CREDITS_THRESHOLD: ${{ needs.activation.outputs.daily_ai_credits_threshold }}
-          GH_AW_PUSH_REPO_MEMORY_RESULT: ${{ needs.push_repo_memory.result }}
-          GH_AW_REPO_MEMORY_VALIDATION_FAILED_third-place-alerts: ${{ needs.push_repo_memory.outputs.validation_failed_third-place-alerts }}
-          GH_AW_REPO_MEMORY_VALIDATION_ERROR_third-place-alerts: ${{ needs.push_repo_memory.outputs.validation_error_third-place-alerts }}
-          GH_AW_REPO_MEMORY_PATCH_SIZE_EXCEEDED_third-place-alerts: ${{ needs.push_repo_memory.outputs.patch_size_exceeded_third-place-alerts }}
           GH_AW_GROUP_REPORTS: "false"
           GH_AW_FAILURE_REPORT_AS_ISSUE: "false"
           GH_AW_MISSING_TOOL_REPORT_AS_FAILURE: "true"
@@ -1611,7 +1557,7 @@ jobs:
           COPILOT_AGENT_RUNNER_TYPE: STANDALONE
           COPILOT_DUMMY_BYOK: dummy-byok-key-for-offline-mode
           COPILOT_GITHUB_TOKEN: ${{ github.token }}
-          COPILOT_MODEL: copilot
+          COPILOT_MODEL: opus?effort=high
           GH_AW_HARNESS_MAX_RETRIES: 0
           GH_AW_LLM_PROVIDER: github
           GH_AW_MAX_AI_CREDITS: ${{ vars.GH_AW_DEFAULT_DETECTION_MAX_AI_CREDITS || '400' }}
@@ -1735,85 +1681,6 @@ jobs:
         run: |
           bash "${RUNNER_TEMP}/gh-aw/actions/conclude_threat_detection.sh" /tmp/gh-aw/threat-detection/detection_result.json
 
-  push_repo_memory:
-    needs:
-      - activation
-      - agent
-      - detection
-    if: >
-      always() && (!cancelled()) && (needs.detection.result == 'success' || needs.detection.result == 'skipped') &&
-      needs.agent.result == 'success'
-    runs-on: ubuntu-slim
-    permissions:
-      contents: write
-    concurrency:
-      group: "push-repo-memory-${{ github.repository }}|memory/third-place-alerts"
-      cancel-in-progress: false
-    env:
-      GH_AW_RUNTIME_FEATURES: ${{ vars.GH_AW_RUNTIME_FEATURES }}
-    outputs:
-      patch_size_exceeded_third-place-alerts: ${{ steps.push_repo_memory_third-place-alerts.outputs.patch_size_exceeded }}
-      validation_error_third-place-alerts: ${{ steps.push_repo_memory_third-place-alerts.outputs.validation_error }}
-      validation_failed_third-place-alerts: ${{ steps.push_repo_memory_third-place-alerts.outputs.validation_failed }}
-    steps:
-      - name: Setup Scripts
-        id: setup
-        uses: github/gh-aw-actions/setup@5e508589e03a7757a7e05b26e834292f5445bfb6 # v0.88.7
-        with:
-          destination: ${{ runner.temp }}/gh-aw/actions
-          job-name: ${{ github.job }}
-          trace-id: ${{ needs.activation.outputs.setup-trace-id }}
-          parent-span-id: ${{ needs.activation.outputs.setup-parent-span-id || needs.activation.outputs.setup-span-id }}
-        env:
-          GH_AW_SETUP_WORKFLOW_NAME: "News Alerts"
-          GH_AW_CURRENT_WORKFLOW_REF: ${{ github.repository }}/.github/workflows/news-alerts.lock.yml@${{ github.ref }}
-          GH_AW_INFO_VERSION: "1.0.80"
-          GH_AW_INFO_AWF_VERSION: "v0.28.14"
-          GH_AW_INFO_ENGINE_ID: "copilot"
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-          sparse-checkout: .
-      - name: Configure Git credentials
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_SERVER_URL: ${{ github.server_url }}
-          GITHUB_TOKEN: ${{ github.token }}
-        run: bash "${RUNNER_TEMP}/gh-aw/actions/configure_git_credentials.sh"
-      - name: Download repo-memory artifact (third-place-alerts)
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
-        continue-on-error: true
-        with:
-          name: repo-memory-thirdplacealerts
-          path: /tmp/gh-aw/repo-memory/third-place-alerts
-      - name: Push repo-memory changes (third-place-alerts)
-        id: push_repo_memory_third-place-alerts
-        if: always()
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_RUN_ID: ${{ github.run_id }}
-          GITHUB_SERVER_URL: ${{ github.server_url }}
-          ARTIFACT_DIR: /tmp/gh-aw/repo-memory/third-place-alerts
-          MEMORY_ID: third-place-alerts
-          TARGET_REPO: ${{ github.repository }}
-          BRANCH_NAME: memory/third-place-alerts
-          MAX_FILE_SIZE: 5242880
-          MAX_FILE_COUNT: 1
-          MAX_PATCH_SIZE: 524288
-          ALLOWED_EXTENSIONS: '[".json"]'
-          FILE_GLOB_FILTER: "news/*.json"
-          FORMAT_JSON: 'true'
-        with:
-          script: |
-            const path = require('path');
-            const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
-            const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
-            setupGlobals(core, github, context, exec, io, getOctokit);
-            const { main } = require(path.join(actionsDir, 'push_repo_memory.cjs'));
-            await main();
-
   safe_outputs:
     needs:
       - activation
@@ -1833,7 +1700,7 @@ jobs:
       GH_AW_DETECTION_REASON: ${{ needs.detection.outputs.detection_reason }}
       GH_AW_EFFECTIVE_TOKENS: ${{ needs.agent.outputs.effective_tokens }}
       GH_AW_ENGINE_ID: "copilot"
-      GH_AW_ENGINE_MODEL: "copilot"
+      GH_AW_ENGINE_MODEL: "opus?effort=high"
       GH_AW_RUNTIME_FEATURES: ${{ vars.GH_AW_RUNTIME_FEATURES }}
       GH_AW_THREAT_DETECTION_AIC: ${{ needs.detection.outputs.aic }}
       GH_AW_WORKFLOW_ID: "news-alerts"
@@ -1932,10 +1799,12 @@ jobs:
     needs:
       - agent
       - detection
-    if: (!cancelled()) && needs.agent.result != 'skipped' && contains(needs.agent.outputs.output_types, 'send_email_report')
+    if: >
+      (!cancelled()) && needs.agent.result != 'skipped' && contains(needs.agent.outputs.output_types, 'send_email_report') &&
+      (needs.agent.result == 'success' && (needs.detection.result == 'success' || needs.detection.result == 'skipped'))
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
       - name: Download agent output artifact
         continue-on-error: true
@@ -1944,178 +1813,76 @@ jobs:
           pattern: "{agent,agent-output-fallback}"
           merge-multiple: true
           path: ${{ runner.temp }}/gh-aw/safe-jobs/
-      - name: Extract And Validate Email Request
-        id: email
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+      - name: Checkout Trusted Delivery Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         env:
           GH_AW_AGENT_OUTPUT: ${{ runner.temp }}/gh-aw/safe-jobs/agent_output.json
         with:
-          script: |
-            const fs = require('fs');
-            const path = require('path');
-            const outputFile = process.env.GH_AW_AGENT_OUTPUT;
-
-            if (!outputFile || !fs.existsSync(outputFile)) {
-              core.info('No agent output file found; no email will be sent.');
-              core.setOutput('send', 'false');
-              return;
-            }
-
-            const agentOutput = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
-            const items = (agentOutput.items || []).filter((item) => item.type === 'send_email_report');
-
-            if (items.length === 0) {
-              core.info('No send_email_report request found; no email will be sent.');
-              core.setOutput('send', 'false');
-              return;
-            }
-
-            if (items.length > 1) {
-              core.setFailed(`Expected at most one send_email_report request, found ${items.length}.`);
-              return;
-            }
-
-            const item = items[0];
-            const subject = String(item.subject || '').trim();
-            const rawTextBody = String(item.text_body || '');
-
-            if (!subject || !rawTextBody) {
-              core.setFailed('subject and text_body are required.');
-              return;
-            }
-
-            if (subject.length > 160) {
-              core.setFailed(`subject exceeds 160 characters (${subject.length}).`);
-              return;
-            }
-
-            if (rawTextBody.length > 20000) {
-              core.setFailed(`text_body exceeds 20000 characters (${rawTextBody.length}).`);
-              return;
-            }
-
-            function escapeHtml(value) {
-              return String(value || '')
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-            }
-
-            function formatTextLine(value) {
-              const links = [];
-              let text = String(value || '').replace(/\[\]\([^)]*\)/g, '');
-              text = text.replace(/\[([^\]\n]+)\]\((https?:\/\/[^)\s]+)\)/g, (_match, label, url) => {
-                const token = `@@LINK_${links.length}@@`;
-                links.push(`<a href="${escapeHtml(url)}" style="color: #0f766e; text-decoration: underline;">${escapeHtml(label)}</a>`);
-                return token;
-              });
-
-              let output = escapeHtml(text)
-                .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*([^*\n]+)\*/g, '<em>$1</em>')
-                .replace(/\bhttps?:\/\/[^\s<]+/g, (url) => `<a href="${url}" style="color: #0f766e; text-decoration: underline;">${url}</a>`);
-
-              links.forEach((link, index) => {
-                output = output.replace(`@@LINK_${index}@@`, link);
-              });
-              return output.trim();
-            }
-
-            function shouldSkipTextLine(value) {
-              const trimmed = String(value || '').trim();
-              return !trimmed
-                || /^(?:-{3,}|\*{3,}|_{3,})$/.test(trimmed)
-                || /^\(?\s*!doctype\s+html\s*\)?$/i.test(trimmed)
-                || /^<!doctype\s+html>$/i.test(trimmed)
-                || /^<\/?(?:html|body)\b[^>]*>$/i.test(trimmed)
-                || /^\(\/?(?:html|body)\b[^)]*\)$/i.test(trimmed)
-                || /^\[\]\([^)]*\)$/.test(trimmed);
-            }
-
-            function textBodyToHtmlDocument(value) {
-              const blocks = [];
-              let listItems = [];
-              let firstContent = true;
-              const flushList = () => {
-                if (listItems.length === 0) return;
-                blocks.push(`<ul style="margin: 12px 0 18px 22px; padding: 0;">${listItems.join('')}</ul>`);
-                listItems = [];
-              };
-
-              for (const line of String(value || '').split('\n')) {
-                const trimmed = line.trim();
-                if (shouldSkipTextLine(trimmed)) {
-                  flushList();
-                  continue;
-                }
-
-                const heading = trimmed.match(/^(#{1,3})\s+(.+)$/);
-                if (heading) {
-                  flushList();
-                  const level = Math.min(heading[1].length, 3);
-                  const styles = {
-                    1: 'font-size: 22px; line-height: 1.25; margin: 0 0 16px 0; color: #111827;',
-                    2: 'font-size: 18px; line-height: 1.35; margin: 22px 0 10px 0; color: #111827;',
-                    3: 'font-size: 16px; line-height: 1.4; margin: 18px 0 8px 0; color: #111827;'
-                  };
-                  blocks.push(`<h${level} style="${styles[level]}">${formatTextLine(heading[2])}</h${level}>`);
-                  firstContent = false;
-                  continue;
-                }
-
-                const bullet = trimmed.match(/^(?:[-*]|\d+\.)\s+(.+)$/);
-                if (bullet) {
-                  listItems.push(`<li style="margin: 0 0 8px 0;">${formatTextLine(bullet[1])}</li>`);
-                  continue;
-                }
-
-                flushList();
-                if (firstContent) {
-                  blocks.push(`<h1 style="font-size: 22px; line-height: 1.25; margin: 0 0 16px 0; color: #111827;">${formatTextLine(trimmed)}</h1>`);
-                  firstContent = false;
-                } else {
-                  blocks.push(`<p style="font-size: 15px; line-height: 1.55; margin: 0 0 12px 0; color: #1f2937;">${formatTextLine(trimmed)}</p>`);
-                }
-              }
-              flushList();
-
-              return `<!doctype html>\n<html>\n<body>\n<div style="font-family: Arial, sans-serif; color: #1f2937; line-height: 1.5; max-width: 720px; margin: 0 auto; padding: 24px;">${blocks.join('\n')}\n</div>\n</body>\n</html>`;
-            }
-
-            const normalizedTextBody = rawTextBody.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
-            const htmlDocument = textBodyToHtmlDocument(normalizedTextBody);
-
-            if (htmlDocument.length > 60000) {
-              core.setFailed(`generated HTML body exceeds 60000 characters (${htmlDocument.length}).`);
-              return;
-            }
-
-            const outputDir = path.join(process.env.RUNNER_TEMP || '/tmp', 'third-place-alert-email');
-            fs.mkdirSync(outputDir, { recursive: true });
-            const htmlPath = path.join(outputDir, 'body.html');
-            const textPath = path.join(outputDir, 'body.txt');
-            fs.writeFileSync(htmlPath, htmlDocument, 'utf8');
-            fs.writeFileSync(textPath, normalizedTextBody, 'utf8');
-
-            core.setOutput('send', 'true');
-            core.setOutput('subject', subject);
-            core.setOutput('html_body_file', `file://${htmlPath}`);
-            core.setOutput('text_body_file', `file://${textPath}`);
-      - name: Send Email
-        if: ${{ steps.email.outputs.send == 'true' }}
-        uses: dawidd6/action-send-mail@ca8dbb4d4f91ca7f75e7f2feea5339e76ce70c90 # v20
+          persist-credentials: false
+          ref: ${{ github.sha }}
+          sparse-checkout: |
+            scripts
+            data/alert-recovery
+      - name: Download Immutable Pre-Agent Candidates
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         env:
           GH_AW_AGENT_OUTPUT: ${{ runner.temp }}/gh-aw/safe-jobs/agent_output.json
         with:
-          body: ${{ steps.email.outputs.text_body_file }}
-          from: Charlotte Third Places Alerts <${{ secrets.MAIL_USERNAME }}>
-          html_body: ${{ steps.email.outputs.html_body_file }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          secure: true
-          server_address: smtp.gmail.com
-          server_port: 465.0
-          subject: ${{ steps.email.outputs.subject }}
-          to: segun@charlottethirdplaces.com
-          username: ${{ secrets.MAIL_USERNAME }}
+          name: alert-inputs-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/alert-inputs
+      - name: Validate Deliver And Record Receipt
+        run: |
+          python3 scripts/alert_delivery.py deliver --kind "$ALERT_KIND" --directory "$RUNNER_TEMP/alert-inputs"
+        env:
+          ALERT_KIND: ${{ github.workflow == 'News Alerts' && 'news' || 'reddit' }}
+          GH_AW_AGENT_OUTPUT: ${{ runner.temp }}/gh-aw/safe-jobs/agent_output.json
+          GH_TOKEN: ${{ secrets.GH_AW_GITHUB_TOKEN }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+
+  validate_alert_output:
+    needs:
+      - agent
+      - detection
+    if: >
+      always() && !cancelled() && needs.agent.result == 'success' && (needs.detection.result == 'success' ||
+      needs.detection.result == 'skipped')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Configure GH_HOST for enterprise compatibility
+        id: ghes-host-config
+        shell: bash
+        run: | # zizmor: ignore[github-env] - GITHUB_SERVER_URL is set by GitHub Actions, not user input.
+          # Derive GH_HOST from GITHUB_SERVER_URL so the gh CLI targets the correct
+          # GitHub instance (GHES/GHEC). On github.com this is a harmless no-op.
+          GH_HOST="${GITHUB_SERVER_URL#https://}"
+          GH_HOST="${GH_HOST#http://}"
+          echo "GH_HOST=${GH_HOST}" >> "$GITHUB_ENV"
+      - name: Checkout Trusted Validation Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          ref: ${{ github.sha }}
+          sparse-checkout: |
+            scripts
+            data/alert-recovery
+      - name: Download Raw And Ingested Output
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          merge-multiple: true
+          path: ${{ runner.temp }}/alert-validation
+          pattern: "{agent,agent-output-fallback}"
+      - name: Download Immutable Pre-Agent Candidates
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: alert-inputs-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/alert-inputs
+      - name: Reject Invalid Or Dropped Reports
+        run: |
+          python3 scripts/alert_delivery.py validate --kind "$ALERT_KIND" --directory "$RUNNER_TEMP/alert-inputs"
+        env:
+          ALERT_KIND: ${{ github.workflow == 'News Alerts' && 'news' || 'reddit' }}
+          GH_AW_AGENT_OUTPUT: ${{ runner.temp }}/alert-validation/agent_output.json
+          GH_TOKEN: ${{ github.token }}
