@@ -89,15 +89,17 @@ class Memory:
             raise ValueError("Invalid repository")
         if kind not in ("news", "reddit"):
             raise ValueError("Invalid alert kind")
-        self.url = f"https://api.github.com/repos/{repository}/contents/{kind}/seen.json"
+        self.api = f"https://api.github.com/repos/{repository}"
+        self.url = f"{self.api}/contents/{kind}/seen.json"
         self.token = token
 
     def request(
         self, method: str, url: str, body: dict[str, Any] | None = None,
+        *, accept: str = "application/vnd.github+json",
     ) -> dict[str, Any]:
         request = Request(url, method=method, headers={
             "Authorization": "Bearer " + self.token,
-            "Accept": "application/vnd.github+json",
+            "Accept": accept,
             "X-GitHub-Api-Version": "2022-11-28",
         }, data=None if body is None else json.dumps(body).encode())
         with urlopen(request, timeout=60) as response:
@@ -105,10 +107,18 @@ class Memory:
 
     def read(self) -> tuple[dict[str, Any], str]:
         result = self.request("GET", f"{self.url}?ref={quote(BRANCH, safe='')}")
-        state = json.loads(base64.b64decode(result["content"], validate=False))
+        sha = result.get("sha") if isinstance(result, dict) else None
+        if (not isinstance(sha, str) or not re.fullmatch(r"[0-9a-f]{40}", sha)
+                or result.get("type") != "file"):
+            raise ValueError("Missing or malformed history metadata")
+        # Contents responses omit content above 1 MB. Read the immutable blob,
+        # not the moving branch or a server-provided download_url, so the state
+        # and the subsequent conditional PUT always refer to the same SHA.
+        state = self.request("GET", f"{self.api}/git/blobs/{sha}",
+                             accept="application/vnd.github.raw+json")
         if not isinstance(state, dict) or not isinstance(state.get("items"), list):
             raise ValueError("Missing or malformed history; refusing to assume empty history")
-        return state, result["sha"]
+        return state, sha
 
     def update(
         self, change: Callable[[dict[str, Any]], dict[str, Any]],
@@ -134,6 +144,44 @@ class Memory:
                     raise
                 time.sleep(attempt + 1)
         raise RuntimeError("Could not persist alert state")
+
+
+def snapshot_name(memory: Memory, run_id: str, attempt: int, head_sha: str) -> str:
+    """Resolve the immutable upload from the actual agent job, not this consumer.
+
+    A failed-jobs-only rerun retains the earlier successful agent. A full rerun
+    produces a new agent attempt and upload. Inspect all executions, never fall
+    back to an older success when the latest producer failed or is incomplete.
+    """
+    if not re.fullmatch(r"[1-9][0-9]*", run_id) or attempt < 1:
+        raise ValueError("Invalid workflow run")
+    jobs = []
+    page = 1
+    while True:
+        result = memory.request(
+            "GET", f"{memory.api}/actions/runs/{run_id}/jobs?filter=all&per_page=100&page={page}",
+        )
+        batch, total = result.get("jobs"), result.get("total_count")
+        if (not isinstance(batch, list) or not batch or type(total) is not int
+                or total < 1 or any(not isinstance(job, dict) for job in batch)):
+            raise ValueError("Missing or malformed producer job metadata")
+        jobs.extend(batch)
+        if len(jobs) >= total:
+            break
+        page += 1
+    producers = [job for job in jobs if job.get("name") == "agent"]
+    if not producers or any(type(job.get("run_attempt")) is not int
+                            or not 1 <= job["run_attempt"] <= attempt for job in producers):
+        raise ValueError("Missing or invalid agent producer attempt")
+    producer_attempt = max(job["run_attempt"] for job in producers)
+    latest = [job for job in producers if job["run_attempt"] == producer_attempt]
+    if len(latest) != 1:
+        raise ValueError("Ambiguous agent producer attempt")
+    job = latest[0]
+    if (job.get("status") != "completed" or job.get("conclusion") != "success"
+            or job.get("run_id") != int(run_id) or job.get("head_sha") != head_sha):
+        raise ValueError("Agent producer is not a successful job for this run and revision")
+    return f"alert-inputs-{producer_attempt}"
 
 
 def replay(
@@ -473,7 +521,7 @@ def deliver(
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=("prepare", "seal", "validate", "deliver"))
+    parser.add_argument("command", choices=("prepare", "seal", "snapshot-name", "validate", "deliver"))
     parser.add_argument("--kind", required=True, choices=("news", "reddit"))
     parser.add_argument("--directory", type=Path, required=True)
     args = parser.parse_args()
@@ -489,6 +537,12 @@ def main() -> None:
         write(args.directory / "candidates.json", snapshot)
         return
     memory = Memory(os.environ["GITHUB_REPOSITORY"], os.environ["GH_TOKEN"], args.kind)
+    if args.command == "snapshot-name":
+        name = snapshot_name(memory, os.environ["GITHUB_RUN_ID"],
+                             int(os.environ["GITHUB_RUN_ATTEMPT"]), os.environ["GITHUB_SHA"])
+        with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+            output.write(f"name={name}\n")
+        return
     if args.command == "prepare":
         prepare(memory, args.kind, mode, args.directory, manifest)
         state = load(args.directory / "history.json")

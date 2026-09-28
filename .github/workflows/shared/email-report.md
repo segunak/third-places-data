@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      actions: read
     steps:
       - name: Checkout Trusted Validation Code
         uses: actions/checkout@v7.0.1
@@ -23,10 +24,18 @@ jobs:
           pattern: "{agent,agent-output-fallback}"
           merge-multiple: true
           path: ${{ runner.temp }}/alert-validation
+      # Resolve the producer's attempt: failed-jobs-only reruns do not rerun agent.
+      - name: Resolve Immutable Candidate Snapshot
+        id: alert_snapshot
+        env:
+          ALERT_KIND: ${{ github.workflow == 'News Alerts' && 'news' || 'reddit' }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 scripts/alert_delivery.py snapshot-name --kind "$ALERT_KIND" --directory "$RUNNER_TEMP/alert-inputs"
       - name: Download Immutable Pre-Agent Candidates
         uses: actions/download-artifact@v8.0.1
         with:
-          name: alert-inputs-${{ github.run_attempt }}
+          name: ${{ steps.alert_snapshot.outputs.name }}
           path: ${{ runner.temp }}/alert-inputs
       - name: Reject Invalid Or Dropped Reports
         env:
@@ -47,6 +56,7 @@ safe-outputs:
       output: "Delivery validation completed."
       permissions:
         contents: write
+        actions: read
       inputs:
         selection:
           description: 'Base64-encoded UTF-8 JSON list of 1-20 objects: {"id":"candidate title_hash (news) or id (Reddit)","category":"approved category","evidence":"verbatim candidate quote"}. Encoding preserves quotes through gh-aw mention sanitization. No email body or mode.'
@@ -61,10 +71,17 @@ safe-outputs:
             sparse-checkout: |
               scripts
               data/alert-recovery
+        - name: Resolve Immutable Candidate Snapshot
+          id: alert_snapshot
+          env:
+            ALERT_KIND: ${{ github.workflow == 'News Alerts' && 'news' || 'reddit' }}
+            GH_TOKEN: ${{ github.token }}
+          run: |
+            python3 scripts/alert_delivery.py snapshot-name --kind "$ALERT_KIND" --directory "$RUNNER_TEMP/alert-inputs"
         - name: Download Immutable Pre-Agent Candidates
           uses: actions/download-artifact@v8.0.1
           with:
-            name: alert-inputs-${{ github.run_attempt }}
+            name: ${{ steps.alert_snapshot.outputs.name }}
             path: ${{ runner.temp }}/alert-inputs
         - name: Validate Deliver And Record Receipt
           env:

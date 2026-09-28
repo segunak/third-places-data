@@ -664,11 +664,77 @@ class TestGitHubCompareAndSwap:
         with pytest.raises(HTTPError):
             memory.read()
 
-    def test_malformed_history_fails_closed(self):
+    @pytest.mark.parametrize("state", [{}, {"items": None}, [], None])
+    def test_malformed_history_fails_closed(self, state):
         memory = alerts.Memory("owner/repo", "dummy", "news")
-        memory.request = mock.Mock(return_value={"sha": "sha", "content": base64.b64encode(b"{}").decode()})
+        memory.request = mock.Mock(side_effect=[{"type": "file", "sha": "a" * 40}, state])
         with pytest.raises(ValueError, match="malformed"):
             memory.read()
+
+    @pytest.mark.parametrize("metadata", [
+        {}, [], {"type": "dir", "sha": "a" * 40},
+        {"type": "file"}, {"type": "file", "sha": "../moving-branch"},
+        {"type": "file", "sha": None},
+    ])
+    def test_invalid_metadata_never_fetches_raw_content(self, metadata):
+        memory = alerts.Memory("owner/repo", "dummy", "news")
+        memory.request = mock.Mock(return_value=metadata)
+        with pytest.raises(ValueError, match="metadata"):
+            memory.read()
+        memory.request.assert_called_once()
+
+    @pytest.mark.parametrize("size", [1024 * 1024 + 1, 5 * 1024 * 1024])
+    def test_large_history_reads_pinned_raw_blob_and_puts_same_sha(self, size):
+        memory = alerts.Memory("owner/repo", "dummy", "news")
+        sha = "a" * 40
+        state = {"items": [{"title_hash": str(i)} for i in range(10000)],
+                 "_delivery": {"pending": {"report": {"text": ""}}}}
+        state["_delivery"]["pending"]["report"]["text"] = "x" * (size - len(json.dumps(state)))
+        raw = json.dumps(state).encode()
+        assert len(raw) == size
+        metadata = {"type": "file", "sha": sha, "size": size, "encoding": "none", "content": "",
+                    "download_url": "https://untrusted.example/never-send-credentials"}
+        responses = []
+        for payload in (json.dumps(metadata).encode(), raw, b"{}"):
+            response = mock.MagicMock()
+            response.__enter__.return_value.read.return_value = payload
+            responses.append(response)
+        # The branch can move after metadata retrieval. Only the original blob
+        # may be read; a conditional write still has to name that original SHA.
+        with mock.patch.object(alerts, "urlopen", side_effect=responses) as request:
+            result = memory.update(lambda current: {**current, "marker": True})
+        assert result == {**state, "marker": True}
+        metadata_request, blob_request, put_request = [call.args[0] for call in request.call_args_list]
+        assert metadata_request.full_url == memory.url + "?ref=memory%2Fthird-place-alerts"
+        assert blob_request.full_url == f"https://api.github.com/repos/owner/repo/git/blobs/{sha}"
+        assert blob_request.get_header("Accept") == "application/vnd.github.raw+json"
+        assert blob_request.get_header("Authorization") == "Bearer " + memory.token
+        assert put_request.full_url == memory.url
+        payload = json.loads(put_request.data)
+        assert payload["sha"] == sha
+        assert json.loads(base64.b64decode(payload["content"])) == result
+
+    @pytest.mark.parametrize("raw", [b"", b"not json", b'{"items":'])
+    def test_malformed_raw_blob_fails_closed(self, raw):
+        memory = alerts.Memory("owner/repo", "dummy", "news")
+        responses = []
+        for data in (json.dumps({"type": "file", "sha": "a" * 40}).encode(), raw):
+            response = mock.MagicMock()
+            response.__enter__.return_value.read.return_value = data
+            responses.append(response)
+        with mock.patch.object(alerts, "urlopen", side_effect=responses):
+            with pytest.raises(ValueError):
+                memory.update(lambda current: {**current, "marker": True})
+
+    def test_missing_pinned_blob_fails_closed_without_write(self):
+        memory = alerts.Memory("owner/repo", "dummy", "news")
+        memory.request = mock.Mock(side_effect=[
+            {"type": "file", "sha": "a" * 40},
+            HTTPError("url", 404, "missing", {}, None),
+        ])
+        with pytest.raises(HTTPError):
+            memory.update(lambda current: {**current, "marker": True})
+        assert [call.args[0] for call in memory.request.call_args_list] == ["GET", "GET"]
 
     def test_api_authorization_and_request_are_correct(self):
         memory = alerts.Memory("owner/repo", "dummy", "news")
@@ -677,6 +743,81 @@ class TestGitHubCompareAndSwap:
         with mock.patch.object(alerts, "urlopen", return_value=response) as request:
             assert memory.request("GET", memory.url) == {"ok": True}
         assert request.call_args.args[0].get_header("Authorization") == "Bearer " + memory.token
+
+
+class TestSnapshotProducer:
+    @pytest.fixture
+    def producer(self):
+        return {"name": "agent", "run_id": 123, "run_attempt": 1, "head_sha": "a" * 40,
+                "status": "completed", "conclusion": "success"}
+
+    @pytest.mark.parametrize("consumer_attempt", [2, 3])
+    def test_failed_jobs_only_rerun_keeps_original_snapshot(self, producer, consumer_attempt):
+        memory = alerts.Memory("owner/repo", "dummy", "news")
+        jobs = [producer,
+                {**producer, "name": "send_email_report", "conclusion": "failure"},
+                {**producer, "name": "send_email_report", "run_attempt": consumer_attempt,
+                 "status": "in_progress", "conclusion": None}]
+        memory.request = mock.Mock(return_value={"jobs": jobs, "total_count": len(jobs)})
+        assert alerts.snapshot_name(memory, "123", consumer_attempt, "a" * 40) == "alert-inputs-1"
+        memory.request.assert_called_once_with(
+            "GET", memory.api + "/actions/runs/123/jobs?filter=all&per_page=100&page=1",
+        )
+
+    @pytest.mark.parametrize("consumer_attempt", [2, 3])
+    def test_full_rerun_selects_distinct_latest_producer_snapshot(self, producer, consumer_attempt):
+        memory = alerts.Memory("owner/repo", "dummy", "news")
+        # A further failed-consumer retry must still use attempt 2, not attempt 1 or 3.
+        jobs = [{**producer, "run_attempt": 2}, producer]
+        memory.request = mock.Mock(return_value={"jobs": jobs, "total_count": len(jobs)})
+        assert alerts.snapshot_name(memory, "123", consumer_attempt, "a" * 40) == "alert-inputs-2"
+
+    def test_producer_lookup_paginates(self, producer):
+        memory = alerts.Memory("owner/repo", "dummy", "news")
+        memory.request = mock.Mock(side_effect=[
+            {"jobs": [{**producer, "name": f"other-{i}"} for i in range(100)], "total_count": 101},
+            {"jobs": [producer], "total_count": 101},
+        ])
+        assert alerts.snapshot_name(memory, "123", 2, "a" * 40) == "alert-inputs-1"
+        assert memory.request.call_args.args[1].endswith("&page=2")
+
+    @pytest.mark.parametrize("change", [
+        {"status": "in_progress", "conclusion": None},
+        {"conclusion": "failure"}, {"conclusion": "skipped"},
+        {"run_id": 456}, {"head_sha": "b" * 40},
+        {"run_attempt": 3}, {"run_attempt": None},
+    ])
+    def test_bad_latest_producer_never_falls_back_to_old_snapshot(self, producer, change):
+        memory = alerts.Memory("owner/repo", "dummy", "news")
+        jobs = [producer, {**producer, "run_attempt": 2, **change}]
+        memory.request = mock.Mock(return_value={"jobs": jobs, "total_count": len(jobs)})
+        with pytest.raises(ValueError):
+            alerts.snapshot_name(memory, "123", 2, "a" * 40)
+
+    @pytest.mark.parametrize("case", ["missing", "duplicate", "empty", "malformed"])
+    def test_missing_or_ambiguous_metadata_fails_closed(self, producer, case):
+        memory = alerts.Memory("owner/repo", "dummy", "news")
+        jobs = {"missing": [{**producer, "name": "other"}], "duplicate": [producer, producer],
+                "empty": [], "malformed": [None]}[case]
+        memory.request = mock.Mock(return_value={"jobs": jobs, "total_count": len(jobs)})
+        with pytest.raises(ValueError):
+            alerts.snapshot_name(memory, "123", 2, "a" * 40)
+
+    def test_snapshot_command_exposes_only_resolved_producer_name(self, monkeypatch, tmp_path, producer):
+        alerts.write(tmp_path / "event.json", {"inputs": {"mode": "real"}})
+        for key, value in {
+            "GITHUB_EVENT_NAME": "workflow_dispatch", "GITHUB_EVENT_PATH": str(tmp_path / "event.json"),
+            "GITHUB_REPOSITORY": "owner/repo", "GH_TOKEN": "dummy", "GITHUB_RUN_ID": "123",
+            "GITHUB_RUN_ATTEMPT": "2", "GITHUB_SHA": "a" * 40,
+            "GITHUB_OUTPUT": str(tmp_path / "outputs"),
+        }.items():
+            monkeypatch.setenv(key, value)
+        monkeypatch.setattr(sys, "argv", ["alert_delivery.py", "snapshot-name", "--kind", "news",
+                                         "--directory", str(tmp_path)])
+        with mock.patch.object(alerts.Memory, "request",
+                               return_value={"jobs": [producer], "total_count": 1}):
+            alerts.main()
+        assert (tmp_path / "outputs").read_text() == "name=alert-inputs-1\n"
 
 
 class TestSmtp:
@@ -747,6 +888,11 @@ class TestCompiledBoundary:
         validation_job = compiled.split("\n  validate_alert_output:", 1)[1]
         assert "always() && !cancelled() && needs.agent.result == 'success'" in validation_job
         assert "contains(needs.agent.outputs.output_types" not in validation_job
+        for consumer in (delivery_job, validation_job):
+            assert "actions: read" in consumer
+            assert "scripts/alert_delivery.py snapshot-name" in consumer
+            assert "name: ${{ steps.alert_snapshot.outputs.name }}" in consumer
+            assert "name: alert-inputs-${{ github.run_attempt }}" not in consumer
         upload_step = compiled.split(f"- name: Upload Immutable {kind.title()} Candidates", 1)[1].split(
             "\n      - ", 1)[0]
         assert "if-no-files-found: error" in upload_step
