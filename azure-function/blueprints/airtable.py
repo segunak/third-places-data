@@ -4,7 +4,7 @@ import re
 import azure.functions as func
 import azure.durable_functions as df
 from services.airtable_service import AirtableService
-from services.place_data_service import PlaceDataProviderFactory
+from services.place_data_service import PlaceDataProviderFactory, PlaceDataService
 
 bp = df.Blueprint()
 
@@ -264,9 +264,18 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
             message = f"Airtable base enrichment processed {len(results)} records from '{view}' view. {total_places_enriched} enriched, {total_places_unchanged} unchanged, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
         else:
             message = f"Airtable base enrichment processed {len(results)} records. {total_places_enriched} enriched, {total_places_unchanged} unchanged, {total_places_not_found} not found, {total_places_skipped} skipped, {total_places_failed} failed."
-        
+
+        error = None
+        if failed_places:
+            message = f"Airtable base enrichment failed. {message}"
+            error = "\n".join(
+                f"{place['place_name']} (Airtable record {place['record_id']}): {place['message']}"
+                for place in failed_places
+            )
+            logging.error(error)
+
         result = {
-            "success": True,
+            "success": not failed_places,
             "message": message,
             "data": {
                 "total_places_processed": len(results),
@@ -282,7 +291,7 @@ def enrich_airtable_base_orchestrator(context: df.DurableOrchestrationContext):
                 "places_skipped": skipped_places,
                 "places_failed": failed_places
             },
-            "error": None
+            "error": error
         }
         return result
     except Exception as ex:
@@ -317,7 +326,7 @@ def enrich_single_place(activityInput):
                 "field_updates": {}
             }
 
-        airtable_client = AirtableService(provider_type, sequential_mode, view)
+        airtable_client = AirtableService(provider_type, sequential_mode, view, initialize_provider=False)
         result = airtable_client.enrich_single_place(place, provider_type, city, force_refresh, photos_provider_type)
         return result
     except Exception as ex:
@@ -349,7 +358,7 @@ def get_all_third_places(activityInput):
             logging.error("Cannot get Airtable Service - provider_type is not set")
             return []
 
-        airtable_client = AirtableService(provider_type, sequential_mode, view)
+        airtable_client = AirtableService(provider_type, sequential_mode, view, initialize_provider=False)
         return airtable_client.all_third_places
 
     except Exception as ex:
@@ -551,8 +560,10 @@ def _validate_place_id_format(place_id: str) -> tuple[bool, str]:
     if not place_id:
         return False, "Empty Place ID"
     
-    if ' ' in place_id:
-        return False, "Contains spaces"
+    try:
+        PlaceDataService.validate_place_id_whitespace(place_id)
+    except ValueError as error:
+        return False, str(error)
     
     # Place IDs should only contain alphanumeric, underscore, hyphen, and sometimes equals
     # Based on examples: ChIJgUbEo8cfqokR5lP9_Wh_DaM, EicxMyBNYXJr...

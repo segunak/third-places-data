@@ -341,6 +341,16 @@ class PlaceDataService(ABC):
             'photo_urls': PlaceDataService._select_prioritized_photos(valid_records, max_photos=max_photos),
         }
 
+    @staticmethod
+    def validate_place_id_whitespace(place_id: Optional[str]) -> None:
+        """Reject whitespace without changing the Place ID."""
+        if isinstance(place_id, str) and any(character.isspace() for character in place_id):
+            raise ValueError(
+                f"Invalid Google Maps Place ID {place_id!r}: Contains spaces or other whitespace. "
+                "Leading, trailing, and internal whitespace are not allowed. "
+                "Correct the 'Google Maps Place Id' field in Airtable and retry."
+            )
+
     def validate_place_id(self, place_id: str) -> bool:
         url = f'https://places.googleapis.com/v1/places/{place_id}?fields=id&languageCode=en'
         headers = {

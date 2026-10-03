@@ -10,6 +10,7 @@ These tests verify that places are correctly categorized into:
 """
 
 import pytest
+from typing import Any
 from unittest import mock
 
 from conftest import TEST_PLACE_ID, TEST_PLACE_NAME
@@ -383,8 +384,157 @@ class TestOrchestratorResultCategorization:
         assert isinstance(unchanged['field_comparison']['Parking']['raw_provider_value'], dict)
 
 
+class TestEnrichmentOrchestratorFailure:
+    @staticmethod
+    def run_orchestrator(results: list[dict[str, Any]], sequential_mode: bool) -> dict[str, Any]:
+        from blueprints import airtable
+
+        context = mock.MagicMock()
+        context.get_input.return_value = {
+            "city": "charlotte",
+            "provider_type": "google",
+            "view": "Insufficient",
+            "sequential_mode": sequential_mode,
+        }
+        places = [
+            {
+                "id": result["record_id"],
+                "fields": {
+                    "Place": result["place_name"],
+                    "Google Maps Place Id": result["place_id"],
+                },
+            }
+            for result in results
+        ]
+        function = airtable.enrich_airtable_base_orchestrator.build().get_user_function().orchestrator_function
+        generator = function(context)
+        next(generator)
+        generator.send(places)
+        activity_results = results if sequential_mode else [results]
+        for activity_result in activity_results[:-1]:
+            generator.send(activity_result)
+        with pytest.raises(StopIteration) as completed:
+            generator.send(activity_results[-1])
+        return completed.value.value
+
+    @pytest.mark.parametrize("sequential_mode", [False, True])
+    def test_invalid_ids_fail_the_orchestration(self, sequential_mode: bool) -> None:
+        results = [
+            {
+                "place_name": place_name,
+                "place_id": place_id,
+                "record_id": record_id,
+                "status": "failed",
+                "message": f"Invalid Google Maps Place ID {place_id!r}: Contains spaces or other whitespace. Correct the field in Airtable.",
+                "field_updates": {},
+            }
+            for place_name, place_id, record_id in [
+                ("Pineville Lake Park", " ChIJO5qj55ycVogRtd3GeOCYBdc", "recPineville"),
+                ("Hattie's Tap & Tavern", " ChIJaUNKi-cfVIgR_mniY38tViQ", "recHatties"),
+            ]
+        ]
+
+        result = self.run_orchestrator(results, sequential_mode)
+
+        assert result["success"] is False
+        assert result["data"]["total_places_processed"] == 2
+        assert result["data"]["total_places_failed"] == 2
+        assert result["data"]["total_places_enriched"] == 0
+        assert result["data"]["total_places_unchanged"] == 0
+        assert result["data"]["places_unchanged"] == []
+        for failed_place in results:
+            assert failed_place["place_name"] in result["error"]
+            assert failed_place["record_id"] in result["error"]
+            assert failed_place["message"] in result["error"]
+        assert [place["place_id"] for place in result["data"]["places_failed"]] == [
+            place["place_id"] for place in results
+        ]
+
+    @pytest.mark.parametrize("sequential_mode", [False, True])
+    def test_mixed_results_keep_updates_but_fail_the_orchestration(self, sequential_mode: bool) -> None:
+        results = [
+            {
+                "place_name": TEST_PLACE_NAME,
+                "place_id": TEST_PLACE_ID,
+                "record_id": "recGood",
+                "status": "succeeded",
+                "field_updates": {"Website": {"updated": True, "new_value": "https://example.com"}},
+            },
+            {
+                "place_name": "Bad ID Cafe",
+                "place_id": TEST_PLACE_ID + " ",
+                "record_id": "recBad",
+                "status": "failed",
+                "message": "Invalid Google Maps Place ID: Contains spaces or other whitespace.",
+                "field_updates": {},
+            },
+        ]
+
+        result = self.run_orchestrator(results, sequential_mode)
+
+        assert result["success"] is False
+        assert result["data"]["total_places_enriched"] == 1
+        assert result["data"]["total_places_failed"] == 1
+        assert result["data"]["places_enriched"] == [results[0]]
+        assert "recBad" in result["error"]
+
+    @pytest.mark.parametrize("sequential_mode", [False, True])
+    @pytest.mark.parametrize("status,message", [
+        ("succeeded", ""),
+        ("cached", ""),
+        ("skipped", "Missing place name"),
+        ("failed", "NO_PLACE_FOUND: Provider could not find data"),
+    ])
+    def test_non_error_results_keep_success(self, sequential_mode: bool, status: str, message: str) -> None:
+        result = self.run_orchestrator([{
+            "place_name": TEST_PLACE_NAME,
+            "place_id": TEST_PLACE_ID,
+            "record_id": "recABC",
+            "status": status,
+            "message": message,
+            "field_updates": {},
+        }], sequential_mode)
+
+        assert result["success"] is True
+        assert result["error"] is None
+        assert result["data"]["total_places_failed"] == 0
+
+
 class TestEnrichSinglePlaceActivity:
     """Tests for enrichment activity provider propagation."""
+
+    @pytest.mark.parametrize("provider_type", ["google", "outscraper"])
+    def test_invalid_id_fails_before_provider_initialization(self, mock_env_vars: dict, provider_type: str) -> None:
+        from blueprints import airtable
+
+        invalid_id = " " + TEST_PLACE_ID
+        place = {
+            "id": "recABC",
+            "fields": {"Place": TEST_PLACE_NAME, "Google Maps Place Id": invalid_id},
+        }
+        with (
+            mock.patch("services.airtable_service.pyairtable.Table") as table,
+            mock.patch("services.airtable_service.Api"),
+            mock.patch(
+                "services.airtable_service.PlaceDataProviderFactory.get_provider",
+                side_effect=AssertionError("Provider initialized before ID validation"),
+            ) as get_provider,
+            mock.patch("services.utils.fetch_data_github") as fetch_cache,
+        ):
+            result = airtable.enrich_single_place({
+                "place": place,
+                "provider_type": provider_type,
+                "city": "charlotte",
+            })
+
+        assert result["status"] == "failed"
+        assert result["record_id"] == "recABC"
+        assert result["place_id"] == invalid_id
+        assert "whitespace" in result["message"]
+        get_provider.assert_not_called()
+        fetch_cache.assert_not_called()
+        table.return_value.get.assert_not_called()
+        table.return_value.update.assert_not_called()
 
     def test_enrich_single_place_passes_photos_provider_type(self, mock_env_vars):
         from blueprints import airtable
@@ -415,3 +565,30 @@ class TestEnrichSinglePlaceActivity:
 
         assert result["status"] == "succeeded"
         mock_service.enrich_single_place.assert_called_once_with(place, "outscraper", "charlotte", True, "google")
+
+
+class TestGetAllThirdPlacesActivity:
+    @pytest.mark.parametrize("provider_type", ["google", "outscraper"])
+    def test_reading_records_does_not_initialize_provider(self, mock_env_vars: dict, provider_type: str) -> None:
+        from blueprints import airtable
+
+        records = [{
+            "id": "recABC",
+            "fields": {"Place": TEST_PLACE_NAME, "Google Maps Place Id": " " + TEST_PLACE_ID},
+        }]
+        with (
+            mock.patch("services.airtable_service.pyairtable.Table") as table,
+            mock.patch("services.airtable_service.Api"),
+            mock.patch(
+                "services.airtable_service.PlaceDataProviderFactory.get_provider",
+                side_effect=AssertionError("Provider initialized before records were checked"),
+            ) as get_provider,
+        ):
+            table.return_value.all.return_value = records
+            result = airtable.get_all_third_places({
+                "config": {"provider_type": provider_type, "city": "charlotte", "view": "Insufficient"},
+            })
+
+        assert result == records
+        table.return_value.all.assert_called_once_with(view="Insufficient", sort=["-Created Time"])
+        get_provider.assert_not_called()

@@ -158,6 +158,14 @@ This function triggers the `enrich_airtable_base_orchestrator` to update all pla
 
 **Response**: Returns orchestration status URLs that can be used to monitor progress.
 
+**Place ID whitespace checks**:
+
+* A Place ID must not contain leading, trailing, or internal whitespace. This includes spaces, tabs, line breaks, and Unicode whitespace.
+* Enrichment rejects these IDs before it reads the cache or requests place data. `force_refresh=true` does not bypass the check.
+* The code does not trim or repair the value. The error identifies the place, Airtable record, and bad ID. Correct the `Google Maps Place Id` field in Airtable, then run enrichment again.
+* An empty Place ID keeps the existing lookup by place name. The ID returned by that lookup must also pass the whitespace check.
+* Other records can still be processed. If any record fails, the final output has `success: false`, includes the failure details, and causes the [enrichment workflow](../.github/workflows/enrich-airtable-base.yml) to fail.
+
 ### 3. Operational Status Refresh
 
 **Endpoint**: `/refresh-airtable-operational-statuses`  

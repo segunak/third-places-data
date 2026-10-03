@@ -14,7 +14,7 @@ from azure.storage.blob import BlobServiceClient
 from azure.core.exceptions import ResourceExistsError, ResourceNotFoundError
 from threading import Lock
 from constants import SearchField
-from services.place_data_service import PlaceDataProviderFactory
+from services.place_data_service import PlaceDataProviderFactory, PlaceDataService
 
 
 # =============================================================================
@@ -542,6 +542,7 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
             photos_provider_type or provider_type,
             'photos_provider_type'
         )
+        PlaceDataService.validate_place_id_whitespace(place_id)
         data_provider = PlaceDataProviderFactory.get_provider(provider_type)
 
         did_lookup_find_new_place_id = False
@@ -551,6 +552,7 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
 
             if not place_id or place_id == SENTINEL_NO_PLACE:
                 return 'failed', None, f"Could not find place ID for {place_name}"
+            PlaceDataService.validate_place_id_whitespace(place_id)
             did_lookup_find_new_place_id = True
             logging.info(f"Found place_id {place_id} for {place_name}")
 
@@ -644,8 +646,12 @@ def get_and_cache_place_data(provider_type: str, place_name: str, place_id: str 
                 logging.error(f"Failed to update 'Has Data File' (fresh path) for {place_name}: {e}")
         return 'succeeded', place_data, f"Fetched fresh data for {place_name}"
     except Exception as e:
-        logging.error(f"Error getting place data for {place_name}: {e}", exc_info=True)
-        return 'failed', None, f"Error: {str(e)}"
+        error_message = f"Error getting place data for {place_name}"
+        if airtable_record_id:
+            error_message += f" (Airtable record {airtable_record_id})"
+        error_message += f": {e}"
+        logging.error(error_message, exc_info=True)
+        return 'failed', None, error_message
 
 
 def create_place_response(operation_status, target_place_name, http_response_data, operation_message):

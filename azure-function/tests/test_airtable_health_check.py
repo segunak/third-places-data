@@ -70,6 +70,14 @@ class TestValidatePlaceIdFormat:
         assert is_valid is False
         assert "Contains spaces" in error
 
+    @pytest.mark.parametrize("whitespace", ["\t", "\n", "\r\n", "\u00a0", "\u2009", "\u3000"])
+    def test_place_id_with_other_whitespace_reports_spaces(self, whitespace: str) -> None:
+        is_valid, error = _validate_place_id_format(f"ChIJgUbEo8cf{whitespace}qokR5lP9_Wh_DaM")
+
+        assert is_valid is False
+        assert "Contains spaces" in error
+        assert "whitespace" in error
+
     def test_place_id_with_invalid_characters(self):
         """Test Place ID with special characters returns error."""
         is_valid, error = _validate_place_id_format("ChIJ@#$%^&*()!")

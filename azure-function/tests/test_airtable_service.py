@@ -1078,6 +1078,40 @@ class TestAirtableServiceEnrichSinglePlace:
         assert result["status"] == "skipped"
         assert "Missing place name" in result["message"]
 
+    def test_enrich_single_place_keeps_invalid_id_and_reports_whitespace(self, service_with_mocks: tuple) -> None:
+        service, mock_table, _ = service_with_mocks
+        invalid_id = " " + TEST_PLACE_ID
+        third_place = {
+            "id": "recABC",
+            "fields": {"Place": TEST_PLACE_NAME, "Google Maps Place Id": invalid_id},
+        }
+
+        with (
+            mock.patch("services.utils.PlaceDataProviderFactory.get_provider") as get_provider,
+            mock.patch("services.airtable_service.AirtableService") as airtable_service,
+            mock.patch("services.utils.fetch_data_github", return_value=(True, {"details": {}}, "cached")) as fetch_cache,
+            mock.patch("services.utils.save_data_github") as save_cache,
+            mock.patch("services.airtable_service.PhotoAssetService") as photo_service,
+        ):
+            airtable_service.return_value.get_record.return_value = None
+            result = service.enrich_single_place(third_place, "google", "charlotte", False)
+
+        assert result["status"] == "failed"
+        assert result["place_id"] == invalid_id
+        assert result["place_name"] == TEST_PLACE_NAME
+        assert result["record_id"] == "recABC"
+        assert result["field_updates"] == {}
+        assert "whitespace" in result["message"]
+        assert repr(invalid_id) in result["message"]
+        assert third_place["fields"]["Google Maps Place Id"] == invalid_id
+        get_provider.assert_not_called()
+        airtable_service.assert_not_called()
+        fetch_cache.assert_not_called()
+        save_cache.assert_not_called()
+        photo_service.assert_not_called()
+        mock_table.get.assert_not_called()
+        mock_table.update.assert_not_called()
+
     def test_enrich_single_place_success(self, service_with_mocks):
         """Test successful place enrichment."""
         service, mock_table, _ = service_with_mocks

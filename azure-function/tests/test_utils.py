@@ -1,5 +1,6 @@
 import base64
 import json
+import pytest
 from unittest import mock
 from requests.exceptions import ChunkedEncodingError
 
@@ -79,6 +80,117 @@ class TestGetAndCachePlaceDataPhotosProvider:
             "details": {"place_id": TEST_PLACE_ID, "raw_data": {}},
             "photos": {"photo_urls": []},
         }
+
+    @pytest.mark.parametrize("force_refresh", [False, True])
+    @pytest.mark.parametrize("place_id", [
+        pytest.param(" ChIJO5qj55ycVogRtd3GeOCYBdc", id="pineville-leading-space"),
+        pytest.param(" ChIJaUNKi-cfVIgR_mniY38tViQ", id="hatties-leading-space"),
+        pytest.param(TEST_PLACE_ID + " ", id="trailing-space"),
+        pytest.param(TEST_PLACE_ID[:8] + " " + TEST_PLACE_ID[8:], id="internal-space"),
+        pytest.param("\t" + TEST_PLACE_ID, id="leading-tab"),
+        pytest.param(TEST_PLACE_ID + "\n", id="trailing-newline"),
+        pytest.param(TEST_PLACE_ID[:8] + "\r\n" + TEST_PLACE_ID[8:], id="internal-line-break"),
+        pytest.param("\u00a0" + TEST_PLACE_ID, id="nonbreaking-space"),
+        pytest.param(TEST_PLACE_ID[:8] + "\u2009" + TEST_PLACE_ID[8:], id="thin-space"),
+        pytest.param(TEST_PLACE_ID + "\u3000", id="ideographic-space"),
+        pytest.param(" ", id="space-only"),
+        pytest.param("\t\n", id="whitespace-only"),
+    ])
+    def test_place_id_whitespace_fails_before_data_access(
+        self,
+        mock_env_vars: dict,
+        caplog: pytest.LogCaptureFixture,
+        place_id: str,
+        force_refresh: bool,
+    ) -> None:
+        with (
+            mock.patch("services.utils.PlaceDataProviderFactory.get_provider") as get_provider,
+            mock.patch("services.airtable_service.AirtableService") as airtable_service,
+            mock.patch("services.utils.fetch_data_github", return_value=(True, self._fresh_place_data(), "cached")) as fetch_cache,
+            mock.patch("services.utils.save_data_github", return_value=(True, "saved")) as save_cache,
+            mock.patch("services.utils._get_photos_from_provider", return_value={"photo_urls": []}) as get_photos,
+        ):
+            get_provider.return_value.get_all_place_data.return_value = self._fresh_place_data()
+            airtable_service.return_value.get_record.return_value = None
+
+            status, place_data, message = get_and_cache_place_data(
+                provider_type="google",
+                photos_provider_type="outscraper",
+                place_name=TEST_PLACE_NAME,
+                place_id=place_id,
+                city="charlotte",
+                force_refresh=force_refresh,
+                airtable_record_id="recABC",
+            )
+
+        assert status == "failed"
+        assert place_data is None
+        assert repr(place_id) in message
+        assert "whitespace" in message
+        assert "Google Maps Place Id" in message
+        assert "Airtable" in message
+        assert TEST_PLACE_NAME in message
+        assert "recABC" in message
+        assert message in caplog.text
+        get_provider.assert_not_called()
+        airtable_service.assert_not_called()
+        fetch_cache.assert_not_called()
+        save_cache.assert_not_called()
+        get_photos.assert_not_called()
+
+    @pytest.mark.parametrize("place_id", [None, ""])
+    def test_empty_place_id_keeps_name_lookup(self, mock_env_vars: dict, place_id: str | None) -> None:
+        with (
+            mock.patch("services.utils.PlaceDataProviderFactory.get_provider") as get_provider,
+            mock.patch("services.airtable_service.AirtableService") as airtable_service,
+            mock.patch("services.utils.fetch_data_github", return_value=(True, self._fresh_place_data(), "cached")) as fetch_cache,
+        ):
+            get_provider.return_value.find_place_id.return_value = TEST_PLACE_ID
+            airtable_service.return_value.get_record.return_value = None
+
+            status, place_data, _ = get_and_cache_place_data(
+                provider_type="google",
+                place_name=TEST_PLACE_NAME,
+                place_id=place_id,
+                city="charlotte",
+                airtable_record_id="recABC",
+            )
+
+        assert status == "cached"
+        assert place_data["place_id"] == TEST_PLACE_ID
+        get_provider.return_value.find_place_id.assert_called_once_with(TEST_PLACE_NAME)
+        fetch_cache.assert_called_once_with(f"data/places/charlotte/{TEST_PLACE_ID}.json")
+        airtable_service.return_value.update_place_record.assert_any_call(
+            "recABC", "Google Maps Place Id", TEST_PLACE_ID, overwrite=True,
+        )
+
+    def test_lookup_id_whitespace_fails_before_save(self, mock_env_vars: dict) -> None:
+        invalid_id = " " + TEST_PLACE_ID
+        with (
+            mock.patch("services.utils.PlaceDataProviderFactory.get_provider") as get_provider,
+            mock.patch("services.airtable_service.AirtableService") as airtable_service,
+            mock.patch("services.utils.fetch_data_github", return_value=(True, self._fresh_place_data(), "cached")) as fetch_cache,
+            mock.patch("services.utils.save_data_github") as save_cache,
+        ):
+            get_provider.return_value.find_place_id.return_value = invalid_id
+            airtable_service.return_value.get_record.return_value = None
+
+            status, place_data, message = get_and_cache_place_data(
+                provider_type="google",
+                place_name=TEST_PLACE_NAME,
+                city="charlotte",
+                airtable_record_id="recABC",
+            )
+
+        assert status == "failed"
+        assert place_data is None
+        assert repr(invalid_id) in message
+        assert "whitespace" in message
+        get_provider.return_value.find_place_id.assert_called_once_with(TEST_PLACE_NAME)
+        get_provider.return_value.get_all_place_data.assert_not_called()
+        airtable_service.assert_not_called()
+        fetch_cache.assert_not_called()
+        save_cache.assert_not_called()
 
     def test_fresh_save_sets_has_data_file_after_github_save(self, mock_env_vars):
         provider = mock.MagicMock()
