@@ -1,0 +1,24 @@
+{
+    "place_id": " ChIJO5qj55ycVogRtd3GeOCYBdc",
+    "place_name": "Pineville Lake Park",
+    "details": {
+        "place_id": " ChIJO5qj55ycVogRtd3GeOCYBdc",
+        "error": "400 Client Error: Bad Request for url: https://places.googleapis.com/v1/places/%20ChIJO5qj55ycVogRtd3GeOCYBdc?languageCode=en",
+        "message": "Failed to retrieve details from Google Maps API"
+    },
+    "reviews": {
+        "place_id": " ChIJO5qj55ycVogRtd3GeOCYBdc",
+        "message": "Reviews are not available directly from the Google Maps API",
+        "reviews_data": []
+    },
+    "photos": {
+        "place_id": " ChIJO5qj55ycVogRtd3GeOCYBdc",
+        "message": "Error retrieving photos: 400 Client Error: Bad Request for url: https://places.googleapis.com/v1/places/%20ChIJO5qj55ycVogRtd3GeOCYBdc?languageCode=en",
+        "error": "400 Client Error: Bad Request for url: https://places.googleapis.com/v1/places/%20ChIJO5qj55ycVogRtd3GeOCYBdc?languageCode=en",
+        "photo_urls": [],
+        "raw_data": {}
+    },
+    "data_source": "GoogleMapsProvider",
+    "last_updated": "2026-10-03T16:38:58.641156",
+    "photos_provider_type": "google"
+}
