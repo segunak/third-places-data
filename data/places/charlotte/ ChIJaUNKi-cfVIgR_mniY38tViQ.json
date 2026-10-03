@@ -1,0 +1,24 @@
+{
+    "place_id": " ChIJaUNKi-cfVIgR_mniY38tViQ",
+    "place_name": "Hattie's Tap & Tavern",
+    "details": {
+        "place_id": " ChIJaUNKi-cfVIgR_mniY38tViQ",
+        "error": "400 Client Error: Bad Request for url: https://places.googleapis.com/v1/places/%20ChIJaUNKi-cfVIgR_mniY38tViQ?languageCode=en",
+        "message": "Failed to retrieve details from Google Maps API"
+    },
+    "reviews": {
+        "place_id": " ChIJaUNKi-cfVIgR_mniY38tViQ",
+        "message": "Reviews are not available directly from the Google Maps API",
+        "reviews_data": []
+    },
+    "photos": {
+        "place_id": " ChIJaUNKi-cfVIgR_mniY38tViQ",
+        "message": "Error retrieving photos: 400 Client Error: Bad Request for url: https://places.googleapis.com/v1/places/%20ChIJaUNKi-cfVIgR_mniY38tViQ?languageCode=en",
+        "error": "400 Client Error: Bad Request for url: https://places.googleapis.com/v1/places/%20ChIJaUNKi-cfVIgR_mniY38tViQ?languageCode=en",
+        "photo_urls": [],
+        "raw_data": {}
+    },
+    "data_source": "GoogleMapsProvider",
+    "last_updated": "2026-10-03T16:38:58.618476",
+    "photos_provider_type": "google"
+}
