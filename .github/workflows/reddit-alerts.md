@@ -20,15 +20,12 @@ on:
         options:
           - real
           - test
-      aw_context:
-        default: "{}"
-        description: "Agent Context"
-        required: false
-        type: string
 permissions:
   contents: read
   copilot-requests: write
 timeout-minutes: 60
+concurrency:
+  job-discriminator: ${{ github.run_id }}
 engine:
   id: copilot
   model: copilot # Aliases: https://github.github.com/gh-aw/reference/model-tables/#model-aliases
@@ -67,6 +64,35 @@ safe-outputs:
     max: 1
     report-as-issue: false
 steps:
+  # Keep query data separate to stay below the GitHub Actions script limit.
+  - name: Write Reddit Alert Config
+    run: |
+      set -euo pipefail
+      mkdir -p /tmp/gh-aw/agent
+
+      node <<'NODE'
+      const fs = require('fs');
+      const queryFamilies = [
+        { family: 'core-third-place', query: '"third place" OR "third places" OR "third-place" OR "third space" OR "third spaces"', terms: ['third place', 'third places', 'third-place', 'third space', 'third spaces'] },
+        { family: 'coffee-cafe', query: 'coffee OR "coffee shop" OR "coffee shops" OR coffeeshop OR cafe OR café OR "coffee house" OR "cat cafe" OR latte OR cappuccino', terms: ['coffee', 'coffee shop', 'coffee shops', 'coffeeshop', 'cafe', 'café', 'coffee house', 'cat cafe', 'latte', 'cappuccino'] },
+        { family: 'bakery-dessert', query: 'bakery OR bakeries OR pastry OR pastries OR bread OR sourdough OR baguette OR cookies OR dessert OR "ice cream" OR creamery', terms: ['bakery', 'bakeries', 'pastry', 'pastries', 'bread', 'sourdough', 'baguette', 'cookies', 'dessert', 'ice cream', 'creamery'] },
+        { family: 'tea-boba', query: 'boba OR "bubble tea" OR matcha OR chai OR "tea house" OR "tea shop" OR "tea room" OR "earl grey"', terms: ['boba', 'bubble tea', 'matcha', 'chai', 'tea house', 'tea shop', 'tea room', 'earl grey'] },
+        { family: 'study-work-laptop', query: '"study spot" OR "study spots" OR "best study spots" OR "place to study" OR "remote work" OR "work remotely" OR "laptop friendly" OR "laptop-friendly" OR "working on laptop" OR wifi OR "wi-fi"', terms: ['study spot', 'study spots', 'best study spots', 'place to study', 'remote work', 'work remotely', 'laptop friendly', 'laptop-friendly', 'working on laptop', 'wifi', 'wi-fi'] },
+        { family: 'quiet-cozy-reading', query: '"quiet cafe" OR "quiet spot" OR "cozy cafe" OR "cozy spot" OR "places to read" OR "sit and read" OR "rocking chairs" OR "not too busy" OR "not too packed"', terms: ['quiet cafe', 'quiet spot', 'cozy cafe', 'cozy spot', 'places to read', 'sit and read', 'rocking chairs', 'not too busy', 'not too packed'] },
+        { family: 'patio-outdoor', query: '"outdoor seating" OR "patio seating" OR "outdoor patio" OR patio OR "dog friendly patio" OR "dogs allowed outside"', terms: ['outdoor seating', 'patio seating', 'outdoor patio', 'patio', 'dog friendly patio', 'dogs allowed outside'] },
+        { family: 'library-bookstore', query: 'library OR libraries OR "public library" OR bookstore OR bookstores OR "book store" OR "book stores" OR "book club" OR "book crawl"', terms: ['library', 'libraries', 'public library', 'bookstore', 'bookstores', 'book store', 'book stores', 'book club', 'book crawl'] },
+        { family: 'meet-community', query: '"meet people" OR "meet new people" OR "make friends" OR "community space" OR "meeting space" OR "hobby group" OR "trivia night" OR "date spot"', terms: ['meet people', 'meet new people', 'make friends', 'community space', 'meeting space', 'hobby group', 'trivia night', 'date spot'] },
+        { family: 'creative-markets', query: '"creative scene" OR "local art" OR "art collective" OR makerspace OR "maker market" OR "vintage market" OR "pop-up market" OR "community events" OR "live music"', terms: ['creative scene', 'local art', 'art collective', 'makerspace', 'maker market', 'vintage market', 'pop-up market', 'community events', 'live music'] },
+        { family: 'game-social-hobby', query: '"board game" OR "board games" OR "board game cafe" OR "game night" OR "game nights" OR "game store" OR arcade OR "nerdy nooks" OR chess', terms: ['board game', 'board games', 'board game cafe', 'game night', 'game nights', 'game store', 'arcade', 'nerdy nooks', 'chess'] },
+        { family: 'markets-local', query: '"farmers market" OR "farmer\'s market" OR "fresh produce" OR "local businesses" OR "neighborhood market" OR "public market"', terms: ['farmers market', "farmer's market", 'fresh produce', 'local businesses', 'neighborhood market', 'public market'] },
+        { family: 'brewery-wine-hangout', query: 'brewery OR breweries OR taproom OR taprooms OR "wine bar" OR "wine bars" OR "bottle shop" OR "beer garden" OR "coffee and beer" OR "happy hour"', terms: ['brewery', 'breweries', 'taproom', 'taprooms', 'wine bar', 'wine bars', 'bottle shop', 'beer garden', 'coffee and beer', 'happy hour'] },
+        { family: 'transit-adjacent', query: '"best coffee on the lightrail" OR "coffee on the lightrail" OR "lightrail coffee" OR "light rail coffee" OR "coffee near light rail" OR "cafe near light rail"', terms: ['best coffee on the lightrail', 'coffee on the lightrail', 'lightrail coffee', 'light rail coffee', 'coffee near light rail', 'cafe near light rail'] },
+        { family: 'opening-closing', query: '"coming soon" OR "now open" OR "new cafe" OR "new coffee shop" OR "new bakery" OR "new taproom" OR "new bookstore" OR "new location" OR closing OR closed OR rebrand OR reopening', terms: ['coming soon', 'now open', 'new cafe', 'new coffee shop', 'new bakery', 'new taproom', 'new bookstore', 'new location', 'closing', 'closed', 'rebrand', 'reopening'] }
+      ];
+
+      fs.writeFileSync('/tmp/gh-aw/agent/reddit-query-families.json', JSON.stringify(queryFamilies));
+      NODE
+
   - name: Collect Reddit Alert Candidates
     env:
       MODE: ${{ github.event.inputs.mode }}
@@ -88,29 +114,14 @@ steps:
       const logPath = '/tmp/gh-aw/agent/reddit-collection-log.json';
       const now = new Date();
       const sinceMs = now.getTime() - 48 * 60 * 60 * 1000;
+      const mentionSinceMs = now.getTime() - 7 * 24 * 60 * 60 * 1000;
       const userAgent = 'script:charlotte-third-places-alerts:v1.0.0';
-
-      const queryFamilies = [
-        { family: 'core-third-place', query: '"third place" OR "third places" OR "third-place" OR "third space" OR "third spaces"', terms: ['third place', 'third places', 'third-place', 'third space', 'third spaces'] },
-        { family: 'coffee-cafe', query: 'coffee OR "coffee shop" OR "coffee shops" OR coffeeshop OR cafe OR café OR "coffee house" OR "cat cafe" OR latte OR cappuccino', terms: ['coffee', 'coffee shop', 'coffee shops', 'coffeeshop', 'cafe', 'café', 'coffee house', 'cat cafe', 'latte', 'cappuccino'] },
-        { family: 'bakery-dessert', query: 'bakery OR bakeries OR pastry OR pastries OR bread OR sourdough OR baguette OR cookies OR dessert OR "ice cream" OR creamery', terms: ['bakery', 'bakeries', 'pastry', 'pastries', 'bread', 'sourdough', 'baguette', 'cookies', 'dessert', 'ice cream', 'creamery'] },
-        { family: 'tea-boba', query: 'boba OR "bubble tea" OR matcha OR chai OR "tea house" OR "tea shop" OR "tea room" OR "earl grey"', terms: ['boba', 'bubble tea', 'matcha', 'chai', 'tea house', 'tea shop', 'tea room', 'earl grey'] },
-        { family: 'study-work-laptop', query: '"study spot" OR "study spots" OR "best study spots" OR "place to study" OR "remote work" OR "work remotely" OR "laptop friendly" OR "laptop-friendly" OR "working on laptop" OR wifi OR "wi-fi"', terms: ['study spot', 'study spots', 'best study spots', 'place to study', 'remote work', 'work remotely', 'laptop friendly', 'laptop-friendly', 'working on laptop', 'wifi', 'wi-fi'] },
-        { family: 'quiet-cozy-reading', query: '"quiet cafe" OR "quiet spot" OR "cozy cafe" OR "cozy spot" OR "places to read" OR "sit and read" OR "rocking chairs" OR "not too busy" OR "not too packed"', terms: ['quiet cafe', 'quiet spot', 'cozy cafe', 'cozy spot', 'places to read', 'sit and read', 'rocking chairs', 'not too busy', 'not too packed'] },
-        { family: 'patio-outdoor', query: '"outdoor seating" OR "patio seating" OR "outdoor patio" OR patio OR "dog friendly patio" OR "dogs allowed outside"', terms: ['outdoor seating', 'patio seating', 'outdoor patio', 'patio', 'dog friendly patio', 'dogs allowed outside'] },
-        { family: 'library-bookstore', query: 'library OR libraries OR "public library" OR bookstore OR bookstores OR "book store" OR "book stores" OR "book club" OR "book crawl"', terms: ['library', 'libraries', 'public library', 'bookstore', 'bookstores', 'book store', 'book stores', 'book club', 'book crawl'] },
-        { family: 'meet-community', query: '"meet people" OR "meet new people" OR "make friends" OR "community space" OR "meeting space" OR "hobby group" OR "trivia night" OR "date spot"', terms: ['meet people', 'meet new people', 'make friends', 'community space', 'meeting space', 'hobby group', 'trivia night', 'date spot'] },
-        { family: 'creative-markets', query: '"creative scene" OR "local art" OR "art collective" OR makerspace OR "maker market" OR "vintage market" OR "pop-up market" OR "community events" OR "live music"', terms: ['creative scene', 'local art', 'art collective', 'makerspace', 'maker market', 'vintage market', 'pop-up market', 'community events', 'live music'] },
-        { family: 'game-social-hobby', query: '"board game" OR "board games" OR "board game cafe" OR "game night" OR "game nights" OR "game store" OR arcade OR "nerdy nooks" OR chess', terms: ['board game', 'board games', 'board game cafe', 'game night', 'game nights', 'game store', 'arcade', 'nerdy nooks', 'chess'] },
-        { family: 'markets-local', query: '"farmers market" OR "farmer\'s market" OR "fresh produce" OR "local businesses" OR "neighborhood market" OR "public market"', terms: ['farmers market', "farmer's market", 'fresh produce', 'local businesses', 'neighborhood market', 'public market'] },
-        { family: 'brewery-wine-hangout', query: 'brewery OR breweries OR taproom OR taprooms OR "wine bar" OR "wine bars" OR "bottle shop" OR "beer garden" OR "coffee and beer" OR "happy hour"', terms: ['brewery', 'breweries', 'taproom', 'taprooms', 'wine bar', 'wine bars', 'bottle shop', 'beer garden', 'coffee and beer', 'happy hour'] },
-        { family: 'transit-adjacent', query: '"best coffee on the lightrail" OR "coffee on the lightrail" OR "lightrail coffee" OR "light rail coffee" OR "coffee near light rail" OR "cafe near light rail"', terms: ['best coffee on the lightrail', 'coffee on the lightrail', 'lightrail coffee', 'light rail coffee', 'coffee near light rail', 'cafe near light rail'] },
-        { family: 'opening-closing', query: '"coming soon" OR "now open" OR "new cafe" OR "new coffee shop" OR "new bakery" OR "new taproom" OR "new bookstore" OR "new location" OR closing OR closed OR rebrand OR reopening', terms: ['coming soon', 'now open', 'new cafe', 'new coffee shop', 'new bakery', 'new taproom', 'new bookstore', 'new location', 'closing', 'closed', 'rebrand', 'reopening'] }
-      ];
+      const queryFamilies = JSON.parse(fs.readFileSync('/tmp/gh-aw/agent/reddit-query-families.json', 'utf8'));
 
       const categoryTerms = [...new Set(queryFamilies.flatMap((item) => item.terms))];
       const intentTerms = ['recommend', 'recommendation', 'best', 'where', 'looking for', 'iso', 'anyone know', 'suggest', 'favorite', 'place to', 'spots', 'near'];
       const highValueTerms = ['third place', 'third places', 'third-place', 'third space', 'third spaces'];
+      const mentionQuery = '"Charlotte Third Places" OR "charlottethirdplaces.com" OR "6762573563" OR "com.charlottethirdplaces.app" OR url:charlottethirdplaces.com OR url:6762573563 OR url:com.charlottethirdplaces.app';
       const log = { mode, started_at: now.toISOString(), urls: [], errors: [] };
 
       function ensureSeenFile() {
@@ -159,7 +170,32 @@ steps:
       }
 
       function isSeen(candidate, seenItems) {
-        return seenItems.some((item) => item.id === candidate.id || item.permalink === candidate.permalink || item.text_hash === candidate.text_hash);
+        return seenItems.some((item) => item.id === candidate.id || item.permalink === candidate.permalink || (!candidate.mention_matches?.length && item.text_hash === candidate.text_hash));
+      }
+
+      function findBrandMentions(value) {
+        const text = decodeXml(String(value || ''));
+        const matches = new Map();
+        const name = text.replace(/[*_`]/g, '').match(/\bCharlotte[\s-]+Third[\s-]+Places\b/i);
+        if (name) matches.set('name', { type: 'name', value: name[0].replace(/\s+/g, ' ') });
+        for (const match of text.matchAll(/https?:\/\/[^\s<>"']+|(?<![\w.-])(?:www\.)?charlottethirdplaces\.com(?![\w-]|\.[\w-])(?:[/?#][^\s<>"']*)?/gi)) {
+          const value = match[0].replace(/[)\],.;!?]+$/, '');
+          const absolute = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+          if (!URL.canParse(absolute)) continue;
+          const url = new URL(absolute);
+          const host = url.hostname.replace(/\.$/, '');
+          let type;
+          if (host === 'charlottethirdplaces.com' || host === 'www.charlottethirdplaces.com') type = 'website';
+          if (host === 'apps.apple.com' && /\/id6762573563(?:\/|$)/.test(url.pathname)) type = 'ios-app';
+          if (host === 'play.google.com' && url.pathname === '/store/apps/details' && url.searchParams.get('id') === 'com.charlottethirdplaces.app') type = 'android-app';
+          if (type && !matches.has(type)) matches.set(type, { type, value: url.toString() });
+        }
+        return [...matches.values()];
+      }
+
+      function withBrandMentions(candidate, text) {
+        const matches = findBrandMentions(text);
+        return { ...candidate, mention_matches: matches, relevance_score: matches.length ? 200 : candidate.relevance_score };
       }
 
       function scoreCandidate(text, sourceKind, titleMatch) {
@@ -209,8 +245,9 @@ steps:
         const created = Number(data.created_utc || 0) * 1000;
         const title = data.title || '';
         const text = data.selftext || '';
+        const outboundUrl = data.url_overridden_by_dest || data.url || null;
         const permalink = data.permalink ? `https://www.reddit.com${data.permalink}` : null;
-        return {
+        return withBrandMentions({
           id: data.name || (data.id ? `t3_${data.id}` : null),
           post_id: data.id || null,
           comment_id: null,
@@ -220,41 +257,42 @@ steps:
           score: typeof data.score === 'number' ? data.score : null,
           title,
           text,
+          outbound_url: outboundUrl,
           source_query_family: family,
           source_kind: sourceKind,
           source_url: sourceUrl,
           text_hash: hashText([title, text].join(' ')),
           relevance_score: scoreCandidate([title, text].join(' '), sourceKind, Boolean(title))
-        };
+        }, [title, text, outboundUrl].join(' '));
       }
 
       function normalizeComment(child, post, sourceUrl) {
         const data = child.data || child;
         const created = Number(data.created_utc || 0) * 1000;
         const text = data.body || '';
-        const permalink = post.permalink && data.id ? `${post.permalink}${data.id}/` : post.permalink;
-        return {
+        const permalink = data.permalink ? new URL(data.permalink, 'https://www.reddit.com').toString() : (post.permalink && data.id ? `${post.permalink}${data.id}/` : post.permalink);
+        return withBrandMentions({
           id: data.name || (data.id ? `t1_${data.id}` : null),
-          post_id: post.post_id || null,
+          post_id: post.post_id || String(data.link_id || '').replace(/^t3_/, '') || null,
           comment_id: data.id || null,
           permalink,
           created_at: created ? new Date(created).toISOString() : null,
           author: data.author || null,
           score: typeof data.score === 'number' ? data.score : null,
-          title: post.title || '',
+          title: post.title || data.link_title || 'Comment in r/Charlotte',
           text,
           source_query_family: post.source_query_family,
           source_kind: 'comments-json',
           source_url: sourceUrl,
           text_hash: hashText([post.title, text].join(' ')),
           relevance_score: scoreCandidate([post.title, text].join(' '), 'comments-json', false)
-        };
+        }, text);
       }
 
-      async function collectJsonListing(base, family, sourceKind) {
+      async function collectJsonListing(base, family, sourceKind, { normalize = normalizePost, cutoffMs = sinceMs, maxPages = 5 } = {}) {
         const collected = [];
         let after = '';
-        for (let page = 1; page <= 5; page += 1) {
+        for (let page = 1; page <= maxPages; page += 1) {
           const url = new URL(base);
           url.searchParams.set('limit', '100');
           url.searchParams.set('raw_json', '1');
@@ -266,16 +304,22 @@ steps:
           let parsed;
           try { parsed = JSON.parse(response.body); } catch (error) { throw new Error(`invalid json: ${error.message}`); }
           const children = parsed?.data?.children || [];
-          collected.push(...children.map((child) => normalizePost(child, family, sourceKind, fullUrl)).filter((item) => item.created_at && Date.parse(item.created_at) >= sinceMs));
+          collected.push(...children.map((child) => normalize(child, family, sourceKind, fullUrl)).filter((item) => item.created_at && Date.parse(item.created_at) >= cutoffMs));
           after = parsed?.data?.after || '';
-          const newestInsideLookback = children.some((child) => Number(child?.data?.created_utc || 0) * 1000 >= sinceMs);
+          const newestInsideLookback = children.some((child) => Number(child?.data?.created_utc || 0) * 1000 >= cutoffMs);
           if (!after || children.length < 100 || !newestInsideLookback) break;
+          if (page === maxPages && family === 'brand-mentions') {
+            log.errors.push({ family, source_kind: sourceKind, error: 'Listing limit reached before the end of the mention lookback window.' });
+            console.warn(`Brand mention coverage is incomplete for ${fullUrl}.`);
+          }
         }
         return collected;
       }
 
-      async function collectRss(query, family) {
-        const url = `https://www.reddit.com/r/Charlotte/search.rss?restrict_sr=on&sort=new&t=day&q=${encodeURIComponent(query)}`;
+      async function collectRss(query, family, { sitewide = false, comments = false } = {}) {
+        const url = comments
+          ? 'https://www.reddit.com/r/Charlotte/comments.rss'
+          : (sitewide ? `https://www.reddit.com/search.rss?sort=new&t=week&q=${encodeURIComponent(query)}` : `https://www.reddit.com/r/Charlotte/search.rss?restrict_sr=on&sort=new&t=day&q=${encodeURIComponent(query)}`);
         log.urls.push(url);
         const response = await fetchWithRetry(url);
         if (!response.ok) {
@@ -288,7 +332,8 @@ steps:
           const text = tagValue(entry, 'content');
           const permalink = linkHref(entry) || null;
           const createdAt = tagValue(entry, 'updated') || null;
-          return {
+          const rawContent = entry.match(/<content\b[^>]*>([\s\S]*?)<\/content>/i)?.[1] || '';
+          return withBrandMentions({
             id: permalink ? `rss_${hashText(permalink).slice(0, 20)}` : `rss_${hashText([title, createdAt].join(' ')).slice(0, 20)}`,
             post_id: null,
             comment_id: null,
@@ -299,12 +344,38 @@ steps:
             title,
             text,
             source_query_family: family,
-            source_kind: 'search-rss',
+            source_kind: comments ? 'comments-rss' : 'search-rss',
             source_url: url,
             text_hash: hashText([title, text].join(' ')),
             relevance_score: scoreCandidate([title, text].join(' '), 'search-rss', Boolean(title))
-          };
-        }).filter((item) => item.created_at && Date.parse(item.created_at) >= sinceMs);
+          }, comments ? rawContent : entry);
+        }).filter((item) => item.created_at && Date.parse(item.created_at) >= (sitewide || comments ? mentionSinceMs : sinceMs));
+      }
+
+      async function collectBrandMentions() {
+        let posts;
+        const url = new URL('https://www.reddit.com/search.json');
+        url.searchParams.set('sort', 'new');
+        url.searchParams.set('t', 'week');
+        url.searchParams.set('q', mentionQuery);
+        try {
+          posts = await collectJsonListing(url.toString(), 'brand-mentions', 'brand-search-json', { cutoffMs: mentionSinceMs, maxPages: 10 });
+        } catch (error) {
+          log.errors.push({ family: 'brand-mentions', json_error: error.message });
+          posts = await collectRss(mentionQuery, 'brand-mentions', { sitewide: true });
+        }
+        let comments;
+        try {
+          comments = await collectJsonListing('https://www.reddit.com/r/Charlotte/comments.json', 'brand-mentions', 'brand-comments-json', {
+            normalize: (child, family, _sourceKind, sourceUrl) => normalizeComment(child, { source_query_family: family }, sourceUrl),
+            cutoffMs: mentionSinceMs,
+            maxPages: 10
+          });
+        } catch (error) {
+          log.errors.push({ family: 'brand-mentions', comments_error: error.message });
+          comments = await collectRss('', 'brand-mentions', { comments: true });
+        }
+        return [...posts, ...comments].filter((item) => item.mention_matches.length > 0);
       }
 
       async function collectComments(posts) {
@@ -385,6 +456,7 @@ steps:
           log.errors.push({ family: 'recent-post-sweep', json_error: error.message });
         }
         all.push(...await collectComments(all));
+        all.push(...await collectBrandMentions());
         const byId = new Map();
         for (const item of all) {
           const key = item.id || item.permalink || item.text_hash;
@@ -395,7 +467,7 @@ steps:
           .filter((item) => !isSeen(item, seen))
           .sort((a, b) => (b.relevance_score - a.relevance_score) || (Date.parse(b.created_at || 0) - Date.parse(a.created_at || 0)))
           .slice(0, 200);
-        fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), lookback_hours: 48, query_families: queryFamilies.map(({ family, query }) => ({ family, query })), candidates }, null, 2));
+        fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), lookback_hours: 48, mention_lookback_hours: 168, query_families: [...queryFamilies.map(({ family, query }) => ({ family, query })), { family: 'brand-mentions', query: mentionQuery }], candidates }, null, 2));
         fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
       }
 
@@ -409,7 +481,7 @@ steps:
 
 ## Reddit Alerts
 
-You monitor `r/Charlotte` for Charlotte Third Places leads.
+You monitor `r/Charlotte` for third-place leads. You also monitor posts across Reddit and recent `r/Charlotte` comments for Charlotte Third Places mentions.
 
 ## Required Inputs
 
@@ -423,9 +495,24 @@ Read these files first:
 
 If `mode` is `test`, send exactly one test email using `send_email_report`, then call no other safe-output tool. Do not update repo memory in test mode.
 
+## Brand Mentions
+
+Candidates with a non-empty `mention_matches` array are always relevant. Include positive, negative, and neutral mentions of:
+
+- The name `Charlotte Third Places`.
+- `charlottethirdplaces.com`, with or without `www`, including all paths.
+- The iOS app, identified by `apps.apple.com` and app ID `6762573563`.
+- The Android app, identified by `play.google.com` and package ID `com.charlottethirdplaces.app`.
+
+Do not require a place recommendation, a Charlotte subreddit, or any other lead category for these matches. Use the Reddit permalink and the evidence in `mention_matches`.
+
+Put mentions first in a `Charlotte Third Places Mentions` section. Fill the existing 20-item report limit with mentions before ordinary leads. Only add items to memory if the email includes them. Any remaining items must stay eligible for a later run.
+
+Mention checks use the existing workflow schedule and a seven-day overlap. API and listing limits can prevent complete coverage. If the collection log reports a mention error or limit, include a short coverage note in the report or `noop` reason.
+
 ## Relevance Rules
 
-Relevant Reddit candidates must match at least one of these exact categories:
+Other Reddit candidates must match at least one of these exact categories:
 
 - Requests for coffee shops, cafes, tea shops, bakeries, bookstores, libraries, markets, community spaces, study spots, remote-work spots, quiet/cozy hangouts, creative spaces, game/social hobby spaces, or places to meet people.
 - Chatter about new or upcoming third-place openings.
@@ -453,12 +540,13 @@ Formatting rules:
 
 Include at most 20 items. Rank items in this order:
 
-1. Exact `third place` / `third space` matches.
-2. Openings, now-open items, reopens, and new locations.
-3. Closings, rebrands, expansions, and renovations.
-4. Requests for recommendations, unmet-demand posts, and recommendation comments.
-5. Reviews, spotlights, features, recurring events, and community/creative-scene leads.
-6. Everything else that still passed relevance.
+1. Charlotte Third Places mentions identified by `mention_matches`.
+2. Exact `third place` / `third space` matches.
+3. Openings, now-open items, reopens, and new locations.
+4. Closings, rebrands, expansions, and renovations.
+5. Requests for recommendations, unmet-demand posts, and recommendation comments.
+6. Reviews, spotlights, features, recurring events, and community/creative-scene leads.
+7. Everything else that still passed relevance.
 
 Each item must include title, source/permalink, why it matters, and matched evidence.
 

@@ -20,15 +20,12 @@ on:
         options:
           - real
           - test
-      aw_context:
-        default: "{}"
-        description: "Agent Context"
-        required: false
-        type: string
 permissions:
   contents: read
   copilot-requests: write
 timeout-minutes: 60
+concurrency:
+  job-discriminator: ${{ github.run_id }}
 engine:
   id: copilot
   model: copilot # Aliases: https://github.github.com/gh-aw/reference/model-tables/#model-aliases
@@ -256,15 +253,15 @@ steps:
       }
 
       function isSeen(candidate, seenItems) {
-        return seenItems.some((item) => item.url === candidate.url || item.title_hash === candidate.title_hash);
+        return seenItems.some((item) => item.url === candidate.url || (candidate.original_url && item.url === candidate.original_url) || item.title_hash === candidate.title_hash);
       }
 
-      async function fetchText(url) {
+      async function fetchText(url, options = {}) {
         log.urls.push(url);
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 30000);
         try {
-          const response = await fetch(url, { headers: { 'User-Agent': userAgent }, signal: controller.signal });
+          const response = await fetch(url, { ...options, headers: { 'User-Agent': userAgent, ...options.headers }, signal: controller.signal });
           const text = await response.text();
           clearTimeout(timeout);
           if (!response.ok) return { ok: false, status: response.status, body: text.slice(0, 500) };
@@ -273,6 +270,100 @@ steps:
           clearTimeout(timeout);
           return { ok: false, status: 'network', body: String(error.message || error) };
         }
+      }
+
+      function isGoogleUrl(url) {
+        return /(^|\.)google\.[a-z.]+$/i.test(url.hostname.replace(/\.$/, ''));
+      }
+
+      function unwrapGoogleUrl(value) {
+        let url = new URL(value);
+        for (let depth = 0; depth < 5; depth++) {
+          if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) throw new Error('Article URL must use HTTP or HTTPS without credentials.');
+          if (!isGoogleUrl(url) || url.pathname !== '/url') return url;
+          const destination = url.searchParams.get('url') || url.searchParams.get('q');
+          if (!destination) throw new Error('Google redirect has no destination URL.');
+          url = new URL(destination);
+        }
+        throw new Error('Google redirect exceeds the URL depth limit.');
+      }
+
+      function publisherUrl(value, source) {
+        const url = unwrapGoogleUrl(value);
+        const domain = new URL(`https://${source.site}`).hostname.replace(/^www\./, '');
+        const hostname = url.hostname.replace(/\.$/, '');
+        if (isGoogleUrl(url) || (hostname !== domain && !hostname.endsWith(`.${domain}`)) || url.pathname === '/') {
+          throw new Error(`Article URL does not identify a story from ${domain}.`);
+        }
+        return canonicalUrl(url.toString());
+      }
+
+      function logUrlFailure(candidate, error) {
+        const failure = { source: candidate.source, url: candidate.url, stage: 'resolve-publisher-url', error: error.message };
+        log.errors.push(failure);
+        console.warn(`News article omitted: ${JSON.stringify(failure)}`);
+      }
+
+      async function resolveCandidateUrls(candidates) {
+        const resolved = [];
+        const pending = [];
+        for (const candidate of candidates) {
+          try {
+            const source = sources.find((item) => item.name === candidate.source);
+            if (!source) throw new Error('Article source is not configured.');
+            const url = unwrapGoogleUrl(candidate.url);
+            if (url.hostname !== 'news.google.com') {
+              resolved.push({ ...candidate, original_url: candidate.url, url: publisherUrl(url.toString(), source) });
+              continue;
+            }
+            const articleId = url.pathname.match(/^\/(?:rss\/)?(?:articles|read)\/([A-Za-z0-9_-]+)$/)?.[1];
+            if (!articleId) throw new Error('Google News article ID is missing.');
+            const page = await fetchText(`https://news.google.com/rss/articles/${articleId}?hl=en-US&gl=US&ceid=US%3Aen`);
+            if (!page.ok) throw new Error(`Google News article page returned ${page.status}.`);
+            const signature = page.body.match(/data-n-a-sg="([^"]+)"/)?.[1];
+            const timestamp = Number(page.body.match(/data-n-a-ts="(\d+)"/)?.[1]);
+            if (!signature || !Number.isSafeInteger(timestamp) || timestamp <= 0) throw new Error('Google News decoding fields are missing.');
+            pending.push({ candidate, source, articleId, signature: decodeXml(signature), timestamp });
+          } catch (error) {
+            logUrlFailure(candidate, error);
+          }
+        }
+        if (pending.length === 0) return resolved;
+
+        try {
+          // Google News uses this undocumented RPC to return publisher URLs in one batch.
+          const context = [['X', 'X', ['X', 'X'], null, null, 1, 1, 'US:en', null, 1, null, null, null, null, null, 0, 1], 'X', 'X', 1, [1, 1, 1], 1, 1, null, 0, 0, null, 0];
+          const requests = pending.map((item, index) => ['Fbv4je', JSON.stringify(['garturlreq', context, item.articleId, item.timestamp, item.signature]), null, String(index)]);
+          const response = await fetchText('https://news.google.com/_/DotsSplashUi/data/batchexecute', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+            body: new URLSearchParams({ 'f.req': JSON.stringify([requests]) }).toString()
+          });
+          if (!response.ok) throw new Error(`Google News decoding returned ${response.status}.`);
+          const jsonLines = response.body.split('\n').filter((line) => line.trimStart().startsWith('[['));
+          if (jsonLines.length === 0) throw new Error('Google News returned an unexpected decoding response.');
+          const rows = jsonLines.flatMap((line) => JSON.parse(line));
+          const requestIds = new Set(pending.map((_item, index) => String(index)));
+          const decoded = new Map();
+          for (const row of rows) {
+            if (!Array.isArray(row) || row[0] !== 'wrb.fr' || row[1] !== 'Fbv4je' || typeof row[2] !== 'string') continue;
+            const result = JSON.parse(row[2]);
+            const requestId = row.slice(3).reverse().find((value) => requestIds.has(value));
+            if (requestId !== undefined && result[0] === 'garturlres' && typeof result[1] === 'string') decoded.set(requestId, result[1]);
+          }
+          for (const [index, item] of pending.entries()) {
+            try {
+              const value = decoded.get(String(index));
+              if (!value) throw new Error('Google News returned no publisher URL for this article.');
+              resolved.push({ ...item.candidate, original_url: item.candidate.url, url: publisherUrl(value, item.source) });
+            } catch (error) {
+              logUrlFailure(item.candidate, error);
+            }
+          }
+        } catch (error) {
+          for (const item of pending) logUrlFailure(item.candidate, error);
+        }
+        return resolved;
       }
 
       function parseFeedItems(xml, source, sourceUrl, sourceKind) {
@@ -421,10 +512,17 @@ steps:
           const key = item.url;
           if (!byUrl.has(key) || byUrl.get(key).relevance_score < item.relevance_score) byUrl.set(key, item);
         }
-        const candidates = [...byUrl.values()]
+        const shortlist = [...byUrl.values()]
           .filter((item) => !isSeen(item, seen))
           .sort((a, b) => (b.relevance_score - a.relevance_score) || (Date.parse(b.published_at || b.discovered_at) - Date.parse(a.published_at || a.discovered_at)))
           .slice(0, 250);
+        const byPublisherUrl = new Map();
+        for (const item of await resolveCandidateUrls(shortlist)) {
+          if (isSeen(item, seen)) continue;
+          if (!byPublisherUrl.has(item.url) || byPublisherUrl.get(item.url).relevance_score < item.relevance_score) byPublisherUrl.set(item.url, item);
+        }
+        const candidates = [...byPublisherUrl.values()]
+          .sort((a, b) => (b.relevance_score - a.relevance_score) || (Date.parse(b.published_at || b.discovered_at) - Date.parse(a.published_at || a.discovered_at)));
         fs.writeFileSync(outPath, JSON.stringify({ mode, test: false, generated_at: now.toISOString(), candidates }, null, 2));
         fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
       }
@@ -498,6 +596,8 @@ Include at most 20 items. Rank items in this order:
 6. Everything else that still passed relevance.
 
 Each item must include title, source/permalink, why it matters, and matched evidence.
+
+Use only the candidate's `url` for article links. It must be a direct publisher URL. Never include `original_url`, Google News search URLs, or Google redirect URLs in the email. Do not invent a URL or substitute a publisher homepage. Candidates with unresolved URLs are omitted and logged for a later run.
 
 ## Repo Memory Update
 

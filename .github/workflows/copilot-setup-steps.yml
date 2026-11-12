@@ -37,6 +37,6 @@ jobs:
           python .github/skills/place-json-evidence/extract_place_json_evidence.py --help
 
       - name: Install gh-aw Extension
-        uses: github/gh-aw-actions/setup-cli@5e508589e03a7757a7e05b26e834292f5445bfb6 # v0.88.7
+        uses: github/gh-aw-actions/setup-cli@53d0749e19424a918acd82b4d140264ce48f2f14 # v1.2.2
         with:
-          version: v0.88.7
+          version: v1.2.2

@@ -32,6 +32,7 @@ safe-outputs:
               const fs = require('fs');
               const path = require('path');
               const outputFile = process.env.GH_AW_AGENT_OUTPUT;
+              const isNewsAlert = process.env.GITHUB_WORKFLOW_REF?.split('@')[0].endsWith('/.github/workflows/news-alerts.lock.yml') === true;
 
               if (!outputFile || !fs.existsSync(outputFile)) {
                 core.info('No agent output file found; no email will be sent.');
@@ -76,6 +77,26 @@ safe-outputs:
               if (rawTextBody.length > 20000) {
                 core.setFailed(`text_body exceeds 20000 characters (${rawTextBody.length}).`);
                 return;
+              }
+
+              if (isNewsAlert) {
+                if (/(?:^|[^\w.-])(?:[\w-]+\.)*google\.[a-z.]+(?=[/:?#\s)\]]|$)/i.test(rawTextBody)) {
+                  core.setFailed('News email contains a Google URL. Use direct publisher article URLs.');
+                  return;
+                }
+                for (const match of rawTextBody.matchAll(/\bhttps?:\/\/[^\s<>"']+/gi)) {
+                  let url;
+                  try {
+                    url = new URL(match[0].replace(/[)\],.;!?]+$/, ''));
+                  } catch {
+                    core.setFailed('News email contains an invalid article URL.');
+                    return;
+                  }
+                  if (/(^|\.)google\.[a-z.]+$/i.test(url.hostname.replace(/\.$/, ''))) {
+                    core.setFailed('News email contains a Google URL. Use direct publisher article URLs.');
+                    return;
+                  }
+                }
               }
 
               function escapeHtml(value) {
@@ -211,6 +232,7 @@ Agents call `send_email_report` with `subject` and `text_body`. The shared
 job generates the Gmail-compatible HTML body deterministically from `text_body`.
 If the agent calls the tool more than one time, the job sends only the last
 request. If gh-aw ingestion rejects any agent output, the job does not send an email.
+For News Alerts, the job rejects Google URLs before it renders or sends the email.
 The agent never receives Gmail credentials; this post-agent safe-output job sends
 the message using `MAIL_USERNAME` and `MAIL_PASSWORD` repository secrets.
 -->
